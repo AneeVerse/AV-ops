@@ -26,7 +26,7 @@
     showApplication,
     sortApplicationsByOrder
   } from '../utils'
-  import { Loading, IconCheck, Label, Icon, PointerSortHandle, moveItem, rowIndexFromY } from '@hcengineering/ui'
+  import { Loading, IconCheck, Label, Icon, moveItem, rowIndexFromY } from '@hcengineering/ui'
   import { getMetadata } from '@hcengineering/platform'
   import { onDestroy } from 'svelte'
 
@@ -151,8 +151,7 @@
   }
 
   function startDrag (ev: PointerEvent, index: number): void {
-    ev.preventDefault()
-    ev.stopPropagation()
+    if (ev.button !== 0) return
     dragIndex = index
     didDrag = false
     isDragging = true
@@ -179,10 +178,13 @@
         {#each customizableApps as app, i (app._id)}
           <button
             bind:this={btns[i]}
-            class="ap-menuItem withIcon flex-row-center flex-grow"
+            class="ap-menuItem withIcon flex-row-center flex-grow grab"
             class:hover={btns[i] === activeElement}
             class:dragging={isDragging && dragIndex === i}
             data-id={`app-switcher-row-${app.alias}`}
+            on:pointerdown={(ev) => {
+              startDrag(ev, i)
+            }}
             on:click={() => {
               toggleApp(app)
             }}
@@ -190,11 +192,6 @@
               focusTarget(btns[i])
             }}
           >
-            <PointerSortHandle
-              on:pointerdown={(ev) => {
-                startDrag(ev, i)
-              }}
-            />
             <div class="icon mr-2"><Icon icon={app.icon} size={'small'} /></div>
             <span class="label overflow-label flex-grow"><Label label={app.label} /></span>
             <div class="ap-check">
@@ -219,8 +216,13 @@
     user-select: none;
   }
 
+  .grab {
+    cursor: grab;
+  }
+
   .dragging {
     opacity: 0.55;
     background-color: var(--theme-button-hovered);
+    cursor: grabbing;
   }
 </style>

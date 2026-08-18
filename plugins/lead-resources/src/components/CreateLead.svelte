@@ -14,8 +14,10 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import contact, { Contact } from '@hcengineering/contact'
-  import { UserBox } from '@hcengineering/contact-resources'
+  import { Analytics } from '@hcengineering/analytics'
+  import { Channel, combineName, Contact, findContacts } from '@hcengineering/contact'
+  import { ChannelsDropdown, EditableAvatar, PersonPresenter, UserBox } from '@hcengineering/contact-resources'
+  import contact from '@hcengineering/contact-resources/src/plugin'
   import core, {
     AccountRole,
     AttachedData,
@@ -24,41 +26,62 @@
     getCurrentAccount,
     hasAccountRole,
     Ref,
-    Status as TaskStatus
+    Status as TaskStatus,
+    WithLookup
   } from '@hcengineering/core'
   import { Customer, Funnel, Lead, LeadEvents } from '@hcengineering/lead'
   import { OK, Status } from '@hcengineering/platform'
-  import presentation, { Card, createQuery, getClient, InlineAttributeBar, SpaceSelector } from '@hcengineering/presentation'
+  import presentation, {
+    Card,
+    createQuery,
+    getClient,
+    InlineAttributeBar,
+    InlineAttributeBarEditor,
+    SpaceSelector
+  } from '@hcengineering/presentation'
   import task, { getStates, TaskType } from '@hcengineering/task'
   import { TaskKindSelector, typeStore } from '@hcengineering/task-resources'
-  import ui, { Button, createFocusManager, EditBox, FocusHandler, Status as StatusControl } from '@hcengineering/ui'
+  import { EmptyMarkup } from '@hcengineering/text'
+  import { Button, createFocusManager, EditBox, FocusHandler, IconInfo, Label, Status as StatusControl } from '@hcengineering/ui'
   import { statusStore } from '@hcengineering/view-resources'
   import { createEventDispatcher } from 'svelte'
   import lead from '../plugin'
-  import { type CustomerDraft, persistCustomer } from '../utils'
-  import { Analytics } from '@hcengineering/analytics'
-  import CreateCustomer from './CreateCustomer.svelte'
+  import { createDefaultChannels, normalizeCustomerChannels, persistCustomer } from '../utils'
 
-  export let space: Ref<Funnel>
+  export let space: Ref<Funnel> | undefined = undefined
   export let customer: Ref<Contact> | null = null
+  export let candidate: Ref<Contact> | null = null
   export let preserveCustomer = false
+  export let preserveCandidate = false
 
-  let customerStep = !preserveCustomer && customer == null
-  let customerDraft: CustomerDraft | undefined
-  let customerLocked = preserveCustomer
-
+  $: if (customer == null && candidate != null) {
+    customer = candidate
+  }
+  $: customerLocked = preserveCustomer || preserveCandidate
   let _space = space
   const status: Status = OK
 
   let title: string = ''
   const object: Partial<Lead> = {}
 
+  let firstName = ''
+  let lastName = ''
+  const person: Customer = {
+    _class: contact.class.Person,
+    name: '',
+    city: ''
+  } as unknown as Customer
+  let customerId = generateId()
+  let channels: AttachedData<Channel>[] = createDefaultChannels()
+  let avatar: File | undefined
+  let avatarEditor: EditableAvatar
+
   const dispatch = createEventDispatcher()
   const client = getClient()
   const leadId: Ref<AttachedDoc> = generateId()
 
   export function canClose (): boolean {
-    return (preserveCustomer || customer === undefined) && title === ''
+    return title === '' && firstName === '' && lastName === '' && (customerLocked || customer == null)
   }
 
   let funnels: Funnel[] = []
@@ -72,8 +95,8 @@
 
   $: setStatus(rawStates, object.status)
 
-  function setStatus (rawStates: TaskStatus[], status: Ref<TaskStatus> | undefined) {
-    if (status === undefined || rawStates.findIndex((it) => it._id === status) === -1) {
+  function setStatus (rawStates: TaskStatus[], nextStatus: Ref<TaskStatus> | undefined) {
+    if (nextStatus === undefined || rawStates.findIndex((it) => it._id === nextStatus) === -1) {
       state = rawStates[0]?._id
       object.status = state
     }
@@ -89,12 +112,38 @@
 
   let kind: Ref<TaskType> | undefined = undefined
 
+  $: name = combineName(firstName.trim(), lastName.trim())
+  $: lookupChannels = normalizeCustomerChannels(channels)
+  $: canSave =
+    title.trim().length > 0 && (customerLocked ? customer !== null : name.trim().length > 0)
+
+  let matches: WithLookup<Contact>[] = []
+  let matchedChannels: AttachedData<Channel>[] = []
+  $: if (!customerLocked) {
+    void findContacts(client, contact.class.Person, name, lookupChannels).then((p) => {
+      matches = p.contacts
+      matchedChannels = p.channels
+    })
+  }
+
   async function createLead () {
-    if (customer == null && customerDraft !== undefined) {
-      customer = await persistCustomer(client, customerDraft)
+    if (customer == null) {
+      customer = await persistCustomer(client, {
+        customerId,
+        targetClass: contact.class.Person,
+        firstName,
+        lastName,
+        name,
+        city: person.city ?? '',
+        description: EmptyMarkup,
+        channels: normalizeCustomerChannels(channels),
+        extra: Object.fromEntries(Object.entries(person).filter(([key]) => key !== '_class')),
+        avatar,
+        avatarInfo: avatarEditor !== undefined ? await avatarEditor.createAvatar() : undefined
+      })
     }
     const sequence = await client.findOne(core.class.Sequence, { attachedTo: lead.class.Lead })
-    if (sequence === undefined || customer == null) {
+    if (sequence === undefined || customer == null || _space === undefined) {
       throw new Error('Lead  creation failed')
     }
     if (kind === undefined) {
@@ -139,44 +188,14 @@
   const manager = createFocusManager()
 
   $: object.space = _space
-
-  function handleCustomerCreated (e: CustomEvent<Ref<Contact>>): void {
-    customer = e.detail
-    preserveCustomer = true
-    customerLocked = true
-    customerStep = false
-  }
-
-  function handleCustomerDraft (e: CustomEvent<CustomerDraft>): void {
-    customerDraft = e.detail
-    customerLocked = true
-    customerStep = false
-  }
-
-  function goBack (): void {
-    customerStep = true
-  }
 </script>
 
 <FocusHandler {manager} />
 
-{#if customerStep}
-  <CreateCustomer
-    okLabel={presentation.string.Next}
-    closeAfterCreate={false}
-    deferCreate
-    draft={customerDraft}
-    on:draft={handleCustomerDraft}
-    on:created={handleCustomerCreated}
-    on:close={() => {
-      dispatch('close')
-    }}
-  />
-{:else}
 <Card
   label={lead.string.CreateLead}
   okAction={createLead}
-  canSave={title.trim().length > 0 && (customer !== null || customerDraft !== undefined)}
+  {canSave}
   on:close={() => {
     dispatch('close')
   }}
@@ -198,9 +217,10 @@
     />
     <TaskKindSelector projectType={funnel?.type} bind:value={kind} baseClass={lead.class.Lead} />
   </svelte:fragment>
+
   <svelte:fragment slot="title">
-    <div class="flex-row-center gap-2">
-      {#if customer != null}
+    {#if customerLocked && customer != null}
+      <div class="flex-row-center gap-2">
         <UserBox
           readonly
           _class={contact.class.Contact}
@@ -212,52 +232,99 @@
           kind={'regular'}
           size={'large'}
         />
-      {:else if customerDraft !== undefined}
-        <span class="overflow-label">{customerDraft.name}</span>
-      {/if}
-    </div>
+      </div>
+    {/if}
   </svelte:fragment>
 
   <StatusControl slot="error" {status} />
-  <div class="flex-row-center clear-mins">
+
+  {#if !customerLocked}
+    <div class="flex-between flex-row-top">
+      <div class="flex-col flex-grow">
+        <EditBox
+          placeholder={contact.string.PersonFirstNamePlaceholder}
+          bind:value={firstName}
+          kind={'large-style'}
+          autoFocus
+          focusIndex={1}
+        />
+        <EditBox
+          placeholder={contact.string.PersonLastNamePlaceholder}
+          bind:value={lastName}
+          kind={'large-style'}
+          focusIndex={2}
+        />
+        <div class="mt-1">
+          <EditBox
+            placeholder={contact.string.PersonLocationPlaceholder}
+            bind:value={person.city}
+            kind={'small-style'}
+            focusIndex={3}
+          />
+        </div>
+      </div>
+      <div class="ml-4 flex">
+        <EditableAvatar
+          person={person}
+          size={'large'}
+          {name}
+          bind:this={avatarEditor}
+          bind:direct={avatar}
+        />
+      </div>
+    </div>
+  {/if}
+
+  <div class="flex-row-center clear-mins" class:mt-2={!customerLocked}>
     <div class="mr-3">
-      <Button focusIndex={1} icon={lead.icon.Lead} size={'medium'} kind={'link-bordered'} noFocus />
+      <Button focusIndex={4} icon={lead.icon.Lead} size={'medium'} kind={'link-bordered'} noFocus />
     </div>
     <EditBox
-      focusIndex={1}
+      focusIndex={4}
       bind:value={title}
       placeholder={lead.string.LeadPlaceholder}
       kind={'large-style'}
-      autoFocus
+      autoFocus={customerLocked}
     />
   </div>
 
   <svelte:fragment slot="pool">
     {#if !customerLocked}
-      <UserBox
-        focusIndex={2}
-        _class={contact.class.Contact}
-        label={lead.string.Customer}
-        placeholder={lead.string.SelectCustomer}
-        bind:value={customer}
+      <ChannelsDropdown
+        bind:value={channels}
+        focusIndex={10}
         kind={'regular'}
         size={'large'}
-        create={{ component: lead.component.CreateCustomer, label: lead.string.CreateCustomer }}
+        editable
+        highlighted={matchedChannels.map((it) => it.provider)}
       />
     {/if}
     <InlineAttributeBar
       _class={lead.class.Lead}
       {object}
       toClass={task.class.Task}
-      ignoreKeys={['title']}
+      ignoreKeys={['title', 'attachedTo', 'startDate']}
       on:update
       extraProps={{ showNavigate: false }}
     />
+    <InlineAttributeBarEditor
+      key="startDate"
+      _class={lead.class.Lead}
+      {object}
+      draft
+      extraProps={{ showNavigate: false }}
+      on:update
+    />
   </svelte:fragment>
   <svelte:fragment slot="footer">
-    {#if customerDraft !== undefined}
-      <Button label={ui.string.Back} kind={'regular'} size={'large'} on:click={goBack} />
+    {#if !customerLocked && matches.length > 0}
+      <div class="flex-row-center error-color">
+        <IconInfo size={'small'} />
+        <span class="text-sm overflow-label ml-2">
+          <Label label={contact.string.PersonAlreadyExists} />
+        </span>
+        <div class="ml-4"><PersonPresenter value={matches[0]} /></div>
+      </div>
     {/if}
   </svelte:fragment>
 </Card>
-{/if}

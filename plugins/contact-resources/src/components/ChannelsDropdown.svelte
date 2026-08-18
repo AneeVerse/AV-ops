@@ -78,6 +78,22 @@
     canEdit: boolean
   }
 
+  const fallbackProviders: Record<
+    string,
+    { label: IntlString, icon: Asset, placeholder: IntlString }
+  > = {
+    [contact.channelProvider.Phone]: {
+      label: 'contact:string:Phone' as IntlString,
+      icon: contact.icon.Phone,
+      placeholder: 'contact:string:PhonePlaceholder' as IntlString
+    },
+    [contact.channelProvider.Email]: {
+      label: contact.string.Email,
+      icon: contact.icon.Email,
+      placeholder: contact.string.Email
+    }
+  }
+
   function getProvider (
     item: AttachedData<Channel>,
     map: Map<Ref<ChannelProvider>, ChannelProvider>,
@@ -85,26 +101,46 @@
     inboxNotificationsByContext: Map<Ref<DocNotifyContext>, InboxNotification[]>
   ): Item | undefined {
     const provider = map.get(item.provider)
-    if (provider) {
-      const channel = item as Channel
-      const notification =
-        channel._id !== undefined ? isNew(channel, notifyContextByDoc, inboxNotificationsByContext) : false
-      const hasActivity = (channel.items ?? 0) > 0 || channel.lastMessage !== undefined
-      const canEditRestricted = !hasActivity
-      return {
-        label: provider.label,
-        icon: provider.icon as Asset,
-        value: channel.value,
-        presenter: provider.presenter,
-        action: provider.action,
-        placeholder: provider.placeholder,
-        provider: provider._id,
-        channel,
-        notification,
-        integration: provider.integrationType !== undefined ? integrations.has(provider.integrationType) : false,
-        canEdit: !restricted.includes(provider._id) || canEditRestricted
+    const fallback = provider === undefined ? fallbackProviders[item.provider] : undefined
+    if (provider === undefined && fallback === undefined) {
+      return undefined
+    }
+    const channel = item as Channel
+    const notification =
+      channel._id !== undefined ? isNew(channel, notifyContextByDoc, inboxNotificationsByContext) : false
+    const hasActivity = (channel.items ?? 0) > 0 || channel.lastMessage !== undefined
+    const canEditRestricted = !hasActivity
+    const providerId = provider?._id ?? item.provider
+    return {
+      label: provider?.label ?? fallback?.label ?? contact.string.Email,
+      icon: (provider?.icon ?? fallback?.icon) as Asset,
+      value: channel.value,
+      presenter: provider?.presenter,
+      action: provider?.action,
+      placeholder: provider?.placeholder ?? fallback?.placeholder ?? contact.string.Email,
+      provider: providerId,
+      channel,
+      notification,
+      integration: provider?.integrationType !== undefined ? integrations.has(provider.integrationType) : false,
+      canEdit: !restricted.includes(providerId) || canEditRestricted
+    }
+  }
+
+  function withFallbackProviders (providers: ChannelProvider[]): ChannelProvider[] {
+    const ids = new Set(providers.map((pr) => pr._id))
+    const extra: ChannelProvider[] = []
+    for (const [id, meta] of Object.entries(fallbackProviders)) {
+      const providerId = id as Ref<ChannelProvider>
+      if (!ids.has(providerId)) {
+        extra.push({
+          _id: providerId,
+          label: meta.label,
+          icon: meta.icon,
+          placeholder: meta.placeholder
+        } as ChannelProvider)
       }
     }
+    return extra.length === 0 ? providers : [...extra, ...providers]
   }
 
   function isNew (
@@ -135,7 +171,7 @@
     }
 
     const result: Item[] = []
-    const map = toIdMap(channelProviders)
+    const map = toIdMap(withFallbackProviders(channelProviders))
     if (Array.isArray(value)) {
       for (const item of value) {
         const provider = getProvider(item, map, notifyContextByDoc, inboxNotificationsByContext)
@@ -171,7 +207,7 @@
     providers: ChannelProvider[],
     excluded: Ref<ChannelProvider>[] = []
   ): void => {
-    actions = providers
+    actions = withFallbackProviders(providers)
       .filter((pr) => !excluded.includes(pr._id))
       .map((pr) => {
         return {
@@ -180,7 +216,7 @@
           action: async () => {
             const provider = getProvider(
               { provider: pr._id, value: '' },
-              toIdMap(providers),
+              toIdMap(withFallbackProviders(providers)),
               $contextByDocStore,
               $inboxNotificationsByContextStore
             )

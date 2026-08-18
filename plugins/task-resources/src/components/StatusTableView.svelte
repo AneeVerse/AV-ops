@@ -27,7 +27,7 @@
   import StatesBar from './state/StatesBar.svelte'
 
   export let _class: Ref<Class<Task>>
-  export let space: Ref<Project>
+  export let space: Ref<Project> | undefined = undefined
   export let query: DocumentQuery<Task>
   export let options: FindOptions<Task> | undefined
   export let config: string[]
@@ -71,15 +71,20 @@
 
   const spaceQuery = createQuery()
 
-  $: spaceQuery.query(
-    task.class.Project,
-    {
-      _id: space
-    },
-    (res) => {
-      _space = res[0]
-    }
-  )
+  $: if (space !== undefined) {
+    spaceQuery.query(
+      task.class.Project,
+      {
+        _id: space
+      },
+      (res) => {
+        _space = res[0]
+      }
+    )
+  } else {
+    spaceQuery.unsubscribe()
+    _space = undefined
+  }
 
   const client = getClient()
 
@@ -165,7 +170,7 @@
     <ScrollerBar gap={'none'} bind:scroller={divScroll}>
       <TabList items={itemsDS} bind:selected={selectedDS} multiselect on:select={handleDoneSelect} />
     </ScrollerBar>
-  {:else}
+  {:else if space !== undefined}
     <StatesBar
       bind:state
       {space}

@@ -14,15 +14,13 @@
 -->
 <script lang="ts">
   import { getCurrentEmployee } from '@hcengineering/contact'
-  import { AttachedDoc, Class, DocumentQuery, getCurrentAccount, Ref } from '@hcengineering/core'
+  import { AttachedDoc, Class, DocumentQuery, getCurrentAccount, Ref, WithLookup } from '@hcengineering/core'
   import { Lead } from '@hcengineering/lead'
   import { IntlString, Asset } from '@hcengineering/platform'
   import { createQuery } from '@hcengineering/presentation'
-  import task from '@hcengineering/task'
   import {
     IModeSelector,
     Breadcrumb,
-    Loading,
     ModeSelector,
     resolvedLocationStore,
     SearchInput,
@@ -32,7 +30,7 @@
   import {
     FilterBar,
     FilterButton,
-    TableBrowser,
+    ViewletContentView,
     ViewletSelector,
     ViewletSettingButton
   } from '@hcengineering/view-resources'
@@ -93,23 +91,19 @@
     }
   }
 
-  let viewlet: Viewlet | undefined
-  let loading = true
+  let viewlet: WithLookup<Viewlet> | undefined
   let preference: ViewletPreference | undefined = undefined
-
   let viewOptions: ViewOptions | undefined = undefined
 </script>
 
-<Header adaptive={'freezeActions'} hideActions={modeSelectorProps === undefined}>
+<Header adaptive={'freezeActions'} hideActions={modeSelectorProps === undefined} freezeBefore>
   <svelte:fragment slot="beforeTitle">
     <ViewletSelector
-      hidden
       bind:viewlet
       bind:preference
-      bind:loading
       viewletQuery={{
         attachTo: _class,
-        descriptor: task.viewlet.StatusTable
+        variant: { $exists: false }
       }}
     />
     <ViewletSettingButton bind:viewOptions bind:viewlet />
@@ -129,17 +123,6 @@
 </Header>
 <FilterBar {_class} query={searchQuery} {viewOptions} space={undefined} on:change={(e) => (resultQuery = e.detail)} />
 
-{#if viewlet}
-  {#if loading}
-    <Loading />
-  {:else}
-    <TableBrowser
-      {_class}
-      config={preference?.config ?? viewlet.config}
-      options={viewlet.options}
-      query={resultQuery}
-      totalQuery={baseQuery}
-      showNotification
-    />
-  {/if}
+{#if viewlet && viewOptions}
+  <ViewletContentView {_class} {viewlet} query={resultQuery} space={undefined} {viewOptions} />
 {/if}

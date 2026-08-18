@@ -47,6 +47,13 @@ export interface CustomerDraft {
   avatarInfo?: Data<AvatarInfo>
 }
 
+export function createDefaultChannels (): AttachedData<Channel>[] {
+  return [
+    { provider: contact.channelProvider.Phone, value: '' },
+    { provider: contact.channelProvider.Email, value: '' }
+  ]
+}
+
 export function normalizeCustomerChannels (channels: AttachedData<Channel>[]): AttachedData<Channel>[] {
   return channels
     .map((channel) => ({ ...channel, value: channel.value?.trim() ?? '' }))

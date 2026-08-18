@@ -20,7 +20,6 @@
   import { Customer } from '@hcengineering/lead'
   import { type IntlString } from '@hcengineering/platform'
   import presentation, { Card, getClient, InlineAttributeBar } from '@hcengineering/presentation'
-  import { StyledTextBox } from '@hcengineering/text-editor-resources'
   import { EmptyMarkup } from '@hcengineering/text'
   import {
     Button,
@@ -35,7 +34,7 @@
   } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import lead from '../plugin'
-  import { type CustomerDraft, normalizeCustomerChannels, persistCustomer } from '../utils'
+  import { type CustomerDraft, createDefaultChannels, normalizeCustomerChannels, persistCustomer } from '../utils'
 
   export let okLabel: IntlString = presentation.string.Create
   export let closeAfterCreate = true
@@ -44,7 +43,7 @@
 
   let firstName = draft?.firstName ?? ''
   let lastName = draft?.lastName ?? ''
-  let description = draft?.description ?? EmptyMarkup
+  const description = draft?.description ?? EmptyMarkup
   let createdId: Ref<Contact> | undefined
   let drafted = false
 
@@ -64,13 +63,6 @@
   const dispatch = createEventDispatcher()
   const client = getClient()
   let customerId = draft?.customerId ?? generateId()
-
-  function createDefaultChannels (): AttachedData<Channel>[] {
-    return [
-      { provider: contact.channelProvider.Email, value: '' },
-      { provider: contact.channelProvider.Phone, value: '' }
-    ]
-  }
 
   let channels: AttachedData<Channel>[] = draft?.channels ?? createDefaultChannels()
   let avatar: File | undefined = draft?.avatar
@@ -204,16 +196,6 @@
             focusIndex={3}
           />
         </div>
-        <div class="mt-1">
-          <StyledTextBox
-            bind:content={description}
-            placeholder={lead.string.IssueDescriptionPlaceholder}
-            kind={'normal'}
-            alwaysEdit={true}
-            showButtons={false}
-            focusIndex={4}
-          />
-        </div>
       </div>
       <div class="ml-4 flex">
         <EditableAvatar
@@ -237,18 +219,6 @@
         autoFocus
         focusIndex={1}
       />
-    </div>
-    <div class="flex-col flex-grow">
-      <div class="mt-1">
-        <StyledTextBox
-          bind:content={description}
-          placeholder={lead.string.IssueDescriptionPlaceholder}
-          kind={'normal'}
-          alwaysEdit={true}
-          showButtons={false}
-          focusIndex={2}
-        />
-      </div>
     </div>
   {/if}
   <svelte:fragment slot="pool">

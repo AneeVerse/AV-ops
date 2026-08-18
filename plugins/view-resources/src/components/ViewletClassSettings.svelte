@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Button, PointerSortHandle, ToggleWithLabel, moveItem, rowIndexFromY } from '@hcengineering/ui'
+  import { Button, ToggleWithLabel, moveItem, rowIndexFromY } from '@hcengineering/ui'
   import { Viewlet } from '@hcengineering/view'
   import { createEventDispatcher } from 'svelte'
   import view from '../plugin'
@@ -61,8 +61,9 @@
 
   function startDrag (ev: PointerEvent, index: number): void {
     if (!canSort(items[index], index)) return
+    const target = ev.target as HTMLElement | null
+    if (target?.closest('.toggle') != null) return
     ev.preventDefault()
-    ev.stopPropagation()
     dragIndex = index
     isDragging = true
     window.addEventListener('pointermove', onPointerMove)
@@ -82,19 +83,16 @@
 <div class="column-customize" class:is-dragging={isDragging}>
   {#each items as item, i}
     {#if isAttribute(item)}
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div
         class="menu-item flex-row-center"
         class:dragging={isDragging && dragIndex === i}
+        class:grab={canSort(item, i)}
         bind:this={elements[i]}
+        on:pointerdown={(ev) => {
+          startDrag(ev, i)
+        }}
       >
-        {#if sortable}
-          <PointerSortHandle
-            disabled={!item.enabled}
-            on:pointerdown={(ev) => {
-              startDrag(ev, i)
-            }}
-          />
-        {/if}
         <ToggleWithLabel
           on={item.enabled}
           label={item.label}
@@ -116,8 +114,13 @@
     }
   }
 
+  .grab {
+    cursor: grab;
+  }
+
   .dragging {
     opacity: 0.55;
     background-color: var(--theme-button-hovered);
+    cursor: grabbing;
   }
 </style>
