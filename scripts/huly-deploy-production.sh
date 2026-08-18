@@ -36,7 +36,7 @@ cmd_front() {
   if [[ "${SKIP_BUILD:-0}" != "1" ]]; then
     echo "==== build front (Git Bash on Windows) ===="
     if [[ -f /e/programs/Git/bin/bash.exe ]]; then
-      /e/programs/Git/bin/bash.exe -lc "cd /e/Projects/platform-develop/dev/prod && NODE_OPTIONS=--max-old-space-size=8192 rushx package && rm -f huly-front-dist.tgz && cp -r public/huly dist/huly 2>/dev/null || true && rm -f dist/config.json && tar --exclude='*.map' --exclude='*.map.gz' --exclude='report.html' -czf huly-front-dist.tgz -C dist ."
+      /e/programs/Git/bin/bash.exe -lc "cd '$REPO_ROOT/dev/prod' && NODE_OPTIONS=--max-old-space-size=8192 rushx package && rm -f huly-front-dist.tgz && cp -r public/huly dist/huly 2>/dev/null || true && rm -f dist/config.json && tar --exclude='*.map' --exclude='*.map.gz' --exclude='report.html' -czf huly-front-dist.tgz -C dist ."
     else
       echo "Run webpack manually — see docs/HULY-PRODUCTION-DEPLOY.md section A"
       exit 1

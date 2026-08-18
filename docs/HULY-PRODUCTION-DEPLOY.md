@@ -2,6 +2,8 @@
 
 This document describes **how this fork is deployed today** so the next person or agent does not start from scratch.
 
+**Day-to-day:** run `local.cmd` (local UI + production data) or `ship.cmd` (build and deploy front). See [LOCAL-AND-DEPLOY.md](LOCAL-AND-DEPLOY.md).
+
 ## Production at a glance
 
 | Item | Value |

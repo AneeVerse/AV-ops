@@ -35,7 +35,7 @@
   } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import lead from '../plugin'
-  import { type CustomerDraft, mergeCustomerChannels, persistCustomer } from '../utils'
+  import { type CustomerDraft, normalizeCustomerChannels, persistCustomer } from '../utils'
 
   export let okLabel: IntlString = presentation.string.Create
   export let closeAfterCreate = true
@@ -45,13 +45,11 @@
   let firstName = draft?.firstName ?? ''
   let lastName = draft?.lastName ?? ''
   let description = draft?.description ?? EmptyMarkup
-  let email = draft?.email ?? ''
-  let phone = draft?.phone ?? ''
   let createdId: Ref<Contact> | undefined
   let drafted = false
 
   export function canClose (): boolean {
-    return firstName === '' && lastName === '' && email === '' && phone === ''
+    return firstName === '' && lastName === ''
   }
 
   let avatarEditor: EditableAvatar
@@ -67,15 +65,15 @@
   const client = getClient()
   let customerId = draft?.customerId ?? generateId()
 
-  let channels: AttachedData<Channel>[] = draft?.channels ?? []
-  let avatar: File | undefined = draft?.avatar
+  function createDefaultChannels (): AttachedData<Channel>[] {
+    return [
+      { provider: contact.channelProvider.Email, value: '' },
+      { provider: contact.channelProvider.Phone, value: '' }
+    ]
+  }
 
-  const excludedProviders = [contact.channelProvider.Email, contact.channelProvider.Phone]
-  const channelProviderDocs = client.getModel().findAllSync(contact.class.ChannelProvider, {})
-  const emailPlaceholder =
-    channelProviderDocs.find((p) => p._id === contact.channelProvider.Email)?.placeholder ?? contact.string.Email
-  const phonePlaceholder =
-    channelProviderDocs.find((p) => p._id === contact.channelProvider.Phone)?.placeholder ?? contact.string.Email
+  let channels: AttachedData<Channel>[] = draft?.channels ?? createDefaultChannels()
+  let avatar: File | undefined = draft?.avatar
 
   function formatName (targetClass: Ref<Class<Doc>>, firstName: string, lastName: string, objectName: string): string {
     return targetClass === contact.class.Person ? combineName(firstName.trim(), lastName.trim()) : objectName
@@ -90,9 +88,7 @@
       name,
       city: object.city ?? '',
       description,
-      email,
-      phone,
-      channels: mergeCustomerChannels(channels, '', ''),
+      channels: normalizeCustomerChannels(channels),
       extra: Object.fromEntries(Object.entries(object).filter(([key]) => key !== '_class')),
       avatar,
       avatarInfo: undefined
@@ -142,6 +138,7 @@
               firstName = ''
               lastName = ''
               customerId = generateId()
+              channels = createDefaultChannels()
               avatar = undefined
             }
           }
@@ -151,7 +148,7 @@
   }
   $: name = formatName(targetClass._id, firstName, lastName, object.name)
   $: canSave = name.trim().length > 0
-  $: lookupChannels = mergeCustomerChannels(channels, email, phone)
+  $: lookupChannels = normalizeCustomerChannels(channels)
 
   const manager = createFocusManager()
 
@@ -208,19 +205,13 @@
           />
         </div>
         <div class="mt-1">
-          <EditBox placeholder={emailPlaceholder} bind:value={email} kind={'small-style'} focusIndex={4} />
-        </div>
-        <div class="mt-1">
-          <EditBox placeholder={phonePlaceholder} bind:value={phone} kind={'small-style'} focusIndex={5} />
-        </div>
-        <div class="mt-1">
           <StyledTextBox
             bind:content={description}
             placeholder={lead.string.IssueDescriptionPlaceholder}
             kind={'normal'}
             alwaysEdit={true}
             showButtons={false}
-            focusIndex={6}
+            focusIndex={4}
           />
         </div>
       </div>
@@ -249,19 +240,13 @@
     </div>
     <div class="flex-col flex-grow">
       <div class="mt-1">
-        <EditBox placeholder={emailPlaceholder} bind:value={email} kind={'small-style'} focusIndex={2} />
-      </div>
-      <div class="mt-1">
-        <EditBox placeholder={phonePlaceholder} bind:value={phone} kind={'small-style'} focusIndex={3} />
-      </div>
-      <div class="mt-1">
         <StyledTextBox
           bind:content={description}
           placeholder={lead.string.IssueDescriptionPlaceholder}
           kind={'normal'}
           alwaysEdit={true}
           showButtons={false}
-          focusIndex={4}
+          focusIndex={2}
         />
       </div>
     </div>
@@ -274,7 +259,6 @@
       size={'large'}
       editable
       highlighted={matchedChannels.map((it) => it.provider)}
-      exclude={excludedProviders}
     />
     {#if targetClass._id === contact.class.Organization}
       <InlineAttributeBar

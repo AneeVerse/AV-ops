@@ -1,0 +1,16 @@
+{
+  "ACCOUNTS_URL": "/_accounts",
+  "UPLOAD_URL": "/files",
+  "FILES_URL": "/files/:workspace/:filename?file=:blobId&workspace=:workspace",
+  "MODEL_VERSION": null,
+  "VERSION": null,
+  "REKONI_URL": "/_rekoni",
+  "TELEGRAM_URL": "/_telegram",
+  "GMAIL_URL": "/_gmail",
+  "CALENDAR_URL": "/_calendar",
+  "COLLABORATOR_URL": "wss://huly.aneeverse.com/_collaborator",
+  "PREVIEW_URL": "",
+  "LOVE_ENDPOINT": "/_love",
+  "STATS_URL": "/_stats",
+  "DISABLED_FEATURES": "auto-translate,mailboxes"
+}
