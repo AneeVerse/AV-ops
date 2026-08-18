@@ -167,6 +167,7 @@ import MilestoneRefPresenter from './components/milestones/MilestoneRefPresenter
 import CreateProject from './components/projects/CreateProject.svelte'
 import ProjectPresenter from './components/projects/ProjectPresenter.svelte'
 import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.svelte'
+import CompanyRelated from './components/company/CompanyRelated.svelte'
 
 import { get } from 'svelte/store'
 import { settingId } from '@hcengineering/setting'
@@ -486,7 +487,8 @@ export default async (): Promise<Resources> => ({
     MembersArrayEditor,
     IssueExtra,
     IssueStatusPresenter,
-    LabelsView
+    LabelsView,
+    CompanyRelated
   },
   completion: {
     IssueQuery: async (client: Client, query: string, filter?: { in?: RelatedDocument[], nin?: RelatedDocument[] }) =>

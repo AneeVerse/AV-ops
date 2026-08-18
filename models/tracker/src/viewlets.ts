@@ -665,6 +665,7 @@ export function defineViewlets (builder: Builder): void {
           }
         },
         'members',
+        'company',
         {
           key: 'defaultAssignee',
           props: { kind: 'list' }
@@ -703,6 +704,7 @@ export function defineViewlets (builder: Builder): void {
           }
         },
         'members',
+        'company',
         {
           key: 'defaultAssignee',
           props: { kind: 'list' }

@@ -45,7 +45,7 @@ import { derived, writable } from 'svelte/store'
 export const workspaceCreating = writable<number | undefined>(undefined)
 
 export function getSpecialSpaceClass (model: NavigatorModel): Array<Ref<Class<Space>>> {
-  const spaceResult = model.spaces.map((x) => x.spaceClass)
+  const spaceResult = (model.spaces ?? []).map((x) => x.spaceClass)
   const result = (model.specials ?? [])
     .map((it) => it.spaceClass)
     .filter((it) => it !== undefined && !spaceResult.includes(it))

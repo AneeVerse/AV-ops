@@ -82,6 +82,12 @@ Tracker **States / Dashboard** viewlets (first time, or after a workspace upgrad
 bash scripts/huly-deploy-production.sh model-tracker
 ```
 
+**Company** app (sidebar tab + `Project.company` field) needs the model patch as well as `ship.cmd`:
+
+```bash
+bash scripts/huly-deploy-production.sh model-company
+```
+
 ---
 
 ## What is never committed

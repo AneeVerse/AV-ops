@@ -21,6 +21,7 @@
   import { ObjectPresenterType } from '@hcengineering/view'
 
   import contact from '../plugin'
+  import Avatar from './Avatar.svelte'
   import Company from './icons/Company.svelte'
 
   export let value: Organization
@@ -38,8 +39,8 @@
   {:else if type === 'link'}
     <DocNavLink {disabled} object={value} {accent} {noUnderline} component={contact.component.EditOrganizationPanel}>
       <div class="flex-presenter" style:max-width={maxWidth} use:tooltip={{ label: getEmbeddedLabel(value.name) }}>
-        <div class="icon circle">
-          <Company size={'small'} />
+        <div class="icon">
+          <Avatar person={value} size={'x-small'} name={value.name} icon={Company} />
         </div>
         <span class="overflow-label label" class:no-underline={noUnderline || disabled} class:fs-bold={accent}>
           {value.name}

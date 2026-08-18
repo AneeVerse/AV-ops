@@ -16,6 +16,7 @@ Usage: huly-deploy-production.sh <command>
 Commands:
   front          Build tarball locally (if missing), upload, run huly-deploy-front.sh on VPS
   model-tracker  Upload and run huly-insert-issue-viewlets.sh (States/Dashboard for Issues)
+  model-company  Upload and run huly-insert-company-app.sh (Company app + Project.company field)
   verify         Curl live site + check front container index.html on VPS
   help           Show this message
 
@@ -27,6 +28,7 @@ Environment:
 Examples:
   ./scripts/huly-deploy-production.sh front
   ./scripts/huly-deploy-production.sh model-tracker
+  ./scripts/huly-deploy-production.sh model-company
   SKIP_BUILD=1 ./scripts/huly-deploy-production.sh front
 EOF
 }
@@ -55,6 +57,12 @@ cmd_model_tracker() {
   "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-issue-viewlets.sh'
 }
 
+cmd_model_company() {
+  echo "==== upload model-company script ===="
+  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-company-app.sh" "$VPS:/tmp/"
+  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-app.sh'
+}
+
 cmd_verify() {
   echo "==== public ===="
   curl -sSI --max-time 15 https://huly.aneeverse.com/ | head -15
@@ -65,6 +73,7 @@ cmd_verify() {
 case "${1:-help}" in
   front) cmd_front ;;
   model-tracker) cmd_model_tracker ;;
+  model-company) cmd_model_company ;;
   verify) cmd_verify ;;
   help|-h|--help) usage ;;
   *) echo "Unknown command: $1"; usage; exit 1 ;;

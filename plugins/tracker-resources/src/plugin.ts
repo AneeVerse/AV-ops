@@ -82,6 +82,11 @@ export default mergeIds(trackerId, tracker, {
     Completed: '' as IntlString,
     Canceled: '' as IntlString,
     CreateProject: '' as IntlString,
+    CompanyApplication: '' as IntlString,
+    AllCompanies: '' as IntlString,
+    Company: '' as IntlString,
+    UnassignCompany: '' as IntlString,
+    CompanyProjects: '' as IntlString,
     ProjectTitle: '' as IntlString,
     ProjectTitlePlaceholder: '' as IntlString,
     ProjectIdentifierPlaceholder: '' as IntlString,
@@ -384,7 +389,8 @@ export default mergeIds(trackerId, tracker, {
     SubIssuesSelector: '' as AnyComponent,
     IconWithEmoji: '' as Asset,
     IssueStatusIcon: '' as AnyComponent,
-    MilestoneStatusIcon: '' as AnyComponent
+    MilestoneStatusIcon: '' as AnyComponent,
+    CompanyRelated: '' as AnyComponent
   },
   metadata: {
     CreateIssueDraft: '' as Metadata<IssueDraft>

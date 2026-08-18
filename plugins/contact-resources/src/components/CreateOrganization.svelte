@@ -32,6 +32,7 @@
 
   import contact from '../plugin'
   import ChannelsDropdown from './ChannelsDropdown.svelte'
+  import EditableAvatar from './EditableAvatar.svelte'
   import Company from './icons/Company.svelte'
   import OrganizationPresenter from './OrganizationPresenter.svelte'
   import { Analytics } from '@hcengineering/analytics'
@@ -57,11 +58,17 @@
 
   fillDefaults(hierarchy, object, contact.class.Organization)
 
+  let avatarEditor: EditableAvatar
+
   async function createOrganization (): Promise<void> {
     if (!isEmptyMarkup(description)) {
       const target = makeCollabId(contact.class.Organization, id, 'description')
       object.description = await createMarkup(target, description)
     }
+    const info = await avatarEditor.createAvatar()
+    object.avatar = info.avatar
+    object.avatarType = info.avatarType
+    object.avatarProps = info.avatarProps
     const op = client.apply()
     await op.createDoc(contact.class.Organization, contact.space.Contacts, object, id)
     await descriptionBox.createAttachments(id, op)
@@ -116,16 +123,18 @@
   on:changeContent
 >
   <div class="flex-row-center clear-mins mb-3">
-    <div class="mr-3">
-      <Button icon={Company} size={'medium'} kind={'link-bordered'} noFocus />
+    <div class="flex-grow">
+      <EditBox
+        placeholder={contact.string.OrganizationNamePlaceholder}
+        bind:value={object.name}
+        kind={'large-style'}
+        autoFocus
+        focusIndex={1}
+      />
     </div>
-    <EditBox
-      placeholder={contact.string.OrganizationNamePlaceholder}
-      bind:value={object.name}
-      kind={'large-style'}
-      autoFocus
-      focusIndex={1}
-    />
+    <div class="ml-4">
+      <EditableAvatar person={object} name={object.name} size={'large'} icon={Company} bind:this={avatarEditor} />
+    </div>
   </div>
 
   <AttachmentStyledBox

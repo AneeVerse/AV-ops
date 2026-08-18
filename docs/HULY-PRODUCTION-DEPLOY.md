@@ -46,6 +46,12 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 - **Behavior:** Toolbar order **States → List → Board → Dashboard** (matches Leads).
 - **Deploy type:** Frontend bundle.
 
+### 4. Company app (model + frontend)
+
+- **Files:** `models/tracker` (`Project.company`, Company Application), `plugins/tracker-resources` (project Company picker, company page tabs)
+- **Behavior:** Left-bar **Company** tab lists Contacts companies. Open a company → **Projects** / **Issues**. Tracker create/edit project has optional **Company**.
+- **Deploy type:** Frontend bundle **and** `scripts/huly-insert-company-app.sh`. `ship.cmd` alone does not create the sidebar tab or field. Official `upgrade-workspace` on stock images does not include this fork’s model.
+
 ---
 
 ## Two deploy paths (pick one)
@@ -115,6 +121,16 @@ ssh -i ~/.ssh/id_ed25519 root@148.230.67.132 'bash /tmp/huly-insert-issue-viewle
 This inserts `tracker:viewlet:IssueStatusTable` and `tracker:viewlet:IssueDashboard` into `model_tx` for all workspaces, then restarts `huly_v7-workspace-1`, `huly_v7-transactor-1`, `huly_v7-nginx-1`.
 
 **Verify:** Project → Issues → toolbar shows States + Dashboard icons.
+
+**For Company app + `Project.company` field:**
+
+```bash
+bash scripts/huly-deploy-production.sh model-company
+```
+
+This inserts `tracker:app:Company`, `tracker:class:Project_company`, and the Organization panel footer mixin, then restarts workspace, transactor, and nginx.
+
+**Verify:** Left bar shows **Company**. Open a company → Projects and Issues tabs. Create/edit a Tracker project → Company picker.
 
 ---
 
@@ -198,7 +214,8 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 |--------|---------|
 | `huly-deploy-front.sh` | **Main UI deploy** — tarball → front container → restart nginx |
 | `huly-insert-issue-viewlets.sh` | **Model patch** — Tracker States/Dashboard on live DB |
-| `huly-deploy-production.sh` | **Orchestrator** — `front` \| `model-tracker` \| `verify` subcommands |
+| `huly-insert-company-app.sh` | **Model patch** — Company app, `Project.company`, company panel tabs |
+| `huly-deploy-production.sh` | **Orchestrator** — `front` \| `model-tracker` \| `model-company` \| `verify` |
 | `huly-tool.sh` | Run `hardcoreeng/tool` against live stack (on VPS) |
 | `huly-check-ip-block.sh` | Debug IP / firewall blocks |
 | `install-huly-vps.sh` | First-time VPS bootstrap |
@@ -215,6 +232,7 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
 - [ ] Never commit secrets (`huly_v7.conf`, passwords, API tokens) to git
 - [ ] Deploy front → restart **both** `front` and **docker nginx**
 - [ ] Model tracker viewlets → run insert script OR full workspace upgrade
+- [ ] Company app → `ship.cmd` **and** `huly-deploy-production.sh model-company`
 - [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes
 - [ ] Do **not** use Hostinger MCP DNS (use REST API or hPanel if DNS changes needed)

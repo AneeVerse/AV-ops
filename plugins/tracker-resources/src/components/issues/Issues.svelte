@@ -34,6 +34,7 @@
   export let icon: Asset | undefined = undefined
   export let config: [string, IntlString, object][]
   export let allProjectsTypes: boolean = false
+  export let useLocalMode: boolean = false
 
   export let baseClass = tracker.class.Issue
 
@@ -59,7 +60,7 @@
   )
 
   let active: DocumentQuery<Issue>
-  $: active = { status: { $in: activeStatuses }, ...spaceQuery }
+  $: active = { ...baseQuery, status: { $in: activeStatuses }, ...spaceQuery }
 
   const backlogStatusQuery = createQuery()
 
@@ -68,10 +69,14 @@
   $: backlogStatusQuery.query(tracker.class.IssueStatus, { category: task.statusCategory.UnStarted }, (result) => {
     backlogStatuses = result.map(({ _id }) => _id)
   })
-  $: backlog = { status: { $in: backlogStatuses }, ...spaceQuery }
+  $: backlog = { ...baseQuery, status: { $in: backlogStatuses }, ...spaceQuery }
 
   $: queries = { all, active, backlog }
-  $: mode = $resolvedLocationStore.query?.mode ?? undefined
+  $: urlMode = $resolvedLocationStore.query?.mode ?? undefined
+  let mode: string | undefined
+  $: if (!useLocalMode) {
+    mode = urlMode
+  }
   $: if (mode === undefined || (queries as any)[mode] === undefined) {
     ;[[mode]] = config
   }
@@ -90,7 +95,11 @@
   let lastHadStatusFilter = false
   $: {
     if (hasStatusFilter && !lastHadStatusFilter && mode !== 'all') {
-      dispatch('action', { mode: 'all' })
+      if (useLocalMode) {
+        mode = 'all'
+      } else {
+        dispatch('action', { mode: 'all' })
+      }
     }
     lastHadStatusFilter = hasStatusFilter
   }
@@ -100,7 +109,13 @@
     modeSelectorProps = {
       config,
       mode,
-      onChange: (newMode: string) => dispatch('action', { mode: newMode }),
+      onChange: (newMode: string) => {
+        if (useLocalMode) {
+          mode = newMode
+        } else {
+          dispatch('action', { mode: newMode })
+        }
+      },
       disabled: hasStatusFilter,
       disabledReason: tracker.string.ModeSelectorDisabledByFilter
     }

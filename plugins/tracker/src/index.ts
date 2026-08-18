@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-import { Employee, Person } from '@hcengineering/contact'
+import { Employee, Organization, Person } from '@hcengineering/contact'
 import {
   AttachedDoc,
   Attribute,
@@ -64,6 +64,7 @@ export interface Project extends TaskProject, IconProps {
   defaultIssueStatus?: Ref<IssueStatus>
   defaultAssignee?: Ref<Employee>
   defaultTimeReportDay: TimeReportDayType
+  company?: Ref<Organization>
 }
 
 /**
