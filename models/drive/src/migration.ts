@@ -1,5 +1,5 @@
 //
-// Copyright © 2022-2024 Hardcore Engineering Inc.
+// Copyright © 2024 Hardcore Engineering Inc.
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,8 +13,8 @@
 // limitations under the License.
 //
 
-import core, { type Blob, type Ref, DOMAIN_BLOB, generateId, toIdMap } from '@hcengineering/core'
-import type { File, FileVersion, Resource } from '@hcengineering/drive'
+import core, { DOMAIN_SPACE, type Blob, type Ref, DOMAIN_BLOB, generateId, toIdMap } from '@hcengineering/core'
+import { COMPANIES_DRIVE_NAME, INTERNAL_FOLDER_NAME, type Drive, type File, type FileVersion, type Folder, type Resource } from '@hcengineering/drive'
 import {
   type MigrateOperation,
   type MigrationClient,
@@ -24,6 +24,70 @@ import {
 } from '@hcengineering/model'
 
 import drive, { DOMAIN_DRIVE, driveId } from './index'
+
+const COMPANIES_DRIVE_ID = 'drive:space:Companies' as Ref<Drive>
+const INTERNAL_FOLDER_ID = 'drive:folder:Internal' as Ref<Folder>
+
+async function ensureCompaniesDriveSpace (client: MigrationClient): Promise<void> {
+  const existing = await client.find<Drive>(DOMAIN_SPACE, {
+    _class: drive.class.Drive,
+    name: COMPANIES_DRIVE_NAME
+  })
+  if (existing.some((d) => d._id === COMPANIES_DRIVE_ID || d.name === COMPANIES_DRIVE_NAME)) {
+    const internal = await client.find<Folder>(DOMAIN_DRIVE, {
+      _id: INTERNAL_FOLDER_ID,
+      _class: drive.class.Folder
+    })
+    if (internal.length === 0) {
+      const driveDoc = existing.find((d) => d.name === COMPANIES_DRIVE_NAME) ?? existing[0]
+      await client.create(DOMAIN_DRIVE, {
+        _id: INTERNAL_FOLDER_ID,
+        _class: drive.class.Folder,
+        space: driveDoc._id,
+        title: INTERNAL_FOLDER_NAME,
+        parent: drive.ids.Root,
+        path: [],
+        modifiedBy: core.account.System,
+        modifiedOn: Date.now(),
+        createdBy: core.account.System,
+        createdOn: Date.now()
+      } as Folder)
+    }
+    return
+  }
+
+  await client.create(DOMAIN_SPACE, {
+    _id: COMPANIES_DRIVE_ID,
+    _class: drive.class.Drive,
+    space: core.space.Space,
+    name: COMPANIES_DRIVE_NAME,
+    description: 'Company and project files',
+    private: false,
+    archived: false,
+    members: [],
+    owners: [],
+    autoJoin: true,
+    restricted: false,
+    type: drive.spaceType.DefaultDrive,
+    modifiedBy: core.account.System,
+    modifiedOn: Date.now(),
+    createdBy: core.account.System,
+    createdOn: Date.now()
+  } as Drive)
+
+  await client.create(DOMAIN_DRIVE, {
+    _id: INTERNAL_FOLDER_ID,
+    _class: drive.class.Folder,
+    space: COMPANIES_DRIVE_ID,
+    title: INTERNAL_FOLDER_NAME,
+    parent: drive.ids.Root,
+    path: [],
+    modifiedBy: core.account.System,
+    modifiedOn: Date.now(),
+    createdBy: core.account.System,
+    createdOn: Date.now()
+  } as Folder)
+}
 
 async function migrateFileVersions (client: MigrationClient): Promise<void> {
   type ExFile = Omit<File, 'file'> & {
@@ -123,6 +187,10 @@ async function renameFields (client: MigrationClient): Promise<void> {
 export const driveOperation: MigrateOperation = {
   async migrate (client: MigrationClient, mode): Promise<void> {
     await tryMigrate(mode, client, driveId, [
+      {
+        state: 'companies-drive',
+        func: ensureCompaniesDriveSpace
+      },
       {
         state: 'file-versions',
         func: migrateFileVersions

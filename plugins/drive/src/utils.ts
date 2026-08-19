@@ -140,6 +140,18 @@ export function getFolderLink (loc: Location, _id: Ref<Folder>): Location {
   return loc
 }
 
+/** Shared Companies drive space name (AneeRequest root equivalent). */
+export const COMPANIES_DRIVE_NAME = 'Companies'
+
+/** Internal-only folder at Companies drive root. */
+export const INTERNAL_FOLDER_NAME = 'Internal'
+
+/** Staff uploads / work-in-progress folder under each project. */
+export const PRODUCTION_FOLDER_NAME = 'production'
+
+/** Client-facing deliverables folder under each project. */
+export const DISTRIBUTED_FOLDER_NAME = 'distributed'
+
 export function getFileLink (loc: Location, _id: Ref<File>): Location {
   loc.path.length = 2
   loc.fragment = undefined

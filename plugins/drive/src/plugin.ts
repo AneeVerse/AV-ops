@@ -17,7 +17,7 @@ import type { Class, Doc, Mixin, Ref, SpaceType, SpaceTypeDescriptor, Type, Perm
 import type { Asset, IntlString, Plugin, Resource as PlatformResource } from '@hcengineering/platform'
 import { plugin } from '@hcengineering/platform'
 import type { Location, ResolvedLocation } from '@hcengineering/ui/src/types'
-import { Drive, File, FileVersion, Folder, Resource } from './types'
+import { Drive, File, FileVersion, Folder, GoogleSync, Resource } from './types'
 
 export * from './types'
 
@@ -36,7 +36,8 @@ export const drivePlugin = plugin(driveId, {
     TypeFileVersion: '' as Ref<Class<Type<number>>>
   },
   mixin: {
-    DefaultDriveTypeData: '' as Ref<Mixin<Drive>>
+    DefaultDriveTypeData: '' as Ref<Mixin<Drive>>,
+    GoogleSync: '' as Ref<Mixin<GoogleSync>>
   },
   icon: {
     DriveApplication: '' as Asset,
@@ -54,7 +55,9 @@ export const drivePlugin = plugin(driveId, {
     Drive: '' as Ref<Doc>
   },
   ids: {
-    Root: '' as Ref<Folder>
+    Root: '' as Ref<Folder>,
+    CompaniesDrive: 'drive:space:Companies' as Ref<Drive>,
+    InternalFolder: 'drive:folder:Internal' as Ref<Folder>
   },
   resolver: {
     Location: '' as PlatformResource<(loc: Location) => Promise<ResolvedLocation | undefined>>
@@ -78,7 +81,11 @@ export const drivePlugin = plugin(driveId, {
     UpdateFolderPermission: '' as IntlString,
     UpdateFolderPermissionDescription: '' as IntlString,
     RemoveFolderPermission: '' as IntlString,
-    RemoveFolderPermissionDescription: '' as IntlString
+    RemoveFolderPermissionDescription: '' as IntlString,
+    OpenInGoogleDrive: '' as IntlString,
+    ProductionFolder: '' as IntlString,
+    DistributedFolder: '' as IntlString,
+    CompaniesDriveName: '' as IntlString
   },
   descriptor: {
     DriveType: '' as Ref<SpaceTypeDescriptor>

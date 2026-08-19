@@ -27,6 +27,12 @@ import {
 import drive, { type FileVersion, type Folder } from '@hcengineering/drive'
 import type { TriggerControl } from '@hcengineering/server-core'
 
+import {
+  OnAttachmentCreateForDrive,
+  OnCompanyDriveBootstrap,
+  OnDriveFileCreatedForSync
+} from './companyDrive'
+
 /** @public */
 export async function OnFileVersionDelete (
   txes: Tx[],
@@ -67,10 +73,15 @@ export async function FindFolderResources (
   return [...files, ...folders]
 }
 
+export { OnAttachmentCreateForDrive, OnCompanyDriveBootstrap, OnDriveFileCreatedForSync }
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async () => ({
   trigger: {
-    OnFileVersionDelete
+    OnFileVersionDelete,
+    OnCompanyDriveBootstrap,
+    OnAttachmentCreateForDrive,
+    OnDriveFileCreatedForSync
   },
   function: {
     FindFolderResources

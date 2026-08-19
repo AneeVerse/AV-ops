@@ -22,6 +22,7 @@
   import tracker from '../../plugin'
   import Issues from '../issues/Issues.svelte'
   import CreateProject from '../projects/CreateProject.svelte'
+  import CompanyDriveFiles from './CompanyDriveFiles.svelte'
 
   export let object: Organization
   export let readonly: boolean = false
@@ -29,7 +30,8 @@
   let tab: string = 'projects'
   const tabs: TabItem[] = [
     { id: 'projects', labelIntl: tracker.string.CompanyProjects },
-    { id: 'issues', labelIntl: tracker.string.Issues }
+    { id: 'issues', labelIntl: tracker.string.Issues },
+    { id: 'files', labelIntl: tracker.string.CompanyFiles }
   ]
 
   const projectQuery = createQuery()
@@ -78,7 +80,7 @@
         ]}
       />
     </div>
-  {:else}
+  {:else if tab === 'issues'}
     <div class="company-related__body">
       <Issues
         baseQuery={{ space: { $in: projectIds } }}
@@ -92,6 +94,10 @@
         allProjectsTypes={true}
         useLocalMode={true}
       />
+    </div>
+  {:else}
+    <div class="company-related__body">
+      <CompanyDriveFiles {object} {readonly} />
     </div>
   {/if}
 </div>

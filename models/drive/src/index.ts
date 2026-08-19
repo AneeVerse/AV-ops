@@ -36,7 +36,8 @@ import {
   type Folder,
   type Resource,
   TypeFileVersion,
-  driveId
+  driveId,
+  type GoogleSync
 } from '@hcengineering/drive'
 import {
   type Builder,
@@ -195,6 +196,26 @@ export class TFileVersion extends TAttachedDoc implements FileVersion {
   @Prop(TypeFileVersion(), drive.string.Version)
   @ReadOnly()
     version!: number
+}
+
+@Mixin(drive.mixin.GoogleSync, drive.class.Resource)
+@UX(drive.string.OpenInGoogleDrive)
+export class TGoogleSync extends TResource implements GoogleSync {
+  @Prop(TypeString(), drive.string.OpenInGoogleDrive)
+  @Hidden()
+    googleId?: string
+
+  @Prop(TypeString(), drive.string.OpenInGoogleDrive)
+  @Hidden()
+    webViewLink?: string
+
+  @Prop(TypeString(), drive.string.OpenInGoogleDrive)
+  @Hidden()
+    syncStatus?: string
+
+  @Prop(TypeString(), drive.string.OpenInGoogleDrive)
+  @Hidden()
+    aneerequestId?: string
 }
 
 function defineTypes (builder: Builder): void {
@@ -824,6 +845,7 @@ function defineApplication (builder: Builder): void {
 }
 
 export function createModel (builder: Builder): void {
+  builder.createModel(TGoogleSync)
   builder.createDoc(
     view.class.ViewletDescriptor,
     core.space.Model,

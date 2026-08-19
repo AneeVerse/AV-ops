@@ -37,6 +37,7 @@ import {
   type Translation,
   type WorkspaceMemberStatus
 } from '@hcengineering/contact'
+import drive, { type Folder } from '@hcengineering/drive'
 import {
   AccountRole,
   type ClassCollaborators,
@@ -238,6 +239,14 @@ export class TOrganization extends TContact implements Organization {
   @Prop(TypeCollaborativeDoc(), core.string.Description)
   @Index(IndexKind.FullText)
     description!: MarkupBlobRef | null
+
+  @Prop(TypeRef(drive.class.Folder), contact.string.CompanyDriveFolder)
+  @Index(IndexKind.Indexed)
+    driveFolder?: Ref<Folder>
+
+  @Prop(TypeString(), contact.string.AneerequestId)
+  @Index(IndexKind.Indexed)
+    aneerequestId?: string
 
   @Prop(CollectionType(contact.class.Member), contact.string.Members)
     members!: number

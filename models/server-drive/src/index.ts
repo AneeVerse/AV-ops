@@ -15,8 +15,11 @@
 
 import { type Builder } from '@hcengineering/model'
 
+import attachment from '@hcengineering/attachment'
+import contact from '@hcengineering/contact'
 import core, { type Class, type Doc } from '@hcengineering/core'
 import drive from '@hcengineering/drive'
+import tracker from '@hcengineering/tracker'
 import serverCore, { type ObjectDDParticipant } from '@hcengineering/server-core'
 import serverDrive from '@hcengineering/server-drive'
 
@@ -28,6 +31,31 @@ export function createModel (builder: Builder): void {
     txMatch: {
       _class: core.class.TxRemoveDoc,
       objectClass: drive.class.FileVersion
+    }
+  })
+
+  builder.createDoc(serverCore.class.Trigger, core.space.Model, {
+    trigger: serverDrive.trigger.OnCompanyDriveBootstrap,
+    txMatch: {
+      _class: core.class.TxCreateDoc,
+      objectClass: { $in: [contact.class.Organization, tracker.class.Project] }
+    }
+  })
+
+  builder.createDoc(serverCore.class.Trigger, core.space.Model, {
+    trigger: serverDrive.trigger.OnAttachmentCreateForDrive,
+    txMatch: {
+      _class: core.class.TxCreateDoc,
+      objectClass: attachment.class.Attachment
+    }
+  })
+
+  builder.createDoc(serverCore.class.Trigger, core.space.Model, {
+    trigger: serverDrive.trigger.OnDriveFileCreatedForSync,
+    isAsync: true,
+    txMatch: {
+      _class: core.class.TxCreateDoc,
+      objectClass: drive.class.File
     }
   })
 

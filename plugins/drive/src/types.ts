@@ -13,9 +13,20 @@
 // limitations under the License.
 //
 
-import { AttachedDoc, Blob, CollectionSize, Doc, Ref, Type, TypedSpace } from '@hcengineering/core'
+import { AttachedDoc, Blob, CollectionSize, Doc, Mixin, Ref, Type, TypedSpace } from '@hcengineering/core'
 
 import drive from './plugin'
+
+/** @public */
+export type GoogleSyncStatus = 'pending' | 'synced' | 'failed'
+
+/** @public */
+export interface GoogleSync extends Resource {
+  googleId?: string
+  webViewLink?: string
+  syncStatus?: GoogleSyncStatus
+  aneerequestId?: string
+}
 
 /** @public */
 export function TypeFileVersion (): Type<number> {

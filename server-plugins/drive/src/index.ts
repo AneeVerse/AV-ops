@@ -27,7 +27,10 @@ export const serverDriveId = 'server-drive' as Plugin
  */
 export default plugin(serverDriveId, {
   trigger: {
-    OnFileVersionDelete: '' as Resource<TriggerFunc>
+    OnFileVersionDelete: '' as Resource<TriggerFunc>,
+    OnCompanyDriveBootstrap: '' as Resource<TriggerFunc>,
+    OnAttachmentCreateForDrive: '' as Resource<TriggerFunc>,
+    OnDriveFileCreatedForSync: '' as Resource<TriggerFunc>
   },
   function: {
     FindFolderResources: '' as Resource<ObjectDDParticipantFunc>
