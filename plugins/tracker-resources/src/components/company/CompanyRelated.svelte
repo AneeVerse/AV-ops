@@ -41,8 +41,9 @@
   $: baseQuery = {
     space: { $in: projectIds.length > 0 ? projectIds : (['none'] as unknown as Ref<Project>[]) }
   }
+  $: currentSpace = projectIds.length === 1 ? projectIds[0] : undefined
 
-  $: projectQuery.query(tracker.class.Project, { company: object._id }, (result) => {
+  $: projectQuery.query(tracker.class.Project, { company: object._id, archived: false }, (result) => {
     projectIds = result.map(({ _id }) => _id)
   })
 
@@ -78,7 +79,7 @@
           {
             key: '',
             presenter: tracker.component.ProjectPresenter,
-            props: { openIssues: true }
+            props: { openIssues: true, showActions: true }
           },
           'members',
           'modifiedOn'
@@ -89,6 +90,7 @@
     <div class="company-related__body">
       <Issues
         {baseQuery}
+        {currentSpace}
         title={tracker.string.Issues}
         icon={tracker.icon.Issues}
         config={[

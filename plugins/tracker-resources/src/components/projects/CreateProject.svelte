@@ -14,7 +14,7 @@
 -->
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import contact, { Employee, Organization } from '@hcengineering/contact'
+  import contact, { Employee, Organization, getAllUserAccounts } from '@hcengineering/contact'
   import {
     AccountArrayEditor,
     AssigneeBox,
@@ -57,7 +57,7 @@
   import view from '@hcengineering/view'
   import { IconPicker } from '@hcengineering/view-resources'
   import { deepEqual } from 'fast-equals'
-  import { createEventDispatcher } from 'svelte'
+  import { createEventDispatcher, onMount } from 'svelte'
 
   import tracker from '../../plugin'
   import StatusSelector from '../issues/StatusSelector.svelte'
@@ -111,6 +111,17 @@
   }
 
   $: isNew = project == null
+
+  onMount(() => {
+    if (!isNew || companyRef == null) return
+    void (async () => {
+      const all = await getAllUserAccounts(client)
+      const me = getCurrentAccount().uuid
+      members = Array.from(new Set([...members, ...all, me].filter(notEmpty)))
+      owners = Array.from(new Set([...owners, ...all, me].filter(notEmpty)))
+      autoJoin = true
+    })()
+  })
 
   async function handleSave (): Promise<void> {
     if (isNew) {
