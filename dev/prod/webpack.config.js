@@ -46,31 +46,35 @@ const dev =
   devServerTest
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
-const doValidate = !prod || process.env.DO_VALIDATE === 'true'
+// Type-check only when explicitly requested; dev serve skips it because foundation
+// packages expose types only after `rush build` (otherwise ~3000 false TS errors).
+const doValidate = process.env.DO_VALIDATE === 'true'
 
 const useCache = process.env.USE_CACHE === 'true'
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+const localHost = process.env.HULY_DEV_HOST || 'huly.local'
+
 const devProxy = {
   '/account': {
-    target: 'http://huly.local:3000',
+    target: `http://${localHost}:3000`,
     changeOrigin: true,
     pathRewrite: { '^/account': '' },
     logLevel: 'debug'
   },
   '/files': {
-    target: 'http://huly.local:8087',
+    target: `http://${localHost}:8087`,
     changeOrigin: true,
     logLevel: 'debug'
   },
   '/api/v1': {
-    target: 'http://huly.local:8087',
+    target: `http://${localHost}:8087`,
     changeOrigin: true,
     logLevel: 'debug'
   },
   '/rekoni/recognize': {
-    target: 'http://huly.local:4004',
+    target: `http://${localHost}:4004`,
     changeOrigin: true,
     pathRewrite: { '^/rekoni/recognize': '/recognize' },
     logLevel: 'debug'

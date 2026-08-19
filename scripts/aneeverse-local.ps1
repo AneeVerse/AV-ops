@@ -37,6 +37,7 @@ $SshKey = if ($env:HULY_SSH_KEY) { $env:HULY_SSH_KEY } else { Join-Path $env:USE
 $Vps = if ($env:HULY_VPS) { $env:HULY_VPS } else { 'root@148.230.67.132' }
 $TunnelPort = 18087
 $WebpackPort = 8080
+$NodeOptions = if ($env:NODE_OPTIONS) { $env:NODE_OPTIONS } else { '--max_old_space_size=8192' }
 
 if (-not (Test-Path $SshKey)) {
   throw "SSH key not found at $SshKey (kept local, never in git). Put your key there or set HULY_SSH_KEY."
@@ -85,7 +86,7 @@ Write-Host "==== webpack  http://localhost:$WebpackPort  (Ctrl+C to stop) ===="
 Write-Host "Log in with the same production account. Edits hit the live workspace."
 
 try {
-  & $gitBash -lc "cd '$prodUnix' && HULY_PROD_PROXY=http://127.0.0.1:$TunnelPort rushx dev-aneeverse"
+  & $gitBash -lc "cd '$prodUnix' && NODE_OPTIONS='$NodeOptions' HULY_PROD_PROXY=http://127.0.0.1:$TunnelPort rushx dev-aneeverse"
 } finally {
   Write-Host "==== stopping tunnel ===="
   if ($ssh -and -not $ssh.HasExited) {

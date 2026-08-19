@@ -1,0 +1,35 @@
+# Pin official images (compose untagged names expect locally built images).
+# Optional services not needed for Client UI are disabled.
+services:
+  stream:
+    image: hardcoreeng/stream:v0.7.426
+  media:
+    image: hardcoreeng/media:v0.7.426
+  account:
+    image: hardcoreeng/account:v0.7.426
+    environment:
+      TRANSACTOR_URL: ws://127.0.0.1:3332;;cockroach
+      FRONT_URL: http://127.0.0.1:8080
+      ACCOUNTS_URL: http://127.0.0.1:3000
+  workspace_cockroach:
+    image: hardcoreeng/workspace:v0.7.426
+  collaborator:
+    image: hardcoreeng/collaborator:v0.7.426
+  front:
+    image: hardcoreeng/front:v0.7.426
+  transactor_cockroach:
+    image: hardcoreeng/transactor:v0.7.426
+  rekoni:
+    image: hardcoreeng/rekoni-service:v0.7.426
+  analytics:
+    image: hardcoreeng/analytics-collector:v0.7.426
+  export:
+    image: hardcoreeng/export:v0.7.426
+  datalake:
+    image: hardcoreeng/datalake:v0.7.426
+  hulylake:
+    image: hardcoreeng/hulylake:v0.7.426
+  time-machine:
+    profiles: ["full"]
+  events-processor:
+    profiles: ["full"]

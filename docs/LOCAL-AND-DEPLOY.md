@@ -4,7 +4,8 @@ Simple Windows commands from the repo root. **SSH key and passwords stay on your
 
 | Command | What it does |
 |---------|----------------|
-| `local.cmd` | Stops anything on ports **8080** and **18087**, opens an SSH tunnel to production, starts the local UI |
+| `local.cmd` | Starts local Docker (Cockroach/account/transactor) and webpack UI on **8080**. Data is **local**, not production. |
+| `prod-local.cmd` | Stops ports **8080** / **18087**, SSH-tunnels to production, starts local UI against live aneeverse |
 | `ship.cmd` | Builds the front bundle, uploads it, restarts production front + nginx |
 
 Live site: https://huly.aneeverse.com
@@ -44,13 +45,23 @@ cd E:\Projects\platform-develop
 .\local.cmd
 ```
 
-Then open **http://localhost:8080/** and log in with the **same production account**.
+Then open **http://localhost:8080/**.
 
 - The UI is your local code (hot reload on save).
-- Data is the **live** aneeverse workspace (via SSH tunnel to the VPS).
-- Stop with **Ctrl+C** (tunnel is closed automatically).
+- Data is the **local** Docker workspace (`user1` / `1234`, workspace `local-ws`).
+- On start, `local.cmd` writes this fork’s **Client** model into the local workspace (official Docker images do not include it).
+- Docker Desktop must be running. First start can take several minutes while images pull.
+- Stop with **Ctrl+C**.
 
 If something was already running on 8080, `local.cmd` kills it first.
+
+## Run against production data (`prod-local.cmd`)
+
+```powershell
+.\prod-local.cmd
+```
+
+Log in with the **same production account**. Edits hit the live workspace.
 
 Git Bash equivalent:
 
