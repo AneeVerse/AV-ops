@@ -17,6 +17,8 @@ Commands:
   front          Build tarball locally (if missing), upload, run huly-deploy-front.sh on VPS
   model-tracker  Upload and run huly-insert-issue-viewlets.sh (States/Dashboard for Issues)
   model-company  Upload and run huly-insert-company-app.sh (Company app + Project.company field)
+  model-company-drive  Upload company drive model patch (folder fields + triggers need ship + upgrade)
+  model-client   Generate and apply Client classes/funnel/navigator into live model_tx
   verify         Curl live site + check front container index.html on VPS
   help           Show this message
 
@@ -63,6 +65,23 @@ cmd_model_company() {
   "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-app.sh'
 }
 
+cmd_model_company_drive() {
+  echo "==== upload model-company-drive script ===="
+  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-company-drive.sh" "$VPS:/tmp/"
+  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-drive.sh'
+}
+
+cmd_model_client() {
+  local sql="$REPO_ROOT/scripts/.huly-client-model.sql"
+  echo "==== generate Client model SQL ===="
+  node "$REPO_ROOT/scripts/huly-local-apply-fork-model.mjs" --dump-sql > "$sql"
+  echo "==== upload model-client ===="
+  "${SCP[@]}" "$sql" "$REPO_ROOT/scripts/huly-insert-client-model.sh" "$VPS:/tmp/"
+  echo "==== apply on VPS ===="
+  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-client-model.sh /tmp/.huly-client-model.sql'
+  rm -f "$sql"
+}
+
 cmd_verify() {
   echo "==== public ===="
   curl -sSI --max-time 15 https://huly.aneeverse.com/ | head -15
@@ -74,6 +93,8 @@ case "${1:-help}" in
   front) cmd_front ;;
   model-tracker) cmd_model_tracker ;;
   model-company) cmd_model_company ;;
+  model-company-drive) cmd_model_company_drive ;;
+  model-client) cmd_model_client ;;
   verify) cmd_verify ;;
   help|-h|--help) usage ;;
   *) echo "Unknown command: $1"; usage; exit 1 ;;
