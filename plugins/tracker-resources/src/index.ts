@@ -168,6 +168,27 @@ import CreateProject from './components/projects/CreateProject.svelte'
 import ProjectPresenter from './components/projects/ProjectPresenter.svelte'
 import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.svelte'
 import CompanyRelated from './components/company/CompanyRelated.svelte'
+import CompanyDriveFiles from './components/company/CompanyDriveFiles.svelte'
+import ProjectDriveFiles from './components/projects/ProjectDriveFiles.svelte'
+import MyClients from './components/client/MyClients.svelte'
+import CreateClient from './components/client/CreateClient.svelte'
+import CreateClientFunnel from './components/client/CreateClientFunnel.svelte'
+import CreateCompany from './components/client/CreateCompany.svelte'
+import ClientPresenter from './components/client/ClientPresenter.svelte'
+import ClientTitlePresenter from './components/client/ClientTitlePresenter.svelte'
+import ClientKanbanCard from './components/client/ClientKanbanCard.svelte'
+import NewCompanyHeader from './components/client/NewCompanyHeader.svelte'
+import ClientHome from './components/client/ClientHome.svelte'
+import ClientTrackerNav from './components/client/ClientTrackerNav.svelte'
+import ClientCompanyIssues from './components/client/ClientCompanyIssues.svelte'
+import ClientCompanyFiles from './components/client/ClientCompanyFiles.svelte'
+import {
+  getClientId,
+  getClientLinkFragment,
+  getClientTitle,
+  hideClientProjectSpaces,
+  resolveCompanyLocation
+} from './clientUtils'
 
 import { get } from 'svelte/store'
 import { settingId } from '@hcengineering/setting'
@@ -488,7 +509,21 @@ export default async (): Promise<Resources> => ({
     IssueExtra,
     IssueStatusPresenter,
     LabelsView,
-    CompanyRelated
+    CompanyRelated,
+    CompanyDriveFiles,
+    ProjectDriveFiles,
+    MyClients,
+    CreateClient,
+    CreateClientFunnel,
+    CreateCompany,
+    ClientPresenter,
+    ClientTitlePresenter,
+    ClientKanbanCard,
+    NewCompanyHeader,
+    ClientHome,
+    ClientTrackerNav,
+    ClientCompanyIssues,
+    ClientCompanyFiles
   },
   completion: {
     IssueQuery: async (client: Client, query: string, filter?: { in?: RelatedDocument[], nin?: RelatedDocument[] }) =>
@@ -524,7 +559,11 @@ export default async (): Promise<Resources> => ({
     SetComponentStore: setStore,
     ComponentFilterFunction: filterComponents,
     OpenIssuesOfTaskType: openIssuesOfTaskType,
-    FormatIssueMarkdownValue: formatIssueValue
+    FormatIssueMarkdownValue: formatIssueValue,
+    ClientTitleProvider: getClientTitle,
+    ClientIdProvider: getClientId,
+    GetClientLinkFragment: getClientLinkFragment,
+    HideClientProjectSpaces: hideClientProjectSpaces
   },
   actionImpl: {
     Move: move,
@@ -535,7 +574,8 @@ export default async (): Promise<Resources> => ({
     DeleteIssue: deleteIssue
   },
   resolver: {
-    Location: resolveLocation
+    Location: resolveLocation,
+    CompanyLocation: resolveCompanyLocation
   },
   aggregation: {
     // eslint-disable-next-line @typescript-eslint/unbound-method

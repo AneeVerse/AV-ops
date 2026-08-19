@@ -87,6 +87,12 @@ export default mergeIds(trackerId, tracker, {
     Company: '' as IntlString,
     UnassignCompany: '' as IntlString,
     CompanyProjects: '' as IntlString,
+    CompanyFiles: '' as IntlString,
+    ProjectFiles: '' as IntlString,
+    ProjectDriveFolder: '' as IntlString,
+    ProductionFolder: '' as IntlString,
+    DistributedFolder: '' as IntlString,
+    AneerequestId: '' as IntlString,
     ProjectTitle: '' as IntlString,
     ProjectTitlePlaceholder: '' as IntlString,
     ProjectIdentifierPlaceholder: '' as IntlString,
@@ -323,7 +329,20 @@ export default mergeIds(trackerId, tracker, {
     SearchEmptyTitle: '' as IntlString,
     SearchEmptyActiveFilters: '' as IntlString,
     SearchEmptyClearFilters: '' as IntlString,
-    SearchEmptyAllProjects: '' as IntlString
+    SearchEmptyAllProjects: '' as IntlString,
+    MyClients: '' as IntlString,
+    Companies: '' as IntlString,
+    Funnels: '' as IntlString,
+    CreateFunnel: '' as IntlString,
+    FunnelName: '' as IntlString,
+    CreateClient: '' as IntlString,
+    ClientCreateLabel: '' as IntlString,
+    NewCompany: '' as IntlString,
+    CreateCompany: '' as IntlString,
+    EditFunnel: '' as IntlString,
+    FunnelMembers: '' as IntlString,
+    BackToClients: '' as IntlString,
+    ManageFunnelStatuses: '' as IntlString
   },
   component: {
     NopeComponent: '' as AnyComponent,
@@ -390,7 +409,21 @@ export default mergeIds(trackerId, tracker, {
     IconWithEmoji: '' as Asset,
     IssueStatusIcon: '' as AnyComponent,
     MilestoneStatusIcon: '' as AnyComponent,
-    CompanyRelated: '' as AnyComponent
+    CompanyRelated: '' as AnyComponent,
+    CompanyDriveFiles: '' as AnyComponent,
+    ProjectDriveFiles: '' as AnyComponent,
+    MyClients: '' as AnyComponent,
+    CreateClient: '' as AnyComponent,
+    CreateClientFunnel: '' as AnyComponent,
+    CreateCompany: '' as AnyComponent,
+    ClientPresenter: '' as AnyComponent,
+    ClientTitlePresenter: '' as AnyComponent,
+    ClientKanbanCard: '' as AnyComponent,
+    NewCompanyHeader: '' as AnyComponent,
+    ClientHome: '' as AnyComponent,
+    ClientTrackerNav: '' as AnyComponent,
+    ClientCompanyIssues: '' as AnyComponent,
+    ClientCompanyFiles: '' as AnyComponent
   },
   metadata: {
     CreateIssueDraft: '' as Metadata<IssueDraft>
@@ -418,7 +451,11 @@ export default mergeIds(trackerId, tracker, {
     GetIssueStatusCategories: '' as Resource<(project: ProjectType) => Array<Ref<StatusCategory>>>,
     GetIssueIdByIdentifier: '' as Resource<(id: string) => Promise<Ref<Issue> | undefined>>,
     OpenIssuesOfTaskType: '' as Resource<(taskType: TaskType) => Promise<void>>,
-    FormatIssueMarkdownValue: '' as Resource<ValueFormatter>
+    FormatIssueMarkdownValue: '' as Resource<ValueFormatter>,
+    ClientTitleProvider: '' as Resource<(client: Client, ref: Ref<Doc>, doc?: Doc) => Promise<string>>,
+    ClientIdProvider: '' as Resource<(client: Client, ref: Ref<Doc>, doc?: Doc) => Promise<string>>,
+    GetClientLinkFragment: '' as Resource<(doc: Doc, props: Record<string, any>) => Promise<Location>>,
+    HideClientProjectSpaces: '' as Resource<(space: Space) => Promise<boolean>>
   },
   aggregation: {
     CreateComponentAggregationManager: '' as CreateAggregationManagerFunc,
