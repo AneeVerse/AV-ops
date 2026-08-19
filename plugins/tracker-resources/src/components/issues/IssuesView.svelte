@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { DocumentQuery, Ref, Space, WithLookup } from '@hcengineering/core'
+  import { DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Asset, IntlString, translateCB } from '@hcengineering/platform'
-  import { ComponentExtensions } from '@hcengineering/presentation'
+  import { ComponentExtensions, SpaceSelector } from '@hcengineering/presentation'
   import { Issue, TrackerEvents } from '@hcengineering/tracker'
   import { Button, IconAdd, IModeSelector, ModeSelector, SearchInputAdvanced, showPopup, themeStore } from '@hcengineering/ui'
   import { ViewOptions, Viewlet } from '@hcengineering/view'
@@ -23,9 +23,10 @@
   import tracker from '../../plugin'
   import CreateIssue from '../CreateIssue.svelte'
   import SearchEmptyState from '../SearchEmptyState.svelte'
+  import ProjectPresenter from '../projects/ProjectPresenter.svelte'
 
   function newIssue (): void {
-    showPopup(CreateIssue, { space, shouldSaveDraft: true }, 'top')
+    showPopup(CreateIssue, { space: effectiveSpace, shouldSaveDraft: true }, 'top')
   }
 
   export let space: Ref<Space> | undefined = undefined
@@ -34,6 +35,11 @@
   export let label: string = ''
   export let icon: Asset | undefined = undefined
   export let modeSelectorProps: IModeSelector | undefined = undefined
+
+  let selectedSpace: Ref<Space> | undefined = undefined
+  let autoSelectSpace = true
+  $: effectiveSpace = space ?? selectedSpace
+  $: if (selectedSpace !== undefined) autoSelectSpace = false
 
   let viewlet: WithLookup<Viewlet> | undefined = undefined
   const viewlets: WithLookup<Viewlet>[] | undefined = undefined
@@ -67,10 +73,17 @@
   })
 
   let searchQuery: DocumentQuery<Issue> = { ...query }
-  function updateSearchQuery (eff: string): void {
-    searchQuery = eff === '' ? { ...query } : { ...query, $search: eff }
+  function withSpace (q: DocumentQuery<Issue>, space: Ref<Space> | undefined): DocumentQuery<Issue> {
+    if (space !== undefined) {
+      return { ...q, space }
+    }
+    const { space: _ignored, ...rest } = q
+    return rest
   }
-  $: if (query !== undefined) updateSearchQuery(searchEncoded)
+  function updateSearchQuery (eff: string, space: Ref<Space> | undefined): void {
+    searchQuery = withSpace(eff === '' ? { ...query } : { ...query, $search: eff }, space)
+  }
+  $: if (query !== undefined) updateSearchQuery(searchEncoded, effectiveSpace)
   let resultQuery: DocumentQuery<Issue> = { ...searchQuery }
 
   $: if (title) {
@@ -127,7 +140,7 @@
   viewletQuery={{ attachTo: tracker.class.Issue, variant: { $nin: ['subissue', 'component', 'milestone'] } }}
   {viewlets}
   {label}
-  {space}
+  space={effectiveSpace}
   {resultQuery}
   adaptive={'freezeActions'}
   overrideSearch={true}
@@ -146,7 +159,24 @@
       scope={viewOptions?.searchScope ?? 'all'}
       collapsed
     />
-    <FilterButton _class={tracker.class.Issue} {space} />
+    <FilterButton _class={tracker.class.Issue} space={effectiveSpace} />
+    {#if space === undefined}
+      <SpaceSelector
+        _class={tracker.class.Project}
+        label={tracker.string.Project}
+        bind:space={selectedSpace}
+        autoSelect={autoSelectSpace}
+        allowDeselect={true}
+        kind={'regular'}
+        size={'small'}
+        component={ProjectPresenter}
+        defaultIcon={tracker.icon.Home}
+        query={{
+          archived: false,
+          members: getCurrentAccount().uuid
+        }}
+      />
+    {/if}
   </svelte:fragment>
 
   <svelte:fragment slot="label_selector">
@@ -163,7 +193,7 @@
     {/if}
     <ComponentExtensions
       extension={tracker.extensions.IssueListHeader}
-      props={{ size: 'small', kind: 'tertiary', space }}
+      props={{ size: 'small', kind: 'tertiary', space: effectiveSpace }}
     />
     <Button
       kind="primary"
@@ -182,18 +212,18 @@
      InlineFilterChips below the header. -->
 <FilterBar
   _class={tracker.class.Issue}
-  {space}
+  space={effectiveSpace}
   query={searchQuery}
   {viewOptions}
   hideChips={true}
-  on:change={(e) => (resultQuery = e.detail)}
+  on:change={(e) => (resultQuery = withSpace(e.detail, effectiveSpace))}
 />
 <slot name="afterHeader" />
 <!-- Render the chip strip below the SpaceHeader. Mounted unconditionally
      so it stays available the instant the user adds a filter; the visual
      row hides when $filterStore is empty (via [data-empty='true']). -->
 <div class="below-header-filters" data-empty={$filterStore.length === 0}>
-  <InlineFilterChips _class={tracker.class.Issue} {space} />
+  <InlineFilterChips _class={tracker.class.Issue} space={effectiveSpace} />
 </div>
 <!-- Viewlet stays mounted AND laid out regardless of the empty-state card.
      Two earlier iterations broke live list updates:
@@ -225,7 +255,7 @@
       _class={tracker.class.Issue}
       {viewlet}
       query={resultQuery}
-      {space}
+      space={effectiveSpace}
       {viewOptions}
       createItemDialog={CreateIssue}
       createItemLabel={tracker.string.AddIssueTooltip}

@@ -27,7 +27,6 @@ import { type Action, type ActionCategory, type Viewlet } from '@hcengineering/v
 
 export default mergeIds(leadId, lead, {
   string: {
-    Funnel: '' as IntlString,
     Funnels: '' as IntlString,
     LeadApplication: '' as IntlString,
     Title: '' as IntlString,

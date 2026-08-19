@@ -14,10 +14,10 @@
 -->
 <script lang="ts">
   import { getCurrentEmployee } from '@hcengineering/contact'
-  import { AttachedDoc, Class, DocumentQuery, getCurrentAccount, Ref, WithLookup } from '@hcengineering/core'
+  import { AttachedDoc, Class, DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Lead } from '@hcengineering/lead'
   import { IntlString, Asset } from '@hcengineering/platform'
-  import { createQuery } from '@hcengineering/presentation'
+  import { createQuery, SpaceSelector } from '@hcengineering/presentation'
   import {
     IModeSelector,
     Breadcrumb,
@@ -52,16 +52,27 @@
   let mode: string | undefined = undefined
   let baseQuery: DocumentQuery<Lead> | undefined = undefined
   let modeSelectorProps: IModeSelector | undefined = undefined
+  let space: Ref<Space> | undefined = undefined
+  let autoSelectSpace = true
+  $: if (space !== undefined) autoSelectSpace = false
 
   $: queries = { assigned, created, subscribed }
   $: mode = $resolvedLocationStore.query?.mode ?? undefined
 
-  let searchQuery: DocumentQuery<Lead> = { ...(baseQuery ?? {}) }
-  function updateSearchQuery (search: string): void {
-    searchQuery = search === '' ? { ...baseQuery } : { ...baseQuery, $search: search }
+  function withSpace (q: DocumentQuery<Lead>, space: Ref<Space> | undefined): DocumentQuery<Lead> {
+    if (space !== undefined) {
+      return { ...q, space }
+    }
+    const { space: _ignored, ...rest } = q
+    return rest
   }
-  $: if (baseQuery) updateSearchQuery(search)
-  $: resultQuery = { ...searchQuery }
+
+  let searchQuery: DocumentQuery<Lead> = { ...(baseQuery ?? {}) }
+  function updateSearchQuery (search: string, space: Ref<Space> | undefined): void {
+    searchQuery = withSpace(search === '' ? { ...baseQuery } : { ...baseQuery, $search: search }, space)
+  }
+  $: if (baseQuery) updateSearchQuery(search, space)
+  $: resultQuery = withSpace({ ...searchQuery }, space)
 
   const subscribedQuery = createQuery()
   function getSubscribed () {
@@ -113,7 +124,17 @@
 
   <svelte:fragment slot="search">
     <SearchInput bind:value={search} collapsed on:change={(e) => (search = e.detail)} />
-    <FilterButton {_class} />
+    <FilterButton {_class} {space} />
+    <SpaceSelector
+      _class={lead.class.Funnel}
+      label={lead.string.Funnel}
+      bind:space
+      autoSelect={autoSelectSpace}
+      allowDeselect={true}
+      kind={'regular'}
+      size={'small'}
+      defaultIcon={lead.icon.Funnel}
+    />
   </svelte:fragment>
   <svelte:fragment slot="actions">
     {#if modeSelectorProps !== undefined}
@@ -121,8 +142,14 @@
     {/if}
   </svelte:fragment>
 </Header>
-<FilterBar {_class} query={searchQuery} {viewOptions} space={undefined} on:change={(e) => (resultQuery = e.detail)} />
+<FilterBar
+  {_class}
+  query={searchQuery}
+  {viewOptions}
+  {space}
+  on:change={(e) => (resultQuery = withSpace(e.detail, space))}
+/>
 
 {#if viewlet && viewOptions}
-  <ViewletContentView {_class} {viewlet} query={resultQuery} space={undefined} {viewOptions} />
+  <ViewletContentView {_class} {viewlet} query={resultQuery} {space} {viewOptions} />
 {/if}

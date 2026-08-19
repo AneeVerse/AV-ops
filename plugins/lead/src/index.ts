@@ -83,6 +83,7 @@ const lead = plugin(leadId, {
   },
   string: {
     Lead: '' as IntlString,
+    Funnel: '' as IntlString,
     ConfigLabel: '' as IntlString,
     ForbidCreateFunnelPermission: '' as IntlString,
     ForbidCreateFunnelPermissionDescription: '' as IntlString
