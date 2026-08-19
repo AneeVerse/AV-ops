@@ -1,0 +1,89 @@
+name: Deploy Production
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref to deploy"
+        required: false
+        default: "refs/heads/master"
+      run_front:
+        description: "Run frontend stage"
+        required: false
+        default: true
+        type: boolean
+      run_model_client:
+        description: "Run model-client stage"
+        required: false
+        default: true
+        type: boolean
+      run_model_company:
+        description: "Run model-company stage"
+        required: false
+        default: true
+        type: boolean
+      run_model_company_drive:
+        description: "Run model-company-drive stage"
+        required: false
+        default: true
+        type: boolean
+      run_verify:
+        description: "Run verify stage"
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  deploy:
+    if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      HULY_VPS: ${{ secrets.HULY_VPS }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+          fetch-depth: 0
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Install SSH key
+        env:
+          HULY_SSH_KEY_B64: ${{ secrets.HULY_SSH_KEY_B64 }}
+        run: |
+          if [ -z "${HULY_VPS:-}" ]; then
+            echo "::error::HULY_VPS secret is missing"
+            exit 1
+          fi
+          if [ -z "${HULY_SSH_KEY_B64:-}" ]; then
+            echo "::error::HULY_SSH_KEY_B64 secret is missing"
+            exit 1
+          fi
+          mkdir -p "$HOME/.ssh"
+          echo "$HULY_SSH_KEY_B64" | base64 -d > "$HOME/.ssh/id_huly"
+          chmod 600 "$HOME/.ssh/id_huly"
+          echo "HULY_SSH_KEY=$HOME/.ssh/id_huly" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: node common/scripts/install-run-rush.js install
+
+      - name: Unified deploy (all stages)
+        env:
+          SKIP_FRONT: ${{ github.event.inputs.run_front == 'true' && '0' || '1' }}
+          SKIP_MODEL_CLIENT: ${{ github.event.inputs.run_model_client == 'true' && '0' || '1' }}
+          SKIP_MODEL_COMPANY: ${{ github.event.inputs.run_model_company == 'true' && '0' || '1' }}
+          SKIP_MODEL_COMPANY_DRIVE: ${{ github.event.inputs.run_model_company_drive == 'true' && '0' || '1' }}
+          SKIP_VERIFY: ${{ github.event.inputs.run_verify == 'true' && '0' || '1' }}
+        run: |
+          ./scripts/huly-deploy-production.sh all

@@ -31,23 +31,11 @@ if (-not (Test-Path $SshKey)) {
 
 $gitBash = Get-GitBash
 $unixRoot = ConvertTo-GitBashPath $RepoRoot
-$prodUnix = ConvertTo-GitBashPath (Join-Path $RepoRoot 'dev\prod')
 
-Write-Host "==== build front bundle ===="
-& $gitBash -lc "cd '$prodUnix' && NODE_OPTIONS=--max-old-space-size=8192 rushx package && cp -r public/huly dist/huly 2>/dev/null || true && rm -f dist/config.json && tar --exclude='*.map' --exclude='*.map.gz' --exclude='report.html' -czf huly-front-dist.tgz -C dist ."
-if ($LASTEXITCODE -ne 0) { throw "webpack package failed" }
-
-$tgz = Join-Path $RepoRoot 'dev\prod\huly-front-dist.tgz'
-$deploySh = Join-Path $RepoRoot 'scripts\huly-deploy-front.sh'
-if (-not (Test-Path $tgz)) { throw "Missing $tgz" }
-
-Write-Host "==== upload to VPS ===="
-& scp -o BatchMode=yes -i $SshKey $tgz $deploySh "${Vps}:/tmp/"
-if ($LASTEXITCODE -ne 0) { throw "scp failed" }
-
-Write-Host "==== deploy on VPS ===="
-& ssh -o BatchMode=yes -o ConnectTimeout=20 -i $SshKey $Vps 'bash /tmp/huly-deploy-front.sh'
-if ($LASTEXITCODE -ne 0) { throw "VPS deploy failed" }
+Write-Host "==== unified production deploy (all stages) ===="
+Write-Host "Target: $Vps"
+& $gitBash -lc "cd '$unixRoot' && HULY_SSH_KEY='$SshKey' HULY_VPS='$Vps' ./scripts/huly-deploy-production.sh all"
+if ($LASTEXITCODE -ne 0) { throw "Unified production deploy failed" }
 
 Write-Host ""
 Write-Host "Live: https://huly.aneeverse.com"

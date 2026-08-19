@@ -56,6 +56,40 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 
 ## Two deploy paths (pick one)
 
+### 0) Unified deploy (recommended)
+
+Use this when you want one command to deploy all production stages in order:
+
+1. Frontend bundle deploy
+2. Client model patch
+3. Company app patch
+4. Company drive model patch
+5. Health verification
+
+**Local one-command deploy (Windows):**
+
+```powershell
+ship.cmd
+```
+
+`ship.cmd` calls `scripts/aneeverse-ship.ps1`, which now delegates to:
+
+```bash
+./scripts/huly-deploy-production.sh all
+```
+
+**Optional stage toggles (for controlled rollout):**
+
+```bash
+SKIP_FRONT=1 ./scripts/huly-deploy-production.sh all
+SKIP_MODEL_CLIENT=1 ./scripts/huly-deploy-production.sh all
+SKIP_MODEL_COMPANY=1 ./scripts/huly-deploy-production.sh all
+SKIP_MODEL_COMPANY_DRIVE=1 ./scripts/huly-deploy-production.sh all
+SKIP_VERIFY=1 ./scripts/huly-deploy-production.sh all
+```
+
+---
+
 ### A) Frontend / UI change only (most common)
 
 Use when you changed `.svelte` / `.ts` under `plugins/*-resources` or `packages/*`.
@@ -215,7 +249,7 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 | `huly-deploy-front.sh` | **Main UI deploy** — tarball → front container → restart nginx |
 | `huly-insert-issue-viewlets.sh` | **Model patch** — Tracker States/Dashboard on live DB |
 | `huly-insert-company-app.sh` | **Model patch** — Company app, `Project.company`, company panel tabs |
-| `huly-deploy-production.sh` | **Orchestrator** — `front` \| `model-tracker` \| `model-company` \| `verify` |
+| `huly-deploy-production.sh` | **Orchestrator** — `all` \| `front` \| `model-tracker` \| `model-company` \| `model-company-drive` \| `model-client` \| `verify` |
 | `huly-tool.sh` | Run `hardcoreeng/tool` against live stack (on VPS) |
 | `huly-check-ip-block.sh` | Debug IP / firewall blocks |
 | `install-huly-vps.sh` | First-time VPS bootstrap |
@@ -228,11 +262,13 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
 ## Checklist for agents
 
 - [ ] Identify change type: **frontend (A)** vs **model (B)** vs **full install (C)**
+- [ ] Prefer unified flow: `ship.cmd` (local) or Actions `Deploy Production` workflow
 - [ ] Build on Windows with **Git Bash** for webpack if needed
 - [ ] Never commit secrets (`huly_v7.conf`, passwords, API tokens) to git
 - [ ] Deploy front → restart **both** `front` and **docker nginx**
 - [ ] Model tracker viewlets → run insert script OR full workspace upgrade
 - [ ] Company app → `ship.cmd` **and** `huly-deploy-production.sh model-company`
+- [ ] For full release, use `./scripts/huly-deploy-production.sh all` (or `ship.cmd`)
 - [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes
 - [ ] Do **not** use Hostinger MCP DNS (use REST API or hPanel if DNS changes needed)
@@ -249,3 +285,45 @@ Stored on VPS at `/root/huly-login.txt` (do not copy into git). Workspace: **ane
 
 - Rush monorepo: install once with `rush install --bypass-policy`
 - AGENTS.md: do not auto-run builds for verification; ask user to verify manually after deploy
+
+---
+
+## GitHub Actions production deploy
+
+Workflow: `.github/workflows/deploy-production.yml`
+
+### Secrets required
+
+- `HULY_VPS` — SSH target (`root@148.230.67.132`)
+- `HULY_SSH_KEY_B64` — base64-encoded private key used for VPS deploy
+
+Generate `HULY_SSH_KEY_B64` locally:
+
+```bash
+base64 -w 0 ~/.ssh/id_ed25519
+```
+
+On macOS (BSD base64):
+
+```bash
+base64 ~/.ssh/id_ed25519 | tr -d '\n'
+```
+
+### Triggering deploy
+
+1. Open GitHub Actions
+2. Run `Deploy Production`
+3. Choose ref and stage toggles (front/model/verify)
+4. Start workflow
+
+The workflow executes the same orchestrator entrypoint:
+
+```bash
+./scripts/huly-deploy-production.sh all
+```
+
+### Failure handling / rollback
+
+- The workflow is fail-fast by stage; no silent partial success is reported.
+- Re-run with stage toggles if only a subset should be retried.
+- For emergency rollback, use existing rollback scripts in `scripts/` and restart `workspace`, `transactor`, and `nginx` as described above.
