@@ -66,6 +66,11 @@ import { LoginEvents } from './analytics'
 import { type Pages } from './index'
 import login from './plugin'
 
+function shouldPersistTokenLocally (): boolean {
+  if (typeof window === 'undefined') return false
+  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+}
+
 /**
  * Constructs an account client.
  * @param token - The token to use for authentication. If not provided, the token from the metadata will be used. If null, no token will be used.
@@ -365,7 +370,11 @@ export async function getAccount (doNavigate: boolean = true): Promise<LoginInfo
       await handleStatusError('Get account error', err.status)
 
       if (err.status.code === platform.status.Unauthorized) {
-        setMetadata(presentation.metadata.Token, null)
+        if (shouldPersistTokenLocally()) {
+          setMetadataLocalStorage(presentation.metadata.Token, null)
+        } else {
+          setMetadata(presentation.metadata.Token, null)
+        }
         setMetadataLocalStorage(login.metadata.LoginEndpoint, null)
 
         if (doNavigate) {
@@ -507,7 +516,11 @@ export async function getPerson (): Promise<[Status, Person | null]> {
 }
 
 export function setLoginInfo (loginInfo: WorkspaceLoginInfo): void {
-  setMetadata(presentation.metadata.Token, loginInfo.token)
+  if (shouldPersistTokenLocally()) {
+    setMetadataLocalStorage(presentation.metadata.Token, loginInfo.token)
+  } else {
+    setMetadata(presentation.metadata.Token, loginInfo.token)
+  }
   setMetadata(presentation.metadata.WorkspaceUuid, loginInfo.workspace)
   setMetadata(presentation.metadata.WorkspaceDataId, loginInfo.workspaceDataId)
   setMetadataLocalStorage(login.metadata.LoginEndpoint, loginInfo.endpoint)
@@ -895,7 +908,11 @@ export async function afterConfirm (clearQuery = false): Promise<void> {
   } else if (joinedWS.length === 1) {
     const result = (await selectWorkspace(joinedWS[0].url, null))[1]
     if (result != null) {
-      setMetadata(presentation.metadata.Token, result.token)
+      if (shouldPersistTokenLocally()) {
+        setMetadataLocalStorage(presentation.metadata.Token, result.token)
+      } else {
+        setMetadata(presentation.metadata.Token, result.token)
+      }
       setMetadata(presentation.metadata.WorkspaceUuid, result.workspace)
       setMetadata(presentation.metadata.WorkspaceDataId, result.workspaceDataId)
 

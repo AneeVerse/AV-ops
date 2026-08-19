@@ -129,7 +129,11 @@ export async function connect (title: string): Promise<Client | undefined> {
 
   const token = workspaceLoginInfo.token
 
-  setMetadata(presentation.metadata.Token, workspaceLoginInfo.token)
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    setMetadataLocalStorage(presentation.metadata.Token, workspaceLoginInfo.token)
+  } else {
+    setMetadata(presentation.metadata.Token, workspaceLoginInfo.token)
+  }
   setMetadata(presentation.metadata.WorkspaceUuid, workspaceLoginInfo.workspace)
   setMetadata(presentation.metadata.WorkspaceName, workspaceLoginInfo.name ?? workspaceLoginInfo.workspaceUrl)
   setMetadata(presentation.metadata.Endpoint, workspaceLoginInfo.endpoint)

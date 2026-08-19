@@ -44,6 +44,11 @@ import { derived, writable } from 'svelte/store'
 
 export const workspaceCreating = writable<number | undefined>(undefined)
 
+function shouldPersistTokenLocally (): boolean {
+  if (typeof window === 'undefined') return false
+  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+}
+
 export function getSpecialSpaceClass (model: NavigatorModel): Array<Ref<Class<Space>>> {
   const spaceResult = (model.spaces ?? []).map((x) => x.spaceClass)
   const result = (model.specials ?? [])
@@ -275,7 +280,11 @@ export async function logIn (loginInfo: { account: string, token?: string }): Pr
   const accountsUrl = getMetadata(login.metadata.AccountsUrl)
   await getAccountClient(accountsUrl, loginInfo.token).setCookie()
 
-  setMetadata(presentation.metadata.Token, loginInfo.token)
+  if (shouldPersistTokenLocally()) {
+    setMetadataLocalStorage(presentation.metadata.Token, loginInfo.token ?? null)
+  } else {
+    setMetadata(presentation.metadata.Token, loginInfo.token)
+  }
   setMetadataLocalStorage(login.metadata.LastAccount, loginInfo.account)
   setMetadataLocalStorage(login.metadata.LoginAccount, loginInfo.account)
 }
@@ -291,7 +300,11 @@ export async function logOut (): Promise<void> {
     setPresentationCookie('', currentWorkspace)
   }
 
-  setMetadata(presentation.metadata.Token, null)
+  if (shouldPersistTokenLocally()) {
+    setMetadataLocalStorage(presentation.metadata.Token, null)
+  } else {
+    setMetadata(presentation.metadata.Token, null)
+  }
   setMetadata(presentation.metadata.WorkspaceUuid, null)
   setMetadata(presentation.metadata.WorkspaceDataId, null)
   setMetadataLocalStorage(login.metadata.LoginEndpoint, null)

@@ -32,7 +32,7 @@
     { id: 'email', name: 'username', i18n: login.string.Email, disabled: email !== undefined && email !== '' }
   ]
   const formData = {
-    username: '' as string
+    username: (localStorage.getItem('#login.lastEmail') ?? '') as string
   }
 
   $: if (email !== undefined && email !== '' && formData.username === '') {
@@ -46,6 +46,10 @@
   const action = {
     i18n: login.string.LogIn,
     func: async () => {
+      const normalizedEmail = formData.username.trim()
+      if (normalizedEmail.includes('@')) {
+        localStorage.setItem('#login.lastEmail', normalizedEmail)
+      }
       status = new Status(Severity.INFO, login.status.ConnectingToServer, {})
       const [otpStatus, result] = await loginOtp(formData.username)
       status = otpStatus

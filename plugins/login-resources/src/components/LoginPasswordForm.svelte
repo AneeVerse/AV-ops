@@ -39,7 +39,7 @@
   ]
 
   const object = {
-    username: '',
+    username: localStorage.getItem('#login.lastEmail') ?? '',
     password: ''
   }
 
@@ -55,6 +55,10 @@
     func: async () => {
       isLoading = true
       try {
+        const normalizedEmail = object.username.trim()
+        if (normalizedEmail.includes('@')) {
+          localStorage.setItem('#login.lastEmail', normalizedEmail)
+        }
         status = new Status(Severity.INFO, login.status.ConnectingToServer, {})
         const [loginStatus, result] = await doLogin(object.username, object.password)
         status = loginStatus
