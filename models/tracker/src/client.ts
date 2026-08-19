@@ -147,6 +147,7 @@ function defineClientApplication (builder: Builder): void {
             component: tracker.component.MyClients,
             componentProps: {
               config: [
+                ['all', tracker.string.All, {}],
                 ['assigned', view.string.Assigned, {}],
                 ['created', view.string.Created, {}],
                 ['subscribed', view.string.Subscribed, {}]
@@ -219,6 +220,21 @@ function defineClientApplication (builder: Builder): void {
                 label: tracker.string.CompanyFiles,
                 icon: drive.icon.Folder,
                 component: tracker.component.ClientCompanyFiles
+              },
+              {
+                id: 'issues',
+                label: tracker.string.Issues,
+                icon: tracker.icon.Issues,
+                component: tracker.component.Issues,
+                componentProps: {
+                  icon: tracker.icon.Issues,
+                  title: tracker.string.Issues,
+                  config: [
+                    ['all', tracker.string.All, {}],
+                    ['active', tracker.string.Active, {}],
+                    ['backlog', tracker.string.Backlog, {}]
+                  ]
+                }
               },
               {
                 id: 'project-files',

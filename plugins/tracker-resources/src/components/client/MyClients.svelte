@@ -12,7 +12,9 @@
     ModeSelector,
     resolvedLocationStore,
     SearchInput,
-    Header
+    Header,
+    getCurrentLocation,
+    navigate
   } from '@hcengineering/ui'
   import { Viewlet, ViewletPreference, ViewOptions } from '@hcengineering/view'
   import {
@@ -37,6 +39,7 @@
   const dispatch = createEventDispatcher()
   const me = getCurrentEmployee()
   const myAcc = getCurrentAccount()
+  const all: DocumentQuery<Client> = {}
   const assigned = { assignee: me }
   const created = { createdBy: { $in: myAcc.socialIds } }
   let subscribed = { _id: { $in: [] as Ref<Client>[] } }
@@ -44,12 +47,26 @@
   let baseQuery: DocumentQuery<Client> | undefined = undefined
   let modeSelectorProps: IModeSelector | undefined = undefined
   let space: Ref<Space> | undefined = undefined
-  let autoSelectSpace = true
-  $: if (space !== undefined) autoSelectSpace = false
+  const autoSelectSpace = false
 
-  setSelectedCompany(undefined)
+  function clearCompanyContext (): void {
+    setSelectedCompany(undefined)
+    const loc = getCurrentLocation()
+    if (loc.query?.company === undefined && loc.query?.client === undefined) {
+      return
+    }
+    const query = { ...(loc.query ?? {}) }
+    delete query.company
+    delete query.client
+    loc.query = Object.keys(query).length > 0 ? query : undefined
+    navigate(loc)
+  }
 
-  $: queries = { assigned, created, subscribed }
+  $: if ($resolvedLocationStore.path[3] === 'my-clients') {
+    clearCompanyContext()
+  }
+
+  $: queries = { all, assigned, created, subscribed }
   $: mode = $resolvedLocationStore.query?.mode ?? undefined
 
   function withSpace (q: DocumentQuery<Client>, space: Ref<Space> | undefined): DocumentQuery<Client> {

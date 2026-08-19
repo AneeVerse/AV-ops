@@ -184,6 +184,21 @@ export async function resolveCompanyLocation (loc: Location): Promise<
     return undefined
   }
   const shortLink = loc.path[3]
+  const listPages = new Set(['my-clients', 'companies', 'funnels'])
+  if (shortLink !== undefined && listPages.has(shortLink)) {
+    setSelectedCompany(undefined)
+    if (loc.query?.company !== undefined || loc.query?.client !== undefined) {
+      const query = { ...(loc.query ?? {}) }
+      delete query.company
+      delete query.client
+      const cleaned: Location = {
+        ...loc,
+        query: Object.keys(query).length > 0 ? query : undefined
+      }
+      return { loc: cleaned, defaultLocation: cleaned }
+    }
+    return undefined
+  }
   if (shortLink !== undefined && isClientId(shortLink)) {
     const resolved = await generateClientLocation(loc, shortLink)
     if (resolved === undefined) {
@@ -199,7 +214,7 @@ export async function resolveCompanyLocation (loc: Location): Promise<
     setSelectedCompany(company, loc.query?.client as Ref<TrackerClient> | undefined)
     return undefined
   }
-  if (shortLink !== undefined && shortLink !== 'my-clients' && shortLink !== 'companies' && shortLink !== 'funnels') {
+  if (shortLink !== undefined) {
     const client = getClient()
     const project = await client.findOne(tracker.class.Project, { _id: shortLink as Ref<Project> })
     if (project?.company !== undefined) {
