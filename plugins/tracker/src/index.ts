@@ -14,6 +14,7 @@
 //
 
 import { Employee, Organization, Person } from '@hcengineering/contact'
+import { Folder } from '@hcengineering/drive'
 import {
   AttachedDoc,
   Attribute,
@@ -65,6 +66,10 @@ export interface Project extends TaskProject, IconProps {
   defaultAssignee?: Ref<Employee>
   defaultTimeReportDay: TimeReportDayType
   company?: Ref<Organization>
+  driveFolder?: Ref<Folder>
+  productionFolder?: Ref<Folder>
+  distributedFolder?: Ref<Folder>
+  aneerequestId?: string
 }
 
 /**
@@ -391,8 +396,26 @@ export interface Component extends Doc {
 /**
  * @public
  */
+export interface ClientFunnel extends TaskProject {
+  fullDescription?: Markup
+  attachments?: number
+}
+
+/**
+ * @public
+ */
+export interface Client extends Task {
+  space: Ref<ClientFunnel>
+  attachedTo: Ref<Organization>
+  status: Ref<Status>
+  startDate: Timestamp | null
+  title: string
+}
+
+/**
+ * @public
+ */
 export const trackerId = 'tracker' as Plugin
-export * from './analytics'
 
 const pluginState = plugin(trackerId, {
   class: {
@@ -410,11 +433,15 @@ const pluginState = plugin(trackerId, {
     TypeEstimation: '' as Ref<Class<Type<number>>>,
     TypeRemainingTime: '' as Ref<Class<Type<number>>>,
     RelatedIssueTarget: '' as Ref<Class<RelatedIssueTarget>>,
-    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>
+    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>,
+    Client: '' as Ref<Class<Client>>,
+    ClientFunnel: '' as Ref<Class<ClientFunnel>>
   },
   mixin: {
     ClassicProjectTypeData: '' as Ref<Mixin<Project>>,
-    IssueTypeData: '' as Ref<Mixin<Issue>>
+    IssueTypeData: '' as Ref<Mixin<Issue>>,
+    DefaultClientFunnelTypeData: '' as Ref<Mixin<ClientFunnel>>,
+    ClientTypeData: '' as Ref<Mixin<Client>>
   },
   ids: {
     NoParent: '' as Ref<Issue>,
@@ -447,7 +474,8 @@ const pluginState = plugin(trackerId, {
     LabelsView: '' as AnyComponent
   },
   attribute: {
-    IssueStatus: '' as Ref<Attribute<Status>>
+    IssueStatus: '' as Ref<Attribute<Status>>,
+    ClientState: '' as Ref<Attribute<Status>>
   },
   icon: {
     TrackerApplication: '' as Asset,
@@ -508,7 +536,9 @@ const pluginState = plugin(trackerId, {
   },
   descriptors: {
     ProjectType: '' as Ref<ProjectTypeDescriptor>,
-    Issue: '' as Ref<TaskTypeDescriptor>
+    Issue: '' as Ref<TaskTypeDescriptor>,
+    ClientFunnelType: '' as Ref<ProjectTypeDescriptor>,
+    Client: '' as Ref<TaskTypeDescriptor>
   },
   action: {
     CopyAsMarkdownTable: '' as Ref<Action<Doc, any>>,
@@ -537,8 +567,25 @@ const pluginState = plugin(trackerId, {
   project: {
     DefaultProject: '' as Ref<Project>
   },
+  space: {
+    DefaultClientFunnel: '' as Ref<ClientFunnel>
+  },
+  template: {
+    DefaultClientFunnel: '' as Ref<ProjectType>
+  },
+  clientStatus: {
+    Backlog: '' as Ref<Status>,
+    Incoming: '' as Ref<Status>,
+    Negotiation: '' as Ref<Status>,
+    OfferPreparing: '' as Ref<Status>,
+    MakeADecision: '' as Ref<Status>,
+    ContractConclusion: '' as Ref<Status>,
+    Won: '' as Ref<Status>,
+    Lost: '' as Ref<Status>
+  },
   resolver: {
-    Location: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>
+    Location: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>,
+    CompanyLocation: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>
   },
   string: {
     TrackerApplication: '' as IntlString,
@@ -559,7 +606,12 @@ const pluginState = plugin(trackerId, {
     NewProject: '' as IntlString,
     UnsetParentIssue: '' as IntlString,
     ForbidCreateProjectPermission: '' as IntlString,
-    ForbidCreateProjectPermissionDescription: '' as IntlString
+    ForbidCreateProjectPermissionDescription: '' as IntlString,
+    Client: '' as IntlString,
+    Clients: '' as IntlString,
+    ClientFunnel: '' as IntlString,
+    ForbidCreateClientFunnelPermission: '' as IntlString,
+    ForbidCreateClientFunnelPermissionDescription: '' as IntlString
   },
   extensions: {
     IssueListHeader: '' as ComponentExtensionId,
@@ -568,10 +620,12 @@ const pluginState = plugin(trackerId, {
   },
   taskTypes: {
     Issue: '' as Ref<TaskType>,
-    SubIssue: '' as Ref<TaskType>
+    SubIssue: '' as Ref<TaskType>,
+    Client: '' as Ref<TaskType>
   },
   permission: {
-    ForbidCreateProject: '' as Ref<Permission>
+    ForbidCreateProject: '' as Ref<Permission>,
+    ForbidCreateClientFunnel: '' as Ref<Permission>
   }
 })
 export default pluginState

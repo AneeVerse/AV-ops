@@ -77,7 +77,12 @@ export default mergeIds(trackerId, tracker, {
     MilestoneList: '' as Ref<Viewlet>,
     ComponentList: '' as Ref<Viewlet>,
     ProjectList: '' as Ref<Viewlet>,
-    ProjectListGrouped: '' as Ref<Viewlet>
+    ProjectListGrouped: '' as Ref<Viewlet>,
+    TableClient: '' as Ref<Viewlet>,
+    ListClient: '' as Ref<Viewlet>,
+    KanbanClient: '' as Ref<Viewlet>,
+    DashboardClient: '' as Ref<Viewlet>,
+    TableClientFunnel: '' as Ref<Viewlet>
   },
   ids: {
     TrackerNotificationGroup: '' as Ref<NotificationGroup>,
@@ -95,7 +100,10 @@ export default mergeIds(trackerId, tracker, {
     IssueTemplateChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
     ComponentChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
     MilestoneChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
-    DefaultProjectType: '' as Ref<ProjectType>
+    DefaultProjectType: '' as Ref<ProjectType>,
+    ClientActivityExtension: '' as Ref<Doc>,
+    ClientFunnelActivityExtension: '' as Ref<Doc>,
+    ClientCollaborators: '' as Ref<Doc>
   },
   actionImpl: {
     Move: '' as ViewAction,
@@ -111,7 +119,8 @@ export default mergeIds(trackerId, tracker, {
     DeleteMilestone: '' as Ref<Action<Doc, Record<string, any>>>,
     DeleteProject: '' as Ref<Action<Doc, Record<string, any>>>,
     DeleteProjectClean: '' as Ref<Action<Doc, Record<string, any>>>,
-    DeleteIssue: '' as Ref<Action<Doc, Record<string, any>>>
+    DeleteIssue: '' as Ref<Action<Doc, Record<string, any>>>,
+    CreateGlobalClient: '' as Ref<Action<Doc, any>>
   },
 
   // For migration only

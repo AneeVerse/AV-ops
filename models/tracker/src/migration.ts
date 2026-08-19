@@ -35,7 +35,7 @@ import {
 } from '@hcengineering/model'
 import { DOMAIN_ACTIVITY } from '@hcengineering/model-activity'
 import { DOMAIN_SPACE } from '@hcengineering/model-core'
-import { DOMAIN_TASK, migrateDefaultStatusesBase } from '@hcengineering/model-task'
+import { DOMAIN_TASK, migrateDefaultStatusesBase, createSequence } from '@hcengineering/model-task'
 import tags from '@hcengineering/tags'
 import task from '@hcengineering/task'
 import { type Issue, type IssueStatus, type Project, TimeReportDayType, trackerId } from '@hcengineering/tracker'
@@ -137,6 +137,29 @@ async function createDefaults (tx: TxOperations): Promise<void> {
     },
     tracker.category.Other
   )
+}
+
+async function createDefaultClientFunnel (tx: TxOperations): Promise<void> {
+  const current = await tx.findOne(core.class.Space, {
+    _id: tracker.space.DefaultClientFunnel
+  })
+  if (current === undefined) {
+    await tx.createDoc(
+      tracker.class.ClientFunnel,
+      core.space.Space,
+      {
+        name: 'Funnel',
+        description: 'Default funnel',
+        private: false,
+        archived: false,
+        members: [],
+        autoJoin: true,
+        type: tracker.template.DefaultClientFunnel
+      },
+      tracker.space.DefaultClientFunnel
+    )
+  }
+  await createSequence(tx, tracker.class.Client)
 }
 
 async function passIdentifierToParentInfo (client: MigrationClient): Promise<void> {
@@ -481,6 +504,13 @@ export const trackerOperation: MigrateOperation = {
       {
         state: 'issue-states-dashboard-viewlets',
         func: addIssueStatesDashboardViewlets
+      },
+      {
+        state: 'u-default-client-funnel',
+        func: async (client) => {
+          const tx = new TxOperations(client, core.account.System)
+          await createDefaultClientFunnel(tx)
+        }
       }
     ])
   }

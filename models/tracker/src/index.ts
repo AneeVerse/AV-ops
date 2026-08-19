@@ -15,7 +15,7 @@
 
 import activity from '@hcengineering/activity'
 import chunter from '@hcengineering/chunter'
-import contact from '@hcengineering/contact'
+import drive from '@hcengineering/drive'
 import { AccountRole, type ClassCollaborators, type Ref, type Status } from '@hcengineering/core'
 import { type Builder } from '@hcengineering/model'
 import core from '@hcengineering/model-core'
@@ -53,9 +53,12 @@ import {
   TTypeIssuePriority,
   TTypeMilestoneStatus,
   TTypeRemainingTime,
-  TTypeReportedTime
+  TTypeReportedTime,
+  TClient,
+  TClientFunnel
 } from './types'
 import { defineViewlets } from './viewlets'
+import { defineClientModel } from './client'
 
 export * from './types'
 export { issuesOptions } from './viewlets'
@@ -425,6 +428,12 @@ function defineApplication (
                 label: tracker.string.IssueTemplates,
                 icon: tracker.icon.IssueTemplates,
                 component: tracker.component.IssueTemplates
+              },
+              {
+                id: 'project-files',
+                label: tracker.string.ProjectFiles,
+                icon: drive.icon.Folder,
+                component: tracker.component.ProjectDriveFiles
               }
             ]
           }
@@ -437,41 +446,7 @@ function defineApplication (
 }
 
 function defineCompanyApplication (builder: Builder): void {
-  builder.createDoc(
-    workbench.class.Application,
-    core.space.Model,
-    {
-      label: tracker.string.CompanyApplication,
-      icon: contact.icon.Company,
-      alias: 'company',
-      hidden: false,
-      navigatorModel: {
-        specials: [
-          {
-            id: 'companies',
-            position: 'top',
-            label: tracker.string.AllCompanies,
-            icon: contact.icon.Company,
-            component: workbench.component.SpecialView,
-            accessLevel: AccountRole.DocGuest,
-            componentProps: {
-              _class: contact.class.Organization,
-              icon: contact.icon.Company,
-              label: tracker.string.AllCompanies,
-              createLabel: contact.string.CreateOrganization,
-              createComponent: contact.component.CreateOrganization
-            }
-          }
-        ],
-        spaces: []
-      }
-    },
-    tracker.app.Company
-  )
-
-  builder.mixin(contact.class.Organization, core.class.Class, view.mixin.ObjectEditorFooter, {
-    editor: tracker.component.CompanyRelated
-  })
+  defineClientModel(builder)
 }
 
 export function createModel (builder: Builder): void {
@@ -490,7 +465,9 @@ export function createModel (builder: Builder): void {
     TRelatedIssueTarget,
     TTypeEstimation,
     TTypeRemainingTime,
-    TProjectTargetPreference
+    TProjectTargetPreference,
+    TClient,
+    TClientFunnel
   )
 
   builder.mixin(tracker.class.Project, core.class.Class, activity.mixin.ActivityDoc, {})
