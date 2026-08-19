@@ -98,11 +98,6 @@ WHERE "objectId" IN ('tracker:app:Company', 'tracker:class:Project_company', 'co
     "objectId" IN ('tracker:app:Company', 'tracker:class:Project_company')
     OR data->>'mixin' = 'view:mixin:ObjectEditorFooter'
   );
-
-UPDATE model_tx
-SET data = jsonb_set(data, '{attributes,navigatorModel,spaces}', '[]'::jsonb, true)
-WHERE "objectId" = 'tracker:app:Company'
-  AND "_class" = 'core:class:TxCreateDoc';
 SQL
 
 echo '==== restart workspace + transactor ===='

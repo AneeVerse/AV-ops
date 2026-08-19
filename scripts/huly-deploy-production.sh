@@ -125,13 +125,6 @@ cmd_all() {
     echo "Skipping front stage (SKIP_FRONT=1)"
   fi
 
-  if [[ "${SKIP_MODEL_CLIENT:-0}" != "1" ]]; then
-    stage "model-client"
-    cmd_model_client
-  else
-    echo "Skipping model-client stage (SKIP_MODEL_CLIENT=1)"
-  fi
-
   if [[ "${SKIP_MODEL_COMPANY:-0}" != "1" ]]; then
     stage "model-company"
     cmd_model_company
@@ -144,6 +137,15 @@ cmd_all() {
     cmd_model_company_drive
   else
     echo "Skipping model-company-drive stage (SKIP_MODEL_COMPANY_DRIVE=1)"
+  fi
+
+  # Client model must run after company patches — it owns Company app navigatorModel
+  # (funnel spaces sidebar + SpaceView create-client button config).
+  if [[ "${SKIP_MODEL_CLIENT:-0}" != "1" ]]; then
+    stage "model-client"
+    cmd_model_client
+  else
+    echo "Skipping model-client stage (SKIP_MODEL_CLIENT=1)"
   fi
 
   if [[ "${SKIP_VERIFY:-0}" != "1" ]]; then
