@@ -36,7 +36,7 @@
   export let allProjectsTypes: boolean = false
   export let useLocalMode: boolean = false
   export let spaceSelectorQuery: DocumentQuery<Project> | undefined = undefined
-  export let autoSelectSpace: boolean = true
+  export let autoSelectSpace: boolean = false
 
   export let baseClass = tracker.class.Issue
 

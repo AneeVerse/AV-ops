@@ -359,7 +359,8 @@ function defineApplication (
                 ['active', tracker.string.Active, {}],
                 ['backlog', tracker.string.Backlog, {}]
               ],
-              allProjectsTypes: true
+              allProjectsTypes: true,
+              autoSelectSpace: false
             }
           },
           {

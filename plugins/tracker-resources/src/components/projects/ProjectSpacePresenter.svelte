@@ -1,27 +1,18 @@
 <!--
 // Copyright © 2022 Hardcore Engineering Inc.
-//
-// Licensed under the Eclipse Public License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License. You may
-// obtain a copy of the License at https://www.eclipse.org/legal/epl-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//
-// See the License for the specific language governing permissions and
-// limitations under the License.
 -->
 <script lang="ts">
+  import contact, { type Organization } from '@hcengineering/contact'
   import { Ref, Space } from '@hcengineering/core'
   import { getResource } from '@hcengineering/platform'
+  import { createQuery, IconWithEmoji } from '@hcengineering/presentation'
   import { Project } from '@hcengineering/tracker'
-  import { IconWithEmoji } from '@hcengineering/presentation'
   import { getPlatformColorDef, getPlatformColorForTextDef, themeStore, type Action } from '@hcengineering/ui'
   import view from '@hcengineering/view'
   import { NavLink, TreeNode } from '@hcengineering/view-resources'
   import { SpacesNavModel, SpecialNavModel } from '@hcengineering/workbench'
   import { SpecialElement } from '@hcengineering/workbench-resources'
+  import { projectNavTitle } from '../../projectTitle'
 
   export let space: Project
   export let model: SpacesNavModel
@@ -32,6 +23,24 @@
   export let forciblyСollapsed: boolean = false
 
   let specials: SpecialNavModel[] = []
+  let company: Organization | undefined
+  const orgQuery = createQuery()
+
+  $: if (space?.company !== undefined) {
+    orgQuery.query(
+      contact.class.Organization,
+      { _id: space.company },
+      (res) => {
+        company = res[0]
+      },
+      { limit: 1 }
+    )
+  } else {
+    orgQuery.unsubscribe()
+    company = undefined
+  }
+
+  $: navTitle = projectNavTitle(space, company)
 
   async function updateSpecials (model: SpacesNavModel, space: Project): Promise<void> {
     const newSpecials: SpecialNavModel[] = []
@@ -70,7 +79,7 @@
               ? getPlatformColorDef(space.color, $themeStore.dark).icon
               : getPlatformColorForTextDef(space.name, $themeStore.dark).icon
         }}
-    title={space.name}
+    title={navTitle}
     type={'nested'}
     highlighted={space._id === currentSpace}
     {visible}

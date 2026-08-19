@@ -70,5 +70,5 @@
 </script>
 
 {#if query !== undefined && modeSelectorProps !== undefined}
-  <IssuesView {query} space={undefined} {icon} title={tracker.string.MyIssues} {modeSelectorProps} />
+  <IssuesView {query} space={undefined} {icon} title={tracker.string.MyIssues} {modeSelectorProps} autoSelectSpace={false} />
 {/if}

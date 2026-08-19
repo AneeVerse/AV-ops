@@ -36,7 +36,7 @@
   export let icon: Asset | undefined = undefined
   export let modeSelectorProps: IModeSelector | undefined = undefined
   export let spaceSelectorQuery: DocumentQuery<Project> | undefined = undefined
-  export let autoSelectSpace: boolean = true
+  export let autoSelectSpace: boolean = false
 
   let selectedSpace: Ref<Space> | undefined = undefined
   $: effectiveSpace = space ?? selectedSpace
