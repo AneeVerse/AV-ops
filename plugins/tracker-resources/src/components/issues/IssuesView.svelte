@@ -2,7 +2,7 @@
   import { DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Asset, IntlString, translateCB } from '@hcengineering/platform'
   import { ComponentExtensions, SpaceSelector } from '@hcengineering/presentation'
-  import { Issue, TrackerEvents } from '@hcengineering/tracker'
+  import { Issue, TrackerEvents, type Project } from '@hcengineering/tracker'
   import { Button, IconAdd, IModeSelector, ModeSelector, SearchInputAdvanced, showPopup, themeStore } from '@hcengineering/ui'
   import { ViewOptions, Viewlet } from '@hcengineering/view'
   import {
@@ -35,11 +35,15 @@
   export let label: string = ''
   export let icon: Asset | undefined = undefined
   export let modeSelectorProps: IModeSelector | undefined = undefined
+  export let spaceSelectorQuery: DocumentQuery<Project> | undefined = undefined
+  export let autoSelectSpace: boolean = true
 
   let selectedSpace: Ref<Space> | undefined = undefined
-  let autoSelectSpace = true
   $: effectiveSpace = space ?? selectedSpace
-  $: if (selectedSpace !== undefined) autoSelectSpace = false
+  $: selectorQuery = spaceSelectorQuery ?? {
+    archived: false,
+    members: getCurrentAccount().uuid
+  }
 
   let viewlet: WithLookup<Viewlet> | undefined = undefined
   const viewlets: WithLookup<Viewlet>[] | undefined = undefined
@@ -175,10 +179,7 @@
         size={'small'}
         component={ProjectPresenter}
         defaultIcon={tracker.icon.Home}
-        query={{
-          archived: false,
-          members: getCurrentAccount().uuid
-        }}
+        query={selectorQuery}
       />
     {/if}
   </svelte:fragment>

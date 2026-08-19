@@ -15,6 +15,11 @@
   let projectIds: Ref<Project>[] = []
 
   $: companyId = ($locationStore.query?.company ?? $selectedCompanyStore) as Ref<Organization> | undefined
+  $: spaceSelectorQuery =
+    companyId !== undefined ? { company: companyId, archived: false } : { _id: { $in: [] as Ref<Project>[] } }
+  $: baseQuery = {
+    space: { $in: projectIds.length > 0 ? projectIds : (['none'] as unknown as Ref<Project>[]) }
+  }
 
   $: if (companyId !== undefined) {
     projectQuery.query(tracker.class.Project, { company: companyId }, (result) => {
@@ -27,7 +32,7 @@
 </script>
 
 <Issues
-  baseQuery={{ space: { $in: projectIds } }}
+  {baseQuery}
   title={tracker.string.Issues}
   icon={tracker.icon.Issues}
   config={[
@@ -37,4 +42,6 @@
   ]}
   allProjectsTypes={true}
   useLocalMode={true}
+  {spaceSelectorQuery}
+  autoSelectSpace={false}
 />

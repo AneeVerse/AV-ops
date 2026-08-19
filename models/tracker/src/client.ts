@@ -221,21 +221,6 @@ function defineClientApplication (builder: Builder): void {
                 component: tracker.component.ClientCompanyFiles
               },
               {
-                id: 'issues',
-                label: tracker.string.Issues,
-                icon: tracker.icon.Issues,
-                component: tracker.component.Issues,
-                componentProps: {
-                  icon: tracker.icon.Issues,
-                  title: tracker.string.Issues,
-                  config: [
-                    ['all', tracker.string.All, {}],
-                    ['active', tracker.string.Active, {}],
-                    ['backlog', tracker.string.Backlog, {}]
-                  ]
-                }
-              },
-              {
                 id: 'project-files',
                 label: tracker.string.ProjectFiles,
                 icon: drive.icon.Folder,

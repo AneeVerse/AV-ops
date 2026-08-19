@@ -37,6 +37,11 @@
   const projectQuery = createQuery()
   let projectIds: Ref<Project>[] = []
 
+  $: spaceSelectorQuery = { company: object._id, archived: false }
+  $: baseQuery = {
+    space: { $in: projectIds.length > 0 ? projectIds : (['none'] as unknown as Ref<Project>[]) }
+  }
+
   $: projectQuery.query(tracker.class.Project, { company: object._id }, (result) => {
     projectIds = result.map(({ _id }) => _id)
   })
@@ -83,7 +88,7 @@
   {:else if tab === 'issues'}
     <div class="company-related__body">
       <Issues
-        baseQuery={{ space: { $in: projectIds } }}
+        {baseQuery}
         title={tracker.string.Issues}
         icon={tracker.icon.Issues}
         config={[
@@ -93,6 +98,8 @@
         ]}
         allProjectsTypes={true}
         useLocalMode={true}
+        {spaceSelectorQuery}
+        autoSelectSpace={false}
       />
     </div>
   {:else}

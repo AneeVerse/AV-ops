@@ -35,6 +35,8 @@
   export let config: [string, IntlString, object][]
   export let allProjectsTypes: boolean = false
   export let useLocalMode: boolean = false
+  export let spaceSelectorQuery: DocumentQuery<Project> | undefined = undefined
+  export let autoSelectSpace: boolean = true
 
   export let baseClass = tracker.class.Issue
 
@@ -138,7 +140,15 @@
 </script>
 
 {#if query !== undefined && modeSelectorProps !== undefined}
-  <IssuesView query={finalQuery} space={currentSpace} {icon} {title} {modeSelectorProps}>
+  <IssuesView
+    query={finalQuery}
+    space={currentSpace}
+    {icon}
+    {title}
+    {modeSelectorProps}
+    {spaceSelectorQuery}
+    {autoSelectSpace}
+  >
     <svelte:fragment slot="type_selector" let:viewlet>
       {#if !allProjectsTypes}
         <TypeSelector {baseClass} project={currentSpace} allTypes={toVL(viewlet)?.descriptor === view.viewlet.List} />
