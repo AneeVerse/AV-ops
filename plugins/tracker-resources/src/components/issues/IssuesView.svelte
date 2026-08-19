@@ -77,6 +77,10 @@
     if (space !== undefined) {
       return { ...q, space }
     }
+    // Preserve multi-project constraints (e.g. company Issues tab: space: { $in: [...] }).
+    if (q.space != null && typeof q.space === 'object') {
+      return q
+    }
     const { space: _ignored, ...rest } = q
     return rest
   }
