@@ -678,9 +678,13 @@ function buildSql () {
   const lines = ['-- fork Client model seed for local-ws']
   catalog.forEach((item, index) => {
     const txClass = item.tx ?? 'core:class:TxCreateDoc'
+    const attributes = { ...item.attributes }
+    if (attributes._class === undefined) {
+      attributes._class = item.objectClass
+    }
     const data = {
       objectClass: item.objectClass,
-      attributes: item.attributes,
+      attributes,
       ...(item.mixin !== undefined ? { mixin: item.mixin } : {})
     }
     const json = JSON.stringify(data).replace(/'/g, "''")

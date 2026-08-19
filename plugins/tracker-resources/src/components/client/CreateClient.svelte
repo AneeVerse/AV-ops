@@ -31,7 +31,7 @@
   import { createEventDispatcher } from 'svelte'
   import { type Client, type ClientFunnel } from '@hcengineering/tracker'
   import tracker from '../../plugin'
-  import { createDefaultChannels, findOrCreateOrganization, normalizeChannels } from '../../clientUtils'
+  import { createDefaultChannels, ensureSequence, findOrCreateOrganization, normalizeChannels } from '../../clientUtils'
 
   export let space: Ref<ClientFunnel> | undefined = undefined
 
@@ -78,7 +78,8 @@
   let kind: Ref<TaskType> | undefined = undefined
 
   $: lookupChannels = normalizeChannels(channels)
-  $: canSave = companyName.trim().length > 0
+  $: projectType = funnel?.type ?? tracker.template.DefaultClientFunnel
+  $: canSave = companyName.trim().length > 0 && _space !== undefined && kind !== undefined
 
   let matches: WithLookup<Organization>[] = []
   let matchedChannels: AttachedData<Channel>[] = []
@@ -89,14 +90,15 @@
 
   async function createClient () {
     const name = companyName.trim()
-    const organization = await findOrCreateOrganization(client, name, channels)
-    const sequence = await client.findOne(core.class.Sequence, { attachedTo: tracker.class.Client })
-    if (sequence === undefined || _space === undefined) {
-      throw new Error('Client creation failed')
+    if (_space === undefined) {
+      throw new Error('Funnel is not selected')
     }
     if (kind === undefined) {
-      throw new Error('kind is not specified')
+      throw new Error('Client type is not selected')
     }
+
+    const sequence = await ensureSequence(client, tracker.class.Client)
+    const organization = await findOrCreateOrganization(client, name, channels)
 
     const incResult = await client.update(sequence, { $inc: { sequence: 1 } }, true)
     const number = (incResult as any).object.sequence
@@ -156,7 +158,7 @@
           }
         : undefined}
     />
-    <TaskKindSelector projectType={funnel?.type} bind:value={kind} baseClass={tracker.class.Client} />
+    <TaskKindSelector {projectType} bind:value={kind} baseClass={tracker.class.Client} />
   </svelte:fragment>
 
   <StatusControl slot="error" {status} />

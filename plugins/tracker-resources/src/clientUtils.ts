@@ -8,8 +8,9 @@ import contact, {
   type Channel,
   type Organization
 } from '@hcengineering/contact'
-import {
+import core, {
   type AttachedData,
+  type Class,
   type Data,
   type Doc,
   type Ref,
@@ -84,6 +85,24 @@ export async function persistOrganization (
     )
   }
   return id
+}
+
+export async function ensureSequence (
+  client: TxOperations,
+  attachedTo: Ref<Class<Doc>>
+): Promise<Doc> {
+  let sequence = await client.findOne(core.class.Sequence, { attachedTo })
+  if (sequence === undefined) {
+    await client.createDoc(core.class.Sequence, core.space.Workspace, {
+      attachedTo,
+      sequence: 0
+    })
+    sequence = await client.findOne(core.class.Sequence, { attachedTo })
+  }
+  if (sequence === undefined) {
+    throw new Error(`Sequence not found for ${attachedTo}`)
+  }
+  return sequence
 }
 
 export async function findOrCreateOrganization (

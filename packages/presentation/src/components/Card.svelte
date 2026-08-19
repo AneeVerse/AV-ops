@@ -86,6 +86,8 @@
         r.then(() => {
           okProcessing = false
           dispatch('close')
+        }).catch(() => {
+          okProcessing = false
         })
       } else {
         okProcessing = false

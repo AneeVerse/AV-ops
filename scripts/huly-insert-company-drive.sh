@@ -17,9 +17,9 @@ for ATTR in \
   "contact:class:Organization_aneerequestId|aneerequestId|contact:string:AneerequestId|core:class:String"
 do
   IFS='|' read -r OID NAME LABEL TYPE <<< "$ATTR"
-  ATTR_JSON="{\"attributes\":{\"_class\":\"core:class:Attribute\",\"name\":\"${NAME}\",\"attributeOf\":\"${OID%%_*}\",\"label\":\"${LABEL}\",\"type\":{\"_class\":\"core:class:RefTo\",\"label\":\"core:string:Ref\",\"icon\":\"core:icon:TypeRef\",\"to\":\"${TYPE}\"}}}"
+  ATTR_JSON="{\"objectClass\":\"core:class:Attribute\",\"attributes\":{\"_class\":\"core:class:Attribute\",\"name\":\"${NAME}\",\"attributeOf\":\"${OID%%_*}\",\"label\":\"${LABEL}\",\"type\":{\"_class\":\"core:class:RefTo\",\"label\":\"core:string:Ref\",\"icon\":\"core:icon:TypeRef\",\"to\":\"${TYPE}\"}}}"
   if [[ "$TYPE" == "core:class:String" ]]; then
-    ATTR_JSON="{\"attributes\":{\"_class\":\"core:class:Attribute\",\"name\":\"${NAME}\",\"attributeOf\":\"${OID%%_*}\",\"label\":\"${LABEL}\",\"type\":{\"_class\":\"core:class:TypeString\",\"label\":\"core:string:String\"}}}"
+    ATTR_JSON="{\"objectClass\":\"core:class:Attribute\",\"attributes\":{\"_class\":\"core:class:Attribute\",\"name\":\"${NAME}\",\"attributeOf\":\"${OID%%_*}\",\"label\":\"${LABEL}\",\"type\":{\"_class\":\"core:class:TypeString\",\"label\":\"core:string:String\"}}}"
   fi
   docker exec -i huly_v7-cockroach-1 ./cockroach sql --url "$URL_LOCAL" <<SQL
 INSERT INTO model_tx (
