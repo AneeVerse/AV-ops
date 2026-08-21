@@ -432,7 +432,7 @@
     id: priority,
     label: requestPriorityAssets[priority].label
   }))
-  $: cardLabel = isNew ? tracker.string.NewRequest : tracker.string.EditRequest
+  $: cardLabel = isNew ? tracker.string.NewProject : tracker.string.EditProject
 </script>
 
 <Card
@@ -447,12 +447,6 @@
   on:changeContent
 >
   <div class="antiGrid">
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header withDesciption">
-        <Label label={tracker.string.Request} />
-        <span><Label label={tracker.string.RequestProjectHint} /></span>
-      </div>
-    </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
         <Label label={task.string.ProjectType} />
@@ -473,13 +467,13 @@
     </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
-        <Label label={tracker.string.RequestTitle} />
+        <Label label={tracker.string.ProjectTitle} />
       </div>
       <div class="padding">
         <EditBox
           id="project-title"
           bind:value={name}
-          placeholder={tracker.string.RequestTitlePlaceholder}
+          placeholder={tracker.string.ProjectTitlePlaceholder}
           kind={'large-style'}
           autoFocus
           on:input={() => {

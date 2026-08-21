@@ -30,7 +30,7 @@
   let tab: string = 'projects'
   const tabs: TabItem[] = [
     { id: 'projects', labelIntl: tracker.string.CompanyProjects },
-    { id: 'issues', labelIntl: tracker.string.CompanyTasks },
+    { id: 'issues', labelIntl: tracker.string.Issues },
     { id: 'files', labelIntl: tracker.string.CompanyFiles }
   ]
 
@@ -66,7 +66,7 @@
       }}
     />
     {#if tab === 'projects' && !readonly}
-      <Button icon={IconAdd} label={tracker.string.CreateRequest} kind={'primary'} size={'small'} on:click={createProject} />
+      <Button icon={IconAdd} label={tracker.string.CreateProject} kind={'primary'} size={'small'} on:click={createProject} />
     {/if}
   </div>
 
@@ -103,7 +103,7 @@
       <Issues
         {baseQuery}
         {currentSpace}
-        title={tracker.string.CompanyTasks}
+        title={tracker.string.Issues}
         icon={tracker.icon.Issues}
         config={[
           ['all', tracker.string.All, {}],
