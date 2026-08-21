@@ -33,8 +33,18 @@
   } from '@hcengineering/core'
   import login from '@hcengineering/login'
   import { getResource } from '@hcengineering/platform'
+  import type { IntlString } from '@hcengineering/platform'
   import { Card, getClient } from '@hcengineering/presentation'
-  import { createFocusManager, EditBox, FocusHandler, IconInfo, Label } from '@hcengineering/ui'
+  import setting from '@hcengineering/setting'
+  import {
+    createFocusManager,
+    DropdownIntlItem,
+    DropdownLabelsIntl,
+    EditBox,
+    FocusHandler,
+    IconInfo,
+    Label
+  } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import { ChannelsDropdown } from '..'
   import contact from '../plugin'
@@ -50,11 +60,23 @@
   let firstName = ''
   let lastName = ''
   let email = ''
+  let position = ''
+  let workspaceRole: AccountRole = AccountRole.User
+  let formError: IntlString | undefined = undefined
+  let inviteWarning: IntlString | undefined = undefined
 
   const id: Ref<Employee> = generateId()
 
+  const roleItems: DropdownIntlItem[] = [
+    { id: AccountRole.Guest, label: setting.string.Guest },
+    { id: AccountRole.User, label: setting.string.User },
+    { id: AccountRole.Maintainer, label: setting.string.Maintainer }
+  ]
+
+  const guestWorkspaceRoles = [AccountRole.ReadOnlyGuest, AccountRole.DocGuest, AccountRole.Guest]
+
   export function canClose (): boolean {
-    return firstName === '' && lastName === '' && email === ''
+    return firstName === '' && lastName === '' && email === '' && position === ''
   }
 
   let saving: boolean = false
@@ -69,11 +91,17 @@
   const client = getClient()
   const accountClient = getAccountClient()
 
+  function employeeInfoRole (role: AccountRole): 'USER' | 'GUEST' {
+    return guestWorkspaceRoles.includes(role) ? 'GUEST' : 'USER'
+  }
+
   async function createEmployee (): Promise<void> {
+    formError = undefined
+    inviteWarning = undefined
     try {
       saving = true
       changeEmail()
-      const mail = email.trim()
+      const mail = email.trim().toLowerCase()
       const socialString = buildSocialIdString({
         type: SocialIdType.EMAIL,
         value: mail
@@ -84,7 +112,14 @@
         existingId !== undefined
           ? await client.findOne(contact.class.Person, { _id: existingId.attachedTo })
           : undefined
-      if (existingPerson !== undefined && client.getHierarchy().hasMixin(existingPerson, contact.mixin.Employee)) {
+
+      const existingEmployee =
+        existingPerson !== undefined && client.getHierarchy().hasMixin(existingPerson, contact.mixin.Employee)
+          ? client.getHierarchy().as(existingPerson, contact.mixin.Employee)
+          : undefined
+
+      if (existingEmployee !== undefined && existingEmployee.active) {
+        formError = contact.string.EmployeeAlreadyActive
         return
       }
 
@@ -98,40 +133,81 @@
       person.avatarType = info.avatarType
       person.avatarProps = info.avatarProps
 
-      if (existingPerson === undefined) {
+      const trimmedPosition = position.trim()
+      const mixinData: { active: boolean, role: 'USER' | 'GUEST', position?: string | null } = {
+        active: true,
+        role: employeeInfoRole(workspaceRole)
+      }
+      if (trimmedPosition.length > 0) {
+        mixinData.position = trimmedPosition
+      }
+
+      let employeeRef: Ref<Employee>
+
+      if (existingEmployee !== undefined && !existingEmployee.active) {
+        // Former member: reactivate + update profile, then re-invite
+        await client.update(existingPerson as Person, person)
+        await client.update(existingEmployee, mixinData)
+        employeeRef = existingEmployee._id
+      } else if (existingPerson === undefined) {
         await client.createDoc(contact.class.Person, contact.space.Contacts, person, id)
+        employeeRef = id
+        await client.createMixin(
+          employeeRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       } else {
         await client.update(existingPerson, person)
+        employeeRef = existingPerson._id as Ref<Employee>
+        await client.createMixin(
+          employeeRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       }
-      const employeeRef = (existingPerson?._id as Ref<Employee>) ?? id
 
-      await client.createMixin(employeeRef, contact.class.Person, contact.space.Contacts, contact.mixin.Employee, {
-        active: true,
-        role: AccountRole.User
+      const existingSocial = await client.findOne(contact.class.SocialIdentity, {
+        _id: socialId as SocialIdentityRef
       })
+      if (existingSocial == null) {
+        await client.addCollection(
+          contact.class.SocialIdentity,
+          contact.space.Contacts,
+          employeeRef,
+          contact.class.Person,
+          'socialIds',
+          {
+            type: SocialIdType.EMAIL,
+            value: mail,
+            key: socialString
+          },
+          socialId as SocialIdentityRef
+        )
+      }
 
-      await client.addCollection(
-        contact.class.SocialIdentity,
-        contact.space.Contacts,
-        employeeRef,
-        contact.class.Person,
-        'socialIds',
-        {
-          type: SocialIdType.EMAIL,
-          value: mail,
-          key: socialString
-        },
-        socialId as SocialIdentityRef
-      )
-
-      const sendInvite = await getResource(login.function.SendInvite)
-      await sendInvite(mail, AccountRole.User)
+      try {
+        if (existingEmployee !== undefined && !existingEmployee.active) {
+          const resendInvite = await getResource(login.function.ResendInvite)
+          await resendInvite(mail, workspaceRole)
+        } else {
+          const sendInvite = await getResource(login.function.SendInvite)
+          await sendInvite(mail, workspaceRole)
+        }
+      } catch (inviteErr: any) {
+        Analytics.handleError(inviteErr)
+        inviteWarning = contact.string.InviteEmailFailed
+      }
 
       for (const channel of channels) {
         await client.addCollection(
           contact.class.Channel,
           contact.space.Contacts,
-          id,
+          employeeRef,
           contact.class.Person,
           'channels',
           {
@@ -143,8 +219,10 @@
       if (onCreate != null) {
         await onCreate(employeeRef)
       }
-      Analytics.handleEvent(ContactEvents.EmployeeCreated, { id, email: mail })
-      dispatch('close', id)
+      Analytics.handleEvent(ContactEvents.EmployeeCreated, { id: employeeRef, email: mail, role: workspaceRole })
+      if (inviteWarning === undefined) {
+        dispatch('close', employeeRef)
+      }
     } finally {
       saving = false
     }
@@ -152,12 +230,14 @@
 
   $: emailSocialString = buildSocialIdString({
     type: SocialIdType.EMAIL,
-    value: email.trim()
+    value: email.trim().toLowerCase()
   })
 
   let channels: AttachedData<Channel>[] = []
 
-  $: exists = $employeeBySocialKeyStore.get(emailSocialString) !== undefined
+  $: existingForEmail = $employeeBySocialKeyStore.get(emailSocialString)
+  $: existsActive = existingForEmail !== undefined && existingForEmail.active
+  $: existsInactive = existingForEmail !== undefined && !existingForEmail.active
 
   const manager = createFocusManager()
 
@@ -168,31 +248,58 @@
     } else {
       channels.push({
         provider: contact.channelProvider.Email,
-        value: email.trim()
+        value: email.trim().toLowerCase()
       })
     }
     channels = channels
   }
+  function onRoleSelected (e: CustomEvent<AccountRole | string | number>): void {
+    workspaceRole = e.detail as AccountRole
+  }
+
+  $: showError = (existsActive || formError !== undefined || inviteWarning !== undefined) && !saving
+  $: showReactivateHint = existsInactive && !saving && formError === undefined && inviteWarning === undefined
+
+  $: canSubmit =
+    firstName.trim().length > 0 &&
+    lastName.trim().length > 0 &&
+    email.trim().length > 0 &&
+    email.includes('@') &&
+    !existsActive &&
+    !saving &&
+    canSave
 </script>
 
 <FocusHandler {manager} />
 
 <Card
-  label={contact.string.CreateEmployee}
+  label={contact.string.AddEmployee}
+  okLabel={contact.string.SendInviteAddEmployee}
   okAction={createEmployee}
-  canSave={firstName.trim().length > 0 && lastName.trim().length > 0 && email.trim().length > 0 && !exists && canSave}
+  canSave={canSubmit}
   on:close={() => {
     dispatch('close')
   }}
   on:changeContent
 >
   <svelte:fragment slot="error">
-    {#if exists && !saving}
+    {#if showError}
       <div class="flex-row-center error-color">
         <IconInfo size={'small'} />
         <span class="text-sm overflow-label ml-2">
-          <Label label={contact.string.PersonAlreadyExists} />
+          {#if inviteWarning}
+            <Label label={inviteWarning} />
+          {:else if formError}
+            <Label label={formError} />
+          {:else}
+            <Label label={contact.string.EmployeeAlreadyActive} />
+          {/if}
         </span>
+      </div>
+    {/if}
+    {#if showReactivateHint}
+      <div class="flex-row-center text-sm ml-2 mt-1">
+        <Label label={contact.string.EmployeeWillReactivate} />
       </div>
     {/if}
   </svelte:fragment>
@@ -218,6 +325,27 @@
           kind={'small-style'}
           focusIndex={3}
           on:blur={changeEmail}
+        />
+      </div>
+      <div class="mt-1">
+        <EditBox
+          placeholder={contact.string.Position}
+          bind:value={position}
+          kind={'small-style'}
+          focusIndex={4}
+        />
+      </div>
+      <div class="mt-3 flex-row-center">
+        <span class="mr-2 whitespace-nowrap">
+          <Label label={contact.string.WorkspaceRole} />
+        </span>
+        <DropdownLabelsIntl
+          label={contact.string.WorkspaceRole}
+          kind={'regular'}
+          size={'medium'}
+          items={roleItems}
+          selected={workspaceRole}
+          on:selected={onRoleSelected}
         />
       </div>
       <slot name="extraControls" />

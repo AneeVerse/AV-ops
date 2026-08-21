@@ -16,13 +16,46 @@
   import contact, { Employee, formatName } from '@hcengineering/contact'
   import { EmployeePresenter } from '@hcengineering/contact-resources'
   import { Account, AccountRole, getCurrentAccount, hasAccountRole } from '@hcengineering/core'
+  import { getResource } from '@hcengineering/platform'
   import { createQuery, getClient } from '@hcengineering/presentation'
-  import { Breadcrumb, DropdownIntlItem, DropdownLabelsIntl, Header, Scroller, SearchInput } from '@hcengineering/ui'
+  import {
+    Breadcrumb,
+    Button,
+    DropdownIntlItem,
+    DropdownLabelsIntl,
+    Header,
+    Scroller,
+    SearchInput,
+    showPopup
+  } from '@hcengineering/ui'
   import { onMount } from 'svelte'
 
   import setting from '../plugin'
   import { getAccountClient } from '../utils'
   import { Analytics } from '@hcengineering/analytics'
+
+  async function addEmployee (): Promise<void> {
+    try {
+      const CreateEmployee = await getResource(contact.component.CreateEmployee)
+      showPopup(CreateEmployee, {}, 'top', () => {
+        void refreshMembers()
+      })
+    } catch (e: any) {
+      Analytics.handleError(e)
+    }
+  }
+
+  async function refreshMembers (): Promise<void> {
+    try {
+      const members = await accountClient.getWorkspaceMembers()
+      workspaceMembers = members.reduce<Record<string, AccountRole>>((wm, m) => {
+        wm[m.person] = m.role
+        return wm
+      }, {})
+    } catch (e: any) {
+      Analytics.handleError(e)
+    }
+  }
 
   const query = createQuery()
   const currentAccount = getCurrentAccount()
@@ -42,13 +75,8 @@
   let workspaceMembers: Record<string, AccountRole> = {}
   let employees: Employee[] = []
 
-  onMount(async () => {
-    const members = await accountClient.getWorkspaceMembers()
-    workspaceMembers = members.reduce<Record<string, AccountRole>>((wm, m) => {
-      wm[m.person] = m.role
-
-      return wm
-    }, {})
+  onMount(() => {
+    void refreshMembers()
   })
 
   query.query(contact.mixin.Employee, { active: true }, (res) => {
@@ -91,6 +119,18 @@
     <Breadcrumb icon={setting.icon.Members} label={setting.string.Members} size={'large'} isCurrent />
     <svelte:fragment slot="search">
       <SearchInput bind:value={search} collapsed />
+    </svelte:fragment>
+    <svelte:fragment slot="actions">
+      {#if hasAccountRole(currentAccount, AccountRole.User)}
+        <Button
+          label={contact.string.AddEmployee}
+          kind={'primary'}
+          size={'medium'}
+          on:click={() => {
+            void addEmployee()
+          }}
+        />
+      {/if}
     </svelte:fragment>
   </Header>
   <div class="hulyComponent-content__column content">
