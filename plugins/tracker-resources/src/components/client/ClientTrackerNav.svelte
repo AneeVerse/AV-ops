@@ -4,6 +4,7 @@
 <script lang="ts">
   import contact, { type Organization } from '@hcengineering/contact'
   import { Ref } from '@hcengineering/core'
+  import chunter from '@hcengineering/chunter'
   import drive from '@hcengineering/drive'
   import { createQuery } from '@hcengineering/presentation'
   import {
@@ -155,6 +156,15 @@
                 label={tracker.string.Issues}
                 icon={tracker.icon.Issues}
                 selected={pathSpace === project._id && currentSpecial === 'issues'}
+              />
+            </div>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div class="client-nav-child" on:click={() => openProjectSpecial(project._id, 'chat')}>
+              <SpecialElement
+                indent
+                label={tracker.string.ProjectChat}
+                icon={chunter.icon.Chunter}
+                selected={pathSpace === project._id && currentSpecial === 'chat'}
               />
             </div>
             <!-- svelte-ignore a11y-click-events-have-key-events -->

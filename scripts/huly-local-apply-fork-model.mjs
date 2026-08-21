@@ -326,6 +326,60 @@ const catalog = [
     }
   },
   {
+    id: 'tracker:class:Project_comments',
+    objectClass: 'core:class:Attribute',
+    attributes: {
+      name: 'comments',
+      attributeOf: 'tracker:class:Project',
+      label: 'chunter:string:Comments',
+      type: {
+        _class: 'core:class:Collection',
+        label: 'chunter:string:Comments',
+        of: 'chunter:class:ChatMessage'
+      }
+    }
+  },
+  {
+    id: 'tracker:ids:ProjectActivityExtension',
+    objectClass: 'activity:class:ActivityExtension',
+    attributes: {
+      ofClass: 'tracker:class:Project',
+      components: {
+        input: { component: 'chunter:component:ChatMessageInput' }
+      }
+    }
+  },
+  {
+    id: 'tracker:ids:ProjectChatMessageViewlet',
+    objectClass: 'chunter:class:ChatMessageViewlet',
+    attributes: {
+      messageClass: 'chunter:class:ChatMessage',
+      objectClass: 'tracker:class:Project',
+      label: 'chunter:string:LeftComment'
+    }
+  },
+  {
+    id: 'tracker:ids:TrackerProjectChatNavModel',
+    objectClass: 'workbench:class:ApplicationNavModel',
+    attributes: {
+      extends: 'tracker:app:Tracker',
+      spaces: [
+        {
+          id: 'projects',
+          spaceClass: 'tracker:class:Project',
+          specials: [
+            {
+              id: 'chat',
+              label: 'tracker:string:ProjectChat',
+              icon: 'chunter:icon:Chunter',
+              component: 'tracker:component:ProjectChat'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     id: 'tracker:app:Company',
     objectClass: 'workbench:class:Application',
     attributes: {
@@ -433,6 +487,12 @@ const catalog = [
                     ['backlog', 'tracker:string:Backlog', {}]
                   ]
                 }
+              },
+              {
+                id: 'chat',
+                label: 'tracker:string:ProjectChat',
+                icon: 'chunter:icon:Chunter',
+                component: 'tracker:component:ProjectChat'
               },
               {
                 id: 'project-files',

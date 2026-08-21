@@ -20,6 +20,7 @@ Commands:
   model-company  Upload and run huly-insert-company-app.sh (Company app + Project.company field)
   model-company-drive  Upload company drive model patch (folder fields + triggers need ship + upgrade)
   model-request  Upload and run huly-insert-request-fields.sh (Request status/priority/due/assignee on Project)
+  model-project-chat  Upload and run huly-insert-project-chat.sh (Project ActivityExtension + Chat nav)
   model-client   Generate and apply Client classes/funnel/navigator into live model_tx
   verify         Curl live site + check front container index.html on VPS
   help           Show this message
@@ -33,6 +34,7 @@ Environment:
   SKIP_MODEL_COMPANY=1        Skip model-company stage for `all`
   SKIP_MODEL_COMPANY_DRIVE=1  Skip model-company-drive stage for `all`
   SKIP_MODEL_REQUEST=1        Skip model-request stage for `all`
+  SKIP_MODEL_PROJECT_CHAT=1   Skip model-project-chat stage for `all`
   SKIP_VERIFY=1               Skip verify stage for `all`
 
 Examples:
@@ -40,6 +42,7 @@ Examples:
   ./scripts/huly-deploy-production.sh model-tracker
   ./scripts/huly-deploy-production.sh model-company
   ./scripts/huly-deploy-production.sh model-request
+  ./scripts/huly-deploy-production.sh model-project-chat
   SKIP_BUILD=1 ./scripts/huly-deploy-production.sh front
 EOF
 }
@@ -105,6 +108,12 @@ cmd_model_request() {
   "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-request-fields.sh'
 }
 
+cmd_model_project_chat() {
+  echo "==== upload model-project-chat script ===="
+  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-project-chat.sh" "$VPS:/tmp/"
+  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-project-chat.sh'
+}
+
 cmd_model_client() {
   local sql="$REPO_ROOT/scripts/.huly-client-model.sql"
   echo "==== generate Client model SQL ===="
@@ -155,6 +164,13 @@ cmd_all() {
     echo "Skipping model-request stage (SKIP_MODEL_REQUEST=1)"
   fi
 
+  if [[ "${SKIP_MODEL_PROJECT_CHAT:-0}" != "1" ]]; then
+    stage "model-project-chat"
+    cmd_model_project_chat
+  else
+    echo "Skipping model-project-chat stage (SKIP_MODEL_PROJECT_CHAT=1)"
+  fi
+
   # Client model must run after company patches — it owns Company app navigatorModel
   # (funnel spaces sidebar + SpaceView create-client button config).
   if [[ "${SKIP_MODEL_CLIENT:-0}" != "1" ]]; then
@@ -179,6 +195,7 @@ case "${1:-help}" in
   model-company) cmd_model_company ;;
   model-company-drive) cmd_model_company_drive ;;
   model-request) cmd_model_request ;;
+  model-project-chat) cmd_model_project_chat ;;
   model-client) cmd_model_client ;;
   verify) cmd_verify ;;
   help|-h|--help) usage ;;

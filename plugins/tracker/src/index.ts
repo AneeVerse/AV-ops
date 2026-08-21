@@ -14,6 +14,7 @@
 //
 
 import { Employee, Organization, Person } from '@hcengineering/contact'
+import { type ChatMessage } from '@hcengineering/chunter'
 import { Folder } from '@hcengineering/drive'
 import {
   AttachedDoc,
@@ -103,6 +104,8 @@ export interface Project extends TaskProject, IconProps {
   requestDueDate?: Timestamp | null
   /** Primary person responsible for the Request (not Issue.assignee / defaultAssignee). */
   requestAssignee?: Ref<Employee> | null
+  /** Project-level chat messages (same ChatMessage collection as other ActivityDocs). */
+  comments?: CollectionSize<ChatMessage>
 }
 
 /**

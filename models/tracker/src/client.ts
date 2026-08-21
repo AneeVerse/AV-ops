@@ -237,6 +237,12 @@ function defineClientApplication (builder: Builder): void {
                 }
               },
               {
+                id: 'chat',
+                label: tracker.string.ProjectChat,
+                icon: chunter.icon.Chunter,
+                component: tracker.component.ProjectChat
+              },
+              {
                 id: 'project-files',
                 label: tracker.string.ProjectFiles,
                 icon: drive.icon.Folder,

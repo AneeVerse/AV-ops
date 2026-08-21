@@ -506,6 +506,39 @@ export function createModel (builder: Builder): void {
     components: { input: { component: chunter.component.ChatMessageInput } }
   })
 
+  builder.createDoc(
+    activity.class.ActivityExtension,
+    core.space.Model,
+    {
+      ofClass: tracker.class.Project,
+      components: { input: { component: chunter.component.ChatMessageInput } }
+    },
+    tracker.ids.ProjectActivityExtension
+  )
+
+  builder.createDoc(
+    workbench.class.ApplicationNavModel,
+    core.space.Model,
+    {
+      extends: tracker.app.Tracker,
+      spaces: [
+        {
+          id: 'projects',
+          spaceClass: tracker.class.Project,
+          specials: [
+            {
+              id: 'chat',
+              label: tracker.string.ProjectChat,
+              icon: chunter.icon.Chunter,
+              component: tracker.component.ProjectChat
+            }
+          ]
+        }
+      ]
+    },
+    tracker.ids.TrackerProjectChatNavModel
+  )
+
   defineViewlets(builder)
 
   builder.createDoc(
@@ -727,6 +760,17 @@ export function createModel (builder: Builder): void {
       label: chunter.string.LeftComment
     },
     tracker.ids.IssueChatMessageViewlet
+  )
+
+  builder.createDoc(
+    chunter.class.ChatMessageViewlet,
+    core.space.Model,
+    {
+      messageClass: chunter.class.ChatMessage,
+      objectClass: tracker.class.Project,
+      label: chunter.string.LeftComment
+    },
+    tracker.ids.ProjectChatMessageViewlet
   )
 
   builder.createDoc(

@@ -60,6 +60,7 @@
     "CompanyTasks": "Tasks",
     "CompanyFiles": "Files",
     "ProjectFiles": "Files",
+    "ProjectChat": "Chat",
     "ProjectDriveFolder": "Request folder",
     "ProductionFolder": "production",
     "DistributedFolder": "distributed",

@@ -172,6 +172,7 @@ import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.s
 import CompanyRelated from './components/company/CompanyRelated.svelte'
 import CompanyDriveFiles from './components/company/CompanyDriveFiles.svelte'
 import ProjectDriveFiles from './components/projects/ProjectDriveFiles.svelte'
+import ProjectChat from './components/projects/ProjectChat.svelte'
 import MyClients from './components/client/MyClients.svelte'
 import CreateClient from './components/client/CreateClient.svelte'
 import CreateClientFunnel from './components/client/CreateClientFunnel.svelte'
@@ -516,6 +517,7 @@ export default async (): Promise<Resources> => ({
     CompanyRelated,
     CompanyDriveFiles,
     ProjectDriveFiles,
+    ProjectChat,
     MyClients,
     CreateClient,
     CreateClientFunnel,

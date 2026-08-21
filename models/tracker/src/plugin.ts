@@ -103,7 +103,10 @@ export default mergeIds(trackerId, tracker, {
     DefaultProjectType: '' as Ref<ProjectType>,
     ClientActivityExtension: '' as Ref<Doc>,
     ClientFunnelActivityExtension: '' as Ref<Doc>,
-    ClientCollaborators: '' as Ref<Doc>
+    ClientCollaborators: '' as Ref<Doc>,
+    ProjectActivityExtension: '' as Ref<Doc>,
+    ProjectChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
+    TrackerProjectChatNavModel: '' as Ref<Doc>
   },
   actionImpl: {
     Move: '' as ViewAction,

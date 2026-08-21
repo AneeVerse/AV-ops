@@ -196,6 +196,9 @@ export class TProject extends TTaskProject implements Project {
   @Prop(TypeRef(contact.mixin.Employee), tracker.string.RequestAssignee)
     requestAssignee?: Ref<Employee> | null
 
+  @Prop(Collection(chunter.class.ChatMessage), chunter.string.Comments)
+    comments?: number
+
   @Prop(Collection(tracker.class.RelatedIssueTarget), tracker.string.RelatedIssues)
     relatedIssueTargets!: number
 }
