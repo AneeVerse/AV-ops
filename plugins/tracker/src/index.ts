@@ -59,6 +59,31 @@ export interface IssueStatus extends Status {}
 /**
  * @public
  */
+/**
+ * Request-level lifecycle on a Tracker Project (AneeVerse: Request = Project).
+ * Independent from Issue status / priority / due / assignee.
+ * @public
+ */
+export enum RequestStatus {
+  New,
+  InProgress,
+  WaitingForClient,
+  Review,
+  Completed,
+  Cancelled
+}
+
+/**
+ * Request-level priority on a Tracker Project. Independent from IssuePriority.
+ * @public
+ */
+export enum RequestPriority {
+  Low,
+  Normal,
+  High,
+  Urgent
+}
+
 export interface Project extends TaskProject, IconProps {
   identifier: string // Project identifier
   sequence: number
@@ -70,6 +95,14 @@ export interface Project extends TaskProject, IconProps {
   productionFolder?: Ref<Folder>
   distributedFolder?: Ref<Folder>
   aneerequestId?: string
+  /** Request lifecycle status (not Issue status). */
+  requestStatus?: RequestStatus
+  /** Request priority (not Issue priority). */
+  requestPriority?: RequestPriority
+  /** Request due date (not Issue dueDate). */
+  requestDueDate?: Timestamp | null
+  /** Primary person responsible for the Request (not Issue.assignee / defaultAssignee). */
+  requestAssignee?: Ref<Employee> | null
 }
 
 /**
@@ -428,6 +461,8 @@ const pluginState = plugin(trackerId, {
     TypeIssuePriority: '' as Ref<Class<Type<IssuePriority>>>,
     Milestone: '' as Ref<Class<Milestone>>,
     TypeMilestoneStatus: '' as Ref<Class<Type<MilestoneStatus>>>,
+    TypeRequestStatus: '' as Ref<Class<Type<RequestStatus>>>,
+    TypeRequestPriority: '' as Ref<Class<Type<RequestPriority>>>,
     TimeSpendReport: '' as Ref<Class<TimeSpendReport>>,
     TypeReportedTime: '' as Ref<Class<Type<number>>>,
     TypeEstimation: '' as Ref<Class<Type<number>>>,

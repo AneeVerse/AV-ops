@@ -250,6 +250,82 @@ const catalog = [
     }
   },
   {
+    id: 'tracker:class:TypeRequestStatus',
+    objectClass: 'core:class:Class',
+    attributes: {
+      _class: 'core:class:Class',
+      kind: 0,
+      label: 'tracker:string:RequestStatus',
+      extends: 'core:class:Type',
+      domain: 'model'
+    }
+  },
+  {
+    id: 'tracker:class:TypeRequestPriority',
+    objectClass: 'core:class:Class',
+    attributes: {
+      _class: 'core:class:Class',
+      kind: 0,
+      label: 'tracker:string:RequestPriority',
+      extends: 'core:class:Type',
+      domain: 'model'
+    }
+  },
+  {
+    id: 'tracker:class:Project_requestStatus',
+    objectClass: 'core:class:Attribute',
+    attributes: {
+      name: 'requestStatus',
+      attributeOf: 'tracker:class:Project',
+      label: 'tracker:string:RequestStatus',
+      type: {
+        _class: 'tracker:class:TypeRequestStatus',
+        label: 'tracker:string:RequestStatus'
+      }
+    }
+  },
+  {
+    id: 'tracker:class:Project_requestPriority',
+    objectClass: 'core:class:Attribute',
+    attributes: {
+      name: 'requestPriority',
+      attributeOf: 'tracker:class:Project',
+      label: 'tracker:string:RequestPriority',
+      type: {
+        _class: 'tracker:class:TypeRequestPriority',
+        label: 'tracker:string:RequestPriority'
+      }
+    }
+  },
+  {
+    id: 'tracker:class:Project_requestDueDate',
+    objectClass: 'core:class:Attribute',
+    attributes: {
+      name: 'requestDueDate',
+      attributeOf: 'tracker:class:Project',
+      label: 'tracker:string:RequestDueDate',
+      type: {
+        _class: 'core:class:TypeDate',
+        label: 'core:string:Date'
+      }
+    }
+  },
+  {
+    id: 'tracker:class:Project_requestAssignee',
+    objectClass: 'core:class:Attribute',
+    attributes: {
+      name: 'requestAssignee',
+      attributeOf: 'tracker:class:Project',
+      label: 'tracker:string:RequestAssignee',
+      type: {
+        _class: 'core:class:RefTo',
+        label: 'core:string:Ref',
+        icon: 'core:icon:TypeRef',
+        to: 'contact:mixin:Employee'
+      }
+    }
+  },
+  {
     id: 'tracker:app:Company',
     objectClass: 'workbench:class:Application',
     attributes: {

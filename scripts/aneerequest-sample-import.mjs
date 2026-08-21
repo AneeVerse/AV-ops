@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * Import AneeRequest Supabase data into Huly (Companies, Clients, Projects, Issues).
+ * Import AneeRequest Supabase data into Huly (Companies, Clients, Projects/Requests, Issues/Tasks).
+ *
+ * Mapping today: Client→Organization(+Client), Request→Project, Task→Issue.
+ * Future (not yet): map request status/priority/due/assignee onto Project.request*
+ * fields, and store task id on Issue for stronger idempotency.
  *
  *   node scripts/aneerequest-sample-import.mjs
  *   node scripts/aneerequest-sample-import.mjs --status=Ongoing

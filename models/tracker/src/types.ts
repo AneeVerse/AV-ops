@@ -74,6 +74,8 @@ import {
   type RelatedClassRule,
   type RelatedIssueTarget,
   type RelatedSpaceRule,
+  type RequestPriority,
+  type RequestStatus,
   type TimeReportDayType,
   type TimeSpendReport,
   type Client,
@@ -115,10 +117,36 @@ export function TypeMilestoneStatus (): Type<MilestoneStatus> {
 
 @Model(tracker.class.TypeMilestoneStatus, core.class.Type, DOMAIN_MODEL)
 export class TTypeMilestoneStatus extends TType {}
+
 /**
  * @public
  */
+export function TypeRequestStatus (): Type<RequestStatus> {
+  return { _class: tracker.class.TypeRequestStatus, label: tracker.string.RequestStatus }
+}
 
+/**
+ * @public
+ */
+@Model(tracker.class.TypeRequestStatus, core.class.Type, DOMAIN_MODEL)
+export class TTypeRequestStatus extends TType {}
+
+/**
+ * @public
+ */
+export function TypeRequestPriority (): Type<RequestPriority> {
+  return { _class: tracker.class.TypeRequestPriority, label: tracker.string.RequestPriority }
+}
+
+/**
+ * @public
+ */
+@Model(tracker.class.TypeRequestPriority, core.class.Type, DOMAIN_MODEL)
+export class TTypeRequestPriority extends TType {}
+
+/**
+ * @public
+ */
 @Model(tracker.class.Project, task.class.Project)
 @UX(tracker.string.Project, tracker.icon.Issues, 'Project', 'name')
 export class TProject extends TTaskProject implements Project {
@@ -155,6 +183,18 @@ export class TProject extends TTaskProject implements Project {
   @Prop(TypeString(), tracker.string.AneerequestId)
   @Index(IndexKind.Indexed)
     aneerequestId?: string
+
+  @Prop(TypeRequestStatus(), tracker.string.RequestStatus)
+    requestStatus?: RequestStatus
+
+  @Prop(TypeRequestPriority(), tracker.string.RequestPriority)
+    requestPriority?: RequestPriority
+
+  @Prop(TypeDate(DateRangeMode.DATE), tracker.string.RequestDueDate)
+    requestDueDate?: Timestamp | null
+
+  @Prop(TypeRef(contact.mixin.Employee), tracker.string.RequestAssignee)
+    requestAssignee?: Ref<Employee> | null
 
   @Prop(Collection(tracker.class.RelatedIssueTarget), tracker.string.RelatedIssues)
     relatedIssueTargets!: number

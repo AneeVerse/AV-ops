@@ -14,11 +14,12 @@ usage() {
 Usage: huly-deploy-production.sh <command>
 
 Commands:
-  all            Deploy front + model-client + model-company + model-company-drive + verify
+  all            Deploy front + model-client + model-company + model-company-drive + model-request + verify
   front          Build tarball locally (if missing), upload, run huly-deploy-front.sh on VPS
   model-tracker  Upload and run huly-insert-issue-viewlets.sh (States/Dashboard for Issues)
   model-company  Upload and run huly-insert-company-app.sh (Company app + Project.company field)
   model-company-drive  Upload company drive model patch (folder fields + triggers need ship + upgrade)
+  model-request  Upload and run huly-insert-request-fields.sh (Request status/priority/due/assignee on Project)
   model-client   Generate and apply Client classes/funnel/navigator into live model_tx
   verify         Curl live site + check front container index.html on VPS
   help           Show this message
@@ -31,12 +32,14 @@ Environment:
   SKIP_MODEL_CLIENT=1         Skip model-client stage for `all`
   SKIP_MODEL_COMPANY=1        Skip model-company stage for `all`
   SKIP_MODEL_COMPANY_DRIVE=1  Skip model-company-drive stage for `all`
+  SKIP_MODEL_REQUEST=1        Skip model-request stage for `all`
   SKIP_VERIFY=1               Skip verify stage for `all`
 
 Examples:
   ./scripts/huly-deploy-production.sh front
   ./scripts/huly-deploy-production.sh model-tracker
   ./scripts/huly-deploy-production.sh model-company
+  ./scripts/huly-deploy-production.sh model-request
   SKIP_BUILD=1 ./scripts/huly-deploy-production.sh front
 EOF
 }
@@ -96,6 +99,12 @@ cmd_model_company_drive() {
   "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-drive.sh'
 }
 
+cmd_model_request() {
+  echo "==== upload model-request script ===="
+  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-request-fields.sh" "$VPS:/tmp/"
+  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-request-fields.sh'
+}
+
 cmd_model_client() {
   local sql="$REPO_ROOT/scripts/.huly-client-model.sql"
   echo "==== generate Client model SQL ===="
@@ -139,6 +148,13 @@ cmd_all() {
     echo "Skipping model-company-drive stage (SKIP_MODEL_COMPANY_DRIVE=1)"
   fi
 
+  if [[ "${SKIP_MODEL_REQUEST:-0}" != "1" ]]; then
+    stage "model-request"
+    cmd_model_request
+  else
+    echo "Skipping model-request stage (SKIP_MODEL_REQUEST=1)"
+  fi
+
   # Client model must run after company patches — it owns Company app navigatorModel
   # (funnel spaces sidebar + SpaceView create-client button config).
   if [[ "${SKIP_MODEL_CLIENT:-0}" != "1" ]]; then
@@ -162,6 +178,7 @@ case "${1:-help}" in
   model-tracker) cmd_model_tracker ;;
   model-company) cmd_model_company ;;
   model-company-drive) cmd_model_company_drive ;;
+  model-request) cmd_model_request ;;
   model-client) cmd_model_client ;;
   verify) cmd_verify ;;
   help|-h|--help) usage ;;

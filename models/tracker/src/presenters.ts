@@ -74,6 +74,14 @@ export function definePresenters (builder: Builder): void {
     inlineEditor: tracker.component.MilestoneStatusEditor
   })
 
+  builder.mixin(tracker.class.TypeRequestStatus, core.class.Class, view.mixin.AttributePresenter, {
+    presenter: tracker.component.RequestStatusPresenter
+  })
+
+  builder.mixin(tracker.class.TypeRequestPriority, core.class.Class, view.mixin.AttributePresenter, {
+    presenter: tracker.component.RequestPriorityPresenter
+  })
+
   //
   // Type Issue Priority
   //

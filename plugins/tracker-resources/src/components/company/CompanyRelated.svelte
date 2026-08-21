@@ -30,7 +30,7 @@
   let tab: string = 'projects'
   const tabs: TabItem[] = [
     { id: 'projects', labelIntl: tracker.string.CompanyProjects },
-    { id: 'issues', labelIntl: tracker.string.Issues },
+    { id: 'issues', labelIntl: tracker.string.CompanyTasks },
     { id: 'files', labelIntl: tracker.string.CompanyFiles }
   ]
 
@@ -66,7 +66,7 @@
       }}
     />
     {#if tab === 'projects' && !readonly}
-      <Button icon={IconAdd} label={tracker.string.CreateProject} kind={'primary'} size={'small'} on:click={createProject} />
+      <Button icon={IconAdd} label={tracker.string.CreateRequest} kind={'primary'} size={'small'} on:click={createProject} />
     {/if}
   </div>
 
@@ -81,6 +81,18 @@
             presenter: tracker.component.ProjectPresenter,
             props: { openIssues: true, showActions: true }
           },
+          {
+            key: 'requestStatus',
+            presenter: tracker.component.RequestStatusPresenter,
+            label: tracker.string.RequestStatus
+          },
+          {
+            key: 'requestPriority',
+            presenter: tracker.component.RequestPriorityPresenter,
+            label: tracker.string.RequestPriority
+          },
+          'requestDueDate',
+          'requestAssignee',
           'members',
           'modifiedOn'
         ]}
@@ -91,7 +103,7 @@
       <Issues
         {baseQuery}
         {currentSpace}
-        title={tracker.string.Issues}
+        title={tracker.string.CompanyTasks}
         icon={tracker.icon.Issues}
         config={[
           ['all', tracker.string.All, {}],

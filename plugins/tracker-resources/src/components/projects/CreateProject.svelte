@@ -41,10 +41,12 @@
   import presentation, { IconWithEmoji, Card, createQuery, getClient } from '@hcengineering/presentation'
   import task, { ProjectType, TaskType } from '@hcengineering/task'
   import { taskTypeStore, typeStore } from '@hcengineering/task-resources'
-  import { IssueStatus, Project, TimeReportDayType, TrackerEvents } from '@hcengineering/tracker'
+  import { IssueStatus, Project, RequestPriority, RequestStatus, TimeReportDayType, TrackerEvents } from '@hcengineering/tracker'
   import {
     Button,
     Component,
+    DatePresenter,
+    DropdownLabelsIntl,
     EditBox,
     Label,
     Toggle,
@@ -61,6 +63,12 @@
 
   import tracker from '../../plugin'
   import StatusSelector from '../issues/StatusSelector.svelte'
+  import {
+    defaultRequestPriorities,
+    defaultRequestStatuses,
+    requestPriorityAssets,
+    requestStatusAssets
+  } from '../../types'
 
   export let project: Project | undefined = undefined
   export let namePlaceholder: string = ''
@@ -78,6 +86,10 @@
   let color = project?.color ?? getColorNumberByText(name)
   let isColorSelected = false
   let defaultAssignee: Ref<Employee> | null | undefined = project?.defaultAssignee ?? null
+  let requestStatus: RequestStatus = project?.requestStatus ?? RequestStatus.New
+  let requestPriority: RequestPriority = project?.requestPriority ?? RequestPriority.Normal
+  let requestDueDate: number | null | undefined = project?.requestDueDate ?? null
+  let requestAssignee: Ref<Employee> | null | undefined = project?.requestAssignee ?? null
   let members: AccountUuid[] =
     project?.members !== undefined ? hierarchy.clone(project.members) : [getCurrentAccount().uuid]
   let owners: AccountUuid[] =
@@ -145,6 +157,10 @@
       identifier: identifier.toUpperCase(),
       sequence: 0,
       defaultAssignee: defaultAssignee ?? undefined,
+      requestStatus,
+      requestPriority,
+      requestDueDate: requestDueDate ?? null,
+      requestAssignee: requestAssignee ?? undefined,
       icon,
       color,
       defaultIssueStatus: defaultStatus ?? ('' as Ref<IssueStatus>),
@@ -186,6 +202,18 @@
     }
     if (projectData.defaultAssignee !== project?.defaultAssignee) {
       update.defaultAssignee = projectData.defaultAssignee
+    }
+    if (projectData.requestStatus !== project?.requestStatus) {
+      update.requestStatus = projectData.requestStatus
+    }
+    if (projectData.requestPriority !== project?.requestPriority) {
+      update.requestPriority = projectData.requestPriority
+    }
+    if (projectData.requestDueDate !== project?.requestDueDate) {
+      update.requestDueDate = projectData.requestDueDate
+    }
+    if (projectData.requestAssignee !== project?.requestAssignee) {
+      update.requestAssignee = projectData.requestAssignee
     }
     if (projectData.defaultIssueStatus !== project?.defaultIssueStatus) {
       update.defaultIssueStatus = projectData.defaultIssueStatus
@@ -395,10 +423,20 @@
     !(members.length === 0 && isPrivate) &&
     owners.length > 0 &&
     (!isPrivate || owners.some((o) => members.includes(o)))
+
+  $: requestStatusItems = defaultRequestStatuses.map((status) => ({
+    id: status,
+    label: requestStatusAssets[status].label
+  }))
+  $: requestPriorityItems = defaultRequestPriorities.map((priority) => ({
+    id: priority,
+    label: requestPriorityAssets[priority].label
+  }))
+  $: cardLabel = isNew ? tracker.string.NewRequest : tracker.string.EditRequest
 </script>
 
 <Card
-  label={isNew ? tracker.string.NewProject : tracker.string.EditProject}
+  label={cardLabel}
   okLabel={isNew ? presentation.string.Create : presentation.string.Save}
   okAction={handleSave}
   {canSave}
@@ -409,6 +447,12 @@
   on:changeContent
 >
   <div class="antiGrid">
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header withDesciption">
+        <Label label={tracker.string.Request} />
+        <span><Label label={tracker.string.RequestProjectHint} /></span>
+      </div>
+    </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
         <Label label={task.string.ProjectType} />
@@ -429,13 +473,13 @@
     </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
-        <Label label={tracker.string.ProjectTitle} />
+        <Label label={tracker.string.RequestTitle} />
       </div>
       <div class="padding">
         <EditBox
           id="project-title"
           bind:value={name}
-          placeholder={tracker.string.ProjectTitlePlaceholder}
+          placeholder={tracker.string.RequestTitlePlaceholder}
           kind={'large-style'}
           autoFocus
           on:input={() => {
@@ -501,9 +545,72 @@
         create={{ component: contact.component.CreateOrganization, label: contact.string.CreateOrganization }}
       />
     </div>
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header">
+        <Label label={tracker.string.RequestStatus} />
+      </div>
+      <DropdownLabelsIntl
+        items={requestStatusItems}
+        label={tracker.string.RequestStatus}
+        kind={'regular'}
+        size={'large'}
+        selected={requestStatus}
+        on:selected={(e) => {
+          requestStatus = e.detail
+        }}
+      />
+    </div>
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header">
+        <Label label={tracker.string.RequestPriority} />
+      </div>
+      <DropdownLabelsIntl
+        items={requestPriorityItems}
+        label={tracker.string.RequestPriority}
+        kind={'regular'}
+        size={'large'}
+        selected={requestPriority}
+        on:selected={(e) => {
+          requestPriority = e.detail
+        }}
+      />
+    </div>
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header">
+        <Label label={tracker.string.RequestDueDate} />
+      </div>
+      <DatePresenter
+        bind:value={requestDueDate}
+        labelNull={tracker.string.RequestDueDate}
+        kind={'regular'}
+        size={'large'}
+        editable
+      />
+    </div>
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header">
+        <Label label={tracker.string.RequestAssignee} />
+      </div>
+      <AssigneeBox
+        label={tracker.string.RequestAssignee}
+        placeholder={tracker.string.RequestAssignee}
+        kind={'regular'}
+        size={'large'}
+        avatarSize={'card'}
+        bind:value={requestAssignee}
+        titleDeselect={tracker.string.Unassigned}
+        showNavigate={false}
+        showTooltip={{ label: tracker.string.RequestAssignee }}
+      />
+    </div>
   </div>
 
   <div class="antiGrid">
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header withDesciption">
+        <Label label={tracker.string.RequestTeam} />
+      </div>
+    </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
         <Label label={tracker.string.ChooseIcon} />

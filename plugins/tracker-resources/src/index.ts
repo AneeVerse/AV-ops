@@ -166,6 +166,8 @@ import MilestoneFilter from './components/milestones/MilestoneFilter.svelte'
 import MilestoneRefPresenter from './components/milestones/MilestoneRefPresenter.svelte'
 import CreateProject from './components/projects/CreateProject.svelte'
 import ProjectPresenter from './components/projects/ProjectPresenter.svelte'
+import RequestStatusPresenter from './components/projects/RequestStatusPresenter.svelte'
+import RequestPriorityPresenter from './components/projects/RequestPriorityPresenter.svelte'
 import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.svelte'
 import CompanyRelated from './components/company/CompanyRelated.svelte'
 import CompanyDriveFiles from './components/company/CompanyDriveFiles.svelte'
@@ -482,6 +484,8 @@ export default async (): Promise<Resources> => ({
     TemplateEstimationEditor,
     CreateProject,
     ProjectPresenter,
+    RequestStatusPresenter,
+    RequestPriorityPresenter,
     ProjectSpacePresenter,
     IssueStatistics,
     StatusRefPresenter,
