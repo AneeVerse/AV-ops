@@ -37,6 +37,11 @@ if (-not (Test-Path $baseModel)) {
   if ($LASTEXITCODE -ne 0) { throw 'failed to copy model.json out of the transactor' }
 }
 
+Write-Host 'compiling model packages'
+$repoUnix = ConvertTo-GitBashPath $RepoRoot
+& $GitBash -lc "cd '$repoUnix' && node common/scripts/install-run-rush.js build --to @hcengineering/model-all"
+if ($LASTEXITCODE -ne 0) { throw 'model compile failed' }
+
 Write-Host 'building fork model bundle'
 $modelsAll = ConvertTo-GitBashPath (Join-Path $RepoRoot 'models\all')
 & $GitBash -lc "cd '$modelsAll' && rushx bundle"

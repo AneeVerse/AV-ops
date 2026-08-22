@@ -256,6 +256,13 @@ MODEL_CACHE="$REPO_ROOT/scripts/.model-cache"
 REMOTE_PATCH=/opt/huly-front/model-patch.sql
 
 build_model_bundle() {
+  info "compiling model packages"
+  if command -v rush >/dev/null 2>&1; then
+    ( cd "$REPO_ROOT" && rush build --to @hcengineering/model-all )
+  else
+    ( cd "$REPO_ROOT" && node common/scripts/install-run-rush.js build --to @hcengineering/model-all )
+  fi
+  info "bundling model.json"
   if command -v rushx >/dev/null 2>&1; then
     ( cd "$REPO_ROOT/models/all" && rushx bundle )
   else
