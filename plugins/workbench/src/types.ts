@@ -143,6 +143,8 @@ export interface SpacesNavModel {
   specials?: SpecialNavModel[]
 
   visibleIf?: Resource<(space: Space) => Promise<boolean>>
+  /** When true, the section header shows a collapsible search that filters spaces in the list. */
+  searchable?: boolean
 }
 
 /** @public */

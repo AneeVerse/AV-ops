@@ -23,6 +23,7 @@
     AnyComponent,
     IconAdd,
     IconSearch,
+    SearchInput,
     getCurrentResolvedLocation,
     navigate,
     showPopup
@@ -137,51 +138,182 @@
   } else {
     filteredSpaces = spaces
   }
-  $: visibleSpace = filteredSpaces.find((fs) => fs._id === currentSpace)
-  $: empty = filteredSpaces.length === 0 || filteredSpaces === undefined
+
+  let search = ''
+  let searchActive = false
+  let searchEl: HTMLElement | undefined
+  $: searchNorm = search.trim().toLowerCase()
+  $: displayedSpaces =
+    searchNorm === ''
+      ? filteredSpaces
+      : filteredSpaces.filter((s) => s.name.toLowerCase().includes(searchNorm))
+
+  $: visibleSpace = displayedSpaces.find((fs) => fs._id === currentSpace)
+  $: empty = displayedSpaces.length === 0 || displayedSpaces === undefined
   $: visible =
     visibleSpace !== undefined &&
     (currentSpecial !== undefined || currentFragment !== undefined || currentFragment !== '') &&
     !deselect &&
     !empty
+
+  function handleSearchFocusOut (ev: FocusEvent): void {
+    const target = ev.currentTarget as HTMLElement
+    const related = ev.relatedTarget
+    if (related == null || !target.contains(related as Node)) {
+      searchActive = false
+    }
+  }
+
+  // NavGroup renders the tools slot inside the header <button>, so a plain click lands
+  // on the button: focus goes there instead of the input and the group toggles. Take
+  // the press over and focus the field ourselves.
+  function handleSearchPointerDown (ev: PointerEvent): void {
+    ev.stopPropagation()
+    const input = searchEl?.querySelector('input')
+    if (input == null) return
+    // Once focused, leave the event alone so caret placement and selection still work.
+    if (document.activeElement === input) return
+    ev.preventDefault()
+    searchActive = true
+    input.focus()
+  }
+
+  function handleSearchKeydown (ev: KeyboardEvent): void {
+    if (ev.key !== 'Escape') return
+    ev.stopPropagation()
+    search = ''
+    searchActive = false
+    ;(ev.currentTarget as HTMLElement).querySelector('input')?.blur()
+  }
 </script>
 
-<TreeNode
-  _id={'tree-' + model.id}
-  label={model.label}
-  actions={async () => getParentActions()}
-  highlighted={visible}
-  isFold={!empty}
-  {empty}
-  {visible}
->
-  {#each filteredSpaces as space, i (space._id)}
-    {#if separate && model.specials && i !== 0}<TreeSeparator line />{/if}
-    <SpacesNavItem
-      {model}
-      {space}
-      {currentSpace}
-      {currentSpecial}
-      {currentFragment}
-      {deselect}
-      isChanged={isChanged(space, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
-      spaceActions={[starSpace]}
-    />
-  {/each}
+{#if model.searchable}
+  <div class="spaces-nav-searchable" class:search-active={searchActive || search !== ''}>
+    <TreeNode
+      _id={'tree-' + model.id}
+      label={model.label}
+      actions={async () => getParentActions()}
+      highlighted={visible}
+      isFold={!empty}
+      noDivider
+      {empty}
+      {visible}
+    >
+      <svelte:fragment slot="tools">
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div
+          bind:this={searchEl}
+          class="spaces-nav-search"
+          on:pointerdown={handleSearchPointerDown}
+          on:click|stopPropagation
+          on:keydown={handleSearchKeydown}
+          on:focusin={() => {
+            searchActive = true
+          }}
+          on:focusout={handleSearchFocusOut}
+        >
+          <SearchInput bind:value={search} collapsed width="100%" />
+        </div>
+      </svelte:fragment>
 
-  <svelte:fragment slot="visible">
-    {#if visibleSpace}
+      {#each displayedSpaces as space, i (space._id)}
+        {#if separate && model.specials && i !== 0}<TreeSeparator line />{/if}
+        <SpacesNavItem
+          {model}
+          {space}
+          {currentSpace}
+          {currentSpecial}
+          {currentFragment}
+          {deselect}
+          isChanged={isChanged(space, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
+          spaceActions={[starSpace]}
+        />
+      {/each}
+
+      <svelte:fragment slot="visible">
+        {#if visibleSpace}
+          <SpacesNavItem
+            {model}
+            space={visibleSpace}
+            {currentSpace}
+            {currentSpecial}
+            {currentFragment}
+            {deselect}
+            isChanged={isChanged(visibleSpace, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
+            spaceActions={[starSpace]}
+            forciblyСollapsed
+          />
+        {/if}
+      </svelte:fragment>
+    </TreeNode>
+  </div>
+{:else}
+  <TreeNode
+    _id={'tree-' + model.id}
+    label={model.label}
+    actions={async () => getParentActions()}
+    highlighted={visible}
+    isFold={!empty}
+    {empty}
+    {visible}
+  >
+    {#each displayedSpaces as space, i (space._id)}
+      {#if separate && model.specials && i !== 0}<TreeSeparator line />{/if}
       <SpacesNavItem
         {model}
-        space={visibleSpace}
+        {space}
         {currentSpace}
         {currentSpecial}
         {currentFragment}
         {deselect}
-        isChanged={isChanged(visibleSpace, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
+        isChanged={isChanged(space, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
         spaceActions={[starSpace]}
-        forciblyСollapsed
       />
-    {/if}
-  </svelte:fragment>
-</TreeNode>
+    {/each}
+
+    <svelte:fragment slot="visible">
+      {#if visibleSpace}
+        <SpacesNavItem
+          {model}
+          space={visibleSpace}
+          {currentSpace}
+          {currentSpecial}
+          {currentFragment}
+          {deselect}
+          isChanged={isChanged(visibleSpace, $notifyContextByDocStore, $inboxNotificationsByContextStore)}
+          spaceActions={[starSpace]}
+          forciblyСollapsed
+        />
+      {/if}
+    </svelte:fragment>
+  </TreeNode>
+{/if}
+
+<style lang="scss">
+  /* Keep search and create-project visible; the theme hides header tools until hover. */
+  .spaces-nav-searchable :global(.hulyNavGroup-header__tools) {
+    display: flex;
+    min-width: 0;
+    max-width: none;
+  }
+  .spaces-nav-searchable.search-active :global(.hulyNavGroup-header__label) {
+    display: none;
+  }
+  /* While searching the field takes the whole row. */
+  .spaces-nav-searchable.search-active :global(.hulyNavGroup-header__tools) {
+    flex: 1;
+  }
+  /* The header keeps a flex-grow spacer between label and tools, which would otherwise
+     split the free space with the expanding field. */
+  .spaces-nav-searchable.search-active :global(.hulyNavGroup-header > .flex-grow) {
+    display: none;
+  }
+  .spaces-nav-search {
+    flex: 1;
+    min-width: 0;
+  }
+  .spaces-nav-searchable.search-active :global(.spaces-nav-search .searchInput-wrapper) {
+    max-width: 100% !important;
+    width: 100%;
+  }
+</style>

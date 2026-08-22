@@ -1,4 +1,5 @@
 @echo off
+REM Kept for muscle memory — deploy.cmd is the current entry point.
 cd /d "%~dp0"
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\aneeverse-ship.ps1"
-if errorlevel 1 pause
+call "%~dp0deploy.cmd" %*
+exit /b %errorlevel%

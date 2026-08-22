@@ -6,7 +6,7 @@ Simple Windows commands from the repo root. **SSH key and passwords stay on your
 |---------|----------------|
 | `local.cmd` | Starts local Docker (Cockroach/account/transactor) and webpack UI on **8080**. Data is **local**, not production. |
 | `prod-local.cmd` | Stops ports **8080** / **18087**, SSH-tunnels to production, starts local UI against live aneeverse |
-| `ship.cmd` | Builds the front bundle, uploads it, restarts production front + nginx |
+| `deploy.cmd` | Validates, builds only what changed, ships it, smoke-tests production, rolls back on failure |
 
 Live site: https://huly.aneeverse.com
 
@@ -54,6 +54,16 @@ Then open **http://localhost:8080/**.
 
 If something was already running on 8080, `local.cmd` kills it first.
 
+Before starting webpack it also does two things to the local DB:
+
+- **Drops stale fork model rows** left over from the rollback. Without this, restoring an old URL
+  like `/company/my-clients` throws `ResourceNotFound tracker:resolver:CompanyLocation` and the
+  workbench never renders.
+- **Syncs `models/**` into the local DB.** The local transactor serves the model baked into its
+  image, so model edits are invisible until the difference is written to `model_tx`. This is the
+  same mechanism production uses — see
+  [Model changes](HULY-PRODUCTION-DEPLOY.md#model-changes).
+
 ## Run against production data (`prod-local.cmd`)
 
 ```powershell
@@ -71,20 +81,32 @@ cd dev/prod && HULY_PROD_PROXY=http://127.0.0.1:18087 rushx dev-aneeverse   # te
 
 ---
 
-## Ship to production (`ship.cmd`)
+## Ship to production (`deploy.cmd`)
 
 ```powershell
 cd E:\Projects\platform-develop
-.\ship.cmd
+.\deploy.cmd
 ```
 
 This:
 
-1. Webpack-packages `dev/prod`
-2. Copies the tarball + `scripts/huly-deploy-front.sh` to the VPS
-3. Replaces `/app/dist` in `huly_v7-front-1`, restarts front and docker nginx
+1. Checks for duplicate plugin ids (~2 s) — the bug class that black-screened production
+2. Builds `dev/prod` with a warm webpack cache, skipping the build entirely if nothing changed
+3. Uploads only the files the VPS is missing, then builds and switches to a new front image
+4. Pushes any `models/**` edits into the workspace model, after the front so the bundle is ready
+5. Logs into production and verifies the workbench renders — **rolls back automatically if not**
 
-After it prints `deploy done`, hard-refresh https://huly.aneeverse.com (**Ctrl+F5**).
+After it prints `done`, hard-refresh https://huly.aneeverse.com (**Ctrl+F5**).
+
+Useful variants:
+
+```powershell
+.\deploy.cmd status     # what would deploy, without doing anything
+.\deploy.cmd rollback   # back to the previous front image
+.\deploy.cmd smoke      # check production as it is right now
+```
+
+`ship.cmd` still works and forwards to `deploy.cmd`.
 
 ---
 

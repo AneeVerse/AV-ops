@@ -148,6 +148,7 @@
           on:click={onMenuClick}
         />
       {/if}
+      <slot name="tools" />
     </svelte:fragment>
     <svelte:fragment slot="visible"><slot name="visible" /></svelte:fragment>
     <slot />

@@ -14,15 +14,20 @@ on:
         description: "Git ref to deploy"
         required: false
         default: "refs/heads/master"
-      run_front:
-        description: "Run frontend stage"
+      fresh:
+        description: "Discard the webpack cache and build cold"
         required: false
-        default: true
+        default: false
         type: boolean
-      run_verify:
-        description: "Run verify stage"
+      force:
+        description: "Deploy even if nothing changed"
         required: false
-        default: true
+        default: false
+        type: boolean
+      skip_smoke:
+        description: "Skip the post-deploy smoke test (not recommended)"
+        required: false
+        default: false
         type: boolean
 
 jobs:
@@ -63,9 +68,37 @@ jobs:
       - name: Install dependencies
         run: node common/scripts/install-run-rush.js install
 
-      - name: Unified deploy (all stages)
-        env:
-          SKIP_FRONT: ${{ github.event.inputs.run_front == 'true' && '0' || '1' }}
-          SKIP_VERIFY: ${{ github.event.inputs.run_verify == 'true' && '0' || '1' }}
+      # Persist the webpack filesystem cache so CI builds are incremental too.
+      - name: Restore webpack cache
+        uses: actions/cache@v4
+        with:
+          path: dev/prod/.build_prod
+          key: huly-front-webpack-${{ hashFiles('dev/prod/webpack.config.js') }}-${{ github.sha }}
+          restore-keys: |
+            huly-front-webpack-${{ hashFiles('dev/prod/webpack.config.js') }}-
+            huly-front-webpack-
+
+      - name: Install smoke-test browser
+        if: ${{ github.event.inputs.skip_smoke != 'true' }}
         run: |
-          ./scripts/huly-deploy-production.sh all
+          mkdir -p scripts/.deploy-tools
+          cd scripts/.deploy-tools
+          npm init -y >/dev/null
+          npm i --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+
+      - name: Deploy
+        env:
+          FRESH: ${{ github.event.inputs.fresh == 'true' && '1' || '0' }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '1' || '0' }}
+          SKIP_SMOKE: ${{ github.event.inputs.skip_smoke == 'true' && '1' || '0' }}
+        run: |
+          ./scripts/huly-deploy-production.sh deploy
+
+      - name: Upload smoke screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-screenshots
+          path: scripts/_deploy-smoke/
+          if-no-files-found: ignore

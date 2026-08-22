@@ -299,7 +299,10 @@ module.exports = [
       ? {
           type: 'filesystem',
           allowCollectingMemory: true,
-          cacheLocation: path.resolve(__dirname, '.build_dev')
+          // Separate caches so production deploys and local dev do not evict
+          // each other's entries.
+          cacheLocation: path.resolve(__dirname, prod ? '.build_prod' : '.build_dev'),
+          buildDependencies: { config: [__filename] }
         }
       : undefined,
     entry: {

@@ -127,7 +127,25 @@ if (-not $ready) {
   throw "Cockroach did not become ready. Is Docker Desktop running?"
 }
 
+Write-Host "==== drop stale fork model rows ===="
+$cleanupSql = Join-Path $PSScriptRoot 'huly-cleanup-local-model.sql'
+$cleanupOut = Get-Content $cleanupSql | docker exec -i dev-cockroach-1 ./cockroach sql --insecure --database=defaultdb --format=tsv
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "WARNING: local model cleanup failed. Old /company/* URLs may crash the workbench."
+  Write-Host ($cleanupOut -join "`n")
+} elseif ($cleanupOut -match '^DELETE [1-9]') {
+  # Transactor and workspace cache the model at session start, so they must be
+  # recycled for the delete to take effect.
+  Write-Host "Removed stale rows; restarting transactor + workspace."
+  docker restart dev-transactor_cockroach-1 dev-workspace_cockroach-1 | Out-Null
+  Start-Sleep -Seconds 12
+}
+
 $gitBash = Get-GitBash
+
+Write-Host "==== sync fork model into local DB ===="
+& (Join-Path $PSScriptRoot 'huly-model-sync.ps1') -RepoRoot $RepoRoot -GitBash $gitBash
+
 $prodUnix = ConvertTo-GitBashPath (Join-Path $RepoRoot 'dev\prod')
 Write-Host "==== webpack  http://localhost:$WebpackPort  (Ctrl+C to stop) ===="
 Write-Host "Local DB. Log in as user1 / 1234, workspace local-ws."

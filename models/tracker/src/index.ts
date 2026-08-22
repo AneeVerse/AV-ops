@@ -369,7 +369,9 @@ function defineApplication (
             componentProps: {
               _class: tracker.class.Project,
               icon: view.icon.List,
-              label: tracker.string.AllProjects
+              label: tracker.string.AllProjects,
+              createLabel: tracker.string.CreateProject,
+              createComponent: tracker.component.CreateProject
             }
           },
           {
@@ -379,18 +381,19 @@ function defineApplication (
             icon: tracker.icon.Labels,
             label: tracker.string.Labels,
             // createItemLabel: task.string.TaskCreateLabel,
-            position: 'bottom'
+            position: 'top'
           }
         ],
         spaces: [
           {
             id: 'projects',
-            label: tracker.string.Projects,
+            label: tracker.string.AllClients,
             spaceClass: tracker.class.Project,
             addSpaceLabel: tracker.string.CreateProject,
             createComponent: tracker.component.CreateProject,
             visibleIf: tracker.function.IsProjectJoined,
             icon: tracker.icon.Home,
+            searchable: true,
             specials: [
               {
                 id: opt.issuesId,

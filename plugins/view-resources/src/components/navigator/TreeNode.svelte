@@ -72,5 +72,6 @@
 >
   <slot />
   <svelte:fragment slot="extra"><slot name="extra" /></svelte:fragment>
+  <svelte:fragment slot="tools"><slot name="tools" /></svelte:fragment>
   <svelte:fragment slot="visible"><slot name="visible" /></svelte:fragment>
 </TreeElement>

@@ -2,7 +2,7 @@
 
 This document describes **how this fork is deployed today** so the next person or agent does not start from scratch.
 
-**Day-to-day:** run `local.cmd` (local Docker) / `prod-local.cmd` (live data) or `ship.cmd` (build and deploy). See [LOCAL-AND-DEPLOY.md](LOCAL-AND-DEPLOY.md).
+**Day-to-day:** run `local.cmd` (local Docker) / `prod-local.cmd` (live data) or `deploy.cmd` (build, deploy, smoke-test). See [LOCAL-AND-DEPLOY.md](LOCAL-AND-DEPLOY.md).
 
 **Full fork change log (features + why vs upstream):** [ANEEVERSE-FORK-CHANGES.md](ANEEVERSE-FORK-CHANGES.md).
 
@@ -56,33 +56,121 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 
 ---
 
-## Two deploy paths (pick one)
-
-### 0) Unified deploy (recommended)
-
-Use this when you want one command to deploy and verify production:
-
-1. Frontend bundle deploy
-2. Health verification
-
-**Local one-command deploy (Windows):**
+## The one command
 
 ```powershell
-ship.cmd
+deploy.cmd
 ```
 
-`ship.cmd` calls `scripts/aneeverse-ship.ps1`, which delegates to:
+That is the whole day-to-day flow. It runs five stages and **skips whatever did not change**:
 
-```bash
-./scripts/huly-deploy-production.sh all
+| Stage | What it does | Fails the deploy when |
+|-------|--------------|------------------------|
+| `validate` | Plugin-id collision check (~2 s) | A `mergeIds` key is declared twice — this is what black-screened production on 2026-08-22 |
+| `build` | Webpack with the filesystem cache warm | `index.html` references a chunk that is missing from `dist` |
+| `ship` | Uploads only the files the VPS lacks, builds a front image, switches the container | The bundle inside the container is incomplete, or nginx does not return 200 |
+| `model` | Pushes `models/**` edits into `model_tx` (see [Model changes](#model-changes)) | The generated patch is implausibly large, or it fails to apply |
+| `smoke` | Logs into production and checks the workbench renders | Reload loop, console errors, or the workbench never appears → **automatic rollback** |
+
+Other commands:
+
+```powershell
+deploy.cmd status      # what would deploy, and why (no build, no changes)
+deploy.cmd validate    # just the pre-build checks
+deploy.cmd model       # force a model sync on its own
+deploy.cmd smoke       # test production as it is right now
+deploy.cmd rollback    # switch back to the previous front image
+deploy.cmd verify      # live headers + which image is running
+deploy.cmd prune       # reclaim docker disk on the VPS
 ```
 
-**Optional stage toggles:**
+Flags (set them as environment variables):
 
-```bash
-SKIP_FRONT=1 ./scripts/huly-deploy-production.sh all
-SKIP_VERIFY=1 ./scripts/huly-deploy-production.sh all
-```
+| Flag | Effect |
+|------|--------|
+| `FRESH=1` | Throw away the webpack cache and build cold |
+| `FORCE=1` | Redeploy even when nothing changed |
+| `SKIP_SMOKE=1` | Skip the smoke test (not recommended) |
+| `NO_ROLLBACK=1` | Leave a failed deploy live for debugging |
+| `ALLOW_SERVER_CHANGES=1` | Proceed when server code changed, deploying the front only |
+
+### Why it is fast
+
+- **Warm webpack cache.** `USE_CACHE=true` is now passed by the deploy script, with a prod-only
+  cache dir (`dev/prod/.build_prod`). The cold build is ~15 min; later builds reuse the cache.
+  Use `FRESH=1` if you ever suspect a stale cache.
+- **Delta upload.** A sha1 manifest is compared against the VPS, so only changed files go over
+  the wire instead of a 78 MB tarball every time.
+- **Skips no-op work.** If the source fingerprint matches what is live, nothing is built. If the
+  built bundle is byte-identical to production, nothing is uploaded and the container is not restarted.
+
+### Why it is safe
+
+- **Validation runs before the build**, so an error like a duplicate plugin id costs 2 seconds
+  instead of a 20-minute build followed by an outage.
+- **Integrity gate.** Both the local build and the VPS refuse to deploy if any script referenced
+  by `index.html` is missing. This is the guard against two builds racing into `dev/prod/dist`.
+- **The front is a real image now.** Deploys build `huly-front-custom:<sha>-<timestamp>` on top of
+  `hardcoreeng/front:$HULY_VERSION` and point compose at it via `FRONT_IMAGE` in `huly_v7.conf`.
+  Previously the dist was `docker cp`-ed into the running container, so any `docker compose up`
+  reverted the UI to stock — and each `docker commit` left behind a 2.3 GB orphan image, which is
+  what filled the disk to 97%.
+- **Rollback is one command** because the previous image is kept. The smoke test triggers it
+  automatically.
+
+### What it does not do
+
+Production runs the official `hardcoreeng/*:v0.7.426` images for every backend service. Your fork
+has only ever changed front-end code (`plugins/`, `packages/`) plus a few `models/` files, so a
+front bundle deploy is a complete deploy.
+
+If you change `server/`, `server-plugins/`, `pods/` or `services/`, the deploy **stops and tells
+you** rather than reporting a success it cannot deliver — those need custom backend images
+(section C).
+
+`models/**` changes are handled by the `model` stage described below.
+
+---
+
+## Model changes
+
+This is the part that is easy to get wrong, because editing `models/**` and shipping a front
+bundle changes **nothing**.
+
+The model is compiled to `model.json` and baked into the transactor image
+(`pods/server/Dockerfile`). At startup the transactor builds its model as
+`systemTx.concat(userTx)` — the image's model first, then whatever rows sit in the workspace's
+`model_tx` table (`foundations/server/packages/middleware/src/model.ts`). Since production runs
+the official `hardcoreeng/transactor` image, the only way to change the model without building a
+custom backend image is to write the difference into `model_tx`.
+
+The `model` stage does exactly that:
+
+1. Reads the base model straight out of the running transactor
+   (`docker exec … cat /usr/src/app/model.json`), cached per image id under `scripts/.model-cache/`.
+2. Builds our model (`models/all` → `bundle/model.json`).
+3. Diffs the two with `scripts/huly-model-patch.mjs` and emits override transactions —
+   `TxUpdateDoc` for changed docs, `TxCreateDoc` for new ones, `TxMixin` replayed as-is.
+4. Applies them with `UPSERT`, fanned out across every workspace, then restarts the workspace
+   and transactor so they reload the model.
+
+It runs **after** the front ships, deliberately: a model doc that points at a component the live
+bundle does not have yet is precisely what black-screens the workbench.
+
+Properties worth knowing:
+
+- **Idempotent.** Transaction ids are derived from content, so re-running produces a
+  byte-identical patch and the stage is skipped. Rows that drop out of the patch are deleted.
+- **Bounded.** It refuses to emit more than 60 transactions, since a diff that big means the
+  cached base model and this checkout are different upstream versions.
+- **It never deletes upstream docs.** Docs present in the image model but absent from ours are
+  reported and left alone — removing a doc the live bundle still references is an outage.
+- **Generated ids are skipped.** Docs created via `builder.createDoc` without an explicit id get a
+  fresh random id on every model build, so they cannot be matched between two builds. If a change
+  must apply to such a doc, give it a stable id in `models/**` first.
+
+Locally the same mechanism runs automatically as part of `local.cmd`
+(`scripts/huly-model-sync.ps1`), so local and production stay consistent.
 
 ---
 
@@ -228,8 +316,11 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 
 | Script | Purpose |
 |--------|---------|
-| `huly-deploy-front.sh` | **Main UI deploy** — tarball → front container → restart nginx |
-| `huly-deploy-production.sh` | **Orchestrator** — `all` \| `front` \| `verify` |
+| `huly-deploy-production.sh` | **Orchestrator** — the stages behind `deploy.cmd` |
+| `huly-deploy-front.sh` | **Runs on the VPS** — applies the delta, builds/pins the front image, prunes, rolls back |
+| `huly-check-plugin-ids.mjs` | Pre-build gate for duplicate `mergeIds` keys |
+| `huly-deploy-smoke.mjs` | Post-deploy logged-in check (reload loop, console errors, workbench) |
+| `huly-dist-manifest.mjs` | sha1 manifest of `dist` used to compute the upload delta |
 | `huly-tool.sh` | Run `hardcoreeng/tool` against live stack (on VPS) |
 | `huly-check-ip-block.sh` | Debug IP / firewall blocks |
 | `install-huly-vps.sh` | First-time VPS bootstrap |
@@ -241,16 +332,32 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
 
 ## Checklist for agents
 
-- [ ] Identify change type: **frontend (A)** vs **model (B)** vs **full install (C)**
-- [ ] Prefer unified flow: `ship.cmd` (local) or Actions `Deploy Production` workflow
-- [ ] Build on Windows with **Git Bash** for webpack if needed
+- [ ] Just run `deploy.cmd` — it validates, builds, ships, smokes, and rolls back on failure
+- [ ] Run `deploy.cmd status` first if you want to know what will happen
 - [ ] Never commit secrets (`huly_v7.conf`, passwords, API tokens) to git
-- [ ] Deploy front → restart **both** `front` and **docker nginx**
-- [ ] Model changes → `./run-tool.sh upgrade-workspace aneeverse` on VPS
-- [ ] For full release, use `./scripts/huly-deploy-production.sh all` (or `ship.cmd`)
+- [ ] Never start two front builds at once — they share `dev/prod/dist` and `rushx package`
+      begins with `rm -rf ./dist`, so they corrupt each other's output
+- [ ] If the deploy stops on server-side changes, do not paper over it with
+      `ALLOW_SERVER_CHANGES=1` unless the front really is all you need
+- [ ] Model **doc** changes still need the workspace DB updated — the bundle alone is not enough
 - [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes
 - [ ] Do **not** use Hostinger MCP DNS (use REST API or hPanel if DNS changes needed)
+
+---
+
+## Disk space on the VPS
+
+`/` is 96 GB and shared with unrelated stacks (supabase, frappe, erpnext). It reached **97% full**
+because every deploy ran `docker commit` on the front container, writing a fresh 2.3 GB image and
+orphaning the previous one. That is fixed: deploys now build a thin layer on top of the stock front
+image and keep only the newest few tags.
+
+`deploy.cmd` checks free space before building and prunes when it is low. To reclaim manually:
+
+```powershell
+deploy.cmd prune
+```
 
 ---
 

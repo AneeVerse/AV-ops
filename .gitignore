@@ -115,6 +115,12 @@ ws-tests/docker-compose.override.yml
 .cursor/*
 CLAUDE.md
 
+# Deploy tooling scratch output
+scripts/_deploy-smoke/
+scripts/.deploy-tools/
+scripts/_tmp-*
+scripts/.model-cache/
+
 # Secrets and local-only files (never commit)
 .env
 .env.*

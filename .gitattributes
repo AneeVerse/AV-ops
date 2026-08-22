@@ -12,3 +12,8 @@ yarn.lock                    merge=binary
 # For more information, see this issue: https://github.com/microsoft/rushstack/issues/1088
 #
 *.json                       linguist-language=JSON-with-Comments
+
+# Shell scripts and node scripts run on Linux (VPS deploys, Git Bash builds).
+# CRLF makes bash fail with "$'\r': command not found".
+*.sh                         text eol=lf
+*.mjs                        text eol=lf
