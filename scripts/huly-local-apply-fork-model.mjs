@@ -6,6 +6,8 @@
  * Client app/classes/types live in this repo, so they must be written into
  * model_tx (user model) for the official transactor to serve them.
  *
+ * Includes Tracker Issue States/Dashboard viewlets (same as production model-tracker).
+ *
  * Idempotent. Run from local.cmd after Cockroach is up.
  */
 import { execFileSync, execSync } from 'node:child_process'
@@ -377,6 +379,31 @@ const catalog = [
           ]
         }
       ]
+    }
+  },
+  {
+    id: 'tracker:viewlet:IssueStatusTable',
+    objectClass: 'view:class:Viewlet',
+    attributes: {
+      attachTo: 'tracker:class:Issue',
+      config: ['', 'identifier', 'title', 'status', 'priority', 'assignee', 'dueDate', 'modifiedOn'],
+      descriptor: 'task:viewlet:StatusTable',
+      viewOptions: {
+        groupBy: [],
+        orderBy: [],
+        other: [hideArchived]
+      },
+      configOptions: { sortable: true }
+    }
+  },
+  {
+    id: 'tracker:viewlet:IssueDashboard',
+    objectClass: 'view:class:Viewlet',
+    attributes: {
+      attachTo: 'tracker:class:Issue',
+      options: {},
+      config: [],
+      descriptor: 'task:viewlet:Dashboard'
     }
   },
   {
@@ -876,7 +903,7 @@ const dir = mkdtempSync(join(tmpdir(), 'huly-client-model-'))
 const sqlPath = join(dir, 'apply.sql')
 writeFileSync(sqlPath, buildSql(), 'utf8')
 
-console.log(`==== applying fork Client model via ${cockroach} (${catalog.length} objects) ====`)
+console.log(`==== applying fork model via ${cockroach} (${catalog.length} objects) ====`)
 execFileSync('docker', ['cp', sqlPath, `${cockroach}:/tmp/huly-local-fork-model.sql`], { stdio: 'inherit' })
 const out = execFileSync(
   'docker',
