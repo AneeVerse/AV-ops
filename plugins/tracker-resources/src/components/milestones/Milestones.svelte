@@ -16,14 +16,19 @@
   import { Ref } from '@hcengineering/core'
   import { IntlString } from '@hcengineering/platform'
   import { Project } from '@hcengineering/tracker'
+  import { NavigatorModel } from '@hcengineering/workbench'
   import tracker from '../../plugin'
   import { MilestoneViewMode } from '../../utils'
   import MilestoneBrowser from './MilestoneBrowser.svelte'
+  import ProjectSpaceLayout from '../projects/ProjectSpaceLayout.svelte'
 
   export let currentSpace: Ref<Project>
+  export let model: NavigatorModel | undefined = undefined
   export let label: IntlString = tracker.string.Milestones
   export let search: string = ''
   export let mode: MilestoneViewMode = 'all'
 </script>
 
-<MilestoneBrowser {label} query={{ space: currentSpace }} {search} {mode} />
+<ProjectSpaceLayout {currentSpace} {model}>
+  <MilestoneBrowser {label} query={{ space: currentSpace }} {search} {mode} />
+</ProjectSpaceLayout>

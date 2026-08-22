@@ -20,15 +20,18 @@
   import { IModeSelector, resolvedLocationStore } from '@hcengineering/ui'
   import view, { Viewlet } from '@hcengineering/view'
   import { createEventDispatcher } from 'svelte'
+  import { NavigatorModel } from '@hcengineering/workbench'
 
   import { TypeSelector, selectedTaskTypeStore, selectedTypeStore, taskTypeStore } from '@hcengineering/task-resources'
   import { filterStore } from '@hcengineering/view-resources'
   import tracker from '../../plugin'
   import IssuesView from './IssuesView.svelte'
+  import ProjectSpaceLayout from '../projects/ProjectSpaceLayout.svelte'
 
   import task from '@hcengineering/task'
 
   export let currentSpace: Ref<Project> | undefined = undefined
+  export let model: NavigatorModel | undefined = undefined
   export let baseQuery: DocumentQuery<Issue> = {}
   export let title: IntlString
   export let icon: Asset | undefined = undefined
@@ -140,19 +143,39 @@
 </script>
 
 {#if query !== undefined && modeSelectorProps !== undefined}
-  <IssuesView
-    query={finalQuery}
-    space={currentSpace}
-    {icon}
-    {title}
-    {modeSelectorProps}
-    {spaceSelectorQuery}
-    {autoSelectSpace}
-  >
-    <svelte:fragment slot="type_selector" let:viewlet>
-      {#if !allProjectsTypes}
-        <TypeSelector {baseClass} project={currentSpace} allTypes={toVL(viewlet)?.descriptor === view.viewlet.List} />
-      {/if}
-    </svelte:fragment>
-  </IssuesView>
+  {#if currentSpace !== undefined}
+    <ProjectSpaceLayout {currentSpace} {model}>
+      <IssuesView
+        query={finalQuery}
+        space={currentSpace}
+        {icon}
+        {title}
+        {modeSelectorProps}
+        {spaceSelectorQuery}
+        {autoSelectSpace}
+      >
+        <svelte:fragment slot="type_selector" let:viewlet>
+          {#if !allProjectsTypes}
+            <TypeSelector {baseClass} project={currentSpace} allTypes={toVL(viewlet)?.descriptor === view.viewlet.List} />
+          {/if}
+        </svelte:fragment>
+      </IssuesView>
+    </ProjectSpaceLayout>
+  {:else}
+    <IssuesView
+      query={finalQuery}
+      space={currentSpace}
+      {icon}
+      {title}
+      {modeSelectorProps}
+      {spaceSelectorQuery}
+      {autoSelectSpace}
+    >
+      <svelte:fragment slot="type_selector" let:viewlet>
+        {#if !allProjectsTypes}
+          <TypeSelector {baseClass} project={currentSpace} allTypes={toVL(viewlet)?.descriptor === view.viewlet.List} />
+        {/if}
+      </svelte:fragment>
+    </IssuesView>
+  {/if}
 {/if}

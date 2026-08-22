@@ -15,12 +15,17 @@
 <script lang="ts">
   import { DocumentQuery, Ref } from '@hcengineering/core'
   import { IssueTemplate, Project } from '@hcengineering/tracker'
+  import { NavigatorModel } from '@hcengineering/workbench'
   import tracker from '../../plugin'
   import IssueTemplatesView from './IssueTemplatesView.svelte'
+  import ProjectSpaceLayout from '../projects/ProjectSpaceLayout.svelte'
 
   export let currentSpace: Ref<Project>
+  export let model: NavigatorModel | undefined = undefined
 
   const query: DocumentQuery<IssueTemplate> = { space: currentSpace }
 </script>
 
-<IssueTemplatesView {query} space={currentSpace} title={tracker.string.IssueTemplates} />
+<ProjectSpaceLayout {currentSpace} {model}>
+  <IssueTemplatesView {query} space={currentSpace} title={tracker.string.IssueTemplates} />
+</ProjectSpaceLayout>

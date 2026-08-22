@@ -4,14 +4,12 @@
 <script lang="ts">
   import contact, { type Organization } from '@hcengineering/contact'
   import { Ref, Space } from '@hcengineering/core'
-  import { getResource } from '@hcengineering/platform'
   import { createQuery, IconWithEmoji } from '@hcengineering/presentation'
   import { Project } from '@hcengineering/tracker'
   import { getPlatformColorDef, getPlatformColorForTextDef, themeStore, type Action } from '@hcengineering/ui'
   import view from '@hcengineering/view'
-  import { NavLink, TreeNode } from '@hcengineering/view-resources'
-  import { SpacesNavModel, SpecialNavModel } from '@hcengineering/workbench'
-  import { SpecialElement } from '@hcengineering/workbench-resources'
+  import { NavLink, TreeItem } from '@hcengineering/view-resources'
+  import { SpacesNavModel } from '@hcengineering/workbench'
   import { projectNavTitle } from '../../projectTitle'
 
   export let space: Project
@@ -22,7 +20,6 @@
   export let deselect: boolean = false
   export let forciblyСollapsed: boolean = false
 
-  let specials: SpecialNavModel[] = []
   let company: Organization | undefined
   const orgQuery = createQuery()
 
@@ -41,35 +38,12 @@
   }
 
   $: navTitle = projectNavTitle(space, company)
-
-  async function updateSpecials (model: SpacesNavModel, space: Project): Promise<void> {
-    const newSpecials: SpecialNavModel[] = []
-    for (const sp of model.specials ?? []) {
-      let shouldAdd = true
-      if (sp.visibleIf !== undefined) {
-        const visibleIf = await getResource(sp.visibleIf)
-        if (visibleIf !== undefined) {
-          shouldAdd = await visibleIf([space])
-        }
-      }
-      if (shouldAdd) {
-        newSpecials.push(sp)
-      }
-    }
-    specials = newSpecials
-  }
-
-  $: if (model != null) {
-    void updateSpecials(model, space)
-  }
-  $: visible =
-    (!deselect && currentSpace !== undefined && currentSpecial !== undefined && space._id === currentSpace) ||
-    forciblyСollapsed
+  $: defaultSpecial = currentSpace === space._id && currentSpecial != null ? currentSpecial : 'issues'
 </script>
 
-{#if specials}
-  <TreeNode
-    _id={space?._id}
+<NavLink space={space._id} special={defaultSpecial}>
+  <TreeItem
+    _id={space._id}
     icon={space?.icon === view.ids.IconWithEmoji ? IconWithEmoji : (space?.icon ?? model?.icon)}
     iconProps={space?.icon === view.ids.IconWithEmoji
       ? { icon: space.color }
@@ -80,32 +54,10 @@
               : getPlatformColorForTextDef(space.name, $themeStore.dark).icon
         }}
     title={navTitle}
-    type={'nested'}
-    highlighted={space._id === currentSpace}
-    {visible}
+    selected={deselect ? false : space._id === currentSpace}
     actions={() => getActions(space)}
+    bold={false}
     {forciblyСollapsed}
-  >
-    {#each specials as special}
-      <NavLink space={space._id} special={special.id}>
-        <SpecialElement
-          indent
-          label={special.label}
-          icon={special.icon}
-          selected={deselect ? false : currentSpace === space._id && special.id === currentSpecial}
-        />
-      </NavLink>
-    {/each}
-
-    <svelte:fragment slot="visible">
-      {#if visible}
-        {@const item = specials.find((sp) => sp.id === currentSpecial && currentSpace === space._id)}
-        {#if item}
-          <NavLink space={space._id} special={item.id}>
-            <SpecialElement indent label={item.label} icon={item.icon} selected forciblyСollapsed />
-          </NavLink>
-        {/if}
-      {/if}
-    </svelte:fragment>
-  </TreeNode>
-{/if}
+    indent
+  />
+</NavLink>

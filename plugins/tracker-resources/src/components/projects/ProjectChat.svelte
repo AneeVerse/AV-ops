@@ -8,9 +8,12 @@
   import { createQuery } from '@hcengineering/presentation'
   import { Project } from '@hcengineering/tracker'
   import { Label, Scroller } from '@hcengineering/ui'
+  import { NavigatorModel } from '@hcengineering/workbench'
   import tracker from '../../plugin'
+  import ProjectSpaceLayout from './ProjectSpaceLayout.svelte'
 
   export let currentSpace: Ref<Project>
+  export let model: NavigatorModel | undefined = undefined
 
   const projectQuery = createQuery()
   let project: Project | undefined
@@ -43,25 +46,40 @@
   })
 </script>
 
-<div class="project-chat" bind:this={container}>
-  {#if project !== undefined}
-    {#key project._id}
-      <ChannelEmbeddedContent
-        object={project}
-        threadId={undefined}
-        collection="comments"
-        {height}
-        {width}
-      />
-    {/key}
-  {:else}
-    <Scroller padding="1rem">
-      <Label label={tracker.string.ProjectChat} />
-    </Scroller>
-  {/if}
+<div class="project-chat-root">
+  <ProjectSpaceLayout {currentSpace} {model}>
+    <div class="project-chat" bind:this={container}>
+      {#if project !== undefined}
+        {#key project._id}
+          <ChannelEmbeddedContent
+            object={project}
+            threadId={undefined}
+            collection="comments"
+            {height}
+            {width}
+          />
+        {/key}
+      {:else}
+        <Scroller padding="1rem">
+          <Label label={tracker.string.ProjectChat} />
+        </Scroller>
+      {/if}
+    </div>
+  </ProjectSpaceLayout>
 </div>
 
 <style lang="scss">
+  .project-chat-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
   .project-chat {
     position: relative;
     display: flex;

@@ -15,9 +15,14 @@
 <script lang="ts">
   import { Ref } from '@hcengineering/core'
   import { Project } from '@hcengineering/tracker'
+  import { NavigatorModel } from '@hcengineering/workbench'
   import Components from './Components.svelte'
+  import ProjectSpaceLayout from '../projects/ProjectSpaceLayout.svelte'
 
   export let currentSpace: Ref<Project>
+  export let model: NavigatorModel | undefined = undefined
 </script>
 
-<Components query={{ space: currentSpace }} />
+<ProjectSpaceLayout {currentSpace} {model}>
+  <Components query={{ space: currentSpace }} />
+</ProjectSpaceLayout>
