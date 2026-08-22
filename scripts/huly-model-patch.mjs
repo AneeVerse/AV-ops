@@ -99,6 +99,10 @@ function diffAttributes (baseAttrs = {}, forkAttrs = {}) {
   return changed ? operations : undefined
 }
 
+// Never patch version metadata — fork MODEL_VERSION (0.6.0) differs from the
+// transactor image (0.7.426) and pushing it triggers a full workspace migration.
+const SKIP_OBJECT_IDS = new Set(['core:version:Model'])
+
 function buildPatch (base, fork) {
   const b = index(base)
   const f = index(fork)
@@ -106,6 +110,7 @@ function buildPatch (base, fork) {
   const notes = []
 
   for (const [objectId, forkTx] of f.creates) {
+    if (SKIP_OBJECT_IDS.has(objectId)) continue
     const baseTx = b.creates.get(objectId)
     if (baseTx === undefined) {
       patch.push({
@@ -120,6 +125,7 @@ function buildPatch (base, fork) {
     }
     const operations = diffAttributes(baseTx.attributes, forkTx.attributes)
     if (operations === undefined) continue
+    if (SKIP_OBJECT_IDS.has(objectId)) continue
     patch.push({
       _id: patchId('update', objectId),
       _class: 'core:class:TxUpdateDoc',
