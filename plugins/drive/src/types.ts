@@ -18,17 +18,6 @@ import { AttachedDoc, Blob, CollectionSize, Doc, Mixin, Ref, Type, TypedSpace } 
 import drive from './plugin'
 
 /** @public */
-export type GoogleSyncStatus = 'pending' | 'synced' | 'failed'
-
-/** @public */
-export interface GoogleSync extends Resource {
-  googleId?: string
-  webViewLink?: string
-  syncStatus?: GoogleSyncStatus
-  aneerequestId?: string
-}
-
-/** @public */
 export function TypeFileVersion (): Type<number> {
   return { _class: drive.class.TypeFileVersion, label: drive.string.FileVersion }
 }

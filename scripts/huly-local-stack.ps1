@@ -32,6 +32,44 @@ function Get-GitBash {
   throw "Git Bash not found. Install Git for Windows, then re-run local.cmd"
 }
 
+function Ensure-HulyLocalHosts {
+  # Browser config (collaborator, datalake, pulse, etc.) uses huly.local.
+  # Without this mapping, Playwright/SPA hits ERR_NAME_NOT_RESOLVED and can drop session.
+  $hostsPath = Join-Path $env:SystemRoot 'System32\drivers\etc\hosts'
+  $mapped = $false
+  try {
+    $addrs = [System.Net.Dns]::GetHostAddresses('huly.local')
+    foreach ($a in $addrs) {
+      if ($a.ToString() -eq '127.0.0.1' -or $a.ToString() -eq '::1') { $mapped = $true; break }
+    }
+  } catch { }
+
+  if ($mapped) {
+    Write-Host "==== huly.local resolves to loopback ===="
+    return
+  }
+
+  Write-Host "==== huly.local missing; attempting hosts mapping ===="
+  $line = '127.0.0.1 huly.local'
+  try {
+    $existing = Get-Content $hostsPath -ErrorAction Stop
+    $has = $false
+    foreach ($l in $existing) {
+      if ($l -match '^\s*127\.0\.0\.1\s+huly\.local\s*$') { $has = $true; break }
+    }
+    if (-not $has) {
+      Add-Content -Path $hostsPath -Value "`r`n$line" -Encoding ascii -ErrorAction Stop
+    }
+    ipconfig /flushdns | Out-Null
+    Write-Host "Mapped 127.0.0.1 huly.local in hosts."
+  } catch {
+    Write-Host "WARNING: Could not update hosts (need Admin). Add this line manually:"
+    Write-Host "  $line"
+    Write-Host "Then: ipconfig /flushdns"
+    Write-Host "Without it, ws://huly.local:* and http://huly.local:* will fail in the browser."
+  }
+}
+
 function Ensure-Docker {
   try {
     docker info --format '{{.ServerVersion}}' | Out-Null
@@ -65,6 +103,7 @@ $NodeOptions = if ($env:NODE_OPTIONS) { $env:NODE_OPTIONS } else { '--max_old_sp
 $DevDir = Join-Path $RepoRoot 'dev'
 
 Ensure-Docker
+Ensure-HulyLocalHosts
 
 Write-Host "==== stop old webpack on $WebpackPort ===="
 Stop-ListenPort $WebpackPort
@@ -88,16 +127,9 @@ if (-not $ready) {
   throw "Cockroach did not become ready. Is Docker Desktop running?"
 }
 
-Write-Host "==== apply fork Client model ===="
-& node (Join-Path $PSScriptRoot 'huly-local-apply-fork-model.mjs')
-if ($LASTEXITCODE -ne 0) {
-  throw "Failed to apply local Client model."
-}
-
 $gitBash = Get-GitBash
 $prodUnix = ConvertTo-GitBashPath (Join-Path $RepoRoot 'dev\prod')
 Write-Host "==== webpack  http://localhost:$WebpackPort  (Ctrl+C to stop) ===="
 Write-Host "Local DB. Log in as user1 / 1234, workspace local-ws."
-Write-Host "Client app is in the module switcher (not under Team)."
 
 & $gitBash -lc "cd '$prodUnix' && NODE_OPTIONS='$NodeOptions' HULY_DEV_HOST=127.0.0.1 rushx dev-server"

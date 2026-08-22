@@ -49,7 +49,6 @@ Then open **http://localhost:8080/**.
 
 - The UI is your local code (hot reload on save).
 - Data is the **local** Docker workspace (`user1` / `1234`, workspace `local-ws`).
-- On start, `local.cmd` writes this fork’s **Client** model into the local workspace (official Docker images do not include it).
 - Docker Desktop must be running. First start can take several minutes while images pull.
 - Stop with **Ctrl+C**.
 
@@ -87,18 +86,6 @@ This:
 
 After it prints `deploy done`, hard-refresh https://huly.aneeverse.com (**Ctrl+F5**).
 
-Tracker **States / Dashboard** viewlets (first time, or after a workspace upgrade wiped them):
-
-```bash
-bash scripts/huly-deploy-production.sh model-tracker
-```
-
-**Company** app (sidebar tab + `Project.company` field) needs the model patch as well as `ship.cmd`:
-
-```bash
-bash scripts/huly-deploy-production.sh model-company
-```
-
 ---
 
 ## What is never committed
@@ -117,4 +104,5 @@ Do not paste VPS passwords or `huly_v7.conf` into the repo.
 
 ## More detail
 
-Full production layout, nginx, and firewall notes: [HULY-PRODUCTION-DEPLOY.md](HULY-PRODUCTION-DEPLOY.md).
+- Full history of fork changes vs upstream Huly (what/why): [ANEEVERSE-FORK-CHANGES.md](ANEEVERSE-FORK-CHANGES.md)
+- Full production layout, nginx, and firewall notes: [HULY-PRODUCTION-DEPLOY.md](HULY-PRODUCTION-DEPLOY.md).

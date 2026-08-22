@@ -21,9 +21,7 @@
   import { createFocusManager, EditBox, FocusHandler, Scroller } from '@hcengineering/ui'
   import { createEventDispatcher, onMount } from 'svelte'
   import contact from '../plugin'
-  import Avatar from './Avatar.svelte'
   import ChannelsEditor from './ChannelsEditor.svelte'
-  import EditableAvatar from './EditableAvatar.svelte'
   import Company from './icons/Company.svelte'
 
   export let object: Organization
@@ -35,16 +33,6 @@
 
   function nameChange () {
     client.updateDoc(object._class, object.space, object._id, { name: object.name })
-  }
-
-  let avatarEditor: EditableAvatar
-
-  async function onAvatarDone (): Promise<void> {
-    if (object.avatar != null) {
-      await avatarEditor.removeAvatar(object.avatar)
-    }
-    const avatar = await avatarEditor.createAvatar()
-    await client.diffUpdate(object, avatar)
   }
 
   let integrations: Set<Ref<IntegrationType>> = new Set<Ref<IntegrationType>>()
@@ -68,21 +56,8 @@
 
 {#if object !== undefined}
   <div class="flex-row-center">
-    <div class="mr-8 flex-no-shrink">
-      {#key object}
-        {#if !readonly}
-          <EditableAvatar
-            person={object}
-            size={'x-large'}
-            name={object.name}
-            icon={Company}
-            bind:this={avatarEditor}
-            on:done={onAvatarDone}
-          />
-        {:else}
-          <Avatar person={object} size={'x-large'} name={object.name} icon={Company} />
-        {/if}
-      {/key}
+    <div class="mr-8 flex-center flex-no-shrink logo">
+      <Company size={'large'} />
     </div>
     <div class="flex-grow flex-col">
       <div class="name">
@@ -110,6 +85,13 @@
 {/if}
 
 <style lang="scss">
+  .logo {
+    width: 5rem;
+    height: 5rem;
+    color: var(--primary-button-color);
+    background-color: var(--primary-button-default);
+    border-radius: 50%;
+  }
   .name {
     font-weight: 500;
     font-size: 1.25rem;

@@ -166,32 +166,7 @@ import MilestoneFilter from './components/milestones/MilestoneFilter.svelte'
 import MilestoneRefPresenter from './components/milestones/MilestoneRefPresenter.svelte'
 import CreateProject from './components/projects/CreateProject.svelte'
 import ProjectPresenter from './components/projects/ProjectPresenter.svelte'
-import RequestStatusPresenter from './components/projects/RequestStatusPresenter.svelte'
-import RequestPriorityPresenter from './components/projects/RequestPriorityPresenter.svelte'
 import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.svelte'
-import CompanyRelated from './components/company/CompanyRelated.svelte'
-import CompanyDriveFiles from './components/company/CompanyDriveFiles.svelte'
-import ProjectDriveFiles from './components/projects/ProjectDriveFiles.svelte'
-import ProjectChat from './components/projects/ProjectChat.svelte'
-import MyClients from './components/client/MyClients.svelte'
-import CreateClient from './components/client/CreateClient.svelte'
-import CreateClientFunnel from './components/client/CreateClientFunnel.svelte'
-import CreateCompany from './components/client/CreateCompany.svelte'
-import ClientPresenter from './components/client/ClientPresenter.svelte'
-import ClientTitlePresenter from './components/client/ClientTitlePresenter.svelte'
-import ClientKanbanCard from './components/client/ClientKanbanCard.svelte'
-import NewCompanyHeader from './components/client/NewCompanyHeader.svelte'
-import ClientHome from './components/client/ClientHome.svelte'
-import ClientTrackerNav from './components/client/ClientTrackerNav.svelte'
-import ClientCompanyIssues from './components/client/ClientCompanyIssues.svelte'
-import ClientCompanyFiles from './components/client/ClientCompanyFiles.svelte'
-import {
-  getClientId,
-  getClientLinkFragment,
-  getClientTitle,
-  hideClientProjectSpaces,
-  resolveCompanyLocation
-} from './clientUtils'
 
 import { get } from 'svelte/store'
 import { settingId } from '@hcengineering/setting'
@@ -485,8 +460,6 @@ export default async (): Promise<Resources> => ({
     TemplateEstimationEditor,
     CreateProject,
     ProjectPresenter,
-    RequestStatusPresenter,
-    RequestPriorityPresenter,
     ProjectSpacePresenter,
     IssueStatistics,
     StatusRefPresenter,
@@ -513,23 +486,7 @@ export default async (): Promise<Resources> => ({
     MembersArrayEditor,
     IssueExtra,
     IssueStatusPresenter,
-    LabelsView,
-    CompanyRelated,
-    CompanyDriveFiles,
-    ProjectDriveFiles,
-    ProjectChat,
-    MyClients,
-    CreateClient,
-    CreateClientFunnel,
-    CreateCompany,
-    ClientPresenter,
-    ClientTitlePresenter,
-    ClientKanbanCard,
-    NewCompanyHeader,
-    ClientHome,
-    ClientTrackerNav,
-    ClientCompanyIssues,
-    ClientCompanyFiles
+    LabelsView
   },
   completion: {
     IssueQuery: async (client: Client, query: string, filter?: { in?: RelatedDocument[], nin?: RelatedDocument[] }) =>
@@ -565,11 +522,7 @@ export default async (): Promise<Resources> => ({
     SetComponentStore: setStore,
     ComponentFilterFunction: filterComponents,
     OpenIssuesOfTaskType: openIssuesOfTaskType,
-    FormatIssueMarkdownValue: formatIssueValue,
-    ClientTitleProvider: getClientTitle,
-    ClientIdProvider: getClientId,
-    GetClientLinkFragment: getClientLinkFragment,
-    HideClientProjectSpaces: hideClientProjectSpaces
+    FormatIssueMarkdownValue: formatIssueValue
   },
   actionImpl: {
     Move: move,
@@ -580,8 +533,7 @@ export default async (): Promise<Resources> => ({
     DeleteIssue: deleteIssue
   },
   resolver: {
-    Location: resolveLocation,
-    CompanyLocation: resolveCompanyLocation
+    Location: resolveLocation
   },
   aggregation: {
     // eslint-disable-next-line @typescript-eslint/unbound-method

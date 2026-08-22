@@ -15,7 +15,6 @@
 
 import activity from '@hcengineering/activity'
 import chunter from '@hcengineering/chunter'
-import drive from '@hcengineering/drive'
 import { AccountRole, type ClassCollaborators, type Ref, type Status } from '@hcengineering/core'
 import { type Builder } from '@hcengineering/model'
 import core from '@hcengineering/model-core'
@@ -52,15 +51,10 @@ import {
   TTypeEstimation,
   TTypeIssuePriority,
   TTypeMilestoneStatus,
-  TTypeRequestStatus,
-  TTypeRequestPriority,
   TTypeRemainingTime,
-  TTypeReportedTime,
-  TClient,
-  TClientFunnel
+  TTypeReportedTime
 } from './types'
 import { defineViewlets } from './viewlets'
-import { defineClientModel } from './client'
 
 export * from './types'
 export { issuesOptions } from './viewlets'
@@ -361,8 +355,7 @@ function defineApplication (
                 ['active', tracker.string.Active, {}],
                 ['backlog', tracker.string.Backlog, {}]
               ],
-              allProjectsTypes: true,
-              autoSelectSpace: false
+              allProjectsTypes: true
             }
           },
           {
@@ -431,12 +424,6 @@ function defineApplication (
                 label: tracker.string.IssueTemplates,
                 icon: tracker.icon.IssueTemplates,
                 component: tracker.component.IssueTemplates
-              },
-              {
-                id: 'project-files',
-                label: tracker.string.ProjectFiles,
-                icon: drive.icon.Folder,
-                component: tracker.component.ProjectDriveFiles
               }
             ]
           }
@@ -446,10 +433,6 @@ function defineApplication (
     },
     tracker.app.Tracker
   )
-}
-
-function defineCompanyApplication (builder: Builder): void {
-  defineClientModel(builder)
 }
 
 export function createModel (builder: Builder): void {
@@ -463,16 +446,12 @@ export function createModel (builder: Builder): void {
     TTypeIssuePriority,
     TMilestone,
     TTypeMilestoneStatus,
-    TTypeRequestStatus,
-    TTypeRequestPriority,
     TTimeSpendReport,
     TTypeReportedTime,
     TRelatedIssueTarget,
     TTypeEstimation,
     TTypeRemainingTime,
-    TProjectTargetPreference,
-    TClient,
-    TClientFunnel
+    TProjectTargetPreference
   )
 
   builder.mixin(tracker.class.Project, core.class.Class, activity.mixin.ActivityDoc, {})
@@ -505,39 +484,6 @@ export function createModel (builder: Builder): void {
     ofClass: tracker.class.IssueTemplate,
     components: { input: { component: chunter.component.ChatMessageInput } }
   })
-
-  builder.createDoc(
-    activity.class.ActivityExtension,
-    core.space.Model,
-    {
-      ofClass: tracker.class.Project,
-      components: { input: { component: chunter.component.ChatMessageInput } }
-    },
-    tracker.ids.ProjectActivityExtension
-  )
-
-  builder.createDoc(
-    workbench.class.ApplicationNavModel,
-    core.space.Model,
-    {
-      extends: tracker.app.Tracker,
-      spaces: [
-        {
-          id: 'projects',
-          spaceClass: tracker.class.Project,
-          specials: [
-            {
-              id: 'chat',
-              label: tracker.string.ProjectChat,
-              icon: chunter.icon.Chunter,
-              component: tracker.component.ProjectChat
-            }
-          ]
-        }
-      ]
-    },
-    tracker.ids.TrackerProjectChatNavModel
-  )
 
   defineViewlets(builder)
 
@@ -679,7 +625,6 @@ export function createModel (builder: Builder): void {
   )
 
   defineApplication(builder, { myIssuesId, allIssuesId, issuesId, componentsId, milestonesId, templatesId, labelsId })
-  defineCompanyApplication(builder)
 
   defineActions(builder, issuesId, componentsId, myIssuesId)
 
@@ -760,17 +705,6 @@ export function createModel (builder: Builder): void {
       label: chunter.string.LeftComment
     },
     tracker.ids.IssueChatMessageViewlet
-  )
-
-  builder.createDoc(
-    chunter.class.ChatMessageViewlet,
-    core.space.Model,
-    {
-      messageClass: chunter.class.ChatMessage,
-      objectClass: tracker.class.Project,
-      label: chunter.string.LeftComment
-    },
-    tracker.ids.ProjectChatMessageViewlet
   )
 
   builder.createDoc(

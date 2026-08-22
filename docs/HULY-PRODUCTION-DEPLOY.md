@@ -2,7 +2,9 @@
 
 This document describes **how this fork is deployed today** so the next person or agent does not start from scratch.
 
-**Day-to-day:** run `local.cmd` (local UI + production data) or `ship.cmd` (build and deploy front). See [LOCAL-AND-DEPLOY.md](LOCAL-AND-DEPLOY.md).
+**Day-to-day:** run `local.cmd` (local Docker) / `prod-local.cmd` (live data) or `ship.cmd` (build and deploy). See [LOCAL-AND-DEPLOY.md](LOCAL-AND-DEPLOY.md).
+
+**Full fork change log (features + why vs upstream):** [ANEEVERSE-FORK-CHANGES.md](ANEEVERSE-FORK-CHANGES.md).
 
 ## Production at a glance
 
@@ -38,7 +40,7 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 
 - **Files:** `models/tracker/src/viewlets.ts`, `plugin.ts`, `migration.ts`
 - **Behavior:** Issues toolbar gets **States** and **Dashboard** (same task viewlets as Leads).
-- **Deploy type:** Model docs in workspace DB. For **existing** workspaces, run `scripts/huly-insert-issue-viewlets.sh` on VPS (or wait for upgrade migration on next full model deploy).
+- **Deploy type:** Model docs in workspace DB via workspace upgrade on VPS.
 
 ### 3. Viewlet toolbar order (frontend only)
 
@@ -50,7 +52,7 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 
 - **Files:** `models/tracker` (`Project.company`, Company Application), `plugins/tracker-resources` (project Company picker, company page tabs)
 - **Behavior:** Left-bar **Company** tab lists Contacts companies. Open a company → **Projects** / **Issues**. Tracker create/edit project has optional **Company**.
-- **Deploy type:** Frontend bundle **and** `scripts/huly-insert-company-app.sh`. `ship.cmd` alone does not create the sidebar tab or field. Official `upgrade-workspace` on stock images does not include this fork’s model.
+- **Deploy type:** Frontend bundle only (Company app rollback in progress on `rollback/simplify-fork`).
 
 ---
 
@@ -58,13 +60,10 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 
 ### 0) Unified deploy (recommended)
 
-Use this when you want one command to deploy all production stages in order:
+Use this when you want one command to deploy and verify production:
 
 1. Frontend bundle deploy
-2. Client model patch
-3. Company app patch
-4. Company drive model patch
-5. Health verification
+2. Health verification
 
 **Local one-command deploy (Windows):**
 
@@ -72,19 +71,16 @@ Use this when you want one command to deploy all production stages in order:
 ship.cmd
 ```
 
-`ship.cmd` calls `scripts/aneeverse-ship.ps1`, which now delegates to:
+`ship.cmd` calls `scripts/aneeverse-ship.ps1`, which delegates to:
 
 ```bash
 ./scripts/huly-deploy-production.sh all
 ```
 
-**Optional stage toggles (for controlled rollout):**
+**Optional stage toggles:**
 
 ```bash
 SKIP_FRONT=1 ./scripts/huly-deploy-production.sh all
-SKIP_MODEL_CLIENT=1 ./scripts/huly-deploy-production.sh all
-SKIP_MODEL_COMPANY=1 ./scripts/huly-deploy-production.sh all
-SKIP_MODEL_COMPANY_DRIVE=1 ./scripts/huly-deploy-production.sh all
 SKIP_VERIFY=1 ./scripts/huly-deploy-production.sh all
 ```
 
@@ -143,28 +139,14 @@ ssh -i ~/.ssh/id_ed25519 root@148.230.67.132 'bash /tmp/huly-deploy-front.sh'
 
 ### B) Model-only change (no webpack)
 
-Use when you only changed `models/*` (viewlets, migrations, classes) and production **already has** the UI components (States/Dashboard do).
-
-**For Tracker viewlets on live workspace:**
+Use when you only changed `models/*` (viewlets, migrations, classes). Run workspace upgrade on the VPS:
 
 ```bash
-scp -i ~/.ssh/id_ed25519 scripts/huly-insert-issue-viewlets.sh root@148.230.67.132:/tmp/
-ssh -i ~/.ssh/id_ed25519 root@148.230.67.132 'bash /tmp/huly-insert-issue-viewlets.sh'
+cd /opt/huly-selfhost
+./run-tool.sh upgrade-workspace aneeverse
 ```
 
-This inserts `tracker:viewlet:IssueStatusTable` and `tracker:viewlet:IssueDashboard` into `model_tx` for all workspaces, then restarts `huly_v7-workspace-1`, `huly_v7-transactor-1`, `huly_v7-nginx-1`.
-
-**Verify:** Project → Issues → toolbar shows States + Dashboard icons.
-
-**For Company app + `Project.company` field:**
-
-```bash
-bash scripts/huly-deploy-production.sh model-company
-```
-
-This inserts `tracker:app:Company`, `tracker:class:Project_company`, and the Organization panel footer mixin, then restarts workspace, transactor, and nginx.
-
-**Verify:** Left bar shows **Company**. Open a company → Projects and Issues tabs. Create/edit a Tracker project → Company picker.
+Then restart `huly_v7-workspace-1`, `huly_v7-transactor-1`, and `huly_v7-nginx-1` if needed.
 
 ---
 
@@ -247,9 +229,7 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 | Script | Purpose |
 |--------|---------|
 | `huly-deploy-front.sh` | **Main UI deploy** — tarball → front container → restart nginx |
-| `huly-insert-issue-viewlets.sh` | **Model patch** — Tracker States/Dashboard on live DB |
-| `huly-insert-company-app.sh` | **Model patch** — Company app, `Project.company`, company panel tabs |
-| `huly-deploy-production.sh` | **Orchestrator** — `all` \| `front` \| `model-tracker` \| `model-company` \| `model-company-drive` \| `model-client` \| `verify` |
+| `huly-deploy-production.sh` | **Orchestrator** — `all` \| `front` \| `verify` |
 | `huly-tool.sh` | Run `hardcoreeng/tool` against live stack (on VPS) |
 | `huly-check-ip-block.sh` | Debug IP / firewall blocks |
 | `install-huly-vps.sh` | First-time VPS bootstrap |
@@ -266,8 +246,7 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
 - [ ] Build on Windows with **Git Bash** for webpack if needed
 - [ ] Never commit secrets (`huly_v7.conf`, passwords, API tokens) to git
 - [ ] Deploy front → restart **both** `front` and **docker nginx**
-- [ ] Model tracker viewlets → run insert script OR full workspace upgrade
-- [ ] Company app → `ship.cmd` **and** `huly-deploy-production.sh model-company`
+- [ ] Model changes → `./run-tool.sh upgrade-workspace aneeverse` on VPS
 - [ ] For full release, use `./scripts/huly-deploy-production.sh all` (or `ship.cmd`)
 - [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes

@@ -21,8 +21,6 @@ import {
   IssuesGrouping,
   IssuesOrdering,
   MilestoneStatus,
-  RequestPriority,
-  RequestStatus,
   type Issue
 } from '@hcengineering/tracker'
 import tracker from './plugin'
@@ -79,38 +77,6 @@ export const defaultPriorities = [
   IssuePriority.High,
   IssuePriority.Urgent
 ]
-
-export const defaultRequestStatuses = [
-  RequestStatus.New,
-  RequestStatus.InProgress,
-  RequestStatus.WaitingForClient,
-  RequestStatus.Review,
-  RequestStatus.Completed,
-  RequestStatus.Cancelled
-]
-
-export const requestStatusAssets: Record<RequestStatus, { label: IntlString }> = {
-  [RequestStatus.New]: { label: tracker.string.RequestStatusNew },
-  [RequestStatus.InProgress]: { label: tracker.string.RequestStatusInProgress },
-  [RequestStatus.WaitingForClient]: { label: tracker.string.RequestStatusWaitingForClient },
-  [RequestStatus.Review]: { label: tracker.string.RequestStatusReview },
-  [RequestStatus.Completed]: { label: tracker.string.RequestStatusCompleted },
-  [RequestStatus.Cancelled]: { label: tracker.string.RequestStatusCancelled }
-}
-
-export const defaultRequestPriorities = [
-  RequestPriority.Low,
-  RequestPriority.Normal,
-  RequestPriority.High,
-  RequestPriority.Urgent
-]
-
-export const requestPriorityAssets: Record<RequestPriority, { label: IntlString }> = {
-  [RequestPriority.Low]: { label: tracker.string.RequestPriorityLow },
-  [RequestPriority.Normal]: { label: tracker.string.RequestPriorityNormal },
-  [RequestPriority.High]: { label: tracker.string.RequestPriorityHigh },
-  [RequestPriority.Urgent]: { label: tracker.string.RequestPriorityUrgent }
-}
 
 export const issuesGroupBySorting: Record<IssuesGrouping, SortingQuery<Issue>> = {
   [IssuesGrouping.Status]: { '$lookup.status.rank': SortingOrder.Ascending },

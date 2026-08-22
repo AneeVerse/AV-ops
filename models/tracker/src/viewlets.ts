@@ -111,36 +111,6 @@ export const issuesOptions = (kanban: boolean): ViewOptionsModel => ({
   ]
 })
 
-export const issueStatusTableViewlet = {
-  attachTo: tracker.class.Issue,
-  descriptor: task.viewlet.StatusTable,
-  config: ['', 'identifier', 'title', 'status', 'priority', 'assignee', 'dueDate', 'modifiedOn'],
-  viewOptions: {
-    groupBy: [],
-    orderBy: [],
-    other: [
-      {
-        key: 'hideArchived',
-        type: 'toggle' as const,
-        defaultValue: true,
-        actionTarget: 'options' as const,
-        action: view.function.HideArchived,
-        label: view.string.HideArchived
-      }
-    ]
-  },
-  configOptions: {
-    sortable: true
-  }
-}
-
-export const issueDashboardViewlet = {
-  attachTo: tracker.class.Issue,
-  descriptor: task.viewlet.Dashboard,
-  options: {},
-  config: [] as string[]
-}
-
 export function issueConfig (
   key: string = '',
   compact: boolean = false,
@@ -563,20 +533,6 @@ export function defineViewlets (builder: Builder): void {
     tracker.viewlet.IssueKanban
   )
 
-  builder.createDoc(
-    view.class.Viewlet,
-    core.space.Model,
-    issueStatusTableViewlet,
-    tracker.viewlet.IssueStatusTable
-  )
-
-  builder.createDoc(
-    view.class.Viewlet,
-    core.space.Model,
-    issueDashboardViewlet,
-    tracker.viewlet.IssueDashboard
-  )
-
   const componentListViewOptions: ViewOptionsModel = {
     groupBy: ['lead', 'createdBy', 'modifiedBy'],
     orderBy: [
@@ -665,7 +621,6 @@ export function defineViewlets (builder: Builder): void {
           }
         },
         'members',
-        'company',
         {
           key: 'defaultAssignee',
           props: { kind: 'list' }
@@ -704,7 +659,6 @@ export function defineViewlets (builder: Builder): void {
           }
         },
         'members',
-        'company',
         {
           key: 'defaultAssignee',
           props: { kind: 'list' }

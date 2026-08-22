@@ -15,7 +15,7 @@
 <script lang="ts">
   import { type Ref, type WithLookup } from '@hcengineering/core'
   import { checkMyPermission, permissionsStore } from '@hcengineering/contact-resources'
-  import { createFileVersion, type File as DriveFile, type FileVersion, type GoogleSync } from '@hcengineering/drive'
+  import { createFileVersion, type File as DriveFile, type FileVersion } from '@hcengineering/drive'
   import { Panel } from '@hcengineering/panel'
   import { createQuery, getClient, getFileUrl } from '@hcengineering/presentation'
   import { Button, IconMoreH } from '@hcengineering/ui'
@@ -59,13 +59,6 @@
       }
     }
   )
-  $: googleSync = object !== undefined ? client.getHierarchy().as(object, drive.mixin.GoogleSync) as GoogleSync : undefined
-
-  function openInGoogleDrive (): void {
-    if (googleSync?.webViewLink !== undefined) {
-      window.open(googleSync.webViewLink, '_blank', 'noopener,noreferrer')
-    }
-  }
 
   function handleDownloadFile (): void {
     if (object != null && download != null) {
@@ -138,14 +131,6 @@
           kind={'icon'}
           showTooltip={{ label: drive.string.Upload }}
           on:click={handleUploadFile}
-        />
-      {/if}
-      {#if googleSync?.webViewLink}
-        <Button
-          label={drive.string.OpenInGoogleDrive}
-          kind={'ghost'}
-          size={'small'}
-          on:click={openInGoogleDrive}
         />
       {/if}
       <Button

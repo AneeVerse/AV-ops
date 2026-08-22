@@ -169,10 +169,6 @@ export interface Member extends AttachedDoc {
 export interface Organization extends Contact {
   members: number
   description: MarkupBlobRef | null
-  /** Folder inside the workspace Companies drive for this organization. */
-  driveFolder?: Ref<Doc>
-  /** Idempotent import key from AneeRequest Supabase clients.id */
-  aneerequestId?: string
 }
 
 /**

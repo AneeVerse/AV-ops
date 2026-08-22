@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 // Copyright © 2022-2023 Hardcore Engineering Inc.
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
@@ -14,11 +14,10 @@
 -->
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import contact, { Employee, Organization, getAllUserAccounts } from '@hcengineering/contact'
+  import { Employee } from '@hcengineering/contact'
   import {
     AccountArrayEditor,
     AssigneeBox,
-    UserBox,
     employeeRefByAccountUuidStore,
     getAnonymousRefs
   } from '@hcengineering/contact-resources'
@@ -41,12 +40,10 @@
   import presentation, { IconWithEmoji, Card, createQuery, getClient } from '@hcengineering/presentation'
   import task, { ProjectType, TaskType } from '@hcengineering/task'
   import { taskTypeStore, typeStore } from '@hcengineering/task-resources'
-  import { IssueStatus, Project, RequestPriority, RequestStatus, TimeReportDayType, TrackerEvents } from '@hcengineering/tracker'
+  import { IssueStatus, Project, TimeReportDayType, TrackerEvents } from '@hcengineering/tracker'
   import {
     Button,
     Component,
-    DatePresenter,
-    DropdownLabelsIntl,
     EditBox,
     Label,
     Toggle,
@@ -59,21 +56,14 @@
   import view from '@hcengineering/view'
   import { IconPicker } from '@hcengineering/view-resources'
   import { deepEqual } from 'fast-equals'
-  import { createEventDispatcher, onMount } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
 
   import tracker from '../../plugin'
   import StatusSelector from '../issues/StatusSelector.svelte'
-  import {
-    defaultRequestPriorities,
-    defaultRequestStatuses,
-    requestPriorityAssets,
-    requestStatusAssets
-  } from '../../types'
 
   export let project: Project | undefined = undefined
   export let namePlaceholder: string = ''
   export let descriptionPlaceholder: string = ''
-  export let company: Ref<Organization> | undefined = undefined
 
   const client = getClient()
   const hierarchy = client.getHierarchy()
@@ -86,10 +76,6 @@
   let color = project?.color ?? getColorNumberByText(name)
   let isColorSelected = false
   let defaultAssignee: Ref<Employee> | null | undefined = project?.defaultAssignee ?? null
-  let requestStatus: RequestStatus = project?.requestStatus ?? RequestStatus.New
-  let requestPriority: RequestPriority = project?.requestPriority ?? RequestPriority.Normal
-  let requestDueDate: number | null | undefined = project?.requestDueDate ?? null
-  let requestAssignee: Ref<Employee> | null | undefined = project?.requestAssignee ?? null
   let members: AccountUuid[] =
     project?.members !== undefined ? hierarchy.clone(project.members) : [getCurrentAccount().uuid]
   let owners: AccountUuid[] =
@@ -98,7 +84,6 @@
   let isSaving = false
   let defaultStatus: Ref<IssueStatus> | undefined = project?.defaultIssueStatus
   let rolesAssignment: RolesAssignment | undefined
-  let companyRef: Ref<Organization> | null | undefined = project?.company ?? company ?? null
 
   let typeId: Ref<ProjectType> | undefined = project?.type
   $: typeType = typeId !== undefined ? $typeStore.get(typeId) : undefined
@@ -124,17 +109,6 @@
 
   $: isNew = project == null
 
-  onMount(() => {
-    if (!isNew || companyRef == null) return
-    void (async () => {
-      const all = await getAllUserAccounts(client)
-      const me = getCurrentAccount().uuid
-      members = Array.from(new Set([...members, ...all, me].filter(notEmpty)))
-      owners = Array.from(new Set([...owners, ...all, me].filter(notEmpty)))
-      autoJoin = true
-    })()
-  })
-
   async function handleSave (): Promise<void> {
     if (isNew) {
       await createProject()
@@ -157,16 +131,11 @@
       identifier: identifier.toUpperCase(),
       sequence: 0,
       defaultAssignee: defaultAssignee ?? undefined,
-      requestStatus,
-      requestPriority,
-      requestDueDate: requestDueDate ?? null,
-      requestAssignee: requestAssignee ?? undefined,
       icon,
       color,
       defaultIssueStatus: defaultStatus ?? ('' as Ref<IssueStatus>),
       defaultTimeReportDay: project?.defaultTimeReportDay ?? TimeReportDayType.PreviousWorkDay,
-      autoJoinForRoles: normalizeAutoJoinForRoles(autoJoinForRoles),
-      ...(companyRef != null ? { company: companyRef } : {})
+      autoJoinForRoles: normalizeAutoJoinForRoles(autoJoinForRoles)
     }
   }
 
@@ -203,18 +172,6 @@
     if (projectData.defaultAssignee !== project?.defaultAssignee) {
       update.defaultAssignee = projectData.defaultAssignee
     }
-    if (projectData.requestStatus !== project?.requestStatus) {
-      update.requestStatus = projectData.requestStatus
-    }
-    if (projectData.requestPriority !== project?.requestPriority) {
-      update.requestPriority = projectData.requestPriority
-    }
-    if (projectData.requestDueDate !== project?.requestDueDate) {
-      update.requestDueDate = projectData.requestDueDate
-    }
-    if (projectData.requestAssignee !== project?.requestAssignee) {
-      update.requestAssignee = projectData.requestAssignee
-    }
     if (projectData.defaultIssueStatus !== project?.defaultIssueStatus) {
       update.defaultIssueStatus = projectData.defaultIssueStatus
     }
@@ -232,14 +189,6 @@
     }
     if (!autoJoinRolesEqual(projectData.autoJoinForRoles, project?.autoJoinForRoles)) {
       update.autoJoinForRoles = projectData.autoJoinForRoles
-    }
-    const nextCompany = companyRef ?? undefined
-    if (nextCompany !== project?.company) {
-      if (nextCompany === undefined) {
-        ;(update as DocumentUpdate<Project> & { $unset?: Record<string, boolean> }).$unset = { company: true }
-      } else {
-        update.company = nextCompany
-      }
     }
     if (projectData.members.length !== project?.members.length) {
       update.members = projectData.members
@@ -423,20 +372,10 @@
     !(members.length === 0 && isPrivate) &&
     owners.length > 0 &&
     (!isPrivate || owners.some((o) => members.includes(o)))
-
-  $: requestStatusItems = defaultRequestStatuses.map((status) => ({
-    id: status,
-    label: requestStatusAssets[status].label
-  }))
-  $: requestPriorityItems = defaultRequestPriorities.map((priority) => ({
-    id: priority,
-    label: requestPriorityAssets[priority].label
-  }))
-  $: cardLabel = isNew ? tracker.string.NewProject : tracker.string.EditProject
 </script>
 
 <Card
-  label={cardLabel}
+  label={isNew ? tracker.string.NewProject : tracker.string.EditProject}
   okLabel={isNew ? presentation.string.Create : presentation.string.Save}
   okAction={handleSave}
   {canSave}
@@ -520,91 +459,9 @@
         />
       </div>
     </div>
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
-        <Label label={tracker.string.Company} />
-      </div>
-      <UserBox
-        _class={contact.class.Organization}
-        label={tracker.string.Company}
-        placeholder={tracker.string.Company}
-        kind={'regular'}
-        size={'large'}
-        justify={'left'}
-        bind:value={companyRef}
-        allowDeselect
-        titleDeselect={tracker.string.UnassignCompany}
-        icon={contact.icon.Company}
-        showNavigate={false}
-        create={{ component: contact.component.CreateOrganization, label: contact.string.CreateOrganization }}
-      />
-    </div>
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
-        <Label label={tracker.string.RequestStatus} />
-      </div>
-      <DropdownLabelsIntl
-        items={requestStatusItems}
-        label={tracker.string.RequestStatus}
-        kind={'regular'}
-        size={'large'}
-        selected={requestStatus}
-        on:selected={(e) => {
-          requestStatus = e.detail
-        }}
-      />
-    </div>
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
-        <Label label={tracker.string.RequestPriority} />
-      </div>
-      <DropdownLabelsIntl
-        items={requestPriorityItems}
-        label={tracker.string.RequestPriority}
-        kind={'regular'}
-        size={'large'}
-        selected={requestPriority}
-        on:selected={(e) => {
-          requestPriority = e.detail
-        }}
-      />
-    </div>
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
-        <Label label={tracker.string.RequestDueDate} />
-      </div>
-      <DatePresenter
-        bind:value={requestDueDate}
-        labelNull={tracker.string.RequestDueDate}
-        kind={'regular'}
-        size={'large'}
-        editable
-      />
-    </div>
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
-        <Label label={tracker.string.RequestAssignee} />
-      </div>
-      <AssigneeBox
-        label={tracker.string.RequestAssignee}
-        placeholder={tracker.string.RequestAssignee}
-        kind={'regular'}
-        size={'large'}
-        avatarSize={'card'}
-        bind:value={requestAssignee}
-        titleDeselect={tracker.string.Unassigned}
-        showNavigate={false}
-        showTooltip={{ label: tracker.string.RequestAssignee }}
-      />
-    </div>
   </div>
 
   <div class="antiGrid">
-    <div class="antiGrid-row">
-      <div class="antiGrid-row__header withDesciption">
-        <Label label={tracker.string.RequestTeam} />
-      </div>
-    </div>
     <div class="antiGrid-row">
       <div class="antiGrid-row__header">
         <Label label={tracker.string.ChooseIcon} />

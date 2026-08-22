@@ -19,21 +19,6 @@ on:
         required: false
         default: true
         type: boolean
-      run_model_client:
-        description: "Run model-client stage"
-        required: false
-        default: true
-        type: boolean
-      run_model_company:
-        description: "Run model-company stage"
-        required: false
-        default: true
-        type: boolean
-      run_model_company_drive:
-        description: "Run model-company-drive stage"
-        required: false
-        default: true
-        type: boolean
       run_verify:
         description: "Run verify stage"
         required: false
@@ -81,9 +66,6 @@ jobs:
       - name: Unified deploy (all stages)
         env:
           SKIP_FRONT: ${{ github.event.inputs.run_front == 'true' && '0' || '1' }}
-          SKIP_MODEL_CLIENT: ${{ github.event.inputs.run_model_client == 'true' && '0' || '1' }}
-          SKIP_MODEL_COMPANY: ${{ github.event.inputs.run_model_company == 'true' && '0' || '1' }}
-          SKIP_MODEL_COMPANY_DRIVE: ${{ github.event.inputs.run_model_company_drive == 'true' && '0' || '1' }}
           SKIP_VERIFY: ${{ github.event.inputs.run_verify == 'true' && '0' || '1' }}
         run: |
           ./scripts/huly-deploy-production.sh all

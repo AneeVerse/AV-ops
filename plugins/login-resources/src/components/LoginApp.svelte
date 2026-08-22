@@ -103,12 +103,6 @@
     }
 
     if (getMetadata(presentation.metadata.Token) == null) {
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        const localToken = fetchMetadataLocalStorage(presentation.metadata.Token)
-        if (localToken != null && localToken !== '') {
-          setMetadata(presentation.metadata.Token, localToken)
-        }
-      }
       const lastAccount = fetchMetadataLocalStorage(login.metadata.LastAccount)
       if (lastAccount != null) {
         try {

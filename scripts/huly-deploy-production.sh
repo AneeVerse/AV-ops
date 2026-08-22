@@ -14,14 +14,8 @@ usage() {
 Usage: huly-deploy-production.sh <command>
 
 Commands:
-  all            Deploy front + model-client + model-company + model-company-drive + model-request + verify
+  all            Deploy front, then verify
   front          Build tarball locally (if missing), upload, run huly-deploy-front.sh on VPS
-  model-tracker  Upload and run huly-insert-issue-viewlets.sh (States/Dashboard for Issues)
-  model-company  Upload and run huly-insert-company-app.sh (Company app + Project.company field)
-  model-company-drive  Upload company drive model patch (folder fields + triggers need ship + upgrade)
-  model-request  Upload and run huly-insert-request-fields.sh (Request status/priority/due/assignee on Project)
-  model-project-chat  Upload and run huly-insert-project-chat.sh (Project ActivityExtension + Chat nav)
-  model-client   Generate and apply Client classes/funnel/navigator into live model_tx
   verify         Curl live site + check front container index.html on VPS
   help           Show this message
 
@@ -30,20 +24,12 @@ Environment:
   HULY_SSH_KEY   SSH private key path
   SKIP_BUILD=1   Skip local webpack when deploying front (use existing huly-front-dist.tgz)
   SKIP_FRONT=1   Skip front stage for `all`
-  SKIP_MODEL_CLIENT=1         Skip model-client stage for `all`
-  SKIP_MODEL_COMPANY=1        Skip model-company stage for `all`
-  SKIP_MODEL_COMPANY_DRIVE=1  Skip model-company-drive stage for `all`
-  SKIP_MODEL_REQUEST=1        Skip model-request stage for `all`
-  SKIP_MODEL_PROJECT_CHAT=1   Skip model-project-chat stage for `all`
-  SKIP_VERIFY=1               Skip verify stage for `all`
+  SKIP_VERIFY=1  Skip verify stage for `all`
 
 Examples:
   ./scripts/huly-deploy-production.sh front
-  ./scripts/huly-deploy-production.sh model-tracker
-  ./scripts/huly-deploy-production.sh model-company
-  ./scripts/huly-deploy-production.sh model-request
-  ./scripts/huly-deploy-production.sh model-project-chat
   SKIP_BUILD=1 ./scripts/huly-deploy-production.sh front
+  ./scripts/huly-deploy-production.sh all
 EOF
 }
 
@@ -56,7 +42,6 @@ preflight() {
   [[ -f "$SSH_KEY" ]] || { echo "SSH key not found: $SSH_KEY"; exit 1; }
   require_command ssh
   require_command scp
-  require_command node
 }
 
 stage() {
@@ -84,47 +69,6 @@ cmd_front() {
   "${SSH[@]}" "$VPS" 'bash /tmp/huly-deploy-front.sh'
 }
 
-cmd_model_tracker() {
-  echo "==== upload model-tracker script ===="
-  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-issue-viewlets.sh" "$VPS:/tmp/"
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-issue-viewlets.sh'
-}
-
-cmd_model_company() {
-  echo "==== upload model-company script ===="
-  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-company-app.sh" "$VPS:/tmp/"
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-app.sh'
-}
-
-cmd_model_company_drive() {
-  echo "==== upload model-company-drive script ===="
-  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-company-drive.sh" "$VPS:/tmp/"
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-company-drive.sh'
-}
-
-cmd_model_request() {
-  echo "==== upload model-request script ===="
-  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-request-fields.sh" "$VPS:/tmp/"
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-request-fields.sh'
-}
-
-cmd_model_project_chat() {
-  echo "==== upload model-project-chat script ===="
-  "${SCP[@]}" "$REPO_ROOT/scripts/huly-insert-project-chat.sh" "$VPS:/tmp/"
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-project-chat.sh'
-}
-
-cmd_model_client() {
-  local sql="$REPO_ROOT/scripts/.huly-client-model.sql"
-  echo "==== generate Client model SQL ===="
-  node "$REPO_ROOT/scripts/huly-local-apply-fork-model.mjs" --dump-sql > "$sql"
-  echo "==== upload model-client ===="
-  "${SCP[@]}" "$sql" "$REPO_ROOT/scripts/huly-insert-client-model.sh" "$VPS:/tmp/"
-  echo "==== apply on VPS ===="
-  "${SSH[@]}" "$VPS" 'bash /tmp/huly-insert-client-model.sh /tmp/.huly-client-model.sql'
-  rm -f "$sql"
-}
-
 cmd_verify() {
   preflight
   echo "==== public ===="
@@ -143,43 +87,6 @@ cmd_all() {
     echo "Skipping front stage (SKIP_FRONT=1)"
   fi
 
-  if [[ "${SKIP_MODEL_COMPANY:-0}" != "1" ]]; then
-    stage "model-company"
-    cmd_model_company
-  else
-    echo "Skipping model-company stage (SKIP_MODEL_COMPANY=1)"
-  fi
-
-  if [[ "${SKIP_MODEL_COMPANY_DRIVE:-0}" != "1" ]]; then
-    stage "model-company-drive"
-    cmd_model_company_drive
-  else
-    echo "Skipping model-company-drive stage (SKIP_MODEL_COMPANY_DRIVE=1)"
-  fi
-
-  if [[ "${SKIP_MODEL_REQUEST:-0}" != "1" ]]; then
-    stage "model-request"
-    cmd_model_request
-  else
-    echo "Skipping model-request stage (SKIP_MODEL_REQUEST=1)"
-  fi
-
-  if [[ "${SKIP_MODEL_PROJECT_CHAT:-0}" != "1" ]]; then
-    stage "model-project-chat"
-    cmd_model_project_chat
-  else
-    echo "Skipping model-project-chat stage (SKIP_MODEL_PROJECT_CHAT=1)"
-  fi
-
-  # Client model must run after company patches — it owns Company app navigatorModel
-  # (funnel spaces sidebar + SpaceView create-client button config).
-  if [[ "${SKIP_MODEL_CLIENT:-0}" != "1" ]]; then
-    stage "model-client"
-    cmd_model_client
-  else
-    echo "Skipping model-client stage (SKIP_MODEL_CLIENT=1)"
-  fi
-
   if [[ "${SKIP_VERIFY:-0}" != "1" ]]; then
     stage "verify"
     cmd_verify
@@ -191,12 +98,6 @@ cmd_all() {
 case "${1:-help}" in
   all) cmd_all ;;
   front) cmd_front ;;
-  model-tracker) cmd_model_tracker ;;
-  model-company) cmd_model_company ;;
-  model-company-drive) cmd_model_company_drive ;;
-  model-request) cmd_model_request ;;
-  model-project-chat) cmd_model_project_chat ;;
-  model-client) cmd_model_client ;;
   verify) cmd_verify ;;
   help|-h|--help) usage ;;
   *) echo "Unknown command: $1"; usage; exit 1 ;;

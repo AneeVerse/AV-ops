@@ -14,7 +14,7 @@
 //
 
 import chunter from '@hcengineering/chunter'
-import contact, { type Employee, type Organization, type Person } from '@hcengineering/contact'
+import contact, { type Employee, type Person } from '@hcengineering/contact'
 import {
   DOMAIN_MODEL,
   DateRangeMode,
@@ -51,7 +51,6 @@ import {
 } from '@hcengineering/model'
 import attachment from '@hcengineering/model-attachment'
 import core, { TAttachedDoc, TDoc, TStatus, TType } from '@hcengineering/model-core'
-import drive, { type Folder } from '@hcengineering/drive'
 import task, { TTask, TProject as TTaskProject } from '@hcengineering/model-task'
 import { getEmbeddedLabel, type IntlString } from '@hcengineering/platform'
 import tags, { type TagElement } from '@hcengineering/tags'
@@ -74,12 +73,8 @@ import {
   type RelatedClassRule,
   type RelatedIssueTarget,
   type RelatedSpaceRule,
-  type RequestPriority,
-  type RequestStatus,
   type TimeReportDayType,
-  type TimeSpendReport,
-  type Client,
-  type ClientFunnel
+  type TimeSpendReport
 } from '@hcengineering/tracker'
 import tracker from './plugin'
 import { type TaskType } from '@hcengineering/task'
@@ -121,32 +116,6 @@ export class TTypeMilestoneStatus extends TType {}
 /**
  * @public
  */
-export function TypeRequestStatus (): Type<RequestStatus> {
-  return { _class: tracker.class.TypeRequestStatus, label: tracker.string.RequestStatus }
-}
-
-/**
- * @public
- */
-@Model(tracker.class.TypeRequestStatus, core.class.Type, DOMAIN_MODEL)
-export class TTypeRequestStatus extends TType {}
-
-/**
- * @public
- */
-export function TypeRequestPriority (): Type<RequestPriority> {
-  return { _class: tracker.class.TypeRequestPriority, label: tracker.string.RequestPriority }
-}
-
-/**
- * @public
- */
-@Model(tracker.class.TypeRequestPriority, core.class.Type, DOMAIN_MODEL)
-export class TTypeRequestPriority extends TType {}
-
-/**
- * @public
- */
 @Model(tracker.class.Project, task.class.Project)
 @UX(tracker.string.Project, tracker.icon.Issues, 'Project', 'name')
 export class TProject extends TTaskProject implements Project {
@@ -165,39 +134,6 @@ export class TProject extends TTaskProject implements Project {
     defaultAssignee!: Ref<Employee>
 
   declare defaultTimeReportDay: TimeReportDayType
-
-  @Prop(TypeRef(contact.class.Organization), tracker.string.Company)
-  @Index(IndexKind.Indexed)
-    company?: Ref<Organization>
-
-  @Prop(TypeRef(drive.class.Folder), tracker.string.ProjectDriveFolder)
-  @Index(IndexKind.Indexed)
-    driveFolder?: Ref<Folder>
-
-  @Prop(TypeRef(drive.class.Folder), tracker.string.ProductionFolder)
-    productionFolder?: Ref<Folder>
-
-  @Prop(TypeRef(drive.class.Folder), tracker.string.DistributedFolder)
-    distributedFolder?: Ref<Folder>
-
-  @Prop(TypeString(), tracker.string.AneerequestId)
-  @Index(IndexKind.Indexed)
-    aneerequestId?: string
-
-  @Prop(TypeRequestStatus(), tracker.string.RequestStatus)
-    requestStatus?: RequestStatus
-
-  @Prop(TypeRequestPriority(), tracker.string.RequestPriority)
-    requestPriority?: RequestPriority
-
-  @Prop(TypeDate(DateRangeMode.DATE), tracker.string.RequestDueDate)
-    requestDueDate?: Timestamp | null
-
-  @Prop(TypeRef(contact.mixin.Employee), tracker.string.RequestAssignee)
-    requestAssignee?: Ref<Employee> | null
-
-  @Prop(Collection(chunter.class.ChatMessage), chunter.string.Comments)
-    comments?: number
 
   @Prop(Collection(tracker.class.RelatedIssueTarget), tracker.string.RelatedIssues)
     relatedIssueTargets!: number
@@ -523,50 +459,3 @@ export class TClassicProjectTypeData extends TProject implements RolesAssignment
 @Mixin(tracker.mixin.IssueTypeData, tracker.class.Issue)
 @UX(getEmbeddedLabel('Issue'), tracker.icon.Issue)
 export class TIssueTypeData extends TIssue {}
-
-@Model(tracker.class.ClientFunnel, task.class.Project)
-@UX(tracker.string.ClientFunnel, tracker.icon.Project)
-export class TClientFunnel extends TTaskProject implements ClientFunnel {
-  @Prop(TypeMarkup(), tracker.string.Description)
-  @Index(IndexKind.FullText)
-    fullDescription?: string
-
-  @Prop(Collection(attachment.class.Attachment), attachment.string.Attachments, { shortLabel: attachment.string.Files })
-    attachments?: number
-
-  @Prop(Collection(chunter.class.ChatMessage), chunter.string.Comments)
-    comments?: number
-}
-
-@Model(tracker.class.Client, task.class.Task)
-@UX(tracker.string.Client, contact.icon.Company, 'CLIENT', 'title', undefined, tracker.string.Clients)
-export class TClient extends TTask implements Client {
-  @Prop(TypeRef(contact.class.Organization), tracker.string.Company)
-  @ReadOnly()
-  declare attachedTo: Ref<Organization>
-
-  @Prop(TypeDate(), task.string.StartDate)
-    startDate!: Timestamp | null
-
-  @Prop(TypeString(), tracker.string.Title)
-  @Index(IndexKind.FullText)
-    title!: string
-
-  @Prop(TypeRef(contact.mixin.Employee), tracker.string.Assignee)
-  declare assignee: Ref<Employee> | null
-
-  @Prop(TypeRef(core.class.Status), task.string.TaskState, { _id: tracker.attribute.ClientState })
-  declare status: Ref<Status>
-
-  declare space: Ref<ClientFunnel>
-}
-
-@Mixin(tracker.mixin.DefaultClientFunnelTypeData, tracker.class.ClientFunnel)
-@UX(getEmbeddedLabel('Default client funnel'), tracker.icon.Project)
-export class TDefaultClientFunnelTypeData extends TClientFunnel implements RolesAssignment {
-  [key: Ref<Role>]: AccountUuid[]
-}
-
-@Mixin(tracker.mixin.ClientTypeData, tracker.class.Client)
-@UX(getEmbeddedLabel('Client'), contact.icon.Company)
-export class TClientTypeData extends TClient {}

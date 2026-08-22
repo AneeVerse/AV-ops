@@ -35,7 +35,7 @@ import {
 } from '@hcengineering/model'
 import { DOMAIN_ACTIVITY } from '@hcengineering/model-activity'
 import { DOMAIN_SPACE } from '@hcengineering/model-core'
-import { DOMAIN_TASK, migrateDefaultStatusesBase, createSequence } from '@hcengineering/model-task'
+import { DOMAIN_TASK, migrateDefaultStatusesBase } from '@hcengineering/model-task'
 import tags from '@hcengineering/tags'
 import task from '@hcengineering/task'
 import { type Issue, type IssueStatus, type Project, TimeReportDayType, trackerId } from '@hcengineering/tracker'
@@ -44,7 +44,7 @@ import view, { type ViewOptionModel } from '@hcengineering/view'
 import { classicIssueTaskStatuses } from '.'
 import tracker from './plugin'
 import { DOMAIN_TRACKER } from './types'
-import { issuesOptions, issueDashboardViewlet, issueStatusTableViewlet } from './viewlets'
+import { issuesOptions } from './viewlets'
 
 async function createDefaultProject (tx: TxOperations): Promise<void> {
   const current = await tx.findOne(tracker.class.Project, {
@@ -139,29 +139,6 @@ async function createDefaults (tx: TxOperations): Promise<void> {
   )
 }
 
-async function createDefaultClientFunnel (tx: TxOperations): Promise<void> {
-  const current = await tx.findOne(core.class.Space, {
-    _id: tracker.space.DefaultClientFunnel
-  })
-  if (current === undefined) {
-    await tx.createDoc(
-      tracker.class.ClientFunnel,
-      core.space.Space,
-      {
-        name: 'Funnel',
-        description: 'Default funnel',
-        private: false,
-        archived: false,
-        members: [],
-        autoJoin: true,
-        type: tracker.template.DefaultClientFunnel
-      },
-      tracker.space.DefaultClientFunnel
-    )
-  }
-  await createSequence(tx, tracker.class.Client)
-}
-
 async function passIdentifierToParentInfo (client: MigrationClient): Promise<void> {
   const issues = await client.find<Issue>(DOMAIN_TASK, { _class: tracker.class.Issue, 'parents.0': { $exists: true } })
   for (const issue of issues) {
@@ -201,30 +178,6 @@ export async function migrateAddStartDate (client: MigrationClient): Promise<voi
   )
 }
 
-async function addIssueStatesDashboardViewlets (client: MigrationUpgradeClient): Promise<void> {
-  const tx = new TxOperations(client, core.account.System)
-  await createOrUpdate(
-    tx,
-    view.class.Viewlet,
-    core.space.Model,
-    issueStatusTableViewlet,
-    tracker.viewlet.IssueStatusTable
-  )
-  await createOrUpdate(
-    tx,
-    view.class.Viewlet,
-    core.space.Model,
-    issueDashboardViewlet,
-    tracker.viewlet.IssueDashboard
-  )
-}
-
-// SEARCH_VIEW_OPTIONS (showQuickModeSelector / searchScope / searchHighlight)
-// are appended to issuesOptions(), which feeds the stored List (IssueList) and
-// Kanban (IssueKanban) viewlet docs. builder.createDoc is idempotent, so
-// existing workspaces never pick up the new `other` entries on upgrade; merge
-// the missing keys into both viewlets by `key`. Idempotent — a re-run (or a
-// partially-migrated workspace) is a no-op.
 async function addSearchViewOptions (client: MigrationUpgradeClient): Promise<void> {
   const txOp = new TxOperations(client, core.account.System)
 
@@ -500,17 +453,6 @@ export const trackerOperation: MigrateOperation = {
       {
         state: 'add-search-view-options',
         func: addSearchViewOptions
-      },
-      {
-        state: 'issue-states-dashboard-viewlets',
-        func: addIssueStatesDashboardViewlets
-      },
-      {
-        state: 'u-default-client-funnel',
-        func: async (client) => {
-          const tx = new TxOperations(client, core.account.System)
-          await createDefaultClientFunnel(tx)
-        }
       }
     ])
   }

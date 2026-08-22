@@ -2,7 +2,6 @@
 // Copyright © 2023 Hardcore Engineering Inc.
 -->
 <script lang="ts">
-  import contact, { type Organization } from '@hcengineering/contact'
   import { getCurrentAccount, Ref } from '@hcengineering/core'
   import presentation, { createQuery, IconWithEmoji, isAdminUser } from '@hcengineering/presentation'
   import { Project } from '@hcengineering/tracker'
@@ -10,7 +9,6 @@
   import view from '@hcengineering/view'
   import { NavLink, showMenu } from '@hcengineering/view-resources'
   import tracker from '../../plugin'
-  import { projectNavTitle } from '../../projectTitle'
 
   export let value: Project | Ref<Project> | undefined
   export let inline: boolean = false
@@ -20,9 +18,7 @@
   export let showActions: boolean = false
 
   const projectQuery = createQuery()
-  const orgQuery = createQuery()
   let projectObj: Project | undefined
-  let company: Organization | undefined
   $: if (typeof value === 'string' && value !== undefined) {
     projectQuery.query<Project>(
       tracker.class.Project,
@@ -36,20 +32,6 @@
     projectObj = value
   } else {
     projectObj = undefined
-  }
-
-  $: if (projectObj?.company !== undefined) {
-    orgQuery.query(
-      contact.class.Organization,
-      { _id: projectObj.company },
-      (res) => {
-        company = res[0]
-      },
-      { limit: 1 }
-    )
-  } else {
-    orgQuery.unsubscribe()
-    company = undefined
   }
 
   function openActions (ev: MouseEvent): void {
@@ -78,10 +60,10 @@
     <span class="label no-underline nowrap" class:fs-bold={accent}>
       {#if openIssues && (isAdminUser() || projectObj.members.includes(getCurrentAccount().uuid))}
         <NavLink space={projectObj._id} special={'issues'} noUnderline={false}>
-          {projectNavTitle(projectObj, company)}
+          {projectObj.name}
         </NavLink>
       {:else}
-        {projectNavTitle(projectObj, company)}
+        {projectObj.name}
       {/if}
       {#if projectObj.archived}
         <Label label={presentation.string.Archived} />

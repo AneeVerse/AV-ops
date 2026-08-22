@@ -39,8 +39,6 @@ export default mergeIds(contactId, contact, {
     Organization: '' as IntlString,
     SelectFolder: '' as IntlString,
     OrganizationsFolder: '' as IntlString,
-    CompanyDriveFolder: '' as IntlString,
-    AneerequestId: '' as IntlString,
     PersonsFolder: '' as IntlString,
     Name: '' as IntlString,
     ContactCreateLabel: '' as IntlString,

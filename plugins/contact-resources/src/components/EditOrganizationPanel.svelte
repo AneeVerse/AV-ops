@@ -42,7 +42,6 @@
 
   let showAllMixins = false
   let saved = false
-  let useMaxWidth = true
 
   $: mixins = object ? getDocMixins(object, showAllMixins) : []
 
@@ -92,8 +91,6 @@
     isHeader={false}
     isSub={false}
     isAside={true}
-    selectedAside={false}
-    bind:useMaxWidth
     {embedded}
     {object}
     on:open

@@ -13,9 +13,7 @@
 // limitations under the License.
 //
 
-import { Employee, Organization, Person } from '@hcengineering/contact'
-import { type ChatMessage } from '@hcengineering/chunter'
-import { Folder } from '@hcengineering/drive'
+import { Employee, Person } from '@hcengineering/contact'
 import {
   AttachedDoc,
   Attribute,
@@ -60,52 +58,12 @@ export interface IssueStatus extends Status {}
 /**
  * @public
  */
-/**
- * Request-level lifecycle on a Tracker Project (AneeVerse: Request = Project).
- * Independent from Issue status / priority / due / assignee.
- * @public
- */
-export enum RequestStatus {
-  New,
-  InProgress,
-  WaitingForClient,
-  Review,
-  Completed,
-  Cancelled
-}
-
-/**
- * Request-level priority on a Tracker Project. Independent from IssuePriority.
- * @public
- */
-export enum RequestPriority {
-  Low,
-  Normal,
-  High,
-  Urgent
-}
-
 export interface Project extends TaskProject, IconProps {
   identifier: string // Project identifier
   sequence: number
   defaultIssueStatus?: Ref<IssueStatus>
   defaultAssignee?: Ref<Employee>
   defaultTimeReportDay: TimeReportDayType
-  company?: Ref<Organization>
-  driveFolder?: Ref<Folder>
-  productionFolder?: Ref<Folder>
-  distributedFolder?: Ref<Folder>
-  aneerequestId?: string
-  /** Request lifecycle status (not Issue status). */
-  requestStatus?: RequestStatus
-  /** Request priority (not Issue priority). */
-  requestPriority?: RequestPriority
-  /** Request due date (not Issue dueDate). */
-  requestDueDate?: Timestamp | null
-  /** Primary person responsible for the Request (not Issue.assignee / defaultAssignee). */
-  requestAssignee?: Ref<Employee> | null
-  /** Project-level chat messages (same ChatMessage collection as other ActivityDocs). */
-  comments?: CollectionSize<ChatMessage>
 }
 
 /**
@@ -432,25 +390,6 @@ export interface Component extends Doc {
 /**
  * @public
  */
-export interface ClientFunnel extends TaskProject {
-  fullDescription?: Markup
-  attachments?: number
-}
-
-/**
- * @public
- */
-export interface Client extends Task {
-  space: Ref<ClientFunnel>
-  attachedTo: Ref<Organization>
-  status: Ref<Status>
-  startDate: Timestamp | null
-  title: string
-}
-
-/**
- * @public
- */
 export const trackerId = 'tracker' as Plugin
 
 const pluginState = plugin(trackerId, {
@@ -464,22 +403,16 @@ const pluginState = plugin(trackerId, {
     TypeIssuePriority: '' as Ref<Class<Type<IssuePriority>>>,
     Milestone: '' as Ref<Class<Milestone>>,
     TypeMilestoneStatus: '' as Ref<Class<Type<MilestoneStatus>>>,
-    TypeRequestStatus: '' as Ref<Class<Type<RequestStatus>>>,
-    TypeRequestPriority: '' as Ref<Class<Type<RequestPriority>>>,
     TimeSpendReport: '' as Ref<Class<TimeSpendReport>>,
     TypeReportedTime: '' as Ref<Class<Type<number>>>,
     TypeEstimation: '' as Ref<Class<Type<number>>>,
     TypeRemainingTime: '' as Ref<Class<Type<number>>>,
     RelatedIssueTarget: '' as Ref<Class<RelatedIssueTarget>>,
-    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>,
-    Client: '' as Ref<Class<Client>>,
-    ClientFunnel: '' as Ref<Class<ClientFunnel>>
+    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>
   },
   mixin: {
     ClassicProjectTypeData: '' as Ref<Mixin<Project>>,
-    IssueTypeData: '' as Ref<Mixin<Issue>>,
-    DefaultClientFunnelTypeData: '' as Ref<Mixin<ClientFunnel>>,
-    ClientTypeData: '' as Ref<Mixin<Client>>
+    IssueTypeData: '' as Ref<Mixin<Issue>>
   },
   ids: {
     NoParent: '' as Ref<Issue>,
@@ -512,8 +445,7 @@ const pluginState = plugin(trackerId, {
     LabelsView: '' as AnyComponent
   },
   attribute: {
-    IssueStatus: '' as Ref<Attribute<Status>>,
-    ClientState: '' as Ref<Attribute<Status>>
+    IssueStatus: '' as Ref<Attribute<Status>>
   },
   icon: {
     TrackerApplication: '' as Asset,
@@ -574,9 +506,7 @@ const pluginState = plugin(trackerId, {
   },
   descriptors: {
     ProjectType: '' as Ref<ProjectTypeDescriptor>,
-    Issue: '' as Ref<TaskTypeDescriptor>,
-    ClientFunnelType: '' as Ref<ProjectTypeDescriptor>,
-    Client: '' as Ref<TaskTypeDescriptor>
+    Issue: '' as Ref<TaskTypeDescriptor>
   },
   action: {
     CopyAsMarkdownTable: '' as Ref<Action<Doc, any>>,
@@ -605,25 +535,8 @@ const pluginState = plugin(trackerId, {
   project: {
     DefaultProject: '' as Ref<Project>
   },
-  space: {
-    DefaultClientFunnel: '' as Ref<ClientFunnel>
-  },
-  template: {
-    DefaultClientFunnel: '' as Ref<ProjectType>
-  },
-  clientStatus: {
-    Backlog: '' as Ref<Status>,
-    Incoming: '' as Ref<Status>,
-    Negotiation: '' as Ref<Status>,
-    OfferPreparing: '' as Ref<Status>,
-    MakeADecision: '' as Ref<Status>,
-    ContractConclusion: '' as Ref<Status>,
-    Won: '' as Ref<Status>,
-    Lost: '' as Ref<Status>
-  },
   resolver: {
-    Location: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>,
-    CompanyLocation: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>
+    Location: '' as Resource<(loc: Location) => Promise<ResolvedLocation | undefined>>
   },
   string: {
     TrackerApplication: '' as IntlString,
@@ -644,12 +557,7 @@ const pluginState = plugin(trackerId, {
     NewProject: '' as IntlString,
     UnsetParentIssue: '' as IntlString,
     ForbidCreateProjectPermission: '' as IntlString,
-    ForbidCreateProjectPermissionDescription: '' as IntlString,
-    Client: '' as IntlString,
-    Clients: '' as IntlString,
-    ClientFunnel: '' as IntlString,
-    ForbidCreateClientFunnelPermission: '' as IntlString,
-    ForbidCreateClientFunnelPermissionDescription: '' as IntlString
+    ForbidCreateProjectPermissionDescription: '' as IntlString
   },
   extensions: {
     IssueListHeader: '' as ComponentExtensionId,
@@ -658,12 +566,10 @@ const pluginState = plugin(trackerId, {
   },
   taskTypes: {
     Issue: '' as Ref<TaskType>,
-    SubIssue: '' as Ref<TaskType>,
-    Client: '' as Ref<TaskType>
+    SubIssue: '' as Ref<TaskType>
   },
   permission: {
-    ForbidCreateProject: '' as Ref<Permission>,
-    ForbidCreateClientFunnel: '' as Ref<Permission>
+    ForbidCreateProject: '' as Ref<Permission>
   }
 })
 export default pluginState
