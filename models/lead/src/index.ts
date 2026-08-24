@@ -127,6 +127,19 @@ export function createModel (builder: Builder): void {
               createComponent: lead.component.CreateFunnel,
               createLabel: lead.string.CreateFunnel
             }
+          },
+          {
+            id: 'archive',
+            component: workbench.component.Archive,
+            icon: view.icon.Archive,
+            label: workbench.string.Archive,
+            position: 'bottom',
+            visibleIf: workbench.function.HasArchiveSpaces,
+            componentProps: {
+              _class: lead.class.Funnel,
+              config: ['', 'members', 'private', 'archived', 'modifiedOn'],
+              query: { archived: true }
+            }
           }
         ],
         spaces: [
@@ -160,7 +173,7 @@ export function createModel (builder: Builder): void {
           {
             key: 'hideArchived',
             type: 'toggle',
-            defaultValue: true,
+            defaultValue: false,
             actionTarget: 'options',
             action: view.function.HideArchived,
             label: view.string.HideArchived

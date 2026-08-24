@@ -28,7 +28,6 @@ import { type Application } from '@hcengineering/workbench'
 export default mergeIds(trackerId, tracker, {
   string: {
     Projects: '' as IntlString,
-    AllClients: '' as IntlString,
     GotoIssues: '' as IntlString,
     GotoActive: '' as IntlString,
     GotoBacklog: '' as IntlString,
@@ -72,6 +71,7 @@ export default mergeIds(trackerId, tracker, {
     IssueList: '' as Ref<Viewlet>,
     IssueTemplateList: '' as Ref<Viewlet>,
     IssueKanban: '' as Ref<Viewlet>,
+    IssueStatusTable: '' as Ref<Viewlet>,
     MilestoneList: '' as Ref<Viewlet>,
     ComponentList: '' as Ref<Viewlet>,
     ProjectList: '' as Ref<Viewlet>,

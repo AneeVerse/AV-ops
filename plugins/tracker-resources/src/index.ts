@@ -165,6 +165,7 @@ import IssueStatistics from './components/milestones/IssueStatistics.svelte'
 import MilestoneFilter from './components/milestones/MilestoneFilter.svelte'
 import MilestoneRefPresenter from './components/milestones/MilestoneRefPresenter.svelte'
 import CreateProject from './components/projects/CreateProject.svelte'
+import CompanyRelated from './components/company/CompanyRelated.svelte'
 import ProjectPresenter from './components/projects/ProjectPresenter.svelte'
 import ProjectSpacePresenter from './components/projects/ProjectSpacePresenter.svelte'
 
@@ -459,6 +460,7 @@ export default async (): Promise<Resources> => ({
     EditIssueTemplate,
     TemplateEstimationEditor,
     CreateProject,
+    CompanyRelated,
     ProjectPresenter,
     ProjectSpacePresenter,
     IssueStatistics,

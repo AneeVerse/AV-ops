@@ -14,7 +14,7 @@
 //
 
 import chunter from '@hcengineering/chunter'
-import contact, { type Employee, type Person } from '@hcengineering/contact'
+import contact, { type Employee, type Organization, type Person } from '@hcengineering/contact'
 import {
   DOMAIN_MODEL,
   DateRangeMode,
@@ -134,6 +134,10 @@ export class TProject extends TTaskProject implements Project {
     defaultAssignee!: Ref<Employee>
 
   declare defaultTimeReportDay: TimeReportDayType
+
+  @Prop(TypeRef(contact.class.Organization), tracker.string.Company)
+  @Index(IndexKind.Indexed)
+    company?: Ref<Organization>
 
   @Prop(Collection(tracker.class.RelatedIssueTarget), tracker.string.RelatedIssues)
     relatedIssueTargets!: number

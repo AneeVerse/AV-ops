@@ -14,10 +14,11 @@
 -->
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import { Employee } from '@hcengineering/contact'
+  import contact, { Employee, Organization } from '@hcengineering/contact'
   import {
     AccountArrayEditor,
     AssigneeBox,
+    UserBox,
     employeeRefByAccountUuidStore,
     getAnonymousRefs
   } from '@hcengineering/contact-resources'
@@ -64,6 +65,7 @@
   export let project: Project | undefined = undefined
   export let namePlaceholder: string = ''
   export let descriptionPlaceholder: string = ''
+  export let company: Ref<Organization> | undefined = undefined
 
   const client = getClient()
   const hierarchy = client.getHierarchy()
@@ -76,6 +78,7 @@
   let color = project?.color ?? getColorNumberByText(name)
   let isColorSelected = false
   let defaultAssignee: Ref<Employee> | null | undefined = project?.defaultAssignee ?? null
+  let companyRef: Ref<Organization> | null | undefined = project?.company ?? company ?? null
   let members: AccountUuid[] =
     project?.members !== undefined ? hierarchy.clone(project.members) : [getCurrentAccount().uuid]
   let owners: AccountUuid[] =
@@ -135,7 +138,8 @@
       color,
       defaultIssueStatus: defaultStatus ?? ('' as Ref<IssueStatus>),
       defaultTimeReportDay: project?.defaultTimeReportDay ?? TimeReportDayType.PreviousWorkDay,
-      autoJoinForRoles: normalizeAutoJoinForRoles(autoJoinForRoles)
+      autoJoinForRoles: normalizeAutoJoinForRoles(autoJoinForRoles),
+      ...(companyRef != null ? { company: companyRef } : {})
     }
   }
 
@@ -189,6 +193,14 @@
     }
     if (!autoJoinRolesEqual(projectData.autoJoinForRoles, project?.autoJoinForRoles)) {
       update.autoJoinForRoles = projectData.autoJoinForRoles
+    }
+    const nextCompany = companyRef ?? undefined
+    if (nextCompany !== project?.company) {
+      if (nextCompany === undefined) {
+        ;(update as DocumentUpdate<Project> & { $unset?: Record<string, boolean> }).$unset = { company: true }
+      } else {
+        update.company = nextCompany
+      }
     }
     if (projectData.members.length !== project?.members.length) {
       update.members = projectData.members
@@ -478,6 +490,26 @@
             }}
         size={'large'}
         on:click={chooseIcon}
+      />
+    </div>
+
+    <div class="antiGrid-row">
+      <div class="antiGrid-row__header">
+        <Label label={tracker.string.Company} />
+      </div>
+      <UserBox
+        _class={contact.class.Organization}
+        label={tracker.string.Company}
+        placeholder={tracker.string.Company}
+        kind={'regular'}
+        size={'large'}
+        justify={'left'}
+        bind:value={companyRef}
+        allowDeselect
+        titleDeselect={tracker.string.UnassignCompany}
+        icon={contact.icon.Company}
+        showNavigate={false}
+        create={{ component: contact.component.CreateOrganization, label: contact.string.CreateOrganization }}
       />
     </div>
 

@@ -15,6 +15,7 @@
 
 import activity from '@hcengineering/activity'
 import chunter from '@hcengineering/chunter'
+import contact from '@hcengineering/contact'
 import { AccountRole, type ClassCollaborators, type Ref, type Status } from '@hcengineering/core'
 import { type Builder } from '@hcengineering/model'
 import core from '@hcengineering/model-core'
@@ -387,7 +388,7 @@ function defineApplication (
         spaces: [
           {
             id: 'projects',
-            label: tracker.string.AllClients,
+            label: tracker.string.Projects,
             spaceClass: tracker.class.Project,
             addSpaceLabel: tracker.string.CreateProject,
             createComponent: tracker.component.CreateProject,
@@ -489,6 +490,10 @@ export function createModel (builder: Builder): void {
   })
 
   defineViewlets(builder)
+
+  builder.mixin(contact.class.Organization, core.class.Class, view.mixin.ObjectEditorFooter, {
+    editor: tracker.component.CompanyRelated
+  })
 
   builder.createDoc(
     view.class.ViewletViewAction,

@@ -256,6 +256,8 @@
     "ApiTokenExpiry90Days": "90 days",
     "ApiTokenExpiry180Days": "180 days",
     "ApiTokenExpiry365Days": "365 days",
+    "ApiTokenExpiryNever": "No expiry",
+    "ApiTokenNeverExpires": "Never",
     "ApiTokenLoadError": "Failed to load API tokens",
     "ApiTokenCreateError": "Failed to create token. Please try again.",
     "ApiTokens": "API Tokens",

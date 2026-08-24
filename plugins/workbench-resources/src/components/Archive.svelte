@@ -41,6 +41,7 @@
     {config}
     showNotification
     {baseMenuClass}
+    options={{ showArchived: true }}
     query={query ?? {
       _class: { $in: getSpecialSpaceClass(model) },
       archived: true

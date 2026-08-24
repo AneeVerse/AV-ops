@@ -2696,8 +2696,8 @@ function verifyNotApiToken (extra: Record<string, any> | undefined): void {
  * Creates a new API token for the authenticated user.
  * @param params.name Human-readable token name (1–255 chars)
  * @param params.workspaceUuid Target workspace — user must have access
- * @param params.expiryDays Token validity period (1–365 days)
- * @returns Token ID, signed JWT, and expiration timestamp (ms)
+ * @param params.expiryDays Token validity period (1–365 days), or 0 for a token that never expires
+ * @returns Token ID, signed JWT, and expiration timestamp (ms, -1 when it never expires)
  * @throws BadRequest if validation fails
  * @throws Forbidden if user lacks workspace access
  */
@@ -2728,8 +2728,9 @@ async function createApiToken (
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
+  // 0 means "never expires", mirroring the -1 sentinel invites already use.
   const days = Math.floor(expiryDays)
-  if (days < 1 || days > 365) {
+  if (days < 0 || days > 365) {
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
@@ -2747,16 +2748,22 @@ async function createApiToken (
   // audit trail, so counting them would eventually lock out anyone who rotates.
   const now = Date.now()
   const existingTokens = await db.apiToken.find({ accountUuid: account })
-  const usableTokens = existingTokens.filter((it) => !it.revoked && it.expiresOn > now)
+  const usableTokens = existingTokens.filter((it) => !it.revoked && (it.expiresOn < 0 || it.expiresOn > now))
   if (usableTokens.length >= MAX_TOKENS_PER_ACCOUNT) {
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
-  const expiresOn = now + days * 86400000
-  const expSec = Math.floor(expiresOn / 1000)
+  const neverExpires = days === 0
+  const expiresOn = neverExpires ? -1 : now + days * 86400000
 
   const id = randomUUID()
-  const apiToken = generateToken(account, workspaceUuid, { apiTokenId: id }, undefined, { exp: expSec })
+  const apiToken = generateToken(
+    account,
+    workspaceUuid,
+    { apiTokenId: id },
+    undefined,
+    neverExpires ? undefined : { exp: Math.floor(expiresOn / 1000) }
+  )
 
   await db.apiToken.insertOne({
     id,

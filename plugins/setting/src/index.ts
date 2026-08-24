@@ -373,6 +373,8 @@ export default plugin(settingId, {
     ApiTokenExpiry90Days: '' as IntlString,
     ApiTokenExpiry180Days: '' as IntlString,
     ApiTokenExpiry365Days: '' as IntlString,
+    ApiTokenExpiryNever: '' as IntlString,
+    ApiTokenNeverExpires: '' as IntlString,
     ApiTokenLoadError: '' as IntlString,
     ApiTokenCreateError: '' as IntlString,
     ApiTokens: '' as IntlString,

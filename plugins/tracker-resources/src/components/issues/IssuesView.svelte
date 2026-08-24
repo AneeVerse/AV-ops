@@ -39,15 +39,17 @@
   export let autoSelectSpace: boolean = false
 
   let selectedSpace: Ref<Space> | undefined = undefined
+  let viewlet: WithLookup<Viewlet> | undefined = undefined
+  const viewlets: WithLookup<Viewlet>[] | undefined = undefined
+  let viewOptions: ViewOptions | undefined
+
+  // My issues / All issues must stay unfiltered unless the user picks a project.
+  // Do not auto-select — StatesBar chips only appear after an explicit pick.
   $: effectiveSpace = space ?? selectedSpace
   $: selectorQuery = spaceSelectorQuery ?? {
     archived: false,
     members: getCurrentAccount().uuid
   }
-
-  let viewlet: WithLookup<Viewlet> | undefined = undefined
-  const viewlets: WithLookup<Viewlet>[] | undefined = undefined
-  let viewOptions: ViewOptions | undefined
 
   // Single search source-of-truth. The legacy `search` binding still
   // exists for SpaceHeader's internal SearchInput (only used when

@@ -533,6 +533,34 @@ export function defineViewlets (builder: Builder): void {
     tracker.viewlet.IssueKanban
   )
 
+  builder.createDoc(
+    view.class.Viewlet,
+    core.space.Model,
+    {
+      attachTo: tracker.class.Issue,
+      descriptor: task.viewlet.StatusTable,
+      config: ['', 'identifier', 'title', 'status', 'priority', 'assignee', 'dueDate', 'modifiedOn'],
+      viewOptions: {
+        groupBy: [],
+        orderBy: [],
+        other: [
+          {
+            key: 'hideArchived',
+            type: 'toggle' as const,
+            defaultValue: true,
+            actionTarget: 'options' as const,
+            action: view.function.HideArchived,
+            label: view.string.HideArchived
+          }
+        ]
+      },
+      configOptions: {
+        sortable: true
+      }
+    },
+    tracker.viewlet.IssueStatusTable
+  )
+
   const componentListViewOptions: ViewOptionsModel = {
     groupBy: ['lead', 'createdBy', 'modifiedBy'],
     orderBy: [

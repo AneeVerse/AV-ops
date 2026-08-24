@@ -203,7 +203,8 @@ export function wrap (
       const apiTokenId = decoded?.extra?.apiTokenId
       if (apiTokenId !== undefined) {
         const apiToken = await db.apiToken.findOne({ id: apiTokenId })
-        if (apiToken == null || apiToken.revoked || apiToken.expiresOn <= Date.now()) {
+        // expiresOn < 0 marks a token that never expires.
+        if (apiToken == null || apiToken.revoked || (apiToken.expiresOn >= 0 && apiToken.expiresOn <= Date.now())) {
           return { error: new Status(Severity.ERROR, platform.status.Unauthorized, {}) }
         }
       }

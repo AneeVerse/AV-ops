@@ -35,18 +35,21 @@
   let name = ''
   let loading = false
   let error: IntlString | undefined
+  let errorDetail: string | undefined
   let wsItems: ListItem[] = []
   let selectedWs: ListItem | undefined
   let createdToken: string | undefined
   let copiedTime: Timestamp | undefined
   let copied = false
 
+  // '0' is the account service's "never expires" value.
   const expiryItems: DropdownIntlItem[] = [
     { id: '7', label: setting.string.ApiTokenExpiry7Days },
     { id: '30', label: setting.string.ApiTokenExpiry30Days },
     { id: '90', label: setting.string.ApiTokenExpiry90Days },
     { id: '180', label: setting.string.ApiTokenExpiry180Days },
-    { id: '365', label: setting.string.ApiTokenExpiry365Days }
+    { id: '365', label: setting.string.ApiTokenExpiry365Days },
+    { id: '0', label: setting.string.ApiTokenExpiryNever }
   ]
   let selectedExpiry: string = '30'
 
@@ -75,6 +78,7 @@
     if (selectedWs === undefined) return
     loading = true
     error = undefined
+    errorDetail = undefined
     try {
       const result = await getAccountClient().createApiToken(
         name.trim(),
@@ -85,6 +89,9 @@
     } catch (err: any) {
       Analytics.handleError(err)
       error = setting.string.ApiTokenCreateError
+      // The generic label hides account-service failures such as an unsupported
+      // method, which is the difference between "retry" and "the service is wrong".
+      errorDetail = err?.message ?? err?.status?.code
     } finally {
       loading = false
     }
@@ -157,7 +164,12 @@
       />
     </div>
     {#if error !== undefined}
-      <div class="antiPopup-msg error"><Label label={error} /></div>
+      <div class="antiPopup-msg error">
+        <Label label={error} />
+        {#if errorDetail !== undefined && errorDetail !== ''}
+          <div class="error-detail">{errorDetail}</div>
+        {/if}
+      </div>
     {/if}
   {/if}
 </Modal>
@@ -188,5 +200,12 @@
   .error {
     color: var(--theme-error-color);
     font-size: 0.75rem;
+  }
+  .error-detail {
+    margin-top: 0.25rem;
+    font-family: var(--mono-font);
+    font-size: 0.6875rem;
+    word-break: break-word;
+    opacity: 0.8;
   }
 </style>

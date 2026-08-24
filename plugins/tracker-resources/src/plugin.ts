@@ -318,7 +318,10 @@ export default mergeIds(trackerId, tracker, {
     SearchEmptyTitle: '' as IntlString,
     SearchEmptyActiveFilters: '' as IntlString,
     SearchEmptyClearFilters: '' as IntlString,
-    SearchEmptyAllProjects: '' as IntlString
+    SearchEmptyAllProjects: '' as IntlString,
+    Company: '' as IntlString,
+    UnassignCompany: '' as IntlString,
+    CompanyProjects: '' as IntlString
   },
   component: {
     NopeComponent: '' as AnyComponent,
@@ -384,7 +387,8 @@ export default mergeIds(trackerId, tracker, {
     SubIssuesSelector: '' as AnyComponent,
     IconWithEmoji: '' as Asset,
     IssueStatusIcon: '' as AnyComponent,
-    MilestoneStatusIcon: '' as AnyComponent
+    MilestoneStatusIcon: '' as AnyComponent,
+    CompanyRelated: '' as AnyComponent
   },
   metadata: {
     CreateIssueDraft: '' as Metadata<IssueDraft>

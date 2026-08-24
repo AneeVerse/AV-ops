@@ -141,6 +141,14 @@ if ($LASTEXITCODE -ne 0) {
   Start-Sleep -Seconds 12
 }
 
+Write-Host "==== re-enable integration plugins ===="
+$integrationsSql = Join-Path $PSScriptRoot 'huly-enable-integrations.sql'
+$integrationsOut = Get-Content $integrationsSql | docker exec -i dev-cockroach-1 ./cockroach sql --insecure --database=defaultdb --format=tsv
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "WARNING: could not re-enable integration plugins. Settings -> Integrations may be empty."
+  Write-Host ($integrationsOut -join "`n")
+}
+
 $gitBash = Get-GitBash
 
 Write-Host "==== sync fork model into local DB ===="

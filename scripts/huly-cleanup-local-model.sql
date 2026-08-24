@@ -14,7 +14,5 @@ WHERE "objectId" IN (
   'tracker:ids:TrackerProjectChatNavModel'
 );
 
-DELETE FROM model_tx
-WHERE "objectId" = 'contact:class:Organization'
-  AND "_class" = 'core:class:TxMixin'
-  AND data->>'mixin' = 'view:mixin:ObjectEditorFooter';
+-- Do not strip ObjectEditorFooter on Organization: CompanyRelated is restored
+-- and model sync re-applies it. Deleting it here would fight every local start.

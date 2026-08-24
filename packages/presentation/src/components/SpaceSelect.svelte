@@ -76,12 +76,13 @@
   const mgr = getFocusManager()
   const updateSelected = reduceCalls(async function (
     _value: Ref<Space> | undefined,
-    spaceQuery: DocumentQuery<Space> | undefined
+    spaceQuery: DocumentQuery<Space> | undefined,
+    doAutoSelect: boolean
   ) {
     let v = _value !== undefined ? await client.findOne(_class, { ...(spaceQuery ?? {}), _id: _value }) : undefined
     selected = v
 
-    if (selected === undefined && autoSelect) {
+    if (selected === undefined && doAutoSelect) {
       v = (await findDefaultSpace?.()) ?? (await client.findOne(_class, { ...(spaceQuery ?? {}) }))
       selected = v
       if (selected !== undefined) {
@@ -96,7 +97,10 @@
     dispatch('object', selected)
   })
 
-  $: void updateSelected(value, spaceQuery)
+  // Include autoSelect so StatusTable (and similar) can flip it on after the
+  // viewlet loads — otherwise the first pass with autoSelect=false sticks and
+  // StatesBar never gets a space.
+  $: void updateSelected(value, spaceQuery, autoSelect)
 
   const showSpacesPopup = (ev: MouseEvent): void => {
     if (readonly) {

@@ -105,6 +105,21 @@ describe('API tokens', () => {
       expect(extra).toEqual({ apiTokenId: inserted.id })
     })
 
+    test('creates a token that never expires', async () => {
+      const result = await createApiToken(
+        mockCtx,
+        mockDb,
+        null,
+        { id: 1, params: { ...validParams, expiryDays: 0 } },
+        'test-token'
+      )
+
+      expect(result.result.expiresOn).toBe(-1)
+      expect(mockDb.apiToken.insertOne).toHaveBeenCalledWith(expect.objectContaining({ expiresOn: -1 }))
+      // No `exp` claim, otherwise the JWT would outlive nothing and expire anyway.
+      expect((generateToken as jest.Mock).mock.calls[0][4]).toBeUndefined()
+    })
+
     test('rejects a guest', async () => {
       ;(mockDb.getWorkspaceRole as jest.Mock).mockResolvedValue(AccountRole.Guest)
 
@@ -133,7 +148,7 @@ describe('API tokens', () => {
     })
 
     test.each([
-      ['expiry below range', { ...validParams, expiryDays: 0 }],
+      ['expiry below range', { ...validParams, expiryDays: -1 }],
       ['expiry above range', { ...validParams, expiryDays: 366 }],
       ['expiry not a number', { ...validParams, expiryDays: 'thirty' }],
       ['empty name', { ...validParams, name: '   ' }],

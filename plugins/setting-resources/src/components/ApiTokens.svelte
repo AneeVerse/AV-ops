@@ -87,8 +87,14 @@
     })
   }
 
+  // expiresOn < 0 marks a token created with "No expiry".
+  function neverExpires (token: ApiTokenInfo): boolean {
+    return token.expiresOn < 0
+  }
+
   function getStatus (token: ApiTokenInfo): 'active' | 'expiring' | 'revoked' | 'expired' {
     if (token.revoked) return 'revoked'
+    if (neverExpires(token)) return 'active'
     const now = Date.now()
     if (token.expiresOn < now) return 'expired'
     if (token.expiresOn - now < 7 * 86400000) return 'expiring'
@@ -156,7 +162,15 @@
                   <td class="overflow-label font-medium-14">{token.name}</td>
                   <td class="overflow-label">{token.workspaceName}</td>
                   <td>{formatDate(token.createdOn)}</td>
-                  <td>{token.revoked ? '—' : formatDate(token.expiresOn)}</td>
+                  <td>
+                    {#if token.revoked}
+                      —
+                    {:else if neverExpires(token)}
+                      <Label label={setting.string.ApiTokenNeverExpires} />
+                    {:else}
+                      {formatDate(token.expiresOn)}
+                    {/if}
+                  </td>
                   <td>
                     <span
                       class="tag-item"
