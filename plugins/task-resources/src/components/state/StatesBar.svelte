@@ -100,7 +100,7 @@
       color={getColor(item, _space, $typeStore, categories)}
       on:click={(ev) => {
         ev.stopPropagation()
-        if (item._id !== state) selectItem(ev, item)
+        selectItem(ev, item)
       }}
     />
   {/each}

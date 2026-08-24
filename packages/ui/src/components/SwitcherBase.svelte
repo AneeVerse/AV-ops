@@ -7,6 +7,7 @@
   import type { Asset, IntlString } from '@hcengineering/platform'
   import type { AnySvelteComponent, LabelAndProps } from '../types'
   import type { ComponentType } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
   import Icon from './Icon.svelte'
   import Label from './Label.svelte'
   import { tooltip as tp } from '..'
@@ -23,7 +24,17 @@
   export let tooltip: LabelAndProps | undefined = undefined
   export let disabled: boolean = false
 
+  const dispatch = createEventDispatcher()
   $: woTitle = title === undefined && label === undefined
+
+  function onInputClick (): void {
+    if (disabled) return
+    // Already-selected radios do not fire `change` — still notify so parents
+    // can treat a re-click as "clear / re-apply" (e.g. All states clears status).
+    if (checked) {
+      dispatch('change')
+    }
+  }
 </script>
 
 <label
@@ -33,7 +44,7 @@
   data-view={tooltip?.label}
   data-id={`tab-${id}`}
 >
-  <input type="radio" class="switcher" {name} {checked} {disabled} on:change />
+  <input type="radio" class="switcher" {name} {checked} {disabled} on:change on:click={onInputClick} />
   <div class="switcher-element {kind}" class:woTitle>
     {#if icon}<div class="icon"><Icon {icon} size={'small'} fill={color} /></div>{/if}
     {#if label}<span><Label {label} params={labelParams} /></span>{/if}

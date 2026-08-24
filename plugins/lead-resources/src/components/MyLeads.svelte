@@ -54,8 +54,7 @@
   let baseQuery: DocumentQuery<Lead> | undefined = undefined
   let modeSelectorProps: IModeSelector | undefined = undefined
   let space: Ref<Space> | undefined = undefined
-  let autoSelectSpace = true
-  $: if (space !== undefined) autoSelectSpace = false
+  let autoSelectSpace = false
 
   $: queries = { assigned, created, subscribed }
   $: mode = $resolvedLocationStore.query?.mode ?? undefined
@@ -76,7 +75,7 @@
       base ?? {},
       search,
       [{ field: 'attachedTo', _class: contact.class.Contact }],
-      ['title']
+      ['title', 'identifier']
     )
     searchQuery = withSpace(q, space)
   }

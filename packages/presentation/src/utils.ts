@@ -944,6 +944,7 @@ export async function loadServerConfig (url: string): Promise<any> {
 /**
  * Resolve document ids whose `name` contains `text` (case-insensitive `$like`).
  * Used to widen free-text search to related refs (company, customer, …).
+ * Also tries Person "Last,First" storage against a typed "First Last" query.
  */
 export async function resolveNameIds<T extends Doc & { name?: string }> (
   client: Client,
@@ -953,8 +954,19 @@ export async function resolveNameIds<T extends Doc & { name?: string }> (
 ): Promise<Array<Ref<T>>> {
   const q = text.trim()
   if (q === '') return []
-  const rows = await client.findAll(_class, { name: { $like: `%${q}%` } } as DocumentQuery<T>, { limit })
-  return rows.map((r) => r._id)
+  const patterns = new Set<string>([`%${q}%`])
+  const parts = q.split(/\s+/).filter((p) => p.length > 0)
+  if (parts.length >= 2) {
+    // Stored Person names are typically "Last,First".
+    patterns.add(`%${parts[parts.length - 1]},${parts.slice(0, -1).join(' ')}%`)
+    patterns.add(`%${parts[0]},${parts.slice(1).join(' ')}%`)
+  }
+  const ids = new Set<Ref<T>>()
+  for (const pattern of patterns) {
+    const rows = await client.findAll(_class, { name: { $like: pattern } } as DocumentQuery<T>, { limit })
+    for (const r of rows) ids.add(r._id)
+  }
+  return [...ids]
 }
 
 export type RelatedSearchRef = { field: string, _class: Ref<Class<Doc & { name?: string }>> }

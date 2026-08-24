@@ -36,8 +36,8 @@
   let search = ''
   const client = getClient()
   let space: Ref<Space> | undefined = undefined
-  let autoSelectSpace = true
-  $: if (space !== undefined) autoSelectSpace = false
+  // Do not auto-pick a funnel — search should cover all leads unless the user filters.
+  let autoSelectSpace = false
 
   function withSpace (q: DocumentQuery<Lead>, space: Ref<Space> | undefined): DocumentQuery<Lead> {
     if (space !== undefined) {
@@ -55,7 +55,7 @@
       {},
       search,
       [{ field: 'attachedTo', _class: contact.class.Contact }],
-      ['title']
+      ['title', 'identifier']
     )
     searchQuery = withSpace(q, space)
   }

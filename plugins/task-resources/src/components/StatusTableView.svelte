@@ -60,12 +60,8 @@
   }
 
   function updateConfig (config: string[]): string[] {
-    if (state !== undefined) {
-      return config.filter((p) => p !== 'status')
-    }
-    if (selectedDoneStates.size === 1) {
-      return config.filter((p) => p !== 'doneState')
-    }
+    // Keep the user's column layout stable when filtering by a single status /
+    // done-state — hiding columns made Customize View look like it reset.
     return config
   }
 
@@ -129,15 +125,21 @@
   }
 
   $: updateQuery(query, selectedDoneStates)
+
+  function clearStatusSelection (): void {
+    state = undefined
+    withoutDone = false
+    selectedDoneStates.clear()
+    selectedDS = []
+    updateQuery(query, selectedDoneStates)
+  }
+
   const handleSelect = (result: any) => {
     if (result.type === 'select') {
       const res = result.detail
       if (res.id === 'AllStates') {
         doneStatusesView = false
-        state = undefined
-        withoutDone = false
-        selectedDoneStates.clear()
-        updateQuery(query, selectedDoneStates)
+        clearStatusSelection()
       } else if (res.id === 'DoneStates') {
         doneStatusesView = true
         state = undefined
