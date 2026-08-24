@@ -101,6 +101,13 @@ export function createModel (builder: Builder): void {
             position: 'top'
           },
           {
+            id: 'all-leads',
+            label: lead.string.AllLeads,
+            icon: lead.icon.Lead,
+            component: lead.component.AllLeads,
+            position: 'top'
+          },
+          {
             id: 'customers',
             label: lead.string.Customers,
             icon: contact.icon.Person, // <-- Put contact general icon here.
@@ -144,10 +151,12 @@ export function createModel (builder: Builder): void {
         ],
         spaces: [
           {
+            id: 'funnels',
             label: lead.string.Funnels,
             spaceClass: lead.class.Funnel,
             addSpaceLabel: lead.string.CreateFunnel,
-            createComponent: lead.component.CreateFunnel
+            createComponent: lead.component.CreateFunnel,
+            searchable: true
           }
         ]
       },
@@ -228,16 +237,35 @@ export function createModel (builder: Builder): void {
     lead.viewlet.TableCustomer
   )
 
+  const lookupLeadOptions: FindOptions<Lead> = {
+    lookup: {
+      attachedTo: [
+        lead.mixin.Customer,
+        {
+          _id: {
+            channels: contact.class.Channel
+          }
+        }
+      ]
+    }
+  }
+
   builder.createDoc(
     view.class.Viewlet,
     core.space.Model,
     {
       attachTo: lead.class.Lead,
       descriptor: task.viewlet.StatusTable,
+      options: lookupLeadOptions,
       config: [
         '',
         'title',
-        'attachedTo',
+        {
+          key: '$lookup.attachedTo',
+          presenter: contact.component.ContactPresenter,
+          label: lead.string.Customer,
+          sortingKey: '$lookup.attachedTo.name'
+        },
         'assignee',
         'status',
         'attachments',
@@ -251,7 +279,12 @@ export function createModel (builder: Builder): void {
         'modifiedOn',
         {
           key: '$lookup.attachedTo.$lookup.channels',
-          sortingKey: ['$lookup.attachedTo.$lookup.channels.lastMessage', '$lookup.attachedTo.channels']
+          label: contact.string.ContactInfo,
+          sortingKey: ['$lookup.attachedTo.$lookup.channels.lastMessage', '$lookup.attachedTo.channels'],
+          props: {
+            length: 'full',
+            size: 'small'
+          }
         }
       ],
       viewOptions: {
@@ -309,6 +342,7 @@ export function createModel (builder: Builder): void {
     {
       attachTo: lead.class.Lead,
       descriptor: view.viewlet.List,
+      options: lookupLeadOptions,
       configOptions: {
         strict: true,
         hiddenKeys: ['title']
@@ -327,7 +361,7 @@ export function createModel (builder: Builder): void {
         },
         {
           key: '$lookup.attachedTo',
-          presenter: contact.component.PersonPresenter,
+          presenter: contact.component.ContactPresenter,
           label: lead.string.Customer,
           sortingKey: '$lookup.attachedTo.name',
           props: {
@@ -366,12 +400,6 @@ export function createModel (builder: Builder): void {
     },
     lead.viewlet.ListLead
   )
-
-  const lookupLeadOptions: FindOptions<Lead> = {
-    lookup: {
-      attachedTo: lead.mixin.Customer
-    }
-  }
 
   createAction(
     builder,

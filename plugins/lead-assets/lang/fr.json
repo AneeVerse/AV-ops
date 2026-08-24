@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Nouveau pipeline",
     "CreateLead": "Nouveau prospect",
     "Funnel": "Pipeline",
     "FunnelName": "Nom du pipeline",
     "Funnels": "Pipelines",
-    "LeadApplication": "Prospects (bêta)",
+    "LeadApplication": "Prospects",
     "LeadCreateLabel": "Prospect",
     "SelectFunnel": "Sélectionner un pipeline",
     "LeadName": "Nom du prospect",
@@ -14,6 +14,7 @@
     "Customers": "Clients",
     "Leads": "Prospects",
     "MyLeads": "Mes prospects",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Sélectionner un client",
     "Lead": "Prospect",
     "Assignee": "Attribué à",

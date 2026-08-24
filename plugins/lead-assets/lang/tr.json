@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Yeni Huni",
     "CreateLead": "Yeni Aday",
     "Funnel": "Huni",
     "FunnelName": "Huni adı",
     "Funnels": "Huniler",
-    "LeadApplication": "Adaylar (beta)",
+    "LeadApplication": "Adaylar",
     "LeadCreateLabel": "Aday",
     "SelectFunnel": "Huni seç",
     "LeadName": "Aday adı",
@@ -14,6 +14,7 @@
     "Customers": "Müşteriler",
     "Leads": "Adaylar",
     "MyLeads": "Adaylarım",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Müşteri seç",
     "Lead": "Aday",
     "Assignee": "Atanan",

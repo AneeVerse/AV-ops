@@ -108,6 +108,17 @@ Ensure-HulyLocalHosts
 Write-Host "==== stop old webpack on $WebpackPort ===="
 Stop-ListenPort $WebpackPort
 
+# server/account code (API tokens) only runs from an image we built ourselves.
+# Stock hardcoreeng/account has no createApiToken at all, so the feature 404s.
+docker image inspect huly-account-custom:local *> $null
+if ($LASTEXITCODE -eq 0) {
+  $env:HULY_ACCOUNT_IMAGE = 'huly-account-custom:local'
+  Write-Host "==== account image: huly-account-custom:local (fork build) ===="
+} else {
+  Remove-Item Env:\HULY_ACCOUNT_IMAGE -ErrorAction SilentlyContinue
+  Write-Host "==== account image: stock (run account.cmd to enable API tokens) ===="
+}
+
 Write-Host "==== docker compose (local stack) ===="
 Push-Location $DevDir
 try {

@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "New Funnel",
     "CreateLead": "New Lead",
     "Funnel": "Funnel",
     "FunnelName": "Funnel name",
     "Funnels": "Funnels",
-    "LeadApplication": "Leads (beta)",
+    "LeadApplication": "Leads",
     "LeadCreateLabel": "Lead",
     "SelectFunnel": "Select funnel",
     "LeadName": "Lead name",
@@ -14,6 +14,7 @@
     "Customers": "Customers",
     "Leads": "Leads",
     "MyLeads": "My Leads",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Select customer",
     "Lead": "Lead",
     "Assignee": "Assignee",

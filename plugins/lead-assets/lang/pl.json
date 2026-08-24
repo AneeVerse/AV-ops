@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Nowy lejek sprzedażowy",
     "CreateLead": "Nowy potencjalny klient",
     "Funnel": "Lejek sprzedażowy",
     "FunnelName": "Nazwa lejka",
     "Funnels": "Lejki sprzedażowe",
-    "LeadApplication": "Potencjalni klienci (beta)",
+    "LeadApplication": "Potencjalni klienci",
     "LeadCreateLabel": "Potencjalny klient",
     "SelectFunnel": "Wybierz lejek sprzedażowy",
     "LeadName": "Nazwa klienta",
@@ -14,6 +14,7 @@
     "Customers": "Klienci",
     "Leads": "Potencjalni klienci",
     "MyLeads": "Moi potencjalni klienci",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Wybierz klienta",
     "Lead": "Potencjalny klient",
     "Assignee": "Odpowiedzialny",

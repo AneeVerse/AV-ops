@@ -15,7 +15,7 @@
 <script lang="ts">
   import { Class, Doc, DocumentQuery, FindOptions, Ref, Space, WithLookup, mergeQueries } from '@hcengineering/core'
   import { Asset, getResource, IntlString, Resource } from '@hcengineering/platform'
-  import { getClient, ComponentExtensions } from '@hcengineering/presentation'
+  import { getClient, ComponentExtensions, buildRelatedSearchQuery } from '@hcengineering/presentation'
   import {
     AnyComponent,
     AnySvelteComponent,
@@ -64,6 +64,10 @@
   export let defaultViewletDescriptor: Ref<ViewletDescriptor> | undefined = undefined
   export let defaultViewOptions: ViewOptions | undefined = undefined
   export let defaultConfig: (BuildModelKey | string)[] | undefined = undefined
+  /** Widen free-text search to related docs (e.g. Project.company → Organization name). */
+  export let searchRefs: Array<{ field: string, _class: Ref<Class<Doc & { name?: string }>> }> | undefined = undefined
+  /** Primary fields to match with `$like` when searching (defaults cover Project + Lead). */
+  export let searchFields: string[] | undefined = undefined
 
   const client = getClient()
   const hierarchy = client.getHierarchy()
@@ -81,8 +85,18 @@
 
   $: _baseQuery = mergeQueries(mergeQueries(baseQuery ?? {}, baseQueryMixin?.baseQuery ?? {}), viewlet?.baseQuery ?? {})
   $: query = { ..._baseQuery }
-  $: searchQuery = search === '' ? query : { ...query, $search: search }
+  let searchQuery: DocumentQuery<Doc> = {}
+  $: void buildSearchQuery(query, search, searchRefs, searchFields)
   $: resultQuery = isQueryLoaded ? searchQuery : undefined
+
+  async function buildSearchQuery (
+    base: DocumentQuery<Doc>,
+    text: string,
+    refs: typeof searchRefs,
+    fields: typeof searchFields
+  ): Promise<void> {
+    searchQuery = await buildRelatedSearchQuery(client, _class, base, text, refs, fields)
+  }
 
   let options = viewlet?.options
   let _options = viewlet?.options ?? {}
@@ -215,7 +229,9 @@
     query={searchQuery}
     {viewOptions}
     on:change={(e) => {
-      resultQuery = { ...query, ...e.detail }
+      // FilterBar already starts from searchQuery — do not re-merge the
+      // unsearched base `query` or free-text `_id: { $in }` is wiped.
+      resultQuery = e.detail
     }}
   />
   {#if navigationModel?.navigationComponent === undefined}

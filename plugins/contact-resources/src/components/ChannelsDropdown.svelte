@@ -94,6 +94,12 @@
     }
   }
 
+  /** Shown when a contact has no channels yet so users can set phone/email in-place. */
+  const defaultChannelStubs: AttachedData<Channel>[] = [
+    { provider: contact.channelProvider.Phone, value: '' },
+    { provider: contact.channelProvider.Email, value: '' }
+  ]
+
   function getProvider (
     item: AttachedData<Channel>,
     map: Map<Ref<ChannelProvider>, ChannelProvider>,
@@ -159,28 +165,40 @@
     return inboxNotifications.some(({ isViewed }) => !isViewed)
   }
 
+  $: void update(value, $contextByDocStore, $inboxNotificationsByContextStore, $channelProviders, editable)
+
   async function update (
     value: AttachedData<Channel>[] | Channel | null,
     notifyContextByDoc: Map<Ref<Doc>, DocNotifyContext>,
     inboxNotificationsByContext: Map<Ref<DocNotifyContext>, InboxNotification[]>,
-    channelProviders: ChannelProvider[]
+    channelProviders: ChannelProvider[],
+    isEditable: boolean | undefined
   ) {
-    if (value == null) {
-      displayItems = []
-      return
-    }
-
     const result: Item[] = []
     const map = toIdMap(withFallbackProviders(channelProviders))
-    if (Array.isArray(value)) {
-      for (const item of value) {
-        const provider = getProvider(item, map, notifyContextByDoc, inboxNotificationsByContext)
-        if (provider !== undefined) {
-          result.push(provider)
+    const empty = value == null || (Array.isArray(value) && value.length === 0)
+    if (empty) {
+      const onlyDrafts =
+        displayItems.length > 0 &&
+        displayItems.every((i) => !('_id' in i.channel && (i.channel as Channel)._id !== undefined))
+      // Keep in-progress stub edits; re-seed when empty or when persisted rows were cleared.
+      if (!onlyDrafts) {
+        if (isEditable !== false) {
+          for (const item of defaultChannelStubs) {
+            const provider = getProvider(item, map, notifyContextByDoc, inboxNotificationsByContext)
+            if (provider !== undefined) {
+              result.push(provider)
+            }
+          }
         }
+        displayItems = result
       }
-    } else {
-      const provider = getProvider(value, map, notifyContextByDoc, inboxNotificationsByContext)
+      updateMenu(displayItems, channelProviders, exclude)
+      return
+    }
+    let items: AttachedData<Channel>[] | Channel[] = Array.isArray(value) ? value : [value]
+    for (const item of items) {
+      const provider = getProvider(item, map, notifyContextByDoc, inboxNotificationsByContext)
       if (provider !== undefined) {
         result.push(provider)
       }
@@ -188,8 +206,6 @@
     displayItems = result
     updateMenu(displayItems, channelProviders, exclude)
   }
-
-  $: if (value) update(value, $contextByDocStore, $inboxNotificationsByContextStore, $channelProviders)
 
   let displayItems: Item[] = []
   let actions: Action[] = []

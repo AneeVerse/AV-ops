@@ -14,10 +14,11 @@
 // limitations under the License.
 -->
 <script lang="ts">
+  import contact, { type Organization } from '@hcengineering/contact'
   import core, { Doc, Ref, Space, AccountRole, getCurrentAccount, hasAccountRole } from '@hcengineering/core'
   import { IntlString, getResource } from '@hcengineering/platform'
   import preference from '@hcengineering/preference'
-  import { getClient } from '@hcengineering/presentation'
+  import { createQuery, getClient } from '@hcengineering/presentation'
   import {
     Action,
     AnyComponent,
@@ -139,6 +140,28 @@
     filteredSpaces = spaces
   }
 
+  // Optional company label on space docs (Tracker Project.company → Organization).
+  type SpaceWithCompany = Space & { company?: Ref<Organization> }
+  const companyQuery = createQuery()
+  let companyNameById = new Map<Ref<Organization>, string>()
+
+  $: companyIds = [
+    ...new Set(
+      filteredSpaces
+        .map((s) => (s as SpaceWithCompany).company)
+        .filter((id): id is Ref<Organization> => id != null)
+    )
+  ]
+
+  $: if (companyIds.length > 0) {
+    companyQuery.query(contact.class.Organization, { _id: { $in: companyIds } }, (res) => {
+      companyNameById = new Map(res.map((o) => [o._id, o.name ?? '']))
+    })
+  } else {
+    companyQuery.unsubscribe()
+    companyNameById = new Map()
+  }
+
   let search = ''
   let searchActive = false
   let searchEl: HTMLElement | undefined
@@ -146,7 +169,12 @@
   $: displayedSpaces =
     searchNorm === ''
       ? filteredSpaces
-      : filteredSpaces.filter((s) => s.name.toLowerCase().includes(searchNorm))
+      : filteredSpaces.filter((s) => {
+          if (s.name.toLowerCase().includes(searchNorm)) return true
+          const companyId = (s as SpaceWithCompany).company
+          if (companyId == null) return false
+          return (companyNameById.get(companyId) ?? '').toLowerCase().includes(searchNorm)
+        })
 
   $: visibleSpace = displayedSpaces.find((fs) => fs._id === currentSpace)
   $: empty = displayedSpaces.length === 0 || displayedSpaces === undefined
@@ -254,6 +282,7 @@
     actions={async () => getParentActions()}
     highlighted={visible}
     isFold={!empty}
+    noDivider
     {empty}
     {visible}
   >
@@ -308,6 +337,13 @@
   .spaces-nav-searchable.search-active :global(.hulyNavGroup-header > .flex-grow) {
     display: none;
   }
+  /* Match the expand UX: hide fold chevron and create/browse buttons; search alone. */
+  .spaces-nav-searchable.search-active :global(.hulyNavGroup-header__chevron) {
+    display: none;
+  }
+  .spaces-nav-searchable.search-active :global(.hulyNavGroup-header__tools > :not(.spaces-nav-search)) {
+    display: none;
+  }
   .spaces-nav-search {
     flex: 1;
     min-width: 0;
@@ -315,5 +351,9 @@
   .spaces-nav-searchable.search-active :global(.spaces-nav-search .searchInput-wrapper) {
     max-width: 100% !important;
     width: 100%;
+  }
+  /* No trailing rule under the spaces group above Help & Support. */
+  .spaces-nav-searchable :global(.hulyNavGroup-container) {
+    border-bottom: none;
   }
 </style>

@@ -940,3 +940,92 @@ export async function loadServerConfig (url: string): Promise<any> {
 
   return await res.json()
 }
+
+/**
+ * Resolve document ids whose `name` contains `text` (case-insensitive `$like`).
+ * Used to widen free-text search to related refs (company, customer, …).
+ */
+export async function resolveNameIds<T extends Doc & { name?: string }> (
+  client: Client,
+  _class: Ref<Class<T>>,
+  text: string,
+  limit = 100
+): Promise<Array<Ref<T>>> {
+  const q = text.trim()
+  if (q === '') return []
+  const rows = await client.findAll(_class, { name: { $like: `%${q}%` } } as DocumentQuery<T>, { limit })
+  return rows.map((r) => r._id)
+}
+
+export type RelatedSearchRef = { field: string, _class: Ref<Class<Doc & { name?: string }>> }
+
+/**
+ * Build a free-text search query that works without FullText / `$search`.
+ *
+ * Postgres does not implement top-level `$or`, and local stacks often have no
+ * working fulltext index, so we:
+ * 1. `$like`-match each `textFields` on the primary class (name, title, …)
+ * 2. resolve related docs by name for each `refs` entry and match those refs
+ * 3. optionally try `$search` and merge any hits
+ *
+ * Returns `{ ...base, _id: { $in: ids } }`, or an empty `$in` when nothing matched
+ * (so the UI shows zero rows instead of silently ignoring the search).
+ */
+export async function buildRelatedSearchQuery<T extends Doc> (
+  client: Client,
+  _class: Ref<Class<T>>,
+  base: DocumentQuery<T>,
+  text: string,
+  refs: RelatedSearchRef[] | undefined = undefined,
+  /** Primary-doc string fields to `$like` (Project: name/identifier, Lead: title, …). */
+  textFields: string[] = ['name', 'identifier', 'title'],
+  limit = 500
+): Promise<DocumentQuery<T>> {
+  const trimmed = text.trim()
+  if (trimmed === '') return base
+
+  const ids = new Set<Ref<T>>()
+  const like = { $like: `%${trimmed}%` }
+
+  for (const field of textFields) {
+    try {
+      const hits = await client.findAll(
+        _class,
+        { ...base, [field]: like } as DocumentQuery<T>,
+        { projection: { _id: 1 } as any, limit }
+      )
+      for (const h of hits) ids.add(h._id)
+    } catch {
+      // Field may not exist on this class.
+    }
+  }
+
+  for (const ref of refs ?? []) {
+    const nameIds = await resolveNameIds(client, ref._class, trimmed)
+    if (nameIds.length === 0) continue
+    try {
+      const hits = await client.findAll(
+        _class,
+        { ...base, [ref.field]: { $in: nameIds } } as DocumentQuery<T>,
+        { projection: { _id: 1 } as any, limit }
+      )
+      for (const h of hits) ids.add(h._id)
+    } catch {
+      // Ignore bad ref field.
+    }
+  }
+
+  try {
+    const searchHits = await client.findAll(
+      _class,
+      { ...base, $search: trimmed },
+      { projection: { _id: 1 } as any, limit }
+    )
+    for (const h of searchHits) ids.add(h._id)
+  } catch {
+    // Fulltext may be unavailable locally.
+  }
+
+  return { ...base, _id: { $in: [...ids] } }
+}
+

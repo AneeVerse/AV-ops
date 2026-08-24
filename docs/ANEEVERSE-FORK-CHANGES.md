@@ -50,8 +50,13 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 7. **Deploy & local tooling** — `local.cmd`, `prod-local.cmd`, `ship.cmd`, model SQL patches, GitHub Actions  
 8. **Localhost login** — persist token + remember last email  
 9. **Issue / nav polish** — scoping, no wrong auto-select, project labels with company, archive imported projects  
+10. **API tokens** — personal tokens with an optional **No expiry** option, in the UI and the account service  
 
 **Important platform rule:** custom **classes / apps / viewlets** are stored in the workspace **`model_tx`** DB. Official Docker images do not ship our model. Every environment (local Docker **and** production) needs the model patch scripts, not only a new front bundle.
+
+**Second platform rule:** that trick only works for the *model*. Service code is a compiled bundle
+inside its image, so `server/account` changes need an image we build — see
+[4.11](#411-api-tokens--the-custom-account-image).
 
 ---
 
@@ -261,6 +266,44 @@ Dates are commit dates in this repo (Aug 2026).
 Also: `.github/workflows/deploy-production.yml` with secrets `HULY_VPS`, `HULY_SSH_KEY_B64`.
 
 **VPS (summary):** Hostinger `148.230.67.132`, stack `/opt/huly-selfhost`, compose project `huly_v7`, public nginx → `127.0.0.1:8087`. Do **not** put Huly on the DigitalOcean box used for horeca1.
+
+---
+
+### 4.11 API tokens & the custom account image
+
+**Why:** Settings → API Tokens existed in our source but failed in every environment. The reason is
+structural, not a bug in the page: stock `hardcoreeng/account:v0.7.426` contains **zero** occurrences
+of `createApiToken`. The endpoints are fork code, and a service bundle cannot be patched from the
+database the way `model_tx` patches the model. So the feature could not work until we ran our own
+account image.
+
+**What changed:**
+
+- `server/account/src/operations.ts` — `expiryDays: 0` means "never", stored as `expiresOn: -1`
+  (the sentinel invites already use) and signed **without** an `exp` claim.
+- `server/account/src/utils.ts` — the per-request expiry check treats `expiresOn < 0` as valid.
+  Revocation still wins, and is checked first.
+- `ApiTokenCreatePopup.svelte` / `ApiTokens.svelte` — a **No expiry** option, a "Never" cell in the
+  Expires column, and the underlying server error printed under the generic failure message.
+- `scripts/huly-build-account.sh` + `account.cmd` — build `huly-account-custom`, refusing to produce
+  an image whose bundle lacks `createApiToken`.
+- `scripts/huly-deploy-account.sh` + the `account` stage in the orchestrator — ship it to production
+  as a thin layer on the stock image, verify it answers, roll back if it does not.
+
+**Deploy type:** custom account image, shipped by `deploy.cmd` before the front.
+
+---
+
+### 4.12 Integrations page
+
+**Why:** The page rendered its header and nothing else. A `dev/tool configure --disable` run had left
+`TxUpdateDoc` rows in `model_tx` disabling gmail, telegram, calendar and github (among others), and
+a disabled plugin's transactions are filtered out of the client model — which removes every
+`setting:class:IntegrationType` the page lists.
+
+**What changed:** `scripts/huly-enable-integrations.sql` writes enable-rows for those four plugins,
+timestamped after both the bundled model and the fork patch so they win, under a `pi-` id prefix so
+`huly-model-patch.mjs` does not retire them. `local.cmd` applies it on every start.
 
 ---
 

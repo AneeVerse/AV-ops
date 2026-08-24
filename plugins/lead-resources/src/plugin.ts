@@ -32,6 +32,7 @@ export default mergeIds(leadId, lead, {
     Customers: '' as IntlString,
     Leads: '' as IntlString,
     MyLeads: '' as IntlString,
+    AllLeads: '' as IntlString,
     NoLeadsForDocument: '' as IntlString,
     LeadPlaceholder: '' as IntlString,
     CreateCustomer: '' as IntlString,
@@ -52,6 +53,7 @@ export default mergeIds(leadId, lead, {
     CreateFunnel: '' as AnyComponent,
     EditFunnel: '' as AnyComponent,
     MyLeads: '' as AnyComponent,
+    AllLeads: '' as AnyComponent,
     TitlePresenter: '' as AnyComponent
   },
   function: {

@@ -29,7 +29,6 @@
   $: extensions = [...$navFooterExtensions].sort((a, b) => a.order - b.order)
 </script>
 
-<div class="antiNav-footer-line" />
 <div class="antiNav-footer-grower" />
 <div class="antiNav-footer">
   <slot />

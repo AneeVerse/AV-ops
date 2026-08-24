@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Nuevo Embudo",
     "CreateLead": "Nuevo Cliente Potencial",
     "Funnel": "Embudo",
     "FunnelName": "Nombre del Embudo",
     "Funnels": "Embudos",
-    "LeadApplication": "Clientes Potenciales (beta)",
+    "LeadApplication": "Clientes Potenciales",
     "LeadCreateLabel": "Cliente Potencial",
     "SelectFunnel": "Seleccionar Embudo",
     "LeadName": "Nombre del Cliente Potencial",
@@ -14,6 +14,7 @@
     "Customers": "Clientes",
     "Leads": "Clientes Potenciales",
     "MyLeads": "Mis Clientes Potenciales",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Seleccionar Cliente",
     "Lead": "Cliente Potencial",
     "Assignee": "Asignado a",

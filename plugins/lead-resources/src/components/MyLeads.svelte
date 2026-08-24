@@ -13,11 +13,11 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { getCurrentEmployee } from '@hcengineering/contact'
+  import contact, { getCurrentEmployee } from '@hcengineering/contact'
   import { AttachedDoc, Class, DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Lead } from '@hcengineering/lead'
   import { IntlString, Asset } from '@hcengineering/platform'
-  import { createQuery, SpaceSelector } from '@hcengineering/presentation'
+  import { createQuery, getClient, buildRelatedSearchQuery, SpaceSelector } from '@hcengineering/presentation'
   import {
     IModeSelector,
     Breadcrumb,
@@ -44,6 +44,7 @@
 
   let search = ''
   const dispatch = createEventDispatcher()
+  const client = getClient()
   const me = getCurrentEmployee()
   const myAcc = getCurrentAccount()
   const assigned = { assignee: me }
@@ -68,10 +69,18 @@
   }
 
   let searchQuery: DocumentQuery<Lead> = { ...(baseQuery ?? {}) }
-  function updateSearchQuery (search: string, space: Ref<Space> | undefined): void {
-    searchQuery = withSpace(search === '' ? { ...baseQuery } : { ...baseQuery, $search: search }, space)
+  async function updateSearchQuery (search: string, space: Ref<Space> | undefined, base: DocumentQuery<Lead> | undefined): Promise<void> {
+    const q = await buildRelatedSearchQuery(
+      client,
+      _class,
+      base ?? {},
+      search,
+      [{ field: 'attachedTo', _class: contact.class.Contact }],
+      ['title']
+    )
+    searchQuery = withSpace(q, space)
   }
-  $: if (baseQuery) updateSearchQuery(search, space)
+  $: if (baseQuery !== undefined) void updateSearchQuery(search, space, baseQuery)
   $: resultQuery = withSpace({ ...searchQuery }, space)
 
   const subscribedQuery = createQuery()

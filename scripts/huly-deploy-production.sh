@@ -20,7 +20,10 @@ FRONT_URL="${HULY_FRONT_URL:-https://huly.aneeverse.com}"
 
 # Paths whose contents end up in the front bundle.
 FRONT_PATHS=(plugins packages foundations models dev/prod/src dev/prod/webpack.config.js dev/prod/package.json)
-# Paths that need custom backend images, which this deploy path cannot build.
+# Paths whose contents end up in the account service bundle.
+ACCOUNT_PATHS=(server/account pods/account foundations/core/packages/account-client)
+# Paths that need custom backend images this deploy path cannot build. The
+# account pod is excluded: the 'account' stage below does build that one.
 SERVER_PATHS=(server server-plugins pods services)
 
 usage() {
@@ -28,12 +31,14 @@ usage() {
 Usage: huly-deploy-production.sh [command]
 
 Commands:
-  deploy       (default) validate -> build front -> ship -> model -> smoke, skipping what did not change
+  deploy       (default) validate -> account -> front -> model -> smoke, skipping what did not change
   validate     Local pre-build checks only (seconds)
+  account      Force build + ship the custom account image (server/account code)
   front        Force build + ship the front bundle
   model        Force a model sync (push models/** edits into model_tx)
   smoke        Run the logged-in production smoke test
   rollback     Switch production back to the previous front image
+  account-rollback  Switch the account service back to its previous image
   verify       Show live headers + deployed image/state
   status       Show what would be deployed and why
   prune        Reclaim docker disk space on the VPS
@@ -123,8 +128,10 @@ cmd_validate() {
   info "plugin id collisions"
   node "$REPO_ROOT/scripts/huly-check-plugin-ids.mjs"
 
+  # The account stage ships these, so they are not "unbuildable server changes".
   local server_changes
-  server_changes=$(changed_paths "${SERVER_PATHS[@]}" | grep -E '/src/|\.ts$' || true)
+  server_changes=$(changed_paths "${SERVER_PATHS[@]}" | grep -E '/src/|\.ts$' |
+    grep -vE '^(server/account/|pods/account/)' || true)
   if [ -n "$server_changes" ]; then
     echo
     echo "  Server-side source changed:"
@@ -243,6 +250,66 @@ cmd_ship() {
     "HULY_TAG='$tag' GIT_SHA_IN='$(cd "$REPO_ROOT" && git rev-parse --short HEAD)' FINGERPRINT_IN='$(front_fingerprint)' DIST_HASH_IN='$(dist_manifest_hash)' bash /tmp/huly-deploy-front.sh"
 
   rm -rf "$work"
+}
+
+# ---------------------------------------------------------------- account ----
+# The account service is a compiled bundle inside hardcoreeng/account, so unlike
+# models/** there is no database-side trick that can add a method to it. Our API
+# token endpoints only reach production as an image we built.
+ACCOUNT_STATE=/opt/huly-account/state.env
+
+account_fingerprint() {
+  cd "$REPO_ROOT"
+  {
+    git rev-parse HEAD
+    git diff HEAD -- "${ACCOUNT_PATHS[@]}"
+    git ls-files --others --exclude-standard -- "${ACCOUNT_PATHS[@]}" |
+      while IFS= read -r f; do [ -f "$f" ] && git hash-object "$f"; done
+  } 2>/dev/null | node -e '
+    const h = require("crypto").createHash("sha256")
+    process.stdin.on("data", (d) => h.update(d))
+    process.stdin.on("end", () => console.log(h.digest("hex").slice(0, 16)))
+  '
+}
+
+account_state_value() {
+  "${SSH[@]}" "$VPS" "sed -n 's/^$1=//p' $ACCOUNT_STATE 2>/dev/null | head -1" || true
+}
+
+cmd_account() {
+  say "build account bundle"
+  # The image itself is built on the VPS, on top of the stock image that already
+  # sits there, so there is nothing to gain from producing one here.
+  bash "$REPO_ROOT/scripts/huly-build-account.sh" --bundle-only >/dev/null
+  local bundle tag
+  bundle="$REPO_ROOT/pods/account/bundle/bundle.js"
+  [ -s "$bundle" ] || die "account bundle missing at $bundle"
+  info "bundle: $(du -h "$bundle" | cut -f1)"
+
+  tag="$(cd "$REPO_ROOT" && git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)"
+
+  say "ship account"
+  "${SCP[@]}" "$bundle" "$VPS:/tmp/huly-account-bundle.js"
+  tr -d '\r' < "$REPO_ROOT/scripts/huly-deploy-account.sh" > "$REPO_ROOT/pods/account/.deploy-account.sh"
+  "${SCP[@]}" "$REPO_ROOT/pods/account/.deploy-account.sh" "$VPS:/tmp/huly-deploy-account.sh"
+  rm -f "$REPO_ROOT/pods/account/.deploy-account.sh"
+
+  say "apply account on VPS"
+  "${SSH[@]}" "$VPS" \
+    "HULY_TAG='$tag' FINGERPRINT_IN='$(account_fingerprint)' bash /tmp/huly-deploy-account.sh"
+}
+
+account_needs_deploy() {
+  [ "${FORCE:-0}" = "1" ] && return 0
+  [ "$(account_fingerprint)" != "$(account_state_value ACCOUNT_FINGERPRINT)" ]
+}
+
+cmd_account_rollback() {
+  say "rollback account"
+  tr -d '\r' < "$REPO_ROOT/scripts/huly-deploy-account.sh" > /tmp/huly-account-rollback.sh
+  "${SCP[@]}" /tmp/huly-account-rollback.sh "$VPS:/tmp/huly-deploy-account.sh"
+  "${SSH[@]}" "$VPS" 'MODE=rollback bash /tmp/huly-deploy-account.sh'
+  rm -f /tmp/huly-account-rollback.sh
 }
 
 # ------------------------------------------------------------------ model ----
@@ -383,6 +450,18 @@ cmd_status() {
   else
     info "=> front needs deploying"
   fi
+
+  local afp deployed_afp
+  afp=$(account_fingerprint)
+  deployed_afp=$(account_state_value ACCOUNT_FINGERPRINT)
+  echo
+  info "local account fingerprint:    $afp"
+  info "deployed account fingerprint: ${deployed_afp:-none (stock image)}"
+  if [ "$afp" = "$deployed_afp" ]; then
+    info "=> account image is up to date"
+  else
+    info "=> account image needs deploying (server/account code)"
+  fi
 }
 
 cmd_prune() {
@@ -395,10 +474,21 @@ cmd_deploy() {
   preflight
   cmd_validate
 
-  local fp deployed_fp shipped
+  local fp deployed_fp shipped account_shipped
   fp=$(front_fingerprint)
   deployed_fp=$(state_value FRONT_FINGERPRINT)
   shipped=0
+  account_shipped=0
+
+  # Before the front, not after: the UI calls account methods, so the service has
+  # to understand them by the time the new bundle is live.
+  if account_needs_deploy; then
+    cmd_account
+    account_shipped=1
+  else
+    say "account unchanged"
+    info "server/account matches what is live — skipping account image"
+  fi
 
   if [ "$fp" = "$deployed_fp" ] && [ "${FORCE:-0}" != "1" ]; then
     say "front unchanged"
@@ -428,15 +518,20 @@ cmd_deploy() {
   if ! cmd_smoke; then
     echo
     echo "!!! smoke test FAILED !!!"
-    if [ "$shipped" != "1" ]; then
+    if [ "$shipped" != "1" ] && [ "$account_shipped" != "1" ]; then
       die "production was already failing before this run — nothing was deployed, so there is nothing to roll back"
     fi
     if [ "${NO_ROLLBACK:-0}" = "1" ]; then
       die "left the new deploy live because NO_ROLLBACK=1"
     fi
-    cmd_rollback
+    if [ "$account_shipped" = "1" ]; then
+      cmd_account_rollback
+    fi
+    if [ "$shipped" = "1" ]; then
+      cmd_rollback
+    fi
     echo
-    die "rolled back to the previous front image — production is serving the last good bundle"
+    die "rolled back what this run deployed — production is serving the last good images"
   fi
 
   say "done"
@@ -448,6 +543,8 @@ case "${1:-deploy}" in
   deploy|all) cmd_deploy ;;
   validate) cmd_validate ;;
   front) preflight; cmd_validate; cmd_build; cmd_ship ;;
+  account) preflight; cmd_account ;;
+  account-rollback) preflight; cmd_account_rollback ;;
   model) preflight; cmd_model ;;
   smoke) preflight; cmd_smoke ;;
   rollback) preflight; cmd_rollback ;;

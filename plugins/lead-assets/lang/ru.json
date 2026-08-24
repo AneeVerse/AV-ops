@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Создать воронку",
     "CreateLead": "Создать сделку",
     "Funnel": "Воронка",
     "FunnelName": "Название воронки",
     "Funnels": "Воронки",
-    "LeadApplication": "Сделки (бета)",
+    "LeadApplication": "Сделки",
     "LeadCreateLabel": "Сделка",
     "SelectFunnel": "Выбрать воронку",
     "LeadName": "Название сделки",
@@ -14,6 +14,7 @@
     "Customers": "Клиенты",
     "Leads": "Сделки",
     "MyLeads": "Мои сделки",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Выбрать клиента",
     "Lead": "Сделка",
     "Assignee": "Исполнитель",

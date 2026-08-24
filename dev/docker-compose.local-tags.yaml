@@ -6,7 +6,9 @@ services:
   media:
     image: hardcoreeng/media:v0.7.426
   account:
-    image: hardcoreeng/account:v0.7.426
+    # huly-account-custom:local carries our server/account code (API tokens).
+    # Built by account.cmd; falls back to the stock image when it is absent.
+    image: ${HULY_ACCOUNT_IMAGE:-hardcoreeng/account:v0.7.426}
     environment:
       TRANSACTOR_URL: ws://127.0.0.1:3332;;cockroach
       FRONT_URL: http://127.0.0.1:8080

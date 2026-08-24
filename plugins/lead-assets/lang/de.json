@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Neuer Trichter",
     "CreateLead": "Neuer Lead",
     "Funnel": "Trichter",
     "FunnelName": "Trichtername",
     "Funnels": "Trichter",
-    "LeadApplication": "Leads (Beta)",
+    "LeadApplication": "Leads",
     "LeadCreateLabel": "Lead",
     "SelectFunnel": "Trichter auswählen",
     "LeadName": "Lead-Name",
@@ -14,6 +14,7 @@
     "Customers": "Kunden",
     "Leads": "Leads",
     "MyLeads": "Meine Leads",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Kunde auswählen",
     "Lead": "Lead",
     "Assignee": "Zugewiesen an",

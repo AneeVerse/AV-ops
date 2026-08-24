@@ -28,6 +28,7 @@ import CreateCustomer from './components/CreateCustomer.svelte'
 import NewItemsHeader from './components/NewItemsHeader.svelte'
 import EditFunnel from './components/EditFunnel.svelte'
 import MyLeads from './components/MyLeads.svelte'
+import AllLeads from './components/AllLeads.svelte'
 import TitlePresenter from './components/TitlePresenter.svelte'
 
 import { getLeadId, getLeadTitle } from './utils'
@@ -46,6 +47,7 @@ export default async (): Promise<Resources> => ({
     NewItemsHeader,
     EditFunnel,
     MyLeads,
+    AllLeads,
     TitlePresenter
   },
   function: {

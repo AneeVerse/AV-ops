@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Nový trychtýř",
     "CreateLead": "Nový lead",
     "Funnel": "Trychtýř",
     "FunnelName": "Název trychtýře",
     "Funnels": "Trychtýře",
-    "LeadApplication": "Leady (beta)",
+    "LeadApplication": "Leady",
     "LeadCreateLabel": "Lead",
     "SelectFunnel": "Vyberte trychtýř",
     "LeadName": "Název leadu",
@@ -14,6 +14,7 @@
     "Customers": "Zákazníci",
     "Leads": "Leady",
     "MyLeads": "Moje leady",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Vyberte zákazníka",
     "Lead": "Lead",
     "Assignee": "Přiřazený",

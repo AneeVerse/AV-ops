@@ -372,7 +372,9 @@ function defineApplication (
               icon: view.icon.List,
               label: tracker.string.AllProjects,
               createLabel: tracker.string.CreateProject,
-              createComponent: tracker.component.CreateProject
+              createComponent: tracker.component.CreateProject,
+              searchRefs: [{ field: 'company', _class: contact.class.Organization }],
+              searchFields: ['name', 'identifier']
             }
           },
           {

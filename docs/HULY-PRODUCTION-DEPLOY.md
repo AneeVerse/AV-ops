@@ -21,6 +21,7 @@ This document describes **how this fork is deployed today** so the next person o
 | DNS | `huly.aneeverse.com` A → `148.230.67.132` (Hostinger DNS zone `aneeverse.com`) |
 | Version | `v0.7.426` (`HULY_VERSION` in `huly_v7.conf`) |
 | Custom front image | `huly-front-custom:lead-wizard` (pinned in `compose.override.yml`) |
+| Custom account image | `huly-account-custom:<sha>-<ts>` (pinned via `ACCOUNT_IMAGE` in `huly_v7.conf`) |
 
 **Do not deploy Huly on** DigitalOcean `64.227.187.210` — that server runs horeca1 prod and is full.
 
@@ -54,6 +55,26 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 - **Behavior:** Left-bar **Company** tab lists Contacts companies. Open a company → **Projects** / **Issues**. Tracker create/edit project has optional **Company**.
 - **Deploy type:** Frontend bundle only (Company app rollback in progress on `rollback/simplify-fork`).
 
+### 5. API tokens (frontend + account service)
+
+- **Files:** `server/account/src/operations.ts`, `utils.ts`, `plugins/setting-resources/src/components/ApiToken*.svelte`
+- **Behavior:** Settings → **API Tokens** creates, lists and revokes personal API tokens. Expiry is
+  7/30/90/180/365 days or **No expiry**, stored as `expiresOn: -1` with no `exp` claim on the JWT.
+- **Deploy type:** **Custom account image** — see [Account service changes](#account-service-changes).
+  The stock `hardcoreeng/account` image has no `createApiToken` at all, so on stock images the whole
+  page fails, not just the no-expiry option.
+
+### 6. Integrations page
+
+- **File:** `scripts/huly-enable-integrations.sql`
+- **Behavior:** The Gmail / Telegram / Calendar / GitHub cards on Settings → **Integrations**.
+- **Why a script:** a `dev/tool configure --disable` run left `TxUpdateDoc` rows in `model_tx`
+  turning those plugins off, and a disabled plugin's transactions are filtered out of the client
+  model — which removes every `setting:class:IntegrationType` and leaves the page blank. The SQL
+  writes enable-rows that sort after both the bundled model and the fork patch.
+- **Deploy type:** SQL against the workspace database. Applied automatically by `local.cmd`;
+  run it by hand against production if that page is empty there too.
+
 ---
 
 ## The one command
@@ -62,26 +83,32 @@ These changes are **not** in official `hardcoreeng/front:v0.7.426` until you bui
 deploy.cmd
 ```
 
-That is the whole day-to-day flow. It runs five stages and **skips whatever did not change**:
+That is the whole day-to-day flow. It runs six stages and **skips whatever did not change**:
 
 | Stage | What it does | Fails the deploy when |
 |-------|--------------|------------------------|
 | `validate` | Plugin-id collision check (~2 s) | A `mergeIds` key is declared twice — this is what black-screened production on 2026-08-22 |
+| `account` | Builds the account bundle, ships it, switches the account container (see [Account service changes](#account-service-changes)) | The service does not come up, its RPC does not answer, or the shipped bundle lacks `createApiToken` → **automatic rollback** |
 | `build` | Webpack with the filesystem cache warm | `index.html` references a chunk that is missing from `dist` |
 | `ship` | Uploads only the files the VPS lacks, builds a front image, switches the container | The bundle inside the container is incomplete, or nginx does not return 200 |
 | `model` | Pushes `models/**` edits into `model_tx` (see [Model changes](#model-changes)) | The generated patch is implausibly large, or it fails to apply |
 | `smoke` | Logs into production and checks the workbench renders | Reload loop, console errors, or the workbench never appears → **automatic rollback** |
 
+The account stage runs **before** the front, the mirror image of the model rule: the UI calls
+account methods, so the service has to understand them by the time the new bundle is live.
+
 Other commands:
 
 ```powershell
-deploy.cmd status      # what would deploy, and why (no build, no changes)
-deploy.cmd validate    # just the pre-build checks
-deploy.cmd model       # force a model sync on its own
-deploy.cmd smoke       # test production as it is right now
-deploy.cmd rollback    # switch back to the previous front image
-deploy.cmd verify      # live headers + which image is running
-deploy.cmd prune       # reclaim docker disk on the VPS
+deploy.cmd status            # what would deploy, and why (no build, no changes)
+deploy.cmd validate          # just the pre-build checks
+deploy.cmd account           # force an account image build + ship on its own
+deploy.cmd model             # force a model sync on its own
+deploy.cmd smoke             # test production as it is right now
+deploy.cmd rollback          # switch back to the previous front image
+deploy.cmd account-rollback  # switch the account service back to its previous image
+deploy.cmd verify            # live headers + which image is running
+deploy.cmd prune             # reclaim docker disk on the VPS
 ```
 
 Flags (set them as environment variables):
@@ -120,15 +147,44 @@ Flags (set them as environment variables):
 
 ### What it does not do
 
-Production runs the official `hardcoreeng/*:v0.7.426` images for every backend service. Your fork
-has only ever changed front-end code (`plugins/`, `packages/`) plus a few `models/` files, so a
-front bundle deploy is a complete deploy.
+Production runs the official `hardcoreeng/*:v0.7.426` images for every backend service **except the
+account service**, which now runs an image we build (see below).
 
-If you change `server/`, `server-plugins/`, `pods/` or `services/`, the deploy **stops and tells
-you** rather than reporting a success it cannot deliver — those need custom backend images
-(section C).
+If you change `server/` (other than `server/account`), `server-plugins/`, `pods/` (other than
+`pods/account`) or `services/`, the deploy **stops and tells you** rather than reporting a success
+it cannot deliver — those still need custom backend images built by hand (section C).
 
 `models/**` changes are handled by the `model` stage described below.
+
+---
+
+## Account service changes
+
+The account service is a **compiled bundle** inside `hardcoreeng/account`. Unlike `models/**`, there
+is no database-side trick that can add a method to it: stock `v0.7.426` contains zero occurrences of
+`createApiToken`, so the API Tokens page fails outright against it. The only way to ship
+`server/account` code is to run an image we built.
+
+The `account` stage does that:
+
+1. `scripts/huly-build-account.sh` compiles the dependency chain (`rush build --to
+   @hcengineering/pod-account`) and bundles `pods/account/bundle/bundle.js`.
+2. It refuses to continue if the bundle has no `createApiToken`, which is the cheap signal that the
+   build did not actually pick up `server/account`.
+3. The bundle (~10 MB) is uploaded, and `scripts/huly-deploy-account.sh` builds
+   `huly-account-custom:<sha>-<ts>` as a **thin layer on `hardcoreeng/account:$HULY_VERSION`** —
+   only `bundle.js` is replaced, so each deploy adds a few MB rather than another 400 MB image.
+4. Compose is pointed at it through `ACCOUNT_IMAGE` in `huly_v7.conf`, the same env-driven pin the
+   front uses, so later deploys rewrite one line instead of editing YAML.
+5. It verifies the container is running, that the log says `server started on port`, that an
+   unauthenticated RPC answers with a structured error, and that the deployed bundle really contains
+   `createApiToken`. **Any of those failing rolls the account service back on the spot** — this is
+   the service everything else authenticates against, so a bad deploy here is a full outage, not one
+   broken page.
+
+Locally the same image is used: `account.cmd` builds `huly-account-custom:local`, and `local.cmd`
+picks it up automatically (falling back to the stock image, with a printed warning, when it is
+absent). Re-run `account.cmd` after changing anything under `server/account` or `pods/account`.
 
 ---
 
@@ -318,6 +374,9 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 |--------|---------|
 | `huly-deploy-production.sh` | **Orchestrator** — the stages behind `deploy.cmd` |
 | `huly-deploy-front.sh` | **Runs on the VPS** — applies the delta, builds/pins the front image, prunes, rolls back |
+| `huly-build-account.sh` | Builds the account bundle + `huly-account-custom` image (behind `account.cmd`) |
+| `huly-deploy-account.sh` | **Runs on the VPS** — builds/pins the account image, verifies it, rolls back |
+| `huly-enable-integrations.sql` | Re-enables the plugins behind Settings → Integrations |
 | `huly-check-plugin-ids.mjs` | Pre-build gate for duplicate `mergeIds` keys |
 | `huly-deploy-smoke.mjs` | Post-deploy logged-in check (reload loop, console errors, workbench) |
 | `huly-dist-manifest.mjs` | sha1 manifest of `dist` used to compute the upload delta |
@@ -339,6 +398,8 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
       begins with `rm -rf ./dist`, so they corrupt each other's output
 - [ ] If the deploy stops on server-side changes, do not paper over it with
       `ALLOW_SERVER_CHANGES=1` unless the front really is all you need
+- [ ] `server/account` changes are shipped by the `account` stage — run `account.cmd` locally first
+      and confirm the feature works before deploying
 - [ ] Model **doc** changes still need the workspace DB updated — the bundle alone is not enough
 - [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes

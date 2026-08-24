@@ -1,11 +1,11 @@
-{
+﻿{
     "string": {
         "CreateFunnel": "새 퍼널",
         "CreateLead": "새 리드",
         "Funnel": "퍼널",
         "FunnelName": "퍼널 이름",
         "Funnels": "퍼널",
-        "LeadApplication": "리드 (베타)",
+        "LeadApplication": "리드",
         "LeadCreateLabel": "리드",
         "SelectFunnel": "퍼널 선택",
         "LeadName": "리드 이름",
@@ -14,6 +14,7 @@
         "Customers": "고객",
         "Leads": "리드",
         "MyLeads": "내 리드",
+        "AllLeads": "모든 리드",
         "SelectCustomer": "고객 선택",
         "Lead": "리드",
         "Assignee": "담당자",

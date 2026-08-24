@@ -6,6 +6,7 @@ Simple Windows commands from the repo root. **SSH key and passwords stay on your
 |---------|----------------|
 | `local.cmd` | Starts local Docker (Cockroach/account/transactor) and webpack UI on **8080**. Data is **local**, not production. |
 | `prod-local.cmd` | Stops ports **8080** / **18087**, SSH-tunnels to production, starts local UI against live aneeverse |
+| `account.cmd` | Rebuilds the custom account image. Only needed after changing `server/account` or `pods/account`. |
 | `deploy.cmd` | Validates, builds only what changed, ships it, smoke-tests production, rolls back on failure |
 
 Live site: https://huly.aneeverse.com
@@ -54,11 +55,18 @@ Then open **http://localhost:8080/**.
 
 If something was already running on 8080, `local.cmd` kills it first.
 
-Before starting webpack it also does two things to the local DB:
+It also picks the account image: `huly-account-custom:local` when `account.cmd` has built one,
+otherwise the stock image. The stock image has no API token endpoints at all, so Settings →
+**API Tokens** only works on the custom one. `local.cmd` prints which it chose.
+
+Before starting webpack it also does three things to the local DB:
 
 - **Drops stale fork model rows** left over from the rollback. Without this, restoring an old URL
   like `/company/my-clients` throws `ResourceNotFound tracker:resolver:CompanyLocation` and the
   workbench never renders.
+- **Re-enables the integration plugins.** Gmail / Telegram / Calendar / GitHub were switched off in
+  `model_tx`, and a disabled plugin's transactions never reach the client model, which is what left
+  Settings → Integrations blank.
 - **Syncs `models/**` into the local DB.** The local transactor serves the model baked into its
   image, so model edits are invisible until the difference is written to `model_tx`. This is the
   same mechanism production uses — see
@@ -91,10 +99,11 @@ cd E:\Projects\platform-develop
 This:
 
 1. Checks for duplicate plugin ids (~2 s) — the bug class that black-screened production
-2. Builds `dev/prod` with a warm webpack cache, skipping the build entirely if nothing changed
-3. Uploads only the files the VPS is missing, then builds and switches to a new front image
-4. Pushes any `models/**` edits into the workspace model, after the front so the bundle is ready
-5. Logs into production and verifies the workbench renders — **rolls back automatically if not**
+2. Ships a custom account image if `server/account` changed, before the front so the UI's calls land
+3. Builds `dev/prod` with a warm webpack cache, skipping the build entirely if nothing changed
+4. Uploads only the files the VPS is missing, then builds and switches to a new front image
+5. Pushes any `models/**` edits into the workspace model, after the front so the bundle is ready
+6. Logs into production and verifies the workbench renders — **rolls back automatically if not**
 
 After it prints `done`, hard-refresh https://huly.aneeverse.com (**Ctrl+F5**).
 

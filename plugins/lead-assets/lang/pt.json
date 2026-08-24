@@ -1,11 +1,11 @@
-{
+﻿{
   "string": {
     "CreateFunnel": "Criar Funil",
     "CreateLead": "Criar Lead",
     "Funnel": "Funil",
     "FunnelName": "Nome do Funil",
     "Funnels": "Funis",
-    "LeadApplication": "Leads (beta)",
+    "LeadApplication": "Leads",
     "LeadCreateLabel": "Lead",
     "SelectFunnel": "Selecionar Funil",
     "LeadName": "Nome do Lead",
@@ -14,6 +14,7 @@
     "Customers": "Clientes",
     "Leads": "Leads",
     "MyLeads": "As minhas leads",
+    "AllLeads": "All Leads",
     "SelectCustomer": "Selecionar Cliente",
     "Lead": "Lead",
     "Assignee": "Atribuído a",
