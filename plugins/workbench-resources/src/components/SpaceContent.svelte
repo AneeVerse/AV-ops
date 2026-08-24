@@ -14,10 +14,16 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import type { Class, Doc, DocumentQuery, Ref, Space, WithLookup } from '@hcengineering/core'
+  import contact from '@hcengineering/contact'
+  import type { Class, Doc, DocumentQuery, Ref, RefTo, Space, WithLookup } from '@hcengineering/core'
   import core from '@hcengineering/core'
   import { IntlString } from '@hcengineering/platform'
-  import { createQuery, getClient } from '@hcengineering/presentation'
+  import {
+    buildRelatedSearchQuery,
+    createQuery,
+    getClient,
+    type RelatedSearchRef
+  } from '@hcengineering/presentation'
   import { AnyComponent, Component, Loading } from '@hcengineering/ui'
   import view, { Viewlet, ViewletPreference, ViewOptions } from '@hcengineering/view'
   import { FilterBar } from '@hcengineering/view-resources'
@@ -35,12 +41,14 @@
   let loading = true
 
   const client = getClient()
-  $: baseQuery = client.getHierarchy().classHierarchyMixin(_class, view.mixin.BaseQuery)
+  const hierarchy = client.getHierarchy()
+  $: baseQuery = hierarchy.classHierarchyMixin(_class, view.mixin.BaseQuery)
 
   $: query = buildQuery(space, baseQuery?.baseQuery, viewlet)
 
-  $: searchQuery = search === '' ? { space, ...query } : { $search: search, space, ...query }
+  let searchQuery: DocumentQuery<Doc> = {}
   $: resultQuery = searchQuery
+  $: void updateSearchQuery(_class, query, search)
 
   function buildQuery (
     space: Ref<Space>,
@@ -52,6 +60,37 @@
       ...(baseQuery ?? {}),
       ...(viewlet?.baseQuery ?? {})
     }
+  }
+
+  /** Widen search to Contact names when the class has an attachedTo → Contact ref (Lead customer). */
+  function relatedSearchRefs (objectClass: Ref<Class<Doc>>): RelatedSearchRef[] | undefined {
+    try {
+      const attr = hierarchy.getAttribute(objectClass, 'attachedTo')
+      if (!hierarchy.isDerived(attr.type._class, core.class.RefTo)) return undefined
+      const to = (attr.type as RefTo<Doc>).to
+      const base = hierarchy.isMixin(to) ? hierarchy.getBaseClass(to) : to
+      if (hierarchy.isDerived(to, contact.class.Contact) || hierarchy.isDerived(base, contact.class.Contact)) {
+        return [{ field: 'attachedTo', _class: contact.class.Contact }]
+      }
+    } catch {
+      // No attachedTo on this class.
+    }
+    return undefined
+  }
+
+  async function updateSearchQuery (
+    objectClass: Ref<Class<Doc>>,
+    base: DocumentQuery<Doc>,
+    text: string
+  ): Promise<void> {
+    searchQuery = await buildRelatedSearchQuery(
+      client,
+      objectClass,
+      base,
+      text,
+      relatedSearchRefs(objectClass),
+      ['title', 'identifier', 'name']
+    )
   }
 
   $: viewlet &&
@@ -80,7 +119,11 @@
           {space}
           query={searchQuery}
           {viewOptions}
-          on:change={(e) => (resultQuery = { ...e.detail, ...query })}
+          on:change={(e) => {
+            // FilterBar already starts from searchQuery — do not re-merge the
+            // unsearched base or free-text `_id: { $in }` is wiped.
+            resultQuery = e.detail
+          }}
         />
         <Component
           is={viewlet.$lookup?.descriptor?.component}
