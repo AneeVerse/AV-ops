@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cat > /etc/nginx/sites-available/huly.aneeverse.com <<'NGINX'
+cat > /etc/nginx/sites-available/app.aneeverse.com <<'NGINX'
 server {
     listen 80;
     listen [::]:80;
-    server_name huly.aneeverse.com;
+    server_name app.aneeverse.com;
 
     location /.well-known/acme-challenge/ {
         root /var/www/html;
@@ -19,10 +19,10 @@ server {
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name huly.aneeverse.com;
+    server_name app.aneeverse.com;
 
-    ssl_certificate /etc/letsencrypt/live/huly.aneeverse.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/huly.aneeverse.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/app.aneeverse.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/app.aneeverse.com/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
@@ -43,7 +43,7 @@ server {
 }
 NGINX
 
-ln -sfn /etc/nginx/sites-available/huly.aneeverse.com /etc/nginx/sites-enabled/huly.aneeverse.com
+ln -sfn /etc/nginx/sites-available/app.aneeverse.com /etc/nginx/sites-enabled/app.aneeverse.com
 nginx -t
 nginx -s reload
 
@@ -53,5 +53,5 @@ docker compose --env-file huly_v7.conf up -d --force-recreate account front tran
 
 sleep 5
 echo '==== HTTPS ===='
-curl -sI -m 15 https://huly.aneeverse.com/ | head -12
+curl -sI -m 15 https://app.aneeverse.com/ | head -12
 echo DONE

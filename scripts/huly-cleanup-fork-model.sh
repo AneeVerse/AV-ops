@@ -118,5 +118,5 @@ docker restart huly_v7-nginx-1
 sleep 5
 docker ps --filter name=huly_v7-workspace --filter name=huly_v7-transactor --filter name=huly_v7-nginx --format 'table {{.Names}}\t{{.Status}}'
 echo '==== public ===='
-curl -sS -o /dev/null -w 'site:%{http_code}\n' https://huly.aneeverse.com/ || true
+curl -sS -o /dev/null -w 'site:%{http_code}\n' https://app.aneeverse.com/ || true
 echo '==== fork model cleanup done ===='

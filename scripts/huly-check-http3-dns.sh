@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo '==== DNS A/AAAA ===='
-dig +short A huly.aneeverse.com
-dig +short AAAA huly.aneeverse.com
+dig +short A app.aneeverse.com
+dig +short AAAA app.aneeverse.com
 dig +short A aneeverse.com
 dig +short AAAA aneeverse.com
 echo
@@ -10,7 +10,7 @@ echo '==== nginx http3/quic/altsvc ===='
 grep -RIn --include='*.conf' -E 'http3|quic|alt-svc|listen .*443' /etc/nginx 2>/dev/null | head -50
 echo
 echo '==== curl headers ===='
-curl -sSI https://huly.aneeverse.com/ | head -30
+curl -sSI https://app.aneeverse.com/ | head -30
 echo
 echo '==== udp 443 listen ===='
 ss -ulpn | grep -E ':443|:80' || echo 'no udp 80/443'
@@ -30,4 +30,4 @@ echo
 echo '==== huly site conf ===='
 ls /etc/nginx/sites-enabled
 echo '---'
-grep -n 'listen\|server_name\|add_header\|quic' /etc/nginx/sites-enabled/huly.aneeverse.com 2>/dev/null || grep -n 'listen\|server_name' /etc/nginx/sites-available/huly.aneeverse.com 2>/dev/null | head -40
+grep -n 'listen\|server_name\|add_header\|quic' /etc/nginx/sites-enabled/app.aneeverse.com 2>/dev/null || grep -n 'listen\|server_name' /etc/nginx/sites-available/app.aneeverse.com 2>/dev/null | head -40

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url'
 const require = createRequire(import.meta.url)
 const { chromium } = require(join(dirname(fileURLToPath(import.meta.url)), '_tmp-playwright/node_modules/playwright'))
 
-const frontUrl = (process.env.FRONT_URL ?? 'https://huly.aneeverse.com').replace(/\/$/, '')
+const frontUrl = (process.env.FRONT_URL ?? 'https://app.aneeverse.com').replace(/\/$/, '')
 const email = process.env.HULY_USER
 const password = process.env.HULY_PASSWORD
 const allowEmpty = process.env.ALLOW_EMPTY === '1'

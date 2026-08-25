@@ -14,9 +14,9 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Class, DocumentQuery, FindOptions, Ref, Status } from '@hcengineering/core'
+  import { type AnyAttribute, Class, DocumentQuery, FindOptions, type IdMap, Ref, Status } from '@hcengineering/core'
   import { createQuery, getClient } from '@hcengineering/presentation'
-  import { Project, Task, getStates } from '@hcengineering/task'
+  import { Project, ProjectType, Task, findStatusAttr, getStates } from '@hcengineering/task'
   import type { TabItem } from '@hcengineering/ui'
   import { ScrollerBar, TabList, Switcher } from '@hcengineering/ui'
   import { TableBrowser, statusStore } from '@hcengineering/view-resources'
@@ -37,9 +37,57 @@
   let _space: Project | undefined = undefined
   const selectedDoneStates: Set<Ref<Status>> = new Set<Ref<Status>>()
   $: resConfig = updateConfig(config)
-  $: doneStates = getStates(_space, $typeStore, $statusStore.byId).filter(
-    (p) => p.category && [task.statusCategory.Won, task.statusCategory.Lost].includes(p.category)
-  )
+  const client = getClient()
+  // Restrict chips to this task class's status attribute so Lead/Client
+  // Won/Lost IssueStatus leaks on a shared project type never appear in Tracker.
+  // Also drop IssueStatus docs literally named Won/Lost (CreateTaskType used to
+  // seed those from StatusCategory.defaultStatusName).
+  const trackerIssueStatusAttr = 'tracker:attribute:IssueStatus' as Ref<AnyAttribute>
+  const leadStyleIssueNames = new Set(['Won', 'Lost'])
+  $: statusAttr = findStatusAttr(client.getHierarchy(), _class)
+
+  function isTrackerDoneChip (p: Status, statusAttrId: Ref<AnyAttribute>): boolean {
+    if (p.category == null || ![task.statusCategory.Won, task.statusCategory.Lost].includes(p.category)) {
+      return false
+    }
+    if (p.ofAttribute !== statusAttrId) {
+      return false
+    }
+    if (statusAttrId === trackerIssueStatusAttr && leadStyleIssueNames.has(p.name)) {
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Project Issues has a space → statuses come from that project type.
+   * All issues / My issues pass space=undefined; getStates() then returns [].
+   * Union done statuses across all project types so Done/Canceled chips still appear.
+   */
+  function collectDoneStates (
+    spaceDoc: Project | undefined,
+    types: IdMap<ProjectType>,
+    statuses: IdMap<Status>,
+    statusAttrId: Ref<AnyAttribute>
+  ): Status[] {
+    if (spaceDoc !== undefined) {
+      return getStates(spaceDoc, types, statuses).filter((p) => isTrackerDoneChip(p, statusAttrId))
+    }
+    const seen = new Set<Ref<Status>>()
+    const result: Status[] = []
+    for (const type of types.values()) {
+      for (const ps of type.statuses ?? []) {
+        if (seen.has(ps._id)) continue
+        const st = statuses.get(ps._id)
+        if (st == null || !isTrackerDoneChip(st, statusAttrId)) continue
+        seen.add(ps._id)
+        result.push(st)
+      }
+    }
+    return result
+  }
+
+  $: doneStates = collectDoneStates(_space, $typeStore, $statusStore.byId, statusAttr._id)
   $: itemsDS = getItems(doneStates)
   let selectedDS: string[] = []
   let withoutDone: boolean = false
@@ -81,8 +129,6 @@
     spaceQuery.unsubscribe()
     _space = undefined
   }
-
-  const client = getClient()
 
   function updateQuery (query: DocumentQuery<Task>, selectedDoneStates: Set<Ref<Status>>): void {
     resConfig = updateConfig(config)

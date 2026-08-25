@@ -2356,7 +2356,56 @@ describe('account operations', () => {
         workspaceUrl: mockWorkspaceUrl
       }
 
-      test('should NOT auto-confirm and should send confirmation with invite info when MAIL_URL is configured', async () => {
+      test('should auto-confirm and join immediately for email-bound invite even when MAIL_URL is configured', async () => {
+        const mockSocialId = {
+          _id: 'social-id' as PersonId,
+          personUuid: mockAccountId,
+          type: SocialIdType.EMAIL,
+          value: mockEmail,
+          key: `email:${mockEmail}`
+        }
+        const joinResult = {
+          account: mockAccountId,
+          workspace: mockWorkspaceUuid,
+          workspaceUrl: mockWorkspaceUrl,
+          endpoint: 'endpoint',
+          role: AccountRole.User,
+          token: 'mocked-token'
+        }
+
+        jest.spyOn(utils, 'getWorkspaceJoinInfo').mockResolvedValue({
+          email: mockEmail,
+          invite: mockInvite,
+          workspace: mockWorkspace
+        } as any)
+        jest.spyOn(utils, 'signUpByEmail').mockResolvedValue({
+          account: mockAccountId,
+          socialId: mockSocialId._id
+        })
+        jest.spyOn(utils, 'sendEmailConfirmation').mockResolvedValue()
+        jest.spyOn(utils, 'doJoinByInvite').mockResolvedValue(joinResult as any)
+        jest.spyOn(utils, 'confirmHulyIds').mockResolvedValue()
+        ;(getMetadata as jest.Mock).mockReturnValue('http://mail-service.com')
+
+        const result = await signUpJoin(mockCtx, mockDb, mockBranding, mockToken, baseParams)
+
+        // Invite email proves ownership — confirm immediately, no second confirmation email
+        expect(utils.signUpByEmail).toHaveBeenCalledWith(
+          mockCtx,
+          mockDb,
+          mockBranding,
+          mockEmail,
+          mockPassword,
+          mockFirstName,
+          mockLastName,
+          true
+        )
+        expect(utils.sendEmailConfirmation).not.toHaveBeenCalled()
+        expect(utils.doJoinByInvite).toHaveBeenCalled()
+        expect(result).toEqual(joinResult)
+      })
+
+      test('should NOT auto-confirm open invites when MAIL_URL is configured', async () => {
         const mockSocialId = {
           _id: 'social-id' as PersonId,
           personUuid: mockAccountId,
@@ -2369,10 +2418,11 @@ describe('account operations', () => {
           firstName: mockFirstName,
           lastName: mockLastName
         }
+        const openInvite = { ...mockInvite, email: null }
 
         jest.spyOn(utils, 'getWorkspaceJoinInfo').mockResolvedValue({
           email: mockEmail,
-          invite: mockInvite,
+          invite: openInvite,
           workspace: mockWorkspace
         } as any)
         jest.spyOn(utils, 'signUpByEmail').mockResolvedValue({
@@ -2386,7 +2436,6 @@ describe('account operations', () => {
 
         const result = await signUpJoin(mockCtx, mockDb, mockBranding, mockToken, baseParams)
 
-        // signUpByEmail must NOT mark the new account/social-id as confirmed
         expect(utils.signUpByEmail).toHaveBeenCalledWith(
           mockCtx,
           mockDb,
@@ -2397,7 +2446,6 @@ describe('account operations', () => {
           mockLastName,
           false
         )
-        // Confirmation email must be sent, threading the invite info through the token
         expect(utils.sendEmailConfirmation).toHaveBeenCalledWith(
           mockCtx,
           mockBranding,
@@ -2405,7 +2453,6 @@ describe('account operations', () => {
           mockEmail,
           expect.objectContaining({ inviteId: mockInviteId, workspaceUrl: mockWorkspaceUrl })
         )
-        // Workspace join must be deferred until after email confirmation
         expect(utils.doJoinByInvite).not.toHaveBeenCalled()
         expect(result).toEqual({
           account: mockAccountId,

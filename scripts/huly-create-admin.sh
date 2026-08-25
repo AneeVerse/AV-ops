@@ -8,7 +8,7 @@ SQL=(docker exec huly_v7-cockroach-1 ./cockroach sql --url "postgres://selfhost:
 "${SQL[@]}" -e "GRANT ALL ON SCHEMA public TO selfhost;"
 "${SQL[@]}" -e "SHOW GRANTS FOR selfhost;"
 
-grep -q "huly.aneeverse.com" /etc/hosts || echo "127.0.0.1 huly.aneeverse.com" >> /etc/hosts
+grep -q "app.aneeverse.com" /etc/hosts || echo "127.0.0.1 app.aneeverse.com" >> /etc/hosts
 
 docker compose --env-file huly_v7.conf up -d --force-recreate account workspace transactor fulltext kvs front nginx
 echo "waiting for account..."
@@ -41,8 +41,8 @@ set -e
 
 cat > /root/huly-login.txt <<EOF
 URL_HTTP=http://148.230.67.132:8087
-URL_DOMAIN=http://huly.aneeverse.com
-URL_HTTPS=https://huly.aneeverse.com
+URL_DOMAIN=http://app.aneeverse.com
+URL_HTTPS=https://app.aneeverse.com
 EMAIL=$EMAIL
 PASSWORD=$PASS
 CREATE_RC=$CREATE_RC

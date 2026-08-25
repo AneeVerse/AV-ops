@@ -1001,6 +1001,36 @@ export async function resendInvite (
 }
 
 /**
+ * Email-bound invites already prove inbox ownership (user clicked the link from their email).
+ * In that case we skip the separate confirmation email so join/signup can complete in one step.
+ */
+function inviteProvesEmailOwnership (
+  invite: { email?: string | null } | null | undefined,
+  email: string
+): boolean {
+  if (invite?.email == null || invite.email.trim() === '') {
+    return false
+  }
+  return cleanEmail(invite.email) === cleanEmail(email)
+}
+
+async function confirmEmailFromInvite (
+  ctx: MeasureContext,
+  db: AccountDB,
+  account: AccountUuid,
+  email: string
+): Promise<void> {
+  try {
+    await confirmEmail(ctx, db, account, email)
+  } catch (err: any) {
+    if (!(err instanceof PlatformError) || err.status.code !== platform.status.SocialIdAlreadyConfirmed) {
+      throw err
+    }
+  }
+  await confirmHulyIds(ctx, db, account)
+}
+
+/**
  * Given an invite and sign in information, assigns the user to the workspace in a given role.
  * If already a member, updates the role if necessary.
  * Returns the workspace login information.
@@ -1034,6 +1064,20 @@ export async function join (
   const { token, account } = await login(ctx, db, branding, _token, { email: workspaceJoinInfo.email, password })
 
   if (token == null) {
+    // Password ok but email not confirmed yet. Email-bound invites prove ownership — confirm and join.
+    if (inviteProvesEmailOwnership(workspaceJoinInfo.invite, workspaceJoinInfo.email)) {
+      await confirmEmailFromInvite(ctx, db, account, workspaceJoinInfo.email)
+      const confirmedToken = generateToken(account, workspaceJoinInfo.workspace.uuid, { authMethod: 'password' })
+      return await doJoinByInvite(
+        ctx,
+        db,
+        branding,
+        confirmedToken,
+        account,
+        workspaceJoinInfo.workspace,
+        workspaceJoinInfo.invite
+      )
+    }
     return {
       account
     }
@@ -1314,57 +1358,95 @@ export async function signUpJoin (
     inviteId
   })
 
-  // Require email confirmation just like the regular signUp flow.
-  // Auto-confirm only when no mail service is configured (dev setups).
+  // Email-bound invites (employee invites) already prove ownership via the mailbox link.
+  // Only require a separate confirmation email for open invites when MAIL_URL is set.
   const mailURL = getMetadata(accountPlugin.metadata.MAIL_URL)
-  const forceConfirmation = mailURL !== undefined && mailURL !== ''
+  const mailConfigured = mailURL !== undefined && mailURL !== ''
+  const inviteProvesEmail = inviteProvesEmailOwnership(workspaceJoinInfo.invite, email)
+  const confirmed = inviteProvesEmail || !mailConfigured
 
-  const { account, socialId } = await signUpByEmail(
-    ctx,
-    db,
-    branding,
-    email,
-    password,
-    first,
-    last ?? '',
-    !forceConfirmation
-  )
-  void setTimezone(ctx, db, account, null, meta)
+  try {
+    const { account, socialId } = await signUpByEmail(
+      ctx,
+      db,
+      branding,
+      email,
+      password,
+      first,
+      last ?? '',
+      confirmed
+    )
+    void setTimezone(ctx, db, account, null, meta)
 
-  if (forceConfirmation) {
-    const person = await db.person.findOne({ uuid: account })
-    if (person == null) {
-      throw new PlatformError(new Status(Severity.ERROR, platform.status.InternalServerError, {}))
+    if (!confirmed) {
+      const person = await db.person.findOne({ uuid: account })
+      if (person == null) {
+        throw new PlatformError(new Status(Severity.ERROR, platform.status.InternalServerError, {}))
+      }
+
+      const normalizedEmail = cleanEmail(email)
+      // Thread the invite info through the confirmation token so the user
+      // is auto-joined to the workspace once they confirm their email.
+      await sendEmailConfirmation(ctx, branding, account, normalizedEmail, {
+        inviteId,
+        workspaceUrl
+      })
+
+      return {
+        account,
+        name: getPersonName(person),
+        socialId,
+        token: undefined
+      }
     }
 
-    const normalizedEmail = cleanEmail(email)
-    // Thread the invite info through the confirmation token so the user
-    // is auto-joined to the workspace once they confirm their email.
-    await sendEmailConfirmation(ctx, branding, account, normalizedEmail, {
-      inviteId,
-      workspaceUrl
-    })
+    if (!mailConfigured) {
+      ctx.warn('Please provide MAIL_URL to enable sign up email confirmations.')
+    }
+    await confirmHulyIds(ctx, db, account)
 
-    return {
+    return await doJoinByInvite(
+      ctx,
+      db,
+      branding,
+      generateToken(account, workspaceJoinInfo.workspace?.uuid),
       account,
-      name: getPersonName(person),
-      socialId,
-      token: undefined
+      workspaceJoinInfo.workspace,
+      workspaceJoinInfo.invite
+    )
+  } catch (err: any) {
+    // First invite attempt may have created an unconfirmed account (pre-fix). Let them finish:
+    // accept the password from this form, confirm via invite ownership, and join.
+    if (
+      inviteProvesEmail &&
+      err instanceof PlatformError &&
+      err.status.code === platform.status.AccountAlreadyExists
+    ) {
+      ctx.info('Account already exists for invite email — setting password and joining', {
+        email,
+        inviteId
+      })
+      const normalizedEmail = cleanEmail(email)
+      const emailSocialId = await getEmailSocialId(db, normalizedEmail)
+      if (emailSocialId == null) {
+        throw err
+      }
+      const existingAccount = emailSocialId.personUuid as AccountUuid
+      await setPassword(ctx, db, branding, existingAccount, password)
+      await confirmEmailFromInvite(ctx, db, existingAccount, normalizedEmail)
+      await db.person.update({ uuid: existingAccount }, { firstName: first, lastName: last ?? '' })
+      return await doJoinByInvite(
+        ctx,
+        db,
+        branding,
+        generateToken(existingAccount, workspaceJoinInfo.workspace?.uuid, { authMethod: 'password' }),
+        existingAccount,
+        workspaceJoinInfo.workspace,
+        workspaceJoinInfo.invite
+      )
     }
+    throw err
   }
-
-  ctx.warn('Please provide MAIL_URL to enable sign up email confirmations.')
-  await confirmHulyIds(ctx, db, account)
-
-  return await doJoinByInvite(
-    ctx,
-    db,
-    branding,
-    generateToken(account, workspaceJoinInfo.workspace?.uuid),
-    account,
-    workspaceJoinInfo.workspace,
-    workspaceJoinInfo.invite
-  )
 }
 
 export async function confirm (

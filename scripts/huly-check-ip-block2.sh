@@ -38,4 +38,4 @@ echo '==== whois-ish ===='
 curl -sS --max-time 8 "https://ipinfo.io/$IP" || true
 echo
 echo '==== test local https ===='
-curl -sS -o /dev/null -w 'local443:%{http_code}\n' --resolve huly.aneeverse.com:443:127.0.0.1 https://huly.aneeverse.com/ || true
+curl -sS -o /dev/null -w 'local443:%{http_code}\n' --resolve app.aneeverse.com:443:127.0.0.1 https://app.aneeverse.com/ || true

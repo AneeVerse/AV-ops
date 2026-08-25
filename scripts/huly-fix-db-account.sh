@@ -5,7 +5,7 @@ cd /opt/huly-selfhost
 cat > compose.override.yml <<'YAML'
 x-huly-hosts: &huly-hosts
   extra_hosts:
-    - "huly.aneeverse.com:host-gateway"
+    - "app.aneeverse.com:host-gateway"
 
 services:
   nginx:
@@ -67,7 +67,7 @@ CRSQL=(docker exec -e COCKROACH_USER= -e COCKROACH_PASSWORD= huly_v7-cockroach-1
 "${CRSQL[@]}" -e "GRANT ALL ON DATABASE defaultdb TO selfhost;"
 "${CRSQL[@]}" -e "GRANT ALL ON SCHEMA public TO selfhost;"
 
-grep -q "huly.aneeverse.com" /etc/hosts || echo "127.0.0.1 huly.aneeverse.com" >> /etc/hosts
+grep -q "app.aneeverse.com" /etc/hosts || echo "127.0.0.1 app.aneeverse.com" >> /etc/hosts
 
 docker compose --env-file huly_v7.conf up -d --force-recreate account workspace transactor fulltext kvs front nginx
 sleep 8
@@ -86,8 +86,8 @@ set -e
 
 cat > /root/huly-login.txt <<EOF
 URL_HTTP=http://148.230.67.132:8087
-URL_DOMAIN=http://huly.aneeverse.com
-URL_HTTPS=https://huly.aneeverse.com
+URL_DOMAIN=http://app.aneeverse.com
+URL_HTTPS=https://app.aneeverse.com
 EMAIL=$EMAIL
 PASSWORD=$PASS
 CREATE_RC=$CREATE_RC

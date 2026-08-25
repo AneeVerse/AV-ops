@@ -13,7 +13,18 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import core, { Class, ClassifierKind, Data, Ref, RefTo, Status, generateId, toIdMap } from '@hcengineering/core'
+  import core, {
+    type AnyAttribute,
+    Class,
+    ClassifierKind,
+    Data,
+    Ref,
+    RefTo,
+    Status,
+    type StatusCategory,
+    generateId,
+    toIdMap
+  } from '@hcengineering/core'
   import { Resource, getEmbeddedLabel, getResource } from '@hcengineering/platform'
   import presentation, { getClient, hasResource } from '@hcengineering/presentation'
   import {
@@ -29,6 +40,19 @@
   import task from '../../plugin'
   import TaskTypeKindEditor from './TaskTypeKindEditor.svelte'
   import { clearSettingsStore } from '@hcengineering/setting-resources'
+
+  // Tracker Issue classic names. Shared StatusCategory.defaultStatusName is Lead-oriented
+  // (Won/Lost); using it for IssueStatus creates duplicate Done-category chips in Tracker.
+  const classicIssueStatusName: Partial<Record<Ref<StatusCategory>, string>> = {
+    [task.statusCategory.UnStarted]: 'Backlog',
+    [task.statusCategory.ToDo]: 'Todo',
+    [task.statusCategory.Active]: 'In Progress',
+    [task.statusCategory.Won]: 'Done',
+    [task.statusCategory.Lost]: 'Canceled'
+  }
+
+  const trackerIssueStatusClass = 'tracker:class:IssueStatus' as Ref<Class<Status>>
+  const trackerIssueStatusAttr = 'tracker:attribute:IssueStatus' as Ref<AnyAttribute>
 
   const client = getClient()
   export let type: ProjectType
@@ -114,11 +138,17 @@
     )
     const statusAttr =
       findStatusAttr(client.getHierarchy(), ofClass) ?? client.getHierarchy().getAttribute(task.class.Task, 'status')
+    const useClassicIssueNames =
+      _taskType.statusClass === trackerIssueStatusClass || statusAttr._id === trackerIssueStatusAttr
+
     for (const st of _taskType.statusCategories) {
       const std = categories.get(st)
       if (std !== undefined) {
+        const name = useClassicIssueNames
+          ? (classicIssueStatusName[st] ?? std.defaultStatusName)
+          : std.defaultStatusName
         const s = await createState(client, _taskType.statusClass, {
-          name: std.defaultStatusName,
+          name,
           ofAttribute: statusAttr._id,
           category: std._id
         })

@@ -9,7 +9,7 @@ Simple Windows commands from the repo root. **SSH key and passwords stay on your
 | `account.cmd` | Rebuilds the custom account image. Only needed after changing `server/account` or `pods/account`. |
 | `deploy.cmd` | Validates, builds only what changed, ships it, smoke-tests production, rolls back on failure |
 
-Live site: https://huly.aneeverse.com
+Live site: https://app.aneeverse.com
 
 ---
 
@@ -105,7 +105,7 @@ This:
 5. Pushes any `models/**` edits into the workspace model, after the front so the bundle is ready
 6. Logs into production and verifies the workbench renders — **rolls back automatically if not**
 
-After it prints `done`, hard-refresh https://huly.aneeverse.com (**Ctrl+F5**).
+After it prints `done`, hard-refresh https://app.aneeverse.com (**Ctrl+F5**).
 
 Useful variants:
 

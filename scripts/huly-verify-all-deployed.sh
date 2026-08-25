@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo '==== LIVE ===='
-curl -sS https://huly.aneeverse.com/ | head -c 350
+curl -sS https://app.aneeverse.com/ | head -c 350
 echo
 echo
 echo '==== FRONT CONTAINER ===='

@@ -50,11 +50,11 @@ PY
 
 docker compose --env-file huly_v7.conf up -d
 
-cat > /etc/nginx/sites-available/huly.aneeverse.com <<'NGINX'
+cat > /etc/nginx/sites-available/app.aneeverse.com <<'NGINX'
 server {
     listen 80;
     listen [::]:80;
-    server_name huly.aneeverse.com;
+    server_name app.aneeverse.com;
 
     location /.well-known/acme-challenge/ {
         root /var/www/html;
@@ -76,7 +76,7 @@ server {
 }
 NGINX
 
-ln -sfn /etc/nginx/sites-available/huly.aneeverse.com /etc/nginx/sites-enabled/huly.aneeverse.com
+ln -sfn /etc/nginx/sites-available/app.aneeverse.com /etc/nginx/sites-enabled/app.aneeverse.com
 nginx -t
 nginx -s reload
 
@@ -85,7 +85,7 @@ docker compose --env-file huly_v7.conf ps
 echo "==== LOCAL HTTP :8087 ===="
 curl -sI -m 15 http://127.0.0.1:8087/ | head -20
 echo "==== LOCAL HTTP host header ===="
-curl -sI -m 15 -H "Host: huly.aneeverse.com" http://127.0.0.1/ | head -20
+curl -sI -m 15 -H "Host: app.aneeverse.com" http://127.0.0.1/ | head -20
 echo "==== DNS ===="
-getent hosts huly.aneeverse.com || echo "NO_DNS_YET"
+getent hosts app.aneeverse.com || echo "NO_DNS_YET"
 echo "FIX_OK"

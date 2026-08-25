@@ -7,7 +7,7 @@ sed -i 's/^HTTP_BIND=.*/HTTP_BIND=/' huly_v7.conf
 cat > compose.override.yml <<'YAML'
 x-huly-hosts: &huly-hosts
   extra_hosts:
-    - "huly.aneeverse.com:host-gateway"
+    - "app.aneeverse.com:host-gateway"
 
 services:
   nginx:
@@ -92,8 +92,8 @@ set -e
 
 cat > /root/huly-login.txt <<EOF
 URL_HTTP=http://148.230.67.132:8087
-URL_DOMAIN=http://huly.aneeverse.com
-URL_HTTPS=https://huly.aneeverse.com
+URL_DOMAIN=http://app.aneeverse.com
+URL_HTTPS=https://app.aneeverse.com
 EMAIL=$EMAIL
 PASSWORD=$PASS
 CREATE_RC=$CREATE_RC

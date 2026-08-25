@@ -179,7 +179,7 @@ const devFrontProxy = {
   }
 }
 
-const aneeverseTarget = process.env.HULY_PROD_PROXY ?? 'https://huly.aneeverse.com'
+const aneeverseTarget = process.env.HULY_PROD_PROXY ?? 'https://app.aneeverse.com'
 
 const devAneeverseProxy = {
   '/_accounts': {

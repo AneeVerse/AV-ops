@@ -10,20 +10,25 @@ This document describes **how this fork is deployed today** so the next person o
 
 | Item | Value |
 |------|--------|
-| Live URL | https://huly.aneeverse.com |
+| Live URL | https://app.aneeverse.com |
 | VPS (Hostinger) | `148.230.67.132` — hostname `srv1474915` |
 | SSH | `ssh -i ~/.ssh/id_ed25519 root@148.230.67.132` |
 | Huly stack path | `/opt/huly-selfhost` |
 | Compose project | `huly_v7` (containers `huly_v7-*`) |
 | Docker nginx (internal) | `127.0.0.1:8087` → container `huly_v7-nginx-1` |
-| Host nginx (TLS) | `/etc/nginx/sites-available/huly.aneeverse.com` |
-| SSL | Let's Encrypt `/etc/letsencrypt/live/huly.aneeverse.com/` |
-| DNS | `huly.aneeverse.com` A → `148.230.67.132` (Hostinger DNS zone `aneeverse.com`) |
+| Host nginx (TLS) | `/etc/nginx/sites-available/app.aneeverse.com` |
+| SSL | Let's Encrypt `/etc/letsencrypt/live/app.aneeverse.com/` |
+| DNS | `app.aneeverse.com` A → `148.230.67.132` (Hostinger DNS zone `aneeverse.com`) |
 | Version | `v0.7.426` (`HULY_VERSION` in `huly_v7.conf`) |
 | Custom front image | `huly-front-custom:lead-wizard` (pinned in `compose.override.yml`) |
 | Custom account image | `huly-account-custom:<sha>-<ts>` (pinned via `ACCOUNT_IMAGE` in `huly_v7.conf`) |
 
 **Do not deploy Huly on** DigitalOcean `64.227.187.210` — that server runs horeca1 prod and is full.
+
+**Hostname history (2026-08-24):** Huly moved from `huly.aneeverse.com` to `app.aneeverse.com`. The old
+name is fully retired — DNS record, nginx vhost and Let's Encrypt cert were all deleted, so it no longer
+resolves. `app.aneeverse.com` previously served a different app, which now lives on **`apps.aneeverse.com`**
+(Vercel project `aneerequest`, team `aneeverses-projects-c3e1b973`) — do not point `apps` at this VPS.
 
 ---
 
@@ -275,7 +280,7 @@ ssh -i ~/.ssh/id_ed25519 root@148.230.67.132 'bash /tmp/huly-deploy-front.sh'
 4. Restarts `huly_v7-front-1` and **`huly_v7-nginx-1`** (required — otherwise 502 from stale upstream IP)
 5. `docker commit` → `huly-front-custom:lead-wizard`
 
-**Verify:** Hard-refresh https://huly.aneeverse.com (Ctrl+F5). Check `index.html` references new `bundle.*.js`.
+**Verify:** Hard-refresh https://app.aneeverse.com (Ctrl+F5). Check `index.html` references new `bundle.*.js`.
 
 **Typical time:** ~8 min webpack + ~2 min upload/restart. **No** `rush install` on VPS. **No** Cockroach/account rebuild.
 
@@ -305,7 +310,7 @@ Use official self-host on VPS only:
 docker compose up -d
 ```
 
-Then host nginx + certbot for `huly.aneeverse.com`. See `scripts/huly-ssl.sh`, `scripts/install-huly-vps.sh`.
+Then host nginx + certbot for `app.aneeverse.com`. See `scripts/huly-ssl.sh`, `scripts/install-huly-vps.sh`.
 
 After first install, apply **A** for custom UI and **B** for tracker viewlets.
 
@@ -320,7 +325,7 @@ After first install, apply **A** for custom UI and **B** for tracker viewlets.
   compose.override.yml  # extra_hosts, memory limits, image: huly-front-custom:lead-wizard
   run-tool.sh           # huly CLI in tool container (create-account, upgrade-workspace, …)
 
-/etc/nginx/sites-enabled/huly.aneeverse.com   # proxy_pass → 127.0.0.1:8087
+/etc/nginx/sites-enabled/app.aneeverse.com   # proxy_pass → 127.0.0.1:8087
 
 Docker containers (docker compose ps):
   huly_v7-front-1       # serves /app/dist + bundle.js
@@ -359,10 +364,10 @@ grep 'FRIEND_IP' /var/log/nginx/access.log   # no lines = blocked before nginx
 
 **Mitigations (in order):**
 
-1. Ensure friends use **https://huly.aneeverse.com** (not raw IP, not port 8087).
+1. Ensure friends use **https://app.aneeverse.com** (not raw IP, not port 8087).
 2. **Preferred (2026-08-18):** Hostinger managed firewall **deactivated** on VM `1474915`; OS **ufw** allows 22/80/443. Re-run `scripts/huly-os-firewall-lockdown.sh` on VPS after reboot if needed.
 3. If re-enabling Hostinger firewall: allow TCP 80/443 from `any`, sync via hPanel or `VPS_syncFirewallV1`.
-4. **Long-term fix:** put **Cloudflare** in front of `huly.aneeverse.com`; bind extra docker ports (`8081`, `8082`, `8087`, `8000`) to localhost only.
+4. **Long-term fix:** put **Cloudflare** in front of `app.aneeverse.com`; bind extra docker ports (`8081`, `8082`, `8087`, `8000`) to localhost only.
 
 **After any front container recreate:** always `docker restart huly_v7-nginx-1`.
 
@@ -401,7 +406,7 @@ Other `huly-*.sh` files are one-off diagnostics from past sessions; safe to igno
 - [ ] `server/account` changes are shipped by the `account` stage — run `account.cmd` locally first
       and confirm the feature works before deploying
 - [ ] Model **doc** changes still need the workspace DB updated — the bundle alone is not enough
-- [ ] Ask user to hard-refresh and verify on https://huly.aneeverse.com
+- [ ] Ask user to hard-refresh and verify on https://app.aneeverse.com
 - [ ] Do **not** run full `rush build` on VPS for UI-only changes
 - [ ] Do **not** use Hostinger MCP DNS (use REST API or hPanel if DNS changes needed)
 

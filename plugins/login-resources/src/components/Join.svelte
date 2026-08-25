@@ -28,6 +28,8 @@
   import {
     checkJoined,
     getInviteWorkspaceName,
+    goTo,
+    isWorkspaceLoginInfo,
     join,
     joinByToken,
     setLoginInfo,
@@ -111,8 +113,19 @@
       status = loginStatus
 
       if (result != null) {
-        await logIn(result)
-        setLoginInfo(result)
+        // Email-bound invites join immediately with a token. Open invites may still
+        // require confirmation when MAIL_URL is set (token undefined) — mirror SignupForm.
+        if (result.token != null) {
+          await logIn(result)
+          setLoginInfo(result)
+        }
+
+        if (!isWorkspaceLoginInfo(result)) {
+          if (result.token == null) {
+            goTo('confirmationSend')
+          }
+          return
+        }
 
         if (location.query?.navigateUrl != null) {
           try {

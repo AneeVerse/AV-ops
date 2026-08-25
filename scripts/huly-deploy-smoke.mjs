@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Post-deploy smoke test for huly.aneeverse.com.
+ * Post-deploy smoke test for app.aneeverse.com.
  *
  * Catches the two failure modes that have taken production down:
  *   1. plugin load failure -> platform LoadHelper reload loop / black screen
  *   2. front bundle vs workspace model mismatch -> workbench never renders
  *
- *   FRONT_URL=https://huly.aneeverse.com HULY_USER=... HULY_PASSWORD=... \
+ *   FRONT_URL=https://app.aneeverse.com HULY_USER=... HULY_PASSWORD=... \
  *     node scripts/huly-deploy-smoke.mjs
  *
  * Exits non-zero on failure so the deploy can roll back.
@@ -40,7 +40,7 @@ function loadChromium () {
   process.exit(2)
 }
 
-const frontUrl = (process.env.FRONT_URL ?? 'https://huly.aneeverse.com').replace(/\/$/, '')
+const frontUrl = (process.env.FRONT_URL ?? 'https://app.aneeverse.com').replace(/\/$/, '')
 const email = process.env.HULY_USER
 const password = process.env.HULY_PASSWORD
 const workspace = process.env.HULY_WORKSPACE ?? 'aneeverse'

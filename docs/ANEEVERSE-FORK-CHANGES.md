@@ -6,7 +6,7 @@ This document records **everything we changed** from upstream [Huly / Hardcore E
 - [HULY-PRODUCTION-DEPLOY.md](HULY-PRODUCTION-DEPLOY.md) — VPS layout, deploy stages, firewall
 
 **Repo today:** [AneeVerse/AV-ops](https://github.com/AneeVerse/AV-ops)  
-**Live site:** https://huly.aneeverse.com  
+**Live site:** https://app.aneeverse.com  
 **Upstream base:** Huly self-host stack ~`v0.7.426` (`HULY_VERSION` on VPS)  
 **Workspace:** `aneeverse`  
 **Period covered:** 2026-08-18 → 2026-08-20 (all fork commits in this git history)
@@ -397,7 +397,7 @@ When you add a fork feature:
 3. Read [HULY-PRODUCTION-DEPLOY.md](HULY-PRODUCTION-DEPLOY.md) before touching production  
 4. `rush install --bypass-policy` once  
 5. `local.cmd` for safe UI work; `prod-local.cmd` only when you must hit live data  
-6. Ship with `ship.cmd` (or Actions **Deploy Production**) and verify https://huly.aneeverse.com  
+6. Ship with `ship.cmd` (or Actions **Deploy Production**) and verify https://app.aneeverse.com  
 
 ---
 

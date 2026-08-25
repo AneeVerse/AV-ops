@@ -16,5 +16,5 @@ done
 
 echo '==== probe via nginx ===='
 curl -sS -o /tmp/huly-model.out -w 'code:%{http_code} size:%{size_download}\n' \
-  "https://huly.aneeverse.com/_transactor/api/v1/model?token=${TOKEN}" || true
+  "https://app.aneeverse.com/_transactor/api/v1/model?token=${TOKEN}" || true
 head -c 200 /tmp/huly-model.out; echo

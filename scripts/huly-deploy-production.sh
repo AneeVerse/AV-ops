@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-command production deploy for huly.aneeverse.com.
+# One-command production deploy for app.aneeverse.com.
 # See docs/HULY-PRODUCTION-DEPLOY.md. Day to day, run deploy.cmd instead.
 #
 #   ./scripts/huly-deploy-production.sh            # validate -> build -> ship -> smoke
@@ -16,7 +16,7 @@ PROD="$REPO_ROOT/dev/prod"
 DIST="$PROD/dist"
 # Deliberately not FRONT_URL: that name is used by local dev tooling and a stray
 # value in the environment would silently point verify/smoke at localhost.
-FRONT_URL="${HULY_FRONT_URL:-https://huly.aneeverse.com}"
+FRONT_URL="${HULY_FRONT_URL:-https://app.aneeverse.com}"
 
 # Paths whose contents end up in the front bundle.
 FRONT_PATHS=(plugins packages foundations models dev/prod/src dev/prod/webpack.config.js dev/prod/package.json)
