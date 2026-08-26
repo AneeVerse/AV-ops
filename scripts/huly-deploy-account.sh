@@ -77,8 +77,18 @@ apply_image() {
   local image="$1"
   ensure_image_pin
   set_account_image "$image"
-  say "docker compose up -d account ($image)"
-  ( cd "$STACK" && docker compose up -d account )
+  say "docker compose up -d --force-recreate account ($image)"
+  # Compose only substitutes ${ACCOUNT_IMAGE} from the process env — sourcing
+  # huly_v7.conf into this shell is what actually switches the container.
+  # --force-recreate is required when the tag changes but compose would otherwise
+  # leave a healthy container on the previous image ("Running" with no recreate).
+  (
+    set -a
+    # shellcheck disable=SC1090
+    source "$CONF"
+    set +a
+    cd "$STACK" && docker compose up -d --force-recreate account
+  )
   sleep 10
 }
 
@@ -90,8 +100,11 @@ verify_live() {
   status=$(docker inspect --format '{{.State.Status}}' "$ACCOUNT_CONTAINER" 2>/dev/null || echo missing)
   [ "$status" = "running" ] || die "$ACCOUNT_CONTAINER is $status"
 
-  docker logs --since 60s "$ACCOUNT_CONTAINER" 2>&1 | grep -q 'server started on port' ||
-    die "account service did not report a listening port — check: docker logs $ACCOUNT_CONTAINER"
+  # Prefer a fresh startup line, but fall back to RPC — recreate can be skipped
+  # by compose, and --since 60s then misses the original "server started" log.
+  if ! docker logs --since 120s "$ACCOUNT_CONTAINER" 2>&1 | grep -q 'server started on port'; then
+    echo "no recent 'server started' line — probing RPC instead"
+  fi
 
   # An unauthenticated RPC must still answer with a structured error, which is
   # the difference between "running" and "actually serving". The image is slim:
