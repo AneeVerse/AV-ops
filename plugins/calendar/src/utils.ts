@@ -1,5 +1,6 @@
 import { AccountUuid, Ref, Timestamp, generateId } from '@hcengineering/core'
-import calendar, {
+import calendar from './index'
+import type {
   Calendar,
   PrimaryCalendar,
   Event,
@@ -7,7 +8,7 @@ import calendar, {
   ReccuringEvent,
   ReccuringInstance,
   RecurringRule
-} from '.'
+} from './index'
 
 function getInstance (event: ReccuringEvent, date: Timestamp): ReccuringInstance {
   const diff = event.dueDate - event.date

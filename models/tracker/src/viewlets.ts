@@ -155,6 +155,14 @@ export function issueConfig (
       displayProps: { key: key + 'title' }
     },
     {
+      key: '$lookup.space.$lookup.company',
+      label: tracker.string.Company,
+      displayProps: { key: key + 'company', optional: true },
+      props: {
+        maxWidth: '10rem'
+      }
+    },
+    {
       key: '',
       label: tracker.string.SubIssues,
       presenter: tracker.component.SubIssuesSelector,
@@ -284,6 +292,16 @@ export function defineViewlets (builder: Builder): void {
           'createdBy',
           'modifiedBy'
         ]
+      },
+      options: {
+        lookup: {
+          space: [
+            tracker.class.Project,
+            {
+              company: contact.class.Organization
+            }
+          ]
+        }
       },
       config: issueConfig()
     },
@@ -539,7 +557,34 @@ export function defineViewlets (builder: Builder): void {
     {
       attachTo: tracker.class.Issue,
       descriptor: task.viewlet.StatusTable,
-      config: ['', 'identifier', 'title', 'status', 'priority', 'assignee', 'dueDate', 'modifiedOn'],
+      config: [
+        '',
+        'identifier',
+        'title',
+        {
+          key: '$lookup.space.$lookup.company',
+          label: tracker.string.Company,
+          displayProps: { key: 'company', optional: true },
+          props: {
+            maxWidth: '10rem'
+          }
+        },
+        'status',
+        'priority',
+        'assignee',
+        'dueDate',
+        'modifiedOn'
+      ],
+      options: {
+        lookup: {
+          space: [
+            tracker.class.Project,
+            {
+              company: contact.class.Organization
+            }
+          ]
+        }
+      },
       viewOptions: {
         groupBy: [],
         orderBy: [],
@@ -612,21 +657,30 @@ export function defineViewlets (builder: Builder): void {
     label: view.string.HideArchived
   }
 
+  // Same company grouping as YOUR PROJECTS sidebar (company, then name).
+  // storageKey busts stale localStorage that still sorted by modifiedBy.
   const tableOptions: ViewOptionsModel = {
     groupBy: [],
-    orderBy: [],
-    other: [hideArchivedOption]
+    orderBy: [
+      ['company', SortingOrder.Ascending],
+      ['name', SortingOrder.Ascending],
+      ['modifiedOn', SortingOrder.Descending]
+    ],
+    other: [hideArchivedOption],
+    storageKey: 'tracker.projectList.byCompany'
   }
 
   const projectListOptions: ViewOptionsModel = {
     groupBy: ['createdBy', 'modifiedBy'],
     orderBy: [
+      ['company', SortingOrder.Ascending],
       ['name', SortingOrder.Ascending],
       ['identifier', SortingOrder.Ascending],
       ['modifiedOn', SortingOrder.Descending],
       ['createdOn', SortingOrder.Descending]
     ],
-    other: [hideArchivedOption]
+    other: [hideArchivedOption],
+    storageKey: 'tracker.projectListGrouped.byCompany'
   }
 
   builder.createDoc(
@@ -641,6 +695,11 @@ export function defineViewlets (builder: Builder): void {
         sortable: true
       },
       config: [
+        {
+          key: 'company',
+          label: tracker.string.Company,
+          props: { maxWidth: '10rem' }
+        },
         {
           key: '',
           presenter: tracker.component.ProjectPresenter,
@@ -660,7 +719,10 @@ export function defineViewlets (builder: Builder): void {
         }
       ],
       options: {
-        showArchived: true
+        showArchived: true,
+        lookup: {
+          company: contact.class.Organization
+        }
       }
     },
     tracker.viewlet.ProjectList
@@ -678,6 +740,11 @@ export function defineViewlets (builder: Builder): void {
         hiddenKeys: ['identifier', 'name', 'description']
       },
       config: [
+        {
+          key: 'company',
+          label: tracker.string.Company,
+          props: { maxWidth: '10rem' }
+        },
         {
           key: '',
           presenter: tracker.component.ProjectPresenter,
@@ -698,7 +765,10 @@ export function defineViewlets (builder: Builder): void {
         }
       ],
       options: {
-        showArchived: true
+        showArchived: true,
+        lookup: {
+          company: contact.class.Organization
+        }
       }
     },
     tracker.viewlet.ProjectListGrouped

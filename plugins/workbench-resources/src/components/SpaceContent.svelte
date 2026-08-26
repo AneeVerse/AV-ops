@@ -26,7 +26,7 @@
   } from '@hcengineering/presentation'
   import { AnyComponent, Component, Loading } from '@hcengineering/ui'
   import view, { Viewlet, ViewletPreference, ViewOptions } from '@hcengineering/view'
-  import { FilterBar } from '@hcengineering/view-resources'
+  import { FilterBar, resolveViewletConfig } from '@hcengineering/view-resources'
 
   export let _class: Ref<Class<Doc>>
   export let space: Ref<Space>
@@ -131,7 +131,7 @@
             _class,
             space,
             options: viewlet.options,
-            config: preference?.config ?? viewlet.config,
+            config: resolveViewletConfig(viewlet, preference?.config),
             viewlet,
             viewOptions,
             viewOptionsConfig: viewlet.viewOptions?.other,

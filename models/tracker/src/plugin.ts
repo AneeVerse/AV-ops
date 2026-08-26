@@ -93,6 +93,7 @@ export default mergeIds(trackerId, tracker, {
     IssueTemplateChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
     ComponentChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
     MilestoneChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
+    ProjectChatMessageViewlet: '' as Ref<ChatMessageViewlet>,
     DefaultProjectType: '' as Ref<ProjectType>
   },
   actionImpl: {

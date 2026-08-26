@@ -302,7 +302,8 @@ export function createModel (builder: Builder): void {
         ]
       },
       configOptions: {
-        sortable: true
+        sortable: true,
+        hiddenKeys: ['attachedTo']
       }
     },
     lead.viewlet.TableLead
@@ -345,7 +346,7 @@ export function createModel (builder: Builder): void {
       options: lookupLeadOptions,
       configOptions: {
         strict: true,
-        hiddenKeys: ['title']
+        hiddenKeys: ['title', 'attachedTo']
       },
       config: [
         { key: '', displayProps: { fixed: 'left', key: 'lead' } },

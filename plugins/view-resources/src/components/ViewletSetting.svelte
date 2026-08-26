@@ -524,20 +524,25 @@
   }
 
   async function save (viewletId: Ref<Viewlet>, items: Array<Config | AttributeConfig>): Promise<void> {
+    const selectedViewlet = viewlets.find((it) => it._id === viewletId)
     const configValues = items.filter(
       (p) =>
         p.value !== undefined &&
         ((p.type === 'divider' && typeof p.value === 'object' && p.value.displayProps?.grow) ||
           (p.type === 'attribute' && (p as AttributeConfig).enabled))
     )
-    const config = configValues.map((p) => {
-      const value = p.value as string | BuildModelKey
-      if (typeof value === 'string' && value.startsWith('custom')) {
-        return { key: value, displayProps: { optional: true } }
-      }
-      return value
-    })
-    const selectedViewlet = viewlets.find((it) => it._id === viewletId)
+    const config = configValues
+      .map((p) => {
+        const value = p.value as string | BuildModelKey
+        if (typeof value === 'string' && value.startsWith('custom')) {
+          return { key: value, displayProps: { optional: true } }
+        }
+        return value
+      })
+      .filter((item) => {
+        const key = typeof item === 'string' ? item : item.key
+        return !(selectedViewlet?.configOptions?.hiddenKeys?.includes(key) ?? false)
+      })
     const previousSourceConfig =
       preferences.find((p) => p.attachedTo === viewletId)?.config ?? selectedViewlet?.config ?? []
 

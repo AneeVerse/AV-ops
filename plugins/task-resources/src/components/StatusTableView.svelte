@@ -59,6 +59,36 @@
     return true
   }
 
+  function isActiveStateChip (p: Status, statusAttrId: Ref<AnyAttribute>): boolean {
+    if (p.category === task.statusCategory.Won || p.category === task.statusCategory.Lost) {
+      return false
+    }
+    return p.ofAttribute === statusAttrId
+  }
+
+  function collectStates (
+    spaceDoc: Project | undefined,
+    types: IdMap<ProjectType>,
+    statuses: IdMap<Status>,
+    statusAttrId: Ref<AnyAttribute>
+  ): Status[] {
+    if (spaceDoc !== undefined) {
+      return getStates(spaceDoc, types, statuses).filter((p) => isActiveStateChip(p, statusAttrId))
+    }
+    const seen = new Set<Ref<Status>>()
+    const result: Status[] = []
+    for (const type of types.values()) {
+      for (const ps of type.statuses ?? []) {
+        if (seen.has(ps._id)) continue
+        const st = statuses.get(ps._id)
+        if (st == null || !isActiveStateChip(st, statusAttrId)) continue
+        seen.add(ps._id)
+        result.push(st)
+      }
+    }
+    return result
+  }
+
   /**
    * Project Issues has a space → statuses come from that project type.
    * All issues / My issues pass space=undefined; getStates() then returns [].
@@ -87,6 +117,9 @@
     return result
   }
 
+  $: states = collectStates(_space, $typeStore, $statusStore.byId, statusAttr._id)
+  $: stateItems = states.map((s) => ({ id: s._id, label: s.name }))
+  $: selectedState = state ?? ''
   $: doneStates = collectDoneStates(_space, $typeStore, $statusStore.byId, statusAttr._id)
   $: itemsDS = getItems(doneStates)
   let selectedDS: string[] = []
@@ -170,6 +203,11 @@
     updateQuery(query, selectedDoneStates)
   }
 
+  function stateClick (id: Ref<Status>): void {
+    state = state === id ? undefined : id
+    updateQuery(query, selectedDoneStates)
+  }
+
   $: updateQuery(query, selectedDoneStates)
 
   function clearStatusSelection (): void {
@@ -201,6 +239,11 @@
       else doneStateClick(res.id)
     }
   }
+  const handleStateSelect = (result: any) => {
+    if (result.type === 'select') {
+      stateClick(result.detail.id)
+    }
+  }
 </script>
 
 <div class="status-table-bar clearPadding justify-between flex-gap-4">
@@ -227,6 +270,10 @@
         updateQuery(query, selectedDoneStates)
       }}
     />
+  {:else if stateItems.length > 0}
+    <ScrollerBar gap={'none'} bind:scroller={divScroll}>
+      <TabList items={stateItems} selected={selectedState} on:select={handleStateSelect} />
+    </ScrollerBar>
   {/if}
 </div>
 <TableBrowser {_class} bind:query={resultQuery} config={resConfig} {options} showNotification />

@@ -14,6 +14,7 @@
 //
 
 import chunter from '@hcengineering/chunter'
+import { type ChatMessage } from '@hcengineering/chunter'
 import contact, { type Employee, type Organization, type Person } from '@hcengineering/contact'
 import {
   DOMAIN_MODEL,
@@ -138,6 +139,9 @@ export class TProject extends TTaskProject implements Project {
   @Prop(TypeRef(contact.class.Organization), tracker.string.Company)
   @Index(IndexKind.Indexed)
     company?: Ref<Organization>
+
+  @Prop(Collection(chunter.class.ChatMessage), tracker.string.Comments)
+    comments?: CollectionSize<ChatMessage>
 
   @Prop(Collection(tracker.class.RelatedIssueTarget), tracker.string.RelatedIssues)
     relatedIssueTargets!: number

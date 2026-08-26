@@ -14,6 +14,7 @@
 //
 
 import { Employee, Organization, Person } from '@hcengineering/contact'
+import { type ChatMessage } from '@hcengineering/chunter'
 import {
   AttachedDoc,
   Attribute,
@@ -65,6 +66,7 @@ export interface Project extends TaskProject, IconProps {
   defaultAssignee?: Ref<Employee>
   defaultTimeReportDay: TimeReportDayType
   company?: Ref<Organization>
+  comments?: CollectionSize<ChatMessage>
 }
 
 /**

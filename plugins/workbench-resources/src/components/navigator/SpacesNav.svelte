@@ -166,7 +166,27 @@
   let searchActive = false
   let searchEl: HTMLElement | undefined
   $: searchNorm = search.trim().toLowerCase()
-  $: displayedSpaces =
+
+  function companySortKey (space: Space): string {
+    const companyId = (space as SpaceWithCompany).company
+    if (companyId == null) return ''
+    return (companyNameById.get(companyId) ?? '').trim()
+  }
+
+  // Group same company together (company name, then project name). No-company last.
+  function sortSpacesByCompany (list: Space[]): Space[] {
+    return [...list].sort((a, b) => {
+      const ca = companySortKey(a)
+      const cb = companySortKey(b)
+      if (ca === '' && cb !== '') return 1
+      if (cb === '' && ca !== '') return -1
+      const byCompany = ca.localeCompare(cb, undefined, { sensitivity: 'base' })
+      if (byCompany !== 0) return byCompany
+      return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+    })
+  }
+
+  $: matchedSpaces =
     searchNorm === ''
       ? filteredSpaces
       : filteredSpaces.filter((s) => {
@@ -175,6 +195,7 @@
           if (companyId == null) return false
           return (companyNameById.get(companyId) ?? '').toLowerCase().includes(searchNorm)
         })
+  $: displayedSpaces = sortSpacesByCompany(matchedSpaces)
 
   $: visibleSpace = displayedSpaces.find((fs) => fs._id === currentSpace)
   $: empty = displayedSpaces.length === 0 || displayedSpaces === undefined
@@ -216,7 +237,11 @@
 </script>
 
 {#if model.searchable}
-  <div class="spaces-nav-searchable" class:search-active={searchActive || search !== ''}>
+  <div
+    class="spaces-nav-searchable"
+    class:spaces-nav-plain-header={model.id === 'funnels'}
+    class:search-active={searchActive || search !== ''}
+  >
     <TreeNode
       _id={'tree-' + model.id}
       label={model.label}
@@ -355,5 +380,10 @@
   /* No trailing rule under the spaces group above Help & Support. */
   .spaces-nav-searchable :global(.hulyNavGroup-container) {
     border-bottom: none;
+  }
+  .spaces-nav-plain-header :global(.hulyNavGroup-header__label) {
+    padding: 0;
+    background-color: transparent !important;
+    border-radius: 0;
   }
 </style>

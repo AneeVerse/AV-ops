@@ -94,12 +94,6 @@
     }
   }
 
-  /** Shown when a contact has no channels yet so users can set phone/email in-place. */
-  const defaultChannelStubs: AttachedData<Channel>[] = [
-    { provider: contact.channelProvider.Phone, value: '' },
-    { provider: contact.channelProvider.Email, value: '' }
-  ]
-
   function getProvider (
     item: AttachedData<Channel>,
     map: Map<Ref<ChannelProvider>, ChannelProvider>,
@@ -183,14 +177,6 @@
         displayItems.every((i) => !('_id' in i.channel && (i.channel as Channel)._id !== undefined))
       // Keep in-progress stub edits; re-seed when empty or when persisted rows were cleared.
       if (!onlyDrafts) {
-        if (isEditable !== false) {
-          for (const item of defaultChannelStubs) {
-            const provider = getProvider(item, map, notifyContextByDoc, inboxNotificationsByContext)
-            if (provider !== undefined) {
-              result.push(provider)
-            }
-          }
-        }
         displayItems = result
       }
       updateMenu(displayItems, channelProviders, exclude)
@@ -384,6 +370,22 @@
       />
     </div>
   {/each}
+  {#if actions.length > 0 && editable}
+    <div class="label-wrapper">
+      <Button
+        focusIndex={focusIndex === -1 ? focusIndex : focusIndex + 2 + displayItems.length}
+        id={presentation.string.AddSocialLinks}
+        bind:input={addBtn}
+        icon={contact.icon.SocialEdit}
+        kind={'link-bordered'}
+        {size}
+        {shape}
+        notSelected={displayItems.length === 0}
+        showTooltip={{ label: presentation.string.AddSocialLinks }}
+        on:click={showMenu}
+      />
+    </div>
+  {/if}
 {:else}
   <div
     class="{displayItems.length === 0 ? 'clear-mins' : 'buttons-group'} {kind === 'no-border'
@@ -430,7 +432,6 @@
         id={presentation.string.AddSocialLinks}
         bind:input={addBtn}
         icon={contact.icon.SocialEdit}
-        label={displayItems.length === 0 ? presentation.string.AddSocialLinks : undefined}
         notSelected={displayItems.length === 0}
         {kind}
         {size}

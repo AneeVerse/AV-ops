@@ -1,7 +1,8 @@
 <script lang="ts">
+  import contact from '@hcengineering/contact'
   import { DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Asset, IntlString, translateCB } from '@hcengineering/platform'
-  import { ComponentExtensions, SpaceSelector } from '@hcengineering/presentation'
+  import { buildRelatedSearchQuery, ComponentExtensions, getClient, SpaceSelector } from '@hcengineering/presentation'
   import { Issue, TrackerEvents, type Project } from '@hcengineering/tracker'
   import { Button, IconAdd, IModeSelector, ModeSelector, SearchInputAdvanced, showPopup, themeStore } from '@hcengineering/ui'
   import { ViewOptions, Viewlet } from '@hcengineering/view'
@@ -54,16 +55,14 @@
   // Single search source-of-truth. The legacy `search` binding still
   // exists for SpaceHeader's internal SearchInput (only used when
   // overrideSearch=false — never reached today). The new path uses
-  // searchRaw + searchEncoded written by SearchInputAdvanced. The
-  // `rawSearchTextStore` mirrors searchRaw so HighlightedText consumers
-  // can read it without prop-drilling.
+  // searchRaw written by SearchInputAdvanced. The `rawSearchTextStore`
+  // mirrors searchRaw so HighlightedText consumers can read it without
+  // prop-drilling.
   let search = ''
   let searchRaw = ''
-  let searchEncoded = ''
 
   function onSearchChange (e: CustomEvent<{ raw: string, encoded: string }>): void {
     searchRaw = e.detail.raw
-    searchEncoded = e.detail.encoded
   }
 
   // Sync rawSearchTextStore reactively with the LOCAL searchRaw so that
@@ -79,6 +78,7 @@
   })
 
   let searchQuery: DocumentQuery<Issue> = { ...query }
+  const client = getClient()
   function withSpace (q: DocumentQuery<Issue>, space: Ref<Space> | undefined): DocumentQuery<Issue> {
     if (space !== undefined) {
       return { ...q, space }
@@ -86,10 +86,41 @@
     const { space: _ignored, ...rest } = q
     return rest
   }
-  function updateSearchQuery (eff: string, space: Ref<Space> | undefined): void {
-    searchQuery = withSpace(eff === '' ? { ...query } : { ...query, $search: eff }, space)
+  async function updateSearchQuery (raw: string, space: Ref<Space> | undefined): Promise<void> {
+    const base = withSpace({ ...query }, space)
+    if (raw.trim() === '') {
+      searchQuery = base
+      return
+    }
+    const next = await buildRelatedSearchQuery(
+      client,
+      tracker.class.Issue,
+      base,
+      raw,
+      [{ field: 'space', _class: tracker.class.Project }],
+      ['title', 'identifier']
+    )
+    const ids = new Set(next._id?.$in ?? [])
+    const companyIds = await buildRelatedSearchQuery(
+      client,
+      tracker.class.Project,
+      {},
+      raw,
+      [{ field: 'company', _class: contact.class.Organization }],
+      ['name', 'identifier']
+    )
+    const projectIds = companyIds._id?.$in ?? []
+    if (projectIds.length > 0) {
+      const hits = await client.findAll(
+        tracker.class.Issue,
+        { ...base, space: { $in: projectIds } },
+        { projection: { _id: 1 } as any, limit: 500 }
+      )
+      for (const hit of hits) ids.add(hit._id)
+    }
+    searchQuery = { ...base, _id: { $in: [...ids] } }
   }
-  $: if (query !== undefined) updateSearchQuery(searchEncoded, effectiveSpace)
+  $: if (query !== undefined) void updateSearchQuery(searchRaw, effectiveSpace)
   let resultQuery: DocumentQuery<Issue> = { ...searchQuery }
 
   $: if (title) {
@@ -112,7 +143,7 @@
   // sentinel so the card disappears immediately on input change and only
   // re-appears when the new query confirms zero hits.
   $: {
-    void searchEncoded
+    void searchRaw
     void $filterStore
     // Reset to the pending sentinel without surrendering the viewlet's
     // ownership — the mounted viewlet stays authoritative and re-populates the

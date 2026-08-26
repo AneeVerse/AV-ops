@@ -1912,3 +1912,23 @@ export async function getObjectId (object: Doc, hierarchy: Hierarchy): Promise<s
 
   return object._id
 }
+
+/**
+ * Prefer preference config when present, but always drop keys listed in
+ * viewlet.configOptions.hiddenKeys. Saved preferences can still contain those
+ * keys from older sessions (e.g. Lead showing both attachedTo and $lookup.attachedTo).
+ */
+export function resolveViewletConfig (
+  viewlet: Pick<Viewlet, 'config' | 'configOptions'>,
+  preferenceConfig?: Array<BuildModelKey | string>
+): Array<BuildModelKey | string> {
+  const config = preferenceConfig ?? viewlet.config
+  const hidden = viewlet.configOptions?.hiddenKeys
+  if (hidden == null || hidden.length === 0) {
+    return config
+  }
+  return config.filter((item) => {
+    const key = typeof item === 'string' ? item : item.key
+    return !hidden.includes(key)
+  })
+}

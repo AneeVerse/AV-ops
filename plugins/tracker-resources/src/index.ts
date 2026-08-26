@@ -84,6 +84,7 @@ import MyIssues from './components/myissues/MyIssues.svelte'
 import NewIssueHeader from './components/NewIssueHeader.svelte'
 import NopeComponent from './components/NopeComponent.svelte'
 import MembersArrayEditor from './components/projects/MembersArrayEditor.svelte'
+import ProjectChat from './components/projects/ProjectChat.svelte'
 import ProjectFilterValuePresenter from './components/projects/ProjectFilterValuePresenter.svelte'
 import RelationsPopup from './components/RelationsPopup.svelte'
 import SetDueDateActionPopup from './components/SetDueDateActionPopup.svelte'
@@ -488,6 +489,7 @@ export default async (): Promise<Resources> => ({
     MembersArrayEditor,
     IssueExtra,
     IssueStatusPresenter,
+    ProjectChat,
     LabelsView
   },
   completion: {

@@ -430,6 +430,12 @@ function defineApplication (
                 label: tracker.string.IssueTemplates,
                 icon: tracker.icon.IssueTemplates,
                 component: tracker.component.IssueTemplates
+              },
+              {
+                id: 'chat',
+                label: tracker.string.ProjectChat,
+                icon: chunter.icon.Chunter,
+                component: tracker.component.ProjectChat
               }
             ]
           }
@@ -488,6 +494,11 @@ export function createModel (builder: Builder): void {
 
   builder.createDoc(activity.class.ActivityExtension, core.space.Model, {
     ofClass: tracker.class.IssueTemplate,
+    components: { input: { component: chunter.component.ChatMessageInput } }
+  })
+
+  builder.createDoc(activity.class.ActivityExtension, core.space.Model, {
+    ofClass: tracker.class.Project,
     components: { input: { component: chunter.component.ChatMessageInput } }
   })
 
@@ -715,6 +726,17 @@ export function createModel (builder: Builder): void {
       label: chunter.string.LeftComment
     },
     tracker.ids.IssueChatMessageViewlet
+  )
+
+  builder.createDoc(
+    chunter.class.ChatMessageViewlet,
+    core.space.Model,
+    {
+      messageClass: chunter.class.ChatMessage,
+      objectClass: tracker.class.Project,
+      label: chunter.string.LeftComment
+    },
+    tracker.ids.ProjectChatMessageViewlet
   )
 
   builder.createDoc(

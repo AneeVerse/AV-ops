@@ -162,6 +162,22 @@
         if (sortingFunction !== undefined) {
           const sf = sortingFunction
           objects = result.sort((a, b) => -1 * sortOrder * sf(a, b))
+        } else if (sortKey === 'company') {
+          // Group by company name (empty last), then project name — matches YOUR PROJECTS sidebar.
+          objects = result.slice().sort((a, b) => {
+            const ca = ((getObjectValue('$lookup.company.name', a) as string | undefined) ?? '').trim()
+            const cb = ((getObjectValue('$lookup.company.name', b) as string | undefined) ?? '').trim()
+            let cmp = 0
+            if (ca === '' && cb !== '') cmp = 1
+            else if (cb === '' && ca !== '') cmp = -1
+            else cmp = ca.localeCompare(cb, undefined, { sensitivity: 'base' })
+            if (cmp === 0) {
+              const na = ((a as Doc & { name?: string }).name ?? '').trim()
+              const nb = ((b as Doc & { name?: string }).name ?? '').trim()
+              cmp = na.localeCompare(nb, undefined, { sensitivity: 'base' })
+            }
+            return sortOrder * cmp
+          })
         } else {
           objects = result
         }

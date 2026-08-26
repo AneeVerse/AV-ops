@@ -23,6 +23,7 @@
     FilterBar,
     FilterButton,
     getResultOptions,
+    resolveViewletConfig,
     ViewletSelector,
     ViewletSettingButton
   } from '@hcengineering/view-resources'
@@ -147,7 +148,7 @@
       _class,
       space,
       options: viewlet.options,
-      config: preference?.config ?? viewlet.config,
+      config: resolveViewletConfig(viewlet, preference?.config),
       viewlet,
       viewOptions,
       viewOptionsConfig: viewlet.viewOptions?.other,
