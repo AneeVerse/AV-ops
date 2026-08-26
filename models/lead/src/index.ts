@@ -702,6 +702,51 @@ export function createModel (builder: Builder): void {
     }
   })
 
+  // Same as Tracker: these two replace the generic space Archive/Delete.
+  // Active funnels Archive; archived funnels get a real Delete.
+  createAction(
+    builder,
+    {
+      action: lead.actionImpl.DeleteFunnel,
+      label: workbench.string.Archive,
+      icon: view.icon.Archive,
+      input: 'focus',
+      category: lead.category.Lead,
+      target: lead.class.Funnel,
+      visibilityTester: view.function.CanArchiveSpace,
+      query: {
+        archived: false
+      },
+      context: {
+        mode: ['context', 'browser'],
+        group: 'edit'
+      },
+      override: [view.action.Archive, view.action.Delete]
+    },
+    lead.action.ArchiveFunnel
+  )
+  createAction(
+    builder,
+    {
+      action: lead.actionImpl.DeleteFunnel,
+      label: workbench.string.Delete,
+      icon: view.icon.Delete,
+      input: 'focus',
+      category: lead.category.Lead,
+      target: lead.class.Funnel,
+      visibilityTester: view.function.CanDeleteSpace,
+      query: {
+        archived: true
+      },
+      context: {
+        mode: ['context', 'browser'],
+        group: 'edit'
+      },
+      override: [view.action.Archive, view.action.Delete]
+    },
+    lead.action.DeleteFunnel
+  )
+
   defineSpaceType(builder)
   definePermissions(builder)
 }

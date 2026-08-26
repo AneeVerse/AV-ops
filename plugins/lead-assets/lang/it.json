@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Nuovo Funnel",
     "CreateLead": "Nuovo Lead",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Estensione per la gestione delle relazioni con i clienti",
     "EditFunnel": "Modifica Funnel",
+    "DeleteFunnel": "Elimina Funnel",
+    "DeleteFunnelConfirm": "Vuoi eliminare questo funnel e tutti i lead al suo interno?",
+    "ArchiveFunnel": "Archiviare il funnel {name}?",
+    "ArchiveFunnelConfirm": "Vuoi archiviare questo funnel?",
+    "FunnelHasLeads": "Questo funnel contiene già dei lead. Vuoi davvero archiviarlo?",
     "FunnelMembers": "Membri",
     "ForbidCreateFunnelPermission": "Vieta creazione funnel",
     "ForbidCreateFunnelPermissionDescription": "Vieta agli utenti di creare nuovi funnel"

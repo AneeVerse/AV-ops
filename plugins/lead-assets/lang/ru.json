@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Создать воронку",
     "CreateLead": "Создать сделку",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Расширение по работе с клиентами",
     "EditFunnel": "Редактировать воронку",
+    "DeleteFunnel": "Удалить воронку",
+    "DeleteFunnelConfirm": "Удалить эту воронку и все сделки в ней?",
+    "ArchiveFunnel": "Архивировать воронку {name}?",
+    "ArchiveFunnelConfirm": "Архивировать эту воронку?",
+    "FunnelHasLeads": "В этой воронке уже есть сделки. Точно архивировать?",
     "FunnelMembers": "Участники",
     "ForbidCreateFunnelPermission": "Запретить создание воронки",
     "ForbidCreateFunnelPermissionDescription": "Запрещает пользователям создавать новые воронки"

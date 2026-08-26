@@ -1,4 +1,4 @@
-﻿{
+{
     "string": {
         "CreateFunnel": "새 퍼널",
         "CreateLead": "새 리드",
@@ -34,6 +34,11 @@
         "ConfigLabel": "CRM",
         "ConfigDescription": "고객 관계 관리 확장 기능",
         "EditFunnel": "퍼널 편집",
+        "DeleteFunnel": "퍼널 삭제",
+        "DeleteFunnelConfirm": "이 퍼널과 그 안의 모든 리드를 삭제하시겠습니까?",
+        "ArchiveFunnel": "퍼널 {name}을(를) 보관하시겠습니까?",
+        "ArchiveFunnelConfirm": "이 퍼널을 보관하시겠습니까?",
+        "FunnelHasLeads": "이 퍼널에 리드가 있습니다. 정말 보관하시겠습니까?",
         "FunnelMembers": "멤버",
         "ForbidCreateFunnelPermission": "퍼널 생성 금지",
         "ForbidCreateFunnelPermissionDescription": "사용자의 새 퍼널 생성을 금지합니다"

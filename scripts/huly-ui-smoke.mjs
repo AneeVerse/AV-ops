@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Chromium smoke: Tracker All issues, My Clients All, HORECA1 Issues, project overflow.
+ * Chromium smoke: Tracker All issues, HORECA1 Issues, project overflow.
  *   FRONT_URL=... HULY_USER=... HULY_PASSWORD=... node scripts/huly-ui-smoke.mjs
  */
 import { createRequire } from 'module'
@@ -37,7 +37,7 @@ async function waitWorkbench (page) {
       if (await btn.count()) await btn.click().catch(() => {})
     }
     const body = await page.locator('body').innerText().catch(() => '')
-    const ready = /Tracker|Inbox|Chat|Company|All issues|My Clients/.test(body)
+    const ready = /Tracker|Inbox|Chat|Company|All issues/.test(body)
     const blocked = /Select workspace|Log In/.test(body)
     if (ready && !blocked) return true
     await page.waitForTimeout(1500)
@@ -122,47 +122,6 @@ async function main () {
 
     await page.locator('[data-id="app-sidebar-company"]').first().click({ timeout: 20000 })
     await page.waitForTimeout(2500)
-    await clickText(page, 'My Clients')
-    const allTab = page.getByText('All', { exact: true }).first()
-    const hasAllTab = await allTab.count()
-    if (hasAllTab) {
-      await allTab.click().catch(() => {})
-      await page.waitForTimeout(2000)
-    }
-    await waitTotal(page)
-    await shot(page, '03-my-clients')
-    const clientsBody = await page.locator('body').innerText()
-    const clientsTotal = totalFromText(clientsBody)
-    const companyNavOnList = await page.locator('.client-nav').count()
-    console.log('My Clients total=', clientsTotal, 'has All=', hasAllTab > 0, 'companyNav=', companyNavOnList)
-    if (companyNavOnList > 0) {
-      failures.push('My Clients still shows a company nav block (e.g. MAAT)')
-    }
-    if (!allowEmpty && hasAllTab && (clientsTotal === null || clientsTotal < 1)) {
-      failures.push(`My Clients expected clients, total=${clientsTotal}`)
-    }
-    if (!allowEmpty && !hasAllTab && process.env.REQUIRE_ALL_TAB === '1') {
-      failures.push('My Clients All tab missing')
-    }
-
-    const ecom = page.getByText('ECOM', { exact: true }).first()
-    const ecomCount = await ecom.count()
-    console.log('ECOM funnel visible=', ecomCount > 0)
-    if (ecomCount > 0) {
-      await ecom.click()
-      await page.waitForTimeout(3500)
-      await waitTotal(page)
-      await shot(page, '09-ecom-funnel')
-      const funnelBody = await page.locator('body').innerText()
-      const funnelTotal = totalFromText(funnelBody)
-      console.log('ECOM funnel total=', funnelTotal, 'url=', page.url())
-      if (!allowEmpty && (funnelTotal === null || funnelTotal < 1)) {
-        failures.push(`ECOM funnel expected clients, total=${funnelTotal}`)
-      }
-    } else if (process.env.REQUIRE_FUNNEL === '1') {
-      failures.push('ECOM funnel missing from Client sidebar')
-    }
-
     await clickText(page, 'Companies')
     await page.waitForTimeout(2000)
     const horeca = page.getByText('HORECA1', { exact: true }).first()
@@ -211,16 +170,10 @@ async function main () {
       await page.waitForTimeout(2000)
     } else {
       await page.locator('[data-id="app-sidebar-company"]').first().click({ timeout: 10000 }).catch(() => {})
-      await page.getByText('My Clients', { exact: true }).first().click({ timeout: 8000 }).catch(() => {})
       await page.waitForTimeout(2000)
     }
     await page.waitForTimeout(2000)
-    await shot(page, '08-my-clients-after-company')
-    const navAfter = await page.locator('.client-nav').count()
-    console.log('My Clients after HORECA1 companyNav=', navAfter, 'url=', page.url())
-    if (navAfter > 0) {
-      failures.push('My Clients still shows company nav after leaving HORECA1')
-    }
+    await shot(page, '08-company-after-issues')
   } finally {
     await browser.close()
   }

@@ -21,7 +21,7 @@ Goals vs stock Huly:
 
 | Need | Why stock Huly was not enough |
 |------|-------------------------------|
-| CRM-style **Clients** (like Leads, but for active accounts) | Upstream has Lead + Tracker + Contacts; no first-class Client funnel app |
+| CRM-style **Clients** (removed) | Was a Lead-like ClientFunnel app; dropped — use Company + Lead instead |
 | **Company** as a hub (projects + issues + files under one org) | Contacts orgs existed; Tracker projects were not linked |
 | Match **AneeRequest** data model (companies, requests, tasks) | We needed import + `aneerequestId` keys for idempotent sync |
 | Fast Windows workflow | Official self-host is Linux/VPS-heavy; we needed one-click local + ship |
@@ -44,13 +44,14 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 1. **Lead UX** — one-step customer → lead wizard, My Leads polish, email channel icons  
 2. **Tracker viewlets** — Issues **States** + **Dashboard** (same idea as Lead)  
 3. **Company app** — sidebar app + `Project.company` + company Projects/Issues tabs  
-4. **Client app** — `Client` / `ClientFunnel` model + My Clients UI (lives under Tracker plugins)  
+4. **Client app — removed** — `Client` / `ClientFunnel` / My Clients taken out of source and production (`huly-remove-client-crm.sh`)  
 5. **Company / project Drive** — folders on orgs & projects, optional Google Drive sync  
 6. **AneeRequest import** — Supabase → Huly companies / projects / issues  
 7. **Deploy & local tooling** — `local.cmd`, `prod-local.cmd`, `ship.cmd`, model SQL patches, GitHub Actions  
 8. **Localhost login** — persist token + remember last email  
 9. **Issue / nav polish** — scoping, no wrong auto-select, project labels with company, archive imported projects  
 10. **API tokens** — personal tokens with an optional **No expiry** option, in the UI and the account service  
+11. **Novino chat** — bottom-right panel in the workbench talking to the OpenClaw agent `novino`  
 
 **Important platform rule:** custom **classes / apps / viewlets** are stored in the workspace **`model_tx`** DB. Official Docker images do not ship our model. Every environment (local Docker **and** production) needs the model patch scripts, not only a new front bundle.
 
@@ -85,7 +86,8 @@ Dates are commit dates in this repo (Aug 2026).
 | 2026-08-19 | `ccf5d57` | Scope client Issues to company projects; stop auto-selecting unrelated spaces | Client Issues must not jump to random Tracker projects |
 | 2026-08-20 | `7097fca` | All Tracker issues by default; label projects with company (+ identifier) | Ops need global issue view; duplicate project names were ambiguous |
 | 2026-08-20 | `09af9ce` | Admins can archive imported company projects; backfill owners | Imported AneeRequest projects lacked owners → no Archive/Delete |
-| 2026-08-20 | `cf679a9` | Clean My Clients list; restore Client funnel spaces in sidebar | Leftover company nav on list pages; ECOM funnel needed to open like Lead |
+| 2026-08-26 | (this change) | Remove Client CRM from product + production DB; Delete on archived Lead funnels | Client funnels (ECOM, hb) were leftover API-visible spaces; archived Lead funnels could not be deleted |
+| 2026-08-26 | (this change) | Bottom-right **Novino** chat panel in the workbench | Talk to OpenClaw agent `novino` from Aneeverse; tasks use a Huly API token |
 
 ---
 
@@ -101,8 +103,19 @@ Dates are commit dates in this repo (Aug 2026).
 - Email / channel icons and My Leads viewlet tweaks  
 - Column/sidebar reorder kept on the row (no six-dot handle clutter)  
 - Later: funnel picker on My Leads so stage tabs appear when a funnel is selected  
+- Lead funnels match Tracker spaces: **Archive** when active, real **Delete** when already archived  
 
-**Deploy:** Frontend bundle only (`ship.cmd` / `front` stage).
+**Deploy:** Frontend bundle **and** `model` (the Delete action is a model doc).
+
+---
+
+### 4.13 Novino chat (OpenClaw)
+
+**Why:** Talk to the Novino OpenClaw agent from inside Aneeverse (bottom-right), same bot as Discord `#di_novino` and https://chat.aneeverse.com. Tasks it runs against Huly must use a **personal API token**, not raw Cockroach SQL.
+
+**What changed:** Floating `NovinoChat` panel in `plugins/workbench-resources` iframes `https://chat.aneeverse.com/?agent=novino&embed=1` so the widget talks to Novino (not AV_BOT). Gateway stays on the VPS (`openclaw-gateway.service`, agent `novino`). Lead list/create/update/delete goes through the Huly API CLI in Novino’s workspace, not memory search.
+
+**Deploy:** Front only.
 
 ---
 
@@ -135,44 +148,15 @@ Dates are commit dates in this repo (Aug 2026).
 - Contacts: org panel / logo / full-width company pages  
 - Patch: `scripts/huly-insert-company-app.sh`  
 
-**Deploy:** Front **and** `model-company`. `ship.cmd` alone does **not** create the sidebar tab.
-
-**Bug we hit:** Running company patch after Client patch wiped Client funnel spaces in the navigator (`03b3368`). Company insert must preserve Client `navigatorModel.spaces`.
+**Deploy:** Front **and** `model` (Company lives in `models/tracker`).
 
 ---
 
-### 4.4 Client app (fork-specific CRM)
+### 4.4 Client app (removed)
 
-**Why:** Leads = pipeline. We needed a parallel **Clients** funnel for active accounts (Kanban by status, My Clients, create client under a funnel like Lead).
+**Removed 2026-08-26.** The Client / ClientFunnel / My Clients CRM is gone from source. Leftover production classes and spaces (`ECOM`, `hb`, and their client docs) are deleted by `scripts/huly-remove-client-crm.sh`. Use **Company** + **Lead** instead. Archived Lead funnels can be deleted (same as archived Tracker projects).
 
-**Architecture choice:** Implement Client **inside Tracker** (model + `plugins/tracker-resources/.../client/*`), not a separate top-level plugin package for the product UI. (Upstream `plugins/client` is the platform client connection package — different meaning.)
-
-**Model pieces:**
-
-- Classes: `Client`, `ClientFunnel`  
-- Default funnel + statuses (Lead-like space type)  
-- Application navigator: My Clients, funnels in sidebar  
-- Files: `models/tracker/src/client.ts`, `clientSpaceType.ts`, types/plugin updates  
-
-**UI pieces:**
-
-- `MyClients.svelte`, `CreateClient.svelte`, `CreateClientFunnel.svelte`  
-- Presenters, Kanban card, company-linked Issues/Files helpers  
-- `clientUtils.ts`  
-
-**Local + prod patching:**
-
-- Local start: `scripts/huly-local-apply-fork-model.mjs` (seeded by `local.cmd`)  
-- Production: generate SQL → `scripts/huly-insert-client-model.sh` via `model-client`  
-
-**Deploy:** Front **and** `model-client`.
-
-**Follow-up fixes:**
-
-- Create Client spinner hang  
-- Issues scoped to that company’s projects only  
-- Hide company nav leftovers on My Clients list  
-- Restore funnel list (e.g. ECOM) so opening a funnel shows client Kanban  
+The old files (`models/tracker/src/client.ts`, `plugins/tracker-resources/.../client/*`, `huly-insert-client-model.sh`) are no longer in the tree.
 
 ---
 
@@ -192,7 +176,7 @@ Dates are commit dates in this repo (Aug 2026).
 
 ---
 
-### 4.6 Space pickers (My Leads / My Issues / My Clients)
+### 4.6 Space pickers (My Leads / My Issues)
 
 **Why:** Status / States UI only renders when a **space** (funnel or project) is selected. Global “All” views had no stage tabs.
 
@@ -245,7 +229,7 @@ Dates are commit dates in this repo (Aug 2026).
 
 | Command | Purpose |
 |---------|---------|
-| `local.cmd` | Local Docker stack + UI on **8080**; seeds Client model |
+| `local.cmd` | Local Docker stack + UI on **8080** |
 | `prod-local.cmd` | SSH tunnel + UI against **live** aneeverse data |
 | `ship.cmd` | Build front, upload, restart front + docker nginx (via unified orchestrator) |
 
@@ -254,9 +238,8 @@ Dates are commit dates in this repo (Aug 2026).
 | Stage | What it applies |
 |-------|-----------------|
 | `front` | Custom webpack dist → `huly_v7-front-1`, commit image `huly-front-custom:lead-wizard` |
-| `model-tracker` | Issue States/Dashboard viewlets |
-| `model-client` | Client classes / funnel / navigator |
-| `model-company` | Company app + `Project.company` |
+| `model` | Diff `models/**` vs image model.json → `model_tx` |
+| `model-company` | Company app + `Project.company` (legacy named stage; now covered by `model`) |
 | `model-company-drive` | Drive folder fields on company/project |
 | `model-request` | Request lifecycle fields on Project |
 | `model-project-chat` | Project ActivityExtension + Chat nav (reuses ChatMessage) |
@@ -316,7 +299,6 @@ Lead / Funnel              Sales pipeline (kept, UX improved)
 Contacts Organization      “Company” — hub for projects, issues, files
 Tracker Project            Delivery project, usually linked to a Company
 Tracker Issue              Task / work item (global All issues default)
-(new) Client / ClientFunnel Active-client CRM (Lead-like, separate app)
 Drive                      Plus company/project folders (+ optional GDrive)
 (none)                     AneeRequest Supabase import + aneerequestId
 ```
@@ -332,8 +314,6 @@ Drive                      Plus company/project folders (+ optional GDrive)
 | Lead wizard | `plugins/lead-resources/src/components/CreateCustomer.svelte`, `CreateLead.svelte`, `MyLeads.svelte` |
 | Viewlet order | `plugins/view-resources/src/components/ViewletSelector.svelte` |
 | Tracker viewlets / migration | `models/tracker/src/viewlets.ts`, `migration.ts`, `plugin.ts` |
-| Client model | `models/tracker/src/client.ts`, `clientSpaceType.ts`, `types.ts` |
-| Client UI | `plugins/tracker-resources/src/components/client/*`, `clientUtils.ts` |
 | Company UI | `plugins/tracker-resources/src/components/company/*` |
 | Issues scoping | `plugins/tracker-resources/src/components/issues/IssuesView.svelte`, `Issues.svelte` |
 | Drive company sync | `server-plugins/drive-resources/src/companyDrive.ts`, `googleSync.ts` |
@@ -347,11 +327,10 @@ Drive                      Plus company/project folders (+ optional GDrive)
 | `huly-deploy-front.sh` | Front tarball → container |
 | `huly-insert-issue-viewlets.sh` | Tracker States/Dashboard |
 | `huly-insert-company-app.sh` | Company app model |
-| `huly-insert-client-model.sh` | Client model_tx |
+| `huly-remove-client-crm.sh` | Delete leftover Client CRM spaces + model_tx |
 | `huly-insert-company-drive.sh` | Drive fields |
 | `huly-insert-request-fields.sh` | Request lifecycle on Project |
 | `huly-insert-project-chat.sh` | Project chat ActivityExtension + nav |
-| `huly-local-apply-fork-model.mjs` | Local (and SQL dump) Client model |
 | `aneerequest-sample-import.mjs` | Supabase → Huly |
 | `aneeverse-ship.ps1` / `aneeverse-local.ps1` | Windows wrappers |
 | `install-huly-vps.sh`, `huly-ssl.sh`, firewall helpers | First install / connectivity |
@@ -385,7 +364,7 @@ When you add a fork feature:
 
 1. Add a row to the **Timeline** with commit hash, date, what, why  
 2. Add or update a subsection under **Feature areas**  
-3. Note deploy stage: `front` / `model-client` / `model-company` / `model-company-drive` / `model-tracker`  
+3. Note deploy stage: `front` / `model` / `model-company` / `model-company-drive`  
 4. Update [HULY-PRODUCTION-DEPLOY.md](HULY-PRODUCTION-DEPLOY.md) if VPS steps change  
 
 ---

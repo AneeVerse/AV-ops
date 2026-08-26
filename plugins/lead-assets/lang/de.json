@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Neuer Trichter",
     "CreateLead": "Neuer Lead",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Erweiterung für Customer Relationship Management",
     "EditFunnel": "Trichter bearbeiten",
+    "DeleteFunnel": "Trichter löschen",
+    "DeleteFunnelConfirm": "Möchten Sie diesen Trichter und alle Leads darin löschen?",
+    "ArchiveFunnel": "Trichter {name} archivieren?",
+    "ArchiveFunnelConfirm": "Möchten Sie diesen Trichter archivieren?",
+    "FunnelHasLeads": "In diesem Trichter gibt es bereits Leads. Möchten Sie ihn wirklich archivieren?",
     "FunnelMembers": "Mitglieder",
     "ForbidCreateFunnelPermission": "Trichtererstellung verbieten",
     "ForbidCreateFunnelPermissionDescription": "Verbietet Benutzern das Erstellen neuer Trichter"

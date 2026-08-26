@@ -118,6 +118,7 @@
   import SpaceView from './SpaceView.svelte'
   import TopMenu from './icons/TopMenu.svelte'
   import WidgetsBar from './sidebar/Sidebar.svelte'
+  import NovinoChat from './NovinoChat.svelte'
   import { sidebarStore, SidebarVariant, syncSidebarState } from '../sidebar'
   import {
     getTabDataByLocation,
@@ -1133,6 +1134,7 @@
   <div class="hidden max-w-0 max-h-0">
     <ComponentExtensions extension={workbench.extensions.WorkbenchExtensions} />
   </div>
+  <NovinoChat />
   <BrowserNotificatator />
 {/if}
 

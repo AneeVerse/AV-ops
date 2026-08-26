@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "新建漏斗",
     "CreateLead": "新建潜在客户",
@@ -34,6 +34,11 @@
     "ConfigLabel": "客户关系管理",
     "ConfigDescription": "用于客户关系管理的扩展",
     "EditFunnel": "编辑漏斗",
+    "DeleteFunnel": "删除漏斗",
+    "DeleteFunnelConfirm": "要删除此漏斗以及其中的所有潜在客户吗？",
+    "ArchiveFunnel": "要归档漏斗 {name} 吗？",
+    "ArchiveFunnelConfirm": "要归档此漏斗吗？",
+    "FunnelHasLeads": "此漏斗中已有潜在客户，确定要归档吗？",
     "FunnelMembers": "成员",
     "ForbidCreateFunnelPermission": "禁止创建漏斗",
     "ForbidCreateFunnelPermissionDescription": "禁止用户创建新漏斗"

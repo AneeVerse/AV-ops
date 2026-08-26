@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "新しいファネル",
     "CreateLead": "新しいリード",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "顧客関係管理のための拡張機能",
     "EditFunnel": "ファネルを編集",
+    "DeleteFunnel": "ファネルを削除",
+    "DeleteFunnelConfirm": "このファネルとその中のすべてのリードを削除しますか？",
+    "ArchiveFunnel": "ファネル {name} をアーカイブしますか？",
+    "ArchiveFunnelConfirm": "このファネルをアーカイブしますか？",
+    "FunnelHasLeads": "このファネルにはリードがあります。アーカイブしてもよろしいですか？",
     "FunnelMembers": "メンバー",
     "ForbidCreateFunnelPermission": "ファネルの作成禁止",
     "ForbidCreateFunnelPermissionDescription": "ユーザーが新しいファネルを作成することを禁止します"

@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Yeni Huni",
     "CreateLead": "Yeni Aday",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Müşteri ilişkiler yönetimi için uzantı",
     "EditFunnel": "Huniyi Düzenle",
+    "DeleteFunnel": "Huniyi Sil",
+    "DeleteFunnelConfirm": "Bu huniyi ve içindeki tüm adayları silmek istiyor musunuz?",
+    "ArchiveFunnel": "{name} hunisi arşivlensin mi?",
+    "ArchiveFunnelConfirm": "Bu huniyi arşivlemek istiyor musunuz?",
+    "FunnelHasLeads": "Bu hunide adaylar var. Arşivlemek istediğinize emin misiniz?",
     "FunnelMembers": "Üyeler"
   }
 }

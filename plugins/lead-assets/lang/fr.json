@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Nouveau pipeline",
     "CreateLead": "Nouveau prospect",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Extension pour la gestion de la relation client",
     "EditFunnel": "Modifier le pipeline",
+    "DeleteFunnel": "Supprimer le pipeline",
+    "DeleteFunnelConfirm": "Voulez-vous supprimer ce pipeline et tous les prospects qu'il contient ?",
+    "ArchiveFunnel": "Archiver le pipeline {name} ?",
+    "ArchiveFunnelConfirm": "Voulez-vous archiver ce pipeline ?",
+    "FunnelHasLeads": "Ce pipeline contient déjà des prospects. Voulez-vous vraiment l'archiver ?",
     "FunnelMembers": "Membres",
     "ForbidCreateFunnelPermission": "Interdire la création de pipeline",
     "ForbidCreateFunnelPermissionDescription": "Interdit aux utilisateurs de créer de nouveaux pipelines"

@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "Nowy lejek sprzedażowy",
     "CreateLead": "Nowy potencjalny klient",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Rozszerzenie do zarządzania relacjami z klientami",
     "EditFunnel": "Edytuj lejek sprzedażowy",
+    "DeleteFunnel": "Usuń lejek sprzedażowy",
+    "DeleteFunnelConfirm": "Czy chcesz usunąć ten lejek i wszystkie leady w nim?",
+    "ArchiveFunnel": "Zarchiwizować lejek {name}?",
+    "ArchiveFunnelConfirm": "Czy chcesz zarchiwizować ten lejek?",
+    "FunnelHasLeads": "W tym lejku są już leady. Czy na pewno chcesz go zarchiwizować?",
     "FunnelMembers": "Członkowie",
     "ForbidCreateFunnelPermission": "Zabroń tworzenia lejków sprzedażowych",
     "ForbidCreateFunnelPermissionDescription": "Zabroń użytkownikom tworzenia nowych lejków sprzedażowych"

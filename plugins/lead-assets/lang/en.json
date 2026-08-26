@@ -1,4 +1,4 @@
-﻿{
+{
   "string": {
     "CreateFunnel": "New Funnel",
     "CreateLead": "New Lead",
@@ -34,6 +34,11 @@
     "ConfigLabel": "CRM",
     "ConfigDescription": "Extension for Customer relation management",
     "EditFunnel": "Edit Funnel",
+    "DeleteFunnel": "Delete Funnel",
+    "DeleteFunnelConfirm": "Do you want to delete this funnel and all leads in it?",
+    "ArchiveFunnel": "Archive funnel {name}?",
+    "ArchiveFunnelConfirm": "Do you want to archive this funnel?",
+    "FunnelHasLeads": "There are existing leads in this funnel, are you sure that you want to archive?",
     "FunnelMembers": "Members",
     "ForbidCreateFunnelPermission": "Forbid create funnel",
     "ForbidCreateFunnelPermissionDescription": "Forbid users creating new funnels"

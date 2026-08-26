@@ -23,7 +23,7 @@ import type { IntlString } from '@hcengineering/platform'
 import { mergeIds } from '@hcengineering/platform'
 import { type TaskTypeDescriptor } from '@hcengineering/task'
 import type { AnyComponent } from '@hcengineering/ui/src/types'
-import { type Action, type ActionCategory, type Viewlet } from '@hcengineering/view'
+import { type Action, type ActionCategory, type ViewAction, type Viewlet } from '@hcengineering/view'
 
 export default mergeIds(leadId, lead, {
   string: {
@@ -56,7 +56,12 @@ export default mergeIds(leadId, lead, {
   },
   action: {
     EditStatuses: '' as Ref<Action>,
-    CreateGlobalLead: '' as Ref<Action<Doc, any>>
+    CreateGlobalLead: '' as Ref<Action<Doc, any>>,
+    ArchiveFunnel: '' as Ref<Action>,
+    DeleteFunnel: '' as Ref<Action>
+  },
+  actionImpl: {
+    DeleteFunnel: '' as ViewAction
   },
   ids: {
     LeadNotificationGroup: '' as Ref<NotificationGroup>,

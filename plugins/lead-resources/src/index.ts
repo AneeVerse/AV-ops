@@ -15,6 +15,9 @@
 //
 
 import { type Resources } from '@hcengineering/platform'
+import { getClient, MessageBox } from '@hcengineering/presentation'
+import { showPopup } from '@hcengineering/ui'
+import lead, { type Funnel } from '@hcengineering/lead'
 
 import CreateFunnel from './components/CreateFunnel.svelte'
 import CreateLead from './components/CreateLead.svelte'
@@ -32,6 +35,36 @@ import AllLeads from './components/AllLeads.svelte'
 import TitlePresenter from './components/TitlePresenter.svelte'
 
 import { getLeadId, getLeadTitle } from './utils'
+import plugin from './plugin'
+
+async function deleteFunnel (funnel: Funnel | undefined): Promise<void> {
+  if (funnel === undefined) return
+  const client = getClient()
+  if (funnel.archived) {
+    showPopup(MessageBox, {
+      label: plugin.string.DeleteFunnel,
+      labelProps: { name: funnel.name },
+      message: plugin.string.DeleteFunnelConfirm,
+      action: async () => {
+        const leads = await client.findAll(lead.class.Lead, { space: funnel._id }, { showArchived: true })
+        for (const item of leads) {
+          await client.remove(item)
+        }
+        await client.remove(funnel)
+      }
+    })
+    return
+  }
+  const anyLead = await client.findOne(lead.class.Lead, { space: funnel._id })
+  showPopup(MessageBox, {
+    label: plugin.string.ArchiveFunnel,
+    labelProps: { name: funnel.name },
+    message: anyLead !== undefined ? plugin.string.FunnelHasLeads : plugin.string.ArchiveFunnelConfirm,
+    action: async () => {
+      await client.update(funnel, { archived: true })
+    }
+  })
+}
 
 export default async (): Promise<Resources> => ({
   component: {
@@ -53,5 +86,8 @@ export default async (): Promise<Resources> => ({
   function: {
     LeadTitleProvider: getLeadTitle,
     LeadIdProvider: getLeadId
+  },
+  actionImpl: {
+    DeleteFunnel: deleteFunnel
   }
 })
