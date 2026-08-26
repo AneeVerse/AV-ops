@@ -96,8 +96,17 @@ apply_image() {
   local image="$1"
   ensure_image_pin
   set_front_image "$image"
-  say "docker compose up -d front ($image)"
-  ( cd "$STACK" && docker compose up -d front )
+  say "docker compose up -d --force-recreate front ($image)"
+  # Compose only substitutes ${FRONT_IMAGE} from the process env — sourcing
+  # huly_v7.conf is required. Without --force-recreate, a healthy container can
+  # stay on the previous image ("Running") while state.env claims the new tag.
+  (
+    set -a
+    # shellcheck disable=SC1090
+    source "$CONF"
+    set +a
+    cd "$STACK" && docker compose up -d --force-recreate front
+  )
   say "restart nginx"
   # Required: nginx caches the front upstream IP and 502s after a recreate.
   docker restart "$NGINX_CONTAINER" >/dev/null
