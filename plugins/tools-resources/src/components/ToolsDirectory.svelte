@@ -57,10 +57,16 @@
   function openSite (site: ToolSite): void {
     window.open(site.href, '_blank', 'noopener,noreferrer')
   }
+
+  function selectGroup (event: CustomEvent<TabItem>): void {
+    if (event.detail === undefined) return
+    const id = String(event.detail.id)
+    group = id as ToolGroup | 'all'
+  }
 </script>
 
 <div class="hulyComponent">
-  <Header adaptive={'disabled'}>
+  <Header adaptive="disabled">
     <Breadcrumb icon={tools.icon.Application} label={tools.string.Application} size={'large'} isCurrent />
   </Header>
   <div class="antiPanel-component">
@@ -70,24 +76,20 @@
         bind:value={query}
         placeholder={tools.string.SearchPlaceholder}
         delay={150}
-        width={'100%'}
+        width="100%"
         on:change={(e) => {
           query = e.detail ?? ''
         }}
       />
       <Switcher
-        name={'tools-group-filter'}
+        name="tools-group-filter"
         items={filters}
-        kind={'subtle'}
+        kind="subtle"
         selected={group}
-        on:select={(result) => {
-          if (result.detail !== undefined) {
-            group = String(result.detail.id) as ToolGroup | 'all'
-          }
-        }}
+        on:select={selectGroup}
       />
     </div>
-    <Scroller padding={'0 1.5rem 1.5rem'}>
+    <Scroller padding="0 1.5rem 1.5rem">
       {#if grouped.length === 0}
         <div class="empty"><Label label={tools.string.Empty} /></div>
       {:else}
