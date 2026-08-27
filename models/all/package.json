@@ -123,6 +123,7 @@
     "@hcengineering/model-recorder": "workspace:^0.7.0",
     "@hcengineering/model-test-management": "workspace:^0.7.0",
     "@hcengineering/model-survey": "workspace:^0.7.0",
+    "@hcengineering/model-tools": "workspace:^0.7.0",
     "@hcengineering/model-presence": "workspace:^0.7.0",
     "@hcengineering/model-card": "workspace:^0.7.0",
     "@hcengineering/model-mail": "workspace:^0.7.0",

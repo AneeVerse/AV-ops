@@ -52,6 +52,7 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 9. **Issue / nav polish** — scoping, no wrong auto-select, project labels with company, archive imported projects  
 10. **API tokens** — personal tokens with an optional **No expiry** option, in the UI and the account service  
 11. **Novino chat** — bottom-right panel in the workbench talking to the OpenClaw agent `novino`  
+12. **Tools directory** — left-rail launcher for hosted Aneeverse apps (ERP, n8n, OpenClaw, Studio, …)  
 
 **Important platform rule:** custom **classes / apps / viewlets** are stored in the workspace **`model_tx`** DB. Official Docker images do not ship our model. Every environment (local Docker **and** production) needs the model patch scripts, not only a new front bundle.
 
@@ -88,6 +89,9 @@ Dates are commit dates in this repo (Aug 2026).
 | 2026-08-20 | `09af9ce` | Admins can archive imported company projects; backfill owners | Imported AneeRequest projects lacked owners → no Archive/Delete |
 | 2026-08-26 | (this change) | Remove Client CRM from product + production DB; Delete on archived Lead funnels | Client funnels (ECOM, hb) were leftover API-visible spaces; archived Lead funnels could not be deleted |
 | 2026-08-26 | (this change) | Bottom-right **Novino** chat panel in the workbench | Talk to OpenClaw agent `novino` from Aneeverse; tasks use a Huly API token |
+| 2026-08-26 | (this change) | Planner Join with Google Meet; custom calendar image; events sync hangoutLink; primary calendar prefers Google | Stock calendar dropped Meet links and new events stayed on HULY; Create meeting required a Huly room |
+| 2026-08-26 | (this change) | Planner ↔ Google two-way visibility: owner on participants, remap HULY events to Google, Join after hangoutLink | Google events were stored but hidden (ACL / wrong person); Planner writes never left HULY so Join stayed a placeholder |
+| 2026-08-27 | (this change) | Left-rail **Tools** directory of hosted Aneeverse apps | Same launcher as ContentBeta `/tba`, inside Huly with Huly UI |
 
 ---
 
@@ -116,6 +120,16 @@ Dates are commit dates in this repo (Aug 2026).
 **What changed:** Floating `NovinoChat` panel in `plugins/workbench-resources` iframes `https://chat.aneeverse.com/?agent=novino&embed=1` so the widget talks to Novino (not AV_BOT). Gateway stays on the VPS (`openclaw-gateway.service`, agent `novino`). Lead list/create/update/delete goes through the Huly API CLI in Novino’s workspace, not memory search.
 
 **Deploy:** Front only.
+
+---
+
+### 4.14 Tools directory
+
+**Why:** Hosted Aneeverse apps (ERP, CRM, n8n, OpenClaw, ContentBeta Studio, …) lived only as the ContentBeta `/tba` page. Ops needed the same launcher inside Huly.
+
+**What changed:** New `tools` plugin (types + catalog, assets, resources, model). Left-rail **Tools** icon (`alias: tools`, `order: 250`) opens a search + category card grid. Cards open the catalog URL in a new tab. Catalog is hardcoded in `plugins/tools/src/catalog.ts` (same sites as ContentBeta, plus Aneeverse marked “This app”).
+
+**Deploy:** Frontend bundle **and** `model` (the Application doc lives in `model_tx`).
 
 ---
 
@@ -287,6 +301,20 @@ a disabled plugin's transactions are filtered out of the client model — which 
 **What changed:** `scripts/huly-enable-integrations.sql` writes enable-rows for those four plugins,
 timestamped after both the bundled model and the fork patch so they win, under a `pi-` id prefix so
 `huly-model-patch.mjs` does not retire them. `local.cmd` applies it on every start.
+
+**Connect UX (2026-08-27):** After Google OAuth the Integrations list now refreshes itself (popup
+close / `postMessage` / `BroadcastChannel` / window focus) instead of waiting for a manual reload.
+The extra Calendar card from `allowMultiple` is labeled **Connect another account** so it is not
+mistaken for a second unconnected Calendar. Google’s primary calendar (named after the email) is
+no longer listed under the email row. OAuth uses `prompt: select_account consent` so Google shows
+the account picker. Personal Gmail still fails with **Error 403: org_internal** until the GCP
+project `aneeverse-cal-760101` OAuth consent **User type** is changed from Internal to External
+(Internal = Google Workspace `@aneeverse.com` only).
+
+**Gmail / Telegram / GitHub:** The cards are **on** (plugins re-enabled). They stay **Available**
+until someone Connects them. Production only runs the **calendar** pod — there is no gmail,
+telegram, or github service in `compose.override.yml`, so those Connect buttons cannot complete
+until those backends are deployed and given OAuth/bot credentials.
 
 ---
 

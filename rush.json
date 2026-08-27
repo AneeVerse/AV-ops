@@ -2417,6 +2417,26 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@hcengineering/tools",
+      "projectFolder": "plugins/tools",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@hcengineering/model-tools",
+      "projectFolder": "models/tools",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@hcengineering/tools-assets",
+      "projectFolder": "plugins/tools-assets",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@hcengineering/tools-resources",
+      "projectFolder": "plugins/tools-resources",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@hcengineering/card",
       "projectFolder": "plugins/card",
       "shouldPublish": true

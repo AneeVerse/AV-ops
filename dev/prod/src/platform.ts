@@ -55,6 +55,7 @@ import setting, { settingId } from '@hcengineering/setting'
 import sign from '@hcengineering/sign'
 import support, { supportId, supportLink, reportBugLink, docsLink, privacyPolicyLink } from '@hcengineering/support'
 import { surveyId } from '@hcengineering/survey'
+import { toolsId } from '@hcengineering/tools'
 import { tagsId } from '@hcengineering/tags'
 import { taskId } from '@hcengineering/task'
 import telegram, { telegramId } from '@hcengineering/telegram'
@@ -117,6 +118,7 @@ import '@hcengineering/request-assets'
 import '@hcengineering/setting-assets'
 import '@hcengineering/support-assets'
 import '@hcengineering/survey-assets'
+import '@hcengineering/tools-assets'
 import '@hcengineering/tags-assets'
 import '@hcengineering/task-assets'
 import '@hcengineering/telegram-assets'
@@ -404,6 +406,7 @@ function configureI18n(): void {
     async (lang: string) => await import(`@hcengineering/communication-assets/lang/${lang}.json`)
   )
   addStringsLoader(inboxId, async (lang: string) => await import(`@hcengineering/inbox-assets/lang/${lang}.json`))
+  addStringsLoader(toolsId, async (lang: string) => await import(`@hcengineering/tools-assets/lang/${lang}.json`))
   addStringsLoader(emojiId, async (lang: string) => await import(`@hcengineering/emoji-assets/lang/${lang}.json`))
   addStringsLoader(billingId, async (lang: string) => await import(`@hcengineering/billing-assets/lang/${lang}.json`))
   addStringsLoader(
@@ -715,6 +718,7 @@ export async function configurePlatform() {
     async () => await import(/* webpackChunkName: "ai-assistant" */ '@hcengineering/ai-assistant-resources')
   )
   addLocation(inboxId, async () => await import(/* webpackChunkName: "inbox" */ '@hcengineering/inbox-resources'))
+  addLocation(toolsId, async () => await import(/* webpackChunkName: "tools" */ '@hcengineering/tools-resources'))
   addLocation(ratingId, async () => await import(/* webpackChunkName: "rating" */ '@hcengineering/rating-resources'))
 
   setMetadata(client.metadata.FilterModel, 'ui')

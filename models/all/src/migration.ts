@@ -51,6 +51,7 @@ import { requestOperation } from '@hcengineering/model-request'
 import { activityServerOperation } from '@hcengineering/model-server-activity'
 import { settingOperation } from '@hcengineering/model-setting'
 import { surveyOperation } from '@hcengineering/model-survey'
+import { toolsOperation } from '@hcengineering/model-tools'
 import { tagsOperation } from '@hcengineering/model-tags'
 import { taskOperation } from '@hcengineering/model-task'
 import { telegramOperation } from '@hcengineering/model-telegram'
@@ -107,6 +108,7 @@ export const migrateOperations: [string, MigrateOperation][] = [
   ['workbench', workbenchOperation],
   ['testManagement', testManagementOperation],
   ['survey', surveyOperation],
+  ['tools', toolsOperation],
   [aiBotId, aiBotOperation],
   [chatId, chatOperation],
   [inboxId, inboxOperation],

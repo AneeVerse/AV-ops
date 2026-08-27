@@ -125,6 +125,7 @@ import {
   createModel as serverDocumentsModel
 } from '@hcengineering/model-server-controlled-documents'
 import survey, { surveyId, createModel as surveyModel } from '@hcengineering/model-survey'
+import tools, { toolsId, createModel as toolsModel } from '@hcengineering/model-tools'
 import { type Plugin } from '@hcengineering/platform'
 
 interface ConfigurablePlugin extends Omit<Data<PluginConfiguration>, 'pluginId' | 'transactions'> {}
@@ -493,6 +494,18 @@ export default function buildModel (): Builder {
       { label: chat.string.Chat, hidden: true, enabled: false, beta: true, classFilter: defaultFilter }
     ],
     [inboxModel, inboxId],
+    [
+      toolsModel,
+      toolsId,
+      {
+        label: tools.string.ConfigLabel,
+        description: tools.string.ConfigDescription,
+        enabled: true,
+        beta: false,
+        icon: tools.icon.Application,
+        classFilter: defaultFilter
+      }
+    ],
     [achievementModel, achievementId],
     [emojiModel, emojiId],
     [communicationModel, communicationId],

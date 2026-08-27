@@ -1,0 +1,22 @@
+{
+  "string": {
+    "Application": "Tools",
+    "Subtitle": "Hosted Aneeverse tools. Click a card to open it.",
+    "SearchPlaceholder": "Search tools or URLs...",
+    "All": "All",
+    "Websites": "Websites",
+    "Studio": "Studio",
+    "BusinessApps": "Business apps",
+    "BotsAndTools": "Bots & tools",
+    "WebsitesHint": "Public storefronts",
+    "StudioHint": "This app and workflows",
+    "BusinessHint": "ERP, CRM, and sales",
+    "ToolsHint": "Automation and internal tools",
+    "ThisApp": "This app",
+    "Https": "HTTPS",
+    "Http": "HTTP",
+    "Empty": "No tools match that search.",
+    "ConfigLabel": "Tools",
+    "ConfigDescription": "Hosted Aneeverse tools directory"
+  }
+}
