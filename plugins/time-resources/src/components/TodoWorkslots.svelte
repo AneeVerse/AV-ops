@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import calendar, { AccessLevel, generateEventId } from '@hcengineering/calendar'
+  import calendar, { AccessLevel, generateEventId, GOOGLE_MEET_PLACEHOLDER } from '@hcengineering/calendar'
   import { EventReminders } from '@hcengineering/calendar-resources'
   import contact, { getCurrentEmployee } from '@hcengineering/contact'
   import { Ref, getCurrentAccount } from '@hcengineering/core'
@@ -96,6 +96,7 @@
       description: todo.description,
       participants: [getCurrentEmployee()],
       title: todo.title,
+      location: GOOGLE_MEET_PLACEHOLDER,
       blockTime: true,
       allDay: false,
       access: AccessLevel.Owner,

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { AccessLevel, Calendar, getPrimaryCalendar, PrimaryCalendar } from '@hcengineering/calendar'
+  import { AccessLevel, Calendar, getPrimaryCalendar, isAccountCalendar, PrimaryCalendar } from '@hcengineering/calendar'
   import { getCurrentAccount, Ref } from '@hcengineering/core'
   import { createQuery } from '@hcengineering/presentation'
   import { Dropdown, Icon } from '@hcengineering/ui'
@@ -24,10 +24,10 @@
 
   q.query(
     calendar.class.Calendar,
-    { user: { $in: me.socialIds }, hidden: false, access: { $in: [AccessLevel.Owner, AccessLevel.Writer] } },
+    { hidden: false },
     (res) => {
       calendarsLoaded = true
-      calendars = res
+      calendars = res.filter((c) => isAccountCalendar(c, me) && (c.access === AccessLevel.Owner || c.access === AccessLevel.Writer || c._class !== calendar.class.ExternalCalendar))
       setCalendar(calendars, preference)
     }
   )
@@ -39,9 +39,10 @@
   })
 
   function setCalendar (calendars: Calendar[], primary: PrimaryCalendar | undefined): void {
-    if (value) return
     if (!calendarsLoaded || !prefsLoaded) return
     const target = getPrimaryCalendar(calendars, primary, getCurrentAccount().uuid)
+    const huly = `${getCurrentAccount().uuid}_calendar` as Ref<Calendar>
+    if (value && value !== huly) return
     change(target)
   }
 

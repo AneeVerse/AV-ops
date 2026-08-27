@@ -4,29 +4,22 @@
   import { Breadcrumb, Grid, Header, Label, Scroller, Toggle } from '@hcengineering/ui'
   import calendar from '../plugin'
   import setting from '@hcengineering/setting'
-  import { Calendar, ExternalCalendar, getPrimaryCalendar, PrimaryCalendar, Visibility } from '@hcengineering/calendar'
+  import { Calendar, ExternalCalendar, getPrimaryCalendar, isAccountCalendar, PrimaryCalendar, Visibility } from '@hcengineering/calendar'
   import VisibilityEditor from './VisibilityEditor.svelte'
   import CalendarSelector from './CalendarSelector.svelte'
 
   const client = getClient()
 
   const myAcc = getCurrentAccount()
-  const socialStrings = myAcc.socialIds
 
   let calendars: Calendar[] = []
 
   const query = createQuery()
-  query.query(
-    calendar.class.Calendar,
-    {
-      user: { $in: socialStrings }
-    },
-    (res) => {
-      calendars = res
-      calendarsLoaded = true
-      setPrimaryCalendar(calendars, pref)
-    }
-  )
+  query.query(calendar.class.Calendar, {}, (res) => {
+    calendars = res.filter((c) => isAccountCalendar(c, myAcc))
+    calendarsLoaded = true
+    setPrimaryCalendar(calendars, pref)
+  })
 
   $: categories = groupByArray(calendars, (c) => {
     return (c as ExternalCalendar).externalUser ?? 'HULY'

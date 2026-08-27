@@ -200,6 +200,8 @@
     "ConnectedIntegrations": "Entegre",
     "AvailableIntegrations": "Kullanılabilir",
     "Connect": "Bağlan",
+    "ConnectAnother": "Başka bir hesap bağla",
+    "ConnectAnotherDescr": "Bu entegrasyon için farklı bir hesap kullanın.",
     "Integrate": "Entegre et",
     "FailedToLoadIntegrations": "Entegrasyonlar yüklenemedi",
     "FailedToDisconnect": "Entegrasyon bağlantısı kesilemedi",

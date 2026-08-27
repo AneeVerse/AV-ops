@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { AccessLevel, Calendar, Event, generateEventId, getAllEvents } from '@hcengineering/calendar'
+  import { AccessLevel, Calendar, Event, generateEventId, getAllEvents, isAccountCalendar } from '@hcengineering/calendar'
   import { getCurrentEmployee } from '@hcengineering/contact'
   import {
     Class,
@@ -60,7 +60,6 @@
   const me = getCurrentEmployee()
   const acc = getCurrentAccount()
   const myPrimaryId = acc.primarySocialId
-  const mySocialStrings = acc.socialIds
 
   let mode: CalendarMode = allowedModes.includes(CalendarMode.Days) ? CalendarMode.Days : allowedModes[0]
 
@@ -121,8 +120,8 @@
 
   let calendars: Calendar[] = []
 
-  calendarsQuery.query(calendar.class.Calendar, { createdBy: { $in: mySocialStrings }, hidden: false }, (res) => {
-    calendars = res
+  calendarsQuery.query(calendar.class.Calendar, { hidden: false }, (res) => {
+    calendars = res.filter((c) => isAccountCalendar(c, acc))
   })
 
   const q = createQuery()
@@ -135,7 +134,7 @@
   ): void {
     q.query<Event>(
       _class,
-      query ?? { calendar: { $in: calendars.map((p) => p._id) } },
+      query ?? { calendar: { $in: [`${acc.uuid}_calendar` as Ref<Calendar>, ...calendars.map((p) => p._id)] } },
       (result) => {
         raw = result
       },

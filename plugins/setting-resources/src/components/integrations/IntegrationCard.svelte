@@ -45,6 +45,7 @@
 
   export let integrationType: IntegrationType
   export let integration: Integration | undefined
+  export let isAdditional: boolean = false
   let integrationClient: IntegrationClient | undefined
 
   let isDisconnecting = false
@@ -167,7 +168,11 @@
     </div>
   </div>
   <div class="content scroll-divider-color">
-    {#if integration !== undefined && integrationType.stateComponent}
+    {#if isAdditional && integration === undefined}
+      <span class="text-normal content-color">
+        <Label label={setting.string.ConnectAnotherDescr} />
+      </span>
+    {:else if integration !== undefined && integrationType.stateComponent}
       <Component is={integrationType.stateComponent} props={{ integration }} />
     {:else if integrationType.descriptionComponent}
       <Component is={integrationType.descriptionComponent} />
@@ -195,7 +200,7 @@
     {#if integrationType.createComponent !== undefined && integration === undefined}
       <Button
         minWidth={'5rem'}
-        label={setting.string.Connect}
+        label={isAdditional ? setting.string.ConnectAnother : setting.string.Connect}
         kind={'primary'}
         on:click={(ev) => handleConfigure(integrationType.createComponent)}
       />

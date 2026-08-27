@@ -124,6 +124,12 @@
     "WeekendDay": "Víkendový den",
     "SynchronizedCalendars": "Synchronizované kalendáře",
     "Account": "Účet",
-    "NoCalendars": "Kalendáře pro synchronizaci nejsou vybrány"
+    "NoCalendars": "Kalendáře pro synchronizaci nejsou vybrány",
+    "UntitledEvent": "(No title)",
+    "Join": "Join",
+    "JoinGoogleMeet": "Join with Google Meet",
+    "JoinMeeting": "Join meeting",
+    "AddGoogleMeet": "Add Google Meet",
+    "CreatingGoogleMeet": "Google Meet is being created…"
   }
 }

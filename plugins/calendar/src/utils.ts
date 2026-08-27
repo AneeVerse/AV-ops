@@ -1,4 +1,4 @@
-import { AccountUuid, Ref, Timestamp, generateId } from '@hcengineering/core'
+import { AccountRole, AccountUuid, PersonId, Ref, Timestamp, generateId } from '@hcengineering/core'
 import calendar from './index'
 import type {
   Calendar,
@@ -397,37 +397,71 @@ export function getAllEvents (events: Event[], from: Timestamp, to: Timestamp): 
 }
 
 /**
+ * Placeholder written when the user asks for a video meeting before Google
+ * has assigned a Meet URL. The calendar service turns this into conferenceData
+ * and replaces it with the real hangoutLink.
+ *
+ * @public
+ */
+export const GOOGLE_MEET_PLACEHOLDER = 'https://meet.google.com'
+
+/**
+ * Google Calendar event IDs must be base32hex (`[a-v0-9]{5,1024}`). Huly's
+ * generateId() is already hex; prefix a letter because Google rejects some
+ * digit-leading ids with "Invalid resource id value".
+ *
  * @public
  */
 export function generateEventId (): string {
-  const id = generateId()
-  return encodeToBase32Hex(id)
+  const body = generateId()
+    .toLowerCase()
+    .replace(/[^0-9a-v]/g, '')
+  const id = (body.length >= 5 ? body : (body + '00000').slice(0, 5)).slice(0, 1024)
+  return /^[0-9]/.test(id) ? `e${id}`.slice(0, 1024) : id
 }
 
-function encodeToBase32Hex (input: string): string {
-  const encoder = new TextEncoder()
-  const bytes = encoder.encode(input)
-  const base32HexDigits = '0123456789abcdefghijklmnopqrstuv'
-  let result = ''
+/**
+ * @public
+ */
+export function isGoogleMeetPlaceholder (location?: string | null): boolean {
+  if (location == null) return false
+  const normalized = location.trim().replace(/\/+$/, '')
+  return normalized === GOOGLE_MEET_PLACEHOLDER || normalized === `${GOOGLE_MEET_PLACEHOLDER}/new`
+}
 
-  for (let i = 0; i < bytes.length; i += 5) {
-    const octets = [
-      (bytes[i] ?? 0) >> 3,
-      ((bytes[i] & 0x07) << 2) | (bytes[i + 1] >> 6),
-      (bytes[i + 1] >> 1) & 0x1f,
-      ((bytes[i + 1] & 0x01) << 4) | (bytes[i + 2] >> 4),
-      ((bytes[i + 2] & 0x0f) << 1) | (bytes[i + 3] >> 7),
-      (bytes[i + 3] >> 2) & 0x1f,
-      ((bytes[i + 3] & 0x03) << 3) | (bytes[i + 4] >> 5),
-      bytes[i + 4] & 0x1f
-    ]
-
-    for (let j = 0; j < 8; j++) {
-      result += base32HexDigits.charAt(octets[j])
-    }
+/**
+ * First joinable meeting URL found in the given strings (location, description, …).
+ * The Meet placeholder is not joinable yet.
+ *
+ * @public
+ */
+export function getMeetingJoinUrl (...texts: Array<string | null | undefined>): string | undefined {
+  for (const text of texts) {
+    if (text == null || text === '') continue
+    if (isGoogleMeetPlaceholder(text)) continue
+    const meet = text.match(/https?:\/\/meet\.google\.com\/[a-z0-9][a-z0-9-]+/i)
+    if (meet != null) return meet[0]
+    const zoom = text.match(/https?:\/\/[\w.-]*zoom\.us\/j\/[^\s<"']+/i)
+    if (zoom != null) return zoom[0].replace(/[)">\]]+$/, '')
+    const teams = text.match(/https?:\/\/teams\.(microsoft|live)\.com\/[^\s<"']+/i)
+    if (teams != null) return teams[0].replace(/[)">\]]+$/, '')
   }
+  const location = texts[0]
+  if (
+    location != null &&
+    /^https?:\/\//i.test(location.trim()) &&
+    !isGoogleMeetPlaceholder(location)
+  ) {
+    return location.trim()
+  }
+  return undefined
+}
 
-  return result
+/**
+ * @public
+ */
+export function isJoinableMeetingUrl (location?: string | null): boolean {
+  return getMeetingJoinUrl(location) !== undefined
 }
 
 export function getPrimaryCalendar (
@@ -435,18 +469,56 @@ export function getPrimaryCalendar (
   preference: PrimaryCalendar | undefined,
   acc: AccountUuid
 ): Ref<Calendar> {
+  const googleDefault = calendars.find(
+    (c) => c._class === calendar.class.ExternalCalendar && !c.hidden && (c as ExternalCalendar).default
+  )
+  if (googleDefault !== undefined) return googleDefault._id
+  const google = calendars.find((c) => c._class === calendar.class.ExternalCalendar && !c.hidden)
+  if (google !== undefined) return google._id
   if (preference?.attachedTo !== undefined) {
-    const pref = calendars.find((p) => p._id === preference.attachedTo && p)
+    const pref = calendars.find((p) => p._id === preference.attachedTo)
     if (pref !== undefined) return pref._id
   }
-  for (const _calendar of calendars) {
-    if (
-      _calendar._class === calendar.class.ExternalCalendar &&
-      !_calendar.hidden &&
-      (_calendar as ExternalCalendar).default
-    ) {
-      return _calendar._id
+  return `${acc}_calendar` as Ref<Calendar>
+}
+
+/**
+ * Calendars this account can use: personal Huly calendar, calendars they own,
+ * Google calendars whose email matches theirs, or (workspace owner/maintainer)
+ * any writable Google calendar in the workspace.
+ *
+ * @public
+ */
+export function isAccountCalendar (
+  _calendar: Calendar,
+  acc: {
+    uuid: AccountUuid
+    socialIds: PersonId[]
+    fullSocialIds?: Array<{ value?: string, key?: string, displayValue?: string, _id?: PersonId }>
+    role?: AccountRole
+  }
+): boolean {
+  const ids = new Set(acc.socialIds ?? [])
+  const emails = new Set<string>()
+  for (const s of acc.fullSocialIds ?? []) {
+    if (s._id !== undefined) ids.add(s._id)
+    if (s.value != null && s.value !== '') emails.add(s.value.toLowerCase())
+    if (s.displayValue != null && s.displayValue !== '') emails.add(s.displayValue.toLowerCase())
+    const key = s.key?.toLowerCase() ?? ''
+    const fromKey = key.includes(':') ? key.slice(key.indexOf(':') + 1) : key
+    if (fromKey.includes('@')) emails.add(fromKey)
+  }
+  if (_calendar._id === (`${acc.uuid}_calendar` as Ref<Calendar>)) return true
+  if (ids.has(_calendar.user)) return true
+  if (_calendar.createdBy !== undefined && ids.has(_calendar.createdBy)) return true
+  const externalUser = (_calendar as ExternalCalendar).externalUser
+  if (externalUser != null && emails.has(externalUser.toLowerCase())) return true
+  const isAdmin = acc.role === AccountRole.Owner || acc.role === AccountRole.Maintainer
+  if (isAdmin && _calendar._class === calendar.class.ExternalCalendar) {
+    const access = _calendar.access
+    if (access === 'owner' || access === 'writer' || access === 'reader' || access === 'freeBusyReader') {
+      return true
     }
   }
-  return `${acc}_calendar` as Ref<Calendar>
+  return false
 }

@@ -124,6 +124,12 @@
     "WeekendDay": "Hafta sonu günü",
     "SynchronizedCalendars": "Senkronize takvimler",
     "Account": "Hesap",
-    "NoCalendars": "Senkronizasyon için takvim seçilmedi"
+    "NoCalendars": "Senkronizasyon için takvim seçilmedi",
+    "UntitledEvent": "(No title)",
+    "Join": "Join",
+    "JoinGoogleMeet": "Join with Google Meet",
+    "JoinMeeting": "Join meeting",
+    "AddGoogleMeet": "Add Google Meet",
+    "CreatingGoogleMeet": "Google Meet is being created…"
   }
 }

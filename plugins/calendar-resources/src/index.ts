@@ -43,6 +43,7 @@ import CalendarSelector from './components/CalendarSelector.svelte'
 import ConnectApp from './components/ConnectApp.svelte'
 import CalendarWidget from './components/CalendarWidget.svelte'
 import ScheduleNavSection from './components/ScheduleNavSection.svelte'
+import JoinMeetingButton from './components/JoinMeetingButton.svelte'
 import CalendarSettings from './components/CalendarSettings.svelte'
 import IntegrationState from './components/IntegrationState.svelte'
 import calendar from './plugin'
@@ -63,7 +64,8 @@ export {
   VisibilityEditor,
   CalendarSelector,
   EventPresenter,
-  ScheduleNavSection
+  ScheduleNavSection,
+  JoinMeetingButton
 }
 
 export type {

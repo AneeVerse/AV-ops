@@ -200,6 +200,8 @@
     "ConnectedIntegrations": "Integrated",
     "AvailableIntegrations": "Available",
     "Connect": "Connect",
+    "ConnectAnother": "Connect another account",
+    "ConnectAnotherDescr": "Use a different account for this integration.",
     "Integrate": "Integrate",
     "FailedToLoadIntegrations": "Failed to load integrations",
     "FailedToDisconnect": "Failed to disconnect integration",

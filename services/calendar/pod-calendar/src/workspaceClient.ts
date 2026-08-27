@@ -14,7 +14,7 @@
 //
 
 import { AccountClient } from '@hcengineering/account-client'
-import calendar, { ExternalCalendar } from '@hcengineering/calendar'
+import calendar, { ExternalCalendar, isGoogleMeetPlaceholder } from '@hcengineering/calendar'
 import contact, { getPersonRefsBySocialIds, Person } from '@hcengineering/contact'
 import core, {
   MeasureContext,
@@ -34,6 +34,7 @@ import { IncomingSyncManager } from './sync'
 import { getWorkspaceTokens } from './tokens'
 import { GoogleEmail, Token } from './types'
 import { addUserByEmail } from './utils'
+import { resolveExternalCalendar } from './resolveCalendar'
 
 export class WorkspaceClient {
   private readonly clients = new Map<GoogleEmail, CalendarClient>()
@@ -102,6 +103,7 @@ export class WorkspaceClient {
       })
     }
     await limiter.waitProcessing()
+    await this.pushLocalEventsToGoogle()
     await this.getNewEvents()
   }
 
@@ -134,6 +136,44 @@ export class WorkspaceClient {
         error: err instanceof Error ? err.message : String(err)
       })
     }
+  }
+
+  private async pushLocalEventsToGoogle (): Promise<void> {
+    const from = Date.now() - 14 * 86400000
+    const to = Date.now() + 90 * 86400000
+    const recent = Date.now() - 2 * 86400000
+    const events = await this.client.findAll(calendar.class.Event, {
+      dueDate: { $gt: from },
+      date: { $lt: to }
+    })
+    const externalIds = new Set<string>(Array.from(this.calendarsById.keys()))
+    let pushed = 0
+    for (const original of events) {
+      let event = original
+      const onGoogle = externalIds.has(event.calendar)
+      const needsMeet = isGoogleMeetPlaceholder(event.location)
+      if (onGoogle && !needsMeet) continue
+      if (!onGoogle && !needsMeet && event.modifiedOn < recent) continue
+      try {
+        const resolved = await resolveExternalCalendar(this.client, event)
+        if (resolved === undefined) continue
+        const client = this.clients.get(resolved.externalUser as GoogleEmail)
+        if (client === undefined) continue
+        if (event.calendar !== resolved._id) {
+          await this.client.update(event, { calendar: resolved._id })
+          event = { ...event, calendar: resolved._id }
+        }
+        await client.syncMyEvent(event)
+        pushed++
+      } catch (err) {
+        this.ctx.error('Failed to push local event to Google', {
+          event: event._id,
+          workspace: this.workspace,
+          error: err instanceof Error ? err.message : String(err)
+        })
+      }
+    }
+    this.ctx.info('Pushed local events to Google', { workspace: this.workspace, pushed })
   }
 
   private async getNewEvents (): Promise<void> {

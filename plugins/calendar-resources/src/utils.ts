@@ -4,7 +4,8 @@ import {
   type Event,
   type ReccuringEvent,
   type ReccuringInstance,
-  generateEventId
+  generateEventId,
+  isAccountCalendar
 } from '@hcengineering/calendar'
 import {
   type Client,
@@ -18,7 +19,7 @@ import {
 } from '@hcengineering/core'
 import presentation, { createQuery, getClient, onClient } from '@hcengineering/presentation'
 import { closePopup, DAY, showPopup } from '@hcengineering/ui'
-import { writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
 import UpdateRecInstancePopup from './components/UpdateRecInstancePopup.svelte'
 import calendar from './plugin'
 import { getMetadata } from '@hcengineering/platform'
@@ -40,40 +41,39 @@ export function saveUTC (date: Timestamp): Timestamp {
 }
 
 export function hidePrivateEvents (events: Event[], calendars: IdMap<Calendar>, allowMe: boolean = true): Event[] {
+  const acc = getCurrentAccount()
   const res: Event[] = []
   for (const event of events) {
-    if (getCurrentAccount().socialIds.includes(event.user) && allowMe) {
+    if (acc.socialIds.includes(event.user) && allowMe) {
       res.push(event)
-    } else {
-      if (event.visibility !== undefined) {
-        if (event.visibility !== 'private') {
-          res.push(event)
-        }
-      } else {
-        const calendar = calendars.get(event.calendar)
-        if (calendar != null && calendar.visibility !== 'private') {
-          res.push(event)
-        }
+      continue
+    }
+    const cal = calendars.get(event.calendar)
+    if (cal != null && isAccountCalendar(cal, acc)) {
+      res.push(event)
+      continue
+    }
+    if (event.visibility !== undefined) {
+      if (event.visibility !== 'private') {
+        res.push(event)
       }
+    } else if (cal != null && cal.visibility !== 'private') {
+      res.push(event)
     }
   }
   return res
 }
 
-export function isReadOnly (value: Event): boolean {
-  if (value.createdBy === undefined || !getCurrentAccount().socialIds.includes(value.user)) return true
-  if (['owner', 'writer'].includes(value.access)) return false
-  return true
-}
-
 export function isVisible (value: Event, calendars: IdMap<Calendar>): boolean {
-  if (value.createdBy !== undefined && getCurrentAccount().socialIds.includes(value.user)) return true
+  const acc = getCurrentAccount()
+  if (value.createdBy !== undefined && acc.socialIds.includes(value.user)) return true
+  const calendar = calendars.get(value.calendar)
+  if (calendar != null && isAccountCalendar(calendar, acc)) return true
   if (value.visibility === 'freeBusy') {
     return false
   } else if (value.visibility === 'public') {
     return true
   }
-  const calendar = calendars.get(value.calendar)
   if (calendar == null) {
     return true
   } else {
@@ -84,6 +84,17 @@ export function isVisible (value: Event, calendars: IdMap<Calendar>): boolean {
 export const calendarByIdStore = writable<IdMap<Calendar>>(new Map())
 export const calendarStore = writable<Calendar[]>([])
 export const visibleCalendarStore = writable<Calendar[]>([])
+
+export function isReadOnly (value: Event): boolean {
+  const acc = getCurrentAccount()
+  const cal = get(calendarByIdStore).get(value.calendar)
+  if (cal != null && isAccountCalendar(cal, acc) && (cal.access === AccessLevel.Owner || cal.access === AccessLevel.Writer)) {
+    return false
+  }
+  if (value.createdBy === undefined || !acc.socialIds.includes(value.user)) return true
+  if (['owner', 'writer'].includes(value.access)) return false
+  return true
+}
 
 const query = createQuery(true)
 onClient((client, account) => {

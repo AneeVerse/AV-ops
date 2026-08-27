@@ -120,6 +120,12 @@
     "WeekendDay": "休日",
     "SynchronizedCalendars": "同期されたカレンダー",
     "Account": "アカウント",
-    "NoCalendars": "同期するカレンダーが選択されていません"
+    "NoCalendars": "同期するカレンダーが選択されていません",
+    "UntitledEvent": "(No title)",
+    "Join": "Join",
+    "JoinGoogleMeet": "Join with Google Meet",
+    "JoinMeeting": "Join meeting",
+    "AddGoogleMeet": "Add Google Meet",
+    "CreatingGoogleMeet": "Google Meet is being created…"
   }
 }

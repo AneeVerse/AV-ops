@@ -15,7 +15,7 @@
 
 <script lang="ts">
   import { createEventDispatcher, afterUpdate, onDestroy } from 'svelte'
-  import calendar, { AccessLevel, Calendar, generateEventId, getPrimaryCalendar } from '@hcengineering/calendar'
+  import calendar, { AccessLevel, generateEventId, GOOGLE_MEET_PLACEHOLDER } from '@hcengineering/calendar'
   import { getCurrentEmployee } from '@hcengineering/contact'
   import { Ref, getCurrentAccount } from '@hcengineering/core'
   import { getClient } from '@hcengineering/presentation'
@@ -59,6 +59,7 @@
       description: doc.description,
       participants: [getCurrentEmployee()],
       title: doc.title,
+      location: GOOGLE_MEET_PLACEHOLDER,
       allDay: false,
       blockTime: true,
       access: AccessLevel.Owner,

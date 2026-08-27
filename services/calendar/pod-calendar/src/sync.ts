@@ -57,6 +57,7 @@ import {
   setCredentials
 } from './utils'
 import { WatchController } from './watch'
+import { eventLocationFromGoogle } from './googleMeet'
 
 export class IncomingSyncManager {
   private readonly rateLimiter: RateLimiter
@@ -117,17 +118,59 @@ export class IncomingSyncManager {
     }
   }
 
+  private ownerPersons: Ref<Person>[] | undefined
+
+  private async getOwnerPersons (): Promise<Ref<Person>[]> {
+    if (this.ownerPersons !== undefined) return this.ownerPersons
+    const result = new Set<Ref<Person>>()
+    const personsBySocialId = await getPersonRefsBySocialIds(this.client)
+    const connected = personsBySocialId[this.user.userId]
+    if (connected != null) result.add(connected)
+
+    const socials = await this.client.findAll(contact.class.SocialIdentity, {
+      type: { $in: [SocialIdType.EMAIL, SocialIdType.GOOGLE] }
+    })
+    const email = this.email.toLowerCase()
+    for (const s of socials) {
+      if (s.value.toLowerCase() !== email) continue
+      const pers = personsBySocialId[s._id] ?? (s.attachedTo as Ref<Person>)
+      if (pers != null) result.add(pers)
+    }
+
+    if (result.size > 0) {
+      const docs = await this.client.findAll(contact.class.Person, { _id: { $in: Array.from(result) } })
+      const uuids = docs.map((p) => p.personUuid).filter((u): u is NonNullable<typeof u> => u != null)
+      if (uuids.length > 0) {
+        const siblings = await this.client.findAll(contact.class.Person, { personUuid: { $in: uuids } })
+        for (const s of siblings) result.add(s._id)
+      }
+    }
+
+    this.ownerPersons = Array.from(result)
+    return this.ownerPersons
+  }
+
   private async fillParticipants (): Promise<void> {
     const personsBySocialId = await getPersonRefsBySocialIds(this.client)
-    const emailSocialIds = await this.client.findAll(contact.class.SocialIdentity, { type: SocialIdType.EMAIL })
+    const emailSocialIds = await this.client.findAll(contact.class.SocialIdentity, {
+      type: { $in: [SocialIdType.EMAIL, SocialIdType.GOOGLE] }
+    })
     const emails = await this.client.findAll(contact.class.Channel, { provider: contact.channelProvider.Email })
     const integrations = await this.client.findAll(setting.class.Integration, {
       type: calendar.integrationType.Calendar
     })
     this.participants.clear()
 
+    const owners = await this.getOwnerPersons()
+    const ownerPrimary = owners[0]
+    const myEmail = this.email.toLowerCase()
+
     for (const sID of emailSocialIds) {
       if (sID.value === '') continue
+      if (sID.value.toLowerCase() === myEmail && ownerPrimary != null) {
+        this.participants.set(sID.value, ownerPrimary)
+        continue
+      }
       const pers = personsBySocialId[sID._id]
       if (pers != null) {
         this.participants.set(sID.value, pers)
@@ -136,13 +179,21 @@ export class IncomingSyncManager {
 
     for (const channel of emails) {
       if (channel.value === '') continue
-      const pers = channel.attachedTo as Ref<Person>
       if (this.participants.has(channel.value)) continue
+      if (channel.value.toLowerCase() === myEmail && ownerPrimary != null) {
+        this.participants.set(channel.value, ownerPrimary)
+        continue
+      }
+      const pers = channel.attachedTo as Ref<Person>
       this.participants.set(channel.value, pers)
     }
 
     for (const integration of integrations) {
       if (integration.value === '') continue
+      if (integration.value.toLowerCase() === myEmail && ownerPrimary != null) {
+        this.participants.set(integration.value, ownerPrimary)
+        continue
+      }
       const pers = personsBySocialId[integration.createdBy ?? integration.modifiedBy]
       if (pers != null) {
         this.participants.set(integration.value, pers)
@@ -212,8 +263,10 @@ export class IncomingSyncManager {
       for (const calendar of this.calendars) {
         if (calendar.externalId !== undefined) {
           await this.sync(calendar.externalId)
+          await this.backfillMeetingLinks(calendar.externalId)
         }
       }
+      await this.ensureOwnerOnEvents()
       this.ctx.info('Incoming sync finished', {
         workspace: this.user.workspace,
         user: this.user.userId,
@@ -221,6 +274,51 @@ export class IncomingSyncManager {
       })
     } catch (err) {
       this.ctx.error('Start sync error', { workspace: this.user.workspace, user: this.user.userId, err })
+    }
+  }
+
+  private async backfillMeetingLinks (calendarId: string): Promise<void> {
+    const timeMin = new Date(Date.now() - 14 * 86400000).toISOString()
+    const timeMax = new Date(Date.now() + 90 * 86400000).toISOString()
+    let pageToken: string | undefined
+    try {
+      do {
+        await this.rateLimiter.take(1)
+        const res = await this.googleClient.events.list({
+          calendarId,
+          timeMin,
+          timeMax,
+          pageToken,
+          eventTypes: ['default'],
+          maxResults: 250
+        })
+        for (const event of res.data.items ?? []) {
+          try {
+            await this.syncEvent(calendarId, event, res.data.accessRole ?? 'reader')
+          } catch (err) {
+            this.ctx.error('backfill event error', {
+              workspace: this.user.workspace,
+              user: this.user.userId,
+              err
+            })
+          }
+        }
+        pageToken = res.data.nextPageToken ?? undefined
+      } while (pageToken != null)
+      this.ctx.info('Backfill meeting links finished', {
+        workspace: this.user.workspace,
+        user: this.user.userId,
+        email: this.email,
+        calendarId
+      })
+    } catch (err) {
+      this.ctx.error('Backfill meeting links error', {
+        workspace: this.user.workspace,
+        user: this.user.userId,
+        email: this.email,
+        calendarId,
+        err
+      })
     }
   }
 
@@ -401,7 +499,7 @@ export class IncomingSyncManager {
       allDay: event.start?.date != null,
       description: htmlToMarkup(event.description ?? ''),
       title: event.summary ?? '',
-      location: event.location ?? undefined,
+      location: eventLocationFromGoogle(event),
       participants: participants[0],
       eventId: event.id ?? '',
       calendar: _calendar,
@@ -440,10 +538,46 @@ export class IncomingSyncManager {
     }
   }
 
+  private async ensureOwnerOnEvents (): Promise<void> {
+    const owners = await this.getOwnerPersons()
+    if (owners.length === 0 || this.calendars.length === 0) return
+    const from = Date.now() - 14 * 86400000
+    const to = Date.now() + 90 * 86400000
+    const events = await this.client.findAll(calendar.class.Event, {
+      calendar: { $in: this.calendars.map((c) => c._id) }
+    })
+    let updated = 0
+    for (const ev of events) {
+      const inWindow = ev.dueDate >= from && ev.date <= to
+      if (!inWindow) continue
+      const next = [...ev.participants]
+      let changed = false
+      for (const owner of owners) {
+        if (!next.includes(owner)) {
+          next.push(owner)
+          changed = true
+        }
+      }
+      if (changed) {
+        await this.systemClient.update(ev, { participants: next })
+        updated++
+      }
+    }
+    this.ctx.info('Ensured calendar owner on Google events', {
+      workspace: this.user.workspace,
+      user: this.user.userId,
+      email: this.email,
+      updated
+    })
+  }
+
   private async getParticipants (event: calendar_v3.Schema$Event): Promise<[Ref<Contact>[], string[]]> {
     const map = await this.getParticipantsMap()
     const contacts = new Set<Ref<Contact>>()
     const extra = new Set<string>()
+    for (const owner of await this.getOwnerPersons()) {
+      contacts.add(owner)
+    }
     if (event.creator?.email != null) {
       const res = this.getParticipant(map, event.creator.email)
       if (res.contact !== undefined) {
@@ -486,8 +620,9 @@ export class IncomingSyncManager {
         res.externalParticipants = participants[1]
       }
     }
-    if (event.location != null) {
-      res.location = event.location
+    const location = eventLocationFromGoogle(event)
+    if (location != null) {
+      res.location = location
     }
     if (event.description != null) {
       res.description = htmlToMarkup(event.description)
@@ -671,7 +806,7 @@ export class IncomingSyncManager {
       if (exists === undefined) {
         const data: Data<ExternalCalendar> = {
           name: val.summary ?? '',
-          visibility: 'freeBusy',
+          visibility: 'public',
           hidden: false,
           externalId: val.id,
           externalUser: this.email,

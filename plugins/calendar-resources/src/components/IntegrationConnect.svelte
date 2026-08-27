@@ -46,7 +46,23 @@
       return
     }
     const redirectTo = await res.text()
-    window.open(redirectTo, '_blank', 'location=yes,height=870,width=720,scrollbars=yes,status=yes')
+    window.dispatchEvent(new CustomEvent('huly:integration-oauth-started'))
+    const popup = window.open(
+      redirectTo,
+      '_blank',
+      'location=yes,height=870,width=720,scrollbars=yes,status=yes'
+    )
+    if (popup != null) {
+      const timer = setInterval(() => {
+        if (popup.closed) {
+          clearInterval(timer)
+          window.dispatchEvent(new CustomEvent('huly:integration-oauth-done'))
+        }
+      }, 400)
+      setTimeout(() => {
+        clearInterval(timer)
+      }, 5 * 60 * 1000)
+    }
     dispatch('close')
   }
 

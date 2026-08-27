@@ -15,7 +15,6 @@
 <script lang="ts">
   import { getEmbeddedLabel } from '@hcengineering/platform'
   import { Calendar } from '@hcengineering/calendar'
-  import { getCurrentAccount } from '@hcengineering/core'
   import presentation, { Card, createQuery, getClient } from '@hcengineering/presentation'
   import { Grid, Label, Toggle, tooltip } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
@@ -31,7 +30,6 @@
   query.query(
     calendar.class.ExternalCalendar,
     {
-      createdBy: { $in: getCurrentAccount().socialIds },
       externalUser: integration.data?.email
     },
     (res) => {

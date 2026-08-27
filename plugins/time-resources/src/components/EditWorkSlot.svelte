@@ -13,11 +13,12 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Event } from '@hcengineering/calendar'
+  import { Event, GOOGLE_MEET_PLACEHOLDER, getMeetingJoinUrl, isGoogleMeetPlaceholder } from '@hcengineering/calendar'
   import {
     CalendarSelector,
     EventReminders,
     EventTimeEditor,
+    JoinMeetingButton,
     VisibilityEditor,
     isReadOnly
   } from '@hcengineering/calendar-resources'
@@ -30,6 +31,7 @@
   import { deepEqual } from 'fast-equals'
   import { createEventDispatcher } from 'svelte'
   import TaskSelector from './TaskSelector.svelte'
+  import { findPrimaryCalendar } from '../utils'
 
   export let object: WorkSlot
   $: readOnly = isReadOnly(object)
@@ -45,6 +47,11 @@
   let description = object.description
   let visibility = object.visibility ?? 'public'
   let _calendar = object.calendar
+  let location = object.location
+  $: joinUrl = getMeetingJoinUrl(location, description)
+  $: if (object.location != null && object.location !== location && getMeetingJoinUrl(object.location) != null) {
+    location = object.location
+  }
 
   let _doc: ToDo | undefined
 
@@ -86,6 +93,9 @@
     if (object.calendar !== _calendar) {
       update.calendar = _calendar
     }
+    if (object.location !== location) {
+      update.location = location
+    }
     if (!deepEqual(object.reminders, reminders)) {
       update.reminders = reminders
     }
@@ -94,6 +104,20 @@
       await client.update(object, update)
     }
     dispatch('close')
+  }
+
+  async function addGoogleMeet (): Promise<void> {
+    if (readOnly) return
+    location = GOOGLE_MEET_PLACEHOLDER
+    const primary = await findPrimaryCalendar()
+    if (primary !== undefined) {
+      _calendar = primary
+    }
+    const update: DocumentUpdate<Event> = { location }
+    if (object.calendar !== _calendar) {
+      update.calendar = _calendar
+    }
+    await client.update(object, update)
   }
 
   const manager = createFocusManager()
@@ -116,6 +140,20 @@
         }}
       />
     </div>
+  </div>
+  <div class="block first join-actions">
+    <JoinMeetingButton event={object} {location} focusIndex={10012} />
+    {#if !readOnly && joinUrl == null && !allDay && !isGoogleMeetPlaceholder(location)}
+      <Button
+        kind="ghost"
+        size="medium"
+        label={calendar.string.AddGoogleMeet}
+        focusIndex={10013}
+        on:click={() => {
+          void addGoogleMeet()
+        }}
+      />
+    {/if}
   </div>
   <div class="block first flex-no-shrink">
     <EventTimeEditor {allDay} bind:startDate bind:dueDate disabled={readOnly} focusIndex={10004} />
@@ -189,6 +227,9 @@
       }
       &.rightCropPadding {
         padding: 0.75rem 1rem 0.75rem 1.25rem;
+      }
+      &.join-actions {
+        padding: 0 1.25rem 0.5rem;
       }
     }
     .top-icon {

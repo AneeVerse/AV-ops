@@ -124,6 +124,12 @@
     "WeekendDay": "Giorno libero",
     "SynchronizedCalendars": "Calendari sincronizzati",
     "Account": "Account",
-    "NoCalendars": "Nessun calendario selezionato per la sincronizzazione"
+    "NoCalendars": "Nessun calendario selezionato per la sincronizzazione",
+    "UntitledEvent": "(No title)",
+    "Join": "Join",
+    "JoinGoogleMeet": "Join with Google Meet",
+    "JoinMeeting": "Join meeting",
+    "AddGoogleMeet": "Add Google Meet",
+    "CreatingGoogleMeet": "Google Meet is being created…"
   }
 }

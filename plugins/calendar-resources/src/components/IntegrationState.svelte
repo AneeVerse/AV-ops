@@ -14,7 +14,6 @@
 -->
 <script lang="ts">
   import { Calendar } from '@hcengineering/calendar'
-  import { getCurrentAccount } from '@hcengineering/core'
   import { createQuery } from '@hcengineering/presentation'
   import type { Integration } from '@hcengineering/account-client'
   import { BaseIntegrationState, IntegrationStateRow } from '@hcengineering/setting-resources'
@@ -25,18 +24,24 @@
   export let integration: Integration
 
   let calendars: Calendar[] = []
-  let syncedCalendars: Calendar[] = []
+  let extraCalendars: Calendar[] = []
   let isLoading = true
   const query = createQuery()
   query.query(
     calendar.class.ExternalCalendar,
     {
-      createdBy: { $in: getCurrentAccount().socialIds },
       externalUser: integration.data?.email
     },
     (res) => {
       calendars = res
-      syncedCalendars = calendars.filter((c) => !c.hidden)
+      const email = (integration.data?.email ?? '').trim().toLowerCase()
+      extraCalendars = calendars.filter((c) => {
+        if (c.hidden) return false
+        const name = (c.name ?? '').trim().toLowerCase()
+        // Google names the primary calendar after the account email, which
+        // BaseIntegrationState already shows — skip that duplicate row.
+        return email === '' || name !== email
+      })
       isLoading = false
     }
   )
@@ -44,11 +49,11 @@
 
 <BaseIntegrationState {integration} status={OK} {isLoading} value={integration?.data?.email}>
   <svelte:fragment slot="content">
-    {#if syncedCalendars.length === 0}
+    {#if calendars.filter((c) => !c.hidden).length === 0}
       <IntegrationStateRow label={calendar.string.NoCalendars} />
     {:else}
-      {#each syncedCalendars as calendar (calendar._id)}
-        <IntegrationStateRow rawLabel={calendar.name} />
+      {#each extraCalendars as cal (cal._id)}
+        <IntegrationStateRow rawLabel={cal.name} />
       {/each}
     {/if}
   </svelte:fragment>

@@ -34,7 +34,7 @@
       disabled={readOnly}
     />
     {#if isLink(value)}
-      <div class="tool">
+      <div class="tool visible">
         <Button focusIndex={4} kind={'ghost'} size={'small'} icon={IconArrowRight} on:click={open} />
       </div>
     {/if}
@@ -44,6 +44,10 @@
 <style lang="scss">
   .tool {
     visibility: hidden;
+  }
+
+  .tool.visible {
+    visibility: visible;
   }
 
   .container:hover {

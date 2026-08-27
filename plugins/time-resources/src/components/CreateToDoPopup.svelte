@@ -14,7 +14,7 @@
 -->
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import { AccessLevel, Calendar, generateEventId } from '@hcengineering/calendar'
+  import { AccessLevel, Calendar, generateEventId, GOOGLE_MEET_PLACEHOLDER, isAccountCalendar } from '@hcengineering/calendar'
   import { EventReminders, VisibilityEditor } from '@hcengineering/calendar-resources'
   import calendar from '@hcengineering/calendar-resources/src/plugin'
   import { getCurrentEmployee } from '@hcengineering/contact'
@@ -27,6 +27,7 @@
   import { Button, Component, EditBox, IconClose, Label, Scroller } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import time from '../plugin'
+  import { findPrimaryCalendar } from '../utils'
   import DueDateEditor from './DueDateEditor.svelte'
   import PriorityEditor from './PriorityEditor.svelte'
   import Workslots from './Workslots.svelte'
@@ -60,6 +61,7 @@
 
   async function saveToDo (): Promise<void> {
     loading = true
+    _calendar = await findPrimaryCalendar()
     const ops = client.apply(undefined, 'create-todo')
     const latestTodo = await ops.findOne(
       time.class.ToDo,
@@ -99,6 +101,7 @@
         description: todo.description,
         participants: [me],
         calendar: _calendar,
+        location: GOOGLE_MEET_PLACEHOLDER,
         blockTime: true,
         title: todo.title,
         allDay: false,
@@ -119,9 +122,10 @@
   let _calendar: Ref<Calendar> = `${myAccount.uuid}_calendar` as Ref<Calendar>
 
   const q = createQuery()
-  q.query(calendar.class.ExternalCalendar, { default: true, hidden: false, user: myAccount.primarySocialId }, (res) => {
-    if (res.length > 0) {
-      _calendar = res[0]._id
+  q.query(calendar.class.ExternalCalendar, { default: true, hidden: false }, (res) => {
+    const mine = res.filter((c) => isAccountCalendar(c, myAccount))
+    if (mine.length > 0) {
+      _calendar = mine[0]._id
     }
   })
 
@@ -154,6 +158,7 @@
       visibility: todo.visibility,
       reminders,
       calendar: _calendar,
+      location: GOOGLE_MEET_PLACEHOLDER,
       space: calendar.space.Calendar,
       _id: generateId(),
       _class: time.class.WorkSlot,

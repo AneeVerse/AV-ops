@@ -20,7 +20,12 @@
     ReccuringEvent,
     RecurringRule,
     Visibility,
-    generateEventId
+    generateEventId,
+    GOOGLE_MEET_PLACEHOLDER,
+    getMeetingJoinUrl,
+    getPrimaryCalendar,
+    isAccountCalendar,
+    isGoogleMeetPlaceholder
   } from '@hcengineering/calendar'
   import { getCurrentEmployee, Person } from '@hcengineering/contact'
   import core, { Class, Doc, Markup, Ref, Space, generateId, getCurrentAccount } from '@hcengineering/core'
@@ -38,12 +43,14 @@
     FocusHandler,
     Icon,
     IconClose,
+    Label,
     createFocusManager,
     getUserTimezone,
     showPopup,
     Scroller
   } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
+  import { get } from 'svelte/store'
   import calendar from '../plugin'
   import { saveUTC } from '../utils'
   import CalendarSelector from './CalendarSelector.svelte'
@@ -83,6 +90,7 @@
   let reminders = [30 * 60 * 1000]
 
   let description: Markup = EmptyMarkup
+  $: joinUrl = getMeetingJoinUrl(location, description)
   let visibility: Visibility = 'private'
   let _calendar: Ref<Calendar> | undefined = undefined
 
@@ -103,12 +111,50 @@
     return title !== undefined && title.trim().length === 0 && participants.length === 0
   }
 
+  function meetingRequested (): boolean {
+    if (docCreateManager._extensions.length === 0) return true
+    for (const e of docCreateManager._extensions) {
+      const s = get(docCreateManager.getState(e._id))
+      if (s?.isMeeting === true) return true
+    }
+    return false
+  }
+
+  function addGoogleMeet (): void {
+    location = GOOGLE_MEET_PLACEHOLDER
+  }
+
   async function saveEvent () {
     let date: number | undefined
     if (startDate != null) date = startDate
     if (date === undefined) return
+    const acc = getCurrentAccount()
+    if (_calendar === undefined) {
+      const all = await client.findAll(calendar.class.Calendar, { hidden: false })
+      const mine = all.filter(
+        (c) =>
+          isAccountCalendar(c, acc) &&
+          (c.access === AccessLevel.Owner || c.access === AccessLevel.Writer || c._class !== calendar.class.ExternalCalendar)
+      )
+      _calendar = getPrimaryCalendar(mine, undefined, acc.uuid)
+    }
+    const wantMeet = !allDay && (meetingRequested() || isGoogleMeetPlaceholder(location))
+    if (wantMeet) {
+      const googleCals = await client.findAll(calendar.class.ExternalCalendar, { hidden: false })
+      const mineGoogle = googleCals.filter((c) => isAccountCalendar(c, acc))
+      const primaryGoogle = mineGoogle.find((c) => c.default) ?? mineGoogle[0]
+      if (primaryGoogle !== undefined) {
+        _calendar = primaryGoogle._id
+      }
+      if (location == null || location.trim() === '') {
+        location = GOOGLE_MEET_PLACEHOLDER
+      }
+    }
     if (_calendar === undefined) return
-    if (title === '') return
+    if (title.trim() === '') title = '(No title)'
+    if (!allDay && (location == null || location.trim() === '') && meetingRequested()) {
+      location = GOOGLE_MEET_PLACEHOLDER
+    }
     const user = myPrimaryId
     const _id = generateId<Event>()
     if (rules.length > 0) {
@@ -170,8 +216,12 @@
         _id
       )
     }
-    if (space !== undefined) {
-      await docCreateManager.commit(client, _id, space, {}, 'post')
+    let calSpace = space
+    if (calSpace === undefined) {
+      calSpace = await client.findOne(core.class.Space, { _id: calendar.space.Calendar })
+    }
+    if (calSpace !== undefined) {
+      await docCreateManager.commit(client, _id, calSpace, {}, 'post')
     }
     dispatch('close')
   }
@@ -223,6 +273,29 @@
       />
     </div>
   </div>
+  <div class="block first join-actions">
+    {#if joinUrl}
+      <Button
+        kind="primary"
+        size="medium"
+        label={calendar.string.JoinGoogleMeet}
+        focusIndex={10012}
+        on:click={() => {
+          window.open(joinUrl, '_blank', 'noopener,noreferrer')
+        }}
+      />
+    {:else if isGoogleMeetPlaceholder(location)}
+      <span class="text-sm content-dark-color"><Label label={calendar.string.CreatingGoogleMeet} /></span>
+    {:else if !allDay}
+      <Button
+        kind="ghost"
+        size="medium"
+        label={calendar.string.AddGoogleMeet}
+        focusIndex={10013}
+        on:click={addGoogleMeet}
+      />
+    {/if}
+  </div>
   <Scroller thinScrollBars>
     <div class="block first flex-no-shrink">
       <EventTimeEditor {allDay} bind:startDate bind:dueDate {timeZone} focusIndex={10004} />
@@ -272,7 +345,6 @@
       label={presentation.string.Create}
       focusIndex={10104}
       on:click={saveEvent}
-      disabled={title === ''}
     />
   </div>
 </div>
@@ -316,6 +388,9 @@
       }
       &.description {
         padding: 0 1.25rem;
+      }
+      &.join-actions {
+        padding: 0 1.25rem 0.5rem;
       }
     }
     .top-icon {

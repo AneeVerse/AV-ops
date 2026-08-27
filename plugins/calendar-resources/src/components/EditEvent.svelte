@@ -13,9 +13,9 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Event, ReccuringEvent, ReccuringInstance, RecurringRule } from '@hcengineering/calendar'
+  import { AccessLevel, Event, ReccuringEvent, ReccuringInstance, RecurringRule, GOOGLE_MEET_PLACEHOLDER, getMeetingJoinUrl, getPrimaryCalendar, isAccountCalendar, isGoogleMeetPlaceholder } from '@hcengineering/calendar'
   import { Person } from '@hcengineering/contact'
-  import { DocumentUpdate, Ref } from '@hcengineering/core'
+  import { DocumentUpdate, Ref, getCurrentAccount } from '@hcengineering/core'
   import presentation, { ComponentExtensions, getClient } from '@hcengineering/presentation'
   import { StyledTextBox } from '@hcengineering/text-editor-resources'
   import {
@@ -41,6 +41,7 @@
   import LocationEditor from './LocationEditor.svelte'
   import ReccurancePopup from './ReccurancePopup.svelte'
   import VisibilityEditor from './VisibilityEditor.svelte'
+  import JoinMeetingButton from './JoinMeetingButton.svelte'
 
   export let object: Event
   $: readOnly = isReadOnly(object)
@@ -61,6 +62,10 @@
 
   let description = object.description
   let location = object.location
+  $: joinUrl = getMeetingJoinUrl(location, description)
+  $: if (object.location != null && object.location !== location && getMeetingJoinUrl(object.location) != null) {
+    location = object.location
+  }
 
   let rules: RecurringRule[] = (object as ReccuringEvent).rules ?? []
 
@@ -132,6 +137,31 @@
     dispatch('close')
   }
 
+  async function addGoogleMeet (): Promise<void> {
+    if (readOnly) return
+    location = GOOGLE_MEET_PLACEHOLDER
+    const acc = getCurrentAccount()
+    const all = await client.findAll(calendar.class.Calendar, {
+      hidden: false,
+      access: { $in: [AccessLevel.Owner, AccessLevel.Writer] }
+    })
+    const primary = getPrimaryCalendar(
+      all.filter((c) => isAccountCalendar(c, acc)),
+      undefined,
+      acc.uuid
+    )
+    _calendar = primary
+    const update: DocumentUpdate<Event> = { location }
+    if (object.calendar !== primary) {
+      update.calendar = primary
+    }
+    if (object._class === calendar.class.ReccuringInstance) {
+      await updateReccuringInstance(update, object as ReccuringInstance)
+    } else {
+      await client.update(object, update)
+    }
+  }
+
   async function allDayChangeHandler () {
     if (allDay) {
       startDate = new Date(startDate).setHours(0, 0, 0, 0)
@@ -182,6 +212,20 @@
         }}
       />
     </div>
+  </div>
+  <div class="block first join-actions">
+    <JoinMeetingButton event={object} {location} focusIndex={10012} />
+    {#if !readOnly && joinUrl == null && !allDay && !isGoogleMeetPlaceholder(location)}
+      <Button
+        kind="ghost"
+        size="medium"
+        label={calendar.string.AddGoogleMeet}
+        focusIndex={10013}
+        on:click={() => {
+          void addGoogleMeet()
+        }}
+      />
+    {/if}
   </div>
   <Scroller thinScrollBars>
     <div class="block first">
@@ -280,6 +324,9 @@
       &.description {
         padding: 0 1.25rem;
         min-height: 2.625rem;
+      }
+      &.join-actions {
+        padding: 0 1.25rem 0.5rem;
       }
     }
     .top-icon {

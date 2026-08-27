@@ -205,6 +205,8 @@
     "ConnectedIntegrations": "Подключенные",
     "AvailableIntegrations": "Доступные",
     "Connect": "Подключить",
+    "ConnectAnother": "Подключить другой аккаунт",
+    "ConnectAnotherDescr": "Используйте другой аккаунт для этой интеграции.",
     "Integrate": "Интегрировать",
     "FailedToLoadIntegrations": "Не удалось загрузить интеграции",
     "FailedToDisconnect": "Не удалось отключить интеграцию",

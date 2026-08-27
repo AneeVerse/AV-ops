@@ -17,11 +17,13 @@
   import { Label } from '@hcengineering/ui'
   import { ToDo, WorkSlot } from '@hcengineering/time'
   import ToDoPresenter from './ToDoPresenter.svelte'
-  import calendar from '@hcengineering/calendar'
+  import calendar, { getMeetingJoinUrl } from '@hcengineering/calendar'
 
   export let event: WorkSlot
   export let oneRow: boolean = false
   export let hideDetails: boolean = false
+
+  $: hasMeet = getMeetingJoinUrl(event.location, event.description) != null
 
   let todo: ToDo
 
@@ -36,5 +38,20 @@
 {#if hideDetails}
   <Label label={calendar.string.Busy} />
 {:else if todo}
-  <ToDoPresenter value={todo} withoutSpace={oneRow} />
+  <div class="flex-row-center overflow-label">
+    {#if hasMeet}<span class="meet-dot" title="Meeting"></span>{/if}
+    <ToDoPresenter value={todo} withoutSpace={oneRow} />
+  </div>
 {/if}
+
+<style lang="scss">
+  .meet-dot {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    background: var(--theme-link-color, #4d7cff);
+    vertical-align: middle;
+  }
+</style>

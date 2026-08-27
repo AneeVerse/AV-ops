@@ -1,7 +1,7 @@
 import aiBot from '@hcengineering/ai-bot'
 import { connectMeeting, disconnectMeeting } from '@hcengineering/ai-bot-resources'
 import { Analytics } from '@hcengineering/analytics'
-import calendar, { type Event, type Schedule } from '@hcengineering/calendar'
+import calendar, { type Event, type Schedule, GOOGLE_MEET_PLACEHOLDER } from '@hcengineering/calendar'
 import chunter from '@hcengineering/chunter'
 import { getName } from '@hcengineering/contact'
 import core, {
@@ -317,23 +317,35 @@ export async function createMeeting (
   store: Record<string, any>,
   phase: DocCreatePhase
 ): Promise<void> {
-  if (phase === 'post' && store.room != null && store.isMeeting === true) {
+  if (phase === 'post' && store.isMeeting === true) {
     const event = await client.findOne(calendar.class.Event, { _id })
     if (event === undefined) return
-    const events = await client.findAll(calendar.class.Event, { eventId: event.eventId })
-    for (const event of events) {
-      await client.createMixin<Event, Meeting>(event._id, calendar.class.Event, space._id, love.mixin.Meeting, {
-        room: store.room as Ref<Room>
-      })
+    if (store.room != null) {
+      const events = await client.findAll(calendar.class.Event, { eventId: event.eventId })
+      for (const ev of events) {
+        await client.createMixin<Event, Meeting>(ev._id, calendar.class.Event, space._id, love.mixin.Meeting, {
+          room: store.room as Ref<Room>
+        })
+      }
+      try {
+        const navigateUrl = getCurrentLocation()
+        navigateUrl.path[2] = loveId
+        navigateUrl.query = {
+          meetId: _id
+        }
+        const func = await getResource(login.function.GetInviteLink)
+        const link = await func(-1, '', -1, AccountRole.Guest, encodeURIComponent(JSON.stringify(navigateUrl)))
+        if (link != null && link !== '' && (event.location == null || event.location === '')) {
+          await client.update(event, { location: link })
+          return
+        }
+      } catch (err: any) {
+        console.error(err)
+      }
     }
-    const navigateUrl = getCurrentLocation()
-    navigateUrl.path[2] = loveId
-    navigateUrl.query = {
-      meetId: _id
+    if (event.location == null || event.location === '') {
+      await client.update(event, { location: GOOGLE_MEET_PLACEHOLDER })
     }
-    const func = await getResource(login.function.GetInviteLink)
-    const link = await func(-1, '', -1, AccountRole.Guest, encodeURIComponent(JSON.stringify(navigateUrl)))
-    await client.update(event, { location: link })
   }
 }
 

@@ -13,14 +13,15 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import calendar, { CalendarEventPresenter, Event } from '@hcengineering/calendar'
+  import calendar, { CalendarEventPresenter, Event, getMeetingJoinUrl } from '@hcengineering/calendar'
   import { Doc } from '@hcengineering/core'
   import { getClient } from '@hcengineering/presentation'
-  import { Component, MILLISECONDS_IN_MINUTE, showPopup, tooltip } from '@hcengineering/ui'
+  import { Component, Label, MILLISECONDS_IN_MINUTE, showPopup, tooltip } from '@hcengineering/ui'
   import view, { ObjectEditor } from '@hcengineering/view'
   import { showMenu } from '@hcengineering/view-resources'
   import { calendarByIdStore, isVisible } from '../utils'
   import EventPresenter from './EventPresenter.svelte'
+  import plugin from '../plugin'
 
   export let event: Event
   // export let hourHeight: number
@@ -29,6 +30,7 @@
   $: oneRow = size.height < 42 || event.allDay
   $: narrow = event.dueDate - event.date < MILLISECONDS_IN_MINUTE * 25
   $: empty = size.width < 44
+  $: joinUrl = getMeetingJoinUrl(event.location, event.description)
 
   function click () {
     if (visible) {
@@ -37,6 +39,11 @@
         showPopup(editor.editor, { object: event })
       }
     }
+  }
+
+  function joinMeet (): void {
+    if (joinUrl == null) return
+    window.open(joinUrl, '_blank', 'noopener,noreferrer')
   }
 
   const client = getClient()
@@ -69,6 +76,11 @@
   >
     {#if !empty && presenter?.presenter}
       <Component is={presenter.presenter} props={{ event, narrow, oneRow, hideDetails: !visible }} />
+      {#if joinUrl && visible && !narrow}
+        <button class="join-chip" type="button" on:click|stopPropagation={joinMeet}>
+          <Label label={plugin.string.Join} />
+        </button>
+      {/if}
     {/if}
   </div>
 {/if}
@@ -91,5 +103,19 @@
     border-radius: 0.25rem;
     cursor: pointer;
     padding: 0.25rem 0.5rem 0.25rem 1rem;
+  }
+
+  .join-chip {
+    align-self: flex-start;
+    margin-top: 0.2rem;
+    padding: 0.1rem 0.45rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: var(--theme-button-contrast-hovered, #1a73e8);
+    color: var(--theme-button-contrast-color, #fff);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
   }
 </style>

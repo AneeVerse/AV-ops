@@ -291,7 +291,7 @@ export class AuthController {
     }
     const authUrl = oAuth2Client.generateAuthUrl({
       access_type: 'offline',
-      prompt: 'consent',
+      prompt: 'select_account consent',
       scope: SCOPES,
       state: encode64(JSON.stringify(state))
     })

@@ -200,6 +200,8 @@
     "ConnectedIntegrations": "接続されたインテグレーション",
     "AvailableIntegrations": "利用可能なインテグレーション",
     "Connect": "接続",
+    "ConnectAnother": "別のアカウントを接続",
+    "ConnectAnotherDescr": "この連携には別のアカウントを使えます。",
     "Integrate": "統合",
     "FailedToLoadIntegrations": "インテグレーションの読み込みに失敗しました",
     "FailedToDisconnect": "インテグレーションの切断に失敗しました",

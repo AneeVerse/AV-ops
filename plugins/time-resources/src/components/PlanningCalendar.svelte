@@ -1,5 +1,5 @@
 <script lang="ts">
-  import calendar, { AccessLevel, Calendar, Event, generateEventId, getAllEvents } from '@hcengineering/calendar'
+  import calendar, { AccessLevel, Calendar, Event, generateEventId, getAllEvents, isAccountCalendar } from '@hcengineering/calendar'
   import { DayCalendar, calendarByIdStore, hidePrivateEvents } from '@hcengineering/calendar-resources'
   import { getCurrentEmployee } from '@hcengineering/contact'
   import { Ref, SortingOrder, Timestamp, getCurrentAccount } from '@hcengineering/core'
@@ -48,7 +48,6 @@
   const rem = (n: number): number => n * $deviceInfo.fontSize
 
   const myAcc = getCurrentAccount()
-  const socialStrings = myAcc.socialIds
   const personalCalendar = `${myAcc.uuid}_calendar` as Ref<Calendar>
 
   const calendarsQ = createQuery()
@@ -56,8 +55,8 @@
   let calendars: Calendar[] = []
   let todayDate = new Date()
 
-  $: calendarsQ.query(calendar.class.Calendar, { createdBy: { $in: socialStrings }, hidden: false }, (res) => {
-    calendars = res
+  $: calendarsQ.query(calendar.class.Calendar, { hidden: false }, (res) => {
+    calendars = res.filter((c) => isAccountCalendar(c, myAcc))
   })
 
   $: from = getFrom(currentDate)

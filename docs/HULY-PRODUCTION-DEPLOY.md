@@ -94,6 +94,7 @@ That is the whole day-to-day flow. It runs six stages and **skips whatever did n
 |-------|--------------|------------------------|
 | `validate` | Plugin-id collision check (~2 s) | A `mergeIds` key is declared twice — this is what black-screened production on 2026-08-22 |
 | `account` | Builds the account bundle, ships it, switches the account container (see [Account service changes](#account-service-changes)) | The service does not come up, its RPC does not answer, or the shipped bundle lacks `createApiToken` → **automatic rollback** |
+| `calendar` | Builds the calendar bundle, ships it, switches the calendar container (Google Meet Join + event-id fix) | The service does not come up, `/signin` does not answer, or the bundle lacks Meet mapping → **automatic rollback** |
 | `build` | Webpack with the filesystem cache warm | `index.html` references a chunk that is missing from `dist` |
 | `ship` | Uploads only the files the VPS lacks, builds a front image, switches the container | The bundle inside the container is incomplete, or nginx does not return 200 |
 | `model` | Pushes `models/**` edits into `model_tx` (see [Model changes](#model-changes)) | The generated patch is implausibly large, or it fails to apply |
@@ -108,10 +109,12 @@ Other commands:
 deploy.cmd status            # what would deploy, and why (no build, no changes)
 deploy.cmd validate          # just the pre-build checks
 deploy.cmd account           # force an account image build + ship on its own
+deploy.cmd calendar          # force a calendar image build + ship on its own
 deploy.cmd model             # force a model sync on its own
 deploy.cmd smoke             # test production as it is right now
 deploy.cmd rollback          # switch back to the previous front image
 deploy.cmd account-rollback  # switch the account service back to its previous image
+deploy.cmd calendar-rollback # switch the calendar service back to its previous image
 deploy.cmd verify            # live headers + which image is running
 deploy.cmd prune             # reclaim docker disk on the VPS
 ```

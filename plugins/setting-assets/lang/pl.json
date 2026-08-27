@@ -200,6 +200,8 @@
     "ConnectedIntegrations": "Aktywne",
     "AvailableIntegrations": "Dostępne",
     "Connect": "Połącz",
+    "ConnectAnother": "Połącz inne konto",
+    "ConnectAnotherDescr": "Użyj innego konta dla tej integracji.",
     "Integrate": "Integruj",
     "FailedToLoadIntegrations": "Nie udało się wczytać integracji",
     "FailedToDisconnect": "Nie udało się rozłączyć integracji",

@@ -124,6 +124,12 @@
     "WeekendDay": "Выходной день",
     "SynchronizedCalendars": "Синхронизированные календари",
     "Account": "Аккаунт",
-    "NoCalendars": "Календари для синхронизации не выбраны"
+    "NoCalendars": "Календари для синхронизации не выбраны",
+    "UntitledEvent": "(No title)",
+    "Join": "Join",
+    "JoinGoogleMeet": "Join with Google Meet",
+    "JoinMeeting": "Join meeting",
+    "AddGoogleMeet": "Add Google Meet",
+    "CreatingGoogleMeet": "Google Meet is being created…"
   }
 }

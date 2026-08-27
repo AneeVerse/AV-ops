@@ -13,24 +13,19 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Ref } from '@hcengineering/core'
-  import { Room } from '@hcengineering/love'
   import { Button, CheckBox } from '@hcengineering/ui'
   import { Writable } from 'svelte/store'
   import love from '../plugin'
-  import RoomSelector from './RoomSelector.svelte'
 
   export let state: Writable<Record<string, any>>
 
-  function changeRoom (val: Ref<Room>): void {
-    $state.room = val
-  }
+  $state.isMeeting = true
 
   function changeIsMeeting (val: boolean): void {
     $state.isMeeting = val
   }
 
-  let isMeeting = false
+  let isMeeting = true
 </script>
 
 <div class="flex-row-center gap-1-5 mt-1">
@@ -53,11 +48,3 @@
     }}
   />
 </div>
-{#if isMeeting}
-  <RoomSelector
-    value={$state.room}
-    on:change={(ev) => {
-      changeRoom(ev.detail)
-    }}
-  />
-{/if}

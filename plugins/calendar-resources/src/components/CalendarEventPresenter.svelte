@@ -13,7 +13,7 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Event } from '@hcengineering/calendar'
+  import { Event, getMeetingJoinUrl } from '@hcengineering/calendar'
   import { Label, addZero } from '@hcengineering/ui'
   import calendar from '../plugin'
 
@@ -24,6 +24,7 @@
 
   $: startDate = new Date(event.date)
   $: endDate = new Date(event.dueDate)
+  $: hasMeet = getMeetingJoinUrl(event.location, event.description) != null
 
   const getTime = (date: Date): string => {
     return `${addZero(date.getHours())}:${addZero(date.getMinutes())}`
@@ -33,6 +34,7 @@
 {#if !narrow}
   {#if !hideDetails}
     <b class="overflow-label">
+      {#if hasMeet}<span class="meet-dot" title="Meeting"></span>{/if}
       {event.title}
     </b>
   {:else}
@@ -42,3 +44,15 @@
 {#if !oneRow}
   <span class="overflow-label text-sm">{getTime(startDate)}-{getTime(endDate)}</span>
 {/if}
+
+<style lang="scss">
+  .meet-dot {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    background: var(--theme-link-color, #4d7cff);
+    vertical-align: middle;
+  }
+</style>

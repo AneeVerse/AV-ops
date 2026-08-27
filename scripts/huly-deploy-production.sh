@@ -22,8 +22,10 @@ FRONT_URL="${HULY_FRONT_URL:-https://app.aneeverse.com}"
 FRONT_PATHS=(plugins packages foundations models dev/prod/src dev/prod/webpack.config.js dev/prod/package.json)
 # Paths whose contents end up in the account service bundle.
 ACCOUNT_PATHS=(server/account pods/account foundations/core/packages/account-client)
+# Paths whose contents end up in the calendar service bundle.
+CALENDAR_PATHS=(services/calendar plugins/calendar)
 # Paths that need custom backend images this deploy path cannot build. The
-# account pod is excluded: the 'account' stage below does build that one.
+# account and calendar pods are excluded: those stages below do build them.
 SERVER_PATHS=(server server-plugins pods services)
 
 usage() {
@@ -34,11 +36,13 @@ Commands:
   deploy       (default) validate -> account -> front -> model -> smoke, skipping what did not change
   validate     Local pre-build checks only (seconds)
   account      Force build + ship the custom account image (server/account code)
+  calendar     Force build + ship the custom calendar image (Google Meet / event id)
   front        Force build + ship the front bundle
   model        Force a model sync (push models/** edits into model_tx)
   smoke        Run the logged-in production smoke test
   rollback     Switch production back to the previous front image
   account-rollback  Switch the account service back to its previous image
+  calendar-rollback Switch the calendar service back to its previous image
   verify       Show live headers + deployed image/state
   status       Show what would be deployed and why
   prune        Reclaim docker disk space on the VPS
@@ -131,7 +135,7 @@ cmd_validate() {
   # The account stage ships these, so they are not "unbuildable server changes".
   local server_changes
   server_changes=$(changed_paths "${SERVER_PATHS[@]}" | grep -E '/src/|\.ts$' |
-    grep -vE '^(server/account/|pods/account/)' || true)
+    grep -vE '^(server/account/|pods/account/|services/calendar/)' || true)
   if [ -n "$server_changes" ]; then
     echo
     echo "  Server-side source changed:"
@@ -312,6 +316,61 @@ cmd_account_rollback() {
   rm -f /tmp/huly-account-rollback.sh
 }
 
+# --------------------------------------------------------------- calendar ----
+CALENDAR_STATE=/opt/huly-calendar/state.env
+
+calendar_fingerprint() {
+  cd "$REPO_ROOT"
+  {
+    git rev-parse HEAD
+    git diff HEAD -- "${CALENDAR_PATHS[@]}"
+    git ls-files --others --exclude-standard -- "${CALENDAR_PATHS[@]}" |
+      while IFS= read -r f; do [ -f "$f" ] && git hash-object "$f"; done
+  } 2>/dev/null | node -e '
+    const h = require("crypto").createHash("sha256")
+    process.stdin.on("data", (d) => h.update(d))
+    process.stdin.on("end", () => console.log(h.digest("hex").slice(0, 16)))
+  '
+}
+
+calendar_state_value() {
+  "${SSH[@]}" "$VPS" "sed -n 's/^$1=//p' $CALENDAR_STATE 2>/dev/null | head -1" || true
+}
+
+cmd_calendar() {
+  say "build calendar bundle"
+  bash "$REPO_ROOT/scripts/huly-build-calendar.sh" --bundle-only
+  local bundle tag
+  bundle="$REPO_ROOT/services/calendar/pod-calendar/bundle/bundle.js"
+  [ -s "$bundle" ] || die "calendar bundle missing at $bundle"
+  info "bundle: $(du -h "$bundle" | cut -f1)"
+
+  tag="$(cd "$REPO_ROOT" && git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)"
+
+  say "ship calendar"
+  "${SCP[@]}" "$bundle" "$VPS:/tmp/huly-calendar-bundle.js"
+  tr -d '\r' < "$REPO_ROOT/scripts/huly-deploy-calendar.sh" > "$REPO_ROOT/services/calendar/pod-calendar/.deploy-calendar.sh"
+  "${SCP[@]}" "$REPO_ROOT/services/calendar/pod-calendar/.deploy-calendar.sh" "$VPS:/tmp/huly-deploy-calendar.sh"
+  rm -f "$REPO_ROOT/services/calendar/pod-calendar/.deploy-calendar.sh"
+
+  say "apply calendar on VPS"
+  "${SSH[@]}" "$VPS" \
+    "HULY_TAG='$tag' FINGERPRINT_IN='$(calendar_fingerprint)' bash /tmp/huly-deploy-calendar.sh"
+}
+
+calendar_needs_deploy() {
+  [ "${FORCE:-0}" = "1" ] && return 0
+  [ "$(calendar_fingerprint)" != "$(calendar_state_value CALENDAR_FINGERPRINT)" ]
+}
+
+cmd_calendar_rollback() {
+  say "rollback calendar"
+  tr -d '\r' < "$REPO_ROOT/scripts/huly-deploy-calendar.sh" > /tmp/huly-calendar-rollback.sh
+  "${SCP[@]}" /tmp/huly-calendar-rollback.sh "$VPS:/tmp/huly-deploy-calendar.sh"
+  "${SSH[@]}" "$VPS" 'MODE=rollback bash /tmp/huly-deploy-calendar.sh'
+  rm -f /tmp/huly-calendar-rollback.sh
+}
+
 # ------------------------------------------------------------------ model ----
 # The transactor serves the model compiled into its image and layers model_tx on
 # top, so models/** edits only reach production once the difference between our
@@ -462,6 +521,18 @@ cmd_status() {
   else
     info "=> account image needs deploying (server/account code)"
   fi
+
+  local cfp deployed_cfp
+  cfp=$(calendar_fingerprint)
+  deployed_cfp=$(calendar_state_value CALENDAR_FINGERPRINT)
+  echo
+  info "local calendar fingerprint:    $cfp"
+  info "deployed calendar fingerprint: ${deployed_cfp:-none (stock image)}"
+  if [ "$cfp" = "$deployed_cfp" ]; then
+    info "=> calendar image is up to date"
+  else
+    info "=> calendar image needs deploying (Google Meet / event sync)"
+  fi
 }
 
 cmd_prune() {
@@ -474,11 +545,12 @@ cmd_deploy() {
   preflight
   cmd_validate
 
-  local fp deployed_fp shipped account_shipped
+  local fp deployed_fp shipped account_shipped calendar_shipped
   fp=$(front_fingerprint)
   deployed_fp=$(state_value FRONT_FINGERPRINT)
   shipped=0
   account_shipped=0
+  calendar_shipped=0
 
   # Before the front, not after: the UI calls account methods, so the service has
   # to understand them by the time the new bundle is live.
@@ -488,6 +560,14 @@ cmd_deploy() {
   else
     say "account unchanged"
     info "server/account matches what is live — skipping account image"
+  fi
+
+  if calendar_needs_deploy; then
+    cmd_calendar
+    calendar_shipped=1
+  else
+    say "calendar unchanged"
+    info "calendar service matches what is live — skipping calendar image"
   fi
 
   if [ "$fp" = "$deployed_fp" ] && [ "${FORCE:-0}" != "1" ]; then
@@ -518,7 +598,7 @@ cmd_deploy() {
   if ! cmd_smoke; then
     echo
     echo "!!! smoke test FAILED !!!"
-    if [ "$shipped" != "1" ] && [ "$account_shipped" != "1" ]; then
+    if [ "$shipped" != "1" ] && [ "$account_shipped" != "1" ] && [ "$calendar_shipped" != "1" ]; then
       die "production was already failing before this run — nothing was deployed, so there is nothing to roll back"
     fi
     if [ "${NO_ROLLBACK:-0}" = "1" ]; then
@@ -526,6 +606,9 @@ cmd_deploy() {
     fi
     if [ "$account_shipped" = "1" ]; then
       cmd_account_rollback
+    fi
+    if [ "$calendar_shipped" = "1" ]; then
+      cmd_calendar_rollback
     fi
     if [ "$shipped" = "1" ]; then
       cmd_rollback
@@ -545,6 +628,8 @@ case "${1:-deploy}" in
   front) preflight; cmd_validate; cmd_build; cmd_ship ;;
   account) preflight; cmd_account ;;
   account-rollback) preflight; cmd_account_rollback ;;
+  calendar) preflight; cmd_calendar ;;
+  calendar-rollback) preflight; cmd_calendar_rollback ;;
   model) preflight; cmd_model ;;
   smoke) preflight; cmd_smoke ;;
   rollback) preflight; cmd_rollback ;;

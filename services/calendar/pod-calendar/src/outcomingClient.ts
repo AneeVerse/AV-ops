@@ -19,10 +19,18 @@ import calendar, {
   ExternalCalendar,
   ReccuringEvent,
   ReccuringInstance,
-  calendarIntegrationKind
+  calendarIntegrationKind,
+  isGoogleMeetPlaceholder
 } from '@hcengineering/calendar'
 import contact, { Contact } from '@hcengineering/contact'
-import core, { MeasureContext, Ref, SocialIdType, TxOperations, WorkspaceUuid } from '@hcengineering/core'
+import core, {
+  DocumentUpdate,
+  MeasureContext,
+  Ref,
+  SocialIdType,
+  TxOperations,
+  WorkspaceUuid
+} from '@hcengineering/core'
 import { areEqualMarkups, htmlToMarkup, isEmptyMarkup, jsonToHTML, markupToJSON } from '@hcengineering/text'
 import { deepEqual } from 'fast-equals'
 import { OAuth2Client } from 'google-auth-library'
@@ -44,6 +52,8 @@ import {
   removeUserByEmail,
   setCredentials
 } from './utils'
+import { applyConferenceCreateRequest, googleEventIdIsValid, googleMeetUrl, wantsGoogleMeet } from './googleMeet'
+import { resolveExternalCalendar } from './resolveCalendar'
 
 export class OutcomingClient {
   private readonly calendar: calendar_v3.Calendar
@@ -65,6 +75,10 @@ export class OutcomingClient {
   async push (event: Event, type: 'create' | 'update' | 'delete'): Promise<void> {
     const calendar = await this.getCalendar(event)
     if (calendar === undefined) return
+    if (event.calendar !== calendar._id) {
+      await this.client.update(event, { calendar: calendar._id })
+      event = { ...event, calendar: calendar._id }
+    }
     this.ctx.info('Push outcoming event', {
       calendarId: calendar.externalId,
       eventId: event.eventId,
@@ -91,11 +105,13 @@ export class OutcomingClient {
     const res: calendar_v3.Schema$Event = {
       start: convertDate(event.date, event.allDay, getTimezone(event)),
       end: convertDate(event.dueDate, event.allDay, getTimezone(event)),
-      id: event.eventId,
       description: jsonToHTML(markupToJSON(event.description)),
       summary: event.title
     }
-    if (event.location != null) {
+    if (googleEventIdIsValid(event.eventId)) {
+      res.id = event.eventId
+    }
+    if (event.location != null && !isGoogleMeetPlaceholder(event.location)) {
       res.location = event.location
     }
     if (event.visibility !== undefined) {
@@ -149,24 +165,55 @@ export class OutcomingClient {
   }
 
   private async create (event: Event, calendar: ExternalCalendar): Promise<void> {
-    const body = await this.convertBody(event)
+    const body = applyConferenceCreateRequest(await this.convertBody(event), event)
     const calendarId = calendar.externalId
-    if (calendarId !== undefined) {
-      await this.rateLimiter.take(1)
+    if (calendarId === undefined) return
+    await this.rateLimiter.take(1)
+    const wantsMeet = wantsGoogleMeet(event)
+    try {
+      let inserted
       try {
-        await this.calendar.events.insert({
+        inserted = await this.calendar.events.insert({
           calendarId,
+          conferenceDataVersion: wantsMeet ? 1 : undefined,
           requestBody: body
         })
       } catch (err: any) {
-        this.ctx.error('Google API insert error', {
-          calendarId,
-          eventId: event.eventId,
-          error: err.message,
-          code: err.code
-        })
-        throw err
+        if (err.code === 400 && body.id != null) {
+          this.ctx.warn('Google rejected custom event id, retrying without id', {
+            calendarId,
+            eventId: event.eventId,
+            error: err.message
+          })
+          delete body.id
+          inserted = await this.calendar.events.insert({
+            calendarId,
+            conferenceDataVersion: wantsMeet ? 1 : undefined,
+            requestBody: body
+          })
+        } else {
+          throw err
+        }
       }
+      const patch: DocumentUpdate<Event> = {}
+      if (inserted.data.id != null && inserted.data.id !== event.eventId) {
+        patch.eventId = inserted.data.id
+      }
+      const meet = googleMeetUrl(inserted.data)
+      if (meet != null && event.location !== meet) {
+        patch.location = meet
+      }
+      if (Object.keys(patch).length > 0) {
+        await this.client.update(event, patch)
+      }
+    } catch (err: any) {
+      this.ctx.error('Google API insert error', {
+        calendarId,
+        eventId: event.eventId,
+        error: err.message,
+        code: err.code
+      })
+      throw err
     }
   }
 
@@ -185,7 +232,11 @@ export class OutcomingClient {
             event: event._id,
             current: current.data.id
           })
-          const ev = await this.applyUpdate(current.data, event)
+          let ev = await this.applyUpdate(current.data, event)
+          const wantsMeet = wantsGoogleMeet(event) && googleMeetUrl(current.data) === undefined
+          if (ev === undefined && wantsMeet) {
+            ev = current.data
+          }
           if (ev === undefined) {
             this.ctx.info('No changes to update', {
               calendarId,
@@ -194,14 +245,26 @@ export class OutcomingClient {
               workspace: this.workspace,
               event: event._id
             })
+            const meet = googleMeetUrl(current.data)
+            if (meet != null && event.location !== meet) {
+              await this.client.update(event, { location: meet })
+            }
             return true
           }
+          if (wantsMeet) {
+            applyConferenceCreateRequest(ev, event)
+          }
           await this.rateLimiter.take(1)
-          await this.calendar.events.update({
+          const updated = await this.calendar.events.update({
             calendarId,
             eventId: event.eventId,
+            conferenceDataVersion: wantsMeet ? 1 : undefined,
             requestBody: ev
           })
+          const meet = googleMeetUrl(updated.data)
+          if (meet != null && event.location !== meet) {
+            await this.client.update(event, { location: meet })
+          }
         }
         return true
       } catch (err: any) {
@@ -276,7 +339,11 @@ export class OutcomingClient {
       })
       event.description = description
     }
-    if (current.location !== event.location) {
+    if (
+      current.location !== event.location &&
+      !isGoogleMeetPlaceholder(current.location) &&
+      current.location != null
+    ) {
       res = true
       this.ctx.info('Update event diff: location', {
         calendarId: current.calendar,
@@ -421,9 +488,7 @@ export class OutcomingClient {
   }
 
   private async getCalendar (event: Event): Promise<ExternalCalendar | undefined> {
-    return await this.client.findOne(calendar.class.ExternalCalendar, {
-      _id: event.calendar as Ref<ExternalCalendar>
-    })
+    return await resolveExternalCalendar(this.client, event)
   }
 
   static async push (
@@ -474,9 +539,7 @@ async function getTokenByEvent (
   event: Event,
   workspace: WorkspaceUuid
 ): Promise<Token | undefined> {
-  const _calendar = await txOp.findOne(calendar.class.ExternalCalendar, {
-    _id: event.calendar as Ref<ExternalCalendar>
-  })
+  const _calendar = await resolveExternalCalendar(txOp, event)
   if (_calendar === undefined) return
   const res = await accountClient.getIntegrationSecret({
     socialId: _calendar.user,

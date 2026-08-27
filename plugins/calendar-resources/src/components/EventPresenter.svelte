@@ -13,16 +13,18 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Event } from '@hcengineering/calendar'
+  import { Event, getMeetingJoinUrl } from '@hcengineering/calendar'
   import { DateRangeMode, Doc } from '@hcengineering/core'
   import { getClient } from '@hcengineering/presentation'
-  import { DatePresenter, DateTimeRangePresenter, Label, showPopup, DateRangePresenter } from '@hcengineering/ui'
+  import { Button, DatePresenter, DateTimeRangePresenter, Label, showPopup, DateRangePresenter } from '@hcengineering/ui'
   import view, { ObjectEditor } from '@hcengineering/view'
   import calendar from '../plugin'
 
   export let value: Event
   export let hideDetails: boolean = false
   export let inline: boolean = false
+
+  $: joinUrl = getMeetingJoinUrl(value.location, value.description)
 
   function click (): void {
     if (!hideDetails) {
@@ -34,17 +36,31 @@
       }
     }
   }
+
+  function joinMeet (e: MouseEvent): void {
+    e.stopPropagation()
+    if (joinUrl == null) return
+    window.open(joinUrl, '_blank', 'noopener,noreferrer')
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="antiSelect w-full cursor-pointer flex-center flex-between" on:click={click}>
   {#if value}
-    <div class="mr-4">
+    <div class="mr-4 flex-col">
       {#if !hideDetails}
         {value.title}
       {:else}
         <Label label={calendar.string.Busy} />
+      {/if}
+      {#if joinUrl && !hideDetails}
+        <Button
+          kind="primary"
+          size="small"
+          label={calendar.string.Join}
+          on:click={joinMeet}
+        />
       {/if}
     </div>
     {#if !inline}

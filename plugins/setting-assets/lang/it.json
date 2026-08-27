@@ -200,6 +200,8 @@
     "ConnectedIntegrations": "Connesse",
     "AvailableIntegrations": "Disponibili",
     "Connect": "Connetti",
+    "ConnectAnother": "Connetti un altro account",
+    "ConnectAnotherDescr": "Usa un account diverso per questa integrazione.",
     "Integrate": "Integra",
     "FailedToLoadIntegrations": "Impossibile caricare le integrazioni",
     "FailedToDisconnect": "Impossibile disconnettere l'integrazione",

@@ -354,6 +354,8 @@ export default plugin(settingId, {
     ConnectedIntegrations: '' as IntlString,
     AvailableIntegrations: '' as IntlString,
     Connect: '' as IntlString,
+    ConnectAnother: '' as IntlString,
+    ConnectAnotherDescr: '' as IntlString,
     Integrate: '' as IntlString,
     FailedToLoadIntegrations: '' as IntlString,
     FailedToDisconnect: '' as IntlString,

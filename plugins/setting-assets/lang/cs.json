@@ -198,6 +198,8 @@
     "ConnectedIntegrations": "Připojené",
     "AvailableIntegrations": "Dostupné",
     "Connect": "Připojit",
+    "ConnectAnother": "Připojit další účet",
+    "ConnectAnotherDescr": "Pro tuto integraci použijte jiný účet.",
     "Integrate": "Integrace",
     "FailedToLoadIntegrations": "Nepodařilo se načíst integrace",
     "FailedToDisconnect": "Nepodařilo se odpojit integraci",

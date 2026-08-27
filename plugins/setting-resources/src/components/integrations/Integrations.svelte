@@ -50,7 +50,11 @@
 
   let loadIntegrationsPromise: Promise<void> | null = null
   let refreshTimer: NodeJS.Timeout | null = null
+  let fastRefreshTimer: ReturnType<typeof setInterval> | null = null
+  let fastRefreshUntil = 0
+  let oauthChannel: BroadcastChannel | null = null
   let lastEventTime = Date.now()
+  const OAUTH_STORAGE_KEY = 'huly:integration-oauth-done'
 
   const viewslist: TabItem[] = [
     { id: 'all', labelIntl: setting.string.AllIntegrations },
@@ -91,6 +95,7 @@
       }
       subscribe()
       startRefreshTimer()
+      startOAuthWatch()
     } catch (err: any) {
       Analytics.handleError(err)
       await showLoadErrorNotification()
@@ -108,6 +113,8 @@
     if (refreshTimer !== null) {
       clearInterval(refreshTimer)
     }
+    stopFastRefresh()
+    stopOAuthWatch()
   })
 
   function subscribe (): void {
@@ -136,6 +143,87 @@
         lastEventTime = Date.now()
       }
     }, 10000)
+  }
+
+  function startFastRefresh (): void {
+    fastRefreshUntil = Date.now() + 45000
+    void refreshIntegrations()
+    if (fastRefreshTimer !== null) {
+      return
+    }
+    fastRefreshTimer = setInterval(() => {
+      if (Date.now() > fastRefreshUntil) {
+        stopFastRefresh()
+        return
+      }
+      void refreshIntegrations()
+    }, 1500)
+  }
+
+  function stopFastRefresh (): void {
+    if (fastRefreshTimer !== null) {
+      clearInterval(fastRefreshTimer)
+      fastRefreshTimer = null
+    }
+  }
+
+  function isOAuthDoneMessage (data: unknown): boolean {
+    return typeof data === 'object' && data !== null && (data as { type?: string }).type === 'huly:integration-oauth-done'
+  }
+
+  function onOAuthWindowEvent (): void {
+    startFastRefresh()
+  }
+
+  function onOAuthStorage (event: StorageEvent): void {
+    if (event.key === OAUTH_STORAGE_KEY) {
+      startFastRefresh()
+    }
+  }
+
+  function onOAuthMessage (event: MessageEvent): void {
+    if (event.origin !== window.location.origin) {
+      return
+    }
+    if (isOAuthDoneMessage(event.data)) {
+      startFastRefresh()
+    }
+  }
+
+  function onWindowFocus (): void {
+    if (Date.now() < fastRefreshUntil) {
+      void refreshIntegrations()
+    }
+  }
+
+  function startOAuthWatch (): void {
+    window.addEventListener('huly:integration-oauth-started', onOAuthWindowEvent as EventListener)
+    window.addEventListener('huly:integration-oauth-done', onOAuthWindowEvent as EventListener)
+    window.addEventListener('storage', onOAuthStorage)
+    window.addEventListener('message', onOAuthMessage)
+    window.addEventListener('focus', onWindowFocus)
+    try {
+      oauthChannel = new BroadcastChannel('huly-integrations')
+      oauthChannel.onmessage = (event) => {
+        if (isOAuthDoneMessage(event.data)) {
+          startFastRefresh()
+        }
+      }
+    } catch {
+      oauthChannel = null
+    }
+  }
+
+  function stopOAuthWatch (): void {
+    window.removeEventListener('huly:integration-oauth-started', onOAuthWindowEvent as EventListener)
+    window.removeEventListener('huly:integration-oauth-done', onOAuthWindowEvent as EventListener)
+    window.removeEventListener('storage', onOAuthStorage)
+    window.removeEventListener('message', onOAuthMessage)
+    window.removeEventListener('focus', onWindowFocus)
+    if (oauthChannel !== null) {
+      oauthChannel.close()
+      oauthChannel = null
+    }
   }
 
   async function refreshIntegrations (): Promise<void> {
@@ -186,6 +274,7 @@
   interface IntegrationInfo {
     integrationType?: IntegrationType
     integration?: Integration
+    isAdditional?: boolean
   }
 
   function getFilteredIntegrationTypes (
@@ -194,7 +283,18 @@
     integrations: Integration[]
   ): IntegrationInfo[] {
     if (mode === 'available') {
-      return integrationTypes.map((integrationType) => ({ integrationType }))
+      return integrationTypes.flatMap((integrationType) => {
+        const existing = getIntegrations(integrationType, integrations)
+        if (existing.length > 0 && !integrationType.allowMultiple) {
+          return []
+        }
+        return [
+          {
+            integrationType,
+            isAdditional: existing.length > 0
+          }
+        ]
+      })
     }
 
     if (mode === 'connected') {
@@ -225,8 +325,11 @@
         integrationType,
         integration
       }))
-      if (integrationInfo.length === 0 || integrationType.allowMultiple) {
-        return [...integrationInfo, { integrationType }]
+      if (integrationInfo.length === 0) {
+        return [{ integrationType }]
+      }
+      if (integrationType.allowMultiple) {
+        return [...integrationInfo, { integrationType, isAdditional: true }]
       }
       return integrationInfo
     })
@@ -237,9 +340,9 @@
   $: filteredIntegrationTypes = getFilteredIntegrationTypes(mode, integrationTypes, integrations)
 
   function getIntegrationKey (integrationInfo: IntegrationInfo): string {
-    const { integration, integrationType } = integrationInfo
+    const { integration, integrationType, isAdditional } = integrationInfo
     if (integration === undefined && integrationType !== undefined) {
-      return integrationType._id
+      return isAdditional === true ? `${integrationType._id}-additional` : integrationType._id
     } else if (integration !== undefined) {
       return `${integration.kind}-${integration.socialId}-${integration.workspaceUuid}`
     }
@@ -273,6 +376,7 @@
           <IntegrationCard
             integration={integrationInfo.integration}
             integrationType={integrationInfo.integrationType}
+            isAdditional={integrationInfo.isAdditional === true}
           />
         {/if}
       {/each}
