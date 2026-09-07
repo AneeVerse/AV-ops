@@ -73,9 +73,66 @@ set_account_image() {
   fi
 }
 
+ensure_disable_signup() {
+  local service="$1"
+  if grep -q '^DISABLE_SIGNUP=' "$CONF"; then
+    sed -i 's|^DISABLE_SIGNUP=.*|DISABLE_SIGNUP=true|' "$CONF"
+  else
+    printf '\n# Admin-provisioned logins only — no public signup\nDISABLE_SIGNUP=true\n' >> "$CONF"
+  fi
+  python3 - "$OVERRIDE" "$service" <<'PY'
+from pathlib import Path
+import sys
+path, service = Path(sys.argv[1]), sys.argv[2]
+text = path.read_text()
+header = f"  {service}:\n"
+if header not in text:
+    sys.exit(0)
+lines = text.splitlines(True)
+out = []
+i = 0
+while i < len(lines):
+    out.append(lines[i])
+    if lines[i] == header:
+        j = i + 1
+        block = []
+        while j < len(lines):
+            line = lines[j]
+            if line.startswith("  ") and not line.startswith("    ") and line.strip() != "":
+                break
+            block.append(line)
+            j += 1
+        joined = "".join(block)
+        if "DISABLE_SIGNUP" not in joined:
+            merged = False
+            new_block = []
+            k = 0
+            while k < len(block):
+                line = block[k]
+                new_block.append(line)
+                if (not merged) and line.startswith("    environment:"):
+                    nxt = block[k + 1] if k + 1 < len(block) else ""
+                    if nxt.lstrip().startswith("- "):
+                        new_block.append("      - DISABLE_SIGNUP=true\n")
+                    else:
+                        new_block.append('      DISABLE_SIGNUP: "true"\n')
+                    merged = True
+                k += 1
+            if not merged:
+                new_block = ['    environment:\n      DISABLE_SIGNUP: "true"\n'] + block
+            block = new_block
+        out.extend(block)
+        i = j
+        continue
+    i += 1
+path.write_text("".join(out))
+PY
+}
+
 apply_image() {
   local image="$1"
   ensure_image_pin
+  ensure_disable_signup account
   set_account_image "$image"
   say "docker compose up -d --force-recreate account ($image)"
   # Compose only substitutes ${ACCOUNT_IMAGE} from the process env — sourcing
@@ -128,6 +185,15 @@ verify_live() {
   docker exec "$ACCOUNT_CONTAINER" grep -qc 'createApiToken' /usr/src/app/bundle.js ||
     die "deployed bundle has no createApiToken — wrong bundle shipped"
   echo "createApiToken present in the deployed bundle"
+  docker exec "$ACCOUNT_CONTAINER" grep -qc 'provisionWorkspaceUser' /usr/src/app/bundle.js ||
+    die "deployed bundle has no provisionWorkspaceUser — wrong bundle shipped"
+  echo "provisionWorkspaceUser present in the deployed bundle"
+  docker exec "$ACCOUNT_CONTAINER" grep -qc 'setWorkspaceUserPassword' /usr/src/app/bundle.js ||
+    die "deployed bundle has no setWorkspaceUserPassword — wrong bundle shipped"
+  echo "setWorkspaceUserPassword present in the deployed bundle"
+  docker exec "$ACCOUNT_CONTAINER" grep -qc 'sendWorkspaceUserPasswordReset' /usr/src/app/bundle.js ||
+    die "deployed bundle has no sendWorkspaceUserPasswordReset — wrong bundle shipped"
+  echo "sendWorkspaceUserPasswordReset present in the deployed bundle"
 }
 
 save_state() {
@@ -176,6 +242,11 @@ fi
 [ -n "${HULY_TAG:-}" ] || die "HULY_TAG is required"
 [ -s "$BUNDLE" ] || die "missing uploaded bundle at $BUNDLE"
 grep -q 'createApiToken' "$BUNDLE" || die "uploaded bundle has no createApiToken — refusing to ship it"
+grep -q 'provisionWorkspaceUser' "$BUNDLE" || die "uploaded bundle has no provisionWorkspaceUser — refusing to ship it"
+grep -q 'setWorkspaceUserPassword' "$BUNDLE" ||
+  die "uploaded bundle has no setWorkspaceUserPassword — refusing to ship it"
+grep -q 'sendWorkspaceUserPasswordReset' "$BUNDLE" ||
+  die "uploaded bundle has no sendWorkspaceUserPasswordReset — refusing to ship it"
 
 IMAGE="huly-account-custom:$HULY_TAG"
 

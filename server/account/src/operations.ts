@@ -92,6 +92,7 @@ import {
   getEndpointInfo,
   getFrontUrl,
   getInviteEmail,
+  getWelcomeEmail,
   getMailUrl,
   getPersonName,
   getRegions,
@@ -145,6 +146,29 @@ const NIL_UUID = '00000000-0000-0000-0000-000000000000' as AccountUuid
 
 const workspaceLimitPerUser =
   process.env.WORKSPACE_LIMIT_PER_USER != null ? parseInt(process.env.WORKSPACE_LIMIT_PER_USER) : 10
+const configuredPasswordResetTokenTtl = Number.parseInt(process.env.PASSWORD_RESET_TOKEN_TTL_SECONDS ?? '3600')
+const passwordResetTokenTtlSeconds = Number.isFinite(configuredPasswordResetTokenTtl)
+  ? Math.max(300, configuredPasswordResetTokenTtl)
+  : 3600
+
+function verifyCanManageWorkspacePassword (
+  caller: AccountUuid,
+  callerRole: AccountRole | null,
+  target: AccountUuid,
+  targetRole: AccountRole,
+  extra?: Record<string, string>
+): void {
+  if (extra?.admin === 'true') return
+
+  if (
+    caller === target ||
+    callerRole == null ||
+    getRolePower(callerRole) < getRolePower(AccountRole.Maintainer) ||
+    getRolePower(callerRole) <= getRolePower(targetRole)
+  ) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+  }
+}
 
 /* =================================== */
 /* ============OPERATIONS============= */
@@ -1588,27 +1612,33 @@ export async function requestPasswordReset (
   const emailSocialId = await getEmailSocialId(db, normalizedEmail)
 
   if (emailSocialId == null) {
-    ctx.error('Email social id not found', { email, normalizedEmail })
-    throw new PlatformError(
-      new Status(Severity.ERROR, platform.status.SocialIdNotFound, { value: email, type: SocialIdType.EMAIL })
-    )
+    // Keep this endpoint non-enumerable: the UI always reports that a link may
+    // have been sent, whether or not the address has an account.
+    ctx.info('Password reset requested for unknown email', { normalizedEmail })
+    return
   }
 
   const account = await getAccount(db, emailSocialId.personUuid as AccountUuid)
 
   if (account == null) {
-    ctx.info('Account not found', { email, normalizedEmail })
-    throw new PlatformError(
-      new Status(Severity.ERROR, platform.status.AccountNotFound, { account: emailSocialId.personUuid })
-    )
+    ctx.info('Password reset requested for email without account', { normalizedEmail })
+    return
   }
 
   const { mailURL, mailAuth } = getMailUrl()
   const front = getFrontUrl(branding)
 
-  const token = generateToken(account.uuid, undefined, {
-    restoreEmail: normalizedEmail
-  })
+  const token = generateToken(
+    account.uuid,
+    undefined,
+    {
+      restoreEmail: normalizedEmail
+    },
+    undefined,
+    {
+      exp: Math.floor(Date.now() / 1000) + passwordResetTokenTtlSeconds
+    }
+  )
 
   const link = concatLink(front, `/login/recovery?id=${token}`)
   const lang = branding?.language
@@ -1679,7 +1709,15 @@ export async function requestPasswordSetup (
 
   const { mailURL, mailAuth } = getMailUrl()
   const front = getFrontUrl(branding)
-  const resetToken = generateToken(accountUuid, undefined, { restoreEmail: emailSocialId.value })
+  const resetToken = generateToken(
+    accountUuid,
+    undefined,
+    { restoreEmail: emailSocialId.value },
+    undefined,
+    {
+      exp: Math.floor(Date.now() / 1000) + passwordResetTokenTtlSeconds
+    }
+  )
   const link = concatLink(front, `/login/recovery?id=${resetToken}`)
   const lang = branding?.language
   const text = await translate(accountPlugin.string.PasswordSetupText, { link }, lang)
@@ -1737,7 +1775,17 @@ export async function restorePassword (
     )
   }
 
+  if (emailSocialId.personUuid !== account) {
+    ctx.error('Password reset token no longer matches email owner', {
+      email,
+      account,
+      emailAccount: emailSocialId.personUuid
+    })
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+  }
+
   await setPassword(ctx, db, branding, account, password)
+  await resetFailedLoginAttempts(db, account)
 
   if (emailSocialId.verifiedOn == null) {
     await db.socialId.update({ key: emailSocialId.key }, { verifiedOn: Date.now() })
@@ -2640,6 +2688,250 @@ export async function ensurePerson (
   const newSocialId = await db.socialId.insertOne({ type: socialType, value: normalizedValue, personUuid })
 
   return { uuid: personUuid, socialId: newSocialId }
+}
+
+/**
+ * Admin-create a workspace member with a password so they can log in directly
+ * (no invite / signup / join page). Requires a workspace Maintainer or Owner.
+ */
+export async function provisionWorkspaceUser (
+  ctx: MeasureContext,
+  db: AccountDB,
+  branding: Branding | null,
+  token: string,
+  params: {
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+    role: AccountRole
+  }
+): Promise<{ uuid: PersonUuid, socialId: PersonId }> {
+  const { email, password, firstName, lastName, role } = params
+
+  const trimmedFirst = firstName == null ? '' : firstName.trim()
+  const trimmedLast = lastName == null ? '' : lastName.trim()
+  const trimmedPassword = password == null ? '' : password.trim()
+
+  if (
+    email == null ||
+    email === '' ||
+    trimmedFirst.length === 0 ||
+    trimmedPassword.length === 0 ||
+    role == null ||
+    !assignableRoles.includes(role)
+  ) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
+  }
+
+  const { account, workspace: workspaceUuid, extra } = decodeTokenVerbose(ctx, token)
+
+  const currentAccount = await db.account.findOne({ uuid: account })
+  if (currentAccount == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.AccountNotFound, { account }))
+  }
+
+  const workspace = await db.workspace.findOne({ uuid: workspaceUuid })
+  if (workspace == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.WorkspaceNotFound, { workspaceUuid }))
+  }
+
+  const callerRole = await db.getWorkspaceRole(account, workspace.uuid)
+  verifyAllowedRole(callerRole, AccountRole.Maintainer, extra)
+  verifyAllowedRole(callerRole, role, extra)
+
+  const normalizedEmail = cleanEmail(email)
+  if (!isEmail(normalizedEmail)) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
+  }
+
+  const emailSocialId = await getEmailSocialId(db, normalizedEmail)
+  let accountUuid: AccountUuid
+  let socialId: PersonId
+  let created = false
+
+  if (emailSocialId != null) {
+    const existingAccount = await db.account.findOne({ uuid: emailSocialId.personUuid as AccountUuid })
+    if (existingAccount != null) {
+      accountUuid = existingAccount.uuid
+      socialId = emailSocialId._id
+      if (emailSocialId.verifiedOn == null) {
+        await db.socialId.update({ key: emailSocialId.key }, { verifiedOn: Date.now() })
+      }
+    } else {
+      const signedUp = await signUpByEmail(
+        ctx,
+        db,
+        branding,
+        normalizedEmail,
+        trimmedPassword,
+        trimmedFirst,
+        trimmedLast,
+        true
+      )
+      accountUuid = signedUp.account
+      socialId = signedUp.socialId
+      created = true
+    }
+  } else {
+    const signedUp = await signUpByEmail(
+      ctx,
+      db,
+      branding,
+      normalizedEmail,
+      trimmedPassword,
+      trimmedFirst,
+      trimmedLast,
+      true
+    )
+    accountUuid = signedUp.account
+    socialId = signedUp.socialId
+    created = true
+  }
+
+  const currentRole = await db.getWorkspaceRole(accountUuid, workspace.uuid)
+  if (!created) {
+    const managedRole =
+      currentRole == null || getRolePower(role) > getRolePower(currentRole)
+        ? role
+        : currentRole
+    verifyCanManageWorkspacePassword(account, callerRole, accountUuid, managedRole, extra)
+  }
+
+  if (currentRole == null) {
+    await db.assignWorkspace(accountUuid, workspace.uuid, role)
+  } else if (getRolePower(currentRole) < getRolePower(role)) {
+    await db.updateWorkspaceRole(accountUuid, workspace.uuid, role)
+  }
+
+  if (!created) {
+    await setPassword(ctx, db, branding, accountUuid, trimmedPassword)
+    await resetFailedLoginAttempts(db, accountUuid)
+  }
+
+  const front = getFrontUrl(branding)
+  const loginLink = concatLink(front, '/login/login')
+  const resetLink = concatLink(front, '/login/password')
+
+  try {
+    const welcomeEmail = await getWelcomeEmail(
+      branding,
+      normalizedEmail,
+      loginLink,
+      resetLink,
+      workspace
+    )
+    await sendEmail(welcomeEmail, ctx)
+  } catch (err: any) {
+    ctx.error('Failed to send welcome email', { email: normalizedEmail, err })
+  }
+
+  ctx.info('Workspace user provisioned', {
+    email: normalizedEmail,
+    accountUuid,
+    workspaceUuid: workspace.uuid,
+    created
+  })
+
+  return { uuid: accountUuid, socialId }
+}
+
+/**
+ * Maintainer+ sets a workspace member's password directly (admin reset).
+ */
+export async function setWorkspaceUserPassword (
+  ctx: MeasureContext,
+  db: AccountDB,
+  branding: Branding | null,
+  token: string,
+  params: {
+    email: string
+    newPassword: string
+  }
+): Promise<void> {
+  const { email, newPassword } = params
+  const trimmedPassword = newPassword == null ? '' : newPassword.trim()
+
+  if (email == null || email === '' || trimmedPassword.length === 0) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
+  }
+
+  const { account, workspace: workspaceUuid, extra } = decodeTokenVerbose(ctx, token)
+
+  const workspace = await db.workspace.findOne({ uuid: workspaceUuid })
+  if (workspace == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.WorkspaceNotFound, { workspaceUuid }))
+  }
+
+  const callerRole = await db.getWorkspaceRole(account, workspace.uuid)
+  verifyAllowedRole(callerRole, AccountRole.Maintainer, extra)
+
+  const normalizedEmail = cleanEmail(email)
+  if (!isEmail(normalizedEmail)) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
+  }
+
+  const emailSocialId = await getEmailSocialId(db, normalizedEmail)
+  if (emailSocialId == null) {
+    throw new PlatformError(
+      new Status(Severity.ERROR, platform.status.SocialIdNotFound, { value: email, type: SocialIdType.EMAIL })
+    )
+  }
+
+  const targetUuid = emailSocialId.personUuid as AccountUuid
+  const targetRole = await db.getWorkspaceRole(targetUuid, workspace.uuid)
+  if (targetRole == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+  }
+
+  verifyCanManageWorkspacePassword(account, callerRole, targetUuid, targetRole, extra)
+  await setPassword(ctx, db, branding, targetUuid, trimmedPassword)
+  await resetFailedLoginAttempts(db, targetUuid)
+  ctx.info('Workspace user password set by admin', { account, targetUuid, workspace: workspace.uuid })
+}
+
+/**
+ * Maintainer+ sends the standard forgot-password email to a workspace member.
+ */
+export async function sendWorkspaceUserPasswordReset (
+  ctx: MeasureContext,
+  db: AccountDB,
+  branding: Branding | null,
+  token: string,
+  params: { email: string }
+): Promise<void> {
+  const { email } = params
+
+  if (email == null || email === '') {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
+  }
+
+  const { account, workspace: workspaceUuid } = decodeTokenVerbose(ctx, token)
+
+  const workspace = await db.workspace.findOne({ uuid: workspaceUuid })
+  if (workspace == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.WorkspaceNotFound, { workspaceUuid }))
+  }
+
+  const callerRole = await db.getWorkspaceRole(account, workspace.uuid)
+  if (callerRole == null || getRolePower(callerRole) < getRolePower(AccountRole.Maintainer)) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+  }
+
+  const normalizedEmail = cleanEmail(email)
+  const emailSocialId = await getEmailSocialId(db, normalizedEmail)
+  if (emailSocialId == null) {
+    throw new PlatformError(
+      new Status(Severity.ERROR, platform.status.SocialIdNotFound, { value: email, type: SocialIdType.EMAIL })
+    )
+  }
+
+  const targetRole = await db.getWorkspaceRole(emailSocialId.personUuid as AccountUuid, workspace.uuid)
+  if (targetRole == null) {
+    throw new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+  }
+
+  await requestPasswordReset(ctx, db, branding, token, { email: normalizedEmail })
 }
 
 async function getMailboxOptions (
@@ -3710,6 +4002,9 @@ export type AccountMethods =
   | 'createApiToken'
   | 'listApiTokens'
   | 'revokeApiToken'
+  | 'provisionWorkspaceUser'
+  | 'setWorkspaceUserPassword'
+  | 'sendWorkspaceUserPasswordReset'
 
 /**
  * @public
@@ -3781,6 +4076,9 @@ export function getMethods (hasSignUp: boolean = true): Partial<Record<AccountMe
     createApiToken: wrap(createApiToken),
     listApiTokens: wrap(listApiTokens),
     revokeApiToken: wrap(revokeApiToken),
+    provisionWorkspaceUser: wrap(provisionWorkspaceUser),
+    setWorkspaceUserPassword: wrap(setWorkspaceUserPassword),
+    sendWorkspaceUserPasswordReset: wrap(sendWorkspaceUserPasswordReset),
 
     /* READ OPERATIONS */
     getRegionInfo: wrap(getRegionInfo),

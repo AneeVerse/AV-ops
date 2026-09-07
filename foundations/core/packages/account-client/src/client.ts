@@ -203,6 +203,15 @@ export interface AccountClient {
     firstName: string,
     lastName: string
   ) => Promise<{ uuid: PersonUuid, socialId: PersonId }>
+  provisionWorkspaceUser: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    role: AccountRole
+  ) => Promise<{ uuid: PersonUuid, socialId: PersonId }>
+  setWorkspaceUserPassword: (email: string, newPassword: string) => Promise<void>
+  sendWorkspaceUserPasswordReset: (email: string) => Promise<void>
   addSocialIdToPerson: (
     person: PersonUuid,
     type: SocialIdType,
@@ -972,6 +981,39 @@ class AccountClientImpl implements AccountClient {
     const request = {
       method: 'ensurePerson' as const,
       params: { socialType, socialValue, firstName, lastName }
+    }
+
+    return await this.rpc(request)
+  }
+
+  async provisionWorkspaceUser (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    role: AccountRole
+  ): Promise<{ uuid: PersonUuid, socialId: PersonId }> {
+    const request = {
+      method: 'provisionWorkspaceUser' as const,
+      params: { email, password, firstName, lastName, role }
+    }
+
+    return await this.rpc(request)
+  }
+
+  async setWorkspaceUserPassword (email: string, newPassword: string): Promise<void> {
+    const request = {
+      method: 'setWorkspaceUserPassword' as const,
+      params: { email, newPassword }
+    }
+
+    return await this.rpc(request)
+  }
+
+  async sendWorkspaceUserPasswordReset (email: string): Promise<void> {
+    const request = {
+      method: 'sendWorkspaceUserPasswordReset' as const,
+      params: { email }
     }
 
     return await this.rpc(request)

@@ -12,5 +12,6 @@
   "PREVIEW_URL": "",
   "LOVE_ENDPOINT": "/_love",
   "STATS_URL": "/_stats",
-  "DISABLED_FEATURES": "auto-translate,mailboxes"
+  "DISABLED_FEATURES": "auto-translate,mailboxes",
+  "DISABLE_SIGNUP": "true"
 }

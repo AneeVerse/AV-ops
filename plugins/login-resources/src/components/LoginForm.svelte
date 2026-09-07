@@ -92,10 +92,14 @@
   <LoginPasswordForm {navigateUrl} {signUpDisabled} {email} {caption} {subtitle} {onLogin} on:change={changeMethod} />
 {/if}
 <div class="actions" style:margin-inline-start={loginFormPaddingInline($deviceInfo.docWidth, $deviceInfo.docHeight)}>
-  <BottomActionComponent action={method === LoginMethods.Otp ? loginWithPasswordAction : loginWithCodeAction} />
-  <div class="login-as-guest">
-    <BottomActionComponent action={loginAsGuest} />
-  </div>
+  {#if useOTP}
+    <BottomActionComponent action={method === LoginMethods.Otp ? loginWithPasswordAction : loginWithCodeAction} />
+  {/if}
+  {#if !signUpDisabled}
+    <div class="login-as-guest">
+      <BottomActionComponent action={loginAsGuest} />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">

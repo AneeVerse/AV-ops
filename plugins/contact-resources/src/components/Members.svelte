@@ -14,12 +14,13 @@
 -->
 <script lang="ts">
   import { Member } from '@hcengineering/contact'
-  import type { Class, Doc, Ref, Space } from '@hcengineering/core'
+  import { AccountRole, getCurrentAccount, hasAccountRole, type Class, type Doc, type Ref, type Space } from '@hcengineering/core'
   import { createQuery, getClient } from '@hcengineering/presentation'
   import { Button, IconAdd, Label, Section, showPopup, Scroller } from '@hcengineering/ui'
   import { Viewlet, ViewletPreference } from '@hcengineering/view'
   import { Table, ViewletSelector, ViewletSettingButton } from '@hcengineering/view-resources'
   import contact from '../plugin'
+  import CreatePersonWithLogin from './CreatePersonWithLogin.svelte'
   import UsersPopup from './UsersPopup.svelte'
   import IconMembersOutline from './icons/MembersOutline.svelte'
 
@@ -38,6 +39,7 @@
   })
 
   const client = getClient()
+  const canProvisionLogin = hasAccountRole(getCurrentAccount(), AccountRole.Maintainer)
   let loading = true
 
   const createApp = async (ev: MouseEvent): Promise<void> => {
@@ -64,6 +66,21 @@
     )
   }
 
+  const createPersonWithLogin = async (ev: MouseEvent): Promise<void> => {
+    if (readonly) return
+    showPopup(
+      CreatePersonWithLogin,
+      {
+        onCreate: async (personRef) => {
+          await client.addCollection(contact.class.Member, space, objectId, _class, 'members', {
+            contact: personRef
+          })
+        }
+      },
+      ev.target as HTMLElement
+    )
+  }
+
   let viewlet: Viewlet | undefined
   let preference: ViewletPreference | undefined
 </script>
@@ -81,6 +98,9 @@
       <ViewletSettingButton kind={'tertiary'} bind:viewlet />
       {#if !readonly}
         <Button id={contact.string.AddMember} icon={IconAdd} kind={'ghost'} on:click={createApp} />
+        {#if canProvisionLogin}
+          <Button label={contact.string.AddPersonWithLogin} kind={'ghost'} on:click={createPersonWithLogin} />
+        {/if}
       {/if}
     </div>
   </svelte:fragment>

@@ -59,7 +59,10 @@
 
   const signUpDisabled = getMetadata(login.metadata.DisableSignUp) ?? false
   const localLoginHidden = getMetadata(login.metadata.HideLocalLogin) ?? false
-  const useOTP = getMetadata(presentation.metadata.MailUrl) != null && getMetadata(presentation.metadata.MailUrl) !== ''
+  const useOTP =
+    !signUpDisabled &&
+    getMetadata(presentation.metadata.MailUrl) != null &&
+    getMetadata(presentation.metadata.MailUrl) !== ''
   let navigateUrl: string | undefined
   let tfaToken: string | undefined = undefined
 

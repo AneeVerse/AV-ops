@@ -51,8 +51,9 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 8. **Localhost login** — persist token + remember last email  
 9. **Issue / nav polish** — scoping, no wrong auto-select, project labels with company, archive imported projects  
 10. **API tokens** — personal tokens with an optional **No expiry** option, in the UI and the account service  
-11. **Novino chat** — bottom-right panel in the workbench talking to the OpenClaw agent `novino`  
+11. **Novino chat** — native right-sidebar workbench chat talking to OpenClaw agent `novino` via `/_novino`
 12. **Tools directory** — left-rail launcher for hosted Aneeverse apps (ERP, n8n, OpenClaw, Studio, …)  
+13. **Admin-provisioned employees** — Contacts → Employees creates a login (email + password), no public signup; admin can delete the row
 
 **Important platform rule:** custom **classes / apps / viewlets** are stored in the workspace **`model_tx`** DB. Official Docker images do not ship our model. Every environment (local Docker **and** production) needs the model patch scripts, not only a new front bundle.
 
@@ -92,6 +93,10 @@ Dates are commit dates in this repo (Aug 2026).
 | 2026-08-26 | (this change) | Planner Join with Google Meet; custom calendar image; events sync hangoutLink; primary calendar prefers Google | Stock calendar dropped Meet links and new events stayed on HULY; Create meeting required a Huly room |
 | 2026-08-26 | (this change) | Planner ↔ Google two-way visibility: owner on participants, remap HULY events to Google, Join after hangoutLink | Google events were stored but hidden (ACL / wrong person); Planner writes never left HULY so Join stayed a placeholder |
 | 2026-08-27 | (this change) | Left-rail **Tools** directory of hosted Aneeverse apps | Same launcher as ContentBeta `/tba`, inside Huly with Huly UI |
+| 2026-08-27 | (this change) | Move **Novino** into the right widget sidebar (exclusive with Calendar) | Same drawer chrome as Calendar; no floating FAB overlay |
+| 2026-08-27 | (this change) | Open Novino chat without a second username/password | Anyone already in Aneeverse can use the widget; chat-control no longer gates the UI |
+| 2026-08-27 | (this change) | Native Novino chat UI (no chat.aneeverse.com iframe) + `/_novino` gateway proxy | Same Huly theme as the rest of the workbench; gateway token stays on the VPS |
+| 2026-09-01 | (this change) | Admin-create employees: password login, welcome email, row delete, no public signup | Invite/join was the only add path; Kick only deactivated; production login preferred OTP |
 
 ---
 
@@ -115,11 +120,11 @@ Dates are commit dates in this repo (Aug 2026).
 
 ### 4.13 Novino chat (OpenClaw)
 
-**Why:** Talk to the Novino OpenClaw agent from inside Aneeverse (bottom-right), same bot as Discord `#di_novino` and https://chat.aneeverse.com. Tasks it runs against Huly must use a **personal API token**, not raw Cockroach SQL.
+**Why:** Talk to the Novino OpenClaw agent from inside Aneeverse (same right widget sidebar as Calendar), same bot as Discord `#di_novino` and https://chat.aneeverse.com. Tasks it runs against Huly must use a **personal API token**, not raw Cockroach SQL.
 
-**What changed:** Floating `NovinoChat` panel in `plugins/workbench-resources` iframes `https://chat.aneeverse.com/?agent=novino&embed=1` so the widget talks to Novino (not AV_BOT). Gateway stays on the VPS (`openclaw-gateway.service`, agent `novino`). Lead list/create/update/delete goes through the Huly API CLI in Novino’s workspace, not memory search.
+**What changed:** `NovinoChat` is a Fixed workbench widget injected in `plugins/workbench-resources` (not `model_tx`). The aside is a native Huly chat panel (Header, Scroller, composer) talking same-origin to `/_novino`. Host nginx forwards that path to `novino-gateway-proxy` on the VPS, which speaks WebSocket to OpenClaw (`ws://127.0.0.1:18789`). Agent is hardcoded `novino`; `chat.send` uses `deliver: false` so workbench chat does not fan out to Discord. The gateway token never reaches the browser. Opening Novino replaces Calendar (and vice versa). Tools directory can still open https://chat.aneeverse.com in a tab; that site is not the workbench widget. Lead list/create/update/delete goes through the Huly API CLI in Novino’s workspace, not memory search.
 
-**Deploy:** Front only.
+**Deploy:** Frontend bundle **and** VPS `scripts/huly-enable-novino-proxy.sh` (systemd proxy + host nginx `/_novino`). No `model_tx`. `prod-local.cmd` webpack proxies `/_novino` to https://app.aneeverse.com (inner docker nginx cannot reach the host proxy).
 
 ---
 
@@ -130,6 +135,50 @@ Dates are commit dates in this repo (Aug 2026).
 **What changed:** New `tools` plugin (types + catalog, assets, resources, model). Left-rail **Tools** icon (`alias: tools`, `order: 250`) opens a search + category card grid. Cards open the catalog URL in a new tab. Catalog is hardcoded in `plugins/tools/src/catalog.ts` (same sites as ContentBeta, plus Aneeverse marked “This app”).
 
 **Deploy:** Frontend bundle **and** `model` (the Application doc lives in `model_tx`).
+
+---
+
+### 4.15 Admin-provisioned employees (login, delete, no signup)
+
+**Why:** Contacts → Employees only sent an invite. The person had to open a join/signup page and pick their own password. Delete was blocked (`IgnoreActions` on Employee); only Kick deactivated them. Production login preferred OTP when mail was configured, so email + password was not the default.
+
+**What the admin and employee see:**
+
+- **Add Employee:** first name, last name, email, optional phone, required password, workspace role (default User), avatar. Submit creates the account and the contact row — no join page.
+- **Welcome email:** login URL, email, the password admin set (new accounts only), and a forgot-password link.
+- **Login:** email + password. Forgot password is the existing `/login/password` → email link → `/login/recovery` flow.
+- **Delete:** confirm, then leave workspace + remove the Person so they disappear from the list (not merely Inactive). Kick stays as the softer deactivate. Generic `view.action.Delete` stays ignored so a raw doc delete cannot skip `leaveWorkspace`. Requires **Maintainer+** workspace role (same as removing another member from the workspace).
+
+**What changed:**
+
+- `server/account` — `provisionWorkspaceUser` RPC: confirmed `signUpByEmail`, `assignWorkspace`, welcome email. Existing accounts are assigned without overwriting their password. Same permission check as `sendInvite`.
+- `foundations/core/packages/account-client` — client method for that RPC.
+- `CreateEmployee.svelte` — password + phone fields; calls `provisionWorkspaceUser` instead of `ensurePerson` + `sendInvite`.
+- `deleteEmployee` + `EmployeeDeletePresenter` — visible row trash; model action `contact.action.DeleteEmployee`.
+- Login: `DISABLE_SIGNUP=true` on aneeverse front + account (compose env via deploy scripts). Password form is the default; Sign up and Login as guest are hidden. `config-aneeverse.json` has the flag for prod-local webpack.
+
+**Deploy:** custom **account** image (`account.cmd` locally, account stage in `deploy.cmd`) **and** front **and** `model_tx` (the Delete action and table column are model docs).
+
+---
+
+### 4.16 Contacts login UX (all tabs, visible password, reset from detail)
+
+**Why:** Employee create had a masked password with no show/hide toggle; Guest/Person still used invite-only or CRM-only flows; admins could not set or reset another user's password after create.
+
+**What changed:**
+
+- Shared `PasswordEditBox` + `LoginCredentialsFields`; `provisionContactLogin` helper.
+- **Employee / Guest / Person create:** email + password provisioning (`provisionWorkspaceUser`). Person tab has optional **Platform login** toggle (off = CRM-only).
+- **Company members:** **Add person with login** on the Members section (`CreatePersonWithLogin` popup).
+- **Person detail (`EditPerson`):** `ContactLoginPanel` for Maintainer+ — set password or send reset email when `personUuid` is set.
+- **Account RPCs:** `setWorkspaceUserPassword`, `sendWorkspaceUserPasswordReset` (Maintainer+, target must be workspace member).
+- Re-provisioning an existing account now applies the password entered by the admin and clears failed-login lockout state; before this fix the API silently kept the old password.
+- Admin password changes are limited to lower-role members (a Maintainer cannot replace an Owner/Maintainer password).
+- Forgot-password links expire after one hour and resetting or setting a password clears password lockout state.
+- Welcome emails include the login and recovery links but never include a plaintext password.
+- **Context menu:** **Send reset link** for provisioned active users; **Resend invite** hidden when `personUuid` is set (legacy invite-only inactive users only).
+
+**Deploy:** custom **account** image **and** front **and** `model_tx` (SendResetLink action).
 
 ---
 

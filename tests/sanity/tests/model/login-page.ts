@@ -15,6 +15,8 @@ export class LoginPage {
   linkSignUp = (): Locator => this.page.locator('a.title', { hasText: 'Sign Up' })
   invalidCredentialsMessage = (): Locator =>
     this.page.getByText('Account not found or the provided credentials are incorrect')
+  passwordLoginLockedMessage = (): Locator =>
+    this.page.getByText('Password login is locked after too many failed attempts. Use Forgot password')
 
   recoverLink = (): Locator => this.page.getByRole('link', { name: 'Recover' })
   passwordRecovery = (): Locator => this.page.getByText('Password recovery')
@@ -53,10 +55,19 @@ export class LoginPage {
   }
 
   async login (email: string, password: string): Promise<void> {
+    const loginWithPassword = this.loginWithPassword()
+    if (!(await this.inputPassword().isVisible()) && (await loginWithPassword.isVisible())) {
+      await loginWithPassword.click()
+    }
     await this.inputEmail().fill(email)
     await this.inputPassword().fill(password)
     expect(await this.buttonLogin().isEnabled()).toBe(true)
     await this.buttonLogin().click()
+  }
+
+  async requestPasswordReset (email: string): Promise<void> {
+    await this.inputEmail().fill(email)
+    await this.page.getByRole('button', { name: 'Recover', exact: true }).click()
   }
 
   async openProfileMenu (): Promise<void> {
@@ -75,9 +86,19 @@ export class LoginPage {
     await expect(this.buttonLogin()).toBeDisabled()
   }
 
-  async checkIfPasswordRecoveryIsVisible (): Promise<void> {
+  async checkIfPasswordRecoveryIsVisible (signUpVisible: boolean = true): Promise<void> {
     await expect(this.passwordRecovery()).toBeVisible()
     await expect(this.recoveryLoginText()).toBeVisible()
-    await expect(this.recoverySignUpText()).toBeVisible()
+    if (signUpVisible) {
+      await expect(this.recoverySignUpText()).toBeVisible()
+    } else {
+      await expect(this.recoverySignUpText()).toHaveCount(0)
+    }
+  }
+
+  async checkIfSignUpIsHidden (): Promise<void> {
+    await expect(this.linkSignUp()).toHaveCount(0)
+    await expect(this.page.getByText('Login as guest')).toHaveCount(0)
+    await expect(this.page.getByText('Continue as a guest')).toHaveCount(0)
   }
 }

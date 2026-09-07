@@ -28,12 +28,23 @@ export class ContractPage {
   readonly firstNameInput = (): Locator => this.page.locator('[placeholder="First name"]')
   readonly lastNameInput = (): Locator => this.page.locator('[placeholder="Last name"]')
   readonly emailInput = (): Locator => this.page.locator('[placeholder="Email"]')
+  readonly phoneInput = (): Locator => this.page.locator('[placeholder="+1 555 333 7777"]')
+  readonly passwordInput = (): Locator => this.page.locator('.antiCard .password-editbox input')
+  readonly showPasswordButton = (): Locator => this.page.locator('.antiCard .password-editbox button:has-text("Show")')
+  readonly hidePasswordButton = (): Locator => this.page.locator('.antiCard .password-editbox button:has-text("Hide")')
+  readonly loginPanelPasswordInput = (): Locator => this.page.locator('.login-panel .password-editbox input')
+  readonly setPasswordButton = (): Locator => this.page.getByRole('button', { name: 'Set password', exact: true })
   readonly createButton = (): Locator => this.page.locator('.antiCard button:has-text("Create")')
+  readonly addEmployeeButton = (): Locator => this.page.locator('.antiCard button:has-text("Add Employee")')
+  readonly addEmployeeToolbarButton = (): Locator =>
+    this.page.getByRole('button', { name: 'Add Employee' }).or(this.employeeButton('Employee')).first()
   readonly formAntiCard = (): Locator => this.page.locator('form.antiCard')
   readonly employeeEntry = (first: string, last: string): Locator =>
-    this.page.locator(`td:has-text("${last} ${first}")`)
+    this.page.locator(`td:has-text("${last} ${first}")`).or(this.page.locator(`td:has-text("${first} ${last}")`))
+  readonly confirmOkButton = (): Locator => this.page.getByRole('button', { name: 'Ok', exact: true })
 
   readonly kickEmployeeOption = (): Locator => this.page.locator('text="Kick employee"')
+  readonly deleteEmployeeOption = (): Locator => this.page.locator('text="Delete employee"')
   readonly submitButton = (): Locator => this.page.locator('form[id="view:string:DeleteObject"] button[type="submit"]')
   readonly okButton = (): Locator => this.page.locator('text=Ok')
   readonly openButton = (): Locator => this.page.locator('button:has-text("Open")')
@@ -118,6 +129,113 @@ export class ContractPage {
     await this.emailInput().fill(email)
   }
 
+  async fillPhoneInput (phone: string): Promise<void> {
+    await this.phoneInput().fill(phone)
+  }
+
+  async fillPasswordInput (password: string): Promise<void> {
+    await this.passwordInput().fill(password)
+  }
+
+  async expectPasswordFieldHidden (): Promise<void> {
+    await expect(this.passwordInput()).toHaveAttribute('type', 'password')
+  }
+
+  async expectPasswordFieldVisible (): Promise<void> {
+    await expect(this.passwordInput()).toHaveAttribute('type', 'text')
+  }
+
+  async togglePasswordVisibility (): Promise<void> {
+    await this.showPasswordButton().click()
+  }
+
+  async openEmployeeProfile (first: string, last: string): Promise<void> {
+    await this.clickOnEmployee(first, last)
+    await this.page.locator('.login-panel, .antiPanel').first().waitFor({ state: 'visible', timeout: 30000 })
+  }
+
+  async setPasswordInDetailPanel (newPassword: string): Promise<void> {
+    await this.loginPanelPasswordInput().waitFor({ state: 'visible', timeout: 30000 })
+    await this.loginPanelPasswordInput().fill(newPassword)
+    await this.setPasswordButton().click()
+    await this.confirmOkButton().click()
+    await this.page.locator('.msgbox-container').waitFor({ state: 'hidden', timeout: 60000 }).catch(() => {})
+    await expect(this.page.getByText('Password updated.')).toBeVisible({ timeout: 30000 })
+  }
+
+  async clickAddEmployeeButton (): Promise<void> {
+    await this.addEmployeeButton().click()
+  }
+
+  async openEmployeesPage (): Promise<void> {
+    const byId = this.appContact()
+    const byHref = this.page.locator('a[href*="/contact"]').first()
+    if (await byId.isVisible().catch(() => false)) {
+      await byId.click()
+    } else {
+      await byHref.click()
+    }
+    await this.employeeNavElement('Employee').waitFor({ state: 'visible', timeout: 30000 })
+    await this.clickEmployeeNavElement('Employee')
+    await this.page.waitForURL(/\/contact\/employees/, { timeout: 30000 })
+  }
+
+  async openGuestsPage (): Promise<void> {
+    const byId = this.appContact()
+    const byHref = this.page.locator('a[href*="/contact"]').first()
+    if (await byId.isVisible().catch(() => false)) {
+      await byId.click()
+    } else {
+      await byHref.click()
+    }
+    await this.employeeNavElement('Guest').waitFor({ state: 'visible', timeout: 30000 })
+    await this.clickEmployeeNavElement('Guest')
+    await this.page.waitForURL(/\/contact\/guests/, { timeout: 30000 })
+  }
+
+  async addEmployee (
+    first: string,
+    last: string,
+    email: string,
+    password: string,
+    phone?: string
+  ): Promise<void> {
+    await this.clickEmployeeButton('Employee')
+    await this.formAntiCard().waitFor({ state: 'visible' })
+    await this.fillFirstNameInput(first)
+    await this.fillLastNameInput(last)
+    await this.fillEmailInput(email)
+    if (phone != null && phone !== '') {
+      await this.fillPhoneInput(phone)
+    }
+    await this.fillPasswordInput(password)
+    await this.expectPasswordFieldHidden()
+    await this.togglePasswordVisibility()
+    await this.expectPasswordFieldVisible()
+    await this.clickAddEmployeeButton()
+    await this.waitForFormAntiCardDetached()
+  }
+
+  async addGuest (
+    first: string,
+    last: string,
+    email: string,
+    password: string,
+    phone?: string
+  ): Promise<void> {
+    await this.clickEmployeeButton('Guest')
+    await this.formAntiCard().waitFor({ state: 'visible' })
+    await this.fillFirstNameInput(first)
+    await this.fillLastNameInput(last)
+    await this.fillEmailInput(email)
+    if (phone != null && phone !== '') {
+      await this.fillPhoneInput(phone)
+    }
+    await this.fillPasswordInput(password)
+    await this.createButton().click()
+    await this.waitForFormAntiCardDetached()
+  }
+
   async fillCompanyInput (company: string): Promise<void> {
     await this.companyName().click()
     await this.companyName().fill(company)
@@ -136,7 +254,7 @@ export class ContractPage {
   }
 
   async waitForFormAntiCardDetached (): Promise<void> {
-    await this.formAntiCard().waitFor({ state: 'detached' })
+    await this.formAntiCard().waitFor({ state: 'detached', timeout: 60000 })
   }
 
   async clickCompanyTab (): Promise<void> {
@@ -173,6 +291,21 @@ export class ContractPage {
     await this.employeeEntry(first, last).click({ button: 'right' })
     await this.kickEmployeeOption().click()
     await this.okButton().click()
+  }
+
+  async deleteEmployeeFromRow (first: string, last: string): Promise<void> {
+    const row = this.page.locator('tr', { has: this.employeeEntry(first, last) })
+    const trash = row.locator('[data-id="delete-employee"]')
+    if (await trash.isVisible().catch(() => false)) {
+      await trash.click()
+    } else {
+      await this.employeeEntry(first, last).hover()
+      await this.employeeEntry(first, last).click({ button: 'right' })
+      await this.deleteEmployeeOption().click()
+    }
+    await this.confirmOkButton().click()
+    await this.page.locator('.msgbox-container').waitFor({ state: 'hidden', timeout: 60000 }).catch(() => {})
+    await expect(this.employeeEntry(first, last)).toHaveCount(0, { timeout: 30000 })
   }
 
   // Approach where we use the enum to determine the action to take on the right click

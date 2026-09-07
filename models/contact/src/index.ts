@@ -620,6 +620,12 @@ export function createModel (builder: Builder): void {
           key: '$lookup.channels',
           label: contact.string.ContactInfo,
           sortingKey: ['$lookup.channels.lastMessage', 'channels']
+        },
+        {
+          key: '',
+          presenter: contact.component.EmployeeDeletePresenter,
+          label: contact.string.DeleteEmployee,
+          displayProps: { fixed: 'right', key: 'delete' }
         }
       ],
       configOptions: {
@@ -1165,6 +1171,25 @@ export function createModel (builder: Builder): void {
   createAction(
     builder,
     {
+      action: contact.actionImpl.DeleteEmployee,
+      label: contact.string.DeleteEmployee,
+      icon: view.icon.Delete,
+      query: {},
+      category: contact.category.Contact,
+      target: contact.mixin.Employee,
+      input: 'focus',
+      context: {
+        mode: ['context', 'browser'],
+        group: 'remove'
+      },
+      secured: true
+    },
+    contact.action.DeleteEmployee
+  )
+
+  createAction(
+    builder,
+    {
       action: contact.actionImpl.ResendInvite,
       label: contact.string.ResendInvite,
       query: {},
@@ -1179,6 +1204,25 @@ export function createModel (builder: Builder): void {
       visibilityTester: contact.function.CanResendInvitation
     },
     contact.action.ResendInvite
+  )
+
+  createAction(
+    builder,
+    {
+      action: contact.actionImpl.SendResetLink,
+      label: contact.string.SendResetLink,
+      query: {},
+      category: contact.category.Contact,
+      target: contact.class.Person,
+      input: 'focus',
+      context: {
+        mode: ['context'],
+        group: 'edit'
+      },
+      secured: true,
+      visibilityTester: contact.function.CanSendResetLink
+    },
+    contact.action.SendResetLink
   )
 
   createAction(

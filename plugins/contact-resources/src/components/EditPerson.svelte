@@ -27,6 +27,7 @@
   import ChannelsDropdown from './ChannelsDropdown.svelte'
   import ChannelsEditor from './ChannelsEditor.svelte'
   import EditableAvatar from './EditableAvatar.svelte'
+  import ContactLoginPanel from './ContactLoginPanel.svelte'
 
   export let object: Person
   export let readonly: boolean = false
@@ -187,6 +188,7 @@
           />
         {/if}
       </Scroller>
+      <ContactLoginPanel {object} />
     </div>
   </div>
   {#if personRating != null && hasResource(ratingPlugin.component.RatingRing)}

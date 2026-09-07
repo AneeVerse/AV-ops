@@ -28,18 +28,15 @@
     buildSocialIdString,
     Data,
     generateId,
+    type PersonId,
+    type PersonUuid,
     Ref,
     SocialIdType
   } from '@hcengineering/core'
-  import login from '@hcengineering/login'
-  import { getResource } from '@hcengineering/platform'
-  import type { IntlString } from '@hcengineering/platform'
+  import { setPlatformStatus, type IntlString, unknownError } from '@hcengineering/platform'
   import { Card, getClient } from '@hcengineering/presentation'
-  import setting from '@hcengineering/setting'
   import {
     createFocusManager,
-    DropdownIntlItem,
-    DropdownLabelsIntl,
     EditBox,
     FocusHandler,
     IconInfo,
@@ -48,8 +45,10 @@
   import { createEventDispatcher } from 'svelte'
   import { ChannelsDropdown } from '..'
   import contact from '../plugin'
-  import { employeeBySocialKeyStore, getAccountClient } from '../utils'
+  import { employeeBySocialKeyStore } from '../utils'
+  import { provisionContactLogin } from '../provisionContactLogin'
   import EditableAvatar from './EditableAvatar.svelte'
+  import LoginCredentialsFields from './LoginCredentialsFields.svelte'
   import { Analytics } from '@hcengineering/analytics'
 
   export let canSave: boolean = true
@@ -60,6 +59,8 @@
   let firstName = ''
   let lastName = ''
   let email = ''
+  let phone = ''
+  let password = ''
   let position = ''
   let workspaceRole: AccountRole = AccountRole.User
   let formError: IntlString | undefined = undefined
@@ -67,16 +68,10 @@
 
   const id: Ref<Employee> = generateId()
 
-  const roleItems: DropdownIntlItem[] = [
-    { id: AccountRole.Guest, label: setting.string.Guest },
-    { id: AccountRole.User, label: setting.string.User },
-    { id: AccountRole.Maintainer, label: setting.string.Maintainer }
-  ]
-
   const guestWorkspaceRoles = [AccountRole.ReadOnlyGuest, AccountRole.DocGuest, AccountRole.Guest]
 
   export function canClose (): boolean {
-    return firstName === '' && lastName === '' && email === '' && position === ''
+    return firstName === '' && lastName === '' && email === '' && phone === '' && password === '' && position === ''
   }
 
   let saving: boolean = false
@@ -89,7 +84,6 @@
 
   const dispatch = createEventDispatcher()
   const client = getClient()
-  const accountClient = getAccountClient()
 
   function employeeInfoRole (role: AccountRole): 'USER' | 'GUEST' {
     return guestWorkspaceRoles.includes(role) ? 'GUEST' : 'USER'
@@ -101,6 +95,7 @@
     try {
       saving = true
       changeEmail()
+      changePhone()
       const mail = email.trim().toLowerCase()
       const socialString = buildSocialIdString({
         type: SocialIdType.EMAIL,
@@ -123,7 +118,24 @@
         return
       }
 
-      const { uuid, socialId } = await accountClient.ensurePerson(SocialIdType.EMAIL, mail, firstName, lastName)
+      let uuid: PersonUuid
+      let socialId: PersonId
+      try {
+        const provisioned = await provisionContactLogin(
+          mail,
+          password,
+          firstName,
+          lastName,
+          workspaceRole
+        )
+        uuid = provisioned.uuid
+        socialId = provisioned.socialId
+      } catch (err: any) {
+        Analytics.handleError(err)
+        void setPlatformStatus(unknownError(err))
+        formError = contact.string.InviteEmailFailed
+        return
+      }
 
       const name = combineName(firstName, lastName)
       person.name = name
@@ -145,7 +157,7 @@
       let employeeRef: Ref<Employee>
 
       if (existingEmployee !== undefined && !existingEmployee.active) {
-        // Former member: reactivate + update profile, then re-invite
+        // Former member: reactivate + update profile (workspace membership restored by provision)
         await client.update(existingPerson as Person, person)
         await client.update(existingEmployee, mixinData)
         employeeRef = existingEmployee._id
@@ -188,19 +200,6 @@
           },
           socialId as SocialIdentityRef
         )
-      }
-
-      try {
-        if (existingEmployee !== undefined && !existingEmployee.active) {
-          const resendInvite = await getResource(login.function.ResendInvite)
-          await resendInvite(mail, workspaceRole)
-        } else {
-          const sendInvite = await getResource(login.function.SendInvite)
-          await sendInvite(mail, workspaceRole)
-        }
-      } catch (inviteErr: any) {
-        Analytics.handleError(inviteErr)
-        inviteWarning = contact.string.InviteEmailFailed
       }
 
       for (const channel of channels) {
@@ -253,11 +252,26 @@
     }
     channels = channels
   }
-  function onRoleSelected (e: CustomEvent<AccountRole | string | number>): void {
-    workspaceRole = e.detail as AccountRole
+  function changePhone (): void {
+    const trimmed = phone.trim()
+    const index = channels.findIndex((p) => p.provider === contact.channelProvider.Phone)
+    if (trimmed.length > 0) {
+      if (index !== -1) {
+        channels[index].value = trimmed
+      } else {
+        channels.push({
+          provider: contact.channelProvider.Phone,
+          value: trimmed
+        })
+      }
+    } else if (index !== -1) {
+      channels.splice(index, 1)
+    }
+    channels = channels
   }
 
-  $: showError = (existsActive || formError !== undefined || inviteWarning !== undefined) && !saving
+  $: showError = (formError !== undefined || inviteWarning !== undefined) && !saving
+  $: showDuplicateActive = existsActive && !saving && formError === undefined && inviteWarning === undefined
   $: showReactivateHint = existsInactive && !saving && formError === undefined && inviteWarning === undefined
 
   $: canSubmit =
@@ -265,6 +279,7 @@
     lastName.trim().length > 0 &&
     email.trim().length > 0 &&
     email.includes('@') &&
+    password.trim().length > 0 &&
     !existsActive &&
     !saving &&
     canSave
@@ -274,7 +289,7 @@
 
 <Card
   label={contact.string.AddEmployee}
-  okLabel={contact.string.SendInviteAddEmployee}
+  okLabel={contact.string.AddEmployee}
   okAction={createEmployee}
   canSave={canSubmit}
   on:close={() => {
@@ -291,9 +306,15 @@
             <Label label={inviteWarning} />
           {:else if formError}
             <Label label={formError} />
-          {:else}
-            <Label label={contact.string.EmployeeAlreadyActive} />
           {/if}
+        </span>
+      </div>
+    {/if}
+    {#if showDuplicateActive}
+      <div class="flex-row-center error-color">
+        <IconInfo size={'small'} />
+        <span class="text-sm overflow-label ml-2">
+          <Label label={contact.string.EmployeeAlreadyActive} />
         </span>
       </div>
     {/if}
@@ -319,12 +340,14 @@
         focusIndex={2}
       />
       <div class="mt-1">
-        <EditBox
-          placeholder={contact.string.Email}
-          bind:value={email}
-          kind={'small-style'}
-          focusIndex={3}
-          on:blur={changeEmail}
+        <LoginCredentialsFields
+          bind:email
+          bind:password
+          bind:phone
+          bind:workspaceRole
+          showRole={true}
+          onEmailBlur={changeEmail}
+          onPhoneBlur={changePhone}
         />
       </div>
       <div class="mt-1">
@@ -332,21 +355,8 @@
           placeholder={contact.string.Position}
           bind:value={position}
           kind={'small-style'}
-          focusIndex={4}
-        />
-      </div>
-      <div class="mt-3 flex-row-center">
-        <span class="mr-2 whitespace-nowrap">
-          <Label label={contact.string.WorkspaceRole} />
-        </span>
-        <DropdownLabelsIntl
-          label={contact.string.WorkspaceRole}
-          kind={'regular'}
-          size={'medium'}
-          items={roleItems}
-          selected={workspaceRole}
-          on:selected={onRoleSelected}
-        />
+        focusIndex={6}
+      />
       </div>
       <slot name="extraControls" />
     </div>
@@ -367,7 +377,7 @@
       kind={'regular'}
       size={'large'}
       editable
-      restricted={[contact.channelProvider.Email]}
+      restricted={[contact.channelProvider.Email, contact.channelProvider.Phone]}
     />
   </svelte:fragment>
 </Card>

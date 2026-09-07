@@ -84,6 +84,7 @@ export default mergeIds(contactId, contact, {
     CategoryOther: '' as IntlString,
     DeleteEmployee: '' as IntlString,
     DeleteEmployeeDescr: '' as IntlString,
+    PhonePlaceholder: '' as IntlString,
     HasMessagesIn: '' as IntlString,
     HasNewMessagesIn: '' as IntlString,
     CannotMerge: '' as IntlString,
@@ -121,6 +122,7 @@ export default mergeIds(contactId, contact, {
     FilterChannelHasNewMessagesResult: '' as FilterFunction,
     PersonTooltipProvider: '' as Resource<(client: Client, doc?: Doc | null) => Promise<LabelAndProps | undefined>>,
     CanResendInvitation: '' as Resource<ViewActionAvailabilityFunction>,
+    CanSendResetLink: '' as Resource<ViewActionAvailabilityFunction>,
     CanMergePersons: '' as Resource<ViewActionAvailabilityFunction>
   },
   aggregation: {

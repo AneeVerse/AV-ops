@@ -73,6 +73,12 @@ run_rushx bundle
 # did not pick up server/account.
 grep -q 'createApiToken' "$POD/bundle/bundle.js" ||
   die "bundle does not contain createApiToken — server/account did not make it into the build"
+grep -q 'provisionWorkspaceUser' "$POD/bundle/bundle.js" ||
+  die "bundle does not contain provisionWorkspaceUser — server/account did not make it into the build"
+grep -q 'setWorkspaceUserPassword' "$POD/bundle/bundle.js" ||
+  die "bundle does not contain setWorkspaceUserPassword — server/account did not make it into the build"
+grep -q 'sendWorkspaceUserPasswordReset' "$POD/bundle/bundle.js" ||
+  die "bundle does not contain sendWorkspaceUserPasswordReset — server/account did not make it into the build"
 
 if [ "$BUNDLE_ONLY" = "1" ]; then
   say "done (bundle only)"

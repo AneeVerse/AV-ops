@@ -1,6 +1,6 @@
 //
 // Copyright © 2020, 2021 Anticrm Platform Contributors.
-// Copyright © 2022 Hardcore Engineering Inc.
+// Copyright © 2022, 2026 Hardcore Engineering Inc.
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -14,11 +14,28 @@
 // limitations under the License.
 //
 
-import contact, { type Person, type Employee } from '@hcengineering/contact'
+import contact, { type Employee, type Person } from '@hcengineering/contact'
+import { AccountRole, getCurrentAccount, hasAccountRole } from '@hcengineering/core'
 import { getClient } from '@hcengineering/presentation'
 
 export async function canResendInvitation (employee: Employee): Promise<boolean> {
+  const client = getClient()
+  const person = client.getHierarchy().as(employee, contact.class.Person)
+  if (person.personUuid != null) return false
   return !employee.active
+}
+
+export async function canSendResetLink (person: Person): Promise<boolean> {
+  if (person.personUuid == null) return false
+  const account = getCurrentAccount()
+  if (person.personUuid === account.uuid) return false
+  if (!hasAccountRole(account, AccountRole.Maintainer)) return false
+  const client = getClient()
+  if (client.getHierarchy().hasMixin(person, contact.mixin.Employee)) {
+    const employee = client.getHierarchy().as(person, contact.mixin.Employee)
+    return employee.active
+  }
+  return true
 }
 
 export async function canMergePersons (person: Person): Promise<boolean> {

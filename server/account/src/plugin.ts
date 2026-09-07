@@ -37,6 +37,9 @@ export const accountPlugin = plugin(accountId, {
     ResendInviteSubject: '' as IntlString,
     OtpText: '' as IntlString,
     OtpHTML: '' as IntlString,
-    OtpSubject: '' as IntlString
+    OtpSubject: '' as IntlString,
+    WelcomeText: '' as IntlString,
+    WelcomeHTML: '' as IntlString,
+    WelcomeSubject: '' as IntlString
   }
 })

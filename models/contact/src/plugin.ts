@@ -70,7 +70,6 @@ export default mergeIds(contactId, contact, {
     ChannelProvider: '' as IntlString,
     Value: '' as IntlString,
     Phone: '' as IntlString,
-    PhonePlaceholder: '' as IntlString,
     LinkedIn: '' as IntlString,
     LinkedInPlaceholder: '' as IntlString,
     AtPlaceHolder: '' as IntlString,
@@ -122,6 +121,7 @@ export default mergeIds(contactId, contact, {
   action: {
     KickEmployee: '' as Ref<Action>,
     ResendInvite: '' as Ref<Action>,
+    SendResetLink: '' as Ref<Action>,
     DeleteEmployee: '' as Ref<Action>,
     MergePersons: '' as Ref<Action<Doc, any>>,
     OpenChannel: '' as Ref<Action>,
@@ -130,7 +130,9 @@ export default mergeIds(contactId, contact, {
   actionImpl: {
     KickEmployee: '' as ViewAction,
     OpenChannel: '' as ViewAction,
-    ResendInvite: '' as ViewAction
+    ResendInvite: '' as ViewAction,
+    SendResetLink: '' as ViewAction,
+    DeleteEmployee: '' as ViewAction
   },
   function: {
     GetCurrentEmployeeName: '' as Resource<TemplateFieldFunc>,

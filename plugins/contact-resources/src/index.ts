@@ -25,7 +25,6 @@ import {
 import {
   AccountRole,
   SocialIdType,
-  type AccountUuid,
   type Class,
   type Client,
   type Data,
@@ -51,6 +50,7 @@ import {
   type TooltipAlignment
 } from '@hcengineering/ui'
 import { AggregationManager } from '@hcengineering/view-resources'
+import { deleteEmployee, kickEmployee } from './employeeActions'
 import PersonIdArrayEditor from './components/PersonIdArrayEditor.svelte'
 import AccountArrayEditor from './components/AccountArrayEditor.svelte'
 import AccountBox from './components/AccountBox.svelte'
@@ -78,6 +78,7 @@ import CreateEmployee from './components/CreateEmployee.svelte'
 import CreateGuest from './components/CreateGuest.svelte'
 import CreateOrganization from './components/CreateOrganization.svelte'
 import CreatePerson from './components/CreatePerson.svelte'
+import CreatePersonWithLogin from './components/CreatePersonWithLogin.svelte'
 import DeleteConfirmationPopup from './components/DeleteConfirmationPopup.svelte'
 import EditMember from './components/EditMember.svelte'
 import EditOrganization from './components/EditOrganization.svelte'
@@ -91,6 +92,7 @@ import EmployeeEditor from './components/EmployeeEditor.svelte'
 import EmployeeFilter from './components/EmployeeFilter.svelte'
 import EmployeeFilterValuePresenter from './components/EmployeeFilterValuePresenter.svelte'
 import EmployeePresenter from './components/EmployeePresenter.svelte'
+import EmployeeDeletePresenter from './components/EmployeeDeletePresenter.svelte'
 import EmployeeRefPresenter from './components/EmployeeRefPresenter.svelte'
 import MemberPresenter from './components/MemberPresenter.svelte'
 import Members from './components/Members.svelte'
@@ -130,7 +132,7 @@ import PersonPreviewProvider from './components/person/PersonPreviewProvider.sve
 import TranslationSettings from './components/TranslationSettings.svelte'
 
 import { get } from 'svelte/store'
-import { canMergePersons, canResendInvitation } from './visibilityTester'
+import { canMergePersons, canResendInvitation, canSendResetLink } from './visibilityTester'
 import contact from './plugin'
 import {
   channelIdentifierProvider,
@@ -148,6 +150,7 @@ import {
   getCurrentEmployeeEmail,
   getCurrentEmployeeName,
   getCurrentEmployeePosition,
+  getAccountClient,
   getPersonTooltip,
   grouppingPersonManager,
   hideInactive,
@@ -279,6 +282,27 @@ async function doContactQuery<T extends Contact> (
   return (await client.findAll(_class, q, { limit: 200 })).map(toObjectSearchResult)
 }
 
+async function sendResetLink (doc: Person): Promise<void> {
+  const client = getClient()
+  const emailSocialId = await client.findOne(contact.class.SocialIdentity, {
+    attachedTo: doc._id,
+    type: SocialIdType.EMAIL
+  })
+  if (emailSocialId == null) {
+    console.error('Cannot find email social id for person', doc._id)
+    return
+  }
+
+  showPopup(MessageBox, {
+    label: contact.string.SendResetLink,
+    message: contact.string.SendResetLinkDescr,
+    action: async () => {
+      const accountClient = getAccountClient()
+      await accountClient.sendWorkspaceUserPasswordReset(emailSocialId.value.trim().toLowerCase())
+    }
+  })
+}
+
 async function resendInvite (doc: Person): Promise<void> {
   const client = getClient()
   const emailSocialId = await client.findOne(contact.class.SocialIdentity, {
@@ -296,24 +320,6 @@ async function resendInvite (doc: Person): Promise<void> {
     action: async () => {
       const _resendInvite = await getResource(login.function.ResendInvite)
       await _resendInvite(emailSocialId?.value, AccountRole.User)
-    }
-  })
-}
-
-async function kickEmployee (doc: Person): Promise<void> {
-  showPopup(MessageBox, {
-    label: contact.string.KickEmployee,
-    message: contact.string.KickEmployeeDescr,
-    action: async () => {
-      const client = getClient()
-
-      const employee = client.getHierarchy().as(doc, contact.mixin.Employee)
-      await client.update(employee, { active: false })
-
-      if (doc.personUuid != null) {
-        const leaveWorkspace = await getResource(login.function.LeaveWorkspace)
-        await leaveWorkspace(doc.personUuid as AccountUuid)
-      }
     }
   })
 }
@@ -349,7 +355,9 @@ export default async (): Promise<Resources> => ({
   actionImpl: {
     KickEmployee: kickEmployee,
     OpenChannel: openChannelURL,
-    ResendInvite: resendInvite
+    ResendInvite: resendInvite,
+    SendResetLink: sendResetLink,
+    DeleteEmployee: deleteEmployee
   },
   activity: {
     NameChangedActivityMessage
@@ -366,6 +374,7 @@ export default async (): Promise<Resources> => ({
     OrganizationPresenter,
     ChannelsPresenter,
     CreatePerson,
+    CreatePersonWithLogin,
     CollaborationUserAvatar,
     CreateOrganization,
     EditPerson,
@@ -374,6 +383,7 @@ export default async (): Promise<Resources> => ({
     Contacts,
     ContactsTabs,
     EmployeePresenter,
+    EmployeeDeletePresenter,
     EmployeeRefPresenter,
     Members,
     MemberPresenter,
@@ -470,6 +480,7 @@ export default async (): Promise<Resources> => ({
     ChannelTitleProvider: channelTitleProvider,
     ChannelIdentifierProvider: channelIdentifierProvider,
     CanResendInvitation: canResendInvitation,
+    CanSendResetLink: canSendResetLink,
     CanMergePersons: canMergePersons,
     HideInactive: hideInactive
   },

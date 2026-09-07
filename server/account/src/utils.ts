@@ -1823,6 +1823,24 @@ export function sanitizeEmail (email: string): string {
   return sanitizedEmail
 }
 
+export async function getWelcomeEmail (
+  branding: Branding | null,
+  email: string,
+  link: string,
+  resetLink: string,
+  workspace: Workspace
+): Promise<EmailInfo> {
+  const ws = sanitizeEmail(workspace.name !== '' ? workspace.name : workspace.url)
+  const lang = branding?.language
+
+  return {
+    text: await translate(accountPlugin.string.WelcomeText, { link, resetLink, ws, email }, lang),
+    html: await translate(accountPlugin.string.WelcomeHTML, { link, resetLink, ws, email }, lang),
+    subject: await translate(accountPlugin.string.WelcomeSubject, { ws }, lang),
+    to: email
+  }
+}
+
 export async function getInviteEmail (
   branding: Branding | null,
   email: string,

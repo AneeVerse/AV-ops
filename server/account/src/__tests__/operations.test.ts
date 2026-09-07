@@ -25,7 +25,7 @@ import {
   systemAccountUuid
 } from '@hcengineering/core'
 import platform, { PlatformError, Status, Severity, getMetadata } from '@hcengineering/platform'
-import { decodeToken, decodeTokenVerbose } from '@hcengineering/server-token'
+import { decodeToken, decodeTokenVerbose, generateToken } from '@hcengineering/server-token'
 
 import * as utils from '../utils'
 import { type AccountDB, type SocialId } from '../types'
@@ -55,7 +55,9 @@ import {
   leaveWorkspace,
   checkJoin,
   mergeSpecifiedPersons,
-  canMergeSpecifiedPersons
+  canMergeSpecifiedPersons,
+  provisionWorkspaceUser,
+  setWorkspaceUserPassword
 } from '../operations'
 import { accountPlugin } from '../plugin'
 
@@ -114,11 +116,13 @@ describe('account operations', () => {
     getWorkspaceMembers: jest.fn(),
     unassignWorkspace: jest.fn(),
     updateWorkspaceRole: jest.fn(),
+    assignWorkspace: jest.fn(),
     person: {
       findOne: jest.fn()
     },
     socialId: {
-      findOne: jest.fn()
+      findOne: jest.fn(),
+      update: jest.fn()
     },
     generatePersonUuid: jest.fn().mockResolvedValue('generated-person-uuid' as PersonUuid)
   } as unknown as AccountDB
@@ -2657,28 +2661,28 @@ describe('account operations', () => {
           },
           body: expect.stringContaining(mockEmail)
         })
+        expect(generateToken).toHaveBeenCalledWith(
+          mockAccountId,
+          undefined,
+          { restoreEmail: mockEmail },
+          undefined,
+          { exp: expect.any(Number) }
+        )
       })
 
-      test('should fail if email not found', async () => {
+      test('should not reveal if email is not registered', async () => {
         jest.spyOn(utils, 'getEmailSocialId').mockResolvedValue(null)
 
         await expect(
           requestPasswordReset(mockCtx, mockDb, mockBranding, mockToken, {
             email: mockEmail
           })
-        ).rejects.toThrow(
-          new PlatformError(
-            new Status(Severity.ERROR, platform.status.SocialIdNotFound, {
-              value: mockEmail,
-              type: SocialIdType.EMAIL
-            })
-          )
-        )
+        ).resolves.toBeUndefined()
 
         expect(global.fetch).not.toHaveBeenCalled()
       })
 
-      test('should fail if account not found', async () => {
+      test('should not reveal if email has no account', async () => {
         const mockSocialId = {
           _id: 'social-id' as PersonId,
           personUuid: mockAccountId,
@@ -2694,13 +2698,7 @@ describe('account operations', () => {
           requestPasswordReset(mockCtx, mockDb, mockBranding, mockToken, {
             email: mockEmail
           })
-        ).rejects.toThrow(
-          new PlatformError(
-            new Status(Severity.ERROR, platform.status.AccountNotFound, {
-              account: mockAccountId
-            })
-          )
-        )
+        ).resolves.toBeUndefined()
 
         expect(global.fetch).not.toHaveBeenCalled()
       })
@@ -2748,6 +2746,10 @@ describe('account operations', () => {
         })
 
         expect(utils.setPassword).toHaveBeenCalledWith(mockCtx, mockDb, mockBranding, mockAccountId, mockNewPassword)
+        expect(mockDb.account.update).toHaveBeenCalledWith(
+          { uuid: mockAccountId },
+          { failedLoginAttempts: 0 }
+        )
         expect(mockDb.socialId.update).toHaveBeenCalledWith(
           { key: mockSocialId.key },
           { verifiedOn: expect.any(Number) }
@@ -3514,5 +3516,255 @@ describe('merge specified persons', () => {
       expect(await canMergeSpecifiedPersons(mockCtx, mockDb, mockBranding, 'test-token', params)).toBe(true)
       expect(mockDb.getWorkspaceRole).not.toHaveBeenCalled()
     })
+  })
+})
+
+describe('provisionWorkspaceUser', () => {
+  const mockCtx = {
+    error: jest.fn(),
+    info: jest.fn(),
+    warn: jest.fn()
+  } as unknown as MeasureContext
+
+  const mockBranding = null
+  const frontUrl = 'https://app.example.com'
+  const callerUuid = 'caller-account-uuid' as AccountUuid
+  const workspaceUuid = 'workspace-uuid' as WorkspaceUuid
+  const mockToken = 'test-token'
+  const mockAccount = { uuid: callerUuid }
+  const mockWorkspace = {
+    uuid: workspaceUuid,
+    name: 'Test Workspace',
+    url: 'test-workspace',
+    region: 'us'
+  }
+  const provisionParams = {
+    email: 'new.user@example.com',
+    password: 'TempPass123',
+    firstName: 'New',
+    lastName: 'User',
+    role: AccountRole.User
+  }
+
+  let mockDb: any
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockDb = {
+      account: {
+        findOne: jest.fn()
+      },
+      workspace: {
+        findOne: jest.fn()
+      },
+      socialId: {
+        update: jest.fn()
+      },
+      getWorkspaceRole: jest.fn(),
+      assignWorkspace: jest.fn(),
+      updateWorkspaceRole: jest.fn()
+    }
+    ;(decodeTokenVerbose as jest.Mock).mockReturnValue({
+      account: callerUuid,
+      workspace: workspaceUuid,
+      extra: {}
+    })
+    ;(getMetadata as jest.Mock).mockImplementation((key) => {
+      if (key === accountPlugin.metadata.FrontURL) return frontUrl
+      return undefined
+    })
+    jest.spyOn(utils, 'signUpByEmail')
+    jest.spyOn(utils, 'sendEmail').mockResolvedValue()
+    jest.spyOn(utils, 'getEmailSocialId')
+    jest.spyOn(utils, 'setPassword').mockResolvedValue()
+    jest.spyOn(utils, 'resetFailedLoginAttempts').mockResolvedValue()
+  })
+
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
+  test('should create a confirmed account, assign workspace, and send welcome email', async () => {
+    const newAccount = 'new-account-uuid' as AccountUuid
+    const newSocialId = 'new-social-id' as PersonId
+
+    mockDb.account.findOne.mockResolvedValue(mockAccount)
+    mockDb.workspace.findOne.mockResolvedValue(mockWorkspace)
+    mockDb.getWorkspaceRole.mockResolvedValueOnce(AccountRole.Maintainer).mockResolvedValueOnce(null)
+    ;(utils.getEmailSocialId as jest.Mock).mockResolvedValue(null)
+    ;(utils.signUpByEmail as jest.Mock).mockResolvedValue({ account: newAccount, socialId: newSocialId })
+
+    const result = await provisionWorkspaceUser(mockCtx, mockDb, mockBranding, mockToken, provisionParams)
+
+    expect(result).toEqual({ uuid: newAccount, socialId: newSocialId })
+    expect(utils.signUpByEmail).toHaveBeenCalledWith(
+      mockCtx,
+      mockDb,
+      mockBranding,
+      provisionParams.email,
+      provisionParams.password,
+      provisionParams.firstName,
+      provisionParams.lastName,
+      true
+    )
+    expect(mockDb.assignWorkspace).toHaveBeenCalledWith(newAccount, mockWorkspace.uuid, AccountRole.User)
+    expect(utils.sendEmail).toHaveBeenCalledWith(
+      expect.objectContaining({
+        to: provisionParams.email
+      }),
+      mockCtx
+    )
+    const emailInfo = (utils.sendEmail as jest.Mock).mock.calls[0][0]
+    expect(JSON.stringify(emailInfo)).not.toContain(provisionParams.password)
+    expect(JSON.stringify(emailInfo)).toContain(`${frontUrl}/login/login`)
+    expect(JSON.stringify(emailInfo)).toContain(`${frontUrl}/login/password`)
+  })
+
+  test('should assign an existing account without overwriting their password', async () => {
+    const existingUuid = 'existing-account-uuid' as AccountUuid
+    const existingSocialId = {
+      _id: 'existing-social-id' as PersonId,
+      personUuid: existingUuid,
+      type: SocialIdType.EMAIL,
+      value: provisionParams.email,
+      key: `email:${provisionParams.email}`,
+      verifiedOn: Date.now()
+    }
+
+    mockDb.account.findOne.mockResolvedValueOnce(mockAccount).mockResolvedValueOnce({ uuid: existingUuid })
+    mockDb.workspace.findOne.mockResolvedValue(mockWorkspace)
+    mockDb.getWorkspaceRole.mockResolvedValueOnce(AccountRole.Maintainer).mockResolvedValueOnce(null)
+    ;(utils.getEmailSocialId as jest.Mock).mockResolvedValue(existingSocialId)
+    ;(utils.signUpByEmail as jest.Mock).mockResolvedValue({ account: existingUuid, socialId: existingSocialId._id })
+
+    const result = await provisionWorkspaceUser(mockCtx, mockDb, mockBranding, mockToken, provisionParams)
+
+    expect(result).toEqual({ uuid: existingUuid, socialId: existingSocialId._id })
+    expect(utils.signUpByEmail).not.toHaveBeenCalled()
+    expect(utils.setPassword).toHaveBeenCalledWith(
+      mockCtx,
+      mockDb,
+      mockBranding,
+      existingUuid,
+      provisionParams.password
+    )
+    expect(utils.resetFailedLoginAttempts).toHaveBeenCalledWith(mockDb, existingUuid)
+    expect(mockDb.assignWorkspace).toHaveBeenCalledWith(existingUuid, mockWorkspace.uuid, AccountRole.User)
+    const emailInfo = (utils.sendEmail as jest.Mock).mock.calls[0][0]
+    expect(JSON.stringify(emailInfo)).not.toContain(provisionParams.password)
+  })
+
+  test('should throw if caller has insufficient role', async () => {
+    mockDb.account.findOne.mockResolvedValue(mockAccount)
+    mockDb.workspace.findOne.mockResolvedValue(mockWorkspace)
+    mockDb.getWorkspaceRole.mockResolvedValue(AccountRole.Guest)
+
+    await expect(provisionWorkspaceUser(mockCtx, mockDb, mockBranding, mockToken, provisionParams)).rejects.toThrow(
+      new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {}))
+    )
+
+    expect(utils.signUpByEmail).not.toHaveBeenCalled()
+    expect(mockDb.assignWorkspace).not.toHaveBeenCalled()
+  })
+
+  test('should not let a maintainer replace another maintainer password', async () => {
+    const existingUuid = 'existing-maintainer-uuid' as AccountUuid
+    const existingSocialId = {
+      _id: 'existing-maintainer-social-id' as PersonId,
+      personUuid: existingUuid,
+      type: SocialIdType.EMAIL,
+      value: provisionParams.email,
+      key: `email:${provisionParams.email}`,
+      verifiedOn: Date.now()
+    }
+
+    mockDb.account.findOne.mockResolvedValueOnce(mockAccount).mockResolvedValueOnce({ uuid: existingUuid })
+    mockDb.workspace.findOne.mockResolvedValue(mockWorkspace)
+    mockDb.getWorkspaceRole
+      .mockResolvedValueOnce(AccountRole.Maintainer)
+      .mockResolvedValueOnce(AccountRole.Maintainer)
+    ;(utils.getEmailSocialId as jest.Mock).mockResolvedValue(existingSocialId)
+
+    await expect(
+      provisionWorkspaceUser(mockCtx, mockDb, mockBranding, mockToken, {
+        ...provisionParams,
+        role: AccountRole.Maintainer
+      })
+    ).rejects.toThrow(new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {})))
+
+    expect(utils.setPassword).not.toHaveBeenCalled()
+    expect(mockDb.assignWorkspace).not.toHaveBeenCalled()
+  })
+})
+
+describe('setWorkspaceUserPassword', () => {
+  const mockCtx = {
+    error: jest.fn(),
+    info: jest.fn(),
+    warn: jest.fn()
+  } as unknown as MeasureContext
+  const callerUuid = 'password-admin-uuid' as AccountUuid
+  const targetUuid = 'password-target-uuid' as AccountUuid
+  const workspaceUuid = 'password-workspace-uuid' as WorkspaceUuid
+  const targetEmail = 'member@example.com'
+  const newPassword = 'NewPassword123'
+  const mockToken = 'password-admin-token'
+  let mockDb: any
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+    mockDb = {
+      workspace: {
+        findOne: jest.fn().mockResolvedValue({ uuid: workspaceUuid })
+      },
+      getWorkspaceRole: jest
+        .fn()
+        .mockResolvedValueOnce(AccountRole.Maintainer)
+        .mockResolvedValueOnce(AccountRole.User)
+    }
+    ;(decodeTokenVerbose as jest.Mock).mockReturnValue({
+      account: callerUuid,
+      workspace: workspaceUuid,
+      extra: {}
+    })
+    jest.spyOn(utils, 'getEmailSocialId').mockResolvedValue({
+      _id: 'password-target-social-id' as PersonId,
+      personUuid: targetUuid,
+      type: SocialIdType.EMAIL,
+      value: targetEmail,
+      key: `email:${targetEmail}`
+    })
+    jest.spyOn(utils, 'setPassword').mockResolvedValue()
+    jest.spyOn(utils, 'resetFailedLoginAttempts').mockResolvedValue()
+  })
+
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
+  test('sets and unlocks a lower-role workspace member', async () => {
+    await setWorkspaceUserPassword(mockCtx, mockDb, null, mockToken, {
+      email: targetEmail,
+      newPassword
+    })
+
+    expect(utils.setPassword).toHaveBeenCalledWith(mockCtx, mockDb, null, targetUuid, newPassword)
+    expect(utils.resetFailedLoginAttempts).toHaveBeenCalledWith(mockDb, targetUuid)
+  })
+
+  test('does not let a maintainer replace an owner password', async () => {
+    mockDb.getWorkspaceRole
+      .mockReset()
+      .mockResolvedValueOnce(AccountRole.Maintainer)
+      .mockResolvedValueOnce(AccountRole.Owner)
+
+    await expect(
+      setWorkspaceUserPassword(mockCtx, mockDb, null, mockToken, {
+        email: targetEmail,
+        newPassword
+      })
+    ).rejects.toThrow(new PlatformError(new Status(Severity.ERROR, platform.status.Forbidden, {})))
+
+    expect(utils.setPassword).not.toHaveBeenCalled()
   })
 })

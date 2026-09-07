@@ -20,17 +20,19 @@
     buildSocialIdString,
     Data,
     generateId,
+    type PersonId,
+    type PersonUuid,
     Ref,
     SocialIdType
   } from '@hcengineering/core'
-  import login from '@hcengineering/login'
-  import { getResource } from '@hcengineering/platform'
+  import { setPlatformStatus, type IntlString, unknownError } from '@hcengineering/platform'
   import { Card, getClient } from '@hcengineering/presentation'
   import { createFocusManager, EditBox, FocusHandler, IconInfo, Label } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import { ChannelsDropdown, employeeBySocialKeyStore } from '..'
   import contact from '../plugin'
-  import { getAccountClient } from '../utils'
+  import { provisionContactLogin } from '../provisionContactLogin'
+  import LoginCredentialsFields from './LoginCredentialsFields.svelte'
   import { Analytics } from '@hcengineering/analytics'
 
   export let canSave: boolean = true
@@ -39,24 +41,28 @@
   let firstName = ''
   let lastName = ''
   let email = ''
+  let phone = ''
+  let password = ''
+  let formError: IntlString | undefined = undefined
 
   const id: Ref<Person> = generateId()
 
   export function canClose (): boolean {
-    return firstName === '' && lastName === '' && email === ''
+    return firstName === '' && lastName === '' && email === '' && phone === '' && password === ''
   }
 
   let saving: boolean = false
 
   const dispatch = createEventDispatcher()
   const client = getClient()
-  const accountClient = getAccountClient()
 
   async function createGuest (): Promise<void> {
+    formError = undefined
     try {
       saving = true
       changeEmail()
-      const mail = email.trim()
+      changePhone()
+      const mail = email.trim().toLowerCase()
       const socialString = buildSocialIdString({
         type: SocialIdType.EMAIL,
         value: mail
@@ -67,11 +73,35 @@
         existingId !== undefined
           ? await client.findOne(contact.class.Person, { _id: existingId.attachedTo })
           : undefined
-      if (existingPerson !== undefined && client.getHierarchy().hasMixin(existingPerson, contact.mixin.Employee)) {
+
+      const existingEmployee =
+        existingPerson !== undefined && client.getHierarchy().hasMixin(existingPerson, contact.mixin.Employee)
+          ? client.getHierarchy().as(existingPerson, contact.mixin.Employee)
+          : undefined
+
+      if (existingEmployee !== undefined && existingEmployee.active) {
+        formError = contact.string.EmployeeAlreadyActive
         return
       }
 
-      const { uuid, socialId } = await accountClient.ensurePerson(SocialIdType.EMAIL, mail, firstName, lastName)
+      let uuid: PersonUuid
+      let socialId: PersonId
+      try {
+        const provisioned = await provisionContactLogin(
+          mail,
+          password,
+          firstName,
+          lastName,
+          AccountRole.Guest
+        )
+        uuid = provisioned.uuid
+        socialId = provisioned.socialId
+      } catch (err: unknown) {
+        Analytics.handleError(err as Error)
+        void setPlatformStatus(unknownError(err))
+        formError = contact.string.InviteEmailFailed
+        return
+      }
 
       const name = combineName(firstName, lastName)
       const person: Data<Person> = {
@@ -81,40 +111,59 @@
         personUuid: uuid
       }
 
-      if (existingPerson === undefined) {
+      let personRef: Ref<Person>
+      const mixinData = { active: true, role: 'GUEST' as const }
+
+      if (existingEmployee !== undefined && !existingEmployee.active) {
+        await client.update(existingPerson as Person, person)
+        await client.update(existingEmployee, mixinData)
+        personRef = existingEmployee._id
+      } else if (existingPerson === undefined) {
         await client.createDoc(contact.class.Person, contact.space.Contacts, person, id)
+        personRef = id
+        await client.createMixin(
+          personRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       } else {
         await client.update(existingPerson, person)
+        personRef = existingPerson._id as Ref<Person>
+        await client.createMixin(
+          personRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       }
-      const personRef = existingPerson?._id ?? id
 
-      await client.createMixin(personRef, contact.class.Person, contact.space.Contacts, contact.mixin.Employee, {
-        active: true,
-        role: AccountRole.Guest
+      const existingSocial = await client.findOne(contact.class.SocialIdentity, {
+        _id: socialId as SocialIdentityRef
       })
-
-      await client.addCollection(
-        contact.class.SocialIdentity,
-        contact.space.Contacts,
-        personRef,
-        contact.class.Person,
-        'socialIds',
-        {
-          type: SocialIdType.EMAIL,
-          value: mail,
-          key: socialString
-        },
-        socialId as SocialIdentityRef
-      )
-
-      const sendInvite = await getResource(login.function.SendInvite)
-      await sendInvite(mail, AccountRole.Guest)
+      if (existingSocial == null) {
+        await client.addCollection(
+          contact.class.SocialIdentity,
+          contact.space.Contacts,
+          personRef,
+          contact.class.Person,
+          'socialIds',
+          {
+            type: SocialIdType.EMAIL,
+            value: mail,
+            key: socialString
+          },
+          socialId as SocialIdentityRef
+        )
+      }
 
       for (const channel of channels) {
         await client.addCollection(
           contact.class.Channel,
           contact.space.Contacts,
-          id,
+          personRef,
           contact.class.Person,
           'channels',
           {
@@ -126,8 +175,8 @@
       if (onCreate != null) {
         await onCreate(personRef)
       }
-      Analytics.handleEvent(ContactEvents.PersonCreated, { id, email: mail })
-      dispatch('close', id)
+      Analytics.handleEvent(ContactEvents.PersonCreated, { id: personRef, email: mail })
+      dispatch('close', personRef)
     } finally {
       saving = false
     }
@@ -137,24 +186,54 @@
 
   $: emailSocialString = buildSocialIdString({
     type: SocialIdType.EMAIL,
-    value: email.trim()
+    value: email.trim().toLowerCase()
   })
-  $: exists = $employeeBySocialKeyStore.get(emailSocialString) !== undefined
+  $: existingForEmail = $employeeBySocialKeyStore.get(emailSocialString)
+  $: existsActive = existingForEmail !== undefined && existingForEmail.active
 
   const manager = createFocusManager()
 
   function changeEmail (): void {
     const index = channels.findIndex((p) => p.provider === contact.channelProvider.Email)
     if (index !== -1) {
-      channels[index].value = email.trim()
+      channels[index].value = email.trim().toLowerCase()
     } else {
       channels.push({
         provider: contact.channelProvider.Email,
-        value: email.trim()
+        value: email.trim().toLowerCase()
       })
     }
     channels = channels
   }
+
+  function changePhone (): void {
+    const trimmed = phone.trim()
+    const index = channels.findIndex((p) => p.provider === contact.channelProvider.Phone)
+    if (trimmed.length > 0) {
+      if (index !== -1) {
+        channels[index].value = trimmed
+      } else {
+        channels.push({
+          provider: contact.channelProvider.Phone,
+          value: trimmed
+        })
+      }
+    } else if (index !== -1) {
+      channels.splice(index, 1)
+    }
+    channels = channels
+  }
+
+  $: showDuplicateActive = existsActive && !saving && formError === undefined
+  $: canSubmit =
+    firstName.trim().length > 0 &&
+    lastName.trim().length > 0 &&
+    email.trim().length > 0 &&
+    email.includes('@') &&
+    password.trim().length > 0 &&
+    !existsActive &&
+    !saving &&
+    canSave
 </script>
 
 <FocusHandler {manager} />
@@ -162,18 +241,26 @@
 <Card
   label={contact.string.AddGuest}
   okAction={createGuest}
-  canSave={firstName.trim().length > 0 && lastName.trim().length > 0 && email.trim().length > 0 && !exists && canSave}
+  canSave={canSubmit}
   on:close={() => {
     dispatch('close')
   }}
   on:changeContent
 >
   <svelte:fragment slot="error">
-    {#if exists && !saving}
+    {#if formError !== undefined && !saving}
       <div class="flex-row-center error-color">
         <IconInfo size={'small'} />
         <span class="text-sm overflow-label ml-2">
-          <Label label={contact.string.PersonAlreadyExists} />
+          <Label label={formError} />
+        </span>
+      </div>
+    {/if}
+    {#if showDuplicateActive}
+      <div class="flex-row-center error-color">
+        <IconInfo size={'small'} />
+        <span class="text-sm overflow-label ml-2">
+          <Label label={contact.string.EmployeeAlreadyActive} />
         </span>
       </div>
     {/if}
@@ -193,15 +280,15 @@
         kind={'large-style'}
         focusIndex={2}
       />
-      <div class="mt-1">
-        <EditBox
-          placeholder={contact.string.Email}
-          bind:value={email}
-          kind={'small-style'}
-          focusIndex={3}
-          on:blur={changeEmail}
-        />
-      </div>
+      <LoginCredentialsFields
+        bind:email
+        bind:password
+        bind:phone
+        showPhone={true}
+        showRole={false}
+        onEmailBlur={changeEmail}
+        onPhoneBlur={changePhone}
+      />
       <slot name="extraControls" />
     </div>
   </div>
@@ -212,7 +299,7 @@
       kind={'regular'}
       size={'large'}
       editable
-      restricted={[contact.channelProvider.Email]}
+      restricted={[contact.channelProvider.Email, contact.channelProvider.Phone]}
     />
   </svelte:fragment>
 </Card>

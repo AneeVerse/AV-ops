@@ -15,7 +15,7 @@ test.describe('contact tests', () => {
   test.beforeEach(async ({ page }) => {
     first = 'Elton-' + generateId(5)
     last = 'John-' + generateId(5)
-    mail = 'eltonjohn@' + generateId(5)
+    mail = 'elton.' + generateId(5) + '@example.com'
     orgName = 'Company' + generateId(5)
     contractPage = new ContractPage(page)
     await (await page.goto(`${PlatformURI}/workbench/sanity-ws`))?.finished()
@@ -81,12 +81,15 @@ test.describe('contact tests', () => {
     await contractPage.fillLastNameInput(last)
     await contractPage.clickEmailInput()
     await contractPage.fillEmailInput(mail)
-    await contractPage.clickCreateButton()
+    await contractPage.fillPasswordInput('KickPass123')
+    await contractPage.clickAddEmployeeButton()
     await contractPage.waitForFormAntiCardDetached()
     await contractPage.kickEmployee(first, last)
     // After kick, employee is inactive and hidden by default. Toggle off to see it.
     await contractPage.toggleHideInactive()
     await contractPage.expectKickEmployeeShowsInactiveStatus(first, last)
+    await contractPage.deleteEmployeeFromRow(first, last)
+    await contractPage.checkIfPersonIsDeleted(first, last, 0)
   })
 
   test('add new application', async ({ page }) => {
