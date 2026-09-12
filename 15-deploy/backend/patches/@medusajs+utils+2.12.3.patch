@@ -1,0 +1,15 @@
+diff --git a/node_modules/@medusajs/utils/dist/common/merge-plugin-modules.js b/node_modules/@medusajs/utils/dist/common/merge-plugin-modules.js
+index 74468da..577ef0d 100644
+--- a/node_modules/@medusajs/utils/dist/common/merge-plugin-modules.js
++++ b/node_modules/@medusajs/utils/dist/common/merge-plugin-modules.js
+@@ -22,8 +22,8 @@ function mergePluginModules(configModule, plugins) {
+      * config file.
+      */
+     configModule.modules = {
+-        ...(0, define_config_1.transformModules)(pluginsModules),
+         ...configModule.modules,
++        ...(0, define_config_1.transformModules)(pluginsModules),
+     };
+ }
+ //# sourceMappingURL=merge-plugin-modules.js.map
+\ No newline at end of file

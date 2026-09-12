@@ -1,0 +1,572 @@
+{
+  "name": "Generate Social Post",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "9b7c0fca-1310-46ee-99d7-00b52a5957aa",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        9408,
+        -2192
+      ],
+      "webhookId": "05f4eec3-9b24-43a8-b397-84802fd78ffa"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brands?id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "707395dd-be64-47db-822d-97bad076832f",
+      "name": "Fetch Brand",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9632,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_assets?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9223201a-ed6b-4124-b20f-6e70ca7f6657",
+      "name": "Fetch Brand Assets",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9856,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/reference_images?category_id=eq.{{ $('Webhook').first().json.body.referenceCategoryId }}&brand_id={{ $('Webhook').first().json.body.isGlobal ? 'is.null' : 'eq.' + $('Webhook').first().json.body.brandId }}&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5b44421-7b60-4e42-8e67-37f693e3a7fb",
+      "name": "Fetch Reference Images",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10080,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const brandAssets = $('Fetch Brand Assets').all();\nconst refImages = $('Fetch Reference Images').all();\nconst webhookBody = $('Webhook').first().json.body;\nconst brandData = $('Fetch Brand').first().json;\n\nconst logo = brandAssets.find(a => a.json.asset_type === 'logo');\nconst images = brandAssets.filter(a => a.json.asset_type === 'asset' && a.json.mime_type && a.json.mime_type.startsWith('image/'));\n\n// Pick a random reference image\nconst refImage = refImages[Math.floor(Math.random() * refImages.length)];\nif (!refImage) throw new Error('No reference images found for this category');\n\nconst brandDescription = brandData.description || '';\nconst promptText = `I want to create a social media creative for ${brandData.name}.${brandDescription ? '\\n\\n' + brandDescription : ''}\\n\\nI have attached previously created brand social media posts. Study the design language carefully: colors, typography, decorative motifs, layout patterns. IMPORTANT: These reference posts contain a brand logo - ignore the logo entirely when studying design elements. The logo will be added as a separate overlay in post-processing and must NOT appear in any generated image.`;\n\nconst content = [\n  { type: 'input_text', text: promptText }\n];\n\n// Logo is NOT sent to GPT — it will be overlaid via ImageKit in post-processing\nimages.slice(0, 5).forEach(a => {\n  content.push({ type: 'input_image', image_url: a.json.file_url });\n});\n\nreturn [{\n  json: {\n    brandId: webhookBody.brandId,\n    referenceCategoryId: webhookBody.referenceCategoryId,\n    headline: webhookBody.headline,\n    cta: webhookBody.cta,\n    refImageUrl: refImage.json.file_url,\n    logoUrl: logo ? logo.json.file_url : null,\n    turn1Content: content\n  }\n}];"
+      },
+      "id": "58165127-a6cc-405c-b6ee-167e9c40ff7a",
+      "name": "Build Turn 1 Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10288,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ model: 'gpt-4o', input: [{ role: 'user', content: [{ type: 'input_text', text: 'Look at this social media image. Where is the brand logo positioned? Reply with ONLY one of these exact values, nothing else: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right' }, { type: 'input_image', image_url: $json.refImageUrl }] }] }) }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "node-detect-logo-pos-early",
+      "name": "Detect Logo Position",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10512,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ model: 'gpt-4o', input: [{ role: 'user', content: $('Build Turn 1 Payload').first().json.turn1Content }] }) }}",
+        "options": {}
+      },
+      "id": "8c8ef5ce-b1c0-405c-a326-f620e7197fab",
+      "name": "Turn 1 - Brand Context",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10512,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const turn1Response = $('Turn 1 - Brand Context').first().json;\nconst prev = $('Build Turn 1 Payload').first().json;\nconst posResponse = $('Detect Logo Position').first().json;\n\nconst outputArr = posResponse.output || [];\nconst msgItem = outputArr.find(function(o) { return o.type === 'message'; });\nconst rawPos = msgItem && msgItem.content && msgItem.content[0] ? msgItem.content[0].text.trim().toLowerCase() : 'bottom-left';\nconst validPositions = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'];\nconst logoPosition = validPositions.indexOf(rawPos) >= 0 ? rawPos : 'bottom-left';\n\nconst logoRow = logoPosition.startsWith('top') ? 'top' : 'bottom';\n\n// Extract brand style context from Turn 1 GPT response\nconst turn1Text = (turn1Response.output || []).find(o => o.type === 'message')?.content?.[0]?.text || '';\n\nconst layoutRef = 'LAYOUT REFERENCE (use this for positioning and composition only — do NOT use colors, fonts, or brand elements from this. Use brand colors, fonts, and elements from the brand context below):\\n- Top 100px: Clean space for brand logo, centered\\n- Upper 60% of the image: Large lifestyle or product imagery placed inside a rounded rectangle background shape, centered. Floating UI cards or feature callout chips overlaid on top of the imagery to highlight key features or stats\\n- Bottom 40% of the image: Clean background area with a large bold headline in 2 lines, left-aligned or centered, with accent color on key words. No CTA button — the headline is the focal point at the bottom\\n- Overall composition is clean with generous padding around all elements';\nconst line1 = 'Generate a social media post image using the layout described above.';\nconst line2 = 'Use ONLY the brand colors, fonts, and visual style from the brand context. Do not copy colors or design elements from the layout reference.';\nconst line3 = 'Headline: ' + prev.headline + ' | CTA: ' + prev.cta;\nconst brandContext = turn1Text ? 'Brand context (colors, fonts, visual style to use):\\n' + turn1Text + '\\n\\n' : '';\nconst promptText = layoutRef + '\\n\\n' + brandContext + line1 + '\\n\\n' + line2 + '\\n\\n' + line3;\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-image-1.5',\n  prompt: promptText,\n  size: '1024x1024',\n  quality: 'high',\n  n: 1\n});\n\nreturn [{ json: { previousResponseId: turn1Response.id, refImageUrl: prev.refImageUrl, headline: prev.headline, cta: prev.cta, brandId: prev.brandId, referenceCategoryId: prev.referenceCategoryId, logoUrl: prev.logoUrl, logoPosition: logoPosition, requestBody: requestBody } }];"
+      },
+      "id": "8b0225d1-c96e-4f6a-a8f0-9fc6d600dcd8",
+      "name": "Build Turn 2 Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10736,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "718b8c1d-69d1-4b82-9a55-a34d878cf12a",
+      "name": "Turn 2 - Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10960,
+        -2192
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "jsCode": "const turn2 = $('Turn 2 - Generate Image').first().json;\nconst meta = $('Build Turn 2 Payload').first().json;\n\nconst imageData = turn2.data && turn2.data[0];\nif (!imageData || !imageData.b64_json) throw new Error('No image data in response');\n\nconst base64 = imageData.b64_json;\nconst storagePath = `${meta.brandId}/${Date.now()}_post.png`;\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(base64, 'base64'),\n  'post.png',\n  'image/png'\n);\n\nreturn [{\n  json: {\n    brandId: meta.brandId,\n    referenceCategoryId: meta.referenceCategoryId,\n    headline: meta.headline,\n    cta: meta.cta,\n    storagePath,\n    imageUrl: null /* set after ImageKit upload */,\n    logoUrl: meta.logoUrl,\n    logoPosition: meta.logoPosition\n  },\n  binary: {\n    data: binaryData\n  }\n}];"
+      },
+      "id": "a4034ac3-e187-4480-869f-db8e36035263",
+      "name": "Extract and Prepare Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11168,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ model: 'gpt-4o', input: [{ role: 'user', content: [{ type: 'input_text', text: 'You are a QC reviewer for social media designs. Check this generated image:\\n1. Spelling: The headline should say exactly \"' + $('Extract and Prepare Image').first().json.headline + '\" and the CTA should say \"' + $('Extract and Prepare Image').first().json.cta + '\". Flag any typos or missing words.\\n2. Visual distortions: Are there any artifacts, hallucinations, warped text, duplicated elements, or visual glitches?\\n3. Professionalism: Does it look like a clean, professional social media post?\\n\\nRespond ONLY with valid JSON, no markdown, no explanation:\\n{\"passed\": true, \"issues\": []}\\nor\\n{\"passed\": false, \"issues\": [\"describe issue here\"]}' }, { type: 'input_image', image_url: $('Resolve ImageKit URL').first().json.imageUrl }] }] }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "c1d9ff87-5ace-497b-8c0a-67a39e36f31b",
+      "name": "QC Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        12496,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const qcResponse = $('QC Check').first().json;\nconst meta = $('Resolve ImageKit URL').first().json;\n\nconst outputText = qcResponse.output?.find(o => o.type === 'message')?.content?.[0]?.text || '{\"passed\": true, \"issues\": []}';\n\nlet qcResult;\ntry {\n  const cleaned = outputText.replace(/```json\\n?|\\n?```/g, '').trim();\n  qcResult = JSON.parse(cleaned);\n} catch(e) {\n  qcResult = { passed: true, issues: ['QC parse error - skipping'] };\n}\n\nreturn [{\n  json: {\n    brandId: meta.brandId,\n    referenceCategoryId: meta.referenceCategoryId,\n    headline: meta.headline,\n    cta: meta.cta,\n    storagePath: meta.storagePath,\n    imageUrl: meta.imageUrl,\n    qcPassed: qcResult.passed !== false,\n    qcIssues: qcResult.issues || []\n  }\n}];"
+      },
+      "id": "477db757-b09d-4a04-bedd-c1355fb6225b",
+      "name": "Parse QC Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        12720,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/generated_posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ brand_id: $('Parse QC Result').first().json.brandId, reference_category_id: $('Parse QC Result').first().json.referenceCategoryId, headline: $('Parse QC Result').first().json.headline, cta: $('Parse QC Result').first().json.cta, output_url: $('Resolve ImageKit URL').first().json.imageUrl}) }}",
+        "options": {}
+      },
+      "id": "16e78272-e7a1-48f9-b8f1-aaff14b38342",
+      "name": "Save Generated Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        12944,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { imageUrl: $('Parse QC Result').first().json.imageUrl, qcPassed: $('Parse QC Result').first().json.qcPassed, qcIssues: $('Parse QC Result').first().json.qcIssues } }}",
+        "options": {}
+      },
+      "id": "842bd8f4-cf5c-430e-9533-0ddc8065c187",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        13168,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($('Extract and Prepare Image').first().json.storagePath || 'post.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "upload-imagekit-cyqzd0ev",
+      "name": "Upload to ImageKit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        11408,
+        -2192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const uploaded = $('Upload to ImageKit').first().json;\nconst meta = $('Extract and Prepare Image').first().json;\nconst endpoint = '__IMAGEKIT_URL_ENDPOINT__'.replace(/\\/$/, '');\nlet imageUrl = uploaded.url;\nif (!imageUrl) throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n\n// Optional logo overlay when brand logo is already on ImageKit\nconst logoUrl = meta.logoUrl;\nif (logoUrl && typeof logoUrl === 'string' && logoUrl.startsWith(endpoint)) {\n  let logoPath = logoUrl.slice(endpoint.length).replace(/^\\/tr:[^/]+/, '').split('?')[0];\n  if (logoPath.startsWith('/')) logoPath = logoPath.slice(1);\n  const overlayPath = logoPath.replace(/\\//g, '@@');\n  const basePath = String(uploaded.filePath || '').replace(/^\\//, '');\n  if (overlayPath && basePath) {\n    imageUrl = endpoint + '/tr:l-image,i-' + overlayPath + ',w-220,lx-40,ly-40,l-end/' + basePath;\n  }\n}\n\nreturn [{\n  json: {\n    ...meta,\n    imageUrl,\n    imageKitFileId: uploaded.fileId || null,\n    imageKitFilePath: uploaded.filePath || null,\n  }\n}];"
+      },
+      "id": "resolve-imagekit-vr7r9diq",
+      "name": "Resolve ImageKit URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11648,
+        -2192
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Assets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Assets": {
+      "main": [
+        [
+          {
+            "node": "Fetch Reference Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Reference Images": {
+      "main": [
+        [
+          {
+            "node": "Build Turn 1 Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Turn 1 Payload": {
+      "main": [
+        [
+          {
+            "node": "Detect Logo Position",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Detect Logo Position": {
+      "main": [
+        [
+          {
+            "node": "Turn 1 - Brand Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Turn 1 - Brand Context": {
+      "main": [
+        [
+          {
+            "node": "Build Turn 2 Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Turn 2 Payload": {
+      "main": [
+        [
+          {
+            "node": "Turn 2 - Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Turn 2 - Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Extract and Prepare Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract and Prepare Image": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QC Check": {
+      "main": [
+        [
+          {
+            "node": "Parse QC Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse QC Result": {
+      "main": [
+        [
+          {
+            "node": "Save Generated Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Generated Post": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Resolve ImageKit URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve ImageKit URL": {
+      "main": [
+        [
+          {
+            "node": "QC Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e1e4110b-4368-434f-ae40-eba1a4c4247a",
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  },
+  "id": "QZcwxoIafyyG4wup",
+  "tags": []
+}

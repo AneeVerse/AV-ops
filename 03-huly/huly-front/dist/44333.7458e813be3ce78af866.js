@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[44333],{44333:function(e){e.exports=JSON.parse('{"string":{"MailTag":"E-posta"}}')}}]);

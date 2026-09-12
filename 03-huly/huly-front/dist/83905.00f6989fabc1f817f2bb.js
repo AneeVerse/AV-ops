@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[83905],{83905:function(e){e.exports=JSON.parse('{"string":{"Achievements":"成就","EarliestAdopter":"最早采用者","Epic":"史诗","Legendary":"传奇"}}')}}]);

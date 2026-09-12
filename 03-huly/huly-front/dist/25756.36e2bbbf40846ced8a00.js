@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[25756],{25756:function(e){e.exports=JSON.parse('{"string":{"Starred":"Preferiti","Star":"Aggiungi a preferiti","Unstar":"Rimuovi da preferiti"}}')}}]);

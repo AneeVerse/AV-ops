@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[76953],{76953:function(e){e.exports=JSON.parse('{"string":{"ContactUs":"联系我们","ReportBug":"报告错误？","PrivacyPolicy":"隐私政策"}}')}}]);

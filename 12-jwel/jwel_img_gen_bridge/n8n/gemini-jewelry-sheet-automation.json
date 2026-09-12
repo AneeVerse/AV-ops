@@ -1,0 +1,113 @@
+[
+  {
+    "id": "geminiJewelrySheetAutomation",
+    "name": "Gemini Jewelry Sheet Automation",
+    "description": "Process pending jewelry rows from Google Sheets: B -> first eBay image -> Gemini browser -> Drive -> D",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "a6f2b9f6-9e68-4f5b-bd3f-4d4f7d5a1a11",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [-520, 0]
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "minutes",
+                "minutesInterval": 30
+              }
+            ]
+          }
+        },
+        "id": "d2b59ef8-08f7-4d63-bb2d-2664ec7d7b22",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1,
+        "position": [-520, 200]
+      },
+      {
+        "parameters": {
+          "command": "cd /root/jwel_img_gen_bridge && python3 gemini_sheet_automation.py --all-pending"
+        },
+        "id": "f2a0e206-21c1-4d67-9c9a-5e0c7d3f1c33",
+        "name": "Run Gemini Jewelry Sheet Automation",
+        "type": "n8n-nodes-base.executeCommand",
+        "typeVersion": 1,
+        "position": [-160, 100]
+      },
+      {
+        "parameters": {
+          "jsCode": "const stdout = $json.stdout || '';\nconst stderr = $json.stderr || '';\nreturn [{ json: { ok: true, message: 'Gemini jewelry sheet automation finished.', stdout, stderr } }];"
+        },
+        "id": "b7a2b0ff-2f6b-4d7f-9f46-62c3b4b6d444",
+        "name": "Format Result",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [180, 100]
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "Run Gemini Jewelry Sheet Automation",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Run Gemini Jewelry Sheet Automation",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Run Gemini Jewelry Sheet Automation": {
+        "main": [
+          [
+            {
+              "node": "Format Result",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": null,
+    "pinData": {},
+    "versionId": "7d11eb4f-ef62-4e9b-b9f2-0f6a9bc05a55",
+    "activeVersionId": null,
+    "versionCounter": 1,
+    "triggerCount": 0,
+    "tags": [],
+    "shared": [
+      {
+        "role": "workflow:owner",
+        "workflowId": "geminiJewelrySheetAutomation",
+        "projectId": "KgxYXDoR4HooBDco"
+      }
+    ],
+    "versionMetadata": {
+      "name": null,
+      "description": null
+    }
+  }
+]

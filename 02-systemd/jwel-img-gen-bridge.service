@@ -1,0 +1,16 @@
+[Unit]
+Description=Jewelry Image Generation n8n Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/jwel_img_gen_bridge
+ExecStart=/root/jwel_img_gen_bridge/.venv/bin/python /root/jwel_img_gen_bridge/bridge.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

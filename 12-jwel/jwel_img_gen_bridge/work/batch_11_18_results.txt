@@ -1,0 +1,1 @@
+IMG0011	RC=1	{   "serial": "IMG0011",   "row": 12,   "error": "Gemini output image not found" } {   "ok": false,   "results": [     {       "serial": "IMG0011",       "row": 12,       "error": "Gemini output image not found"     }   ] }

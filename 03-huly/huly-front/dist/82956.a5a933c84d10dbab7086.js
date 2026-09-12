@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[82956],{82956:function(e){e.exports=JSON.parse('{"string":{"CreatePublicLink":"공개 링크 만들기","PublicLink":"공개 링크","Revoke":"무효화","RevokeConfirmation":"이 작업을 수행하면 기존에 공유한 링크가 더 이상 작동하지 않습니다. 이 공개 링크를 무효화하시겠습니까?","LinkWasRevoked":"공개 링크가 무효화되었습니다","Copy":"복사"}}')}}]);

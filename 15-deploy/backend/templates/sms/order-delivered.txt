@@ -1,0 +1,1 @@
+Yay! Your order #{{order_id}} has been delivered. 🏠 We hope you love your new Chocomelon outfits! 👕✨

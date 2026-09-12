@@ -1,0 +1,272 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #0A1D37;
+    -webkit-text-fill-color: #0A1D37;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+@layer components {
+  .content-container {
+    @apply max-w-[1440px] w-full mx-auto px-6;
+  }
+
+  .contrast-btn {
+    @apply px-6 py-3 border border-royal-blue text-royal-blue rounded-full hover:bg-royal-blue hover:text-white transition-colors duration-200 ease-in font-medium tracking-wide uppercase text-xs;
+  }
+
+  .btn-primary {
+    @apply bg-royal-blue text-white rounded-full uppercase tracking-wide font-medium transition-colors duration-200 hover:bg-gold-accent disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary-sm {
+    @apply btn-primary px-4 py-2 text-xs;
+  }
+
+  .text-price {
+    @apply text-gold-accent font-bold;
+  }
+
+  .input-focus {
+    @apply focus:border-gold-accent/40 focus:ring-2 focus:ring-gold-accent/20 focus:outline-none;
+  }
+
+  .card-surface {
+    @apply bg-white border border-gold-border/20 rounded-xl;
+  }
+
+  /* Fills viewport below sticky header; stable across zoom/resize (uses svh, not fixed px) */
+  .hero-viewport {
+    height: calc(100svh - var(--site-header-h, 3.5rem));
+    min-height: 26rem;
+  }
+
+  .section-header {
+    @apply text-center max-w-2xl mx-auto mb-10 sm:mb-16;
+  }
+
+  .section-header-title {
+    @apply h2-serif uppercase tracking-wider mb-3;
+  }
+
+  .section-header-divider {
+    @apply h-0.5 w-16 bg-gold-accent mx-auto mb-4;
+  }
+
+  .section-header-desc {
+    @apply text-sm font-sans text-gray-500 tracking-wide;
+  }
+
+  .h1-serif {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-[#0d1a11];
+  }
+
+  .h2-serif {
+    @apply font-serif text-2xl md:text-3xl font-medium tracking-tight text-[#0d1a11];
+  }
+
+  .h3-serif {
+    @apply font-serif text-lg md:text-xl font-medium text-[#0d1a11];
+  }
+
+  .text-xsmall-regular {
+    @apply text-[10px] leading-4 font-normal;
+  }
+
+  .text-small-regular {
+    @apply text-xs leading-5 font-normal;
+  }
+
+  .text-small-semi {
+    @apply text-xs leading-5 font-semibold;
+  }
+
+  .text-base-regular {
+    @apply text-sm leading-6 font-normal;
+  }
+
+  .text-base-semi {
+    @apply text-sm leading-6 font-semibold;
+  }
+
+  .text-large-regular {
+    @apply text-base leading-6 font-normal;
+  }
+
+  .text-large-semi {
+    @apply text-base leading-6 font-semibold;
+  }
+
+  .text-xl-regular {
+    @apply text-2xl leading-[36px] font-normal;
+  }
+
+  .text-xl-semi {
+    @apply text-2xl leading-[36px] font-semibold;
+  }
+
+  .text-2xl-regular {
+    @apply text-[30px] leading-[48px] font-normal;
+  }
+
+  .text-2xl-semi {
+    @apply text-[30px] leading-[48px] font-semibold;
+  }
+
+  .text-3xl-regular {
+    @apply text-[32px] leading-[44px] font-normal;
+  }
+
+  .text-3xl-semi {
+    @apply text-[32px] leading-[44px] font-semibold;
+  }
+
+  @keyframes progress-loading {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+
+  .animate-progress {
+    animation: progress-loading 20s linear forwards;
+  }
+}
+
+/* Homepage Forest Green Navigation Bar Styles */
+.home-theme-nav {
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.home-theme-nav-top {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.home-theme-nav-scrolled {
+  background-color: rgba(19, 37, 25, 0.93) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.home-theme-nav a,
+.home-theme-nav span,
+.home-theme-nav button {
+  color: #ffffff !important;
+  transition: color 0.25s ease !important;
+}
+
+.home-theme-nav a:hover,
+.home-theme-nav button:hover {
+  color: #D4AF37 !important;
+}
+
+/* Dropdown menu panel override for white background */
+.home-theme-nav .nav-dropdown-panel a,
+.home-theme-nav .nav-dropdown-panel span {
+  color: #102a43 !important;
+}
+
+.home-theme-nav .nav-dropdown-panel a:hover,
+.home-theme-nav .nav-dropdown-panel a:hover span {
+  color: #D4AF37 !important;
+}
+
+/* Logo specific text overrides */
+.home-theme-nav a[data-testid="nav-store-link"] span:first-child {
+  color: #ffffff !important;
+}
+.home-theme-nav a[data-testid="nav-store-link"]:hover span:first-child {
+  color: #D4AF37 !important;
+}
+.home-theme-nav a[data-testid="nav-store-link"] span:last-child {
+  color: #D4AF37 !important;
+}
+
+/* Invert default black SVGs to premium white */
+.home-theme-nav img[src*="Search.svg"],
+.home-theme-nav img[src*="shopping-bag"],
+.home-theme-nav img[src*="Wishlist.svg"],
+.home-theme-nav img[src*="Account.svg"],
+.home-theme-nav img[src*="Log Out.svg"] {
+  filter: invert(1) brightness(2) !important;
+  transition: filter 0.25s ease !important;
+}
+
+/* Custom login button styling for dark navbar */
+.home-theme-nav a[data-testid="nav-login-link"] {
+  background-color: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.home-theme-nav a[data-testid="nav-login-link"]:hover {
+  background-color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  color: #132519 !important;
+}
+
+/* Wishlist or cart badge styling */
+.home-theme-nav .wishlist-counter-badge,
+.home-theme-nav span[class*="badge"],
+.home-theme-nav div[class*="badge"] {
+  background-color: #D4AF37 !important;
+  color: #132519 !important;
+  transition: all 0.3s ease !important;
+}
+
+

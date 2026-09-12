@@ -1,0 +1,196 @@
+{
+  "name": "Infographic Animate",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "infographic-animate",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "ia-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "infographic-animate-webhook-id"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body;\nconst jsCode = body.jsCode || '';\nconst adCopy = body.adCopy || '';\nconst infographicId = body.infographicId || null;\nconst theme = body.theme || 'light';\n\nif (!jsCode) throw new Error('jsCode is required.');\n\nconst adCopyEscaped = adCopy.replace(/\\\\/g, '\\\\\\\\').replace(/'/g, \"\\\\'\" ).replace(/\\n/g, '\\\\n').replace(/\\r/g, '\\\\r');\n\nconst systemPrompt = 'You are an expert in HTML5 Canvas animation.\\nYou will receive an already-animated Canvas function and wrap it for frame-by-frame playback.\\n\\nINPUT: The code defines drawGraphic(ctx, width, height, logoImg, options) where options = { progress, frame, fps, durationInFrames, adCopy, theme }.\\nThe function is already animated using options.progress (0.0 to 1.0).\\n\\nOUTPUT: Define a new function drawFrame(ctx, width, height, logoImg, frame, totalFrames) that:\\n1. Builds the options object: const options = { progress: frame / totalFrames, frame: frame, fps: 30, durationInFrames: totalFrames, adCopy: \\'<ADCOPY>\\', theme: \\'<THEME>\\' }; — replace <ADCOPY> with the ESCAPED ad copy string and <THEME> with the theme value provided below.\\n2. Calls drawGraphic(ctx, width, height, logoImg, options); — pass logoImg through UNCHANGED. Do not add any logo-drawing code of your own; the app composites the brand logo separately after drawFrame returns, and logoImg will always be null at runtime.\\n3. Does NOT re-implement or change any drawing logic — just wraps the call.\\n4. Includes the full original drawGraphic code so it is self-contained.\\n\\nReturn ONLY a JSON object with keys animatedCode (string) and animationExplanation (string). No markdown, no code fences.';\n\nconst userPrompt = 'Wrap this drawGraphic function into a self-contained drawFrame function as described.\\n\\nAd Copy to embed (use this escaped version in the JS string literal): ' + adCopyEscaped + '\\nTheme to embed: ' + theme + '\\n\\nOriginal code:\\n' + jsCode;\n\nconst requestBody = JSON.stringify({\n  model: 'google/gemini-3.5-flash',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  max_tokens: 16000,\n  response_format: { type: 'json_object' }\n});\n\nreturn [{ json: { infographicId: infographicId, adCopy: adCopy, requestBody: requestBody } }];"
+      },
+      "id": "ia-build-prompt",
+      "name": "Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENROUTER_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://contentbeta.app"
+            },
+            {
+              "name": "X-Title",
+              "value": "ContentBeta Infographic Animate"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "ia-call-gemini",
+      "name": "Call Gemini 2.5 Pro",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $('Call Gemini 2.5 Pro').first().json;\nconst meta = $('Build Prompt').first().json;\nconst originalJsCode = $('Webhook').first().json.body.jsCode || '';\nconst originalAdCopy = $('Webhook').first().json.body.adCopy || '';\nconst originalTheme = $('Webhook').first().json.body.theme || 'light';\n\nfunction buildFallbackWrapper(jsCode, adCopy, theme) {\n  const safeAdCopy = adCopy.replace(/\\\\/g, '\\\\\\\\').replace(/'/g, \"\\\\'\" ).replace(/\\n/g, '\\\\n').replace(/\\r/g, '\\\\r');\n  return jsCode + '\\n\\nfunction drawFrame(ctx, width, height, logoImg, frame, totalFrames) {\\n  const options = {\\n    progress: frame / totalFrames,\\n    frame: frame,\\n    fps: 30,\\n    durationInFrames: totalFrames,\\n    adCopy: \\'' + safeAdCopy + '\\',\\n    theme: \\'' + (theme || 'light') + '\\'\\n  };\\n  if (typeof drawGraphic === \\'function\\') drawGraphic(ctx, width, height, logoImg, options);\\n}';\n}\n\nfunction fixJsonEscapes(str) {\n  return str.replace(/\\\\(?![\"\\\\\\/bfnrtu])/g, '\\\\\\\\');\n}\n\n// Actually constructs AND calls the code (a thrown/parse error inside `new Function(body)` only\n// surfaces once the function runs) to confirm drawFrame both parses and gets defined. See the\n// identical guard in n8n_infographic_workflow.json's \"Parse Response\" node — without this, broken\n// code silently saves to Supabase and then breaks with \"Invalid escape in identifier\" / \"Global\n// Code\" every single time it's viewed in History afterward.\nfunction isValidDrawFrame(code) {\n  try {\n    const result = new Function(code + \"\\nreturn typeof drawFrame==='function';\")();\n    return result === true;\n  } catch (e) {\n    return false;\n  }\n}\n\nfunction finalize(animatedCode, animationExplanation) {\n  const candidate = animatedCode && isValidDrawFrame(animatedCode) ? animatedCode : null;\n  const fallbackWrapper = buildFallbackWrapper(originalJsCode, originalAdCopy, originalTheme);\n  const fallback = isValidDrawFrame(fallbackWrapper) ? fallbackWrapper : null;\n  const finalCode = candidate || fallback;\n  if (!finalCode) {\n    throw new Error('Generated animation code failed validation and has no usable fallback. Please retry animating.');\n  }\n  return [{ json: { animatedCode: finalCode, animationExplanation: animationExplanation || '', infographicId: meta.infographicId } }];\n}\n\nconst raw = response.choices?.[0]?.message?.content;\nif (!raw) {\n  return finalize(null, '');\n}\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nlet parsed;\ntry {\n  parsed = JSON.parse(cleaned);\n} catch(e) {\n  try {\n    parsed = JSON.parse(fixJsonEscapes(cleaned));\n  } catch(e2) {\n    // Model output is unparseable — build the wrapper ourselves\n    return finalize(null, '');\n  }\n}\n\nreturn finalize(parsed.animatedCode, parsed.animationExplanation);"
+      },
+      "id": "ia-parse-response",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=__SUPABASE_URL__/rest/v1/infographics?id=eq.{{ $('Parse Response').first().json.infographicId || '00000000-0000-0000-0000-000000000000' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ remotion_code: $('Parse Response').first().json.animatedCode }) }}",
+        "options": {}
+      },
+      "id": "ia-save-to-db",
+      "name": "Save to DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const parsed = $('Parse Response').first().json;\nreturn [{ json: { animatedCode: parsed.animatedCode, animationExplanation: parsed.animationExplanation, infographicId: parsed.infographicId } }];"
+      },
+      "id": "ia-return",
+      "name": "Return Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call Gemini 2.5 Pro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Gemini 2.5 Pro": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Response": {
+      "main": [
+        [
+          {
+            "node": "Save to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to DB": {
+      "main": [
+        [
+          {
+            "node": "Return Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

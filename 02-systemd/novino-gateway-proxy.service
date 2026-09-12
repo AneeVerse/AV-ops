@@ -1,0 +1,15 @@
+[Unit]
+Description=Aneeverse Novino OpenClaw gateway proxy
+After=network.target openclaw-gateway.service
+
+[Service]
+Type=simple
+WorkingDirectory=/root/.openclaw/novino-gateway-proxy
+EnvironmentFile=-/root/.openclaw/novino-gateway-proxy/.env
+ExecStart=/usr/bin/node index.js
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

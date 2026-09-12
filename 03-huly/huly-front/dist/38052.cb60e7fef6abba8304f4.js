@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[38052],{38052:function(n){n.exports=JSON.parse('{"string":{"PrintToPDF":"Print to PDF","PrintingDocumentOf":"Printing document {current} of {total}","DownloadAll":"Download all","PrintFailed":"Print failed","PrintSettings":"Print settings","LandscapeMode":"Landscape mode"}}')}}]);

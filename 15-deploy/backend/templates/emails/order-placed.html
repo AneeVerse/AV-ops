@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Chocomelon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            padding: 40px 10px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .rainbow-header {
+            height: 12px;
+            background: linear-gradient(90deg, #D1A4FF 0%, #FFC800 25%, #1DE9B6 50%, #40C4FF 75%, #FF4081 100%);
+        }
+
+        .header {
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f2f1;
+            color: #00897b;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 0 40px 40px;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 15px;
+            text-align: center;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 0 20px;
+        }
+
+        .order-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .order-row:last-child {
+            border-bottom: none;
+            padding-top: 15px;
+            margin-top: 5px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #94a3b8;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 15px;
+        }
+
+        .total-price {
+            font-size: 24px;
+            color: #16D2D0;
+            font-weight: 800;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #FF4081;
+            color: #ffffff !important;
+            padding: 20px 45px;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 16px;
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .timeline {
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 80px;
+        }
+
+        .dot {
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 4px solid #e2e8f0;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .dot.active {
+            border-color: #16D2D0;
+            background: #16D2D0;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .step-label.active {
+            color: #16D2D0;
+        }
+
+        .footer {
+            background-color: #0f172a;
+            padding: 50px 40px;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .footer-social {
+            margin: 20px 0;
+        }
+
+        .footer-social span {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 20px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            margin-top: 25px;
+            opacity: 0.6;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile specific adjustments (inline styles for max compatibility) */
+        @media only screen and (max-width: 600px) {
+            .content { padding: 0 25px 40px; }
+            .order-card { padding: 20px; }
+            .hero-title { font-size: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="email-container">
+            <div class="rainbow-header"></div>
+            
+            <div class="header">
+                <div class="logo-text">
+                    <span style="color: #D1A4FF;">C</span><span style="color: #FFC800;">H</span><span
+                        style="color: #1DE9B6;">O</span><span style="color: #40C4FF;">C</span><span
+                        style="color: #FF4081;">O</span><span style="color: #D1A4FF;">M</span><span
+                        style="color: #FFC800;">E</span><span style="color: #1DE9B6;">L</span><span
+                        style="color: #40C4FF;">O</span><span style="color: #FF4081;">N</span>
+                </div>
+                <div class="badge">Success Fully Confirmed</div>
+            </div>
+
+            <div class="content">
+                <h1 class="hero-title">Sweet things are on the way! 🍬</h1>
+                <p class="hero-desc">Hi there! We've successfully received your order. Our team is now picking the best treats just for you.</p>
+
+                <div class="timeline">
+                    <div class="step">
+                        <div class="dot active">✓</div>
+                        <div class="step-label active">Placed</div>
+                    </div>
+                    <div class="step">
+                        <div class="dot">📦</div>
+                        <div class="step-label">Processing</div>
+                    </div>
+                    <div class="step">
+                        <div class="dot">🚚</div>
+                        <div class="step-label">Shipped</div>
+                    </div>
+                    <div class="step">
+                        <div class="dot">🏠</div>
+                        <div class="step-label">Delivered</div>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-row">
+                        <span class="info-label">Order Reference</span>
+                        <span class="info-value">#{{order_id}}</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="info-label">Current Status</span>
+                        <span class="info-value" style="color: #1DE9B6;">{{order_status}}</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="info-label">Order Date</span>
+                        <span class="info-value">{{order_date}}</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="info-label">Total Amount</span>
+                        <span class="info-value total-price">₹{{order_total}}</span>
+                    </div>
+                </div>
+
+                <div class="cta-container">
+                    <a href="{{storefront_url}}/in/orders/{{order_id}}" class="btn">TRACK YOUR ORDER</a>
+                </div>
+
+                <p style="text-align: center; color: #64748b; font-size: 14px;">
+                    Questions about your order? Just reply to this email or contact us at {{support_email}}.
+                </p>
+            </div>
+
+            <div class="footer">
+                <div class="logo-text" style="font-size: 24px; opacity: 0.9;">
+                    <span style="color: #D1A4FF;">C</span><span style="color: #FFC800;">H</span><span
+                        style="color: #1DE9B6;">O</span><span style="color: #40C4FF;">C</span><span
+                        style="color: #FF4081;">O</span><span style="color: #D1A4FF;">M</span><span
+                        style="color: #FFC800;">E</span><span style="color: #1DE9B6;">L</span><span
+                        style="color: #40C4FF;">O</span><span style="color: #FF4081;">N</span>
+                </div>
+                <p style="margin: 10px 0 0; font-size: 14px; opacity: 0.8;">Making life sweeter, one order at a time.</p>
+                <div class="footer-social">
+                    <span style="color: #FF4081;">💖</span>
+                    <span style="color: #40C4FF;">🌈</span>
+                    <span style="color: #1DE9B6;">✨</span>
+                </div>
+                <div class="copyright">
+                    © 2026 Chocomelon Store. Made with love.<br>
+                    You are receiving this because you placed an order on our store.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

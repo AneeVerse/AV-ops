@@ -1,0 +1,32 @@
+node_modules/
+index.html
+.next/
+.next-dev/
+out/
+.env.local
+deploy/supabase/.env
+deploy/supabase/cloud-data.sql
+deploy/supabase/write-secrets.sh
+deploy/supabase/fix-db-passwords*.sh
+deploy/supabase/finalize.sh
+deploy/supabase/CONTENTBETA_KEYS.txt
+output/
+brand-assets/
+refernce-image/
+logo/
+.env
+.env.example
+generate.js
+compare.js
+server.js
+brand-info.txt
+*.jsonl
+ChatGPT*
+cloudinary-test.js
+.DS_Store
+test-upload.txt
+element.png
+INDUSTRY BOLD.OTF
+Gemini code for Motion graphics statics.txt
+Gemini code for Carousel.txt
+Gemini code for banner in multiple sizes.txt

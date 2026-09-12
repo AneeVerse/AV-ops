@@ -1,0 +1,120 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "infographic-analyse",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "3a138a02-9146-49fe-bdb3-cff1bb60182d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1968,
+        -176
+      ],
+      "webhookId": "infographic-analyse-webhook-id"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body;\nconst adCopy = body.adCopy || '';\nif (!adCopy) throw new Error('adCopy is required.');\n\nconst systemPrompt = [\n  'You are the Design Decision Layer for a branded infographic generation workflow.',\n  'Analyze the user-provided ad copy and return the best matching creative direction options.',\n  '',\n  'MEANING PRESERVATION — MANDATORY:',\n  '- Do NOT alter the meaning, claim, data, audience, or context of the copy.',\n  '- Do NOT invent statistics, percentages, or data points not present in the copy.',\n  '- Do NOT invent a CTA if none exists in the copy.',\n  '- Do NOT change approximate numbers to exact ones (e.g. \"nearly 7 in 10\" is NOT \"70%\").',\n  '- Do NOT add benefits or outcomes not stated in the copy.',\n  '',\n  'ANALYSIS PROCESS — follow all steps before selecting options:',\n  '1. Identify the primary message type: problem / outcome / insight / statistic / comparison / process / trend / warning / product_feature / social_proof / offer / announcement / educational_takeaway',\n  '2. Extract all measurable data points exactly as written (numbers, percentages, timeframes, ratios).',\n  '3. Identify copy components present: headline candidate, subheadline, primary stat, body copy, CTA (mark absent if missing).',\n  '4. Determine CTA presence: only mark present if the copy explicitly contains one.',\n  '',\n  'MESSAGE FOCUS — select 1–2 that clearly match the primary message. Do not force a type:',\n  '   stat_lead    — copy is built around a key number, percentage, or metric',\n  '   pain_point   — copy calls out a problem the audience faces',\n  '   solution     — copy highlights what the product/service does or enables',\n  '   proof        — copy uses testimonials, case studies, awards, or social proof',\n  '   education    — copy explains a process, concept, or framework',\n  '',\n  'CREATIVE HOOK — select 1–2, following these strict rules:',\n  '   hero_stat    — ONLY when one dominant number/stat is the clear centrepiece. Do NOT select if no clear stat exists.',\n  '   multi_stat   — ONLY when 2–4 distinct measurable stats exist. Do NOT select if fewer than 2 stats.',\n  '   headline_lead — when copy is led by a strong statement with no dominant data to visualize.',\n  '   data_viz     — ONLY when 3+ comparable values exist that can be charted. Do NOT select if values are unrelated.',\n  '   process_flow — ONLY when copy describes a clear sequence or workflow steps. Do NOT select if no steps exist.',\n  '',\n  'Return ONLY a valid JSON object with exactly these two keys:',\n  '{ \"messageFocus\": [\"id1\"], \"creativeHook\": [\"id1\"] }',\n  'No markdown, no commentary, no extra text.',\n].join('\\n');\n\nconst userPrompt = 'Ad Copy:\\n' + adCopy;\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-5.4-mini',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  max_completion_tokens: 512,\n  response_format: { type: 'json_object' }\n});\n\nreturn [{ json: { requestBody } }];"
+      },
+      "id": "0a182f53-1b32-49c0-95a6-53c16e105533",
+      "name": "Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2208,
+        -176
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "000f6178-d463-4f4e-9cc4-4298e3a20de7",
+      "name": "Call AI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2448,
+        -176
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $('Call AI').first().json;\n\nconst VALID_MESSAGE_FOCUS = ['stat_lead', 'pain_point', 'solution', 'proof', 'education'];\nconst VALID_CREATIVE_HOOK = ['hero_stat', 'multi_stat', 'headline_lead', 'data_viz', 'process_flow'];\n\nconst raw = response.choices?.[0]?.message?.content;\nif (!raw) throw new Error('No content from model: ' + JSON.stringify(response));\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nlet parsed;\ntry {\n  parsed = JSON.parse(cleaned);\n} catch(e) {\n  throw new Error('Invalid JSON from model: ' + cleaned.substring(0, 200));\n}\n\nconst messageFocus = (parsed.messageFocus || []).filter(v => VALID_MESSAGE_FOCUS.includes(v));\nconst creativeHook = (parsed.creativeHook || []).filter(v => VALID_CREATIVE_HOOK.includes(v));\n\nreturn [{\n  json: {\n    messageFocus: messageFocus.length > 0 ? messageFocus : [VALID_MESSAGE_FOCUS[0]],\n    creativeHook: creativeHook.length > 0 ? creativeHook : [VALID_CREATIVE_HOOK[0]]\n  }\n}];"
+      },
+      "id": "258d6f77-7a21-4017-be48-8c6d8be569d4",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        -176
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call AI": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[55557],{55557:function(n){n.exports=JSON.parse('{"string":{"PrintToPDF":"打印为 PDF","PrintingDocumentOf":"正在打印文档 {current} / {total}","DownloadAll":"全部下载","PrintFailed":"打印失败","PrintSettings":"Print settings","LandscapeMode":"Landscape mode"}}')}}]);

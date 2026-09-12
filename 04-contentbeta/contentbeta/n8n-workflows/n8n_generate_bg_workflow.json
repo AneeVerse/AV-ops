@@ -1,0 +1,354 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-bg",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "5c140680-cc6c-4a5e-a0bb-43fcb14ad3f7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1408,
+        -304
+      ],
+      "webhookId": "generate-bg-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1eeefd13-31e6-44d5-ad6e-a21b83e0ccdb",
+      "name": "Fetch Brand Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        -304
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/overlay_templates?id=eq.{{ $('Webhook').first().json.body.overlayTemplateId }}&select=*&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b6def13b-87b6-4a8d-8389-48204668c439",
+      "name": "Fetch Overlay Template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1888,
+        -304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const brandProfile = $('Fetch Brand Profile').first().json;\nconst template = $('Fetch Overlay Template').first().json;\nconst webhookBody = $('Webhook').first().json.body;\n\nif (!template || !template.id) throw new Error('Overlay template not found: ' + webhookBody.overlayTemplateId);\n\nconst brandId = webhookBody.brandId;\nconst logoUrl = brandProfile.logo_url || null;\nconst rawBrandStyle = brandProfile.style_prompt || '';\n// Strip clothing-colour directives that trigger gpt-image-2 safety filters\nconst brandStyle = rawBrandStyle\n  .replace(/,?\\s*their clothes should not be[^.!?\\n]*/gi, '')\n  .replace(/,?\\s*wearing[^,;.!?\\n]*(?:red|black|blue|white|green|yellow|orange|purple|pink)[^,;.!?\\n]*/gi, '')\n  .trim();\nconst bgPrompt = template.bg_prompt || '';\nconst puppeteerConfig = template.puppeteer_config || {};\nconst copy = webhookBody.copy || {};\n\nif (!bgPrompt) throw new Error('Overlay template has no bg_prompt set');\n\nconst copyContext = copy.heading\n  ? `\\n\\nCOPY CONTEXT (use to inform the visual theme and mood only — do NOT render any text in the image):\\nHeadline: \"${copy.heading}\"${copy.microcopy ? `\\nMicrocopy: \"${copy.microcopy}\"` : ''}${copy.subheading ? `\\nSubheading: \"${copy.subheading}\"` : ''}`\n  : '';\n\nconst prompt = `BACKGROUND IMAGE PROMPT:\\n${bgPrompt}${copyContext}\\n\\nBRAND STYLE (apply these colors and visual elements):\\n${brandStyle}\\n\\nGenerate a professional, clean background image for a 1080x1080 social media post.`;\n\nreturn [{\n  json: {\n    brandId,\n    logoUrl,\n    puppeteerConfig,\n    storagePath: `${brandId}/${Date.now()}_bg.png`,\n    requestBody: JSON.stringify({\n      model: 'gpt-image-2',\n      prompt,\n      size: '1024x1024',\n      quality: 'medium',\n      n: 1\n    })\n  }\n}];"
+      },
+      "id": "e1f7db0c-31cc-4fdd-91fd-708f1805a8c9",
+      "name": "Build BG Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2128,
+        -304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "96cfa7d3-1602-4997-bc93-fd46e43b5b48",
+      "name": "Generate BG Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2368,
+        -304
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data && $json.data[0] && $json.data[0].b64_json ? 'ok' : '' }}",
+              "operation": "notEqual"
+            }
+          ]
+        }
+      },
+      "id": "b3738934-c6da-41d8-9552-f32b9fe8505e",
+      "name": "IF Image OK",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ ...JSON.parse($('Build BG Prompt').first().json.requestBody), model: 'gpt-image-1.5' }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "dc10a9a5-1f2d-4175-89a9-d2004380bad0",
+      "name": "Generate BG Image Fallback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2592,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const imageResp = $input.first().json;\nconst meta = $('Build BG Prompt').first().json;\n\nconst imageData = imageResp.data && imageResp.data[0];\nif (!imageData || !imageData.b64_json) throw new Error('No image data in response: ' + JSON.stringify(imageResp));\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(imageData.b64_json, 'base64'),\n  'bg.png',\n  'image/png'\n);\n\nreturn [{\n  json: {\n    brandId: meta.brandId,\n    logoUrl: meta.logoUrl,\n    puppeteerConfig: meta.puppeteerConfig,\n    storagePath: meta.storagePath\n  },\n  binary: { data: binaryData }\n}];"
+      },
+      "id": "167f52b3-ae88-4487-bc06-d3bcf6047dcc",
+      "name": "Extract BG Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2704,
+        -608
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst meta = item.json;\nconst mime = (item.binary && item.binary.data && item.binary.data.mimeType) || 'image/png';\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst fileName = (meta.storagePath || meta.fileName || ('upload-' + Date.now() + '.png')).toString().split('/').pop();\nconst dataUrl = 'data:' + mime + ';base64,' + buffer.toString('base64');\n\nconst boundary = '----n8nIkBoundary' + Date.now().toString(36);\nconst parts = [];\nfunction addField(name, value) {\n  parts.push(\n    '--' + boundary + '\\r\\n' +\n    'Content-Disposition: form-data; name=\"' + name + '\"\\r\\n\\r\\n' +\n    value + '\\r\\n'\n  );\n}\naddField('file', dataUrl);\naddField('fileName', fileName);\naddField('folder', '/generated-posts');\naddField('useUniqueFileName', 'true');\nparts.push('--' + boundary + '--\\r\\n');\nconst body = parts.join('');\n\nlet uploaded;\ntry {\n  uploaded = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://upload.imagekit.io/api/v1/files/upload',\n    headers: {\n      Authorization: 'Basic __IMAGEKIT_BASIC_AUTH__',\n      'Content-Type': 'multipart/form-data; boundary=' + boundary,\n    },\n    body,\n    timeout: 120000,\n  });\n} catch (err) {\n  throw new Error('ImageKit httpRequest failed: ' + (err.message || String(err)));\n}\n\nif (typeof uploaded === 'string') {\n  try { uploaded = JSON.parse(uploaded); } catch (_) {}\n}\nif (!uploaded || !uploaded.url) {\n  throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n}\n\nreturn [{ json: Object.assign({}, meta, uploaded) }];"
+      },
+      "id": "2e74c33f-e212-429e-985e-039bb151c5ea",
+      "name": "Upload BG to ImageKit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2848,
+        -304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const uploaded = $('Upload BG to ImageKit').first().json;\nconst meta = $('Extract BG Image').first().json;\n\nconst bgImageUrl = uploaded.url;\nif (!bgImageUrl) throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n\nreturn [{\n  json: {\n    bgImageUrl,\n    logoUrl: meta.logoUrl,\n    puppeteerConfig: meta.puppeteerConfig\n  }\n}];"
+      },
+      "id": "02f75383-acd5-4bf6-b994-fdda1bf80fb8",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3088,
+        -304
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { bgImageUrl: $json.bgImageUrl, logoUrl: $json.logoUrl, puppeteerConfig: $json.puppeteerConfig } }}",
+        "options": {}
+      },
+      "id": "27aca54a-c90a-4a90-8968-94de8be326b3",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3328,
+        -304
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Fetch Overlay Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Overlay Template": {
+      "main": [
+        [
+          {
+            "node": "Build BG Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build BG Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate BG Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate BG Image": {
+      "main": [
+        [
+          {
+            "node": "IF Image OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Image OK": {
+      "main": [
+        [
+          {
+            "node": "Extract BG Image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate BG Image Fallback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate BG Image Fallback": {
+      "main": [
+        [
+          {
+            "node": "Extract BG Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract BG Image": {
+      "main": [
+        [
+          {
+            "node": "Upload BG to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload BG to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  }
+}

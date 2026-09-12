@@ -1,0 +1,757 @@
+INFO:     Started server process [2043005]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8088 (Press CTRL+C to quit)
+codex-proxy 0.2.0 listening on http://127.0.0.1:8088
+  Proxy API key: enabled
+  POST /v1/chat/completions   (OpenAI-compatible)
+  POST /v1/responses          (Responses API passthrough)
+  GET  /v1/models
+  GET  /healthz
+INFO:     127.0.0.1:51916 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47812 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40246 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54884 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42638 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     146.19.172.24:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     188.166.92.96:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     188.166.92.96:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     103.181.208.89:0 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     148.230.67.132:0 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     104.164.173.5:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     171.22.217.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     154.28.229.23:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     104.164.126.181:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     173.46.91.90:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:53:57 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:54:06 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:55:21 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 50 -> 1 input items
+12:55:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:55:21 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:55:23 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:55:37 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 60 -> 5 input items
+12:55:37 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:55:37 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:55:39 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:55:55 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 69 -> 4 input items
+12:55:56 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:55:56 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:55:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:56:50 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 71 -> 1 input items
+12:56:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:56:51 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:56:52 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:56:59 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 81 -> 5 input items
+12:57:00 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:57:00 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:57:01 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:57:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 83 -> 1 input items
+12:57:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:57:14 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:57:16 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:58:10 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_31929db11fa5f71fbd2be684ba1b514e: 85 -> 1 input items
+12:58:11 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:58:11 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:58:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:58:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:58:56 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_484b324d0030826c9946301114dd2fd5: 50 -> 5 input items
+12:58:57 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:58:57 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:58:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:59:10 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+12:59:25 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 23 -> 9 input items
+12:59:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+12:59:26 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+12:59:27 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:00:05 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 31 -> 4 input items
+13:00:05 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:00:05 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:00:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:00:24 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 35 -> 2 input items
+13:00:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:00:25 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:00:26 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:00:36 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 39 -> 2 input items
+13:00:36 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:00:36 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:00:38 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:02:27 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 42 -> 1 input items
+13:02:28 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:02:28 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:02:30 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:03:32 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 44 -> 1 input items
+13:03:32 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:03:32 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:03:34 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:03:50 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 50 -> 3 input items
+13:03:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:03:51 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:03:52 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:04:01 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 56 -> 3 input items
+13:04:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:04:02 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:04:04 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:04:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 62 -> 3 input items
+13:04:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:04:14 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:04:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:04:37 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 68 -> 3 input items
+13:04:38 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:04:38 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:04:39 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:04:43 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 70 -> 1 input items
+13:04:44 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:04:44 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:04:45 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     32.198.10.203:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:05:19 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 74 -> 2 input items
+13:05:19 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:05:19 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:05:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:05:25 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 76 -> 1 input items
+13:05:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:05:25 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:05:26 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:06:07 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 78 -> 1 input items
+13:06:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:06:07 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:06:08 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:06:17 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 82 -> 2 input items
+13:06:17 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:06:17 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:06:19 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:06:28 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 88 -> 3 input items
+13:06:29 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:06:29 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:06:30 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     64.23.237.195:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     64.23.237.195:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:09:29 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 90 -> 1 input items
+13:09:30 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:09:30 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:09:32 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     98.80.232.249:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     98.80.232.249:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     100.30.173.108:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     100.30.173.108:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     161.123.252.217:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     161.123.252.217:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:10:45 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 114 -> 12 input items
+13:10:46 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:10:46 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:10:47 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     54.152.238.85:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:13:05 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 116 -> 1 input items
+13:13:06 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:13:06 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:13:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:13:19 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 126 -> 5 input items
+13:13:20 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:13:20 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:13:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:13:27 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 128 -> 1 input items
+13:13:28 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:13:28 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:13:29 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:13:52 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 130 -> 1 input items
+13:13:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:13:53 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:13:54 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:14:01 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 132 -> 1 input items
+13:14:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:14:02 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:14:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     103.196.9.209:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.196.9.209:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:14:20 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 138 -> 3 input items
+13:14:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:14:21 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:14:22 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:14:35 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 140 -> 1 input items
+13:14:36 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:14:36 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:14:37 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:14:44 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 142 -> 1 input items
+13:14:45 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:14:45 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:14:46 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:15:07 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 147 -> 2 input items
+13:15:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:15:07 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:15:08 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:15:24 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 149 -> 1 input items
+13:15:24 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:15:24 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:15:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:15:39 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 151 -> 1 input items
+13:15:39 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:15:39 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:15:42 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:16:47 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 153 -> 1 input items
+13:16:47 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:16:47 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:16:49 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:05 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 155 -> 1 input items
+13:17:05 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:05 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 157 -> 1 input items
+13:17:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:15 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:16 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:25 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 159 -> 1 input items
+13:17:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:25 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:27 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:33 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 161 -> 1 input items
+13:17:33 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:33 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:42 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 163 -> 1 input items
+13:17:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:43 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:44 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:17:53 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 165 -> 1 input items
+13:17:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:17:53 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:17:55 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:18:29 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 167 -> 1 input items
+13:18:30 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:18:30 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:18:31 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:18:58 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 173 -> 3 input items
+13:18:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:18:58 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:19:00 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:19:09 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 185 -> 6 input items
+13:19:10 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:19:10 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:19:11 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:19:16 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 187 -> 1 input items
+13:19:17 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:19:17 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:19:18 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:19:32 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 193 -> 3 input items
+13:19:32 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:19:32 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:19:34 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:19:58 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 195 -> 1 input items
+13:19:59 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:19:59 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:20:00 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:20:08 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 197 -> 1 input items
+13:20:09 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:20:09 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:20:10 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:20:32 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 199 -> 1 input items
+13:20:33 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:20:33 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:20:34 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:20:41 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 201 -> 1 input items
+13:20:42 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:20:42 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:20:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:20:50 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 203 -> 1 input items
+13:20:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:20:51 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:20:52 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:21:00 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 205 -> 1 input items
+13:21:00 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:21:00 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:21:01 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:21:13 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 207 -> 1 input items
+13:21:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:21:14 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:21:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:21:34 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 209 -> 1 input items
+13:21:34 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:21:34 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:21:36 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:21:43 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 211 -> 1 input items
+13:21:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:21:43 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:21:45 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:22:01 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 219 -> 4 input items
+13:22:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:22:02 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:22:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:22:10 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 221 -> 1 input items
+13:22:11 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:22:11 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:22:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:22:23 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 225 -> 2 input items
+13:22:24 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:22:24 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:22:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:22:34 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 227 -> 1 input items
+13:22:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:22:35 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:22:36 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:22:45 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 229 -> 1 input items
+13:22:46 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:22:46 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:22:48 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:23:01 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 235 -> 3 input items
+13:23:01 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:23:01 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:23:06 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:23:30 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 239 -> 2 input items
+13:23:31 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:23:31 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:23:32 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:26:10 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 241 -> 1 input items
+13:26:11 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:26:11 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:26:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:26:41 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 267 -> 13 input items
+13:26:42 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:26:42 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:26:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+13:26:44 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:26:57 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 14 -> 6 input items
+13:26:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:26:58 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:27:00 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:27:12 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 40 -> 13 input items
+13:27:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:27:12 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:27:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:27:37 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 60 -> 10 input items
+13:27:38 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:27:38 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:27:39 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:27:40 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 281 -> 7 input items
+13:27:41 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:27:41 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:27:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:27:54 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 76 -> 8 input items
+13:27:55 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:27:55 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:27:56 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:28:29 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 283 -> 1 input items
+13:28:29 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:28:29 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:28:32 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:28:54 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 80 -> 2 input items
+13:28:55 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:28:55 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:28:56 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:29:08 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 94 -> 7 input items
+13:29:08 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:29:08 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:29:09 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:29:21 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 285 -> 1 input items
+13:29:22 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:29:22 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:29:23 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:30:12 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 287 -> 1 input items
+13:30:13 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:30:13 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:30:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:30:18 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 104 -> 5 input items
+13:30:19 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:30:19 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:30:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:30:35 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 289 -> 1 input items
+13:30:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:30:35 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:30:37 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:30:48 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 299 -> 5 input items
+13:30:49 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:30:49 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:30:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:31:01 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_d8cc1ca19e571ec1cd29cedcb038b18c: 108 -> 2 input items
+13:31:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:31:02 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:31:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:32:34 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_34fce9b09a1a14a324b5c4c6feda92df: 302 -> 1 input items
+13:32:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:32:35 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:32:37 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:33:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:34:51 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_0955392d2c73451ba01dd1f47a271da2: 68 -> 1 input items
+13:34:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:34:51 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:34:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:35:33 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:35:47 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_26bf65564862e77096f5b266117e5464: 21 -> 8 input items
+13:35:48 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:35:48 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:35:50 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:36:07 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_26bf65564862e77096f5b266117e5464: 38 -> 8 input items
+13:36:08 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:36:08 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:36:09 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:36:22 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_26bf65564862e77096f5b266117e5464: 56 -> 9 input items
+13:36:23 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:36:23 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:36:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:37:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_26bf65564862e77096f5b266117e5464: 58 -> 1 input items
+13:37:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:37:15 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:37:17 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:37:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:38:07 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_edf7e4dcadc146c7e050200a8f7b791a: 19 -> 7 input items
+13:38:08 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:38:08 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:38:09 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:38:16 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_edf7e4dcadc146c7e050200a8f7b791a: 31 -> 6 input items
+13:38:17 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:38:17 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:38:18 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:38:27 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_edf7e4dcadc146c7e050200a8f7b791a: 44 -> 6 input items
+13:38:28 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:38:28 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:38:30 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:38:41 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_edf7e4dcadc146c7e050200a8f7b791a: 54 -> 5 input items
+13:38:41 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:38:41 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:38:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:39:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_edf7e4dcadc146c7e050200a8f7b791a: 58 -> 2 input items
+13:39:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:39:14 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:39:16 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:40:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     95.183.9.64:0 - "GET /.env HTTP/1.1" 404 Not Found
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:40:20 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 22 -> 7 input items
+13:40:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:40:21 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:40:22 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:40:38 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 34 -> 6 input items
+13:40:38 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:40:38 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:40:40 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:40:47 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 36 -> 1 input items
+13:40:48 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:40:48 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:40:50 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:41:00 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 50 -> 7 input items
+13:41:01 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:41:01 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:41:02 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:41:13 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 52 -> 1 input items
+13:41:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:41:14 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:41:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:41:19 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 54 -> 1 input items
+13:41:20 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:41:20 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:41:21 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     52.44.113.131:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:41:25 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 58 -> 2 input items
+13:41:26 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:41:26 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:41:27 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:42:14 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 59 -> 3 input items
+13:42:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:42:15 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:42:16 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:42:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:42:44 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_8d686c36c7b14447a0a0ab1b799339f0: 81 -> 4 input items
+13:42:45 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:42:45 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:42:47 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:43:16 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:43:58 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 98 -> 8 input items
+13:43:59 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:43:59 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:44:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:44:06 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 99 -> 9 input items
+13:44:06 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:44:06 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+INFO:     207.199.173.166:0 - "GET / HTTP/1.1" 404 Not Found
+13:44:10 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:44:15 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 99 -> 9 input items
+13:44:15 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:44:15 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:44:18 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:44:22 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 99 -> 9 input items
+13:44:22 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:44:22 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:44:25 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:44:30 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 100 -> 10 input items
+13:44:31 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:44:31 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:44:34 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     216.73.216.98:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     216.73.216.98:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:45:45 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 101 -> 11 input items
+13:45:45 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:45:45 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:45:48 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:45:52 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 101 -> 11 input items
+13:45:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:45:53 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:45:56 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:46:44 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:46:57 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 18 -> 8 input items
+13:46:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:46:58 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:46:59 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:47:11 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 36 -> 9 input items
+13:47:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:47:12 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:47:14 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:47:35 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 51 -> 7 input items
+13:47:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:47:35 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:47:37 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:47:51 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 59 -> 4 input items
+13:47:51 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:47:51 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:47:54 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     74.7.228.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     74.7.227.145:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:47:57 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 60 -> 5 input items
+13:47:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:47:58 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:48:01 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:49:35 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 61 -> 6 input items
+13:49:35 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:49:35 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:49:38 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     3.209.66.12:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:49:41 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_435941a1cbd288d9a3303e50372dd9e5: 61 -> 6 input items
+13:49:43 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:49:43 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:49:47 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:49:53 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 99 -> 9 input items
+13:49:53 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:49:53 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:49:58 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     184.73.225.134:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+13:50:02 INFO    codex_proxy.upstream: Using previous_response_id continuation for session chat_142212a6f8e3d02d335758b50e3ec557: 99 -> 9 input items
+13:50:03 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+13:50:03 WARNING codex_proxy.upstream: Codex rejected field 'previous_response_id'; stripping and retrying
+13:50:07 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     103.181.208.89:0 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54772 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     148.230.67.132:0 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     198.13.158.153:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.4.251.41:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.4.250.114:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.196.9.171:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.196.9.188:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     171.22.217.93:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     171.22.217.126:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     207.199.173.163:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     130.94.66.193:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     130.94.66.193:0 - "GET /open/ HTTP/1.1" 404 Not Found
+INFO:     130.94.66.193:0 - "GET /open/visitors/info/gets?uuid=1 HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     44.251.106.68:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.24.234.16:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     34.21.175.144:0 - "POST /?rest_route=/batch/v1 HTTP/1.1" 404 Not Found
+INFO:     34.34.253.116:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     34.34.253.116:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     34.34.253.202:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     34.34.253.202:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     165.232.188.234:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     165.232.188.234:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     158.222.119.16:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.153.159.5:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     136.107.9.206:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     157.97.124.233:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     8.234.172.174:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     34.182.186.39:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     35.198.239.121:0 - "POST /?rest_route=/batch/v1 HTTP/1.1" 404 Not Found
+INFO:     103.24.232.16:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     68.166.162.92:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     82.24.34.39:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.153.159.40:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     146.19.172.24:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     168.144.28.96:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     168.144.28.96:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     146.19.172.24:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     35.247.135.158:0 - "POST /?rest_route=/batch/v1 HTTP/1.1" 404 Not Found
+INFO:     103.181.208.221:0 - "GET /v1/models HTTP/1.1" 200 OK
+05:51:12 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 400 Bad Request"
+05:51:12 WARNING codex_proxy.upstream: Codex rejected field 'max_output_tokens'; stripping and retrying
+05:51:13 INFO    httpx: HTTP Request: POST https://chatgpt.com/backend-api/codex/responses "HTTP/1.1 200 OK"
+INFO:     103.181.208.221:0 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     95.111.254.11:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     185.214.198.57:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     142.93.136.52:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     192.177.167.59:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     31.42.134.110:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     185.163.209.124:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     165.227.198.41:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     165.227.198.41:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     34.21.227.22:0 - "POST /?rest_route=/batch/v1 HTTP/1.1" 404 Not Found
+INFO:     54.234.156.225:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     207.199.188.109:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     74.7.243.243:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     82.21.108.50:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.39.151.65:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     46.202.140.154:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.39.151.62:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     165.232.131.20:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     165.232.131.20:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     34.69.74.91:0 - "POST / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     207.199.190.115:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.153.159.49:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     192.175.111.232:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     192.175.111.248:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     31.42.134.111:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     35.197.136.37:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     45.41.130.238:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     34.87.184.163:0 - "GET /administrator/components/com_jce/index.html HTTP/1.1" 404 Not Found
+INFO:     54.204.127.233:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     54.204.127.233:0 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     54.204.127.233:0 - "GET /favicon.png HTTP/1.1" 404 Not Found
+INFO:     54.197.3.125:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     54.197.3.125:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     158.222.127.46:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     103.24.234.20:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     185.214.196.70:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found
+INFO:     74.7.230.56:0 - "GET /robots.txt HTTP/1.1" 404 Not Found

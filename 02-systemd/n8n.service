@@ -1,0 +1,23 @@
+[Unit]
+Description=n8n workflow automation service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=n8n
+Group=n8n
+EnvironmentFile=/etc/n8n/n8n.env
+ExecStart=/usr/bin/env PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin n8n start
+Restart=always
+RestartSec=5
+WorkingDirectory=/var/lib/n8n
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/lib/n8n
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

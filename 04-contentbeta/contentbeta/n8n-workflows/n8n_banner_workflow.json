@@ -1,0 +1,301 @@
+{
+  "name": "Banner Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-banner",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "bn-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "generate-banner-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=style_prompt,logo_url&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bn-fetch-brand",
+      "name": "Fetch Brand Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const profile = $('Fetch Brand Profile').first().json;\nconst stylePrompt = profile.style_prompt || '';\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-4o-mini',\n  messages: [\n    {\n      role: 'system',\n      content: 'You are a brand designer. Analyze the brand guidelines and extract the color palette and visual style. Return ONLY a valid JSON object with these exact keys: primaryColor (main brand color hex), secondaryColor (secondary hex), accentColor (accent hex), backgroundColor (clean background hex, usually white or near-white), textColor (body text hex, usually dark), visualTheme (a short description of the visual style for AI image generation, e.g. clean minimalist corporate blue tones professional photography). No markdown, no code fences, just the JSON object.'\n    },\n    {\n      role: 'user',\n      content: 'Brand guidelines: ' + stylePrompt\n    }\n  ],\n  response_format: { type: 'json_object' }\n});\n\nreturn [{ json: { requestBody } }];"
+      },
+      "id": "bn-build-colors-req",
+      "name": "Build Color Analysis Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "bn-analyze-brand",
+      "name": "Analyze Brand Colors",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $('Analyze Brand Colors').first().json;\nlet colors;\ntry {\n  const text = raw.choices?.[0]?.message?.content || '{}';\n  colors = JSON.parse(text);\n} catch(e) {\n  colors = {\n    primaryColor: '#1e40af',\n    secondaryColor: '#3b82f6',\n    accentColor: '#f59e0b',\n    backgroundColor: '#ffffff',\n    textColor: '#1f2937',\n    visualTheme: 'clean professional corporate photography'\n  };\n}\n\nconst webhook = $('Webhook').first().json.body;\nconst profile = $('Fetch Brand Profile').first().json;\nconst bgPrompt = webhook.bgPrompt || '';\nconst heading = webhook.copy?.heading || '';\nconst theme = colors.visualTheme || 'professional marketing photography';\n\nconst imagePrompt = bgPrompt.trim()\n  ? bgPrompt.trim() + ' No text, no logos, no overlaid graphics. High resolution, photorealistic.'\n  : `Professional marketing photography for \"${heading}\". Style: ${theme}. Clean composition, no text, no logos, no overlaid graphics. High resolution, photorealistic.`;\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-image-1.5',\n  prompt: imagePrompt,\n  size: '1536x1024',\n  quality: 'high',\n  n: 1\n});\n\nreturn [{ json: { colors, logoUrl: profile.logo_url || null, requestBody } }];"
+      },
+      "id": "bn-build-img-req",
+      "name": "Build Image Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "bn-generate-image",
+      "name": "Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const imageResponse = $('Generate Image').first().json;\nconst meta = $('Build Image Request').first().json;\n\nconst b64 = imageResponse.data?.[0]?.b64_json;\nif (!b64) throw new Error('No image data: ' + JSON.stringify(imageResponse));\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(b64, 'base64'),\n  'banner_bg.png',\n  'image/png'\n);\n\nreturn [{\n  json: {\n    colors: meta.colors,\n    logoUrl: meta.logoUrl\n  },\n  binary: { data: binaryData }\n}];"
+      },
+      "id": "bn-extract-image",
+      "name": "Extract Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst meta = item.json;\nconst mime = (item.binary && item.binary.data && item.binary.data.mimeType) || 'image/png';\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst fileName = (meta.storagePath || meta.fileName || ('upload-' + Date.now() + '.png')).toString().split('/').pop();\nconst dataUrl = 'data:' + mime + ';base64,' + buffer.toString('base64');\n\nconst boundary = '----n8nIkBoundary' + Date.now().toString(36);\nconst parts = [];\nfunction addField(name, value) {\n  parts.push(\n    '--' + boundary + '\\r\\n' +\n    'Content-Disposition: form-data; name=\"' + name + '\"\\r\\n\\r\\n' +\n    value + '\\r\\n'\n  );\n}\naddField('file', dataUrl);\naddField('fileName', fileName);\naddField('folder', '/generated-posts');\naddField('useUniqueFileName', 'true');\nparts.push('--' + boundary + '--\\r\\n');\nconst body = parts.join('');\n\nlet uploaded;\ntry {\n  uploaded = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://upload.imagekit.io/api/v1/files/upload',\n    headers: {\n      Authorization: 'Basic __IMAGEKIT_BASIC_AUTH__',\n      'Content-Type': 'multipart/form-data; boundary=' + boundary,\n    },\n    body,\n    timeout: 120000,\n  });\n} catch (err) {\n  throw new Error('ImageKit httpRequest failed: ' + (err.message || String(err)));\n}\n\nif (typeof uploaded === 'string') {\n  try { uploaded = JSON.parse(uploaded); } catch (_) {}\n}\nif (!uploaded || !uploaded.url) {\n  throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n}\n\nreturn [{ json: Object.assign({}, meta, uploaded) }];"
+      },
+      "id": "bn-upload",
+      "name": "Upload to ImageKit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const upload = $('Upload to ImageKit').first().json;\nconst meta = $('Extract Image').first().json;\nif (!upload.url) throw new Error('ImageKit upload failed: ' + JSON.stringify(upload));\nreturn [{ json: {\n  colors: meta.colors,\n  logoUrl: meta.logoUrl,\n  bgImageUrl: upload.url\n} }];"
+      },
+      "id": "bn-assemble",
+      "name": "Assemble Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "bn-respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Build Color Analysis Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Color Analysis Request": {
+      "main": [
+        [
+          {
+            "node": "Analyze Brand Colors",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Brand Colors": {
+      "main": [
+        [
+          {
+            "node": "Build Image Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Image Request": {
+      "main": [
+        [
+          {
+            "node": "Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Extract Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Image": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Assemble Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

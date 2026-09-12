@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deletion Request - Chocomelon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fef2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            padding: 40px 10px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #fbcfcf;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo-box {
+            background: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 12px;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #EF4444;
+            margin: 0 0 15px;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: #4B5563;
+            margin-bottom: 35px;
+        }
+
+        .warning-card {
+            background-color: #FEF2F2;
+            border: 1px solid #FEE2E2;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .warning-title {
+            color: #B91C1C;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-list {
+            padding-left: 20px;
+            color: #7f1d1d;
+            font-size: 14px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #EF4444;
+            color: #ffffff !important;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .otp-box {
+            background: #FEF2F2;
+            border: 2px dashed #EF4444;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .otp-code {
+            font-size: 32px;
+            font-weight: 800;
+            color: #EF4444;
+            letter-spacing: 8px;
+            font-family: monospace;
+        }
+
+        .footer {
+            background: #fafafa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            color: #9CA3AF;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="email-container">
+            <div class="header">
+                <div class="logo-box">
+                    <img src="https://chocomelon-1.s3.ap-south-1.amazonaws.com/uploadschecomelon-01KKJYWK3TZYPRRKX2V631N0HX.jpeg" alt="Chocomelon" style="max-height: 50px; width: auto; vertical-align: middle;">
+                </div>
+            </div>
+
+            <div class="content">
+                <h1 class="hero-title">Confirm Deletion Request</h1>
+                <p class="hero-desc">Hi {{customer_name}}, we're sad to see you go. We've received a request to permanently delete your Chocomelon account.</p>
+
+                <div class="warning-card">
+                    <div class="warning-title">⚠️ Important: This action is permanent!</div>
+                    <ul class="warning-list">
+                        <li>Your order history will be deleted.</li>
+                        <li>Your saved addresses and payment methods will be removed.</li>
+                        <li>Any credits or rewards will be lost.</li>
+                        <li>You won't be able to access your account once deleted.</li>
+                    </ul>
+                </div>
+
+                <p style="font-size: 14px; color: #4B5563;">To confirm and finalize the deletion, please use the verification code below:</p>
+
+                <div class="otp-box">
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #EF4444; margin-bottom: 10px; font-weight: 700;">Account Deletion Code</div>
+                    <div class="otp-code">{{otp}}</div>
+                    <div style="font-size: 11px; color: #EF4444; margin-top: 10px; font-weight: 700;">Valid for 15 minutes</div>
+                </div>
+
+                <p style="text-align: center; color: #9CA3AF; font-size: 13px; margin-top: 30px;">
+                    Did not request this? Please ignore this email or contact support immediately. Your account will NOT be deleted unless you use the code above.
+                </p>
+            </div>
+
+            <div class="footer">
+                <p>&copy; 2025 Chocomelon. All rights reserved.</p>
+                <p>Safety & Security is our top priority.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

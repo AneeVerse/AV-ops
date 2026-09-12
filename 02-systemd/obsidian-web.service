@@ -1,0 +1,16 @@
+[Unit]
+Description=Obsidian web access via noVNC
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/obsidian-web/run.sh
+Restart=always
+RestartSec=5
+Environment=HOME=/root
+Environment=USER=root
+Environment=LOGNAME=root
+
+[Install]
+WantedBy=multi-user.target

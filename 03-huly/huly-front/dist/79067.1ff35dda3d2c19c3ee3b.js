@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[79067],{79067:function(e){e.exports=JSON.parse('{"string":{"CreatePublicLink":"公開リンクを作成","PublicLink":"公開リンク","Revoke":"無効化","RevokeConfirmation":"この操作により、以前に共有されたリンクが無効になります。本当にこの公開リンクを無効にしますか？","LinkWasRevoked":"公開リンクが無効化されました","Copy":"コピー"}}')}}]);

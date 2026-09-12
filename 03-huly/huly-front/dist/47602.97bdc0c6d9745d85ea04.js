@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[47602],{47602:function(e){e.exports=JSON.parse('{"string":{"Starred":"Markiert","Star":"Markieren","Unstar":"Markierung aufheben"}}')}}]);

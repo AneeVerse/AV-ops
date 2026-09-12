@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="2.5">
+  <path d="M50 10 C68 30, 68 70, 50 90 C32 70, 32 30, 50 10 Z" />
+  <line x1="50" y1="10" x2="50" y2="90" />
+  <line x1="33" y1="50" x2="67" y2="50" />
+  <polygon points="50,30 62,50 50,70 38,50" />
+</svg>

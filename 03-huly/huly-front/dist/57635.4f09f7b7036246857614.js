@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[57635],{57635:function(n){n.exports=JSON.parse('{"string":{"Rating":"评分","RatingWidgetEmpty":"尚无加星的文档。要在此处查看项目，请为文档添加星标（在任何文档上点击星形反应）。","RatingWidget":"评分组件","Level":"等级","MonthOps":"{month}月：{ops} 操作","MonthNoOps":"{month}月，无操作","AddStar":"添加星标","AddStarAria":"添加星标反应"}}')}}]);

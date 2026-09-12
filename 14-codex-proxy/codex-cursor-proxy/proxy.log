@@ -1,0 +1,14 @@
+Resolving dependencies
+Resolved, downloaded and extracted [4]
+Saved lockfile
+codex-cursor listening on http://127.0.0.1:4141
+  base URL for Cursor: http://127.0.0.1:4141/v1
+  auth required:       yes
+  reasoning effort:    high (used when client omits it; client choice wins otherwise)
+  log level:           info
+  cursor needs a public URL — expose this with:
+    cloudflared tunnel --url http://127.0.0.1:4141
+[33m[bad-request:unsupported-shape][0m POST /v1/chat/completions  content-type=application/json  user-agent=curl/8.5.0
+           body: {"model":"gpt-5.5","messages":[{"role":"user","content":"Reply with exactly: SOL_OK"}],"max_tokens":30}
+
+shutting down

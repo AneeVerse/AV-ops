@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.63.1",
+    "nostr-tools": "^2.23.3"
+  }
+}

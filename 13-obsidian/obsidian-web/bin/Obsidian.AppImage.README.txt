@@ -1,0 +1,1 @@
+File is 124MB. GitHub max is 100MB. Kept in AV-ops-secrets/large-binaries/Obsidian.AppImage

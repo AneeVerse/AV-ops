@@ -1,0 +1,17 @@
+[Unit]
+Description=Aneeverse Sales Next.js frontend
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/.openclaw/workspace/web-next/sales-app
+ExecStart=/usr/bin/npm run start -- --hostname 127.0.0.1 --port 3001
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+User=root
+StandardOutput=append:/root/.openclaw/workspace/tmp/sales1-next-service.log
+StandardError=append:/root/.openclaw/workspace/tmp/sales1-next-service.log
+
+[Install]
+WantedBy=multi-user.target

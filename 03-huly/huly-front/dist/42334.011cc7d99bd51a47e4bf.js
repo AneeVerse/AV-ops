@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[42334],{42334:function(e){e.exports=JSON.parse('{"string":{"Achievements":"実績","EarliestAdopter":"古参","Epic":"超絶","Legendary":"伝説級"}}')}}]);

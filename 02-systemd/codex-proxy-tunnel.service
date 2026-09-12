@@ -1,0 +1,13 @@
+[Unit]
+Description=Cloudflare tunnel for Codex Cursor proxy
+After=codex-proxy.service
+Requires=codex-proxy.service
+
+[Service]
+Type=simple
+ExecStart=/opt/codex-proxy/run-tunnel.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

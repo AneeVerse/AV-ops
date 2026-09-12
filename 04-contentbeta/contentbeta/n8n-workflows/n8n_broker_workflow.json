@@ -1,0 +1,1129 @@
+{
+  "name": "Generate Broker Image",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-broker",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-broker",
+      "name": "Webhook Broker",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "generate-broker-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "__SUPABASE_URL__/rest/v1/broker_prompts?select=id,name,prompt,reference_image_urls&order=created_at.asc",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-broker-prompts",
+      "name": "Fetch Broker Prompts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const prompts = $('Fetch Broker Prompts').all().map(p => p.json);\nconst brandId = ($('Webhook Broker').first().json.body && $('Webhook Broker').first().json.body.brandId) || '4d9f2a2d-1d28-41fe-a371-d35b9efaee3b';\nconst extraPrompt = ($('Webhook Broker').first().json.body?.extraPrompt || '').trim();\n\nif (!prompts.length) throw new Error('No broker prompts found');\n\nlet picked;\nlet finalPrompt;\nif (extraPrompt) {\n  const userContextPrompt = prompts.find(p => p.name === 'Common prompt for User context');\n  if (!userContextPrompt) throw new Error('No prompt named \"Common prompt for User context\" found');\n  picked = userContextPrompt;\n  finalPrompt = 'User Context: ' + extraPrompt + '. ' + picked.prompt;\n} else {\n  const otherPrompts = prompts.filter(p => p.name !== 'Common prompt for User context');\n  if (!otherPrompts.length) throw new Error('No prompts available for random selection');\n  picked = otherPrompts[Math.floor(Math.random() * otherPrompts.length)];\n  finalPrompt = picked.prompt;\n}\nconst refImages = Array.isArray(picked.reference_image_urls) ? picked.reference_image_urls.filter(Boolean) : [];\nconst storagePath = 'broker-images/' + Date.now() + '_post.png';\n\nreturn [{ json: {\n  storagePath,\n  brandId,\n  useProModel: !!extraPrompt,\n  requestBody: {\n    input: {\n      prompt: finalPrompt,\n      image_input: refImages,\n      aspect_ratio: '16:9',\n      output_format: 'png',\n      resolution: '2K',\n      safety_filter_level: 'block_only_high',\n      use_fallback_model: true\n    }\n  }\n} }];"
+      },
+      "id": "pick-prompt",
+      "name": "Pick Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Pick Prompt').first().json.useProModel ? 'https://api.replicate.com/v1/models/google/nano-banana-2-lite/predictions' : 'https://api.replicate.com/v1/models/google/nano-banana-pro/predictions' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify($json.requestBody) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "create-prediction",
+      "name": "Create Prediction",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-initial",
+      "name": "Wait 5s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-1",
+      "name": "Poll 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-1",
+      "name": "IF 1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-2",
+      "name": "Wait 2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1680,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-2",
+      "name": "Poll 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1920,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-2",
+      "name": "IF 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-3",
+      "name": "Wait 3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-3",
+      "name": "Poll 3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-3",
+      "name": "IF 3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-4",
+      "name": "Wait 4",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-4",
+      "name": "Poll 4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-4",
+      "name": "IF 4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3600,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-5",
+      "name": "Wait 5",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3840,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-5",
+      "name": "Poll 5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4080,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-5",
+      "name": "IF 5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-6",
+      "name": "Wait 6",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4560,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-6",
+      "name": "Poll 6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4800,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-6",
+      "name": "IF 6",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        5040,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-7",
+      "name": "Wait 7",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5280,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-7",
+      "name": "Poll 7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5520,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-7",
+      "name": "IF 7",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        5760,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "wait-8",
+      "name": "Wait 8",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        6000,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Create Prediction').first().json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __REPLICATE_API_TOKEN__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "poll-8",
+      "name": "Poll 8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6240,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "processing"
+            },
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "starting"
+            }
+          ]
+        }
+      },
+      "id": "if-8",
+      "name": "IF 8",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        6480,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const prediction = $input.first().json;\nif (prediction.status === 'failed' || prediction.status === 'canceled') {\n  throw new Error('Prediction ' + prediction.status + ': ' + (prediction.error || 'unknown error'));\n}\nconst replicateImageUrl = Array.isArray(prediction.output) ? prediction.output[0] : prediction.output;\nif (!replicateImageUrl) throw new Error('No output URL from Replicate: ' + JSON.stringify(prediction));\nreturn [{ json: { replicateImageUrl } }];"
+      },
+      "id": "extract-url",
+      "name": "Extract URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.replicateImageUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "data"
+            }
+          }
+        }
+      },
+      "id": "download-image",
+      "name": "Download Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst meta = item.json;\nconst mime = (item.binary && item.binary.data && item.binary.data.mimeType) || 'image/png';\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst fileName = (meta.storagePath || meta.fileName || ('upload-' + Date.now() + '.png')).toString().split('/').pop();\nconst dataUrl = 'data:' + mime + ';base64,' + buffer.toString('base64');\n\nconst boundary = '----n8nIkBoundary' + Date.now().toString(36);\nconst parts = [];\nfunction addField(name, value) {\n  parts.push(\n    '--' + boundary + '\\r\\n' +\n    'Content-Disposition: form-data; name=\"' + name + '\"\\r\\n\\r\\n' +\n    value + '\\r\\n'\n  );\n}\naddField('file', dataUrl);\naddField('fileName', fileName);\naddField('folder', '/generated-posts');\naddField('useUniqueFileName', 'true');\nparts.push('--' + boundary + '--\\r\\n');\nconst body = parts.join('');\n\nlet uploaded;\ntry {\n  uploaded = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://upload.imagekit.io/api/v1/files/upload',\n    headers: {\n      Authorization: 'Basic __IMAGEKIT_BASIC_AUTH__',\n      'Content-Type': 'multipart/form-data; boundary=' + boundary,\n    },\n    body,\n    timeout: 120000,\n  });\n} catch (err) {\n  throw new Error('ImageKit httpRequest failed: ' + (err.message || String(err)));\n}\n\nif (typeof uploaded === 'string') {\n  try { uploaded = JSON.parse(uploaded); } catch (_) {}\n}\nif (!uploaded || !uploaded.url) {\n  throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n}\n\nreturn [{ json: Object.assign({}, meta, uploaded) }];"
+      },
+      "id": "upload-to-supabase",
+      "name": "Upload to ImageKit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/generated_posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ brand_id: $('Pick Prompt').first().json.brandId, output_url: $('Upload to ImageKit').first().json.url, is_broker: true, created_by_email: $('Webhook Broker').first().json.body?.createdByEmail || null }) }}",
+        "options": {}
+      },
+      "id": "save-to-db",
+      "name": "Save to DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { success: true, imageUrl: $('Upload to ImageKit').first().json.url } }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond Broker Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        7680,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Broker": {
+      "main": [
+        [
+          {
+            "node": "Fetch Broker Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Broker Prompts": {
+      "main": [
+        [
+          {
+            "node": "Pick Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick Prompt": {
+      "main": [
+        [
+          {
+            "node": "Create Prediction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Prediction": {
+      "main": [
+        [
+          {
+            "node": "Wait 5s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5s": {
+      "main": [
+        [
+          {
+            "node": "Poll 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 1": {
+      "main": [
+        [
+          {
+            "node": "IF 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 1": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 2": {
+      "main": [
+        [
+          {
+            "node": "Poll 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 2": {
+      "main": [
+        [
+          {
+            "node": "IF 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 2": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 3": {
+      "main": [
+        [
+          {
+            "node": "Poll 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 3": {
+      "main": [
+        [
+          {
+            "node": "IF 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 3": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 4": {
+      "main": [
+        [
+          {
+            "node": "Poll 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 4": {
+      "main": [
+        [
+          {
+            "node": "IF 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 4": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 5": {
+      "main": [
+        [
+          {
+            "node": "Poll 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 5": {
+      "main": [
+        [
+          {
+            "node": "IF 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 5": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 6": {
+      "main": [
+        [
+          {
+            "node": "Poll 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 6": {
+      "main": [
+        [
+          {
+            "node": "IF 6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 6": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 7": {
+      "main": [
+        [
+          {
+            "node": "Poll 7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 7": {
+      "main": [
+        [
+          {
+            "node": "IF 7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 7": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 8": {
+      "main": [
+        [
+          {
+            "node": "Poll 8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poll 8": {
+      "main": [
+        [
+          {
+            "node": "IF 8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF 8": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Extract URL": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Save to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to DB": {
+      "main": [
+        [
+          {
+            "node": "Respond Broker Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "broker-workflow-v2",
+  "tags": []
+}

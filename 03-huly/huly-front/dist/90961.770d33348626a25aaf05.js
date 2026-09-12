@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[90961],{90961:function(e){e.exports=JSON.parse('{"string":{"Starred":"Étoilés","Star":"Étoile","Unstar":"Retirer l\'étoile"}}')}}]);

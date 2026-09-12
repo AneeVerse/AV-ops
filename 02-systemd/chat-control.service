@@ -1,0 +1,15 @@
+[Unit]
+Description=Aneeverse OpenClaw Chat Control
+After=network.target openclaw-gateway.service
+
+[Service]
+Type=simple
+WorkingDirectory=/root/.openclaw/workspace/chat-control
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[80769],{80769:function(e){e.exports=JSON.parse('{"string":{"Achievements":"Dosažení","EarliestAdopter":"Nejakej první adoptovat","Epic":"Epic","Legendary":"Legendární"}}')}}]);

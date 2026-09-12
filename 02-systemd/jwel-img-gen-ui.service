@@ -1,0 +1,20 @@
+[Unit]
+Description=Jewelry Image Generation Next.js UI
+After=network-online.target jwel-img-gen-bridge.service n8n.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/jwel_img_gen_ui
+Environment=NODE_ENV=production
+Environment=PORT=3024
+Environment=HOSTNAME=127.0.0.1
+Environment=N8N_SINGLE_URL=http://127.0.0.1:5678/webhook/jwel-img-gen-single
+Environment=N8N_BATCH_URL=http://127.0.0.1:5678/webhook/jwel-img-gen-batch
+ExecStart=/usr/bin/npm run start -- --hostname 127.0.0.1 --port 3024
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

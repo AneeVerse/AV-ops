@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[66160],{66160:function(e){e.exports=JSON.parse('{"string":{"CreatePublicLink":"创建公共链接","PublicLink":"公共链接","Revoke":"撤销","RevokeConfirmation":"这将导致先前共享的链接停止工作。您确定要撤销此公共链接吗？","LinkWasRevoked":"公共链接已被撤销","Copy":"复制"}}')}}]);

@@ -1,0 +1,37 @@
+{
+  "vps": {
+    "ip": "148.230.67.132",
+    "hostname": "srv1474915",
+    "ssh": "ssh -i ~/.ssh/id_ed25519 root@148.230.67.132",
+    "os": "Ubuntu 24.04 LFS",
+    "plan": "Hostinger KVM 2"
+  },
+  "apps": {
+    "huly": { "path": "/opt/huly-selfhost", "url": "https://app.aneeverse.com", "compose": "huly_v7" },
+    "huly_front_custom": { "path": "/opt/huly-front" },
+    "huly_account_custom": { "path": "/opt/huly-account" },
+    "huly_calendar_custom": { "path": "/opt/huly-calendar" },
+    "contentbeta": { "path": "/opt/contentbeta", "pm2": "contentbeta" },
+    "contentbeta_supabase": { "path": "/opt/contentbeta-supabase", "url": "https://supabase.aneeverse.com" },
+    "frappe_crm": { "path": "/opt/frappe-crm", "url": "https://crm.aneeverse.com" },
+    "erpnext": { "compose": "/root/erpnext-sales1-compose.yml", "url": "https://sales1.aneeverse.com" },
+    "n8n": { "data": "/var/lib/n8n", "env": "/etc/n8n/n8n.env", "url": "https://n8n.aneeverse.com" },
+    "scrapegraphai": { "path": "/opt/scrapegraphai", "url": "https://scrape.aneeverse.com" },
+    "openclaw_workspace": { "path": "/root/.openclaw/workspace" },
+    "novino_gateway_proxy": { "path": "/root/.openclaw/novino-gateway-proxy" },
+    "chat_control": { "path": "/root/.openclaw/workspace/chat-control", "url": "https://chat.aneeverse.com" },
+    "sales1_next": { "path": "/root/.openclaw/workspace/web-next/sales-app" },
+    "traitdna": { "path": "/root/.openclaw/workspace/projects/traitdna-video-platform" },
+    "jwel_bridge": { "path": "/root/jwel_img_gen_bridge" },
+    "jwel_ui": { "path": "/root/jwel_img_gen_ui" },
+    "obsidian_web": { "path": "/opt/obsidian-web", "url": "https://md.aneeverse.com" },
+    "codex_proxy": { "path": "/opt/codex-proxy", "url": "https://codex.aneeverse.com" },
+    "deploy_frontend": { "path": "/root/deploy/frontend", "pm2": "frontend" },
+    "deploy_backend": { "path": "/root/deploy/backend", "pm2": "backend" },
+    "leadgen": { "path": "/root/leadgen-system" },
+    "medusa": { "path": "/root/my-medusa-store" }
+  },
+  "nginx": "/etc/nginx/sites-available",
+  "ssl": "/etc/letsencrypt/live",
+  "docker_data": "/var/lib/docker"
+}

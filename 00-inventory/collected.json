@@ -1,0 +1,16 @@
+{
+  "created": "2026-09-12",
+  "vps": "148.230.67.132",
+  "source": "copy only, nothing moved on the VPS",
+  "repo": "AV-ops",
+  "secrets": "E:\\Projects\\AV-ops-secrets (email pack, not in git)",
+  "data_json": {
+    "huly_workspace_backup": "18-data-json/huly/workspace-backup.tar.gz",
+    "crm_tables": "18-data-json/crm",
+    "erpnext_tables": "18-data-json/erpnext",
+    "supabase_tables": "18-data-json/supabase",
+    "postgres_tables": "18-data-json/postgres",
+    "sql_full_dumps": "18-data-json/sql",
+    "n8n_workflows": "18-data-json/n8n/workflows.json"
+  }
+}

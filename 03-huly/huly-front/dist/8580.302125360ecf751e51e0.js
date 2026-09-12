@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[8580],{8580:function(e){e.exports=JSON.parse('{"string":{"Achievements":"Erfolge","EarliestAdopter":"Erste Adopter","Epic":"Epic","Legendary":"Legendär"}}')}}]);

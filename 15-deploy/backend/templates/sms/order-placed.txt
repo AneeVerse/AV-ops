@@ -1,0 +1,1 @@
+Your order #{{order_id}} has been confirmed! 🎉 Your new outfits are being prepared with love. Thanks for shopping with Chocomelon! 👕✨

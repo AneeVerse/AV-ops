@@ -1,0 +1,1 @@
+Chocomelon: Your verification code is {{otp}}. This code expires in 15 minutes. If you didn't request this, please ignore this message.

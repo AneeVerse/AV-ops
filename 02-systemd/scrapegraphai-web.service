@@ -1,0 +1,20 @@
+[Unit]
+Description=Aneeverse ScrapeGraphAI web UI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+EnvironmentFile=/opt/scrapegraphai/webui/.env
+Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/scrapegraphai/ms-playwright
+WorkingDirectory=/opt/scrapegraphai/webui
+ExecStart=/opt/scrapegraphai/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8020
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

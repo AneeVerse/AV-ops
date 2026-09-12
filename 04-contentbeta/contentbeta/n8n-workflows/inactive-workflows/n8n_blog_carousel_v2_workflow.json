@@ -1,0 +1,1087 @@
+{
+  "name": "Blog to Carousel V2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "blog-carousel-v2",
+        "options": {}
+      },
+      "id": "ca43d28a-8d48-4483-972e-aeab7b4eaeef",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -12512,
+        816
+      ],
+      "webhookId": "blog-carousel-v2"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*,brands(name)&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9637a08c-28bc-47bd-ba78-e55ed75b400a",
+      "name": "Fetch Brand Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12288,
+        816
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $('Webhook').first().json.body.blogUrl }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "text/plain"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 30000
+        }
+      },
+      "id": "d2d078c1-ccd2-41ed-8b4b-2a951df30172",
+      "name": "Scrape Blog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12288,
+        976
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const brand = $('Fetch Brand Data').first().json;\nconst brandName = brand.brands?.name || 'Brand';\nconst stylePrompt = brand.style_prompt || '';\nconst logoUrl = brand.logo_url || null;\nconst blogContent = $('Scrape Blog').first().json.data || $('Scrape Blog').first().json || '';\nconst blogText = typeof blogContent === 'string' ? blogContent : JSON.stringify(blogContent);\nconst brandId = $('Webhook').first().json.body.brandId;\nconst jobId = $('Webhook').first().json.body.jobId;\n\nconst systemPrompt = `You are a world-class LinkedIn carousel designer and copywriter. Your output must be a single valid JSON object — no markdown, no explanation.\n\nYou will be given a blog article and brand guidelines. Your job is:\n1. Extract 3 brand colors from the guidelines (primaryColor for backgrounds/CTA bg, accentColor for highlights/eyebrow, textColor for body text on light backgrounds)\n2. Write carousel copy for 6 slides following the exact structure below\n\nSlide structure:\n- Slide 1 (title): Hook the reader. Strong opening statement.\n- Slide 2 (problem): Name the core problem or tension.\n- Slide 3 (insight): Deliver the key insight or surprising truth.\n- Slide 4 (shift): Show the mindset or approach shift needed.\n- Slide 5 (action): Give concrete, actionable takeaways.\n- Slide 6 (cta): Drive engagement. Direct call to action.\n\nOutput JSON format:\n{\n  \"colors\": {\n    \"primaryColor\": \"#hex\",\n    \"accentColor\": \"#hex\",\n    \"textColor\": \"#hex\"\n  },\n  \"slides\": [\n    {\n      \"slideType\": \"title\",\n      \"eyebrow\": \"2-3 word label in sentence case\",\n      \"headline\": \"Punchy headline with 1-2 words wrapped in **double asterisks** for emphasis\",\n      \"subhead\": \"One supporting sentence with 1 key phrase in **double asterisks**\",\n      \"bullets\": [],\n      \"ctaText\": null,\n      \"carouselTitle\": null,\n      \"splitPercent\": 65,\n      \"logoPos\": \"top-left\",\n      \"visualContext\": \"Describe the ideal background photo for this slide in 1-2 sentences. Focus on mood, composition, and what should be in the right 35% of frame since text occupies the left 65%.\"\n    },\n    {\n      \"slideType\": \"problem\",\n      \"eyebrow\": null,\n      \"headline\": \"Headline with **emphasis**\",\n      \"subhead\": \"Supporting sentence with **key phrase**\",\n      \"bullets\": [\"First bullet with **bold term**\", \"Second bullet\"],\n      \"ctaText\": null,\n      \"carouselTitle\": \"Shared carousel series title (same for slides 2-5, sentence case)\",\n      \"splitPercent\": 50,\n      \"logoPos\": \"bottom-left\",\n      \"visualContext\": \"Background photo description. Right 50% should have visual interest, left 50% relatively clean.\"\n    },\n    {\n      \"slideType\": \"insight\",\n      \"eyebrow\": null,\n      \"headline\": \"Headline with **emphasis**\",\n      \"subhead\": \"Supporting sentence\",\n      \"bullets\": [\"Insight point with **bold**\", \"Second insight\"],\n      \"ctaText\": null,\n      \"carouselTitle\": \"Same carouselTitle as slide 2\",\n      \"splitPercent\": 50,\n      \"logoPos\": \"bottom-left\",\n      \"visualContext\": \"Background photo description.\"\n    },\n    {\n      \"slideType\": \"shift\",\n      \"eyebrow\": null,\n      \"headline\": \"Headline with **emphasis**\",\n      \"subhead\": \"Supporting sentence\",\n      \"bullets\": [\"Shift point with **bold**\", \"Second point\"],\n      \"ctaText\": null,\n      \"carouselTitle\": \"Same carouselTitle as slide 2\",\n      \"splitPercent\": 50,\n      \"logoPos\": \"bottom-left\",\n      \"visualContext\": \"Background photo description.\"\n    },\n    {\n      \"slideType\": \"action\",\n      \"eyebrow\": null,\n      \"headline\": \"Headline with **emphasis**\",\n      \"subhead\": \"Supporting sentence\",\n      \"bullets\": [\"Action step with **bold**\", \"Second action\"],\n      \"ctaText\": null,\n      \"carouselTitle\": \"Same carouselTitle as slide 2\",\n      \"splitPercent\": 50,\n      \"logoPos\": \"bottom-left\",\n      \"visualContext\": \"Background photo description.\"\n    },\n    {\n      \"slideType\": \"cta\",\n      \"eyebrow\": null,\n      \"headline\": \"CTA headline with **emphasis**\",\n      \"subhead\": \"One-line supporting text\",\n      \"bullets\": [],\n      \"ctaText\": \"Read the full article\",\n      \"carouselTitle\": null,\n      \"splitPercent\": 80,\n      \"logoPos\": \"top-center\",\n      \"visualContext\": \"Background for CTA slide. Full bleed, text in center. Can be more abstract or atmospheric.\"\n    }\n  ]\n}`;\n\nconst userPrompt = `BRAND: ${brandName}\n\nBRAND GUIDELINES:\n${stylePrompt.substring(0, 3000)}\n\nBLOG CONTENT:\n${blogText.substring(0, 7000)}`;\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-4o',\n  response_format: { type: 'json_object' },\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  temperature: 0.7,\n  max_tokens: 3000\n});\n\nreturn [{ json: { requestBody, brandId, jobId, logoUrl, brandName, stylePrompt } }];"
+      },
+      "id": "27cb6ca9-e17c-4247-805f-91c849806e3f",
+      "name": "Build Extract Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12064,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "4465d4de-1ed2-4d2d-9e87-4c1d64896a8f",
+      "name": "Generate Slide Copy",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11856,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const copyResponse = $('Generate Slide Copy').first().json;\nconst meta = $('Build Extract Prompt').first().json;\nconst content = copyResponse.choices?.[0]?.message?.content;\nif (!content) throw new Error('No content from GPT-4o: ' + JSON.stringify(copyResponse));\nlet parsed;\ntry { parsed = JSON.parse(content); } catch (e) { throw new Error('Invalid JSON: ' + content.substring(0, 500)); }\nconst slides = parsed.slides;\nif (!slides || !Array.isArray(slides) || slides.length === 0) throw new Error('No slides in response');\nconst colors = parsed.colors || { primaryColor: '#1a1a2e', accentColor: '#3b82f6', textColor: '#ffffff' };\nconst ts = Date.now();\nconst brandId = meta.brandId;\n\nlet templateSlides = [];\ntry {\n  const layoutData = $('Fetch Layout').first().json;\n  templateSlides = layoutData?.carousel_slide_prompts || [];\n} catch(e) { templateSlides = []; }\n\nconst enriched = slides.slice(0, 6).map((slide, i) => {\n  const splitPercent = slide.splitPercent || (slide.slideType === 'title' ? 65 : slide.slideType === 'cta' ? 80 : 50);\n  const imageSidePct = 100 - splitPercent;\n  const templateSlide = templateSlides.find(t => t.slide_index === i + 1);\n  const cfg = templateSlide?.puppeteer_config || null;\n\n  const brandStyle = (meta.stylePrompt || '').substring(0, 1500);\n  const slideContext = [slide.headline, slide.subhead, ...(slide.bullets || [])].filter(Boolean).join('. ');\n  const fallbackBgPrompt = `Cinematic, high-quality background photograph for a LinkedIn carousel slide. ${slide.visualContext || ''} The LEFT ${splitPercent}% of the frame should be relatively clean, uncluttered, and low contrast. Concentrate visual interest in the RIGHT ${imageSidePct}% of the frame. No text, no logos, no UI elements. Professional editorial photography quality. Square 1:1 format.`;\n  const baseBgPrompt = (templateSlide?.prompt && templateSlide.prompt.trim()) ? `${templateSlide.prompt}\\n\\nVisual context: ${slide.visualContext || ''}` : fallbackBgPrompt;\n  const bgPrompt = `${baseBgPrompt}\n\nBRAND STYLE GUIDE (use for colors, mood, visual language):\n${brandStyle}\n\nSLIDE TOPIC CONTEXT (visual should reflect this, do NOT render as text):\n${slideContext}`;\n\n  const requestBody = JSON.stringify({\n    model: 'gpt-image-2',\n    prompt: bgPrompt,\n    n: 1,\n    size: '1024x1024',\n    quality: 'medium'\n  });\n\n  const storagePath = `${brandId}/${ts}_v2_carousel_slide_${i}.png`;\n  const imageUrl = null; // set from ImageKit upload response\n\n  const puppeteerConfig = {\n    headlineSize: cfg?.headlineSize || null,\n    microcopySize: cfg?.microcopySize || null,\n    verticalAlign: cfg?.verticalAlign || null,\n    logoPosition: cfg?.logoPosition || slide.logoPos || 'bottom-left',\n    logoX: cfg?.logoX ?? null,\n    logoY: cfg?.logoY ?? null,\n    logoSize: cfg?.logoSize || 48,\n    headlineX: cfg?.headlineX ?? null,\n    headlineY: cfg?.headlineY ?? null,\n    microcopyX: cfg?.microcopyX ?? null,\n    microcopyY: cfg?.microcopyY ?? null,\n    accentColor: cfg?.accentColor || colors.accentColor,\n    primaryColor: cfg?.bgColor || colors.primaryColor,\n    textColor: cfg?.headlineColor || colors.textColor,\n    microcopyColor: cfg?.microcopyColor || null,\n    bulletSize: cfg?.bulletSize || null,\n    customFontDataUrl: cfg?.customFontDataUrl || null,\n    fontFamily: cfg?.fontFamily || null,\n    headlineFontFamily: cfg?.headlineFontFamily || null,\n    headlineCustomFontDataUrl: cfg?.headlineCustomFontDataUrl || null,\n    eyebrowFontFamily: cfg?.eyebrowFontFamily || null,\n    eyebrowCustomFontDataUrl: cfg?.eyebrowCustomFontDataUrl || null,\n    microcopyFontFamily: cfg?.microcopyFontFamily || null,\n    microcopyCustomFontDataUrl: cfg?.microcopyCustomFontDataUrl || null,\n    bulletFontFamily: cfg?.bulletFontFamily || null,\n    bulletCustomFontDataUrl: cfg?.bulletCustomFontDataUrl || null,\n    ctaFontFamily: cfg?.ctaFontFamily || null,\n    ctaCustomFontDataUrl: cfg?.ctaCustomFontDataUrl || null,\n    eyebrowSize: cfg?.eyebrowSize || null,\n    eyebrowUppercase: cfg?.eyebrowUppercase ?? null,\n    ctaPosition: cfg?.ctaPosition || null,\n    ctaStyle: cfg?.ctaStyle || null,\n    logoDataUrl: cfg?.logoDataUrl || null,\n    padding: cfg?.padding || 60,\n    removeBg: cfg?.removeBg || false,\n    elements: cfg?.elements || [],\n    splitPercent: cfg?.splitPercent ?? null,\n    textX: cfg?.textX ?? null,\n    textY: cfg?.textY ?? null,\n  };\n\n  return { requestBody, storagePath, imageUrl, originalSlide: { ...slide, _colors: colors, _cfg: puppeteerConfig } };\n});\n\nreturn [{ json: { slides: enriched, colors, brandId: meta.brandId, jobId: meta.jobId, logoUrl: meta.logoUrl, timestamp: ts } }];"
+      },
+      "id": "e97e9ac2-4083-4b26-bf63-39192321a439",
+      "name": "Parse Slides",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11632,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[0].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "90a451c8-a3b6-4538-b867-ed36676bf018",
+      "name": "Generate Slide 0",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 0;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 0: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "89b246e5-278d-4869-8218-5afeacb25862",
+      "name": "Extract Slide 0",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "64296520-d786-4da5-81ad-a879b193d237",
+      "name": "Upload Slide 0",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[1].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "55c1ce14-2d5c-4e30-9537-2f29e1ce8c5a",
+      "name": "Generate Slide 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 1;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 1: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "78b982c8-eda8-4807-a951-86dae4b810b6",
+      "name": "Extract Slide 1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "2dc801ba-f505-47f8-833d-7906b95e0cbb",
+      "name": "Upload Slide 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[2].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "afc1e0dc-ff97-4453-9a2b-0dde58597ce9",
+      "name": "Generate Slide 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 2;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 2: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "bed45531-1232-496c-b3c3-3a9f23aa612f",
+      "name": "Extract Slide 2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "8f5550fc-77bd-4eeb-b016-c5ceb78c719b",
+      "name": "Upload Slide 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[3].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "745709cf-9523-47ae-9e0e-7a361e5be384",
+      "name": "Generate Slide 3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 3;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 3: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "8628eac2-c378-4080-9c79-b050e9260446",
+      "name": "Extract Slide 3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "d3680bb6-12d5-40b6-b5c6-cb9090f40e19",
+      "name": "Upload Slide 3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        896
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[4].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "ad9a7eeb-b5fd-40df-846a-dd7da115bda6",
+      "name": "Generate Slide 4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        1056
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 4;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 4: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "829cde25-4e3f-455e-abf1-84807fc17e4c",
+      "name": "Extract Slide 4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        1056
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "439a6b4f-862b-4961-a5cf-e72ec876f869",
+      "name": "Upload Slide 4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        1056
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Slides').first().json.slides[5].requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "175b8199-73ec-4d38-9d21-40a53bf926d2",
+      "name": "Generate Slide 5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -11408,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst meta = $('Parse Slides').first().json;\nconst i = 5;\nconst b64 = r.data?.[0]?.b64_json;\nif (!b64) throw new Error('Slide 5: no image data: ' + JSON.stringify(r));\nconst storagePath = meta.slides[i].storagePath;\nconst imageUrl = meta.slides[i].imageUrl;\nconst binaryData = await this.helpers.prepareBinaryData(Buffer.from(b64, 'base64'), `slide_${i}.png`, 'image/png');\nreturn [{ json: { slideIndex: i, storagePath, imageUrl }, binary: { data: binaryData } }];"
+      },
+      "id": "53d26254-152f-4d91-98b1-f8b238494a27",
+      "name": "Extract Slide 5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11184,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://upload.imagekit.io/api/v1/files/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic __IMAGEKIT_BASIC_AUTH__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "={{ 'data:' + ($binary.data.mimeType || 'image/png') + ';base64,' + $binary.data.data }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ ($json.storagePath || 'slide.png').toString().split('/').pop() }}"
+            },
+            {
+              "name": "folder",
+              "value": "/generated-posts"
+            },
+            {
+              "name": "useUniqueFileName",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "5ea70348-b866-43e0-b698-5314ec8b4e66",
+      "name": "Upload Slide 5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10976,
+        1216
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const uploads = [\n  $('Upload Slide 0').first().json,\n  $('Upload Slide 1').first().json,\n  $('Upload Slide 2').first().json,\n  $('Upload Slide 3').first().json,\n  $('Upload Slide 4').first().json,\n  $('Upload Slide 5').first().json\n];\nconst imageUrls = uploads.map((u, i) => {\n  if (!u?.url) throw new Error('ImageKit upload failed for slide ' + i + ': ' + JSON.stringify(u));\n  return u.url;\n});\nconst meta = $('Parse Slides').first().json;\nconst jobId = $('Webhook').first().json.body.jobId;\nconst brandId = $('Webhook').first().json.body.brandId;\nconst enrichedSlides = meta.slides.map(s => ({ ...s.originalSlide, _colors: meta.colors }));\nreturn [{ json: { imageUrls, jobId, brandId, logoUrl: meta.logoUrl, slides: enrichedSlides } }];"
+      },
+      "id": "9dc78f70-f66e-480e-a277-d863b3136676",
+      "name": "Aggregate Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -10752,
+        816
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/carousel_jobs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ id: $json.jobId, brand_id: $json.brandId, image_urls: $json.imageUrls, logo_url: $json.logoUrl, slides: $json.slides }) }}",
+        "options": {}
+      },
+      "id": "39860d87-cbb3-4201-a7e9-1a96fadd4644",
+      "name": "Save Job Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -10528,
+        816
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').first().json.body.layoutId ? '__SUPABASE_URL__/rest/v1/carousel_layouts?id=eq.' + $('Webhook').first().json.body.layoutId + '&select=id,carousel_slide_prompts(slide_index,prompt,puppeteer_config)&limit=1' : '__SUPABASE_URL__/rest/v1/carousel_layouts?brand_id=eq.' + $('Webhook').first().json.body.brandId + '&select=id,carousel_slide_prompts(slide_index,prompt,puppeteer_config)&order=created_at&limit=1' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73a5230c-0aa6-4712-b910-edfa4540d84a",
+      "name": "Fetch Layout",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12176,
+        1184
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Data": {
+      "main": [
+        [
+          {
+            "node": "Scrape Blog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape Blog": {
+      "main": [
+        [
+          {
+            "node": "Fetch Layout",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Extract Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide Copy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide Copy": {
+      "main": [
+        [
+          {
+            "node": "Parse Slides",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Slides": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 0",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 0": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 0",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 0": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 0",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 0": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 1": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 1": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 1": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 2": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 2": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 2": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 3": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 3": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 3": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 4": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 4": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 4": {
+      "main": [
+        [
+          {
+            "node": "Generate Slide 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Slide 5": {
+      "main": [
+        [
+          {
+            "node": "Extract Slide 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Slide 5": {
+      "main": [
+        [
+          {
+            "node": "Upload Slide 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Slide 5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Results": {
+      "main": [
+        [
+          {
+            "node": "Save Job Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Layout": {
+      "main": [
+        [
+          {
+            "node": "Build Extract Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "416bef3f-c982-4cee-af45-2f8643554cdf",
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  },
+  "id": "2DeU5aiz5IFdcqSv",
+  "tags": []
+}

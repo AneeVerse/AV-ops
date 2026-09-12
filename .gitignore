@@ -1,0 +1,39 @@
+# collect helpers stay local
+_*.sh
+_*.py
+
+# secrets never in git
+.env
+*.env
+!*.env.example
+!example.env
+*.pem
+*.key
+*.secret
+*.p12
+n8n.env
+.n8n_basic_auth_user
+.n8n_basic_auth_password
+.n8n_encryption_key
+CONTENTBETA_KEYS.txt
+.huly.secret
+.cr.secret
+.rp.secret
+huly_v7.conf
+state.env
+.service.env
+.generated-login.txt
+*-passwords.txt
+huly-login.txt
+
+# junk
+node_modules/
+.next/
+.venv/
+venv/
+__pycache__/
+.DS_Store
+*.mp4
+*.webm
+*.AppImage
+json-tables.tar.gz

@@ -1,0 +1,126 @@
+{
+  "name": "Infographic Edit",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "infographic-edit",
+        "responseMode": "lastNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "ie-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "infographic-edit-webhook-id"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body;\nconst code = body.code || '';\nconst instruction = body.instruction || '';\n\nif (!code) throw new Error('code is required');\nif (!instruction) throw new Error('instruction is required');\n\nconst systemPrompt = [\n  'You are an expert at editing JavaScript canvas animation code.',\n  'The user will give you existing canvas infographic code and an edit instruction.',\n  'Apply the requested change precisely and return ONLY the modified JavaScript code.',\n  'Do not wrap in markdown, do not add explanations, do not change anything not mentioned in the instruction.',\n  'The code must retain the exact same function signature: function drawGraphic(ctx, width, height, logoImg, options)',\n  'Return a valid JSON object: { \"jsCode\": \"...complete updated code...\" }',\n  'No markdown. No code fences.',\n].join('\\n');\n\nconst userPrompt = 'Current code:\\n' + code + '\\n\\nEdit instruction: ' + instruction + '\\n\\nReturn only the updated code as JSON { \"jsCode\": \"...\" }';\n\nconst requestBody = JSON.stringify({\n  model: 'google/gemini-3.5-flash',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  max_tokens: 32000\n});\n\nreturn [{ json: { requestBody } }];"
+      },
+      "id": "ie-build-prompt",
+      "name": "Build Edit Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENROUTER_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://contentbeta.app"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Edit Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "ie-call-ai",
+      "name": "Call AI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiResponse = $('Call AI').first().json;\n\nconst raw = aiResponse.choices?.[0]?.message?.content;\nif (!raw) throw new Error('No content from AI: ' + JSON.stringify(aiResponse));\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nfunction fixJsonEscapes(str) {\n  return str.replace(/\\\\(?![\"\\\\/bfnrtu])/g, '\\\\\\\\');\n}\n\nlet jsCode = null;\ntry {\n  const parsed = JSON.parse(cleaned);\n  jsCode = parsed.jsCode || null;\n} catch(e) {\n  try {\n    const parsed = JSON.parse(fixJsonEscapes(cleaned));\n    jsCode = parsed.jsCode || null;\n  } catch(e2) {\n    // Model returned raw code instead of JSON — use as-is\n    jsCode = cleaned;\n  }\n}\n\nif (!jsCode) throw new Error('Could not extract jsCode from AI response');\n\n// Actually constructs AND calls the code (a thrown/parse error inside `new Function(body)` only\n// surfaces once the function runs) to confirm drawGraphic both parses and gets defined — this\n// stops a broken edit from ever reaching the client and getting saved as the new generatedCode,\n// where it would keep breaking every subsequent render/animate/download silently.\nfunction isValidDrawGraphic(code) {\n  try {\n    const result = new Function(code + \"\\nreturn typeof drawGraphic==='function';\")();\n    return result === true;\n  } catch (e) {\n    return false;\n  }\n}\n\nif (!isValidDrawGraphic(jsCode)) {\n  throw new Error('The edit produced invalid code. Please try rephrasing the instruction.');\n}\n\nreturn [{ json: { jsCode } }];"
+      },
+      "id": "ie-parse-response",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Build Edit Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Edit Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call AI": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

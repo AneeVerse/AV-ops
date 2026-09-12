@@ -1,0 +1,263 @@
+{
+  "name": "Generate Illustrations",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-illustrations",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "illus-node-01",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "generate-illustrations-webhook-id"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=__SUPABASE_URL__/rest/v1/illustration_layouts?id=eq.{{ $json.body.layoutId }}&brand_id=eq.{{ $json.body.brandId }}&select=*&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "illus-node-02",
+      "name": "Get Illustration Layout",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const layoutItems = $input.all();\nif (!layoutItems || layoutItems.length === 0) {\n  throw new Error('Illustration layout not found. Add layouts in brand settings first.');\n}\nconst layout = layoutItems[0].json;\nif (!layout || !layout.prompt) {\n  throw new Error('Illustration layout not found. Add layouts in brand settings first.');\n}\n\nconst webhookBody = $('Webhook').first().json.body;\nconst context = (webhookBody.context || '').trim();\nconst brandId = webhookBody.brandId;\n\nif (!context) throw new Error('context is required');\nif (!brandId) throw new Error('brandId is required');\n\nconst prompt = `Copy: ${context}\\n\\n${layout.prompt}`;\nconst storagePath = `illustrations/${brandId}/${Date.now()}_${Math.random().toString(36).slice(2)}.png`;\n\nreturn [{\n  json: {\n    brandId,\n    context,\n    storagePath,\n    layoutId: layout.id,\n    requestBody: JSON.stringify({\n      model: 'gpt-image-2',\n      prompt,\n      n: 1,\n      quality: 'medium',\n      size: '1024x1024',\n    })\n  }\n}];\n"
+      },
+      "id": "illus-node-03",
+      "name": "Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "illus-node-04",
+      "name": "Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const imageResponse = $('Generate Image').first().json;\nconst meta = $('Build Prompt').first().json;\n\nconst b64 = imageResponse?.data?.[0]?.b64_json;\nif (!b64) throw new Error('No image data returned from OpenAI: ' + JSON.stringify(imageResponse).slice(0, 200));\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(b64, 'base64'),\n  'illustration.png',\n  'image/png'\n);\n\nreturn [{\n  json: {\n    brandId: meta.brandId,\n    context: meta.context,\n    storagePath: meta.storagePath,\n    imageUrl: null,\n    layoutId: meta.layoutId,\n  },\n  binary: { data: binaryData }\n}];\n"
+      },
+      "id": "illus-node-05",
+      "name": "Extract and Prepare Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst meta = item.json;\nconst mime = (item.binary && item.binary.data && item.binary.data.mimeType) || 'image/png';\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst fileName = (meta.storagePath || meta.fileName || ('upload-' + Date.now() + '.png')).toString().split('/').pop();\nconst dataUrl = 'data:' + mime + ';base64,' + buffer.toString('base64');\n\nconst boundary = '----n8nIkBoundary' + Date.now().toString(36);\nconst parts = [];\nfunction addField(name, value) {\n  parts.push(\n    '--' + boundary + '\\r\\n' +\n    'Content-Disposition: form-data; name=\"' + name + '\"\\r\\n\\r\\n' +\n    value + '\\r\\n'\n  );\n}\naddField('file', dataUrl);\naddField('fileName', fileName);\naddField('folder', '/generated-posts');\naddField('useUniqueFileName', 'true');\nparts.push('--' + boundary + '--\\r\\n');\nconst body = parts.join('');\n\nlet uploaded;\ntry {\n  uploaded = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://upload.imagekit.io/api/v1/files/upload',\n    headers: {\n      Authorization: 'Basic __IMAGEKIT_BASIC_AUTH__',\n      'Content-Type': 'multipart/form-data; boundary=' + boundary,\n    },\n    body,\n    timeout: 120000,\n  });\n} catch (err) {\n  throw new Error('ImageKit httpRequest failed: ' + (err.message || String(err)));\n}\n\nif (typeof uploaded === 'string') {\n  try { uploaded = JSON.parse(uploaded); } catch (_) {}\n}\nif (!uploaded || !uploaded.url) {\n  throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n}\n\nreturn [{ json: Object.assign({}, meta, uploaded) }];"
+      },
+      "id": "illus-node-06",
+      "name": "Upload to ImageKit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/generated_posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ brand_id: $('Extract and Prepare Image').first().json.brandId, output_url: $('Upload to ImageKit').first().json.url, is_illustration: true, headline: $('Extract and Prepare Image').first().json.context.slice(0, 255) }) }}",
+        "options": {}
+      },
+      "id": "illus-node-07",
+      "name": "Save Generated Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { imageUrl: $('Upload to ImageKit').first().json.url } }}",
+        "options": {}
+      },
+      "id": "illus-node-08",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1680,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get Illustration Layout",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Illustration Layout": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Extract and Prepare Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract and Prepare Image": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Save Generated Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Generated Post": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "illustrations-workflow-v2",
+  "tags": []
+}

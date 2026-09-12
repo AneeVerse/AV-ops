@@ -1,0 +1,9 @@
+[
+  {
+    "serial": "IMG0011",
+    "stage": "reset",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "sheets options: token source: get token for anees@aneeverse.com: read token: no TTY available for keyring file backend password prompt; set GOG_KEYRING_PASSWORD\n"
+  }
+]

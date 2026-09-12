@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[73900],{73900:function(e){e.exports=JSON.parse('{"string":{"Starred":"Закладки","Star":"Добавить в закладки","Unstar":"Удалить из закладок"}}')}}]);

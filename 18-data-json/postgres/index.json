@@ -1,0 +1,1100 @@
+[
+  {
+    "database": "av_bot",
+    "table": "state_store",
+    "rows": 2,
+    "json": "av_bot/state_store.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "memory_notes",
+    "rows": 3,
+    "json": "av_bot/memory_notes.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "task_log",
+    "rows": 5,
+    "json": "av_bot/task_log.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "drive_moves",
+    "rows": 0,
+    "json": "av_bot/drive_moves.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_sync_runs",
+    "rows": 145,
+    "json": "av_bot/mirror_sync_runs.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "sales_leads",
+    "rows": 50,
+    "json": "av_bot/sales_leads.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "sales_pipeline_events",
+    "rows": 1,
+    "json": "av_bot/sales_pipeline_events.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "reminders",
+    "rows": 3,
+    "json": "av_bot/reminders.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "client_audits",
+    "rows": 154,
+    "json": "av_bot/client_audits.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "session_facts",
+    "rows": 1,
+    "json": "av_bot/session_facts.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "persistent_settings",
+    "rows": 4,
+    "json": "av_bot/persistent_settings.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "workflow_checkpoints",
+    "rows": 9,
+    "json": "av_bot/workflow_checkpoints.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "task_control_events",
+    "rows": 959,
+    "json": "av_bot/task_control_events.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "team_member_chat_routes",
+    "rows": 7,
+    "json": "av_bot/team_member_chat_routes.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "task_control_state",
+    "rows": 38,
+    "json": "av_bot/task_control_state.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "sales_followups",
+    "rows": 9,
+    "json": "av_bot/sales_followups.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_clients",
+    "rows": 52,
+    "json": "av_bot/mirror_clients.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_requests",
+    "rows": 58,
+    "json": "av_bot/mirror_requests.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_tasks",
+    "rows": 47,
+    "json": "av_bot/mirror_tasks.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_task_request_links",
+    "rows": 44,
+    "json": "av_bot/mirror_task_request_links.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_app_settings",
+    "rows": 10,
+    "json": "av_bot/mirror_app_settings.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_profiles",
+    "rows": 49,
+    "json": "av_bot/mirror_profiles.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_request_assignments",
+    "rows": 0,
+    "json": "av_bot/mirror_request_assignments.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_request_messages",
+    "rows": 14,
+    "json": "av_bot/mirror_request_messages.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_task_messages",
+    "rows": 8,
+    "json": "av_bot/mirror_task_messages.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "mirror_team_members",
+    "rows": 7,
+    "json": "av_bot/mirror_team_members.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "sales_activity_logs",
+    "rows": 19,
+    "json": "av_bot/sales_activity_logs.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "sales_templates",
+    "rows": 1,
+    "json": "av_bot/sales_templates.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_devices",
+    "rows": 1,
+    "json": "av_bot/pm_devices.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_device_locations",
+    "rows": 21,
+    "json": "av_bot/pm_device_locations.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_audio_commands",
+    "rows": 1,
+    "json": "av_bot/pm_audio_commands.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_audio_recordings",
+    "rows": 10,
+    "json": "av_bot/pm_audio_recordings.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_device_snapshots",
+    "rows": 0,
+    "json": "av_bot/pm_device_snapshots.json"
+  },
+  {
+    "database": "av_bot",
+    "table": "pm_media_captures",
+    "rows": 0,
+    "json": "av_bot/pm_media_captures.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "mikro_orm_migrations",
+    "rows": 177,
+    "json": "onecarat_medusa/mikro_orm_migrations.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "stock_location_address",
+    "rows": 2,
+    "json": "onecarat_medusa/stock_location_address.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "stock_location",
+    "rows": 2,
+    "json": "onecarat_medusa/stock_location.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "inventory_item",
+    "rows": 46,
+    "json": "onecarat_medusa/inventory_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "reservation_item",
+    "rows": 2,
+    "json": "onecarat_medusa/reservation_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "inventory_level",
+    "rows": 69,
+    "json": "onecarat_medusa/inventory_level.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_collection",
+    "rows": 0,
+    "json": "onecarat_medusa/product_collection.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_type",
+    "rows": 0,
+    "json": "onecarat_medusa/product_type.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_option",
+    "rows": 29,
+    "json": "onecarat_medusa/product_option.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_option_value",
+    "rows": 65,
+    "json": "onecarat_medusa/product_option_value.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_variant_option",
+    "rows": 71,
+    "json": "onecarat_medusa/product_variant_option.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_tags",
+    "rows": 0,
+    "json": "onecarat_medusa/product_tags.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_tag",
+    "rows": 0,
+    "json": "onecarat_medusa/product_tag.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_category_product",
+    "rows": 25,
+    "json": "onecarat_medusa/product_category_product.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_category",
+    "rows": 12,
+    "json": "onecarat_medusa/product_category.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "image",
+    "rows": 106,
+    "json": "onecarat_medusa/image.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product",
+    "rows": 26,
+    "json": "onecarat_medusa/product.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_variant_product_image",
+    "rows": 0,
+    "json": "onecarat_medusa/product_variant_product_image.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_variant",
+    "rows": 57,
+    "json": "onecarat_medusa/product_variant.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price_set",
+    "rows": 61,
+    "json": "onecarat_medusa/price_set.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price_list",
+    "rows": 0,
+    "json": "onecarat_medusa/price_list.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price_list_rule",
+    "rows": 0,
+    "json": "onecarat_medusa/price_list_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price_preference",
+    "rows": 6,
+    "json": "onecarat_medusa/price_preference.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price_rule",
+    "rows": 4,
+    "json": "onecarat_medusa/price_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "price",
+    "rows": 128,
+    "json": "onecarat_medusa/price.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_campaign",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_campaign.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_promotion_rule",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_promotion_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_rule",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "application_method_target_rules",
+    "rows": 0,
+    "json": "onecarat_medusa/application_method_target_rules.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "application_method_buy_rules",
+    "rows": 0,
+    "json": "onecarat_medusa/application_method_buy_rules.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_rule_value",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_rule_value.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_campaign_budget_usage",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_campaign_budget_usage.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_campaign_budget",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_campaign_budget.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion_application_method",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion_application_method.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "promotion",
+    "rows": 0,
+    "json": "onecarat_medusa/promotion.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "customer_group",
+    "rows": 0,
+    "json": "onecarat_medusa/customer_group.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "customer_address",
+    "rows": 1,
+    "json": "onecarat_medusa/customer_address.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "customer_group_customer",
+    "rows": 0,
+    "json": "onecarat_medusa/customer_group_customer.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "sales_channel",
+    "rows": 1,
+    "json": "onecarat_medusa/sales_channel.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "customer",
+    "rows": 8,
+    "json": "onecarat_medusa/customer.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_address",
+    "rows": 76,
+    "json": "onecarat_medusa/cart_address.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_shipping_method",
+    "rows": 11,
+    "json": "onecarat_medusa/cart_shipping_method.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_shipping_method_adjustment",
+    "rows": 0,
+    "json": "onecarat_medusa/cart_shipping_method_adjustment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_line_item_tax_line",
+    "rows": 0,
+    "json": "onecarat_medusa/cart_line_item_tax_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_shipping_method_tax_line",
+    "rows": 0,
+    "json": "onecarat_medusa/cart_shipping_method_tax_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "credit_line",
+    "rows": 0,
+    "json": "onecarat_medusa/credit_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_line_item",
+    "rows": 48,
+    "json": "onecarat_medusa/cart_line_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_line_item_adjustment",
+    "rows": 0,
+    "json": "onecarat_medusa/cart_line_item_adjustment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart",
+    "rows": 37,
+    "json": "onecarat_medusa/cart.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "api_key",
+    "rows": 1,
+    "json": "onecarat_medusa/api_key.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "region",
+    "rows": 3,
+    "json": "onecarat_medusa/region.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "region_country",
+    "rows": 250,
+    "json": "onecarat_medusa/region_country.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "store",
+    "rows": 1,
+    "json": "onecarat_medusa/store.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "store_currency",
+    "rows": 3,
+    "json": "onecarat_medusa/store_currency.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "tax_region",
+    "rows": 8,
+    "json": "onecarat_medusa/tax_region.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "store_locale",
+    "rows": 1,
+    "json": "onecarat_medusa/store_locale.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "tax_rate",
+    "rows": 0,
+    "json": "onecarat_medusa/tax_rate.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "tax_rate_rule",
+    "rows": 0,
+    "json": "onecarat_medusa/tax_rate_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "tax_provider",
+    "rows": 1,
+    "json": "onecarat_medusa/tax_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "currency",
+    "rows": 123,
+    "json": "onecarat_medusa/currency.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment_collection_payment_providers",
+    "rows": 0,
+    "json": "onecarat_medusa/payment_collection_payment_providers.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment",
+    "rows": 3,
+    "json": "onecarat_medusa/payment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "capture",
+    "rows": 2,
+    "json": "onecarat_medusa/capture.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment_session",
+    "rows": 5,
+    "json": "onecarat_medusa/payment_session.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "refund",
+    "rows": 0,
+    "json": "onecarat_medusa/refund.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment_provider",
+    "rows": 2,
+    "json": "onecarat_medusa/payment_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "account_holder",
+    "rows": 0,
+    "json": "onecarat_medusa/account_holder.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment_collection",
+    "rows": 9,
+    "json": "onecarat_medusa/payment_collection.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "refund_reason",
+    "rows": 3,
+    "json": "onecarat_medusa/refund_reason.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "return_reason",
+    "rows": 0,
+    "json": "onecarat_medusa/return_reason.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_transaction",
+    "rows": 2,
+    "json": "onecarat_medusa/order_transaction.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_shipping",
+    "rows": 3,
+    "json": "onecarat_medusa/order_shipping.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_change_action",
+    "rows": 0,
+    "json": "onecarat_medusa/order_change_action.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_exchange_item",
+    "rows": 0,
+    "json": "onecarat_medusa/order_exchange_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_claim_item",
+    "rows": 0,
+    "json": "onecarat_medusa/order_claim_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_claim_item_image",
+    "rows": 0,
+    "json": "onecarat_medusa/order_claim_item_image.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_shipping_method_tax_line",
+    "rows": 0,
+    "json": "onecarat_medusa/order_shipping_method_tax_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_shipping_method_adjustment",
+    "rows": 0,
+    "json": "onecarat_medusa/order_shipping_method_adjustment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_line_item_tax_line",
+    "rows": 0,
+    "json": "onecarat_medusa/order_line_item_tax_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "return",
+    "rows": 0,
+    "json": "onecarat_medusa/return.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_exchange",
+    "rows": 0,
+    "json": "onecarat_medusa/order_exchange.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_claim",
+    "rows": 0,
+    "json": "onecarat_medusa/order_claim.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "return_item",
+    "rows": 0,
+    "json": "onecarat_medusa/return_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_shipping_method",
+    "rows": 3,
+    "json": "onecarat_medusa/order_shipping_method.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_item",
+    "rows": 3,
+    "json": "onecarat_medusa/order_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_address",
+    "rows": 6,
+    "json": "onecarat_medusa/order_address.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_line_item",
+    "rows": 3,
+    "json": "onecarat_medusa/order_line_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_summary",
+    "rows": 3,
+    "json": "onecarat_medusa/order_summary.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_line_item_adjustment",
+    "rows": 0,
+    "json": "onecarat_medusa/order_line_item_adjustment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_credit_line",
+    "rows": 0,
+    "json": "onecarat_medusa/order_credit_line.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_change",
+    "rows": 0,
+    "json": "onecarat_medusa/order_change.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order",
+    "rows": 3,
+    "json": "onecarat_medusa/order.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "user_preference",
+    "rows": 0,
+    "json": "onecarat_medusa/user_preference.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "view_configuration",
+    "rows": 0,
+    "json": "onecarat_medusa/view_configuration.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "auth_identity",
+    "rows": 5,
+    "json": "onecarat_medusa/auth_identity.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "provider_identity",
+    "rows": 5,
+    "json": "onecarat_medusa/provider_identity.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "invite",
+    "rows": 0,
+    "json": "onecarat_medusa/invite.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "user",
+    "rows": 1,
+    "json": "onecarat_medusa/user.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment_set",
+    "rows": 2,
+    "json": "onecarat_medusa/fulfillment_set.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "service_zone",
+    "rows": 2,
+    "json": "onecarat_medusa/service_zone.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "geo_zone",
+    "rows": 8,
+    "json": "onecarat_medusa/geo_zone.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipping_profile",
+    "rows": 1,
+    "json": "onecarat_medusa/shipping_profile.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipping_option_type",
+    "rows": 4,
+    "json": "onecarat_medusa/shipping_option_type.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipping_option_rule",
+    "rows": 8,
+    "json": "onecarat_medusa/shipping_option_rule.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment_address",
+    "rows": 0,
+    "json": "onecarat_medusa/fulfillment_address.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment_label",
+    "rows": 0,
+    "json": "onecarat_medusa/fulfillment_label.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment_item",
+    "rows": 0,
+    "json": "onecarat_medusa/fulfillment_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipping_option",
+    "rows": 4,
+    "json": "onecarat_medusa/shipping_option.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment",
+    "rows": 0,
+    "json": "onecarat_medusa/fulfillment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "fulfillment_provider",
+    "rows": 2,
+    "json": "onecarat_medusa/fulfillment_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "workflow_execution",
+    "rows": 0,
+    "json": "onecarat_medusa/workflow_execution.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "notification_provider",
+    "rows": 3,
+    "json": "onecarat_medusa/notification_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "notification",
+    "rows": 13,
+    "json": "onecarat_medusa/notification.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "review",
+    "rows": 0,
+    "json": "onecarat_medusa/review.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cancel_order_reason_mapping",
+    "rows": 0,
+    "json": "onecarat_medusa/cancel_order_reason_mapping.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "link_module_migrations",
+    "rows": 18,
+    "json": "onecarat_medusa/link_module_migrations.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_payment_collection",
+    "rows": 9,
+    "json": "onecarat_medusa/cart_payment_collection.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "cart_promotion",
+    "rows": 0,
+    "json": "onecarat_medusa/cart_promotion.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "location_fulfillment_provider",
+    "rows": 2,
+    "json": "onecarat_medusa/location_fulfillment_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "location_fulfillment_set",
+    "rows": 2,
+    "json": "onecarat_medusa/location_fulfillment_set.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_cart",
+    "rows": 3,
+    "json": "onecarat_medusa/order_cart.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_fulfillment",
+    "rows": 0,
+    "json": "onecarat_medusa/order_fulfillment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_payment_collection",
+    "rows": 3,
+    "json": "onecarat_medusa/order_payment_collection.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "order_promotion",
+    "rows": 0,
+    "json": "onecarat_medusa/order_promotion.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "return_fulfillment",
+    "rows": 0,
+    "json": "onecarat_medusa/return_fulfillment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_sales_channel",
+    "rows": 26,
+    "json": "onecarat_medusa/product_sales_channel.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_variant_inventory_item",
+    "rows": 46,
+    "json": "onecarat_medusa/product_variant_inventory_item.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_variant_price_set",
+    "rows": 57,
+    "json": "onecarat_medusa/product_variant_price_set.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "publishable_api_key_sales_channel",
+    "rows": 1,
+    "json": "onecarat_medusa/publishable_api_key_sales_channel.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "region_payment_provider",
+    "rows": 4,
+    "json": "onecarat_medusa/region_payment_provider.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "sales_channel_stock_location",
+    "rows": 4,
+    "json": "onecarat_medusa/sales_channel_stock_location.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipping_option_price_set",
+    "rows": 4,
+    "json": "onecarat_medusa/shipping_option_price_set.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_shipping_profile",
+    "rows": 15,
+    "json": "onecarat_medusa/product_shipping_profile.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "customer_account_holder",
+    "rows": 0,
+    "json": "onecarat_medusa/customer_account_holder.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "script_migrations",
+    "rows": 2,
+    "json": "onecarat_medusa/script_migrations.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "product_view",
+    "rows": 0,
+    "json": "onecarat_medusa/product_view.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "skip_merge_cart",
+    "rows": 8,
+    "json": "onecarat_medusa/skip_merge_cart.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "wishlist",
+    "rows": 0,
+    "json": "onecarat_medusa/wishlist.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "dynamic_config_value",
+    "rows": 62,
+    "json": "onecarat_medusa/dynamic_config_value.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "contact_request",
+    "rows": 0,
+    "json": "onecarat_medusa/contact_request.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "contact_request_comment",
+    "rows": 0,
+    "json": "onecarat_medusa/contact_request_comment.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "contact_email_subscription",
+    "rows": 1,
+    "json": "onecarat_medusa/contact_email_subscription.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "payment_detail",
+    "rows": 0,
+    "json": "onecarat_medusa/payment_detail.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "refund_payment_mapping",
+    "rows": 0,
+    "json": "onecarat_medusa/refund_payment_mapping.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "account_deletion_request",
+    "rows": 0,
+    "json": "onecarat_medusa/account_deletion_request.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "otp_verification",
+    "rows": 4,
+    "json": "onecarat_medusa/otp_verification.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "referral_link",
+    "rows": 0,
+    "json": "onecarat_medusa/referral_link.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "shipment_tracking_event",
+    "rows": 0,
+    "json": "onecarat_medusa/shipment_tracking_event.json"
+  },
+  {
+    "database": "onecarat_medusa",
+    "table": "notification_tokens",
+    "rows": 0,
+    "json": "onecarat_medusa/notification_tokens.json"
+  }
+]

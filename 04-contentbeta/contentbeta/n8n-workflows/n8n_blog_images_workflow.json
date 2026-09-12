@@ -1,0 +1,385 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "blog-images",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "ebe22903-c12a-4978-879d-a3ce3364e2bf",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        7168,
+        -1072
+      ],
+      "webhookId": "blog-images-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*,brands(name)&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b338cd5f-1a9a-43f6-920f-cfc7af21f90f",
+      "name": "Fetch Brand Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7408,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Parse Plan & Build Canvas Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 240000
+        }
+      },
+      "id": "d7d79e34-35f1-4204-85d2-1fe6bdcd95b2",
+      "name": "Call GPT-5.6 - Canvas Generation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10288,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const generatorResponse = $('Call GPT-5.6 - Canvas Generation').first().json;\nconst meta = $('Parse Plan & Build Canvas Prompt').first().json;\n\nconst raw = generatorResponse.choices?.[0]?.message?.content;\nif (!raw) throw new Error('No canvas code from generator: ' + JSON.stringify(generatorResponse));\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nfunction fixJsonEscapes(str) {\n  return str.replace(/\\\\(?![\"\\\\/bfnrtu])/g, '\\\\\\\\');\n}\n\nlet parsed;\ntry { parsed = JSON.parse(cleaned); }\ncatch(e) {\n  try { parsed = JSON.parse(fixJsonEscapes(cleaned)); }\n  catch(e2) { throw new Error('Could not parse canvas codes JSON. First 400 chars: ' + cleaned.substring(0, 400)); }\n}\n\nconst slides = parsed.slides || [];\nif (slides.length === 0) throw new Error('No slides in canvas generation response');\n\n// Logo behavior is owned by each layout JSON, never by a global theme toggle.\n// No logo-related key means no logo. Explicit logo.variant wins; otherwise the\n// layout's color mode selects the matching brand logo variant.\nconst slots = meta.slots || [];\nfunction logoVariantForSlot(slot) {\n  const rawLayout = slot?.layout_json;\n  if (!rawLayout || !/logo/i.test(rawLayout)) return 'none';\n  let layout;\n  try { layout = typeof rawLayout === 'string' ? JSON.parse(rawLayout) : rawLayout; }\n  catch { return 'none'; }\n\n  const logo = layout.logo ?? layout.brandLogo ?? layout.logoConfig;\n  if (logo === false || logo === null || logo === 'none' || logo?.enabled === false) return 'none';\n  const mentionedInElements = Array.isArray(layout.elements) && layout.elements.some(el =>\n    /logo/i.test(String(el?.type || el?.role || el?.name || el?.id || '')) && el?.enabled !== false\n  );\n  if (logo === undefined && !mentionedInElements) return 'none';\n\n  const explicit = typeof logo === 'string' ? logo : logo?.variant;\n  if (explicit === 'light' || explicit === 'dark') return explicit;\n  const mode = String(layout.theme || layout.colorMode || layout.background?.theme || layout.background?.mode || '').toLowerCase();\n  return mode === 'dark' ? 'dark' : 'light';\n}\n\n// Resolved position for the app's own deterministic logo overlay (see\n// logoVariantForSlot above for why the AI never draws this itself).\nfunction logoPositionForSlot(slot) {\n  const rawLayout = slot?.layout_json;\n  if (!rawLayout) return null;\n  let layout;\n  try { layout = typeof rawLayout === 'string' ? JSON.parse(rawLayout) : rawLayout; }\n  catch { return null; }\n  const logo = layout.logo ?? layout.brandLogo ?? layout.logoConfig;\n  if (!logo || logo === false || logo === 'none' || logo?.enabled === false || typeof logo !== 'object') return null;\n  const height = Number(logo.height);\n  const y = Number(logo.y);\n  if (!Number.isFinite(height) || !Number.isFinite(y)) return null;\n  const x = (logo.x === 'center' || logo.align === 'center') ? 'center' : Number(logo.x);\n  if (x !== 'center' && !Number.isFinite(x)) return null;\n  return { x, y, height };\n}\n\n// Per-slide canvas size — read from each slot's own \"canvas\" key in its\n// layout JSON (default 1080x1080 if missing/invalid). Slides can differ.\nfunction canvasSizeForSlot(slot) {\n  const rawLayout = slot?.layout_json;\n  if (!rawLayout) return { width: 1080, height: 1080 };\n  let layout;\n  try { layout = typeof rawLayout === 'string' ? JSON.parse(rawLayout) : rawLayout; }\n  catch { return { width: 1080, height: 1080 }; }\n  const width = Number(layout?.canvas?.width);\n  const height = Number(layout?.canvas?.height);\n  return {\n    width: Number.isFinite(width) && width > 0 ? width : 1080,\n    height: Number.isFinite(height) && height > 0 ? height : 1080,\n  };\n}\n\nconst jsCodes = slides.map((slide, i) => {\n  const { width, height } = canvasSizeForSlot(slots[i]);\n  return {\n    ...slide,\n    logoVariant: logoVariantForSlot(slots[i]),\n    logoPosition: logoPositionForSlot(slots[i]),\n    canvasWidth: width,\n    canvasHeight: height,\n  };\n});\nreturn [{ json: {\n  jsCodes,\n  brandId: $('Webhook').first().json.body.brandId,\n  brandName: meta.brandName,\n} }];"
+      },
+      "id": "b684a839-5ab4-4678-a884-696e7481d669",
+      "name": "Parse Final Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10528,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/blog_jobs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ id: $('Webhook').first().json.body.jobId, js_codes: $('Parse Final Output').first().json.jsCodes, brand_id: $('Parse Final Output').first().json.brandId, brand_name: $('Parse Final Output').first().json.brandName }) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "07ddec69-50d8-409a-b981-530d7f079e8c",
+      "name": "Save to Supabase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        11248,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body;\nconst brandData = $('Fetch Brand Data').first().json;\nconst brandName = brandData.brands?.name || 'Unknown Brand';\nconst brandStyle = brandData.blog_md || brandData.infographic_md || brandData.style_prompt || '';\nconst filename = body.filename || 'document.pdf';\nconst pdfBase64 = $('Prepare PDF Data').first().json.pdfBase64;\nif (!pdfBase64) throw new Error('No prepared PDF data available');\n\n// A Layout Group's ordered Slots are required — they define slide count and\n// per-slide content purpose. There is no freeform fallback.\nif (!body.layoutGroupId) throw new Error('No JSON layout selected');\n\nconst rawSlots = $('Fetch Blog Layout Slots').all().map(r => r.json);\nconst slots = rawSlots\n  .filter(s => s.group_id === body.layoutGroupId)\n  .sort((a, b) => a.slot_index - b.slot_index);\n\nif (slots.length === 0) throw new Error('No JSON layout found');\n\nconst slotLines = slots.map((s, i) =>\n  '  Slide ' + (i + 1) + ' (' + s.name + '): ' + (s.description || 'No specific purpose given — use best judgement from the PDF.')\n).join('\\n');\n\n// Admin-editable in Brand Settings → \"Blog Plan Prompt\" (brand_profiles.blog_plan_prompt).\n// Supports tokens: {{slideCount}}, {{slotLines}}. Falls back to this default when unset.\nconst DEFAULT_PLAN_PROMPT = [\n  'You are a content strategist analyzing PDF documents to plan visual blog image slide decks.',\n  '',\n  'Analyze the PDF and plan exactly {{slideCount}} blog image slides, in this exact order:',\n  '{{slotLines}}',\n  '',\n  'Rules:',\n  '  - Exactly {{slideCount}} slides, in the order given above — do not reorder or skip any.',\n  '  - Extract content ONLY from the PDF. Do not invent data.',\n  '  - Keep text concise: these become compact social-media-sized images.',\n  '  - Where a slide purpose mentions a statistic or quote, pull real numbers/verbatim text from the PDF.',\n  '',\n  'Return ONLY a valid JSON object - no markdown, no code fences.',\n].join('\\n');\n\nconst planTemplate = (brandData.blog_plan_prompt && brandData.blog_plan_prompt.trim()) || DEFAULT_PLAN_PROMPT;\nconst systemPrompt = planTemplate\n  .split('{{slideCount}}').join(String(slots.length))\n  .split('{{slotLines}}').join(slotLines);\n\nconst requestBody = JSON.stringify({\n  model: 'google/gemini-2.5-flash',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: [\n      { type: 'image_url', image_url: { url: 'data:application/pdf;base64,' + pdfBase64 } },\n      { type: 'text', text: 'PDF filename: ' + filename + '\\nBrand: ' + brandName + '\\n\\nAnalyze this PDF and plan ' + slots.length + ' blog image slides.' }\n    ]}\n  ],\n  response_format: { type: 'json_object' },\n  max_tokens: 8000\n});\n\nreturn [{ json: { requestBody, brandName, brandStyle, brandData, filename, slots } }];"
+      },
+      "id": "fabfe4a0-6dbc-4569-82e0-e3b9924c793b",
+      "name": "Build Content Plan Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8608,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENROUTER_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://contentbeta.app"
+            },
+            {
+              "name": "X-Title",
+              "value": "ContentBeta Blog Images Planner"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Content Plan Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "277b4102-840f-49ae-b4aa-c32e6777823b",
+      "name": "Call Gemini Flash - Content Plan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        8848,
+        -1072
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const planResponse = $('Call Gemini Flash - Content Plan').first().json;\nconst meta = $('Build Content Plan Prompt').first().json;\nconst brandData = meta.brandData;\nconst slots = meta.slots || [];\n\nfunction extractContentPlan(response) {\n  const raw = response?.choices?.[0]?.message?.content;\n  if (!raw) return null;\n  let cleaned = raw.trim();\n  if (cleaned.startsWith('`')) cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n  try {\n    const parsed = JSON.parse(cleaned);\n    if (Array.isArray(parsed.slides) && parsed.slides.length > 0) return parsed;\n  } catch { /* invalid JSON on this attempt — caller decides whether to retry */ }\n  return null;\n}\n\nlet contentPlan = extractContentPlan(planResponse);\n\nif (!contentPlan) {\n  // The HTTP node's retryOnFail only covers network-level failures. A 200\n  // response with an empty/invalid \"slides\" array sails right past that and\n  // used to kill the whole job here. Retry the same prompt once, with an\n  // explicit nudge, before giving up for real.\n  const retryRequestBody = JSON.parse(meta.requestBody);\n  retryRequestBody.messages.push({\n    role: 'user',\n    content: 'Your previous response had no valid non-empty \"slides\" array. Return ONLY the JSON object again, this time with a populated \"slides\" array covering every slide.',\n  });\n  let retryResponse;\n  try {\n    retryResponse = await this.helpers.httpRequest({\n      method: 'POST',\n      url: 'https://openrouter.ai/api/v1/chat/completions',\n      headers: {\n        'Authorization': 'Bearer __OPENAI_API_KEY__',\n        'Content-Type': 'application/json',\n        'HTTP-Referer': 'https://contentbeta.app',\n        'X-Title': 'ContentBeta Blog Images Planner',\n      },\n      body: retryRequestBody,\n      json: true,\n      timeout: 180000,\n    });\n  } catch (retryErr) {\n    throw new Error('AI returned no slides in the content plan, and the retry request itself failed: ' + (retryErr?.message || retryErr));\n  }\n  contentPlan = extractContentPlan(retryResponse);\n  if (!contentPlan) {\n    throw new Error('AI returned no slides in the content plan, even after one retry. Last response: ' + JSON.stringify(retryResponse).slice(0, 500));\n  }\n}\n\nconst slides = contentPlan.slides;\n\nconst fontHeading = brandData.infographic_font_heading || null;\nconst fontBody = brandData.infographic_font_body || null;\nconst logoUrl = brandData.infographic_logo_light_url || brandData.logo_url || null;\n\n// Per-slide canvas size — read from each slot's own \"canvas\" key in its layout\n// JSON (default 1080x1080 if missing/invalid). Sizes can differ slide to slide.\nfunction canvasSizeForSlot(slot) {\n  const rawLayout = slot?.layout_json;\n  if (!rawLayout) return { width: 1080, height: 1080 };\n  let layout;\n  try { layout = typeof rawLayout === 'string' ? JSON.parse(rawLayout) : rawLayout; }\n  catch { return { width: 1080, height: 1080 }; }\n  const width = Number(layout?.canvas?.width);\n  const height = Number(layout?.canvas?.height);\n  return {\n    width: Number.isFinite(width) && width > 0 ? width : 1080,\n    height: Number.isFinite(height) && height > 0 ? height : 1080,\n  };\n}\n\nconst canvasSizeNote = slides.map((s, i) => {\n  const { width, height } = canvasSizeForSlot(slots[i]);\n  const safeRight = width - 72;\n  const safeBottom = height - 72;\n  const contentBottom = height - 100;\n  return '  Slide ' + (s.slideNumber || i + 1) + ': ' + width + 'x' + height + 'px. Safe area: x 72-' + safeRight + ', y 72-' + safeBottom + '. Content bottom limit: ' + contentBottom + '.';\n}).join('\\n');\n\n// Per-slide structural JSON from the selected Layout Group's slots — a strong\n// hint to the AI (not a compiled/enforced schema), spliced into the prompt below.\nconst structureBlocks = slides.map((s, i) => {\n  const slot = slots[i];\n  if (!slot || !slot.layout_json) return '';\n  return 'Slide ' + (s.slideNumber || i + 1) + ' STRUCTURE REFERENCE (JSON) — follow this element layout/positions/hierarchy precisely when authoring drawSlide:\\n' + slot.layout_json;\n}).filter(Boolean).join('\\n\\n');\n\nconst structureReferences = structureBlocks\n  ? 'STRUCTURE REFERENCES — when a slide below has one, follow its JSON element layout/positions/hierarchy as closely as the canvas API allows:\\n' + structureBlocks + '\\n'\n  : '';\nconst headingFontLine = fontHeading ? '  Heading font: \"' + fontHeading + '\"' : '  Use Inter, sans-serif for headings';\nconst bodyFontLine = fontBody ? '  Body font: \"' + fontBody + '\"' : '  Use Inter, sans-serif for body';\n\n// Tell the AI where the app will place the logo so it leaves that area clear,\n// without asking the AI to compute or draw the logo itself (see LOGO rule below).\nconst logoReservedNote = slides.map((s, i) => {\n  const slot = slots[i];\n  if (!slot || !slot.layout_json) return '';\n  let layout;\n  try { layout = typeof slot.layout_json === 'string' ? JSON.parse(slot.layout_json) : slot.layout_json; }\n  catch { return ''; }\n  const logo = layout?.logo ?? layout?.brandLogo ?? layout?.logoConfig;\n  if (!logo || logo === false || logo === 'none' || logo?.enabled === false) return '';\n  const xDesc = (logo.x === 'center' || logo.align === 'center') ? 'horizontally centered' : ('x≈' + logo.x);\n  return '  Slide ' + (s.slideNumber || i + 1) + ': reserve space around y≈' + logo.y + ', ~' + logo.height + 'px tall, ' + xDesc + ' — keep other content clear of that area.';\n}).filter(Boolean).join('\\n');\n\n// Admin-editable in Brand Settings → \"Blog Canvas Prompt\" (brand_profiles.blog_canvas_prompt).\n// Supports tokens: {{slideCount}}, {{canvasSizeNote}}, {{structureReferences}}, {{headingFontLine}}, {{bodyFontLine}}, {{logoReservedNote}}.\nconst DEFAULT_CANVAS_PROMPT = [\n  'You are a Creative Technologist generating JavaScript Canvas API code for branded static blog images.',\n  'Generate exactly {{slideCount}} distinct blog image slides from the content plan. Each slide has its OWN canvas size — sizes can differ between slides:',\n  '{{canvasSizeNote}}',\n  '',\n  'CRITICAL TECHNICAL RULES:',\n  '1. Output ONLY a valid JSON object - no markdown, no code fences:',\n  '   { \"slides\": [{ \"slideNumber\": N, \"title\": \"...\", \"jsCode\": \"...\" }] }',\n  '2. Each jsCode is a named function: function drawSlide(ctx, width, height, logoImg, options) { ... }',\n  '3. Canvas size VARIES PER SLIDE — see the sizes listed above. NEVER hardcode a fixed canvas size or safe-area pixel numbers.',\n  '   ALWAYS compute margins from the width/height parameters actually passed into drawSlide, e.g.:',\n  '     const safeRight = width - 72; const safeBottom = height - 72; const contentBottom = height - 100;',\n  '4. STATIC images only - no animation. options is an empty object; do not read options.theme.',\n  '5. Path2D: ALWAYS ctx.fill(path) and ctx.stroke(path). NEVER path.fill() or path.stroke().',\n  '6. Use ctx.roundRect() - NOT ctx.roundedRect().',\n  '7. Declare ALL variables with const/let before use.',\n  '8. STRING LITERALS — Use double quotes for ALL string content. NEVER single quotes for strings. Apostrophes in string content WILL cause SyntaxError.',\n  '9. VARIABLE NAMES — camelCase ONLY. No hyphens: wrapText not wrap-text.',\n  '',\n  'NO GLOBAL SCALE TRANSFORM — FORBIDDEN (prevents stretched/distorted text and shapes):',\n  '  Do NOT write const sx = width / 1080; const sy = height / 1080; ctx.scale(sx, sy); or anything equivalent.',\n  '  Canvas sizes are NOT always square (see the sizes listed above) — sx and sy will differ whenever width ≠ height,',\n  '  and a non-uniform ctx.scale() stretches every shape and every glyph of text unevenly on that slide. This is a real bug seen in production.',\n  '  Instead, compute every position and size directly from the real width/height parameters using plain arithmetic',\n  '  (e.g. const marginX = 72; const cardW = (width - 144) / 4; const titleY = height * 0.08) — never through a global transform matrix.',\n  '  ctx.scale()/ctx.setTransform() are allowed only for a LOCAL, UNIFORM change (same factor on both axes) around a single element — never as a whole-slide 1080-to-actual-size adapter.',\n  '',\n  'FILL THE ACTUAL CANVAS — MANDATORY (a real bug seen in production: content boxed into the top-left corner, leaving the rest of a larger canvas blank):',\n  '  Removing ctx.scale() is not enough on its own — you must also derive every coordinate from width/height, not from memorized ~1080px numbers.',\n  '  WRONG (hardcoded, assumes a ~1080px-wide canvas, breaks on a 1779x2048 or any other real size):',\n  '    const centerX = 540; const colW = 456; const gridX = 72; const rowH = 160;',\n  '  RIGHT (derived from the real parameters, fills whatever size this slide actually is):',\n  '    const centerX = width / 2; const margin = 72; const gap = 24;',\n  '    const colW = (width - margin * 2 - gap) / 2;',\n  '    const rowH = (height - currentY - margin) / numRows; // sized so the rows actually reach the bottom margin',\n  '  Every width, height, x, y, radius, and font size that depends on the canvas size must be an expression using width/height — never a bare number copied from a different slide size.',\n  '',\n  'TEXT ALIGNMENT — MANDATORY (prevents text running off the left edge):',\n  '  Pick ONE centering method per text block, never both:',\n  '  (a) Set ctx.textAlign = \\'center\\' and pass the true center-X straight to fillText for every line, with NO manual x offset math, OR',\n  '  (b) Leave/set ctx.textAlign = \\'left\\' and manually compute lineX = centerX - measureText(line).width / 2 yourself.',\n  '  If a helper function already does manual centering math (option b), ctx.textAlign MUST be \\'left\\' when it runs — never \\'center\\'.',\n  '  Setting textAlign=\\'center\\' AND manually offsetting x by half the text width in the same draw double-centers the line and pushes it off-canvas.',\n  '',\n  'FONT MEASUREMENT — MANDATORY:',\n  '  Always call ctx.measureText() with the exact ctx.font that was (or will be) used to render that text.',\n  '  Never change ctx.font and then measure a string that was drawn, or will be drawn, in a different font — the width will be wrong and text will overlap.',\n  '',\n  'MEASURE-THEN-DRAW — MANDATORY:',\n  '  If you need a text block’s wrapped height before drawing it (e.g. to vertically center content), write a SEPARATE pure-measurement helper',\n  '  that only calls ctx.measureText() and returns line count × lineHeight — it must NOT call ctx.fillText().',\n  '  Never call your drawing function once to \\'measure\\' and again to \\'draw\\': fillText draws immediately, so this leaves a duplicate/ghost copy of the text on the canvas.',\n  '',\n  '{{structureReferences}}',\n  'LAYOUT COLORS — ONE FIXED TREATMENT PER SLIDE:',\n  '  Use background, surface, text, accent, and border colors from that slide STRUCTURE REFERENCE.',\n  '  Do not generate theme alternatives and do not read options.theme.',\n  '',\n  'LOGO — DO NOT DRAW IT YOURSELF:',\n  '  The application composites the brand logo automatically after your code runs. NEVER call ctx.drawImage for a logo, and ignore the logoImg parameter entirely — treat it as always null.',\n  '  {{logoReservedNote}}',\n  '',\n  'TYPOGRAPHY:',\n  '{{headingFontLine}}',\n  '{{bodyFontLine}}',\n  '  Hero title: 60-72px bold | Stat number: 110-130px | Headline: 36-48px | Body: 22-28px',\n  '  TEXT WRAPPING - MANDATORY: use measureText loop for all text blocks.',\n  '',\n  'LAYOUT RULES:',\n  '  - 72px margin all sides (computed from that slide\\'s own width/height — see rule 3). Content starts y>=200. Bottom <= height-100.',\n  '  - Each slide must look DIFFERENT. Every slide complete as standalone, sized exactly per its own listed canvas size.',\n  '',\n  'ELEMENT STACKING — MANDATORY to prevent overlaps:',\n  '  Use a currentY variable to track vertical position for ALL stacked elements:',\n  '    let currentY = 200; // start below logo',\n  '    // draw element at currentY',\n  '    currentY += elementHeight + gap;',\n  '  NEVER hardcode Y coordinates for elements that follow other elements.',\n  '  Card bottom = cardY + cardH must be <= height-100 (computed, never hardcoded).',\n  '',\n  'TEXTBASELINE — MANDATORY:',\n  '  Set ctx.textBaseline = \\'top\\' at the start of EVERY block that draws text.',\n  '  After ctx.save()/ctx.restore(), textBaseline silently reverts — always re-set it.',\n  '  With alphabetic baseline, text drawn at y=300 actually starts ~50px ABOVE y=300.',\n  '',\n  'SHADOW RESET — after every shadowed draw:',\n  '  ctx.shadowColor = \\'transparent\\'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;',\n].join('\\n');\n\nconst canvasTemplate = (brandData.blog_canvas_prompt && brandData.blog_canvas_prompt.trim()) || DEFAULT_CANVAS_PROMPT;\nconst systemPrompt = canvasTemplate\n  .split('{{slideCount}}').join(String(slides.length))\n  .split('{{canvasSizeNote}}').join(canvasSizeNote)\n  .split('{{structureReferences}}').join(structureReferences)\n  .split('{{headingFontLine}}').join(headingFontLine)\n  .split('{{bodyFontLine}}').join(bodyFontLine)\n  .split('{{logoReservedNote}}').join(logoReservedNote || 'No logo reserved for this deck.') + '\\n\\nFINAL LAYOUT CONTRACT (overrides any theme/logo instructions above): Use one fixed color treatment per slide from its STRUCTURE REFERENCE. Do not read options.theme and do not generate light/dark alternatives. The layout JSON is the source of truth for background and colors. Never draw a logo yourself and never call ctx.drawImage for a logo — the application composites the brand logo after your code runs. Only reserve/avoid the noted logo area so your other content does not overlap it. Each slide has its own canvas size (see the list above) — never assume a fixed size, always use the width/height parameters passed into drawSlide.';\n\nconst slideSummary = slides.map(s =>\n  'Slide ' + s.slideNumber + ' (' + s.slideType + '): \"' + s.title + '\"' +\n  (s.headline ? ' - ' + s.headline : '') +\n  (s.stat ? ' - Stat: ' + s.stat : '') +\n  (s.keyPoints?.length ? ' - Points: ' + s.keyPoints.slice(0,3).join(', ') : '')\n).join('\\n');\n\nconst userPrompt = [\n  'Brand: ' + meta.brandName,\n  'Brand Guidelines: ' + (meta.brandStyle || 'Use clean professional design.'),\n  '',\n  'Content Plan (' + slides.length + ' slides):',\n  slideSummary,\n  '',\n  JSON.stringify(contentPlan, null, 2),\n  '',\n  'Generate all ' + slides.length + ' drawSlide functions as a JSON slides array.',\n].join('\\n');\n\nconst requestBody = JSON.stringify({\n  model: 'gpt-5.6-terra',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  max_completion_tokens: 32000,\n  // Low reasoning keeps the final code-generation stage responsive.\n  reasoning_effort: 'low',\n  response_format: { type: 'json_object' }\n});\n\nreturn [{ json: { requestBody, contentPlan, slides, slots, brandData, brandName: meta.brandName, brandStyle: meta.brandStyle, logoUrl } }];"
+      },
+      "id": "233fb980-2aa7-4c74-bc04-886bcc354245",
+      "name": "Parse Plan & Build Canvas Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9088,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').first().json.body.pdfUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "4e779d78-1e32-43a0-9512-a520b6e3ebac",
+      "name": "Fetch PDF Binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        8128,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const binary = $input.first().binary;\nif (!binary?.data) throw new Error('No PDF binary data was fetched');\n\n// n8n may store binary payloads on disk (binary.data.data is then only\n// \"filesystem-v2\"). Read the real bytes through the supported helper.\nconst pdfBuffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nif (!pdfBuffer?.length) throw new Error('Fetched PDF was empty');\n\nreturn [{ json: { pdfBase64: pdfBuffer.toString('base64') } }];"
+      },
+      "id": "09890691-4b3e-47bf-b377-d706da0e1498",
+      "name": "Prepare PDF Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8368,
+        -1072
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/blog_layout_slots?group_id=eq.{{ $('Webhook').first().json.body.layoutGroupId || '00000000-0000-0000-0000-000000000000' }}&select=*&order=slot_index.asc",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0f1db17a-d3d9-4353-9d36-9e7ed4d8ff2d",
+      "name": "Fetch Blog Layout Slots",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7888,
+        -1072
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Data": {
+      "main": [
+        [
+          {
+            "node": "Fetch Blog Layout Slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call GPT-5.6 - Canvas Generation": {
+      "main": [
+        [
+          {
+            "node": "Parse Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Final Output": {
+      "main": [
+        [
+          {
+            "node": "Save to Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Content Plan Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call Gemini Flash - Content Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Gemini Flash - Content Plan": {
+      "main": [
+        [
+          {
+            "node": "Parse Plan & Build Canvas Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Plan & Build Canvas Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call GPT-5.6 - Canvas Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch PDF Binary": {
+      "main": [
+        [
+          {
+            "node": "Prepare PDF Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare PDF Data": {
+      "main": [
+        [
+          {
+            "node": "Build Content Plan Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Blog Layout Slots": {
+      "main": [
+        [
+          {
+            "node": "Fetch PDF Binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  }
+}

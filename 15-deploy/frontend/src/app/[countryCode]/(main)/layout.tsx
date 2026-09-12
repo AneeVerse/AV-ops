@@ -1,0 +1,64 @@
+import { Metadata } from "next"
+
+import { listCartOptions, retrieveCart } from "@lib/data/cart"
+import { retrieveCustomer } from "@lib/data/customer"
+import { getBaseURL } from "@lib/util/env"
+import { StoreCartShippingOption } from "@medusajs/types"
+import CartMismatchBanner from "@modules/layout/components/cart-mismatch-banner"
+import Footer from "@modules/layout/templates/footer"
+import Nav from "@modules/layout/templates/nav"
+import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
+
+import PushNotificationManager from "@modules/layout/components/push-notification-manager"
+import DeletionPendingModal from "@modules/account/components/deletion-pending-modal"
+import VerificationBanner from "@modules/layout/components/verification-banner"
+
+export const metadata: Metadata = {
+  metadataBase: new URL(getBaseURL()),
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+}
+
+import { WishlistProvider } from "@lib/context/wishlist-context"
+
+export default async function PageLayout(props: { children: React.ReactNode }) {
+  const customer = await retrieveCustomer().catch(() => null)
+  const cart = await retrieveCart().catch(() => null)
+  let shippingOptions: StoreCartShippingOption[] = []
+
+  if (cart) {
+    const options = await listCartOptions().catch(() => null)
+    shippingOptions = options?.shipping_options || []
+  }
+
+  return (
+    <WishlistProvider>
+      <Nav />
+      {customer && <VerificationBanner customer={customer} />}
+      {customer && cart && (
+        <CartMismatchBanner customer={customer} cart={cart} />
+      )}
+
+      {cart && (
+        <FreeShippingPriceNudge
+          variant="popup"
+          cart={cart}
+          shippingOptions={shippingOptions}
+        />
+      )}
+      <main className="bg-ivory-bg min-h-screen w-full">
+        {props.children}
+      </main>
+      <PushNotificationManager customerId={customer?.id} />
+      <Footer />
+      {customer?.id === "pending_deletion" && (
+        <DeletionPendingModal
+          isOpen={true}
+          email={customer.email}
+        />
+      )}
+    </WishlistProvider>
+  )
+}

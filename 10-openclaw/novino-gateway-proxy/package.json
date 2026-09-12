@@ -1,0 +1,10 @@
+{
+  "name": "novino-gateway-proxy",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Same-origin HTTP bridge from Aneeverse to the OpenClaw gateway. Token stays on the VPS.",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}

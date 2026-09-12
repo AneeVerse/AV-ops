@@ -1,0 +1,336 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "infographic",
+        "responseMode": "onReceived",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "d1aff49e-5e89-4b60-9ba6-e292f31b7145",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        -272
+      ],
+      "webhookId": "infographic-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*,brands(name)&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "43f129a9-a109-4c20-96b4-da370ea0bb8d",
+      "name": "Fetch Brand Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        928,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/infographic_layouts?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&is_active=eq.true&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5498f3a2-3cde-4af5-983f-98815bf1d9ee",
+      "name": "Fetch Infographic Layouts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1168,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Webhook').first().json.body;\nconst brandData = $('Fetch Brand Data').first().json;\n\nconst brandName = brandData.brands?.name || 'Unknown Brand';\nconst brandStyle = brandData.infographic_md || brandData.style_prompt || '';\nif (!brandStyle) throw new Error('No brand guidelines found for this brand.');\n\nconst brandLogoUrl = brandData.logo_url || null;\nconst adCopy = body.adCopy || '';\nconst layoutReferenceId = body.layoutReferenceId || null;\nif (!adCopy) throw new Error('adCopy is required.');\n\nconst allRefs = $('Fetch Infographic Layouts').all().map(r => r.json);\nlet layoutRef = null;\nif (allRefs.length > 0) {\n  if (layoutReferenceId) {\n    layoutRef = allRefs.find(r => r.id === layoutReferenceId) || allRefs[Math.floor(Math.random() * allRefs.length)];\n  } else {\n    layoutRef = allRefs[Math.floor(Math.random() * allRefs.length)];\n  }\n}\n\nconst logoUrl = brandLogoUrl;\n\nconst systemPrompt = [\n  'You are a professional Creative Technologist specializing in Canvas API motion graphics.',\n  'Generate valid JavaScript code for a 1080x1080 animated social media infographic.',\n  '',\n  'CRITICAL TECHNICAL RULES:',\n  '1. FUNCTION SIGNATURE: You MUST use a named function declaration exactly like this:',\n  '   function drawGraphic(ctx, width, height, logoImg, options) { ... }',\n  '   No arrow functions. No variable assignment. No export. No async/await.',\n  '2. Output ONLY a valid JSON object: { \"jsCode\": \"...\", \"designExplanation\": \"...\" }',\n  '   No markdown. No code fences.',\n  '3. OPTIONS ARGUMENT: { progress, frame, fps, durationInFrames, adCopy, theme }',\n  '   - progress: 0.0 to 1.0 — use for ALL animation.',\n  '   - adCopy is a plain STRING. Use .split(), .trim(), .includes(). NEVER .map() or .filter() directly on it.',\n  '4. Path2D: ALWAYS use ctx.fill(path) and ctx.stroke(path). NEVER path.fill() or path.stroke().',\n  '5. Use ctx.roundRect() — NOT ctx.roundedRect().',\n  '6. Declare ALL variables with const/let BEFORE use. No hoisting assumptions.',\n  '',\n  'THEME SUPPORT — MANDATORY:',\n  'At the very start of drawGraphic, define a complete theme-aware color palette using brand guidelines:',\n  '  const isDark = options.theme === \\'dark\\';',\n  '  const colors = isDark ? {',\n  '    bg: \\'...\\',         // dark background — from brand guidelines',\n  '    surface: \\'rgba(18,21,35,0.75)\\',  // translucent dark card fill',\n  '    textPrimary: \\'...\\',',\n  '    textSecondary: \\'...\\',',\n  '    accent: \\'...\\',     // brand primary accent color',\n  '    border: \\'...\\',',\n  '    glow: \\'...\\',       // glowing accent e.g. rgba(r,g,b,0.45)',\n  '  } : {',\n  '    bg: \\'...\\',         // light background — from brand guidelines',\n  '    surface: \\'rgba(255,255,255,0.92)\\', // glassmorphic white card',\n  '    textPrimary: \\'...\\',',\n  '    textSecondary: \\'...\\',',\n  '    accent: \\'...\\',',\n  '    border: \\'...\\',',\n  '    shadow: \\'rgba(0,0,0,0.10)\\',',\n  '  };',\n  '  Derive ALL hex/rgba values from the brand guidelines.',\n  '  Use ONLY colors.* everywhere — NEVER hardcode hex or rgba values outside this object.',\n  '',\n  'LOGO — DO NOT DRAW IT YOURSELF:',\n  '  logoImg will always be null when your code runs — NEVER call ctx.drawImage(logoImg, ...)',\n  '  or otherwise reference logoImg. The app composites the brand logo automatically in the',\n  '  top-left corner (roughly x:65-270, y:65-135) AFTER your code runs. Simply reserve that',\n  '  zone — keep it empty, do not place any other element there.',\n  '',\n  'SAFE AREA & COORDINATE BUDGET — CRITICAL (1080x1080 canvas):',\n  '  Safe area: x 72–1008, y 72–1008. Working area = 936x936px.',\n  '  Logo at y=72. Content MUST start at y >= 220 (leave 100–130px gap below logo).',\n  '  Card container: cardY = 200–240. cardH = 640–720. MUST satisfy: cardY + cardH <= 920.',\n  '  Inside card padding: 40–50px.',\n  '  ALWAYS track vertical position with a currentY variable:',\n  '    let currentY = cardY + padding;',\n  '    // draw element...',\n  '    currentY += elementHeight + gap;',\n  '  Anchor ALL subsequent elements to currentY — NEVER hardcode y-coordinates for stacked elements.',\n  '  Badges, CTAs, source notes: y = currentY + gap. Never hardcoded.',\n  '',\n  'SPACING TOKENS — use only these values:',\n  '  16px = micro | 24px = tight | 32px = standard | 48px = section | 64px = hero | 72px = zone',\n  '',\n  'TYPOGRAPHY:',\n  '  Hero stat: 110–130px | Headline: 32–42px (max-width 700px)',\n  '  Subheadline: 24–32px | Body/labels: 18–28px | CTA: 20–26px',\n  '  Font: follow brand guidelines. Default: Inter, sans-serif.',\n  '  TEXT WRAPPING — MANDATORY for all text blocks. Always measure first:',\n  '    const words = text.split(\\' \\');',\n  '    let line = \\'\\', lines = [];',\n  '    for (const word of words) {',\n  '      const test = line + (line ? \\' \\' : \\'\\') + word;',\n  '      if (ctx.measureText(test).width > maxWidth && line) { lines.push(line); line = word; }',\n  '      else line = test;',\n  '    }',\n  '    if (line) lines.push(line);',\n  '    lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineHeight));',\n  '',\n  'COUNT-UP ANIMATION — mandatory for ALL numbers/percentages/metrics:',\n  '  const easedProgress = 1 - Math.pow(1 - Math.min(1, options.progress * 1.5), 3);',\n  '  const currentVal = Math.floor(targetValue * easedProgress);',\n  '',\n  'VISUAL STYLE — apply from brand guidelines:',\n  '  Light mode: soft-gradient or solid light bg. Pure-white glassmorphic cards.',\n  '    Card shadow: ctx.shadowColor = colors.shadow; ctx.shadowBlur = 28; ctx.shadowOffsetY = 14;',\n  '    Thin transparent border on cards. Dark high-contrast text. Brand accent colors.',\n  '  Dark mode: deep dark gradient bg with animated dot-grid (grid offset drifts: offset += options.progress * 0.5).',\n  '    Translucent card fill (colors.surface). Thin glowing accent border on cards.',\n  '    Glow on hero stats: ctx.shadowColor = colors.glow; ctx.shadowBlur = 36; ctx.shadowOffsetY = 0;',\n  '    White/silver high-contrast text.',\n  '  ALWAYS reset shadow after every shadowed element:',\n  '    ctx.shadowColor = \\'transparent\\'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;',\n  '',\n  'ANIMATION — MANDATORY (use options.progress for all motion):',\n  '  const ease = t => 1 - Math.pow(1 - Math.min(1, t), 3);',\n  '  Stagger all element entrances sequentially:',\n  '    Background/pattern: 0–0.10 | Logo: 0.05–0.20 | Headline: 0.15–0.35',\n  '    Cards/stats: 0.30–0.65 | Body copy: 0.50–0.80 | CTA/source note: 0.70–0.95',\n  '  Animation techniques:',\n  '    Fade in via ctx.globalAlpha = ease(progress_in_range)',\n  '    Slide up: drawY = targetY + (1 - eased) * 40',\n  '    Count-up numbers (mandatory for all stats)',\n  '    Bars grow left-to-right based on progress',\n  '    Lines draw progressively',\n  '  Always restore ctx.globalAlpha = 1 after fade-in elements.',\n  '',\n  'CTA RULE: Only render a CTA button if the ad copy explicitly contains a call-to-action.',\n  '  If absent — do NOT add one, do NOT reserve CTA space. Redistribute the layout vertically.',\n  '',\n  'MEANING PRESERVATION:',\n  '  Use only text, numbers, and claims present in the ad copy.',\n  '  Do NOT invent statistics, benefits, or CTA text not in the copy.',\n].join('\\n');\n\nconst MESSAGE_FOCUS_LABELS = {\n  stat_lead: 'Data Insight / Stat Lead — built around a key number, percentage, or metric',\n  pain_point: 'Address Pain Point — calls out a problem the audience faces',\n  solution: 'Solution Capability — highlights what the product/service does or enables',\n  proof: 'Proof / Trust Signal — uses testimonials, case studies, awards, or social proof',\n  education: 'Education / How It Works — explains a process, concept, or framework',\n};\nconst CREATIVE_HOOK_LABELS = {\n  hero_stat: 'Hero Stat — one dominant number is the visual centrepiece',\n  multi_stat: 'Multi-Stat Grid — 2–4 stats in a card grid layout',\n  headline_lead: 'Bold Headline Lead — large typographic statement, minimal other elements',\n  data_viz: 'Data Visualisation — chart, bar, progress ring, or graph as centrepiece',\n  process_flow: 'Step / Process Flow — sequential steps or timeline structure',\n};\n\nconst messageFocusIds = (body.messageFocus || []);\nconst creativeHookIds = (body.creativeHook || []);\n\nconst fontHeading = brandData.infographic_font_heading || null;\nconst fontBody = brandData.infographic_font_body || null;\n\nlet userPromptText = 'Brand: ' + brandName + '\\n\\nBrand Guidelines:\\n' + brandStyle + '\\n\\nAd Copy:\\n' + adCopy + '\\n\\nLogo Provided: ' + (logoUrl ? 'Yes' : 'No') + '\\n';\n\nif (fontHeading || fontBody) {\n  userPromptText += '\\n\\nINFOGRAPHIC FONTS — mandatory, use ONLY these font family names in ctx.font:';\n  if (fontHeading) userPromptText += '\\n- Heading font (headlines, hero stats, card numbers, all large text): \"' + fontHeading + '\"';\n  if (fontBody) userPromptText += '\\n- Body font (subheadlines, labels, captions, all small text): \"' + (fontBody || fontHeading) + '\"';\n  if (fontHeading) userPromptText += '\\n  Example: ctx.font = \\'900 64px \"' + fontHeading + '\"\\'';\n  if (fontBody) userPromptText += '\\n  Example: ctx.font = \\'400 18px \"' + (fontBody || fontHeading) + '\"\\'';\n  userPromptText += '\\n  Do NOT use any other font family name. These fonts are pre-loaded in the browser.';\n}\n\nif (messageFocusIds.length > 0) {\n  userPromptText += '\\nMessage Focus (chosen by user — let this drive content emphasis):';\n  messageFocusIds.forEach(id => {\n    if (MESSAGE_FOCUS_LABELS[id]) userPromptText += '\\n- ' + MESSAGE_FOCUS_LABELS[id];\n  });\n}\n\nif (creativeHookIds.length > 0) {\n  userPromptText += '\\nCreative Hook (chosen by user — let this drive the visual layout):';\n  creativeHookIds.forEach(id => {\n    if (CREATIVE_HOOK_LABELS[id]) userPromptText += '\\n- ' + CREATIVE_HOOK_LABELS[id];\n  });\n}\n\nif (layoutRef) {\n  userPromptText += '\\nLayout Reference: ' + layoutRef.name;\n  if (layoutRef.description) userPromptText += '\\n' + layoutRef.description;\n  if (layoutRef.image_url) userPromptText += '\\nMatch the spatial composition and visual proportions from this reference image closely.';\n}\n\nconst userContent = (layoutRef && layoutRef.image_url)\n  ? [\n      { type: 'text', text: userPromptText },\n      { type: 'image_url', image_url: { url: layoutRef.image_url } }\n    ]\n  : userPromptText;\n\nconst messages = [\n  { role: 'system', content: systemPrompt },\n  { role: 'user', content: userContent }\n];\n\nconst requestBody = JSON.stringify({\n  model: 'google/gemini-3.5-flash',\n  messages: messages,\n  max_tokens: 32000\n});\n\nreturn [{ json: { brandId: body.brandId, brandName: brandName, logoUrl: logoUrl, layoutRefUsed: layoutRef?.name || null, requestBody: requestBody } }];"
+      },
+      "id": "b8331183-0f51-48cc-b574-35c046690ca8",
+      "name": "Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENROUTER_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://contentbeta.app"
+            },
+            {
+              "name": "X-Title",
+              "value": "ContentBeta Infographic Generator"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Prompt').first().json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "267269e9-116c-4686-a77a-b03353d534e8",
+      "name": "Call Gemini 2.5 Pro",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const rendererResponse = $('Call Gemini 2.5 Pro').first().json;\nconst meta = $('Build Prompt').first().json;\nconst body = $('Webhook').first().json.body;\n\nconst raw = rendererResponse.choices?.[0]?.message?.content;\nif (!raw) throw new Error('No content from renderer: ' + JSON.stringify(rendererResponse));\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nfunction fixJsonEscapes(str) {\n  return str.replace(/\\\\(?![\"\\\\/bfnrtu])/g, '\\\\\\\\');\n}\n\n// Reverses JSON-style backslash escaping in a single left-to-right pass. A naive chain of\n// sequential .replace(/\\\\n/g,...).replace(/\\\\\\\\/g,...) calls is order-unsound: an escaped\n// backslash immediately followed by a literal \"n\" (e.g. from a regex like /\\d/ that the model\n// double-escaped) gets its trailing \\n consumed by the newline rule first, leaving a stray\n// backslash in the output that later breaks `new Function(...)` with \"Invalid escape in\n// identifier\" / \"Invalid or unexpected token\". A single regex.replace with alternation consumes\n// matched characters left-to-right without re-scanning replaced output, so this is order-safe.\nfunction unescapeJsonEscapes(str) {\n  return str.replace(/\\\\(u[0-9a-fA-F]{4}|n|t|r|\"|'|\\\\)/g, function (_m, token) {\n    switch (token[0]) {\n      case 'n': return '\\n';\n      case 't': return '\\t';\n      case 'r': return '\\r';\n      case '\"': return '\"';\n      case \"'\": return \"'\";\n      case '\\\\': return '\\\\';\n      default: return String.fromCharCode(parseInt(token.slice(1), 16));\n    }\n  });\n}\n\nfunction extractFromTruncated(str) {\n  const m = str.match(/\"jsCode\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)/s);\n  if (!m || m[1].length < 100) return null;\n  let code = unescapeJsonEscapes(m[1]);\n  if (!code.trim().endsWith('}')) {\n    // Find the last \"safe\" statement boundary — back at exactly one level of curly nesting\n    // (the function body itself) with zero open parens/brackets, and not inside a string\n    // literal. Older code just grabbed the LAST '}' or ';' anywhere in the string, which can\n    // land inside a string literal (e.g. ctx.fillText('Save 20% {bonus}', ...)) and produce\n    // code that's still broken after appending the closing brace.\n    let depthCurly = 0, depthParen = 0, depthSquare = 0;\n    let inString = null;\n    let bestCut = -1;\n    for (let i = 0; i < code.length; i++) {\n      const ch = code[i];\n      if (inString) {\n        if (ch === '\\\\') { i++; continue; }\n        if (ch === inString) inString = null;\n        continue;\n      }\n      if (ch === \"'\" || ch === '\"' || ch === '`') { inString = ch; continue; }\n      if (ch === '{') depthCurly++;\n      else if (ch === '}') {\n        depthCurly--;\n        if (depthCurly === 1 && depthParen === 0 && depthSquare === 0) bestCut = i;\n      } else if (ch === '(') depthParen++;\n      else if (ch === ')') depthParen--;\n      else if (ch === '[') depthSquare++;\n      else if (ch === ']') depthSquare--;\n      else if (ch === ';' && depthCurly === 1 && depthParen === 0 && depthSquare === 0) bestCut = i;\n    }\n    if (bestCut < 100) return null;\n    code = code.substring(0, bestCut + 1) + '\\n}';\n  }\n  return code;\n}\n\nlet jsCode = null;\nlet designExplanation = '';\n\ntry {\n  const parsed = JSON.parse(cleaned);\n  jsCode = parsed.jsCode || null;\n  designExplanation = parsed.designExplanation || '';\n} catch(e) {\n  try {\n    const parsed = JSON.parse(fixJsonEscapes(cleaned));\n    jsCode = parsed.jsCode || null;\n    designExplanation = parsed.designExplanation || '';\n  } catch(e2) {\n    jsCode = extractFromTruncated(cleaned);\n  }\n}\n\nif (!jsCode) throw new Error('Could not extract jsCode from renderer: ' + cleaned.substring(0, 300));\nconst adCopy = body.adCopy || '';\n\nconst systemPrompt = [\n  'You are the Layout Validation + Auto-Correction Layer for a JS Canvas social media infographic.',\n  'Review the provided drawGraphic JavaScript function for layout issues and return a corrected version.',\n  '',\n  'Canvas: 1080x1080px. Safe area: x 72–1008, y 72–1008.',\n  '',\n  'VALIDATE AND FIX ALL OF THE FOLLOWING — check every issue:',\n  '',\n  '1. SAFE AREA: No element drawn outside x:72–1008 or y:72–1008.',\n  '   Fix: move element inward or reduce its size.',\n  '',\n  '2. LOGO HANDLING: The app composites the brand logo itself, after your code runs — the code',\n  '   must NEVER call ctx.drawImage(logoImg, ...) or otherwise render logoImg in any way.',\n  '   Fix: remove any logo-drawing code entirely. logoImg is passed for backward compatibility',\n  '   only and must be ignored. Leave the top-left zone (roughly x:65–270, y:65–135) empty.',\n  '',\n  '3. CONTENT START: No content above y=220. Gap of 100–130px must exist below the reserved logo zone.',\n  '   Fix: push content start down to y=220 minimum.',\n  '',\n  '4. CARD OVERFLOW: card bottom (cardY + cardH) must not exceed y=920.',\n  '   Fix: reduce cardH so cardY + cardH <= 920.',\n  '',\n  '5. TEXT OVERFLOW: All text must use ctx.measureText + line wrapping. No text that assumes it fits.',\n  '   Fix: add measuring + wrapping loop where missing.',\n  '',\n  '6. ELEMENT COLLISIONS: No two elements in the same space.',\n  '   Fix: verify currentY tracking is used for stacked elements. Add currentY if missing.',\n  '',\n  '7. HARDCODED COLORS: All colors must use colors.* object. No raw hex/rgba values outside the colors definition.',\n  '   Fix: replace any hardcoded color values with the appropriate colors.* key.',\n  '',\n  '8. VARIABLE DECLARATIONS: Every variable must be declared with const/let before use.',\n  '   Fix: add missing declarations.',\n  '',\n  '9. PATH2D: Must use ctx.fill(path) / ctx.stroke(path). Not path.fill() or path.stroke().',\n  '   Fix: correct any invalid Path2D calls.',\n  '',\n  '10. SHADOW RESET: After every element that sets shadowColor/shadowBlur, reset immediately after drawing:',\n  '    ctx.shadowColor = \\'transparent\\'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;',\n  '    Fix: add reset where missing.',\n  '',\n  '11. ANIMATION: Every visible element must animate via options.progress. Nothing fully static.',\n  '    Fix: wrap any static elements in globalAlpha or position animations.',\n  '',\n  '12. CTA CHECK: Only include a CTA if the ad copy explicitly contains one.',\n  '    Fix: remove any invented CTA button or text.',\n  '',\n  '13. TEXTBASELINE DRIFT — After ctx.restore(), textBaseline silently reverts to \\'alphabetic\\'.',\n  '    With alphabetic baseline, Y is the text BOTTOM, so a 64px number drawn at cardY+28',\n  '    actually starts at cardY+28 minus ~51px = ABOVE the card top — numbers float out of cards.',\n  '    Fix: add ctx.textBaseline = \\'top\\' at the start of EVERY ctx.save() block that draws text.',\n  '    Every card section, stat section, and bottom row section must set textBaseline explicitly.',\n  '',\n  '14. ANIMATION Y DRIFT — Elements that use slide-in offsets like drawY = targetY + (1-eased)*40',\n  '    must draw ALL sub-elements (text, icons, borders) using that same offset variable.',\n  '    Never mix animated Y for the card background with hardcoded Y for the text inside.',\n  '    Fix: ensure text Y = cardY + padding (where cardY is the animated variable, not a constant).',\n  '',\n  'RULES:',\n  '- Make ONLY the corrections needed. Do not redesign or rewrite the entire function.',\n  '- Do not change visual design intent, brand colors, layout style, or copy meaning.',\n  '- Keep the function signature: function drawGraphic(ctx, width, height, logoImg, options)',\n  '',\n  'Return ONLY a valid JSON object:',\n  '{ \"jsCode\": \"corrected complete drawGraphic function\", \"corrections\": [\"brief list of what was fixed\"] }',\n  'No markdown. No code fences.',\n].join('\\n');\n\nconst userPrompt = 'Ad Copy (for CTA verification):\\n' + adCopy + '\\n\\nCode to validate and correct:\\n' + jsCode;\n\nconst validationRequestBody = JSON.stringify({\n  model: 'google/gemini-3.5-flash',\n  messages: [\n    { role: 'system', content: systemPrompt },\n    { role: 'user', content: userPrompt }\n  ],\n  max_tokens: 32000\n});\n\nreturn [{ json: { validationRequestBody, originalJsCode: jsCode, designExplanation, brandId: meta.brandId, brandName: meta.brandName, layoutRefUsed: meta.layoutRefUsed } }];"
+      },
+      "id": "77603b17-40a6-4669-b6b3-3ac492842285",
+      "name": "Build Validation Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1888,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENROUTER_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://contentbeta.app"
+            },
+            {
+              "name": "X-Title",
+              "value": "ContentBeta Infographic Validator"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $('Build Validation Prompt').first().json.validationRequestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "d1ced8c4-5a89-4a8b-9cb9-5d1ed6adb45b",
+      "name": "Call Validator AI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2128,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const validatorResponse = $('Call Validator AI').first().json;\nconst meta = $('Build Validation Prompt').first().json;\n\nfunction fixJsonEscapes(str) {\n  return str.replace(/\\\\(?![\"\\\\/bfnrtu])/g, '\\\\\\\\');\n}\n\n// Reverses JSON-style backslash escaping in a single left-to-right pass — see the identical\n// helper in \"Build Validation Prompt\" for why the old sequential-replace chain was order-unsound\n// and produced stray backslashes that broke `new Function(...)` downstream in every viewer.\nfunction unescapeJsonEscapes(str) {\n  return str.replace(/\\\\(u[0-9a-fA-F]{4}|n|t|r|\"|'|\\\\)/g, function (_m, token) {\n    switch (token[0]) {\n      case 'n': return '\\n';\n      case 't': return '\\t';\n      case 'r': return '\\r';\n      case '\"': return '\"';\n      case \"'\": return \"'\";\n      case '\\\\': return '\\\\';\n      default: return String.fromCharCode(parseInt(token.slice(1), 16));\n    }\n  });\n}\n\nfunction extractFromTruncated(str) {\n  const m = str.match(/\"jsCode\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)/s);\n  if (!m || m[1].length < 100) return null;\n  let code = unescapeJsonEscapes(m[1]);\n  if (!code.trim().endsWith('}')) {\n    // Only cut at a brace/semicolon that's back at the function body's own nesting level (one\n    // curly deep, zero open parens/brackets) and not inside a string literal — the old version\n    // grabbed the LAST '}' or ';' anywhere in the string, which can land inside a string literal\n    // (e.g. ctx.fillText('Save 20% {bonus}', ...)) and leave the code broken even after closing it.\n    let depthCurly = 0, depthParen = 0, depthSquare = 0;\n    let inString = null;\n    let bestCut = -1;\n    for (let i = 0; i < code.length; i++) {\n      const ch = code[i];\n      if (inString) {\n        if (ch === '\\\\') { i++; continue; }\n        if (ch === inString) inString = null;\n        continue;\n      }\n      if (ch === \"'\" || ch === '\"' || ch === '`') { inString = ch; continue; }\n      if (ch === '{') depthCurly++;\n      else if (ch === '}') {\n        depthCurly--;\n        if (depthCurly === 1 && depthParen === 0 && depthSquare === 0) bestCut = i;\n      } else if (ch === '(') depthParen++;\n      else if (ch === ')') depthParen--;\n      else if (ch === '[') depthSquare++;\n      else if (ch === ']') depthSquare--;\n      else if (ch === ';' && depthCurly === 1 && depthParen === 0 && depthSquare === 0) bestCut = i;\n    }\n    if (bestCut < 100) return null;\n    code = code.substring(0, bestCut + 1) + '\\n}';\n  }\n  return code;\n}\n\n// Actually constructs AND calls the code (a thrown/parse error inside `new Function(body)` only\n// surfaces once the function runs) to confirm drawGraphic both parses and gets defined. This is\n// what prevents genuinely broken code from ever reaching Supabase — instead of silently saving\n// it and having it break with \"Invalid escape in identifier\" / \"Global Code\" every single time\n// someone views it in History afterward.\nfunction isValidDrawGraphic(code) {\n  try {\n    const result = new Function(code + \"\\nreturn typeof drawGraphic==='function';\")();\n    return result === true;\n  } catch (e) {\n    return false;\n  }\n}\n\nfunction finalize(candidateCode, designExplanation) {\n  const candidate = candidateCode && isValidDrawGraphic(candidateCode) ? candidateCode : null;\n  const fallback = meta.originalJsCode && isValidDrawGraphic(meta.originalJsCode) ? meta.originalJsCode : null;\n  const finalCode = candidate || fallback;\n  if (!finalCode) {\n    throw new Error('Generated infographic code failed validation and has no usable fallback. Please retry generation.');\n  }\n  return [{ json: { jsCode: finalCode, designExplanation: designExplanation || '', brandId: meta.brandId, brandName: meta.brandName, layoutRefUsed: meta.layoutRefUsed } }];\n}\n\n// If validator was skipped (null request body means renderer parsing already failed gracefully)\nif (!meta.validationRequestBody) {\n  return finalize(meta.originalJsCode, meta.designExplanation);\n}\n\nconst raw = validatorResponse.choices?.[0]?.message?.content;\n\n// Validator failed — fall back to original renderer output\nif (!raw) {\n  return finalize(meta.originalJsCode, meta.designExplanation);\n}\n\nlet cleaned = raw.trim();\nif (cleaned.startsWith('```')) {\n  cleaned = cleaned.replace(/^```[\\w]*\\n?/, '').replace(/\\n?```$/, '').trim();\n}\n\nlet parsed;\ntry { parsed = JSON.parse(cleaned); }\ncatch(e) {\n  try { parsed = JSON.parse(fixJsonEscapes(cleaned)); }\n  catch(e2) {\n    const extracted = extractFromTruncated(cleaned);\n    if (extracted) return finalize(extracted, meta.designExplanation);\n    // Validator output unparseable — use original\n    return finalize(meta.originalJsCode, meta.designExplanation);\n  }\n}\n\nreturn finalize(parsed.jsCode || meta.originalJsCode, parsed.designExplanation || meta.designExplanation);"
+      },
+      "id": "cd3a2a27-600e-44de-b344-970267220019",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2368,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/infographic_jobs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ id: $('Webhook').first().json.body.jobId, js_code: $('Parse Response').first().json.jsCode, design_explanation: $('Parse Response').first().json.designExplanation || '', brand_id: $('Parse Response').first().json.brandId, brand_name: $('Parse Response').first().json.brandName, layout_ref_used: $('Parse Response').first().json.layoutRefUsed || '' }) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "250b956f-0dec-402d-9ccc-06cadfe65c3b",
+      "name": "Save to Supabase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2608,
+        -272
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Data": {
+      "main": [
+        [
+          {
+            "node": "Fetch Infographic Layouts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Infographic Layouts": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call Gemini 2.5 Pro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Gemini 2.5 Pro": {
+      "main": [
+        [
+          {
+            "node": "Build Validation Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Validation Prompt": {
+      "main": [
+        [
+          {
+            "node": "Call Validator AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Validator AI": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Response": {
+      "main": [
+        [
+          {
+            "node": "Save to Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "5206958d95dcfbbfa2bda3f5a44d647225806ac8ef5ac3465432a8a02bcc0646"
+  }
+}

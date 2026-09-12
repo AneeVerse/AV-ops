@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_hcengineering_prod=self.webpackChunk_hcengineering_prod||[]).push([[97523],{97523:function(e){e.exports=JSON.parse('{"string":{"Starred":"즐겨찾기됨","Star":"즐겨찾기","Unstar":"즐겨찾기 해제"}}')}}]);

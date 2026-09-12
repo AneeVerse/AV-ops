@@ -1,0 +1,319 @@
+{
+  "name": "Generate Social Post V2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "v2-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "v2-generate-webhook-id"
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/brand_profiles?brand_id=eq.{{ $('Webhook').first().json.body.brandId }}&select=*&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "v2-fetch-brand-profile",
+      "name": "Fetch Brand Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=__SUPABASE_URL__/rest/v1/reference_layouts?category_id=eq.{{ $('Webhook').first().json.body.referenceCategoryId }}&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "v2-fetch-layouts",
+      "name": "Fetch Reference Layouts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const brandProfile = $('Fetch Brand Profile').first().json;\nconst layouts = $('Fetch Reference Layouts').all();\nconst webhookBody = $('Webhook').first().json.body;\n\nif (!layouts.length) throw new Error('No reference layouts found for category: ' + webhookBody.referenceCategoryId);\n\n// Pick a random layout prompt\nconst randomLayout = layouts[Math.floor(Math.random() * layouts.length)];\nconst layoutPrompt = randomLayout.json.prompt;\nconst layoutId = randomLayout.json.id;\n\nconst headline = webhookBody.headline;\nconst cta = webhookBody.cta;\nconst brandId = webhookBody.brandId;\nconst referenceCategoryId = webhookBody.referenceCategoryId;\nconst logoUrl = brandProfile.logo_url || null;\nconst brandStyle = brandProfile.style_prompt || '';\n\nconst prompt = `LAYOUT REFERENCE (composition and positioning only — do NOT use colors, fonts, or visual elements from this):\\n${layoutPrompt}\\n\\nBRAND STYLE (use these colors, fonts, and visual elements):\\n${brandStyle}\\n\\nGenerate a professional social media post image following the layout above using the brand style described.\\nDo NOT include any logo or brand mark anywhere in the image — a logo will be overlaid separately in post-processing.\\nLeave the top-left area (approximately 260px wide x 130px tall) as a clean background for the logo overlay.\\n\\nHeadline: ${headline}\\nCTA: ${cta}`;\n\nreturn [{\n  json: {\n    brandId,\n    referenceCategoryId,\n    headline,\n    cta,\n    logoUrl,\n    layoutId,\n    storagePath: `${brandId}/${Date.now()}_post.png`,\n    requestBody: JSON.stringify({\n      model: 'gpt-image-1.5',\n      prompt,\n      size: '1024x1024',\n      quality: 'high',\n      n: 1\n    })\n  }\n}];"
+      },
+      "id": "v2-build-prompt",
+      "name": "Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __OPENAI_API_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "v2-generate-image",
+      "name": "Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const turn2 = $('Generate Image').first().json;\nconst meta = $('Build Prompt').first().json;\n\nconst imageData = turn2.data && turn2.data[0];\nif (!imageData || !imageData.b64_json) throw new Error('No image data in response: ' + JSON.stringify(turn2));\n\nconst base64 = imageData.b64_json;\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  Buffer.from(base64, 'base64'),\n  'post.png',\n  'image/png'\n);\n\nreturn [{\n  json: {\n    brandId: meta.brandId,\n    referenceCategoryId: meta.referenceCategoryId,\n    headline: meta.headline,\n    cta: meta.cta,\n    storagePath: meta.storagePath,\n    imageUrl: null /* set after ImageKit upload */,\n    logoUrl: meta.logoUrl,\n    layoutId: meta.layoutId\n  },\n  binary: { data: binaryData }\n}];"
+      },
+      "id": "v2-extract-image",
+      "name": "Extract and Prepare Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SUPABASE_URL__/rest/v1/generated_posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "__SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer __SUPABASE_SERVICE_ROLE_KEY__"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ brand_id: $('Resolve ImageKit URL').first().json.brandId, reference_layout_id: $('Resolve ImageKit URL').first().json.layoutId, reference_category_id: $('Resolve ImageKit URL').first().json.referenceCategoryId, headline: $('Resolve ImageKit URL').first().json.headline, cta: $('Resolve ImageKit URL').first().json.cta, output_url: $('Resolve ImageKit URL').first().json.imageUrl }) }}",
+        "options": {}
+      },
+      "id": "v2-save-post",
+      "name": "Save Generated Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { imageUrl: $('Resolve ImageKit URL').first().json.imageUrl } }}",
+        "options": {}
+      },
+      "id": "v2-respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst meta = item.json;\nconst mime = (item.binary && item.binary.data && item.binary.data.mimeType) || 'image/png';\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst fileName = (meta.storagePath || meta.fileName || ('upload-' + Date.now() + '.png')).toString().split('/').pop();\nconst dataUrl = 'data:' + mime + ';base64,' + buffer.toString('base64');\n\nconst boundary = '----n8nIkBoundary' + Date.now().toString(36);\nconst parts = [];\nfunction addField(name, value) {\n  parts.push(\n    '--' + boundary + '\\r\\n' +\n    'Content-Disposition: form-data; name=\"' + name + '\"\\r\\n\\r\\n' +\n    value + '\\r\\n'\n  );\n}\naddField('file', dataUrl);\naddField('fileName', fileName);\naddField('folder', '/generated-posts');\naddField('useUniqueFileName', 'true');\nparts.push('--' + boundary + '--\\r\\n');\nconst body = parts.join('');\n\nlet uploaded;\ntry {\n  uploaded = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://upload.imagekit.io/api/v1/files/upload',\n    headers: {\n      Authorization: 'Basic __IMAGEKIT_BASIC_AUTH__',\n      'Content-Type': 'multipart/form-data; boundary=' + boundary,\n    },\n    body,\n    timeout: 120000,\n  });\n} catch (err) {\n  throw new Error('ImageKit httpRequest failed: ' + (err.message || String(err)));\n}\n\nif (typeof uploaded === 'string') {\n  try { uploaded = JSON.parse(uploaded); } catch (_) {}\n}\nif (!uploaded || !uploaded.url) {\n  throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n}\n\nreturn [{ json: Object.assign({}, meta, uploaded) }];"
+      },
+      "id": "upload-imagekit-xzassibo",
+      "name": "Upload to ImageKit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const uploaded = $('Upload to ImageKit').first().json;\nconst meta = $('Extract and Prepare Image').first().json;\nconst endpoint = '__IMAGEKIT_URL_ENDPOINT__'.replace(/\\/$/, '');\nlet imageUrl = uploaded.url;\nif (!imageUrl) throw new Error('ImageKit upload failed: ' + JSON.stringify(uploaded));\n\n// Optional logo overlay when brand logo is already on ImageKit\nconst logoUrl = meta.logoUrl;\nif (logoUrl && typeof logoUrl === 'string' && logoUrl.startsWith(endpoint)) {\n  let logoPath = logoUrl.slice(endpoint.length).replace(/^\\/tr:[^/]+/, '').split('?')[0];\n  if (logoPath.startsWith('/')) logoPath = logoPath.slice(1);\n  const overlayPath = logoPath.replace(/\\//g, '@@');\n  const basePath = String(uploaded.filePath || '').replace(/^\\//, '');\n  if (overlayPath && basePath) {\n    imageUrl = endpoint + '/tr:l-image,i-' + overlayPath + ',w-220,lx-40,ly-40,l-end/' + basePath;\n  }\n}\n\nreturn [{\n  json: {\n    ...meta,\n    imageUrl,\n    imageKitFileId: uploaded.fileId || null,\n    imageKitFilePath: uploaded.filePath || null,\n  }\n}];"
+      },
+      "id": "resolve-imagekit-f988pxq4",
+      "name": "Resolve ImageKit URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Fetch Reference Layouts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Reference Layouts": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Generate Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Extract and Prepare Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract and Prepare Image": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImageKit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Generated Post": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImageKit": {
+      "main": [
+        [
+          {
+            "node": "Resolve ImageKit URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve ImageKit URL": {
+      "main": [
+        [
+          {
+            "node": "Save Generated Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
