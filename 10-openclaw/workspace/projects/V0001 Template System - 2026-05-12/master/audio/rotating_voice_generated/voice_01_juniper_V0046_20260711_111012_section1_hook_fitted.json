@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T11:10:15.408078+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "23ms1q78a9rmy0cza3f82cz3rg",
+  "raw_audio_url": "https://replicate.delivery/xezq/84nqgQU3RC6XHp6pZBG5NCdQ7IQIgZjxPEoot52JJ0plWfbLA/tmppoz4ukqf.mp3",
+  "raw_duration": 2.089796,
+  "fitted_duration": 2.089796,
+  "script_text": "What are the risks of switching jobs now?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_111012_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_111012_section1_hook_fitted.mp3"
+}

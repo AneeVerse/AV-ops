@@ -1,0 +1,33 @@
+{
+  "summaries": [
+    {
+      "chunk_index": 1,
+      "main_points": [
+        "Proposed automation system for converting PDFs to PowerPoint presentations.",
+        "Supports large documents and ensures brand control over presentations.",
+        "User-friendly interface for uploading PDFs and customizing presentations."
+      ],
+      "important_facts": [
+        "System extracts text from every page of the PDF.",
+        "Output remains editable in PowerPoint, avoiding Google Slides due to font issues.",
+        "Default target slide count is ten, adjustable based on content."
+      ],
+      "data_points": [
+        "Uses Next.js for the user interface.",
+        "PDFs are saved to Google Drive and processed using n8n.",
+        "Template library JSON governs slide selection and content fitting."
+      ],
+      "potential_slide_messages": [
+        "Automate your PDF to PPT conversion with ease.",
+        "Maintain brand integrity with controlled templates.",
+        "Efficiently summarize and outline your content."
+      ],
+      "risks_or_missing_context": [
+        "Dependence on Google Drive for storage may pose accessibility issues.",
+        "Potential challenges in accurately summarizing complex PDFs.",
+        "Need for clear guidelines on template usage and image generation."
+      ],
+      "_provider": "openrouter"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "client": "Truckstop",
+  "version": "0.1.0",
+  "slide_size": {
+    "aspect_ratio": "16:9",
+    "width_inches": 13.333,
+    "height_inches": 7.5
+  },
+  "assets": {
+    "logo": "resources/client_template/Truckstop New logo.svg",
+    "display_font": "resources/client_template/Industry Bold.otf",
+    "reference_pptx": "resources/client_template/Truckstop 141_Strategic Team Pitch Deck_v1.1.pptx",
+    "design_doc": "resources/client_template/truckstop-design.md",
+    "title_reference_image": "resources/client_template/truckstop_intro_reference.png",
+    "title_reference_pptx": "resources/client_template/truckstop_intro_reference_editable.pptx",
+    "slide_2_reference_pptx": "resources/client_template/truckstop_slide_2_reference_editable.pptx"
+  },
+  "colors": {
+    "primary_red": "#D70119",
+    "primary_red_alt": "#D90119",
+    "deep_onyx": "#1A1A1B",
+    "deck_dark": "#373A36",
+    "neutral_grey": "#5B5D5A",
+    "background_grey": "#F4F4F4",
+    "light_grey": "#F2F3F3",
+    "border_grey": "#DADDDD",
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "typography": {
+    "display": {
+      "font": "Industry Bold",
+      "size_pt": 48,
+      "bold": true,
+      "letter_spacing": "-2%"
+    },
+    "heading": {
+      "font": "Inter",
+      "size_pt": 32,
+      "bold": true,
+      "letter_spacing": "-1%"
+    },
+    "body": {
+      "font": "Inter",
+      "size_pt": 16,
+      "weight": "medium",
+      "line_height": "150%"
+    },
+    "data": {
+      "font": "Inter",
+      "size_pt": 14,
+      "weight": "regular",
+      "line_height": "120%"
+    },
+    "fallback": "Arial"
+  },
+  "style_rules": {
+    "aesthetic": "modern-industrial",
+    "tone": "authoritative, reliable, hardworking",
+    "use_gradients": false,
+    "use_high_contrast": true,
+    "use_modular_cards": true,
+    "red_usage": "Use sparingly for brand accents, section labels, key stats, and CTA/action emphasis. Do not use as generic body text color.",
+    "imagery": "Authentic logistics/freight photography or product screenshots. Avoid generic truck illustrations."
+  },
+  "layout_types_to_build": [
+    "title",
+    "section",
+    "content",
+    "two_column",
+    "data",
+    "quote",
+    "cta",
+    "screenshot_placeholder",
+    "metric_cards",
+    "process"
+  ],
+  "logo_rules_initial": {
+    "default_position": "top_left_or_bottom_left",
+    "usage": "Use subtle logo placement on content slides; stronger logo use on title/closing slides.",
+    "status": "needs_exact_position_mapping_from_reference_ppt"
+  }
+}

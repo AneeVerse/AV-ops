@@ -1,0 +1,40 @@
+{
+  "section_id": "section4_cta",
+  "duration_seconds": 4.800000000000001,
+  "fps": 30,
+  "size": "1080x1920",
+  "background_video": "assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4",
+  "font_family": "Graphik Web, Graphik, Arial, sans-serif",
+  "cta_box": {
+    "x": 86,
+    "y": 1376,
+    "width": 908,
+    "height": 252,
+    "radius": 30,
+    "fill": "#bd16f4",
+    "opacity": 0.96
+  },
+  "main_text": [
+    "Use the GlobalProsEdge",
+    "hidden-job-market playbook to",
+    "target employers before every",
+    "opening is public."
+  ],
+  "main_font_size": 38,
+  "main_font_weight": 700,
+  "main_line_gap": 46,
+  "main_y": 1502,
+  "small_text": [
+    "Free. No card. Your hidden matches in 15"
+  ],
+  "small_font_size": 29,
+  "small_font_weight": 500,
+  "small_line_gap": 36,
+  "small_y": 1788,
+  "animation": {
+    "fade_in_seconds": 0.35,
+    "slide_px": 26,
+    "start_seconds": 0.5
+  },
+  "output_name": "section4_n8n_V0035_20260708_160623.mp4"
+}

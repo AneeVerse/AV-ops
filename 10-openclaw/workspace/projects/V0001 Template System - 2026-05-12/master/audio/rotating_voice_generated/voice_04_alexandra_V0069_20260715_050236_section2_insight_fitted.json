@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-15T05:02:42.307856+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "re7y81emmdrmr0czcgkt6f59vw",
+  "raw_audio_url": "https://replicate.delivery/xezq/RfmySGzKwXS4UCsbHVceEWiwa5csY9IB1CbTW3mNDv3wZM5WA/tmpgseih9nr.mp3",
+  "raw_duration": 6.530612,
+  "fitted_duration": 6.530612,
+  "script_text": "Silence can come from high applicant volume, AI screening, weak timing, or low employer intent.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0069_20260715_050236_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0069_20260715_050236_section2_insight_fitted.mp3"
+}

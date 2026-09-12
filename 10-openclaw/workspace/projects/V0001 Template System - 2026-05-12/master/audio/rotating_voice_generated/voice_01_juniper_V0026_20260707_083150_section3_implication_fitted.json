@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-07T08:31:59.560774+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "cwc4wxcj65rmw0cz7etb50109r",
+  "raw_audio_url": "https://replicate.delivery/xezq/e2VyxOiavoWWciPdT2rD0fj6fF2TLgTWiGTsrAIgCev73aabB/tmpp2e83uxi.mp3",
+  "raw_duration": 2.873469,
+  "fitted_duration": 2.873469,
+  "script_text": "The wrong move can cost time, confidence, and momentum.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0026_20260707_083150_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0026_20260707_083150_section3_implication_fitted.mp3"
+}

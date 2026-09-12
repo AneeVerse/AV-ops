@@ -1,0 +1,23 @@
+CRM import preview mapping
+
+ERPNext export rows: 1416
+CRM-ready rows: 1416
+
+Mapped fields:
+lead_name -> lead_name
+first_name -> first_name (required)
+last_name -> last_name
+company_name -> organization
+email_id -> email
+mobile_no -> mobile_no
+phone -> phone
+website -> website
+job_title -> job_title
+utm_source/source -> source (default Cold Calling)
+industry -> industry
+status Lead/Open -> New
+
+Excluded to avoid disturbing CRM layout:
+territory (CRM has no Territory records yet)
+call/whatsapp custom status fields
+ERPNext internal IDs, comments, assignments, timestamps

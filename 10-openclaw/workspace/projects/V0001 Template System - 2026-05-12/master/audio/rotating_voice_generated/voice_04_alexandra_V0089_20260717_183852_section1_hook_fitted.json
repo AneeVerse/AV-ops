@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T18:38:55.485547+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "8csnn2emexrmy0cze5frd0r5qm",
+  "raw_audio_url": "https://replicate.delivery/xezq/GWJ4GkMFZToCDFVhZWjyZeaLJneuKb6iB0CxCCGhLrCeFF0tA/tmpps2v_x7b.mp3",
+  "raw_duration": 2.638367,
+  "fitted_duration": 2.638367,
+  "script_text": "What if I\u2019m qualified but applying the wrong way?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260717_183852_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260717_183852_section1_hook_fitted.mp3"
+}

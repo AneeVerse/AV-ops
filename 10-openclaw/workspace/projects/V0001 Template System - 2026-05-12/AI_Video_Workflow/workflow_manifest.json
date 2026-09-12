@@ -1,0 +1,21 @@
+{
+  "name": "AI_Video_Workflow",
+  "purpose": "Consolidated reference folder for the Google Sheet to AI video generation workflow",
+  "required_sheet_columns": [
+    "Hook_Text",
+    "Insight_Text",
+    "Implication_Text",
+    "CTA_Text",
+    "CTA Sub Text"
+  ],
+  "section_mapping": {
+    "section1": "Hook_Text",
+    "section2": "Insight_Text",
+    "section3": "Implication_Text",
+    "section4_main": "CTA_Text",
+    "section4_sub": "CTA Sub Text"
+  },
+  "contextual_wan_sections": ["section1", "section3"],
+  "voice_rotation_count": 10,
+  "music_rotation_count": 7
+}

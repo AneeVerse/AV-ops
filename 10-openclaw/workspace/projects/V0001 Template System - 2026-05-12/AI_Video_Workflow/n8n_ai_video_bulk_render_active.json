@@ -1,0 +1,115 @@
+{
+  "name": "AI Video Bulk Render - Template to Drive",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-video-bulk-render",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f004a343-c1d8-4865-a8ec-03d9833228b5",
+      "name": "Webhook - AI Video Bulk Render",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        0
+      ],
+      "webhookId": "f7945418-0a5a-4dcd-8b6f-c20ef867e073"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json || {};\nlet rows = body.rows;\nif (!rows && body.Hook_Text) rows = [body];\nif (!rows && body.hook_text) rows = [body];\nif (!rows) {\n  rows = [{\n    label: 'n8n_test_video',\n    Hook_Text: 'Most Software Developers qualify for more job titles than they apply to.',\n    Insight_Text: \"95% of U.S. publicly posted jobs stay invisible to candidates who don't know to search them\",\n    Implication_Text: \"Your strongest matches may be roles you've never searched.\",\n    CTA_Text: 'Start with your TraitDNA\u2122 Work-Style Report free, 15 minutes.',\n    'CTA Sub Text': 'Free. 15 minutes. No credit card. Get your personal Work-Style Report.'\n  }];\n}\nif (!Array.isArray(rows)) rows = [rows];\nreturn [{ json: {\n  rows,\n  limit: Math.max(1, Math.min(Number(body.limit || rows.length || 1), 20)),\n  continue_on_error: body.continue_on_error !== false,\n  drive_folder_id: body.drive_folder_id || '1EyEPyPk6orAkP1abcqivX_GwsaQKnYmP'\n}}];"
+      },
+      "id": "8a833aba-699b-4569-9557-ae1cbbc36fb5",
+      "name": "Build Bulk Render Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8013/ai-video-render-bulk",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "contentType": "json",
+        "options": {
+          "timeout": 900000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "81dc18b5-40be-43b2-823b-04932bbb025b",
+      "name": "Call Local AI Video Renderer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "5a4fb021-66fc-4362-8db6-e618e0ba565f",
+      "name": "Respond With Drive Links",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        40,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook - AI Video Bulk Render": {
+      "main": [
+        [
+          {
+            "node": "Build Bulk Render Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Bulk Render Payload": {
+      "main": [
+        [
+          {
+            "node": "Call Local AI Video Renderer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Local AI Video Renderer": {
+      "main": [
+        [
+          {
+            "node": "Respond With Drive Links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  }
+}

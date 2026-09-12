@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T09:41:04.886968+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "29gd1zgvm9rmr0cz66ks2je9yc",
+  "raw_audio_url": "https://replicate.delivery/xezq/dLkZxjSMfa1SJa6CGoh7LUEqx6z6XPwF0IvkRDtucLzXxe1WA/tmpfds190v6.mp3",
+  "raw_duration": 2.821224,
+  "fitted_duration": 2.821224,
+  "script_text": "Free Trait D-N-A report - tap the profile link.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0019_20260705_094053_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0019_20260705_094053_section4_cta_fitted.mp3"
+}

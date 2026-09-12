@@ -1,0 +1,65 @@
+{
+  "file": {
+    "createdTime": "2026-05-20T03:43:11.308Z",
+    "id": "1_dUBVHayS0OEnPHz3K5AkCUWXjh61hyr",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2026-05-20T03:43:11.308Z",
+    "name": "01 Original PPT",
+    "parents": [
+      "1y7WMO8Fbb4exfIMJrsr8U3M-CVnXCU13"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1_dUBVHayS0OEnPHz3K5AkCUWXjh61hyr"
+  }
+}
+{
+  "file": {
+    "createdTime": "2026-05-20T03:43:12.525Z",
+    "id": "1o6j-UiA8hhC-c0R1FOR7gSj7OOz-RZ7b",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2026-05-20T03:43:12.525Z",
+    "name": "02 Single Slide PPTs",
+    "parents": [
+      "1y7WMO8Fbb4exfIMJrsr8U3M-CVnXCU13"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1o6j-UiA8hhC-c0R1FOR7gSj7OOz-RZ7b"
+  }
+}
+{
+  "file": {
+    "createdTime": "2026-05-20T03:43:13.695Z",
+    "id": "1DA3aJCK5sViXr0XlG-MhvVjXVf3CEBgm",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2026-05-20T03:43:13.695Z",
+    "name": "03 Slide Images",
+    "parents": [
+      "1y7WMO8Fbb4exfIMJrsr8U3M-CVnXCU13"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1DA3aJCK5sViXr0XlG-MhvVjXVf3CEBgm"
+  }
+}
+{
+  "file": {
+    "createdTime": "2026-05-20T03:43:14.728Z",
+    "id": "1UO2GUs4a71Q1TfcmIKDl-79-9vla6cUU",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2026-05-20T03:43:14.728Z",
+    "name": "04 Template Index",
+    "parents": [
+      "1y7WMO8Fbb4exfIMJrsr8U3M-CVnXCU13"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1UO2GUs4a71Q1TfcmIKDl-79-9vla6cUU"
+  }
+}
+{
+  "file": {
+    "createdTime": "2026-05-20T08:17:59.693Z",
+    "id": "1UFR28Fe-oxfTTQUNozrugVTZLveAuLxl",
+    "mimeType": "application/vnd.google-apps.folder",
+    "modifiedTime": "2026-05-20T08:17:59.693Z",
+    "name": "old",
+    "parents": [
+      "1y7WMO8Fbb4exfIMJrsr8U3M-CVnXCU13"
+    ],
+    "webViewLink": "https://drive.google.com/drive/folders/1UFR28Fe-oxfTTQUNozrugVTZLveAuLxl"
+  }
+}

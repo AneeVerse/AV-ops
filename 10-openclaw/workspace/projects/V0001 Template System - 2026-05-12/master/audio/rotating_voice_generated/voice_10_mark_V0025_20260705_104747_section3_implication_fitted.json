@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:47:58.475316+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "pt1kratpfsrmr0cz67j8tqk0g0",
+  "raw_audio_url": "https://replicate.delivery/xezq/2jqgxsHJokbdAx9JR1IFma9tigAXMMZUV9GGWu4iWWAXofaLA/tmppgyfk77q.mp3",
+  "raw_duration": 2.821224,
+  "fitted_duration": 2.821224,
+  "script_text": "Your strongest matches may be roles you've never searched.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0025_20260705_104747_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0025_20260705_104747_section3_implication_fitted.mp3"
+}

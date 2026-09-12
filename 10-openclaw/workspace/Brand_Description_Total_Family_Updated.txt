@@ -1,0 +1,387 @@
+Brand Description
+
+BRAND SUMMARY
+
+Total Family is a legacy and family-alignment platform for families, advisors, wealth consultants, and enterprise firms. It helps families define a shared Vision, preserve stories, document values, clarify roles, track milestones, and strengthen connection across generations.
+
+The brand is not primarily about wealth management, estate planning, or documents. The emotional core is legacy made practical: helping families turn memories, values, conversations, and long-term purpose into a guided, structured, and living system.
+
+Total Family should feel thoughtful, human, timeless, warm, quietly premium, advisor-trusted, and emotionally intelligent. The brand lives between a family archive, a private home library, and a modern guided software platform.
+
+Mission: Help families preserve what matters, align around shared values, and build a living legacy across generations.
+
+Vision: Become the trusted platform for families and advisors who want legacy work to become structured, meaningful, repeatable, and deeply personal.
+
+Tone: Warm, calm, reflective, premium, human, trustworthy, and clear. Avoid hype, aggressive sales language, cold SaaS language, and overly financial messaging.
+
+Campaign / Messaging Anchor: “Doing Legacy Better.”
+
+VISUAL STYLE
+
+Total Family’s visual style combines warm family storytelling with quiet product proof.
+
+Use full-bleed lifestyle photography, large editorial serif headlines, warm dark overlays, subtle film grain, soft vignettes, and floating product UI screenshots. The product should appear as an enabler inside the family moment, not as a detached tech object.
+
+The design should feel like a living family archive supported by elegant software. It should be emotional but restrained, premium but not flashy, structured but not cold.
+
+Use:
+- warm family photography
+- multi-generational home scenes
+- editorial serif headlines
+- italic emphasis for emotional words
+- white or ivory text over darkened images
+- subtle vertical divider lines
+- frosted/translucent text panels when needed
+- floating product UI overlays
+- warm paper, wood, lamp-light, and archival textures
+- calm, spacious layouts
+
+Avoid:
+- neon gradients
+- cyber or futuristic visuals
+- playful startup SaaS graphics
+- cartoon families
+- generic finance imagery
+- legal-document-heavy visuals
+- luxury real estate imagery
+- shiny office boardrooms
+- overly perfect stock family portraits
+- abstract AI networks
+- loud CTA buttons
+- cluttered feature-heavy layouts
+
+COLOR PALETTE
+
+Primary Colors
+
+Deep Ink Charcoal: #20292A
+Usage: Dark overlays, serious section backgrounds, UI sidebars, premium contrast areas.
+
+Near-Black Navy: #1F2028
+Usage: Logo tone, headlines on light backgrounds, dark UI elements, high-contrast typography.
+
+Warm Ivory: #F7F5EF
+Usage: Main light backgrounds, text over dark images, cards, editorial surfaces.
+
+Heritage Beige: #D8D4C4
+Usage: Parchment-like panels, archival backgrounds, image mats, warm secondary blocks.
+
+Warm Brown / Walnut: #5A3B2E
+Usage: Photo toning, warm interior depth, legacy/home atmosphere.
+
+Secondary Colors
+
+Warm Grey: #D5D8D6
+Usage: Dividers, UI borders, inactive states, soft structure.
+
+Muted Sage Grey: #879A9A
+Usage: Timeline dots, subtle status indicators, soft UI accents.
+
+Oxide Red: #B64D2F
+Usage: Small badges, quote marks, emotional highlights, CTA accents.
+
+Deep Rust: #7F2E1F
+Usage: Icon badges, wax-seal style elements, premium accent blocks.
+
+Wax Gold / Bronze: #B87935
+Usage: Legacy details, seal motifs, warm luxury accents, small highlights.
+
+Soft White: #FFFFFF
+Usage: Product cards, UI panels, white logo, headline text over dark imagery.
+
+Color Usage Rules
+
+Use warm photography, deep shadows, ivory text, and charcoal UI as the foundation.
+Use rust and bronze sparingly as heritage accents.
+Use beige, brown, and warm grey to create an archival, lived-in feeling.
+Avoid bright blue, neon purple, electric gradients, and cold tech palettes.
+
+CTA
+
+Total Family creatives should not feel like hard-selling ads. CTAs should feel like calm invitations or reflective closing lines.
+
+Preferred CTA style:
+- text-based closing lines
+- short product-proof statements
+- rounded pill buttons only when a button is required
+- dark charcoal, deep rust, or oxide red fill
+- ivory or white text
+
+Good CTA examples:
+- Doing Legacy Better starts now.
+- Start Your Family Vision
+- Preserve What Matters
+- Begin Legacy Work
+- See How It Works
+- Build a Living Legacy
+- Unlock Advisor Demo
+- Learn About Our Platform
+
+Avoid:
+- aggressive button CTAs
+- neon buttons
+- glow effects
+- urgent sales language
+- performance-marketing style banners
+
+TYPOGRAPHY
+
+Headlines should use an elegant high-contrast serif that feels literary, emotional, premium, and established.
+
+Recommended headline font styles:
+- Editorial New
+- Canela
+- Cormorant Garamond
+- Playfair Display
+- Libre Baskerville
+
+Headline rules:
+- use large editorial serif type
+- use white or ivory text over darkened photography
+- use generous line height
+- use sentence case or title case
+- avoid all-caps for main headlines
+- use italic serif emphasis for emotional words such as legacy, families, values, together, unspoken, preserving, and what matters
+- allow poetic line breaks
+- keep copy short and declarative
+
+Body and UI text should use a clean neutral sans-serif.
+
+Recommended body/UI font styles:
+- Inter
+- Satoshi
+- Neue Haas Grotesk
+- Manrope
+
+Typography pairing:
+Serif = memory, legacy, emotion, storytelling.
+Sans-serif = clarity, software, advisor trust, guided process.
+
+BACKGROUND STYLE
+
+Backgrounds should feel warm, intimate, domestic, and archival.
+
+Use:
+- full-bleed warm lifestyle photography
+- dark gradient overlays for readability
+- subtle film grain
+- soft vignettes
+- warm interior lighting
+- ivory paper-like surfaces
+- parchment beige panels
+- wood and home textures
+- soft shadowed UI cards
+- translucent/frosted panels for lower-third copy
+
+Avoid:
+- bright abstract gradients
+- overused SaaS blobs
+- neon glow
+- harsh geometric patterns
+- flat corporate blue backgrounds
+- busy decorative textures
+- futuristic digital grids
+
+IMAGERY STYLE
+
+Imagery should be emotional, restrained, warm, and real-feeling.
+
+Use:
+- candid family moments at home
+- parents, grandparents, children, and advisors in conversation
+- families gathered around tables, laptops, books, albums, or living-room spaces
+- warm kitchens, living rooms, desks, family rooms, and heirloom interiors
+- lamps, wood furniture, framed photos, pianos, books, letters, and archival objects
+- warm natural light or lamp light
+- shallow depth of field
+- slight film grain
+- slightly imperfect framing
+- muted greens, browns, creams, amber, and faded blues
+
+Image treatment:
+- add warm contrast
+- slightly desaturate colors
+- use dark overlays behind text
+- keep faces natural, not overly retouched
+- crop like real family memories, not polished ad campaigns
+
+Do not use:
+- generic wealth-management stock photos
+- luxury mansions
+- corporate boardroom scenes
+- perfect smiling stock-family portraits
+- glossy startup photography
+- cartoon family illustration
+- futuristic AI visuals
+
+LAYOUT STYLE
+
+The current creative direction uses square social-post style layouts.
+
+Layout rules:
+- full-bleed image as the main visual
+- logo small in top-left or top-right depending on negative space
+- large headline placed in upper third, center-left, or lower-left
+- use dark overlay or gradient for readability
+- use a thin vertical white divider line when it improves editorial framing
+- product UI floats in the lower third, bottom corner, or side area
+- UI should overlap the photo naturally
+- lower-third frosted panels can hold product proof or secondary copy
+- keep spacing generous and uncluttered
+
+Do not overcrowd the design with many feature bullets, icons, or UI callouts.
+
+UI MOCKUP STYLE
+
+Create polished product visuals for a calm guided family operating system. The UI should feel premium, organized, emotionally sensitive, and useful.
+
+The UI should be treated as a proof object, not the emotional hero. It should usually sit over photography as a floating screenshot or semi-transparent desktop window.
+
+Use:
+- dark left sidebar
+- light main panel
+- rounded cards
+- soft shadow
+- Family Vision interface
+- family-member cards
+- values cards
+- milestone timelines
+- shared vision modules
+- family photo/video preview tiles
+- advisor notes
+- progress indicators
+- profile avatars
+- relationship chips
+- muted orange/rust accents
+- clean spacing
+
+Use only short generic UI labels when needed:
+Vision, Family Vision, Values, Purpose, Milestones, Roles, Family Members, Legacy Letter, Timeline, Stories, Notes, Advisor View, Progress, Review, Draft, Shared, Private, Chat with Kin AI.
+
+Do not include:
+- real names
+- real family data
+- long readable paragraphs
+- third-party logos
+- watermarks
+- raw screenshots with poor composition
+- cluttered dashboards
+- finance-heavy charts unless copy directly requires it
+
+UI SCENE TYPES
+
+Choose the most relevant UI scene based on the copy.
+
+Family Vision Dashboard:
+A calm dashboard showing family Vision progress, values cards, family-member avatars, and advisor notes. Use dark sidebar, light cards, and subtle rust accents.
+
+Milestone Timeline:
+A vertical or horizontal timeline showing family milestones, legacy moments, role updates, letters, and completed steps. Pair with archival photo details.
+
+Legacy Letter / Story Card:
+A premium card showing a legacy letter, handwritten-style detail, date stamp, warm paper texture, and wax-seal accent. Keep text minimal and mostly unreadable.
+
+Family Archive Collage:
+A layered composition combining vintage family photos, paper textures, old letters, product UI, and small icon badges. Should feel like memory organized into a modern system.
+
+Advisor Dashboard:
+A structured advisor-facing dashboard with family profiles, Vision completion, upcoming conversation prompts, milestone progress, and review states. Serious, calm, and enterprise-ready.
+
+Guided Conversation Flow:
+A step-by-step interface for family discussion prompts, purpose questions, values selection, and advisor-led notes. Use soft cards, progress steps, and warm editorial styling.
+
+Mobile / Responsive View:
+One or two phone screens in front of a desktop dashboard. Show milestone timeline, values cards, family roles, or legacy notes. No hands unless specifically requested.
+
+ICON / ILLUSTRATION STYLE
+
+Icons should be minimal, warm, and functional. They should support the product or legacy theme without becoming playful.
+
+Use:
+- thin-line icons
+- rounded corners
+- simple silhouettes
+- rust, charcoal, warm grey, ivory, or bronze colors
+- small icon badges only when needed
+
+Good icon subjects:
+- heart / connection
+- letter / legacy note
+- timeline / milestones
+- family tree
+- wax seal
+- book / archive
+- camera / memory
+- compass / vision
+- people / generations
+- lock / privacy
+- advisor / guidance
+
+Illustration direction:
+Prefer refined collage over flat illustration. Combine product UI, family photography, paper texture, handwritten notes, subtle linework, and small functional icons.
+
+Avoid:
+- cartoon characters
+- 3D SaaS icons
+- neon outlines
+- cute family doodles
+- generic finance icons such as coins, vaults, or stock charts unless the copy specifically requires it
+- complex futuristic illustrations
+
+COPY DIRECTION
+
+The copy should feel reflective, direct, and emotionally intelligent.
+
+Use themes like:
+- legacy beyond documents
+- family alignment
+- shared values
+- unspoken conversations
+- preserving what matters
+- starting earlier, together
+- common language across generations
+- advisor-guided family conversations
+- building, not just planning
+
+Good copy style examples:
+- Doing Legacy Better starts now.
+- Legacy is not just what you leave. It is what you build.
+- Family alignment starts with shared language.
+- Values are easier to preserve when families name them together.
+- Documents do not create connection. Conversations do.
+- The most important things should not stay unspoken.
+
+Avoid:
+- hard financial language
+- fear-based estate planning messaging
+- legal-heavy copy
+- generic SaaS benefit claims
+- hype words like revolutionary, game-changing, disrupt, 10x
+
+CREATIVE DIRECTION
+
+Show transformation visually:
+
+scattered family stories → organized family archive
+unspoken values → shared language
+unclear purpose → family Vision
+one-off advisor conversations → guided repeatable process
+old memories → living legacy
+family history → modern legacy operating system
+manual legacy work → scalable advisor-led platform
+documents alone → conversations, values, and alignment
+
+Overall Creative Rule
+
+Total Family should look like a living family archive supported by elegant software.
+
+It is not a finance app.
+It is not a legal planning tool.
+It is not a generic SaaS dashboard.
+It is not a luxury lifestyle brand.
+
+It should feel warm, structured, timeless, quiet, premium, and deeply human.
+
+LAYOUT SAFETY RULE
+
+Always keep a safe margin of at least 80px from all edges. Text should never touch the edges. Keep compositions spacious, calm, and uncluttered.

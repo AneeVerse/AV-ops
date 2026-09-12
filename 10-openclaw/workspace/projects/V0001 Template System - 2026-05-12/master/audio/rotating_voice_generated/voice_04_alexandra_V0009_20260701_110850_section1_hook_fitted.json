@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T11:08:54.609770+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "adyk80rhpxrmr0cz3nf8ghy7k0",
+  "raw_audio_url": "https://replicate.delivery/xezq/xds7SELkYWrAPpDmctKc1syVkTXcafUua6sTq1KHSrfFdq0WA/tmpcuv4f_rd.mp3",
+  "raw_duration": 5.381224,
+  "fitted_duration": 5.381224,
+  "script_text": "AI isn't taking Software Developer jobs. It's rewriting the job while you apply.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260701_110850_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260701_110850_section1_hook_fitted.mp3"
+}

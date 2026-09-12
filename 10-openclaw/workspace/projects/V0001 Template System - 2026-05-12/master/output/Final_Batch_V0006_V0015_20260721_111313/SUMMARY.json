@@ -1,0 +1,76 @@
+{
+  "run_id": "20260721_111313",
+  "drive_folder_id": "1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND",
+  "videos": {
+    "V0099": {
+      "label": "V0099_20260721_111313",
+      "variant": "section2_5",
+      "voice": {
+        "number": 4,
+        "name": "Alexandra"
+      },
+      "section_audio_durations": [
+        3.160816,
+        6.452245,
+        3.213061,
+        2.821224
+      ],
+      "section_durations": [
+        4.2,
+        6.833333333333333,
+        3.6333333333333333,
+        3.833333333333335
+      ],
+      "gaps": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "starts_ms": [
+        0,
+        4700,
+        12033,
+        16167
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section3_implication_fitted_max3.2s.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section4_cta_fitted.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0099_20260721_111313.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260721_111313/V0099.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "7068035",
+          "bit_rate": "2827214"
+        }
+      },
+      "drive": {
+        "id": "1GHOGRZ9Pi_TOQMNqPoLrntsjAse_xvjY",
+        "link": "https://drive.google.com/file/d/1GHOGRZ9Pi_TOQMNqPoLrntsjAse_xvjY/view?usp=drivesdk",
+        "name": "V0099.mp4",
+        "size": "7068035"
+      }
+    }
+  },
+  "section2_routing": {
+    "V0099": "section2_5"
+  }
+}

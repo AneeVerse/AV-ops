@@ -1,0 +1,926 @@
+{
+  "project": "PDF to PPT Automation",
+  "version": "revised_18_slides_v1",
+  "description": "Automation-ready template metadata for selecting PPTX slide templates from extracted PDF content.",
+  "source_sheet": "PPT Template Index - Revised 18 Slides",
+  "template_count": 18,
+  "selection_logic": {
+    "pptx_is_visual_template": true,
+    "json_is_metadata_and_rules": true,
+    "default_target_slide_count": 10,
+    "rule": "Select templates by category, use_when, content type, text limits, and image requirements. Do not exceed max character limits.",
+    "image_generation": "Use Nano Banana for Slide 18 and any template with image areas when a project-specific visual is needed."
+  },
+  "categories": [
+    "Agenda / Overview",
+    "Content Slide",
+    "Cover",
+    "Data / Stats",
+    "Feature / Capability",
+    "Process / Timeline",
+    "Section Divider",
+    "Visual / Image Gallery"
+  ],
+  "templates": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "slide_no": 1,
+      "template_name": "Slide 01 - Hero Cover",
+      "category": "Cover",
+      "sub_category": "Hero Cover",
+      "layout_type": "Cover / Hero",
+      "purpose": "Open the deck with core value proposition.",
+      "best_use_case": "Open the deck with core value proposition.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "35-55",
+        "max_heading_characters": 70,
+        "ideal_body_characters": "80-130",
+        "max_body_characters": 170,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 0,
+        "ideal_characters_per_bullet_or_paragraph": "N/A",
+        "max_characters_per_bullet_or_paragraph": null
+      },
+      "usage_rules": {
+        "when_to_use": "Use for the opening slide, brand positioning, or main value proposition.",
+        "when_not_to_use": "Do not use for detailed data, process steps, or long explanations.",
+        "best_content_format": "Short headline + one concise support line.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Use existing brand/hero visual unless client-specific image is required.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1gIX0SXzhv-Rlgzpqy3yCp__Ag3Dk0VJz/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1yzHowl4MyHXNDp1LR7IB6Iv6VD7CT7Yf/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1aQeFUX9KPfwdFcA0ULkmyvexYFzmluFB/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Cover",
+        "final_template_file_name": "Slide 01 - Hero Cover.pptx"
+      },
+      "analysis": {
+        "current_heading": "Keep Freight Moving. With Less Friction.",
+        "current_heading_characters": 40,
+        "current_body_characters": 128,
+        "current_bullet_or_paragraph_count": 4,
+        "text_areas": "shape 2 (x=0.54, y=0.88, w=8.85, h=1.74); shape 3 (x=0.54, y=2.75, w=6.96, h=1.53); shape 4 (x=0.61, y=0.3, w=6.67, h=0.27)",
+        "text_capacity": "Low",
+        "review_notes": "Strong hero cover; suitable for opening/value proposition.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "slide_no": 2,
+      "template_name": "Slide 02 - Strategic Roadmap",
+      "category": "Process / Timeline",
+      "sub_category": "Strategic Roadmap",
+      "layout_type": "Timeline / Roadmap",
+      "purpose": "Show strategic direction, product evolution, or phased roadmap.",
+      "best_use_case": "Show strategic direction, product evolution, or phased roadmap.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "30-45",
+        "max_heading_characters": 55,
+        "ideal_body_characters": "250-420",
+        "max_body_characters": 520,
+        "ideal_bullet_or_paragraph_count": 5,
+        "max_bullet_or_paragraph_count": 7,
+        "ideal_characters_per_bullet_or_paragraph": "35-55",
+        "max_characters_per_bullet_or_paragraph": 75
+      },
+      "usage_rules": {
+        "when_to_use": "Use for roadmap, product direction, future plan, or phased strategy.",
+        "when_not_to_use": "Do not use for unrelated feature lists or single-point messages.",
+        "best_content_format": "5–6 stages; each stage gets short title + concise bullets.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Icons/visuals should match each stage; generate custom visuals only if needed.",
+        "image_or_icon_areas": "9 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1gwI8XoOiGchdqPvnZQ4IBwi_2vvwLbmH/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1rcEymlkWdwkylo8m_JFbKW_5FYTQ4jWQ/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1ev7z0JC29MiyIIZDHsMZZJVYfWOpd02f/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Process Timeline",
+        "final_template_file_name": "Slide 02 - Strategic Roadmap.pptx"
+      },
+      "analysis": {
+        "current_heading": "Where Truckstop Is Going",
+        "current_heading_characters": 24,
+        "current_body_characters": 1504,
+        "current_bullet_or_paragraph_count": 39,
+        "text_areas": "shape 4 (x=12.81, y=7.05, w=0.4, h=0.4); shape 5 (x=0.4, y=0.4, w=12.0, h=1.25); shape 6 (x=0.53, y=1.56, w=10.33, h=0.57); shape 7 (x=0.58, y=2.29, w=3.32, h=1.73); shape 9 (x=4.2, y=2.29, w=3.32, h=1.73); shape 11 (x=7.81, y=2.29, w=3.32, h=1.73)",
+        "text_capacity": "High",
+        "review_notes": "Strong roadmap/timeline slide; good for phased strategy or direction.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_03_metric_overview",
+      "slide_no": 3,
+      "template_name": "Slide 03 - Metric Overview",
+      "category": "Data / Stats",
+      "sub_category": "Metric Overview",
+      "layout_type": "Metric Cards",
+      "purpose": "Show company/platform scale with key numbers.",
+      "best_use_case": "Show company/platform scale with key numbers.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "25-40",
+        "max_heading_characters": 55,
+        "ideal_body_characters": "80-140",
+        "max_body_characters": 180,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 0,
+        "ideal_characters_per_bullet_or_paragraph": "N/A",
+        "max_characters_per_bullet_or_paragraph": null
+      },
+      "usage_rules": {
+        "when_to_use": "Use for big metrics, company scale, performance proof, or executive stats.",
+        "when_not_to_use": "Do not use for detailed explanations or paragraph-heavy content.",
+        "best_content_format": "3–5 key metrics with short labels.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "No new image needed unless replacing background/brand visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1s8Na43RDu6OE35n_GELBFUTziZKaQq6H/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1dgvsYcHe5aMQBk5juC2fDJbR3H5yfYpY/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1CgSQ5vspqouV0QgzgEKU-mTpyxE9wXG6/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Data Stats",
+        "final_template_file_name": "Slide 03 - Metric Overview.pptx"
+      },
+      "analysis": {
+        "current_heading": "Truckstop by the Numbers",
+        "current_heading_characters": 24,
+        "current_body_characters": 216,
+        "current_bullet_or_paragraph_count": 12,
+        "text_areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.62, y=1.49, w=10.33, h=0.34); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=0.71, y=2.76, w=2.34, h=0.84); shape 8 (x=0.71, y=3.56, w=2.94, h=0.37)",
+        "text_capacity": "Low",
+        "review_notes": "Strong metric overview; useful for scale and proof points.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_04_research_chart_insight",
+      "slide_no": 4,
+      "template_name": "Slide 04 - Research Chart Insight",
+      "category": "Data / Stats",
+      "sub_category": "Research Chart Insight",
+      "layout_type": "Chart + Insight",
+      "purpose": "Explain research-backed market behavior.",
+      "best_use_case": "Explain research-backed market behavior.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "120-220",
+        "max_body_characters": 280,
+        "ideal_bullet_or_paragraph_count": 1,
+        "max_bullet_or_paragraph_count": 3,
+        "ideal_characters_per_bullet_or_paragraph": "60-90",
+        "max_characters_per_bullet_or_paragraph": 110
+      },
+      "usage_rules": {
+        "when_to_use": "Use for survey results, chart insights, research findings, or market behavior.",
+        "when_not_to_use": "Do not use without a data point/source or when there is no chart/visual evidence.",
+        "best_content_format": "One chart/data point + short insight + source.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Chart should be accurate; supporting visuals can be generated if needed.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/13wAlXNZe8Mbn7eNUVtPovWoCIRDPmdM-/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1BagYw9UKtCx_1eKEB4dKahZNc2_EVfpm/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1RrWpHQB3-jY2TcqLE1ppA4N9rmb5ahg5/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Data Stats",
+        "final_template_file_name": "Slide 04 - Research Chart Insight.pptx"
+      },
+      "analysis": {
+        "current_heading": "Carriers: How They Book Loads",
+        "current_heading_characters": 29,
+        "current_body_characters": 325,
+        "current_bullet_or_paragraph_count": 8,
+        "text_areas": "shape 5 (x=12.81, y=7.05, w=0.4, h=0.4); shape 6 (x=0.4, y=0.4, w=12.0, h=1.25); shape 7 (x=0.53, y=1.49, w=10.33, h=0.34); shape 8 (x=0.61, y=0.3, w=6.67, h=0.27); shape 9 (x=8.9, y=6.04, w=3.54, h=0.22); shape 10 (x=0.63, y=2.29, w=4.8, h=0.4)",
+        "text_capacity": "Medium",
+        "review_notes": "Strong research/chart slide; good for market insight backed by data.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_05_research_stat_cards",
+      "slide_no": 5,
+      "template_name": "Slide 05 - Research + Stat Cards",
+      "category": "Data / Stats",
+      "sub_category": "Research + Stat Cards",
+      "layout_type": "Insight + Stat Cards",
+      "purpose": "Show one insight supported by 3 metrics.",
+      "best_use_case": "Show one insight supported by 3 metrics.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "30-50",
+        "max_heading_characters": 65,
+        "ideal_body_characters": "180-320",
+        "max_body_characters": 420,
+        "ideal_bullet_or_paragraph_count": 3,
+        "max_bullet_or_paragraph_count": 5,
+        "ideal_characters_per_bullet_or_paragraph": "45-70",
+        "max_characters_per_bullet_or_paragraph": 90
+      },
+      "usage_rules": {
+        "when_to_use": "Use for one strong insight supported by multiple stats.",
+        "when_not_to_use": "Do not use for unrelated stats or too many messages at once.",
+        "best_content_format": "One insight paragraph + 3 metric cards.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required; keep metric visuals clean.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1gR6yGhU8WB7rSM64cdnGIbrdjG3EfhNa/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1Fm3s6FT1hDhXahCB2MQyYoSBx1eigMac/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1-ET4EELnedc2IwAwTXdU24SP31qstyje/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Data Stats",
+        "final_template_file_name": "Slide 05 - Research + Stat Cards.pptx"
+      },
+      "analysis": {
+        "current_heading": "Carriers Work with More Brokers Than You Think.",
+        "current_heading_characters": 47,
+        "current_body_characters": 503,
+        "current_bullet_or_paragraph_count": 10,
+        "text_areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.58, y=2.22, w=5.76, h=3.47); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=7.86, y=2.18, w=2.34, h=0.64); shape 8 (x=7.86, y=2.75, w=3.48, h=0.3)",
+        "text_capacity": "Medium",
+        "review_notes": "Strong insight + stat cards slide; good for one key message with supporting numbers.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_06_platform_overview",
+      "slide_no": 6,
+      "template_name": "Slide 06 - Platform Overview",
+      "category": "Agenda / Overview",
+      "sub_category": "Platform Overview",
+      "layout_type": "Product Overview",
+      "purpose": "Explain platform promise and workflow at high level.",
+      "best_use_case": "Explain platform promise and workflow at high level.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "25-40",
+        "max_heading_characters": 55,
+        "ideal_body_characters": "120-220",
+        "max_body_characters": 300,
+        "ideal_bullet_or_paragraph_count": 3,
+        "max_bullet_or_paragraph_count": 5,
+        "ideal_characters_per_bullet_or_paragraph": "35-60",
+        "max_characters_per_bullet_or_paragraph": 75
+      },
+      "usage_rules": {
+        "when_to_use": "Use for platform overview, system summary, or “one place” workflow explanation.",
+        "when_not_to_use": "Do not use for deep feature breakdowns or long technical detail.",
+        "best_content_format": "Short intro + 3 benefits / outcomes.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "If screenshot/device image is used, generate or source relevant visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1HxerRPjtAsWtu2DBrQDutKFqghkaDSgx/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1wzgt6gelk-4f2WCfD_8ddK0f8nk3sf52/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1SvUR0Nr9PPm6eUMV0xXWqeLQK5PdsDdg/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Agenda Overview",
+        "final_template_file_name": "Slide 06 - Platform Overview.pptx"
+      },
+      "analysis": {
+        "current_heading": "One Place To Run Your Freight",
+        "current_heading_characters": 29,
+        "current_body_characters": 288,
+        "current_bullet_or_paragraph_count": 7,
+        "text_areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.61, y=0.3, w=6.67, h=0.27); shape 6 (x=0.53, y=3.15, w=2.86, h=2.52); shape 7 (x=0.58, y=2.54, w=2.5, h=0.4); shape 8 (x=0.58, y=6.78, w=12.36, h=0.36)",
+        "text_capacity": "Medium",
+        "review_notes": "Strong platform overview slide; useful for explaining system-level value.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_07_feature_matrix",
+      "slide_no": 7,
+      "template_name": "Slide 07 - Feature Matrix",
+      "category": "Feature / Capability",
+      "sub_category": "Feature Matrix",
+      "layout_type": "Dense Feature List",
+      "purpose": "Show current capabilities grouped across product areas.",
+      "best_use_case": "Show current capabilities grouped across product areas.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "350-550",
+        "max_body_characters": 700,
+        "ideal_bullet_or_paragraph_count": 12,
+        "max_bullet_or_paragraph_count": 18,
+        "ideal_characters_per_bullet_or_paragraph": "25-45",
+        "max_characters_per_bullet_or_paragraph": 60
+      },
+      "usage_rules": {
+        "when_to_use": "Use for dense capability list, product modules, or current-state feature inventory.",
+        "when_not_to_use": "Do not use for emotional storytelling or high-level overview only.",
+        "best_content_format": "Grouped feature list with concise labels.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "Avoid decorative images; focus on readable capability structure.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1IxeeXApjwbuB87ULlPe6znhSOYguKgUu/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/10RpLb5Dc65oiahgGJyTfHorKwQPWwoWP/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1GAz0s1d3GURofhnLFujbeDhoU_ywjDQq/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Feature Capability",
+        "final_template_file_name": "Slide 07 - Feature Matrix.pptx"
+      },
+      "analysis": {
+        "current_heading": "What's Available Today.",
+        "current_heading_characters": 23,
+        "current_body_characters": 916,
+        "current_bullet_or_paragraph_count": 23,
+        "text_areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.53, y=1.49, w=10.33, h=0.34); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=0.53, y=2.18, w=5.89, h=5.05); shape 8 (x=6.83, y=2.18, w=6.12, h=4.58)",
+        "text_capacity": "High",
+        "review_notes": "Strong capability matrix; good for dense feature/module lists.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_08_text_heavy_insight",
+      "slide_no": 8,
+      "template_name": "Slide 08 - Text-Heavy Insight",
+      "category": "Content Slide",
+      "sub_category": "Text-Heavy Insight",
+      "layout_type": "Text + Bullets",
+      "purpose": "Explain a strategic point with paragraph/bullets.",
+      "best_use_case": "Explain a strategic point with paragraph/bullets.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "30-50",
+        "max_heading_characters": 65,
+        "ideal_body_characters": "280-450",
+        "max_body_characters": 600,
+        "ideal_bullet_or_paragraph_count": 3,
+        "max_bullet_or_paragraph_count": 6,
+        "ideal_characters_per_bullet_or_paragraph": "60-90",
+        "max_characters_per_bullet_or_paragraph": 120
+      },
+      "usage_rules": {
+        "when_to_use": "Use for text-heavy insight, strategic explanation, or narrative with bullets.",
+        "when_not_to_use": "Do not use for visual-first content or more than 600 body characters.",
+        "best_content_format": "Heading + 1 paragraph + 3–5 bullets/paragraph chunks.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1vr4QHl-gqXRTLyANZQNzqb1BZ3fpYZmk/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/18Q_QgF_SaRGQbz0NiF8ttvPqbSYONwVz/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/18WRgMjwReel5vYXQbkWqOUCKkMTRi7Qz/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 08 - Text Heavy Insight.pptx"
+      },
+      "analysis": {
+        "current_heading": "Why Carrier Networks Matter",
+        "current_heading_characters": 27,
+        "current_body_characters": 461,
+        "current_bullet_or_paragraph_count": 4,
+        "text_areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.55, y=1.94, w=11.33, h=4.78); shape 5 (x=0.4, y=0.4, w=12.0, h=1.25)",
+        "text_capacity": "High",
+        "review_notes": "Useful text-heavy slide; keep within character limits to avoid overcrowding.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_09_ui_product_showcase",
+      "slide_no": 9,
+      "template_name": "Slide 09 - UI / Product Showcase",
+      "category": "Content Slide",
+      "sub_category": "UI / Product Showcase",
+      "layout_type": "Screenshot + Explanation",
+      "purpose": "Explain dashboard, UI, or workflow screenshot.",
+      "best_use_case": "Explain dashboard, UI, or workflow screenshot.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "180-300",
+        "max_body_characters": 420,
+        "ideal_bullet_or_paragraph_count": 2,
+        "max_bullet_or_paragraph_count": 4,
+        "ideal_characters_per_bullet_or_paragraph": "50-80",
+        "max_characters_per_bullet_or_paragraph": 100
+      },
+      "usage_rules": {
+        "when_to_use": "Use for dashboard, UI, product screenshot, workflow preview, or software demo.",
+        "when_not_to_use": "Do not use without a strong visual/screenshot.",
+        "best_content_format": "Heading + short explanation beside/under visual.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Image area must use Nano Banana-generated or approved client-specific visual.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1smaJCdITdzOurMF9egNS5Mg5K0B3aRI-/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1oRALLi34Uu0ef5VnrQPiBpPoXhmPsk99/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1udY6CjfMSXBzoUmiH-Nwu9_BP2slJhCp/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 09 - UI Product Showcase.pptx"
+      },
+      "analysis": {
+        "current_heading": "Live Dashboard Visibility",
+        "current_heading_characters": 25,
+        "current_body_characters": 376,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=1.32, w=5.38, h=1.42); shape 7 (x=0.47, y=2.88, w=5.05, h=3.77)",
+        "text_capacity": "Medium",
+        "review_notes": "Strong UI/product showcase slide; good for screenshots and workflow demos.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_10_main_supporting_text",
+      "slide_no": 10,
+      "template_name": "Slide 10 - Main + Supporting Text",
+      "category": "Content Slide",
+      "sub_category": "Main + Supporting Text",
+      "layout_type": "Two Text Blocks",
+      "purpose": "Use main idea plus supporting context.",
+      "best_use_case": "Use main idea plus supporting context.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "200-360",
+        "max_body_characters": 480,
+        "ideal_bullet_or_paragraph_count": 2,
+        "max_bullet_or_paragraph_count": 4,
+        "ideal_characters_per_bullet_or_paragraph": "60-90",
+        "max_characters_per_bullet_or_paragraph": 120
+      },
+      "usage_rules": {
+        "when_to_use": "Use for main message plus supporting explanation.",
+        "when_not_to_use": "Do not use for more than two separate ideas.",
+        "best_content_format": "Heading + two short text blocks.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1wQAEFOyvIBS_GRXRHFUVxvb5DELArNbQ/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1G76UErA3qIdMhqSe_ucaQPeefwnUV3g8/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1kl09FF2dsXTPEm3kq2RePNWmMQvaVnHA/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 10 - Main + Supporting Text.pptx"
+      },
+      "analysis": {
+        "current_heading": "Simplify Freight Operations",
+        "current_heading_characters": 27,
+        "current_body_characters": 416,
+        "current_bullet_or_paragraph_count": 4,
+        "text_areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 3 (x=0.4, y=0.4, w=6.13, h=1.25); shape 5 (x=0.59, y=1.78, w=5.76, h=4.68); shape 6 (x=7.72, y=1.78, w=4.65, h=4.07)",
+        "text_capacity": "Medium",
+        "review_notes": "Useful two-text-block layout; best for one main message plus support copy.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_11_content_image_basic",
+      "slide_no": 11,
+      "template_name": "Slide 11 - Content + Image Basic",
+      "category": "Content Slide",
+      "sub_category": "Content + Image Basic",
+      "layout_type": "Text + Image",
+      "purpose": "Pair concise explanation with visual.",
+      "best_use_case": "Pair concise explanation with visual.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "160-280",
+        "max_body_characters": 380,
+        "ideal_bullet_or_paragraph_count": 2,
+        "max_bullet_or_paragraph_count": 4,
+        "ideal_characters_per_bullet_or_paragraph": "50-80",
+        "max_characters_per_bullet_or_paragraph": 100
+      },
+      "usage_rules": {
+        "when_to_use": "Use for short explanation with one supporting visual.",
+        "when_not_to_use": "Do not use for long paragraphs or multiple competing visuals.",
+        "best_content_format": "Heading + concise body text + one visual.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Image area must use Nano Banana-generated/approved visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1MINbCRdHKZ-sPq4qnZoHWvSxlgn6T1Cs/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1klFPnYqDx28yv3vzoEjuC_gEZymvn8Uq/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/11mSfwhs8ww-hiOca6BCl3Bwf3diEx0qE/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 11 - Content + Image Basic.pptx"
+      },
+      "analysis": {
+        "current_heading": "Compliance Built Into Workflow",
+        "current_heading_characters": 30,
+        "current_body_characters": 351,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 0 (x=12.81, y=7.05, w=0.4, h=0.4); shape 2 (x=5.18, y=1.04, w=7.24, h=1.25); shape 5 (x=5.3, y=2.29, w=7.24, h=3.47)",
+        "text_capacity": "Medium",
+        "review_notes": "Useful content + image variant; keep copy concise.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_12_content_image",
+      "slide_no": 12,
+      "template_name": "Slide 12 - Content + Image",
+      "category": "Content Slide",
+      "sub_category": "Content + Image",
+      "layout_type": "Text + Image",
+      "purpose": "Explain benefit/outcome with visual support.",
+      "best_use_case": "Explain benefit/outcome with visual support.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "160-280",
+        "max_body_characters": 380,
+        "ideal_bullet_or_paragraph_count": 2,
+        "max_bullet_or_paragraph_count": 4,
+        "ideal_characters_per_bullet_or_paragraph": "50-80",
+        "max_characters_per_bullet_or_paragraph": 100
+      },
+      "usage_rules": {
+        "when_to_use": "Use for benefit/outcome explanation with one image or screenshot.",
+        "when_not_to_use": "Do not use for dense copy or more than one main message.",
+        "best_content_format": "Heading + 1–2 short paragraphs + one visual.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Image area must use Nano Banana-generated/approved visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1jVk7DeeBuEMjOHM0lHCKioGC-mu_aC7m/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1SY2PMIKZdst0Kuv6C_co5iuPJLF0seyy/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/17XdEs0wkNl7PLapqYul35AK1w5D-Fpf8/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 12 - Content + Image.pptx"
+      },
+      "analysis": {
+        "current_heading": "Faster Load Coverage",
+        "current_heading_characters": 20,
+        "current_body_characters": 338,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=7.59, h=1.25); shape 5 (x=0.5, y=1.65, w=7.62, h=4.41)",
+        "text_capacity": "Medium",
+        "review_notes": "Useful content + image variant; works best with one focused benefit or outcome.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_13_standard_content",
+      "slide_no": 13,
+      "template_name": "Slide 13 - Standard Content",
+      "category": "Content Slide",
+      "sub_category": "Standard Content",
+      "layout_type": "Long-Form Content",
+      "purpose": "Use for concise paragraph or executive explanation.",
+      "best_use_case": "Use for concise paragraph or executive explanation.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "250-420",
+        "max_body_characters": 550,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 4,
+        "ideal_characters_per_bullet_or_paragraph": "60-90",
+        "max_characters_per_bullet_or_paragraph": 120
+      },
+      "usage_rules": {
+        "when_to_use": "Use for standard paragraph content, executive summary, or general explanation.",
+        "when_not_to_use": "Do not use for data-heavy or image-first content.",
+        "best_content_format": "Heading + paragraph or 3 short bullets.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1Z1mnqzfscqhCWsB_bTZcxblPg26xdQ0O/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/15g3bk5-rurSiRaeNXBvK7riWKNG3xP2K/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1Nc02VgVUj97-gMmg9QM8Fcv5ajU4EGVt/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 13 - Standard Content.pptx"
+      },
+      "analysis": {
+        "current_heading": "Operational Control",
+        "current_heading_characters": 19,
+        "current_body_characters": 363,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 2 (x=0.4, y=0.4, w=12.0, h=1.25); shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.5, y=1.65, w=11.82, h=4.64)",
+        "text_capacity": "High",
+        "review_notes": "Good standard content slide; avoid making it too dense.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_14_section_divider_pattern",
+      "slide_no": 14,
+      "template_name": "Slide 14 - Section Divider - Pattern",
+      "category": "Section Divider",
+      "sub_category": "Section Divider - Pattern",
+      "layout_type": "Chapter Divider",
+      "purpose": "Introduce a new section.",
+      "best_use_case": "Introduce a new section.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "20-40",
+        "max_heading_characters": 55,
+        "ideal_body_characters": "40-90",
+        "max_body_characters": 120,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 0,
+        "ideal_characters_per_bullet_or_paragraph": "N/A",
+        "max_characters_per_bullet_or_paragraph": null
+      },
+      "usage_rules": {
+        "when_to_use": "Use as a section/chapter divider.",
+        "when_not_to_use": "Do not use for content-heavy explanation.",
+        "best_content_format": "Section title + optional subtitle.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required unless background is intentionally replaced.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1mKvD7uuLgH-ogThE7mQzEdb0Dxa9y4CX/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/15MJcMH-HlMBoKe241Wr4hrnG_HWm18Tn/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1tkm5knPI0D53nOnFwne1qgQbBNyDFnvw/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Section Divider",
+        "final_template_file_name": "Slide 14 - Section Divider Pattern.pptx"
+      },
+      "analysis": {
+        "current_heading": "Platform Capabilities",
+        "current_heading_characters": 21,
+        "current_body_characters": 69,
+        "current_bullet_or_paragraph_count": 1,
+        "text_areas": "shape 3 (x=0.39, y=2.14, w=12.02, h=1.45); shape 4 (x=0.39, y=3.62, w=12.02, h=0.98)",
+        "text_capacity": "Low",
+        "review_notes": "Strong section divider; good visual break for new chapters.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_15_section_divider_diagonal",
+      "slide_no": 15,
+      "template_name": "Slide 15 - Section Divider - Diagonal",
+      "category": "Section Divider",
+      "sub_category": "Section Divider - Diagonal",
+      "layout_type": "Chapter Divider",
+      "purpose": "Introduce a new section with alternate visual style.",
+      "best_use_case": "Introduce a new section with alternate visual style.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "20-40",
+        "max_heading_characters": 55,
+        "ideal_body_characters": "40-90",
+        "max_body_characters": 120,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 0,
+        "ideal_characters_per_bullet_or_paragraph": "N/A",
+        "max_characters_per_bullet_or_paragraph": null
+      },
+      "usage_rules": {
+        "when_to_use": "Use as alternate section/chapter divider.",
+        "when_not_to_use": "Do not use for detailed content or data.",
+        "best_content_format": "Section title + optional subtitle.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": false,
+        "nano_banana_rule": "No image required unless background is intentionally replaced.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1TrkjokfMV2BplLpmOYQ_ThErL2_tZ_aM/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1WjTMLdoIqF9c8Ke-KJifzxW--0E6Ed-E/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1XNjRkHA2sZ_xRuHc0e-bJ_wuiBuXNXhZ/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Section Divider",
+        "final_template_file_name": "Slide 15 - Section Divider Diagonal.pptx"
+      },
+      "analysis": {
+        "current_heading": "Market Intelligence",
+        "current_heading_characters": 19,
+        "current_body_characters": 88,
+        "current_bullet_or_paragraph_count": 1,
+        "text_areas": "shape 3 (x=0.39, y=2.14, w=12.02, h=1.45); shape 4 (x=0.39, y=3.62, w=12.02, h=0.98)",
+        "text_capacity": "Low",
+        "review_notes": "Strong alternate section divider; useful for chapter transitions.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_16_general_content_variant_a",
+      "slide_no": 16,
+      "template_name": "Slide 16 - General Content Variant A",
+      "category": "Content Slide",
+      "sub_category": "General Content Variant A",
+      "layout_type": "Sidebar Content",
+      "purpose": "Explain workflow, process, or feature benefit.",
+      "best_use_case": "Explain workflow, process, or feature benefit.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "200-360",
+        "max_body_characters": 500,
+        "ideal_bullet_or_paragraph_count": 3,
+        "max_bullet_or_paragraph_count": 5,
+        "ideal_characters_per_bullet_or_paragraph": "50-80",
+        "max_characters_per_bullet_or_paragraph": 110
+      },
+      "usage_rules": {
+        "when_to_use": "Use for workflow/process/feature-benefit explanation with sidebar style.",
+        "when_not_to_use": "Do not use for more than one main topic.",
+        "best_content_format": "Heading + concise body + optional 3 bullets.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "If visual area exists, use Nano Banana-generated/approved visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1cUh_X7cRjIvNUsIaPPKOOV9n8eWPBJpk/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/14BthYOcoK7Bmg1U5fa20P4lFxyyOuWlc/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1g4q2STCZVRVcH8p3_vQ6JNpGPTXMcIO9/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 16 - General Content Variant A.pptx"
+      },
+      "analysis": {
+        "current_heading": "Smarter Broker Workflows",
+        "current_heading_characters": 24,
+        "current_body_characters": 328,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 2 (x=4.91, y=1.2, w=7.83, h=1.45); shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 5 (x=5.02, y=2.66, w=7.62, h=4.41)",
+        "text_capacity": "High",
+        "review_notes": "Useful sidebar-style content slide; keep message focused.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_17_content_with_sidebar",
+      "slide_no": 17,
+      "template_name": "Slide 17 - Content with Sidebar",
+      "category": "Content Slide",
+      "sub_category": "Content with Sidebar",
+      "layout_type": "Sidebar Content",
+      "purpose": "Explain operational message with supporting sidebar space.",
+      "best_use_case": "Explain operational message with supporting sidebar space.",
+      "quality": "Good",
+      "final_decision": "Approved with limits",
+      "text_limits": {
+        "ideal_heading_characters": "25-45",
+        "max_heading_characters": 60,
+        "ideal_body_characters": "200-360",
+        "max_body_characters": 500,
+        "ideal_bullet_or_paragraph_count": 3,
+        "max_bullet_or_paragraph_count": 5,
+        "ideal_characters_per_bullet_or_paragraph": "50-80",
+        "max_characters_per_bullet_or_paragraph": 110
+      },
+      "usage_rules": {
+        "when_to_use": "Use for operational/process explanation with sidebar support.",
+        "when_not_to_use": "Do not use for dense feature matrix or unrelated visuals.",
+        "best_content_format": "Heading + short body + sidebar-style supporting text.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "If visual area exists, use Nano Banana-generated/approved visual.",
+        "image_or_icon_areas": "3 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1ejr3GbhNs6MlALFGfvIogxTpu0UN3ly6/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1J-ScdAKWyuVyXLLNrw6q-r323GXcAxvY/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/1ct4aNaJSejyu8-7jfcKl5k-tACi-M2G3/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Content Slide",
+        "final_template_file_name": "Slide 17 - Content with Sidebar.pptx"
+      },
+      "analysis": {
+        "current_heading": "Connected Freight Operations",
+        "current_heading_characters": 28,
+        "current_body_characters": 354,
+        "current_bullet_or_paragraph_count": 3,
+        "text_areas": "shape 4 (x=6.29, y=1.2, w=6.52, h=1.45); shape 5 (x=12.81, y=7.05, w=0.4, h=0.4); shape 6 (x=6.43, y=2.55, w=5.86, h=4.68)",
+        "text_capacity": "High",
+        "review_notes": "Useful sidebar content variant; good for operational/process explanations.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    },
+    {
+      "template_id": "slide_18_image_only_slide",
+      "slide_no": 18,
+      "template_name": "Slide 18 - Visual-Only / Blank",
+      "category": "Visual / Image Gallery",
+      "sub_category": "Image-only Slide",
+      "layout_type": "Visual Only",
+      "purpose": "Use as a full-image visual slide with no text.",
+      "best_use_case": "One generated visual/image, full-slide screenshot, concept visual, or visual break.",
+      "quality": "Strong",
+      "final_decision": "Approved",
+      "text_limits": {
+        "ideal_heading_characters": "0-35",
+        "max_heading_characters": 45,
+        "ideal_body_characters": "0-80",
+        "max_body_characters": 120,
+        "ideal_bullet_or_paragraph_count": 0,
+        "max_bullet_or_paragraph_count": 2,
+        "ideal_characters_per_bullet_or_paragraph": "N/A",
+        "max_characters_per_bullet_or_paragraph": null
+      },
+      "usage_rules": {
+        "when_to_use": "Use when the slide should be only one image/visual with no text.",
+        "when_not_to_use": "Do not use when text explanation is required.",
+        "best_content_format": "One full-slide image only.",
+        "what_to_avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited."
+      },
+      "image_rules": {
+        "requires_image": true,
+        "nano_banana_rule": "Always generate fresh image using Nano Banana for each use case.",
+        "image_or_icon_areas": "2 picture objects detected"
+      },
+      "assets": {
+        "preview_image_link": "https://drive.google.com/file/d/1hIoz-7wLpNu7ZuyfkGe9tSMKLHI9dt8W/view?usp=drivesdk",
+        "single_slide_ppt_link": "https://docs.google.com/presentation/d/1sXfGO_RSBKsLs84-huGNJ-Xo9a8sXkwL/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_link": "https://docs.google.com/presentation/d/13fZxxVo3j4ZLdaedZJM2MvheY248lVFM/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+        "final_template_folder": "Visual Image Gallery",
+        "final_template_file_name": "Slide 18 - Image Only Slide.pptx"
+      },
+      "analysis": {
+        "current_heading": "",
+        "current_heading_characters": 0,
+        "current_body_characters": 0,
+        "current_bullet_or_paragraph_count": 0,
+        "text_areas": "",
+        "text_capacity": "Low",
+        "review_notes": "Keep as image-only slide. Generate a fresh image using Nano Banana for each use case. Any other slide with image area should also use Nano Banana-generated visuals.",
+        "notes": "Counts are recommended writing limits; final fit should still be checked visually."
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+CLIENT RULES AND BEHAVIOUR KNOWN TO AV_BOT
+Generated from saved memory and prior instructions
+
+1. COMMUNICATION / WORKING STYLE RULES
+- Replies should be simple and short.
+- Work should be action-first: do the task first when possible, then report results.
+- Avoid assumptions.
+- Use data as the basis for decisions and reporting.
+- No sugar-coating, no guessing, no imagination.
+- When user says 'search', treat it as a web/Google-style search by default.
+
+2. CLIENT LIST / REPORTING RULES
+- When asked for active clients or ongoing client list, return Ongoing + Leads, kept separate by bifurcation.
+- When asked for full list or all client list, return the full client list with bifurcation by status.
+
+3. CORE ANEEREQUEST STRUCTURE RULES
+- Main internal system: https://app.aneeverse.com/
+- Backend/data store: Supabase.
+- Work must map to Client -> Request -> Task.
+- Do not invent structure outside Client -> Request -> Task.
+
+4. CLIENT RULES
+- Client means company, not an individual.
+- Client fields are:
+  - Company Name
+  - User Name (contact person)
+  - Phone Number
+  - Email
+  - Password
+- Clients do not currently log in.
+- Requests are created internally on behalf of clients.
+
+5. REQUEST RULES
+- Request means project.
+- Each request contains multiple tasks.
+- Planning rule: break requests into structured, logical, trackable tasks.
+- Each client has a default request named:
+  - 00-Updates-Followups
+
+6. TASK RULES
+- Task means actionable unit of work.
+- Each task is assigned to exactly one team member.
+- Task placement rule:
+  1. first use an existing relevant request if one exists
+  2. otherwise use the client's default request 00-Updates-Followups
+  3. if neither is appropriate, suggest a new request to create
+- Critical system rule from prior work:
+  - UI visibility depends on task_request_links table, not just tasks.request_id
+  - So task creation/writes must include proper task_request_links handling
+
+7. TEAM ROLE RULES
+- Anees = operations / task allocation / coordination
+- Abhijeet = finance, blogs, client communication, lead generation
+- Suraj = ecommerce + ads
+- Mayur = senior developer
+- Sanket = junior developer supporting Mayur
+- Himanshi = graphic designer
+- Assignment rule:
+  - Anees is the primary decision-maker for task assignment
+
+8. DRIVE / CLIENT FOLDER LIFECYCLE RULES
+- Google Drive structure includes:
+  - AV-LEADS
+  - CLIENTS FILES
+  - CLIENTS PROJECTS
+  - NOT-CONVERTED
+- Lifecycle rule:
+  - New lead/client starts in LEADS / AV-LEADS
+  - If converted to active:
+    - move lead folder into CLIENTS FILES
+    - create matching folder in CLIENTS PROJECTS
+  - If not converted:
+    - move folder to NOT-CONVERTED
+    - keep for about 90 days, then delete
+
+9. ACTIVE CLIENT FOLDER PARITY RULE
+- For ACTIVE clients, CLIENTS PROJECTS and CLIENTS FILES must contain the same client-folder list.
+- The purpose differs:
+  - CLIENTS PROJECTS = production / working / execution files
+  - CLIENTS FILES = sensitive / admin / commercial / finance files
+
+10. SENSITIVE FILE CLASSIFICATION RULES
+Sensitive files belong in:
+- CLIENTS FILES / <client>
+Not in:
+- CLIENTS PROJECTS / <client>
+Sensitive file categories include:
+- MOU
+- Scope of Work
+- Plan of Action / POA
+- invoices
+- finance-related files
+- proposals
+- agreements
+- quotations
+- engagement documents
+- other sensitive/admin/commercial docs
+Important saved rule:
+- POA / Plan of Action is sensitive and belongs in CLIENTS FILES
+
+11. NON-SENSITIVE / WORKING FILE RULES
+Project and working files belong in:
+- CLIENTS PROJECTS / <client>
+Examples include working docs, reports, content files, dashboards, media assets, implementation materials, etc.
+If classification is unclear:
+- do not move it blindly
+- leave it unmoved and report it
+
+12. FILE MOVE SAFETY RULES
+- Move only actual files when classifying.
+- Never move the client folder itself during file classification work.
+- Never move folder references or context hits as if they were files.
+- Never create nested client/client paths like:
+  - CLIENTS PROJECTS / ClientName / ClientName
+- Direct folder audit first.
+- Whole-drive fallback search second.
+
+13. TIGHT DRIVE TRIAGE RULE
+Saved reusable triage behaviour:
+- Search whole Drive for a client when needed.
+- Classify actual files only into:
+  - CLIENTS PROJECTS / <client>
+  - CLIENTS FILES / <client>
+- Never move folder references.
+- Never create client/client nesting.
+- Leave unclear items unmoved and report them.
+
+14. DELETION / REMOVAL RULES FROM PRIOR WORK
+- Non-converted or removed clients can be moved to NOT-CONVERTED.
+- In some prior cases, deleted clients in Aneerequest were also moved in Drive to NOT-CONVERTED.
+- Important behavior observed:
+  - drive-side changes and Aneerequest-side deletion should stay aligned when intentionally removing a client
+
+15. SUPABASE / MIRROR RULES
+- Supabase / Aneerequest remains the production source of truth.
+- Local PostgreSQL is a one-way mirror and internal support layer.
+- Do not replace Aneerequest with local PostgreSQL.
+- Mirror direction should be:
+  - Supabase -> local PostgreSQL only
+
+16. DRIVE FOLDER ID RULE
+- In Supabase clients.drive_folder_id, store only the CLIENTS PROJECTS folder ID.
+- Do not store CLIENTS FILES folder ID in that field.
+
+17. AUTOMATION / N8N BEHAVIOUR RULES RELATED TO THIS SYSTEM
+- User prefers to use n8n as much as possible.
+- When creating n8n automations, always include a manual trigger/button for testing.
+
+18. HOSTINGER SNAPSHOT RULE
+- When the user asks to take a Hostinger VPS snapshot, use the n8n workflow:
+  - Hostinger VPS Snapshot - Daily 03:00 IST
+  - workflow id: qqnqbHa7kyewmG9H
+- Do not use ad hoc snapshot logic when this preference applies.
+
+19. PRACTICAL BEHAVIOUR SUMMARY I SHOULD FOLLOW
+When handling client ops, I should:
+- think in Client -> Request -> Task first
+- place tasks into the right existing request if possible
+- fall back to 00-Updates-Followups when needed
+- keep task_request_links correct so UI works
+- keep Drive client folders aligned with client lifecycle
+- keep CLIENTS PROJECTS and CLIENTS FILES folder lists in parity for active clients
+- keep sensitive docs out of CLIENTS PROJECTS
+- move only actual files, not folders/references
+- avoid assumptions and report unclear cases instead of forcing a move
+- act first, verify with data, then report back
+
+20. HONEST LIMIT
+This file contains the rules and behaviours I know from saved memory and prior instructions.
+It is not a guarantee that every unsaved verbal instruction from the past still exists unless it was written into memory or durable files.

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <filter id="shadow" x="-8%" y="-18%" width="116%" height="136%">
+      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#24003c" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="86" y="1408" width="908" height="196" rx="30" ry="30" fill="#bd16f4" opacity="0.96"/>
+  </g>
+  <g>
+    <text x="540" y="1471" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="52" fill="#ffffff">Start with your</text> <text x="540" y="1528" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="52" fill="#ffffff">TraitDNA™ Work-Style Report</text> <text x="540" y="1585" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="52" fill="#ffffff">free, 15 minutes.</text>
+    <text x="540" y="1696" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="500" font-size="31" fill="#ffffff" opacity="0.96">Free. 15 minutes. No credit card.</text> <text x="540" y="1732" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="500" font-size="31" fill="#ffffff" opacity="0.96">Get your personal Work-Style Report.</text>
+  </g>
+</svg>

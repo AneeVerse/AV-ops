@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T12:45:08.434511+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "ffyheyyf3xrmw0cz327sxh2ja4",
+  "raw_audio_url": "https://replicate.delivery/xezq/2VxqomHLsCY3Cd1p2JEGS9X2fgCtECuS845VsAZu5KNpYLaLA/tmplf2jee5m.mp3",
+  "raw_duration": 2.742857,
+  "fitted_duration": 2.742857,
+  "script_text": "Find out which title pays more for what you already do.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260630_124453_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260630_124453_section4_cta_fitted.mp3"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T05:52:04.268443+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "mdpdhcp179rmw0czdtgv2cfvpg",
+  "raw_audio_url": "https://replicate.delivery/xezq/55f5e3DTkTpcrku9gsY89wCbcuIxicD1wQlrOHyYkqVDU35WA/tmp4fck5u9j.mp3",
+  "raw_duration": 4.493061,
+  "fitted_duration": 4.493061,
+  "script_text": "Your best opportunity may be an adjacent occupation you have not considered.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0079_20260717_055156_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0079_20260717_055156_section3_implication_fitted.mp3"
+}

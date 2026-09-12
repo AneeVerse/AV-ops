@@ -1,0 +1,12 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: BoldWhite,DejaVu Sans,78,&H00FFFFFF,&H00FFFFFF,&HA0000000,&H00000000,-1,0,0,0,100,100,0,0,1,2,7,5,70,70,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.15,0:00:04.85,BoldWhite,,0,0,0,,{\fad(250,250)\move(540,980,540,920,0,700)}Your strongest matches\Nmay be roles you've\Nnever searched.

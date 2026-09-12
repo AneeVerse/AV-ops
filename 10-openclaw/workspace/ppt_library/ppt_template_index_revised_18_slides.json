@@ -1,0 +1,1407 @@
+[
+  {
+    "slide": 1,
+    "text_shapes": [
+      {
+        "idx": 2,
+        "paras": [
+          "Keep Freight Moving. \u000bWith Less Friction."
+        ],
+        "chars": 41,
+        "loc": "x=0.54, y=0.88, w=8.85, h=1.74"
+      },
+      {
+        "idx": 3,
+        "paras": [
+          "EASY TO WORK WITH:",
+          "From sourcing to compliance to payment, all in one place",
+          "Run it all on a secure, connected platform"
+        ],
+        "chars": 116,
+        "loc": "x=0.54, y=2.75, w=6.96, h=1.53"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "INTRODUCTION"
+        ],
+        "chars": 12,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      }
+    ],
+    "row": {
+      "Slide No.": 1,
+      "Template Name": "Slide 01 - Hero Cover",
+      "Parent Category": "Cover",
+      "Sub Category": "Hero Cover",
+      "Layout Type": "Cover / Hero",
+      "Purpose": "Open the deck with core value proposition.",
+      "Best Use Case": "Open the deck with core value proposition.",
+      "Current Heading": "Keep Freight Moving. With Less Friction.",
+      "Current Heading Characters": 40,
+      "Current Body Characters": 128,
+      "Current Bullet/Paragraph Count": 4,
+      "Ideal Heading Characters": "35-55",
+      "Max Heading Characters": 70,
+      "Ideal Body Characters": "80-130",
+      "Max Body Characters": 170,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 0,
+      "Ideal Characters Per Bullet/Paragraph": "N/A",
+      "Max Characters Per Bullet/Paragraph": "N/A",
+      "Text Areas": "shape 2 (x=0.54, y=0.88, w=8.85, h=1.74); shape 3 (x=0.54, y=2.75, w=6.96, h=1.53); shape 4 (x=0.61, y=0.3, w=6.67, h=0.27)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Low",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1gIX0SXzhv-Rlgzpqy3yCp__Ag3Dk0VJz/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1yzHowl4MyHXNDp1LR7IB6Iv6VD7CT7Yf/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 2,
+    "text_shapes": [
+      {
+        "idx": 4,
+        "paras": [
+          "2"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Where Truckstop Is Going"
+        ],
+        "chars": 24,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "From finding capacity \u2192 to controlling your network",
+          "Truckstop is becoming the system brokers use to source, manage, and pay carriers in one place."
+        ],
+        "chars": 145,
+        "loc": "x=0.53, y=1.56, w=10.33, h=0.57"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "Capacity You Control",
+          "Move from searching to directing freight",
+          "Private Loads as your owned network",
+          "Waterfall routing to tier and release capacity",
+          "Reach carriers you trust first, then expand",
+          "Better coverage with fewer calls"
+        ],
+        "chars": 216,
+        "loc": "x=0.58, y=2.29, w=3.32, h=1.73"
+      },
+      {
+        "idx": 9,
+        "paras": [
+          "MCP-Connected Workflows",
+          "Work inside your TMS, email, and tools",
+          "Push loads directly from your TMS",
+          "Deep links from email into live capacity",
+          "No rekeying. No swivel chair",
+          "Faster execution across your team"
+        ],
+        "chars": 195,
+        "loc": "x=4.2, y=2.29, w=3.32, h=1.73"
+      },
+      {
+        "idx": 11,
+        "paras": [
+          "AI That Improves Decisions",
+          "Less guesswork. Better outcomes",
+          "Smart carrier matching based on history and behavior",
+          "Rate guidance tied to real market data",
+          "AI support inside daily workflows",
+          "Faster decisions under pressure"
+        ],
+        "chars": 211,
+        "loc": "x=7.81, y=2.29, w=3.32, h=1.73"
+      },
+      {
+        "idx": 13,
+        "paras": [
+          "Built-In Compliance and Risk",
+          "Protect every load without slowing down",
+          "RMIS and Risk Factors in every decision",
+          "Continuous monitoring, not one-time onboarding",
+          "Fraud signals before you assign the load",
+          "Fewer surprises after pickup"
+        ],
+        "chars": 220,
+        "loc": "x=2.39, y=4.81, w=3.32, h=1.73"
+      },
+      {
+        "idx": 15,
+        "paras": [
+          "Payments and Back Office in Flow",
+          "From booking \u2192 to getting paid and paying carriers",
+          "Factoring and payment tools built in",
+          "Faster carrier payments to secure capacity",
+          "Clear visibility into pay terms and risk",
+          "Less time chasing paperwork"
+        ],
+        "chars": 227,
+        "loc": "x=6.01, y=4.81, w=3.32, h=1.73"
+      },
+      {
+        "idx": 17,
+        "paras": [
+          "Coverage Across All Freight Types",
+          "Handle more loads without adding complexity",
+          "Standard, specialized, and heavy haul in one system",
+          "Better tools for complex moves",
+          "Expand into higher-value freight with confidence"
+        ],
+        "chars": 205,
+        "loc": "x=9.62, y=4.81, w=3.32, h=1.73"
+      },
+      {
+        "idx": 19,
+        "paras": [
+          "Source faster.  Cover smarter.  Build a network that works for you."
+        ],
+        "chars": 67,
+        "loc": "x=0.58, y=6.78, w=12.36, h=0.36"
+      },
+      {
+        "idx": 20,
+        "paras": [
+          "DIRECTION & MOMENTUM"
+        ],
+        "chars": 20,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      }
+    ],
+    "row": {
+      "Slide No.": 2,
+      "Template Name": "Slide 02 - Strategic Roadmap",
+      "Parent Category": "Process / Timeline",
+      "Sub Category": "Strategic Roadmap",
+      "Layout Type": "Timeline / Roadmap",
+      "Purpose": "Show strategic direction, product evolution, or phased roadmap.",
+      "Best Use Case": "Show strategic direction, product evolution, or phased roadmap.",
+      "Current Heading": "Where Truckstop Is Going",
+      "Current Heading Characters": 24,
+      "Current Body Characters": 1504,
+      "Current Bullet/Paragraph Count": 39,
+      "Ideal Heading Characters": "30-45",
+      "Max Heading Characters": 55,
+      "Ideal Body Characters": "250-420",
+      "Max Body Characters": 520,
+      "Ideal Bullet/Paragraph Count": 5,
+      "Max Bullet/Paragraph Count": 7,
+      "Ideal Characters Per Bullet/Paragraph": "35-55",
+      "Max Characters Per Bullet/Paragraph": 75,
+      "Text Areas": "shape 4 (x=12.81, y=7.05, w=0.4, h=0.4); shape 5 (x=0.4, y=0.4, w=12.0, h=1.25); shape 6 (x=0.53, y=1.56, w=10.33, h=0.57); shape 7 (x=0.58, y=2.29, w=3.32, h=1.73); shape 9 (x=4.2, y=2.29, w=3.32, h=1.73); shape 11 (x=7.81, y=2.29, w=3.32, h=1.73)",
+      "Image/Icon Areas": "9 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1gwI8XoOiGchdqPvnZQ4IBwi_2vvwLbmH/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1rcEymlkWdwkylo8m_JFbKW_5FYTQ4jWQ/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 3,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "3"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Truckstop by the Numbers"
+        ],
+        "chars": 24,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "The largest verified load board in freight - active, real, and growing."
+        ],
+        "chars": 71,
+        "loc": "x=0.62, y=1.49, w=10.33, h=0.34"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "COMPANY OVERVIEW"
+        ],
+        "chars": 16,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "720K+"
+        ],
+        "chars": 5,
+        "loc": "x=0.71, y=2.76, w=2.34, h=0.84"
+      },
+      {
+        "idx": 8,
+        "paras": [
+          "Loads on the network"
+        ],
+        "chars": 20,
+        "loc": "x=0.71, y=3.56, w=2.94, h=0.37"
+      },
+      {
+        "idx": 9,
+        "paras": [
+          "555K+"
+        ],
+        "chars": 5,
+        "loc": "x=0.71, y=4.81, w=2.34, h=0.84"
+      },
+      {
+        "idx": 10,
+        "paras": [
+          "Powered by 45K+ carriers"
+        ],
+        "chars": 24,
+        "loc": "x=0.71, y=5.61, w=3.18, h=0.37"
+      },
+      {
+        "idx": 11,
+        "paras": [
+          "700K+"
+        ],
+        "chars": 5,
+        "loc": "x=4.74, y=2.76, w=2.34, h=0.84"
+      },
+      {
+        "idx": 12,
+        "paras": [
+          "Truck postings per day"
+        ],
+        "chars": 22,
+        "loc": "x=4.74, y=3.56, w=2.94, h=0.37"
+      },
+      {
+        "idx": 13,
+        "paras": [
+          "59M+"
+        ],
+        "chars": 4,
+        "loc": "x=4.74, y=4.81, w=2.34, h=0.84"
+      },
+      {
+        "idx": 14,
+        "paras": [
+          "Monthly load searches"
+        ],
+        "chars": 21,
+        "loc": "x=4.74, y=5.61, w=2.94, h=0.37"
+      },
+      {
+        "idx": 20,
+        "paras": [
+          "71%"
+        ],
+        "chars": 3,
+        "loc": "x=8.77, y=3.84, w=1.58, h=0.71"
+      },
+      {
+        "idx": 21,
+        "paras": [
+          "via digital channels"
+        ],
+        "chars": 20,
+        "loc": "x=8.89, y=4.4, w=1.33, h=0.57"
+      }
+    ],
+    "row": {
+      "Slide No.": 3,
+      "Template Name": "Slide 03 - Metric Overview",
+      "Parent Category": "Data / Stats",
+      "Sub Category": "Metric Overview",
+      "Layout Type": "Metric Cards",
+      "Purpose": "Show company/platform scale with key numbers.",
+      "Best Use Case": "Show company/platform scale with key numbers.",
+      "Current Heading": "Truckstop by the Numbers",
+      "Current Heading Characters": 24,
+      "Current Body Characters": 216,
+      "Current Bullet/Paragraph Count": 12,
+      "Ideal Heading Characters": "25-40",
+      "Max Heading Characters": 55,
+      "Ideal Body Characters": "80-140",
+      "Max Body Characters": 180,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 0,
+      "Ideal Characters Per Bullet/Paragraph": "N/A",
+      "Max Characters Per Bullet/Paragraph": "N/A",
+      "Text Areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.62, y=1.49, w=10.33, h=0.34); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=0.71, y=2.76, w=2.34, h=0.84); shape 8 (x=0.71, y=3.56, w=2.94, h=0.37)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Low",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1s8Na43RDu6OE35n_GELBFUTziZKaQq6H/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1dgvsYcHe5aMQBk5juC2fDJbR3H5yfYpY/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 4,
+    "text_shapes": [
+      {
+        "idx": 5,
+        "paras": [
+          "4"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "Carriers: How They Book Loads"
+        ],
+        "chars": 29,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "2025 Truckstop Carrier Research  \u00b7  n = 1,200+ active carriers"
+        ],
+        "chars": 62,
+        "loc": "x=0.53, y=1.49, w=10.33, h=0.34"
+      },
+      {
+        "idx": 8,
+        "paras": [
+          "MARKET INTELLIGENCE"
+        ],
+        "chars": 19,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      },
+      {
+        "idx": 9,
+        "paras": [
+          "Source: Truckstop 2025 Carrier Research Report"
+        ],
+        "chars": 46,
+        "loc": "x=8.9, y=6.04, w=3.54, h=0.22"
+      },
+      {
+        "idx": 10,
+        "paras": [
+          "Booking Method by Carrier Tenure"
+        ],
+        "chars": 32,
+        "loc": "x=0.63, y=2.29, w=4.8, h=0.4"
+      },
+      {
+        "idx": 12,
+        "paras": [
+          "Key Insight",
+          "Newer carriers use load boards 70% more than experienced carriers - \u000byour Load Board posting strategy directly shapes carrier adoption."
+        ],
+        "chars": 146,
+        "loc": "x=0.58, y=4.89, w=5.67, h=1.37"
+      },
+      {
+        "idx": 13,
+        "paras": [
+          "71%"
+        ],
+        "chars": 3,
+        "loc": "x=7.84, y=3.75, w=1.58, h=0.71"
+      },
+      {
+        "idx": 14,
+        "paras": [
+          "via digital channels"
+        ],
+        "chars": 20,
+        "loc": "x=7.96, y=4.31, w=1.33, h=0.57"
+      }
+    ],
+    "row": {
+      "Slide No.": 4,
+      "Template Name": "Slide 04 - Research Chart Insight",
+      "Parent Category": "Data / Stats",
+      "Sub Category": "Research Chart Insight",
+      "Layout Type": "Chart + Insight",
+      "Purpose": "Explain research-backed market behavior.",
+      "Best Use Case": "Explain research-backed market behavior.",
+      "Current Heading": "Carriers: How They Book Loads",
+      "Current Heading Characters": 29,
+      "Current Body Characters": 325,
+      "Current Bullet/Paragraph Count": 8,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "120-220",
+      "Max Body Characters": 280,
+      "Ideal Bullet/Paragraph Count": 1,
+      "Max Bullet/Paragraph Count": 3,
+      "Ideal Characters Per Bullet/Paragraph": "60-90",
+      "Max Characters Per Bullet/Paragraph": 110,
+      "Text Areas": "shape 5 (x=12.81, y=7.05, w=0.4, h=0.4); shape 6 (x=0.4, y=0.4, w=12.0, h=1.25); shape 7 (x=0.53, y=1.49, w=10.33, h=0.34); shape 8 (x=0.61, y=0.3, w=6.67, h=0.27); shape 9 (x=8.9, y=6.04, w=3.54, h=0.22); shape 10 (x=0.63, y=2.29, w=4.8, h=0.4)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/13wAlXNZe8Mbn7eNUVtPovWoCIRDPmdM-/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1BagYw9UKtCx_1eKEB4dKahZNc2_EVfpm/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 5,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "5"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Carriers Work with More Brokers Than You Think."
+        ],
+        "chars": 47,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "2025 data shows carriers are onboarded to far more brokers than they actively haul for. Being onboarded is not the same as being chosen.",
+          "Carriers are registered with far more brokers than they actively work with",
+          "Only 43% of onboarded brokers receive a load in any given month",
+          "Carriers are expanding their broker network to diversify load access"
+        ],
+        "chars": 341,
+        "loc": "x=0.58, y=2.22, w=5.76, h=3.47"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "MARKET INTELLIGENCE"
+        ],
+        "chars": 19,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "35"
+        ],
+        "chars": 2,
+        "loc": "x=7.86, y=2.18, w=2.34, h=0.64"
+      },
+      {
+        "idx": 8,
+        "paras": [
+          "Median brokers onboarded"
+        ],
+        "chars": 24,
+        "loc": "x=7.86, y=2.75, w=3.48, h=0.3"
+      },
+      {
+        "idx": 9,
+        "paras": [
+          "15"
+        ],
+        "chars": 2,
+        "loc": "x=7.86, y=3.53, w=2.34, h=0.64"
+      },
+      {
+        "idx": 10,
+        "paras": [
+          "Median brokers hauled monthly"
+        ],
+        "chars": 29,
+        "loc": "x=7.86, y=4.1, w=3.98, h=0.3"
+      },
+      {
+        "idx": 13,
+        "paras": [
+          "+22%"
+        ],
+        "chars": 4,
+        "loc": "x=7.86, y=4.88, w=2.34, h=0.64"
+      },
+      {
+        "idx": 14,
+        "paras": [
+          "Growth in broker relationships 2023\u21922025"
+        ],
+        "chars": 40,
+        "loc": "x=7.86, y=5.45, w=3.98, h=0.3"
+      },
+      {
+        "idx": 16,
+        "paras": [
+          "Source: Truckstop 2025 Carrier Research Report"
+        ],
+        "chars": 46,
+        "loc": "x=0.67, y=6.89, w=12.0, h=0.24"
+      }
+    ],
+    "row": {
+      "Slide No.": 5,
+      "Template Name": "Slide 05 - Research + Stat Cards",
+      "Parent Category": "Data / Stats",
+      "Sub Category": "Research + Stat Cards",
+      "Layout Type": "Insight + Stat Cards",
+      "Purpose": "Show one insight supported by 3 metrics.",
+      "Best Use Case": "Show one insight supported by 3 metrics.",
+      "Current Heading": "Carriers Work with More Brokers Than You Think.",
+      "Current Heading Characters": 47,
+      "Current Body Characters": 503,
+      "Current Bullet/Paragraph Count": 10,
+      "Ideal Heading Characters": "30-50",
+      "Max Heading Characters": 65,
+      "Ideal Body Characters": "180-320",
+      "Max Body Characters": 420,
+      "Ideal Bullet/Paragraph Count": 3,
+      "Max Bullet/Paragraph Count": 5,
+      "Ideal Characters Per Bullet/Paragraph": "45-70",
+      "Max Characters Per Bullet/Paragraph": 90,
+      "Text Areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.58, y=2.22, w=5.76, h=3.47); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=7.86, y=2.18, w=2.34, h=0.64); shape 8 (x=7.86, y=2.75, w=3.48, h=0.3)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1gR6yGhU8WB7rSM64cdnGIbrdjG3EfhNa/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1Fm3s6FT1hDhXahCB2MQyYoSBx1eigMac/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 6,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "6"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "One Place To Run Your Freight"
+        ],
+        "chars": 29,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "PLATFORM OVERVIEW"
+        ],
+        "chars": 17,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "Everything lives in one place",
+          "Reduce tool switching with one connected sidebar",
+          "See loads, carriers, and status without switching screens"
+        ],
+        "chars": 134,
+        "loc": "x=0.53, y=3.15, w=2.86, h=2.52"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "What changes"
+        ],
+        "chars": 12,
+        "loc": "x=0.58, y=2.54, w=2.5, h=0.4"
+      },
+      {
+        "idx": 8,
+        "paras": [
+          "Make decisions faster      |      Keep loads moving      |      Stay in control of the day"
+        ],
+        "chars": 90,
+        "loc": "x=0.58, y=6.78, w=12.36, h=0.36"
+      },
+      {
+        "idx": 9,
+        "paras": [
+          "Load board, TMS, compliance, payments. All in one view."
+        ],
+        "chars": 55,
+        "loc": "x=0.53, y=1.77, w=3.73, h=0.57"
+      }
+    ],
+    "row": {
+      "Slide No.": 6,
+      "Template Name": "Slide 06 - Platform Overview",
+      "Parent Category": "Agenda / Overview",
+      "Sub Category": "Platform Overview",
+      "Layout Type": "Product Overview",
+      "Purpose": "Explain platform promise and workflow at high level.",
+      "Best Use Case": "Explain platform promise and workflow at high level.",
+      "Current Heading": "One Place To Run Your Freight",
+      "Current Heading Characters": 29,
+      "Current Body Characters": 288,
+      "Current Bullet/Paragraph Count": 7,
+      "Ideal Heading Characters": "25-40",
+      "Max Heading Characters": 55,
+      "Ideal Body Characters": "120-220",
+      "Max Body Characters": 300,
+      "Ideal Bullet/Paragraph Count": 3,
+      "Max Bullet/Paragraph Count": 5,
+      "Ideal Characters Per Bullet/Paragraph": "35-60",
+      "Max Characters Per Bullet/Paragraph": 75,
+      "Text Areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.61, y=0.3, w=6.67, h=0.27); shape 6 (x=0.53, y=3.15, w=2.86, h=2.52); shape 7 (x=0.58, y=2.54, w=2.5, h=0.4); shape 8 (x=0.58, y=6.78, w=12.36, h=0.36)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1HxerRPjtAsWtu2DBrQDutKFqghkaDSgx/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1wzgt6gelk-4f2WCfD_8ddK0f8nk3sf52/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 7,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "7"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "What's Available Today."
+        ],
+        "chars": 23,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "This is the foundation - current, real functionality that enterprise brokers can use now."
+        ],
+        "chars": 89,
+        "loc": "x=0.53, y=1.49, w=10.33, h=0.34"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "CURRENT STATE"
+        ],
+        "chars": 13,
+        "loc": "x=0.61, y=0.3, w=6.67, h=0.27"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "Load Board (Basic, Pro, Premium)",
+          "Private Loads - RMIS and specified carrier lists",
+          "Book It Now - direct digital booking, all load types",
+          "Waterfall timing controls - carrier tier-based sequencing",
+          "Broker Factorability signal",
+          "Rate Insights - same-day market data",
+          "Heavy Haul Rates - open deck & oversized pricing",
+          "RMIS carrier onboarding & monitoring",
+          "Freight Validate - identity verification",
+          "Carrier Performance Ratings",
+          "Load Insights - competitive positioning"
+        ],
+        "chars": 442,
+        "loc": "x=0.53, y=2.18, w=5.89, h=5.05"
+      },
+      {
+        "idx": 8,
+        "paras": [
+          "Real-Time Live Loads (Pro)",
+          "Predictive Carrier Sourcing (Premium)",
+          "MCP - conversational Al interface",
+          "Catina Al - sourcing & workflow automation",
+          "RMIS Onboarded Status on load board",
+          "API access (582M+ API hits, +53% YoY)",
+          "TMS integrations (1,000+ integrations)",
+          "Truckstop Financial - payments and factoring",
+          "Risk Factors - fraud & compliance signals",
+          "Carrier Monitoring - ongoing compliance"
+        ],
+        "chars": 372,
+        "loc": "x=6.83, y=2.18, w=6.12, h=4.58"
+      }
+    ],
+    "row": {
+      "Slide No.": 7,
+      "Template Name": "Slide 07 - Feature Matrix",
+      "Parent Category": "Feature / Capability",
+      "Sub Category": "Feature Matrix",
+      "Layout Type": "Dense Feature List",
+      "Purpose": "Show current capabilities grouped across product areas.",
+      "Best Use Case": "Show current capabilities grouped across product areas.",
+      "Current Heading": "What's Available Today.",
+      "Current Heading Characters": 23,
+      "Current Body Characters": 916,
+      "Current Bullet/Paragraph Count": 23,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "350-550",
+      "Max Body Characters": 700,
+      "Ideal Bullet/Paragraph Count": 12,
+      "Max Bullet/Paragraph Count": 18,
+      "Ideal Characters Per Bullet/Paragraph": "25-45",
+      "Max Characters Per Bullet/Paragraph": 60,
+      "Text Areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=12.0, h=1.25); shape 5 (x=0.53, y=1.49, w=10.33, h=0.34); shape 6 (x=0.61, y=0.3, w=6.67, h=0.27); shape 7 (x=0.53, y=2.18, w=5.89, h=5.05); shape 8 (x=6.83, y=2.18, w=6.12, h=4.58)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1IxeeXApjwbuB87ULlPe6znhSOYguKgUu/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/10RpLb5Dc65oiahgGJyTfHorKwQPWwoWP/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 8,
+    "text_shapes": [
+      {
+        "idx": 1,
+        "paras": [
+          "8"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Strong carrier networks help brokers cover freight faster, reduce manual calls, and build more reliable capacity over time.",
+          "The goal is not just to onboard more carriers; it is to activate the right carriers when the right load appears.",
+          "A connected network gives teams better visibility into who is available, who is trusted, and who is most likely to perform.",
+          "Use this slide for a text-heavy insight, market explanation, or strategic point that needs more detail."
+        ],
+        "chars": 461,
+        "loc": "x=0.55, y=1.94, w=11.33, h=4.78"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Why Carrier Networks Matter"
+        ],
+        "chars": 27,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      }
+    ],
+    "row": {
+      "Slide No.": 8,
+      "Template Name": "Slide 08 - Text-Heavy Insight",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Text-Heavy Insight",
+      "Layout Type": "Text + Bullets",
+      "Purpose": "Explain a strategic point with paragraph/bullets.",
+      "Best Use Case": "Explain a strategic point with paragraph/bullets.",
+      "Current Heading": "Why Carrier Networks Matter",
+      "Current Heading Characters": 27,
+      "Current Body Characters": 461,
+      "Current Bullet/Paragraph Count": 4,
+      "Ideal Heading Characters": "30-50",
+      "Max Heading Characters": 65,
+      "Ideal Body Characters": "280-450",
+      "Max Body Characters": 600,
+      "Ideal Bullet/Paragraph Count": 3,
+      "Max Bullet/Paragraph Count": 6,
+      "Ideal Characters Per Bullet/Paragraph": "60-90",
+      "Max Characters Per Bullet/Paragraph": 120,
+      "Text Areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.55, y=1.94, w=11.33, h=4.78); shape 5 (x=0.4, y=0.4, w=12.0, h=1.25)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1vr4QHl-gqXRTLyANZQNzqb1BZ3fpYZmk/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/18Q_QgF_SaRGQbz0NiF8ttvPqbSYONwVz/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 9,
+    "text_shapes": [
+      {
+        "idx": 1,
+        "paras": [
+          "9"
+        ],
+        "chars": 1,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Live Dashboard Visibility"
+        ],
+        "chars": 25,
+        "loc": "x=0.4, y=1.32, w=5.38, h=1.42"
+      },
+      {
+        "idx": 7,
+        "paras": [
+          "A live operations dashboard helps teams see load status, carrier activity, and next actions in one place.",
+          "This type of layout works well for product screenshots, platform walkthroughs, workflow previews, or before-and-after process explanations.",
+          "Use short supporting text beside the visual so the audience understands what they are looking at without needing a long explanation."
+        ],
+        "chars": 376,
+        "loc": "x=0.47, y=2.88, w=5.05, h=3.77"
+      }
+    ],
+    "row": {
+      "Slide No.": 9,
+      "Template Name": "Slide 09 - UI / Product Showcase",
+      "Parent Category": "Content Slide",
+      "Sub Category": "UI / Product Showcase",
+      "Layout Type": "Screenshot + Explanation",
+      "Purpose": "Explain dashboard, UI, or workflow screenshot.",
+      "Best Use Case": "Explain dashboard, UI, or workflow screenshot.",
+      "Current Heading": "Live Dashboard Visibility",
+      "Current Heading Characters": 25,
+      "Current Body Characters": 376,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "180-300",
+      "Max Body Characters": 420,
+      "Ideal Bullet/Paragraph Count": 2,
+      "Max Bullet/Paragraph Count": 4,
+      "Ideal Characters Per Bullet/Paragraph": "50-80",
+      "Max Characters Per Bullet/Paragraph": 100,
+      "Text Areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=1.32, w=5.38, h=1.42); shape 7 (x=0.47, y=2.88, w=5.05, h=3.77)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1smaJCdITdzOurMF9egNS5Mg5K0B3aRI-/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1oRALLi34Uu0ef5VnrQPiBpPoXhmPsk99/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 10,
+    "text_shapes": [
+      {
+        "idx": 1,
+        "paras": [
+          "10"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 3,
+        "paras": [
+          "Simplify Freight Operations"
+        ],
+        "chars": 27,
+        "loc": "x=0.4, y=0.4, w=6.13, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Freight teams lose time when sourcing, compliance, booking, and payment are handled across separate tools.",
+          "A connected workflow reduces manual re-entry, improves visibility, and helps teams act faster during high-pressure coverage moments."
+        ],
+        "chars": 238,
+        "loc": "x=0.59, y=1.78, w=5.76, h=4.68"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "Use this slide when you need a clear main point with supporting context.",
+          "It can work as a paragraph slide, a short bullet slide, or a combination of both depending on the message."
+        ],
+        "chars": 178,
+        "loc": "x=7.72, y=1.78, w=4.65, h=4.07"
+      }
+    ],
+    "row": {
+      "Slide No.": 10,
+      "Template Name": "Slide 10 - Main + Supporting Text",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Main + Supporting Text",
+      "Layout Type": "Two Text Blocks",
+      "Purpose": "Use main idea plus supporting context.",
+      "Best Use Case": "Use main idea plus supporting context.",
+      "Current Heading": "Simplify Freight Operations",
+      "Current Heading Characters": 27,
+      "Current Body Characters": 416,
+      "Current Bullet/Paragraph Count": 4,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "200-360",
+      "Max Body Characters": 480,
+      "Ideal Bullet/Paragraph Count": 2,
+      "Max Bullet/Paragraph Count": 4,
+      "Ideal Characters Per Bullet/Paragraph": "60-90",
+      "Max Characters Per Bullet/Paragraph": 120,
+      "Text Areas": "shape 1 (x=12.81, y=7.05, w=0.4, h=0.4); shape 3 (x=0.4, y=0.4, w=6.13, h=1.25); shape 5 (x=0.59, y=1.78, w=5.76, h=4.68); shape 6 (x=7.72, y=1.78, w=4.65, h=4.07)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1wQAEFOyvIBS_GRXRHFUVxvb5DELArNbQ/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1G76UErA3qIdMhqSe_ucaQPeefwnUV3g8/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 11,
+    "text_shapes": [
+      {
+        "idx": 0,
+        "paras": [
+          "11"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 2,
+        "paras": [
+          "Compliance Built Into Workflow"
+        ],
+        "chars": 30,
+        "loc": "x=5.18, y=1.04, w=7.24, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Compliance works best when it is part of the daily booking process, not a separate step that slows the team down.",
+          "With risk signals, onboarding status, and verification data available during carrier selection, brokers can protect loads while keeping freight moving.",
+          "Use this layout for one focused explanation supported by a visual, icon, or screenshot."
+        ],
+        "chars": 351,
+        "loc": "x=5.3, y=2.29, w=7.24, h=3.47"
+      }
+    ],
+    "row": {
+      "Slide No.": 11,
+      "Template Name": "Slide 11 - Content + Image Basic",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Content + Image Basic",
+      "Layout Type": "Text + Image",
+      "Purpose": "Pair concise explanation with visual.",
+      "Best Use Case": "Pair concise explanation with visual.",
+      "Current Heading": "Compliance Built Into Workflow",
+      "Current Heading Characters": 30,
+      "Current Body Characters": 351,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "160-280",
+      "Max Body Characters": 380,
+      "Ideal Bullet/Paragraph Count": 2,
+      "Max Bullet/Paragraph Count": 4,
+      "Ideal Characters Per Bullet/Paragraph": "50-80",
+      "Max Characters Per Bullet/Paragraph": 100,
+      "Text Areas": "shape 0 (x=12.81, y=7.05, w=0.4, h=0.4); shape 2 (x=5.18, y=1.04, w=7.24, h=1.25); shape 5 (x=5.3, y=2.29, w=7.24, h=3.47)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1MINbCRdHKZ-sPq4qnZoHWvSxlgn6T1Cs/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1klFPnYqDx28yv3vzoEjuC_gEZymvn8Uq/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 12,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "12"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Faster Load Coverage"
+        ],
+        "chars": 20,
+        "loc": "x=0.4, y=0.4, w=7.59, h=1.25"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Better coverage starts with knowing which carriers are available, trusted, and suitable for the load.",
+          "Teams can move faster when carrier history, market data, and operational context are available in the same workflow.",
+          "This layout is useful for explaining a product benefit, workflow improvement, or customer outcome with supporting detail."
+        ],
+        "chars": 338,
+        "loc": "x=0.5, y=1.65, w=7.62, h=4.41"
+      }
+    ],
+    "row": {
+      "Slide No.": 12,
+      "Template Name": "Slide 12 - Content + Image",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Content + Image",
+      "Layout Type": "Text + Image",
+      "Purpose": "Explain benefit/outcome with visual support.",
+      "Best Use Case": "Explain benefit/outcome with visual support.",
+      "Current Heading": "Faster Load Coverage",
+      "Current Heading Characters": 20,
+      "Current Body Characters": 338,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "160-280",
+      "Max Body Characters": 380,
+      "Ideal Bullet/Paragraph Count": 2,
+      "Max Bullet/Paragraph Count": 4,
+      "Ideal Characters Per Bullet/Paragraph": "50-80",
+      "Max Characters Per Bullet/Paragraph": 100,
+      "Text Areas": "shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.4, y=0.4, w=7.59, h=1.25); shape 5 (x=0.5, y=1.65, w=7.62, h=4.41)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "Medium",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1jVk7DeeBuEMjOHM0lHCKioGC-mu_aC7m/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1SY2PMIKZdst0Kuv6C_co5iuPJLF0seyy/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 13,
+    "text_shapes": [
+      {
+        "idx": 2,
+        "paras": [
+          "Operational Control"
+        ],
+        "chars": 19,
+        "loc": "x=0.4, y=0.4, w=12.0, h=1.25"
+      },
+      {
+        "idx": 3,
+        "paras": [
+          "13"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Operational control improves when every team member works from the same source of truth.",
+          "Instead of chasing updates across systems, teams can see load status, carrier information, compliance signals, and next steps in one clear operating view.",
+          "Use this slide for concise business context, executive summaries, or any message that needs space for a longer paragraph."
+        ],
+        "chars": 363,
+        "loc": "x=0.5, y=1.65, w=11.82, h=4.64"
+      }
+    ],
+    "row": {
+      "Slide No.": 13,
+      "Template Name": "Slide 13 - Standard Content",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Standard Content",
+      "Layout Type": "Long-Form Content",
+      "Purpose": "Use for concise paragraph or executive explanation.",
+      "Best Use Case": "Use for concise paragraph or executive explanation.",
+      "Current Heading": "Operational Control",
+      "Current Heading Characters": 19,
+      "Current Body Characters": 363,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "250-420",
+      "Max Body Characters": 550,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 4,
+      "Ideal Characters Per Bullet/Paragraph": "60-90",
+      "Max Characters Per Bullet/Paragraph": 120,
+      "Text Areas": "shape 2 (x=0.4, y=0.4, w=12.0, h=1.25); shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 4 (x=0.5, y=1.65, w=11.82, h=4.64)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1Z1mnqzfscqhCWsB_bTZcxblPg26xdQ0O/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/15g3bk5-rurSiRaeNXBvK7riWKNG3xP2K/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 14,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "Platform Capabilities"
+        ],
+        "chars": 21,
+        "loc": "x=0.39, y=2.14, w=12.02, h=1.45"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "A connected system for sourcing, compliance, execution, and payments."
+        ],
+        "chars": 69,
+        "loc": "x=0.39, y=3.62, w=12.02, h=0.98"
+      }
+    ],
+    "row": {
+      "Slide No.": 14,
+      "Template Name": "Slide 14 - Section Divider - Pattern",
+      "Parent Category": "Section Divider",
+      "Sub Category": "Section Divider - Pattern",
+      "Layout Type": "Chapter Divider",
+      "Purpose": "Introduce a new section.",
+      "Best Use Case": "Introduce a new section.",
+      "Current Heading": "Platform Capabilities",
+      "Current Heading Characters": 21,
+      "Current Body Characters": 69,
+      "Current Bullet/Paragraph Count": 1,
+      "Ideal Heading Characters": "20-40",
+      "Max Heading Characters": 55,
+      "Ideal Body Characters": "40-90",
+      "Max Body Characters": 120,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 0,
+      "Ideal Characters Per Bullet/Paragraph": "N/A",
+      "Max Characters Per Bullet/Paragraph": "N/A",
+      "Text Areas": "shape 3 (x=0.39, y=2.14, w=12.02, h=1.45); shape 4 (x=0.39, y=3.62, w=12.02, h=0.98)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Low",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1mKvD7uuLgH-ogThE7mQzEdb0Dxa9y4CX/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/15MJcMH-HlMBoKe241Wr4hrnG_HWm18Tn/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 15,
+    "text_shapes": [
+      {
+        "idx": 3,
+        "paras": [
+          "Market Intelligence"
+        ],
+        "chars": 19,
+        "loc": "x=0.39, y=2.14, w=12.02, h=1.45"
+      },
+      {
+        "idx": 4,
+        "paras": [
+          "Use data to understand capacity, pricing, carrier behavior, and freight movement trends."
+        ],
+        "chars": 88,
+        "loc": "x=0.39, y=3.62, w=12.02, h=0.98"
+      }
+    ],
+    "row": {
+      "Slide No.": 15,
+      "Template Name": "Slide 15 - Section Divider - Diagonal",
+      "Parent Category": "Section Divider",
+      "Sub Category": "Section Divider - Diagonal",
+      "Layout Type": "Chapter Divider",
+      "Purpose": "Introduce a new section with alternate visual style.",
+      "Best Use Case": "Introduce a new section with alternate visual style.",
+      "Current Heading": "Market Intelligence",
+      "Current Heading Characters": 19,
+      "Current Body Characters": 88,
+      "Current Bullet/Paragraph Count": 1,
+      "Ideal Heading Characters": "20-40",
+      "Max Heading Characters": 55,
+      "Ideal Body Characters": "40-90",
+      "Max Body Characters": 120,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 0,
+      "Ideal Characters Per Bullet/Paragraph": "N/A",
+      "Max Characters Per Bullet/Paragraph": "N/A",
+      "Text Areas": "shape 3 (x=0.39, y=2.14, w=12.02, h=1.45); shape 4 (x=0.39, y=3.62, w=12.02, h=0.98)",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Low",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1TrkjokfMV2BplLpmOYQ_ThErL2_tZ_aM/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1WjTMLdoIqF9c8Ke-KJifzxW--0E6Ed-E/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 16,
+    "text_shapes": [
+      {
+        "idx": 2,
+        "paras": [
+          "Smarter Broker Workflows"
+        ],
+        "chars": 24,
+        "loc": "x=4.91, y=1.2, w=7.83, h=1.45"
+      },
+      {
+        "idx": 3,
+        "paras": [
+          "16"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "Broker teams need workflows that support speed without creating unnecessary risk.",
+          "By connecting load posting, carrier selection, compliance checks, and booking activity, teams can reduce repetitive work and make better decisions faster.",
+          "Use this slide for process explanations, workflow improvements, or feature-benefit messaging."
+        ],
+        "chars": 328,
+        "loc": "x=5.02, y=2.66, w=7.62, h=4.41"
+      }
+    ],
+    "row": {
+      "Slide No.": 16,
+      "Template Name": "Slide 16 - General Content Variant A",
+      "Parent Category": "Content Slide",
+      "Sub Category": "General Content Variant A",
+      "Layout Type": "Sidebar Content",
+      "Purpose": "Explain workflow, process, or feature benefit.",
+      "Best Use Case": "Explain workflow, process, or feature benefit.",
+      "Current Heading": "Smarter Broker Workflows",
+      "Current Heading Characters": 24,
+      "Current Body Characters": 328,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "200-360",
+      "Max Body Characters": 500,
+      "Ideal Bullet/Paragraph Count": 3,
+      "Max Bullet/Paragraph Count": 5,
+      "Ideal Characters Per Bullet/Paragraph": "50-80",
+      "Max Characters Per Bullet/Paragraph": 110,
+      "Text Areas": "shape 2 (x=4.91, y=1.2, w=7.83, h=1.45); shape 3 (x=12.81, y=7.05, w=0.4, h=0.4); shape 5 (x=5.02, y=2.66, w=7.62, h=4.41)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1cUh_X7cRjIvNUsIaPPKOOV9n8eWPBJpk/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/14BthYOcoK7Bmg1U5fa20P4lFxyyOuWlc/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 17,
+    "text_shapes": [
+      {
+        "idx": 4,
+        "paras": [
+          "Connected Freight Operations"
+        ],
+        "chars": 28,
+        "loc": "x=6.29, y=1.2, w=6.52, h=1.45"
+      },
+      {
+        "idx": 5,
+        "paras": [
+          "17"
+        ],
+        "chars": 2,
+        "loc": "x=12.81, y=7.05, w=0.4, h=0.4"
+      },
+      {
+        "idx": 6,
+        "paras": [
+          "Connected operations give teams a clearer view of what is happening across freight activity.",
+          "When load data, carrier data, risk information, and workflow actions are connected, teams can reduce handoffs and keep execution moving.",
+          "This layout works well for platform messaging, operational benefits, or a focused explanation with supporting sidebar context."
+        ],
+        "chars": 354,
+        "loc": "x=6.43, y=2.55, w=5.86, h=4.68"
+      }
+    ],
+    "row": {
+      "Slide No.": 17,
+      "Template Name": "Slide 17 - Content with Sidebar",
+      "Parent Category": "Content Slide",
+      "Sub Category": "Content with Sidebar",
+      "Layout Type": "Sidebar Content",
+      "Purpose": "Explain operational message with supporting sidebar space.",
+      "Best Use Case": "Explain operational message with supporting sidebar space.",
+      "Current Heading": "Connected Freight Operations",
+      "Current Heading Characters": 28,
+      "Current Body Characters": 354,
+      "Current Bullet/Paragraph Count": 3,
+      "Ideal Heading Characters": "25-45",
+      "Max Heading Characters": 60,
+      "Ideal Body Characters": "200-360",
+      "Max Body Characters": 500,
+      "Ideal Bullet/Paragraph Count": 3,
+      "Max Bullet/Paragraph Count": 5,
+      "Ideal Characters Per Bullet/Paragraph": "50-80",
+      "Max Characters Per Bullet/Paragraph": 110,
+      "Text Areas": "shape 4 (x=6.29, y=1.2, w=6.52, h=1.45); shape 5 (x=12.81, y=7.05, w=0.4, h=0.4); shape 6 (x=6.43, y=2.55, w=5.86, h=4.68)",
+      "Image/Icon Areas": "3 picture objects detected",
+      "Text Capacity": "High",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1ejr3GbhNs6MlALFGfvIogxTpu0UN3ly6/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1J-ScdAKWyuVyXLLNrw6q-r323GXcAxvY/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Analyzed - ready for review",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  },
+  {
+    "slide": 18,
+    "text_shapes": [],
+    "row": {
+      "Slide No.": 18,
+      "Template Name": "Slide 18 - Visual-Only / Blank",
+      "Parent Category": "Visual / Image Gallery",
+      "Sub Category": "Visual-Only / Blank",
+      "Layout Type": "Visual Only",
+      "Purpose": "Use as visual break, full image slide, or blank canvas.",
+      "Best Use Case": "Use as visual break, full image slide, or blank canvas.",
+      "Current Heading": "",
+      "Current Heading Characters": 0,
+      "Current Body Characters": 0,
+      "Current Bullet/Paragraph Count": 0,
+      "Ideal Heading Characters": "0-35",
+      "Max Heading Characters": 45,
+      "Ideal Body Characters": "0-80",
+      "Max Body Characters": 120,
+      "Ideal Bullet/Paragraph Count": 0,
+      "Max Bullet/Paragraph Count": 2,
+      "Ideal Characters Per Bullet/Paragraph": "N/A",
+      "Max Characters Per Bullet/Paragraph": "N/A",
+      "Text Areas": "",
+      "Image/Icon Areas": "2 picture objects detected",
+      "Text Capacity": "Low",
+      "What To Avoid": "Overloading this layout beyond max count; adding unrelated messages; using dense copy where visual space is limited.",
+      "Preview Image Link": "https://drive.google.com/file/d/1hIoz-7wLpNu7ZuyfkGe9tSMKLHI9dt8W/view?usp=drivesdk",
+      "Single Slide PPT Link": "https://docs.google.com/presentation/d/1sXfGO_RSBKsLs84-huGNJ-Xo9a8sXkwL/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+      "Status": "Visual-only / needs optional label if used as template",
+      "Notes": "Counts are recommended writing limits; final fit should still be checked visually."
+    }
+  }
+]

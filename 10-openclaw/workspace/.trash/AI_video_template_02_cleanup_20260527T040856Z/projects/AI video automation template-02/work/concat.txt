@@ -1,0 +1,5 @@
+file '/root/.openclaw/workspace/projects/AI video automation template-02/work/section_01.mp4'
+file '/root/.openclaw/workspace/projects/AI video automation template-02/work/section_02.mp4'
+file '/root/.openclaw/workspace/projects/AI video automation template-02/work/section_03.mp4'
+file '/root/.openclaw/workspace/projects/AI video automation template-02/work/section_04.mp4'
+file '/root/.openclaw/workspace/projects/AI video automation template-02/inputs/outro/outro_keep_as_is.mp4'

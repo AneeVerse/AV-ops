@@ -1,0 +1,76 @@
+{
+  "run_id": "20260716_042743",
+  "drive_folder_id": "1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND",
+  "videos": {
+    "V0073": {
+      "label": "V0073_20260716_042743",
+      "variant": "section2_5",
+      "voice": {
+        "number": 8,
+        "name": "Roger"
+      },
+      "section_audio_durations": [
+        3.160816,
+        4.780408,
+        3.213061,
+        3.291429
+      ],
+      "section_durations": [
+        4.2,
+        5.166666666666667,
+        3.6333333333333333,
+        5.500000000000001
+      ],
+      "gaps": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "starts_ms": [
+        0,
+        4700,
+        10367,
+        14500
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0073_20260716_042743_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0073_20260716_042743_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0073_20260716_042743_section3_implication_fitted_max3.2s.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0073_20260716_042743_section4_cta_fitted.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0073_20260716_042743.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260716_042743/V0073.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "7480218",
+          "bit_rate": "2992087"
+        }
+      },
+      "drive": {
+        "id": "1_0HSgb2cGS3J_2pYped_fbaleefmQ2QU",
+        "link": "https://drive.google.com/file/d/1_0HSgb2cGS3J_2pYped_fbaleefmQ2QU/view?usp=drivesdk",
+        "name": "V0073.mp4",
+        "size": "7480218"
+      }
+    }
+  },
+  "section2_routing": {
+    "V0073": "section2_5"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T13:12:32.297575+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "42c94xr40nrmy0cze0tvd8q09m",
+  "raw_audio_url": "https://replicate.delivery/xezq/d8ULZhvoCgZrG1u6XiWW1LsO2b9CbHZvFIR4VOrsOB6PcfcLA/tmp7_k0j_1k.mp3",
+  "raw_duration": 6.269388,
+  "fitted_duration": 6.269388,
+  "script_text": "Many opportunities are shaped by referrals, internal movement, recruiter outreach, and employer timing.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0078_20260717_131225_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0078_20260717_131225_section2_insight_fitted.mp3"
+}

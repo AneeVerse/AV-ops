@@ -1,0 +1,40 @@
++ gog sheets get 1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE '300_Video_Master_Attribution!A1:BZ200' --json --no-input
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO Replicate payment required for V0037_20260709_135338_section1_hook; using edge-tts fallback
+Generate VO fallback: edge-tts en-US-EmmaMultilingualNeural for V0037_20260709_135338_section1_hook
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section1_hook_fitted.mp3'
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO rate limit 429 for V0037_20260709_135338_section2_insight; retry 1/3 after 60s
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO Replicate payment required for V0037_20260709_135338_section2_insight; using edge-tts fallback
+Generate VO fallback: edge-tts en-US-EmmaMultilingualNeural for V0037_20260709_135338_section2_insight
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section2_insight_fitted.mp3'
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO rate limit 429 for V0037_20260709_135338_section3_implication; retry 1/3 after 60s
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO Replicate payment required for V0037_20260709_135338_section3_implication; using edge-tts fallback
+Generate VO fallback: edge-tts en-US-EmmaMultilingualNeural for V0037_20260709_135338_section3_implication
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section3_implication_fitted.mp3'
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO rate limit 429 for V0037_20260709_135338_section4_cta; retry 1/3 after 60s
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+VO Replicate payment required for V0037_20260709_135338_section4_cta; using edge-tts fallback
+Generate VO fallback: edge-tts en-US-EmmaMultilingualNeural for V0037_20260709_135338_section4_cta
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section4_cta_fitted.mp3'
+Generate WAN contextual clip: section1 / kwaivgi/kling-v3-video
+submit section1 402 {"title":"Insufficient credit","detail":"You have insufficient credit to run this model. Go to https://replicate.com/account/billing#billing to purchase credit. Once you purchase credit, please wait a few minutes before trying again.","status":402}
+
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 510, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 497, in main
+    sources=render_sections(row,label,durations,variant)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 377, in render_sections
+    rv.generate_replicate_wan_clip(wcfg,'section1',hook,s1_wan,label)
+  File "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/scripts/render_with_rotating_voice.py", line 232, in generate_replicate_wan_clip
+    r.raise_for_status()
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 402 Client Error: Payment Required for url: https://api.replicate.com/v1/models/kwaivgi/kling-v3-video/predictions

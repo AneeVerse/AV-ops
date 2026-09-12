@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <!-- User-space radial gradient: strong warm hotspot + purple/magenta edges -->
+    <radialGradient id="radial95" gradientUnits="userSpaceOnUse" cx="505" cy="430" r="305" fx="520" fy="420">
+      <stop offset="0%" stop-color="#ffe12c"/>
+      <stop offset="18%" stop-color="#ff9417"/>
+      <stop offset="35%" stop-color="#ff4c45"/>
+      <stop offset="55%" stop-color="#db1687"/>
+      <stop offset="76%" stop-color="#a000c8"/>
+      <stop offset="100%" stop-color="#4b2ed1"/>
+    </radialGradient>
+    <filter id="softShadow" x="-22%" y="-22%" width="144%" height="144%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#7a2fd6" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g text-anchor="middle">
+    <text x="415" y="525" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="250" letter-spacing="6" fill="url(#radial95)" filter="url(#softShadow)">95</text>
+    <text x="655" y="525" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="400" font-size="142" letter-spacing="0" fill="#002763">%</text>
+    <text x="540" y="642" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="400" font-size="74" letter-spacing="0.8" fill="#002763">
+      <tspan x="540" dy="0">of U.S. publicly</tspan>
+      <tspan x="540" dy="80">posted jobs stay</tspan>
+      <tspan x="540" dy="80">invisible to</tspan>
+      <tspan x="540" dy="80">candidates who</tspan>
+      <tspan x="540" dy="80">don't know</tspan>
+      <tspan x="540" dy="80">to search them</tspan>
+    </text>
+  </g>
+</svg>

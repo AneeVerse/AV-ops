@@ -1,0 +1,57 @@
+[
+  {
+    "email": "abhijeet@aneeverse.com",
+    "space": "spaces/h3xPtsAAAAE",
+    "last_message": {
+      "createTime": "2026-04-28T08:03:00.063343Z",
+      "resource": "spaces/h3xPtsAAAAE/messages/vQU3I3G_1k0.vQU3I3G_1k0",
+      "sender": "users/114022495153014004089",
+      "text": "AV_BOT verification test for abhijeet@aneeverse.com.",
+      "thread": "spaces/h3xPtsAAAAE/threads/vQU3I3G_1k0"
+    }
+  },
+  {
+    "email": "himanshi@aneeverse.com",
+    "space": "spaces/3hLA6SAAAAE",
+    "last_message": {
+      "createTime": "2026-04-28T08:03:01.748095Z",
+      "resource": "spaces/3hLA6SAAAAE/messages/YCK_cH_-0uA.YCK_cH_-0uA",
+      "sender": "users/114022495153014004089",
+      "text": "AV_BOT verification test for himanshi@aneeverse.com.",
+      "thread": "spaces/3hLA6SAAAAE/threads/YCK_cH_-0uA"
+    }
+  },
+  {
+    "email": "suraj@aneeverse.com",
+    "space": "spaces/jt4FjcAAAAE",
+    "last_message": {
+      "createTime": "2026-04-28T08:03:03.107279Z",
+      "resource": "spaces/jt4FjcAAAAE/messages/bexMP0w1VMQ.bexMP0w1VMQ",
+      "sender": "users/114022495153014004089",
+      "text": "AV_BOT verification test for suraj@aneeverse.com.",
+      "thread": "spaces/jt4FjcAAAAE/threads/bexMP0w1VMQ"
+    }
+  },
+  {
+    "email": "mayur@aneeverse.com",
+    "space": "spaces/vP8Jm8AAAAE",
+    "last_message": {
+      "createTime": "2026-04-28T08:03:04.463983Z",
+      "resource": "spaces/vP8Jm8AAAAE/messages/dWCuR_YZKwI.dWCuR_YZKwI",
+      "sender": "users/114022495153014004089",
+      "text": "AV_BOT verification test for mayur@aneeverse.com.",
+      "thread": "spaces/vP8Jm8AAAAE/threads/dWCuR_YZKwI"
+    }
+  },
+  {
+    "email": "sanket@aneeverse.com",
+    "space": "spaces/pofecSAAAAE",
+    "last_message": {
+      "createTime": "2026-04-28T08:03:06.214559Z",
+      "resource": "spaces/pofecSAAAAE/messages/XKsN4ArB8aU.XKsN4ArB8aU",
+      "sender": "users/114022495153014004089",
+      "text": "AV_BOT verification test for sanket@aneeverse.com.",
+      "thread": "spaces/pofecSAAAAE/threads/XKsN4ArB8aU"
+    }
+  }
+]

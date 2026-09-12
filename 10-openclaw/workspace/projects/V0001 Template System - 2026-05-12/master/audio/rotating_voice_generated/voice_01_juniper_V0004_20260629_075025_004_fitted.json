@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T07:56:19.310425+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "tfrdjwr655rmy0cz29gt70jgp4",
+  "raw_audio_url": "https://replicate.delivery/xezq/ONmp2mf9PVSPYyQ2gh40bZEny6afr5KSU7BuAG43Mczic9zWA/tmpf92gxq0b.mp3",
+  "raw_duration": 14.811429,
+  "fitted_duration": 14.811429,
+  "script_text": "Going deeper as a Software Developer isn't always the fastest path. Wider may pay more. Adjacent roles recruit from your background at a premium. A lateral-then-up move can pay more than waiting for promotion. Find the roles paying more for what you already do.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0004_20260629_075025_004_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0004_20260629_075025_004_fitted.mp3"
+}

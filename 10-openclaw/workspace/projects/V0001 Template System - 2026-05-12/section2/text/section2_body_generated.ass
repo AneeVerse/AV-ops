@@ -1,0 +1,17 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Body,Graphik Web,76,&H00662C10,&H00662C10,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
+Style: Suffix,Graphik Web,185,&H00662C10,&H00662C10,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:05.00,Suffix,,0,0,0,,{\pos(803,625)\fad(180,250)}%
+Dialogue: 0,0:00:00.85,0:00:04.95,Body,,0,0,0,,{\fad(220,250)\move(540,888,540,860,0,360)}of U.S. publicly posted jobs
+Dialogue: 0,0:00:00.99,0:00:04.95,Body,,0,0,0,,{\fad(220,250)\move(540,984,540,956,0,360)}stay invisible to candidates
+Dialogue: 0,0:00:01.13,0:00:04.95,Body,,0,0,0,,{\fad(220,250)\move(540,1080,540,1052,0,360)}who don't know
+Dialogue: 0,0:00:01.27,0:00:04.95,Body,,0,0,0,,{\fad(220,250)\move(540,1176,540,1148,0,360)}to search them.

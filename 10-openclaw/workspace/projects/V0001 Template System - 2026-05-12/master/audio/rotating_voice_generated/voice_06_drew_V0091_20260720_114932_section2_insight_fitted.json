@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-20T11:49:40.320144+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "5x39719s3xrmy0czfxe9cje9z4",
+  "raw_audio_url": "https://replicate.delivery/xezq/7Vnna7c7986NO1KjJp1d18zoxeg4zoeKddFj5HUTeJpnq31tA/tmphkmvkgg1.mp3",
+  "raw_duration": 6.713469,
+  "fitted_duration": 6.713469,
+  "script_text": "AI tools and easy-apply buttons have flooded employers with more applications than recruiters can handle.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0091_20260720_114932_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0091_20260720_114932_section2_insight_fitted.mp3"
+}

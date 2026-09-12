@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="gradA" gradientUnits="userSpaceOnUse" cx="390" cy="470" r="260" fx="420" fy="450"><stop offset="0%" stop-color="#ffd42e"/><stop offset="28%" stop-color="#ff8a1e"/><stop offset="54%" stop-color="#ee3b72"/><stop offset="78%" stop-color="#b51fc1"/><stop offset="100%" stop-color="#6b35cc"/></radialGradient>
+    <radialGradient id="gradB" gradientUnits="userSpaceOnUse" cx="570" cy="475" r="260" fx="540" fy="470"><stop offset="0%" stop-color="#ffa21d"/><stop offset="32%" stop-color="#fa6041"/><stop offset="58%" stop-color="#de2b83"/><stop offset="80%" stop-color="#9430c3"/><stop offset="100%" stop-color="#6236cc"/></radialGradient>
+    <radialGradient id="gradNum" gradientUnits="userSpaceOnUse" cx="500" cy="604.2" r="260" fx="510" fy="579.7"><stop offset="0%" stop-color="#ffd42e"/><stop offset="30%" stop-color="#ff8a1e"/><stop offset="56%" stop-color="#ee3b72"/><stop offset="80%" stop-color="#b51fc1"/><stop offset="100%" stop-color="#6b35cc"/></radialGradient>
+  </defs>
+  <rect x="0" y="0" width="1080" height="1920" fill="#ffffff"/>
+  <rect x="50" y="52" width="980" height="1816" rx="30" ry="30" fill="#fff5f2"/>
+  <g text-anchor="middle">
+    <text x="544.0" y="856.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="287.9" fill="#7a2fd6" opacity="0.13">5</text>
+<text x="540.0" y="851.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="287.9" fill="url(#gradNum)">5</text>
+<text x="198.0" y="786.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="156.8" fill="#7a2fd6" opacity="0.13">~</text><text x="194.0" y="781.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="156.8" fill="url(#gradNum)">~</text>
+<text x="676.4" y="851.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="400" font-size="156.8" fill="#002763">%</text>
+  </g>
+  <text x="540" y="897.0" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="64.0" fill="#002763" opacity="0.673">Across ~95% of U.S.</text><text x="540" y="977.5" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="64.0" fill="#002763" opacity="0.465">publicly posted jobs,</text><text x="540" y="1058.4" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="64.0" fill="#002763" opacity="0.236">employers hire on</text><text x="540" y="1136.0" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="64.0" fill="#002763" opacity="0.000">work-style fit - not</text><text x="540" y="1212.0" text-anchor="middle" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="64.0" fill="#002763" opacity="0.000">just title overlap.</text>
+</svg>

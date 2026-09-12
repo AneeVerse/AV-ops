@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-25T12:46:00.076743+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "1vawscp6znrmy0cyzv8ashvej4",
+  "raw_audio_url": "https://replicate.delivery/xezq/SkCXBHifAF3ZCil2J5ejqXJnCiMNQ1VYAqAasyIPdZBHUtyWA/tmpabq0o3bx.mp3",
+  "raw_duration": 24.920816,
+  "fitted_duration": 18.912653,
+  "script_text": "Most Software Developers qualify for more job titles than they apply to. Most of the approximately 95% of U.S. publicly posted jobs stay invisible to candidates who don't know to search them. Your strongest matches may be roles you've never searched. See every role your background actually qualifies for. Free. No card. Your full match list in 15 to 20 minutes.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_n8n_bulk_20260625_124025_001_20260625_124025_001_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_n8n_bulk_20260625_124025_001_20260625_124025_001_fitted.mp3"
+}

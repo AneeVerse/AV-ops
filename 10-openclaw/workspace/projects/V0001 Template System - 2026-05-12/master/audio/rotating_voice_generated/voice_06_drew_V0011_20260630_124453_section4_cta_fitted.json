@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T13:13:51.452765+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "fcm9pygwxnrmy0cz32n8waq9hg",
+  "raw_audio_url": "https://replicate.delivery/xezq/KesK9zHHfcvqcUtcNdf0SDQ9lsse6DIWjuTzMfAALUepDzFtF/tmp3th0dck8.mp3",
+  "raw_duration": 3.94449,
+  "fitted_duration": 3.94449,
+  "script_text": "See the roles hiring your background that you've never searched.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260630_124453_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260630_124453_section4_cta_fitted.mp3"
+}

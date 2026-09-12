@@ -1,0 +1,154 @@
+{
+  "name": "PDF to PPT - Step 2 Metadata Only HTTP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-to-ppt-save-metadata-http",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e07926ed-4d2e-4400-9bb1-98a1e38cf96b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "90815b83-56c5-41ab-bd13-7107d135d438"
+    },
+    {
+      "parameters": {
+        "jsCode": "const helpers = this.helpers;\nconst body = $input.item.json.body || $input.item.json;\nconst job = {\n  job_id: body.job_id,\n  file_name: body.file_name,\n  status: body.status || 'extracted',\n  uploaded_at: body.uploaded_at,\n  extracted_at: body.extracted_at || new Date().toISOString(),\n  text_length: body.text_length || 0,\n  page_count: body.page_count || null,\n  source: 'nextjs-pdf-parse-to-n8n',\n  step: 'step_2_text_extraction_metadata_only',\n  storage_policy: 'source_pdf_and_extracted_text_not_saved',\n};\nif (!job.job_id || !job.file_name) throw new Error('job_id and file_name are required');\nconst historyName = `${job.job_id}.json`;\nconst boundary = `pdf_to_ppt_history_${Date.now()}_${Math.random().toString(16).slice(2)}`;\nconst bodyBuffer = Buffer.concat([\n  Buffer.from(`--${boundary}\\r\\nContent-Type: application/json; charset=UTF-8\\r\\n\\r\\n`),\n  Buffer.from(JSON.stringify({ name: historyName, parents: ['1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o'], mimeType: 'application/json' })),\n  Buffer.from(`\\r\\n--${boundary}\\r\\nContent-Type: application/json\\r\\n\\r\\n`),\n  Buffer.from(JSON.stringify(job, null, 2), 'utf8'),\n  Buffer.from(`\\r\\n--${boundary}--`),\n]);\nconst binary = await helpers.prepareBinaryData(bodyBuffer, 'multipart-history-body.bin', 'application/octet-stream');\nreturn [{ json: { job, history_name: historyName, content_type: `multipart/related; boundary=${boundary}` }, binary: { body: binary } }];"
+      },
+      "id": "28b604d9-9784-4648-a374-3fad9a4b6ad8",
+      "name": "Prepare History Metadata",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink,webContentLink,createdTime",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendHeaders": true,
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "={{ $json.content_type }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "body",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "dd42915d-e4b2-4b22-8a06-ea4e0a3d9dd1",
+      "name": "Upload History Metadata",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const job = $('Prepare History Metadata').item.json.job;\nconst historyUpload = $input.item.json;\njob.history_file_id = historyUpload.id;\njob.history_file_url = historyUpload.webViewLink || historyUpload.webContentLink;\nreturn [{ json: { ok: true, job } }];"
+      },
+      "id": "755d9c00-f0fb-4654-8d5a-64a2ce71f36d",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "id": "c4519176-f4d9-4f8a-af70-3ead06afb436",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1360,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare History Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare History Metadata": {
+      "main": [
+        [
+          {
+            "node": "Upload History Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload History Metadata": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

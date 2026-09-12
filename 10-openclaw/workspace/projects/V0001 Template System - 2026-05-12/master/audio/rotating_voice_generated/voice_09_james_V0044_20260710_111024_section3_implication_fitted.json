@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T11:10:34.661953+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "x7r4qmeqa9rmt0cz9ew9syg2y0",
+  "raw_audio_url": "https://replicate.delivery/xezq/PpQCdec4ZIU0IKeNAKZqGr5iAV005EdgKBKyKF7Se2ATpQvtA/tmpsps3gx9i.mp3",
+  "raw_duration": 3.369796,
+  "fitted_duration": 3.369796,
+  "script_text": "You could be leaving money and personal fulfillment on the table.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0044_20260710_111024_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0044_20260710_111024_section3_implication_fitted.mp3"
+}

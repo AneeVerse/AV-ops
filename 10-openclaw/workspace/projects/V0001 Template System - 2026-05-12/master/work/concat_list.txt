@@ -1,0 +1,4 @@
+file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/01_section1_hook_normalized.mp4'
+file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/02_section2_insight_normalized.mp4'
+file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/03_section3_implication_normalized.mp4'
+file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/04_section4_cta_normalized.mp4'

@@ -1,0 +1,9 @@
+{
+  "link": "https://drive.google.com/file/d/17x017uofhn55eNYmbfnYWD6-yA_siUpO/view?usp=drivesdk",
+  "permission": {
+    "id": "anyoneWithLink",
+    "role": "reader",
+    "type": "anyone"
+  },
+  "permissionId": "anyoneWithLink"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T08:19:31.998276+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "vqjw6tbj01rmr0cz65ea78nbzw",
+  "raw_audio_url": "https://replicate.delivery/xezq/DL0c1xk9WJb5BBSLY3aCvnjamI5e3D7fQKB7eLSHCtIms4rtA/tmp1nnrov33.mp3",
+  "raw_duration": 5.250612,
+  "fitted_duration": 5.250612,
+  "script_text": "A Data Scientist and adjacent roles share most of the work and one often pays noticeably more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0017_20260705_081927_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0017_20260705_081927_section1_hook_fitted.mp3"
+}

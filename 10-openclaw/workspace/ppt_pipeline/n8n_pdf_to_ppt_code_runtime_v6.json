@@ -1,0 +1,165 @@
+{
+  "id": "PDF2PPTCODExz7742mz",
+  "name": "PDF to PPT - Code Runtime V6",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-to-ppt-generate-code-v6",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "8c2a1661-ad26-4120-be37-7f6e6d59d9af",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\nconst { spawnSync } = require('child_process');\n\n\nconst FINAL_FOLDER_ID = '1yxxMEjUt6gNky3SWzGnTxYxoo64LehB_';\nconst body = $json.body || $json || {};\nconst binaryKeys = Object.keys($binary || {});\nif (!binaryKeys.length) throw new Error('No PDF file uploaded');\nconst key = binaryKeys.includes('pdf_file') ? 'pdf_file' : (binaryKeys.includes('file') ? 'file' : binaryKeys[0]);\nconst meta = $binary[key];\nconst originalName = meta.fileName || body.fileName || 'uploaded.pdf';\nif (!originalName.toLowerCase().endsWith('.pdf') && meta.mimeType !== 'application/pdf') throw new Error('Uploaded file must be PDF');\n\nconst runId = 'pdf_to_ppt_' + new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14) + '_' + Math.random().toString(36).slice(2,7);\nconst uploadDir = '/var/lib/n8n/pdf_to_ppt_backend/uploads';\nfs.mkdirSync(uploadDir, { recursive: true });\nconst localPdf = path.join(uploadDir, `${runId}.pdf`);\nconst pdfBuffer = await this.helpers.getBinaryDataBuffer(0, key);\nfs.writeFileSync(localPdf, pdfBuffer);\n\nconst env = {\n  PATH: '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',\n  HOME: '/var/lib/n8n',\n  PPT_WORKSPACE: '/var/lib/n8n/pdf_to_ppt_backend/workspace',\n  PPT_PIPELINE_BASE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_pipeline',\n  PPT_LIBRARY_BASE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_library',\n  PPT_ENV_FILE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/.env',\n  PPT_PLANNER_MODEL: 'openai/gpt-4o-mini',\n};\nconst py = '/var/lib/n8n/pdf_to_ppt_backend/.venv-ppt/bin/python';\nconst script = '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_pipeline/scripts/run_ai_pipeline.py';\nconst proc = spawnSync(py, [script, localPdf], { env, encoding: 'utf8', timeout: 900000, maxBuffer: 1024 * 1024 * 80 });\nif (proc.error) throw proc.error;\nif (proc.status !== 0) throw new Error(`Backend failed (${proc.status}): ${proc.stderr || proc.stdout}`);\nlet parsed;\ntry { parsed = JSON.parse(proc.stdout); } catch (e) { throw new Error('Backend did not return JSON: ' + proc.stdout.slice(0, 1000)); }\nif (!parsed.success) throw new Error('Backend returned success=false');\nif (!fs.existsSync(parsed.final_pptx)) throw new Error('Final PPTX missing: ' + parsed.final_pptx);\n\nfunction multipartBody(metadata, fileBuffer, mimeType) {\n  const boundary = `pdf_to_ppt_${Date.now()}_${Math.random().toString(16).slice(2)}`;\n  const delimiter = `--${boundary}\\r\\n`;\n  const close = `\\r\\n--${boundary}--`;\n  const body = Buffer.concat([\n    Buffer.from(delimiter),\n    Buffer.from('Content-Type: application/json; charset=UTF-8\\r\\n\\r\\n'),\n    Buffer.from(JSON.stringify(metadata)),\n    Buffer.from('\\r\\n'),\n    Buffer.from(delimiter),\n    Buffer.from(`Content-Type: ${mimeType}\\r\\n\\r\\n`),\n    Buffer.isBuffer(fileBuffer) ? fileBuffer : Buffer.from(fileBuffer),\n    Buffer.from(close),\n  ]);\n  return { boundary, body };\n}\nconst safeProject = (body.project_name || 'presentation').replace(/[^a-z0-9_-]+/gi, '_').slice(0, 80);\nconst finalName = `${runId}__${safeProject}.pptx`;\nconst finalBuffer = fs.readFileSync(parsed.final_pptx);\nconst { boundary, body: multipartBuffer } = multipartBody(\n  { name: finalName, parents: [FINAL_FOLDER_ID] },\n  finalBuffer,\n  'application/vnd.openxmlformats-officedocument.presentationml.presentation'\n);\nconst binary = await this.helpers.prepareBinaryData(multipartBuffer, 'multipart-final-pptx.bin', 'application/octet-stream');\nreturn [{\n  json: {\n    success: true,\n    run_id: runId,\n    original_file_name: originalName,\n    provider: parsed.planner?.provider,\n    pdf_pages: parsed.extraction?.page_count,\n    text_chars: parsed.extraction?.text_char_count,\n    chunks: parsed.extraction?.chunk_count,\n    slide_count: parsed.builder?.slide_count,\n    validation_valid: parsed.validation?.valid,\n    validation_issues: parsed.validation?.issues?.length || 0,\n    final_ppt_file: finalName,\n    content_type: `multipart/related; boundary=${boundary}`\n  },\n  binary: { body: binary }\n}];\n"
+      },
+      "id": "902238e2-ce84-45aa-9ab3-4cbd2ed736aa",
+      "name": "Run Pipeline Prepare Upload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink,webContentLink,createdTime",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendHeaders": true,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "={{ $json.content_type }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "body"
+      },
+      "id": "7f4f04ee-b9d5-44cd-83cf-8abe67c598a7",
+      "name": "Upload Final PPTX to Drive",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const prepared = $('Run Pipeline Prepare Upload').item.json;\nconst uploaded = $input.item.json;\nreturn [{ json: {\n  ...prepared,\n  final_ppt_drive_id: uploaded.id,\n  final_ppt_link: uploaded.webViewLink,\n  final_ppt_file: uploaded.name || prepared.final_ppt_file,\n}}];"
+      },
+      "id": "2a1f0745-c7f8-4ddf-accf-7aeecdf56e1e",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "098ca406-3c2b-4c40-ae51-e7bcec008b40",
+      "name": "Respond With PPTX Link",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Run Pipeline Prepare Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run Pipeline Prepare Upload": {
+      "main": [
+        [
+          {
+            "node": "Upload Final PPTX to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Final PPTX to Drive": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond With PPTX Link",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "active": false,
+  "pinData": {},
+  "tags": [
+    {
+      "name": "pdf-to-ppt"
+    },
+    {
+      "name": "runtime-code"
+    }
+  ]
+}

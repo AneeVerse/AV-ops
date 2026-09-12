@@ -1,0 +1,235 @@
+{
+  "name": "PDF to PPT - Step 1 Upload HTTP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-to-ppt-upload-http",
+        "responseMode": "responseNode",
+        "options": {
+          "binaryPropertyName": "file"
+        }
+      },
+      "id": "d3eb6ed1-0650-4984-86df-9b364c5bbf3b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "40bb0e92-a667-4b90-af45-86b6405bf6e1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const helpers = this.helpers;\nconst item = $input.item;\nconst binaryKeys = Object.keys(item.binary || {});\nif (binaryKeys.length === 0) return [{ json: { ok: false, error: 'No PDF file received' } }];\nconst binaryProperty = binaryKeys.includes('file') ? 'file' : binaryKeys[0];\nconst binaryMeta = item.binary[binaryProperty];\nconst originalName = binaryMeta.fileName || `upload-${Date.now()}.pdf`;\nif (!originalName.toLowerCase().endsWith('.pdf') && binaryMeta.mimeType !== 'application/pdf') return [{ json: { ok: false, error: 'Only PDF files are supported' } }];\nconst uploadedAt = new Date().toISOString();\nconst jobId = `pdf-ppt-${uploadedAt.replace(/[-:.TZ]/g, '').slice(0, 14)}-${Math.random().toString(36).slice(2, 8)}`;\nconst uploadName = `${jobId}__${originalName}`;\nconst boundary = `pdf_to_ppt_${Date.now()}_${Math.random().toString(16).slice(2)}`;\nconst fileBuffer = await helpers.getBinaryDataBuffer(0, binaryProperty);\nconst body = Buffer.concat([\n  Buffer.from(`--${boundary}\\r\\nContent-Type: application/json; charset=UTF-8\\r\\n\\r\\n`),\n  Buffer.from(JSON.stringify({ name: uploadName, parents: ['1k58M7jIVPSTszWQpI-s9Ia3N9NxImX9m'] })),\n  Buffer.from(`\\r\\n--${boundary}\\r\\nContent-Type: ${binaryMeta.mimeType || 'application/pdf'}\\r\\n\\r\\n`),\n  fileBuffer,\n  Buffer.from(`\\r\\n--${boundary}--`),\n]);\nconst binary = await helpers.prepareBinaryData(body, 'multipart-upload-body.bin', 'application/octet-stream');\nreturn [{ json: { ok: true, job_id: jobId, file_name: originalName, uploaded_at: uploadedAt, upload_name: uploadName, content_type: `multipart/related; boundary=${boundary}` }, binary: { body: binary } }];"
+      },
+      "id": "3b0403dc-4484-4a6b-b8a3-3f3c49129a0d",
+      "name": "Prepare PDF Multipart",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink,webContentLink,createdTime",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendQuery": false,
+        "sendHeaders": true,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "={{ $json.content_type }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "body"
+      },
+      "id": "b3b28d2d-2535-48f1-8696-c7b5fcd8327a",
+      "name": "Upload PDF to Drive",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const helpers = this.helpers;\nconst pdfUpload = $input.item.json;\nconst prepared = $('Prepare PDF Multipart').item.json;\nconst history = {\n  job_id: prepared.job_id,\n  file_name: prepared.file_name,\n  status: 'uploaded',\n  uploaded_at: prepared.uploaded_at,\n  drive_file_id: pdfUpload.id,\n  drive_file_url: pdfUpload.webViewLink || pdfUpload.webContentLink,\n  source: 'nextjs-ui-to-n8n',\n  step: 'step_1_upload_pipeline',\n};\nconst historyName = `${history.job_id}.json`;\nconst boundary = `pdf_to_ppt_history_${Date.now()}_${Math.random().toString(16).slice(2)}`;\nconst body = Buffer.concat([\n  Buffer.from(`--${boundary}\\r\\nContent-Type: application/json; charset=UTF-8\\r\\n\\r\\n`),\n  Buffer.from(JSON.stringify({ name: historyName, parents: ['1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o'] })),\n  Buffer.from(`\\r\\n--${boundary}\\r\\nContent-Type: application/json\\r\\n\\r\\n`),\n  Buffer.from(JSON.stringify(history, null, 2), 'utf8'),\n  Buffer.from(`\\r\\n--${boundary}--`),\n]);\nconst binary = await helpers.prepareBinaryData(body, 'multipart-history-body.bin', 'application/octet-stream');\nreturn [{ json: { ok: true, job: history, history_name: historyName, content_type: `multipart/related; boundary=${boundary}` }, binary: { body: binary } }];"
+      },
+      "id": "754d45bc-7184-43c9-b307-18b66666a4b7",
+      "name": "Prepare History Multipart",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink,webContentLink,createdTime",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendQuery": false,
+        "sendHeaders": true,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "={{ $json.content_type }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "body"
+      },
+      "id": "98088595-796b-4c7a-8b9a-e0d7cd41c6d5",
+      "name": "Upload History to Drive",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const job = $('Prepare History Multipart').item.json.job;\nconst historyUpload = $input.item.json;\njob.history_file_id = historyUpload.id;\njob.history_file_url = historyUpload.webViewLink || historyUpload.webContentLink;\nreturn [{ json: { ok: true, job } }];"
+      },
+      "id": "867009c3-38c0-4a81-8cf9-8cf37e41b916",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "id": "977252b7-e433-4ee0-ae01-5e7149dda733",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1800,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare PDF Multipart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare PDF Multipart": {
+      "main": [
+        [
+          {
+            "node": "Upload PDF to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload PDF to Drive": {
+      "main": [
+        [
+          {
+            "node": "Prepare History Multipart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare History Multipart": {
+      "main": [
+        [
+          {
+            "node": "Upload History to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload History to Drive": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T14:22:52.905099+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "hjcg2804yxrmw0cz4cv9p1yr58",
+  "raw_audio_url": "https://replicate.delivery/xezq/AjeXSkezZ5jXDkcvOX3eHTzbaI6CnldqPs0FIVYy1Hd5xEqtA/tmp102l5727.mp3",
+  "raw_duration": 6.29551,
+  "fitted_duration": 6.29551,
+  "script_text": "If your Software Developer team is adopting AI, your role is shifting whether you see it or not.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section1_hook_fitted.mp3"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "generated": [
+    {
+      "order": 1,
+      "template_id": "slide_01_hero_cover",
+      "role": "hero_image",
+      "path": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779325261/generated_images/slide_01_hero_image.png",
+      "provider": "replicate",
+      "model": "black-forest-labs/flux-schnell",
+      "source_url": "https://replicate.delivery/xezq/yWSuY2Pm7JJkBVjMCfNoR4CC0hAnqQvxXWrBDDFZcebhuAnWA/out-0.png",
+      "prediction_id": "ccxv9m8tdsrmy0cy9079me0674"
+    }
+  ],
+  "skipped": [],
+  "errors": []
+}

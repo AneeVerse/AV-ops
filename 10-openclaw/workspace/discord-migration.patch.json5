@@ -1,0 +1,48 @@
+{
+  session: {
+    identityLinks: {
+      ahmad: ["telegram:844645603", "discord:1415397077902692546"],
+    },
+  },
+  tools: {
+    elevated: {
+      allowFrom: {
+        telegram: [844645603],
+        discord: ["1415397077902692546"],
+      },
+    },
+  },
+  channels: {
+    telegram: {
+      accounts: {
+        onefc: {
+          dmPolicy: "pairing",
+          groupPolicy: "allowlist",
+        },
+      },
+    },
+    whatsapp: {
+      groupPolicy: "allowlist",
+      debounceMs: 0,
+      mediaMaxMb: 50,
+    },
+    discord: {
+      execApprovals: { enabled: true, target: "both" },
+      accounts: {
+        cb_ai_video: {
+          dmPolicy: "allowlist",
+          allowFrom: ["1415397077902692546"],
+          execApprovals: { enabled: true, target: "both" },
+        },
+      },
+    },
+  },
+  bindings: [
+    { type: "route", agentId: "onefc", match: { channel: "telegram", accountId: "onefc" } },
+    { type: "route", agentId: "novino", match: { channel: "telegram", accountId: "novino" } },
+    { type: "route", agentId: "surajscarpe11", match: { channel: "telegram", accountId: "surajscarpe11" } },
+    { type: "route", agentId: "main", match: { channel: "discord", accountId: "cb_ai_video", peer: { kind: "direct", id: "1415397077902692546" } } },
+    { type: "route", agentId: "cb_ai_video", match: { channel: "discord", accountId: "cb_ai_video", peer: { kind: "channel", id: "1523403656509264002" } } },
+    { type: "route", agentId: "cb_ai_video", match: { channel: "discord", accountId: "cb_ai_video" } },
+  ],
+}

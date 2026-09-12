@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-14T16:36:31.529034+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "qkmayy5hfsrmw0czc5ybg7jx7r",
+  "raw_audio_url": "https://replicate.delivery/xezq/AXUVwXw6ZIKgMxwE83ZFHcHyfUpLwl5K08quM5MRmUGHvgcLA/tmpyksrjwry.mp3",
+  "raw_duration": 3.84,
+  "fitted_duration": 3.84,
+  "script_text": "You may be spending time on jobs that have weak real-hiring intent.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0063_20260714_163623_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0063_20260714_163623_section3_implication_fitted.mp3"
+}

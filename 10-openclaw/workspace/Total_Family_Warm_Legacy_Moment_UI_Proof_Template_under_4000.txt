@@ -1,0 +1,56 @@
+Template Name: Total Family Adaptive Background + Reference UI
+
+INPUTS
+Headline: [PASTE HEADLINE HERE]
+Microcopy: [PASTE MICROCOPY HERE]
+UI Reference: use the provided Total Family dashboard image.
+
+Generate a premium 1:1 square social media background for Total Family.
+
+Goal: create a warm cinematic family-legacy background with visible product UI proof. No headline, body text, CTA, watermark, or readable marketing copy outside UI. Designers add final text/logo later.
+
+ADAPTATION RULE
+Use the Headline and Microcopy to choose the family characters, relationship, scene, props, setting, mood, and moment. Support the message visually without writing it into the image.
+
+Examples: legacy/history = elders, adult children, old photos, letters, heirlooms. Planning/values/future = family with tablet/laptop, notes, calendar, vision board. Togetherness/alignment = family discussing one shared object. Preserving stories = storytelling, recording, handwritten notes, albums. Modern organization = family calmly using tablet/laptop with UI proof.
+
+CORE SCENE
+Create a realistic intimate family home scene matching the copy. Prefer kitchen, dining, living room, study corner, or warm home interiors during dusk, night, or golden hour. Characters may be parent/child, grandparents, siblings, adult children, couple, or multi-generation family. Keep candid, natural, emotionally grounded. Home should feel lived-in, not polished.
+
+CHARACTER CONSISTENCY
+People inside the UI must be the same people shown outside. UI avatar cards and photo/video preview must match outside family: age, skin tone, clothing, hairstyle, and identity.
+
+UI STYLE — MATCH REFERENCE
+Make the floating UI mockup very close to the provided dashboard:
+- dark vertical left sidebar
+- small Total Family-style logo area at top-left inside UI only
+- stacked sidebar nav icons/items
+- beige/gray main dashboard background
+- slim top bar with small profile/client area
+- centered page title like “Family Vision”
+- dark section label bar like “Committed Individuals”
+- two rounded white profile/avatar cards
+- right-side family photo/video preview card
+- lower row of clean white values/cards
+- soft shadows, rounded corners, premium SaaS dashboard look
+
+UI PHOTO RULE
+The UI photo/video preview must show the same outside family, as if the dashboard shows their own family photo. No random different people in UI.
+
+UI TEXT RULE
+Only tiny generic UI labels if needed: Family Vision, Values, Family, Members, Milestones, Notes, Shared, Progress. Avoid readable names, personal data, phone numbers, emails, legal/financial text, or marketing copy.
+
+LAYOUT
+Keep clean space for future text: top-left logo-safe area; upper-right/center-right calm headline-safe area with low detail; lower-third soft/darker for text overlay. Avoid faces, hands, bright highlights, UI, or clutter in these areas. Place characters mostly left/lower-left unless copy requires otherwise. Maintain 80px safe margin.
+
+PRODUCT UI PLACEMENT
+Place one floating UI mockup in lower-right or lower-center. It should look like the reference dashboard but not overpower the family scene. Use soft shadow, slight transparency, warm grading, and mild blur if needed.
+
+STYLE
+Use amber lamp light, soft shadows, shallow depth of field, subtle film grain, nostalgic grading, warm black, walnut brown, beige, cream, ivory, muted rust/orange.
+
+STRICTLY AVOID
+No external logo, CTA, watermark, readable marketing copy, third-party logos, raw screenshot, dense charts, finance/legal docs, corporate stock-photo look, sterile white kitchens, office boardrooms, perfect smiling poses, cartoons, futuristic AI style, cold SaaS blue lighting, neon colors, saturated red, or clutter.
+
+FINAL OUTPUT
+Premium 1:1 Total Family background adapted to Headline and Microcopy, with warm cinematic family scene and floating UI mockup closely matching the reference dashboard. People inside UI must match outside people.

@@ -1,0 +1,857 @@
+{
+  "apify_run_id": "0yDHfBcX2Qn1WgUcM",
+  "apify_status": "SUCCEEDED",
+  "apify_cost": 0.091,
+  "dataset_id": "kvuorTuBj9jamCJNE",
+  "queries": [
+    [
+      "New York jewellery designer Shopify email",
+      "Fine Jewellery"
+    ],
+    [
+      "Manhattan jewellery Shopify email",
+      "Fine Jewellery"
+    ],
+    [
+      "Brooklyn jewellery Shopify email",
+      "Demi-fine Jewellery"
+    ],
+    [
+      "NYC fine jewellery Shopify email",
+      "Fine Jewellery"
+    ],
+    [
+      "New York bespoke jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC bespoke jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "New York high jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC high jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "New York vintage jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC vintage jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "New York estate jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC estate jewelry Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "New York handmade rings Shopify contact",
+      "Demi-fine Jewellery"
+    ],
+    [
+      "NYC handmade rings Shopify contact",
+      "Demi-fine Jewellery"
+    ],
+    [
+      "New York custom rings Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC custom rings Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "New York personalized jewelry Shopify contact",
+      "Demi-fine Jewellery"
+    ],
+    [
+      "NYC personalized jewelry Shopify contact",
+      "Demi-fine Jewellery"
+    ],
+    [
+      "New York gold chains Shopify contact",
+      "Fine Jewellery"
+    ],
+    [
+      "NYC gold chains Shopify contact",
+      "Fine Jewellery"
+    ]
+  ],
+  "dataset_items": 20,
+  "candidates_found": 139,
+  "baseline": {
+    "total_rows": 228,
+    "new_york_rows": 157,
+    "emails_found": 199,
+    "new_york_emails": 139,
+    "duplicate_domains": 0,
+    "bad_emails": []
+  },
+  "added_count": 12,
+  "added": [
+    {
+      "Store Name": "Icon Style",
+      "Link": "https://iconstyle.net/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@iconstyle.net",
+      "Email Source URL": "https://iconstyle.net/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "Pippin Vintage Jewelry",
+      "Link": "https://pippinvintage.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "",
+      "Email Source URL": "",
+      "Email Source Type": "",
+      "Shopify Verified": "Yes",
+      "Notes": "No public email found; City and country verified"
+    },
+    {
+      "Store Name": "The Back Vault",
+      "Link": "https://thebackvault.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "support@thebackvault.com",
+      "Email Source URL": "https://thebackvault.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "Erstwhile",
+      "Link": "https://erstwhilejewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@erstwhilejewelry.com",
+      "Email Source URL": "https://erstwhilejewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "Tivoli Jewelers",
+      "Link": "https://tivolijewelers.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Demi-fine Jewellery",
+      "Email": "johndoe@gmail.com",
+      "Email Source URL": "https://tivolijewelers.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "GURHAN",
+      "Link": "https://gurhan.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "concierge@gurhan.com",
+      "Email Source URL": "https://gurhan.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "HANIKEN JEWELERS NEW-YORK",
+      "Link": "https://hanikenjewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@haniken.com",
+      "Email Source URL": "https://hanikenjewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "MUSE Shop",
+      "Link": "https://musexmuse.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "hello@musexmuse.com",
+      "Email Source URL": "https://musexmuse.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "Ounce of Salt",
+      "Link": "https://ounceofsaltjewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@ozofsalt.com",
+      "Email Source URL": "https://ounceofsaltjewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "NYC Luxury",
+      "Link": "https://nycluxury.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "sales@nycluxury.com",
+      "Email Source URL": "https://nycluxury.com/pages/privacy-policy",
+      "Email Source Type": "Privacy Policy",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified; Email changed to same-domain during audit (mike@nycluxury.co -> sales@nycluxury.com)"
+    },
+    {
+      "Store Name": "Couture Jewelry",
+      "Link": "https://couturejewelryshop.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "czcouturejewelry@gmail.com",
+      "Email Source URL": "https://couturejewelryshop.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified"
+    },
+    {
+      "Store Name": "ROEN",
+      "Link": "https://roen.nyc/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "",
+      "Email Source URL": "",
+      "Email Source Type": "",
+      "Shopify Verified": "Yes",
+      "Notes": "No public email found; City and country verified"
+    }
+  ],
+  "skipped_count": 18,
+  "rejected_count": 48,
+  "rejects_sample": [
+    {
+      "domain": "vogue.com",
+      "url": "https://vogue.com/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "vogue.com › living › jewelry",
+      "url": "https://vogue.com › living › jewelry/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "fredleighton.com",
+      "url": "https://fredleighton.com/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "fredleighton.com › shop",
+      "url": "https://fredleighton.com › shop/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "yelp.com › shopping",
+      "url": "https://yelp.com › shopping/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "erstwhilejewelry.com › pages › contact",
+      "url": "https://erstwhilejewelry.com › pages › contact/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "frankpollakandsons.com",
+      "url": "https://frankpollakandsons.com/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "frankpollakandsons.com › ... › blog",
+      "url": "https://frankpollakandsons.com › ... › blog/",
+      "query": "New York vintage jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "catbirdnyc.com",
+      "url": "https://catbirdnyc.com/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "brooklynjewelers.com › terms-condition",
+      "url": "https://brooklynjewelers.com › terms-condition/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "mollysjewelers.com",
+      "url": "https://mollysjewelers.com/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:not_shopify",
+        "Fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "mollysjewelers.com › jewelry",
+      "url": "https://mollysjewelers.com › jewelry/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "brooklyncharm.com",
+      "url": "https://brooklyncharm.com/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:not_shopify",
+        "Fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "gorjana.com › pages › cobble-hill-store-details",
+      "url": "https://gorjana.com › pages › cobble-hill-store-details/",
+      "query": "Brooklyn jewellery Shopify email",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "sothebys.com",
+      "url": "https://sothebys.com/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "sothebys.com › digital-catalogues › high-je...",
+      "url": "https://sothebys.com › digital-catalogues › high-je.../",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "icreativetechnologies.com",
+      "url": "https://icreativetechnologies.com/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "icreativetechnologies.com › best-5-shopify-a...",
+      "url": "https://icreativetechnologies.com › best-5-shopify-a.../",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "help.shopify.com › manual › your-account › cont...",
+      "url": "https://help.shopify.com › manual › your-account › cont.../",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "indeed.com",
+      "url": "https://indeed.com/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "indeed.com › q-fine-jewelry-l-upper-west-si...",
+      "url": "https://indeed.com › q-fine-jewelry-l-upper-west-si.../",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "leibish.com › pages › contact",
+      "url": "https://leibish.com › pages › contact/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "eseospace.com",
+      "url": "https://eseospace.com/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "eseospace.com › ai",
+      "url": "https://eseospace.com › ai/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "gurhan.com › pages › high-jewelry",
+      "url": "https://gurhan.com › pages › high-jewelry/",
+      "query": "New York high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "poetryofmaterialthings.com",
+      "url": "https://poetryofmaterialthings.com/",
+      "query": "NYC high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "yelp.com › ... › high end jewelry stores",
+      "url": "https://yelp.com › ... › high end jewelry stores/",
+      "query": "NYC high jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "windsorjewelers.com",
+      "url": "https://windsorjewelers.com/",
+      "query": "NYC fine jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "windsorjewelers.com › sell-my-jewelry",
+      "url": "https://windsorjewelers.com › sell-my-jewelry/",
+      "query": "NYC fine jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "tiffany.com",
+      "url": "https://tiffany.com/",
+      "query": "NYC fine jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "yelp.com › shopping › jewelry",
+      "url": "https://yelp.com › shopping › jewelry/",
+      "query": "New York jewellery designer Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "influencers.club",
+      "url": "https://influencers.club/",
+      "query": "New York jewellery designer Shopify email",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "influencers.club › jewelry-designers-email-list",
+      "url": "https://influencers.club › jewelry-designers-email-list/",
+      "query": "New York jewellery designer Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "nationaljeweler.com",
+      "url": "https://nationaljeweler.com/",
+      "query": "New York jewellery designer Shopify email",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "nationaljeweler.com › articles › 11349-the-smart...",
+      "url": "https://nationaljeweler.com › articles › 11349-the-smart.../",
+      "query": "New York jewellery designer Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "hulkapps.com",
+      "url": "https://hulkapps.com/",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:category_mismatch",
+        "Demi-fine Jewellery:category_mismatch"
+      ]
+    },
+    {
+      "domain": "hulkapps.com › products › jewelry-store-ma...",
+      "url": "https://hulkapps.com › products › jewelry-store-ma.../",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "manhattanjewellery.com.au",
+      "url": "https://manhattanjewellery.com.au/",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:not_shopify",
+        "Demi-fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "manhattanjewellery.com.au › contact",
+      "url": "https://manhattanjewellery.com.au › contact/",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "shopify.com › sell › jewelry",
+      "url": "https://shopify.com › sell › jewelry/",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "gemfind.com › pages › email-marketing-for-jewel...",
+      "url": "https://gemfind.com › pages › email-marketing-for-jewel.../",
+      "query": "Manhattan jewellery Shopify email",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "mareinewyork.com › pages › bespokejewelry",
+      "url": "https://mareinewyork.com › pages › bespokejewelry/",
+      "query": "New York bespoke jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "yelp.com › ... › shopping › jewelry",
+      "url": "https://yelp.com › ... › shopping › jewelry/",
+      "query": "New York bespoke jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "couturejewelryshop.com › pages › bespoke-fine-j...",
+      "url": "https://couturejewelryshop.com › pages › bespoke-fine-j.../",
+      "query": "New York bespoke jewelry Shopify contact",
+      "reasons": [
+        "Fine Jewellery:fetch_failed",
+        "Demi-fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "mati-jewelry.com › pages › contact",
+      "url": "https://mati-jewelry.com › pages › contact/",
+      "query": "NYC handmade rings Shopify contact",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "shayanyc.com",
+      "url": "https://shayanyc.com/",
+      "query": "NYC handmade rings Shopify contact",
+      "reasons": [
+        "Demi-fine Jewellery:not_shopify",
+        "Fine Jewellery:not_shopify"
+      ]
+    },
+    {
+      "domain": "laurenbjewelry.com",
+      "url": "https://laurenbjewelry.com/",
+      "query": "NYC handmade rings Shopify contact",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    },
+    {
+      "domain": "laurenbjewelry.com › contact",
+      "url": "https://laurenbjewelry.com › contact/",
+      "query": "NYC handmade rings Shopify contact",
+      "reasons": [
+        "Demi-fine Jewellery:fetch_failed",
+        "Fine Jewellery:fetch_failed"
+      ]
+    }
+  ],
+  "skips_sample": [
+    {
+      "domain": "loveadorned.com",
+      "url": "https://loveadorned.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "pagesargisson.com",
+      "url": "https://pagesargisson.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "brooklynjewelers.com",
+      "url": "https://brooklynjewelers.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "goldpointbk.com",
+      "url": "https://goldpointbk.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "gorjana.com",
+      "url": "https://gorjana.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "davidwebb.com",
+      "url": "https://davidwebb.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "leibish.com",
+      "url": "https://leibish.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "greenwichjewelers.com",
+      "url": "https://greenwichjewelers.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "popular.jewelry",
+      "url": "https://popular.jewelry/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "phoenixroze.com",
+      "url": "https://phoenixroze.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "reinsteinross.com",
+      "url": "https://reinsteinross.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "mareinewyork.com",
+      "url": "https://mareinewyork.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "stephaniegottlieb.com",
+      "url": "https://stephaniegottlieb.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "julielambny.com",
+      "url": "https://julielambny.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "facetsny.com",
+      "url": "https://facetsny.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "mati-jewelry.com",
+      "url": "https://mati-jewelry.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "lizziefortunato.com",
+      "url": "https://lizziefortunato.com/",
+      "reason": "duplicate_domain"
+    },
+    {
+      "domain": "shwjewelry.com",
+      "url": "https://shwjewelry.com/",
+      "reason": "duplicate_domain"
+    }
+  ],
+  "breakdown": {
+    "added": 12,
+    "not_shopify": 13,
+    "fetch_failed": 34,
+    "duplicate_domain": 18,
+    "category_mismatch": 1
+  },
+  "email_audit": [
+    {
+      "domain": "iconstyle.net",
+      "email": "info@iconstyle.net",
+      "note": "same_domain_already"
+    },
+    {
+      "domain": "pippinvintage.com",
+      "email": "",
+      "note": "kept_existing_or_blank"
+    },
+    {
+      "domain": "thebackvault.com",
+      "email": "support@thebackvault.com",
+      "note": "same_domain_already"
+    },
+    {
+      "domain": "erstwhilejewelry.com",
+      "email": "info@erstwhilejewelry.com",
+      "note": "same_domain_already"
+    },
+    {
+      "domain": "tivolijewelers.com",
+      "email": "johndoe@gmail.com",
+      "note": "kept_existing_or_blank"
+    },
+    {
+      "domain": "gurhan.com",
+      "email": "concierge@gurhan.com",
+      "note": "same_domain_already"
+    },
+    {
+      "domain": "hanikenjewelry.com",
+      "email": "info@haniken.com",
+      "note": "kept_existing_or_blank"
+    },
+    {
+      "domain": "musexmuse.com",
+      "email": "hello@musexmuse.com",
+      "note": "same_domain_already"
+    },
+    {
+      "domain": "ounceofsaltjewelry.com",
+      "email": "info@ozofsalt.com",
+      "note": "kept_existing_or_blank"
+    },
+    {
+      "domain": "nycluxury.com",
+      "email": "sales@nycluxury.com",
+      "note": "replaced mike@nycluxury.co -> sales@nycluxury.com"
+    },
+    {
+      "domain": "couturejewelryshop.com",
+      "email": "czcouturejewelry@gmail.com",
+      "note": "kept_existing_or_blank"
+    },
+    {
+      "domain": "roen.nyc",
+      "email": "",
+      "note": "kept_existing_or_blank"
+    }
+  ],
+  "cleanup_done": [
+    {
+      "row": 234,
+      "cleared_email": "johndoe@gmail.com",
+      "reason": "fake placeholder email"
+    }
+  ],
+  "final_audit": {
+    "total_rows": 240,
+    "new_york_rows": 169,
+    "emails_found": 208,
+    "new_york_emails": 148,
+    "duplicate_domains": 0,
+    "bad_emails": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T08:20:40.987117+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "yp94hcrgkhrmt0cz3k2atfnssw",
+  "raw_audio_url": "https://replicate.delivery/xezq/oKOCiLNpPSo1PRKe0z1iO0u3WZbAUNIEyiZqmyYfksFYfPptA/tmppzvho6t2.mp3",
+  "raw_duration": 4.205714,
+  "fitted_duration": 4.205714,
+  "script_text": "Market rates for your work-style are moving faster than internal raises.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0008_20260701_081503_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0008_20260701_081503_section2_insight_fitted.mp3"
+}

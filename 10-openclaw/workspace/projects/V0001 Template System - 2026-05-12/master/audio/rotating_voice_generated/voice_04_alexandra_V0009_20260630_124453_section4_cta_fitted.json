@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T13:01:58.011023+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "de9j25ssv5rmt0cz32fsmxzstw",
+  "raw_audio_url": "https://replicate.delivery/xezq/wD9G7G6bgvLjKx4mlm4Pf3UMRl47Rs7c1BG8bOM1OR0igLaLA/tmpb0cayivq.mp3",
+  "raw_duration": 3.604898,
+  "fitted_duration": 3.604898,
+  "script_text": "Find out where your work style lands - before the market decides.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260630_124453_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260630_124453_section4_cta_fitted.mp3"
+}

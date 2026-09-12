@@ -1,0 +1,85 @@
+{
+  "project_name": "AI video automation template-02",
+  "canvas": { "width": 1080, "height": 1920, "fps": 30 },
+  "brand": {
+    "name": "Truckstop.com",
+    "accent_color": "#D71920",
+    "background_color": "#F4F4F1",
+    "text_color": "#111111",
+    "body_color": "#C01822"
+  },
+  "timing": {
+    "section_01": 4.6,
+    "section_02": 3.9,
+    "section_03": 3.6,
+    "section_04": 4.7,
+    "section_05_outro": "use_outro_as_is"
+  },
+  "assets": {
+    "screenshot_01": "inputs/sample_screenshots/screenshot_sample_01.jpg",
+    "screenshot_02": "inputs/sample_screenshots/screenshot_sample_02.jpg",
+    "section_01_table_ui": "inputs/sample_screenshots/section_01_table_ui.jpg",
+    "section_01_map_ui": "inputs/sample_screenshots/section_01_map_ui.jpg",
+    "section_01_ui_3": "inputs/sample_screenshots/section_01_ui_3.jpg",
+    "section_01_ui_4": "inputs/sample_screenshots/section_01_ui_4.jpg",
+    "section_01_ui_5": "inputs/sample_screenshots/section_01_ui_5.jpg",
+    "section_01_ui_6": "inputs/sample_screenshots/section_01_ui_6.jpg",
+    "section_01_ui_7": "inputs/sample_screenshots/section_01_ui_7.jpg",
+    "section_01_bottom_01": "inputs/sample_screenshots/section_01_bottom_01.jpg",
+    "section_01_bottom_02": "inputs/sample_screenshots/section_01_bottom_02.jpg",
+    "section_01_source_ui_01": "inputs/sample_screenshots/section_01_source_ui_01.jpg",
+    "section_01_source_ui_02": "inputs/sample_screenshots/section_01_source_ui_02.jpg",
+    "section_01_source_ui_03": "inputs/sample_screenshots/section_01_source_ui_03.jpg",
+    "section_01_source_ui_04": "inputs/sample_screenshots/section_01_source_ui_04.jpg",
+    "section_01_source_ui_05": "inputs/sample_screenshots/section_01_source_ui_05.jpg",
+    "screenshot_03": "inputs/sample_screenshots/screenshot_sample_03.jpg",
+    "section_02_bg": "assets/backgrounds/section_02_bg.mp4",
+    "section_04_bg": "assets/backgrounds/section_04_bg.mp4",
+    "outro": "inputs/outro/outro_keep_as_is.mp4"
+  },
+  "sections": [
+    {
+      "id": 1,
+      "type": "ui_carousel",
+      "headline_lines": ["Find capacity", "without leaving"],
+      "highlight": "the load board.",
+      "body": "Post loads, search trucks, and cover freight faster with one of the largest carrier marketplaces in freight.",
+      "screenshots": ["section_01_bottom_01", "section_01_bottom_02"],
+      "primary_screenshot": "section_01_bottom_01",
+      "duration": 4.6
+    },
+    {
+      "id": 2,
+      "type": "video_bg_text",
+      "headline_lines": ["Reach more drivers."],
+      "highlight": "Cover loads faster.",
+      "logo_label": "TRUCKER PATH",
+      "body": "Truckstop loads now reach the Trucker Path network, expanding access to a large community of professional drivers while keeping the same marketplace standards.",
+      "background": "section_02_bg",
+      "duration": 3.9
+    },
+    {
+      "id": 3,
+      "type": "ui_scroll",
+      "headline_lines": ["Hard load?", "Get more"],
+      "highlight": "visibility.",
+      "body": "Use dashboard visibility and performance signals to move difficult loads faster.",
+      "screenshots": ["screenshot_03"],
+      "duration": 3.6
+    },
+    {
+      "id": 4,
+      "type": "video_bg_text",
+      "headline_lines": ["Introducing", "Wize Load by"],
+      "highlight": "Truckstop.com.",
+      "body": "Estimate heavy haul, oversized, and open deck rates in seconds before you post.",
+      "background": "section_04_bg",
+      "duration": 4.7
+    },
+    {
+      "id": 5,
+      "type": "outro_as_is",
+      "asset": "outro"
+    }
+  ]
+}

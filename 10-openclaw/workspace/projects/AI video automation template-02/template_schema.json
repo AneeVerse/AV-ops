@@ -1,0 +1,90 @@
+{
+  "project_name": "AI video automation template-02",
+  "source": "source_video.mp4",
+  "spec": {
+    "duration_seconds": 18.23,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "format": "vertical_9_16"
+  },
+  "style": {
+    "category": "B2B SaaS/product explainer ad",
+    "backgrounds": ["white/light gray", "industry footage"],
+    "accent_system": "red rectangle with white key phrase",
+    "headline_style": "large bold black sans-serif, top-left aligned",
+    "ui_style": "rounded browser mockup with drop shadow",
+    "motion": ["hard cuts", "UI pan/slide", "footage motion behind fixed text"],
+    "end_card": "minimal white logo card"
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "name": "Opening benefit + UI proof",
+      "time_range": "0.0-4.6s",
+      "duration": 4.6,
+      "background": "white/light gray with subtle chevrons",
+      "visual": "product UI mockup, browser frame, dashboard/search/table/map",
+      "copy_formula": "[Verb] [business outcome] without leaving [highlight: platform/category].",
+      "motion": "UI enters/pans/reframes"
+    },
+    {
+      "id": 2,
+      "name": "Real-world reach/outcome",
+      "time_range": "4.6-8.5s",
+      "duration": 3.9,
+      "background": "industry footage",
+      "visual": "aerial/drone real-world industry shot",
+      "copy_formula": "Reach more [target users]. [highlight: outcome faster].",
+      "motion": "footage moves, text remains fixed"
+    },
+    {
+      "id": 3,
+      "name": "Problem-solution UI proof",
+      "time_range": "8.5-12.1s",
+      "duration": 3.6,
+      "background": "white/light gray",
+      "visual": "dashboard/table/metrics UI",
+      "copy_formula": "[Problem]? Get more [highlight: solution].",
+      "motion": "UI pan/crop shift"
+    },
+    {
+      "id": 4,
+      "name": "Product/feature announcement",
+      "time_range": "12.1-16.8s",
+      "duration": 4.7,
+      "background": "industry footage",
+      "visual": "hero footage related to product category",
+      "copy_formula": "Introducing [Product/Feature] by [highlight: Brand].",
+      "motion": "footage moves, text remains fixed"
+    },
+    {
+      "id": 5,
+      "name": "End card",
+      "time_range": "16.8-18.2s",
+      "duration": 1.4,
+      "background": "white with subtle pattern",
+      "visual": "centered logo",
+      "copy_formula": "Logo + optional CTA",
+      "motion": "minimal/fade"
+    }
+  ],
+  "required_inputs": [
+    "brand_name",
+    "logo",
+    "accent_color",
+    "product_screenshots_or_recordings",
+    "industry_footage",
+    "opening_benefit",
+    "outcome_claim",
+    "problem_solution_claim",
+    "feature_intro"
+  ],
+  "automation_outputs": [
+    "scene plan",
+    "AI footage prompts",
+    "rendered scene clips",
+    "final mp4",
+    "drive upload link"
+  ]
+}

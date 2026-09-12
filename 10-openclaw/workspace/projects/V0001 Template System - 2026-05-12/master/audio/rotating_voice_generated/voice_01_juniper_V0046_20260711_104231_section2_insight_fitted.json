@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T10:42:39.503459+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "2ggq06d371rmr0cza32t6afgnw",
+  "raw_audio_url": "https://replicate.delivery/xezq/aTdsxAhRU0IZBFTfqQ604cgjSYSToh9NfYcqy9jaPgveA6vtA/tmpmtpt8nut.mp3",
+  "raw_duration": 5.433469,
+  "fitted_duration": 5.433469,
+  "script_text": "The job market for many occupations due to AI is highly volatile now with many opportunities emerging.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_104231_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_104231_section2_insight_fitted.mp3"
+}

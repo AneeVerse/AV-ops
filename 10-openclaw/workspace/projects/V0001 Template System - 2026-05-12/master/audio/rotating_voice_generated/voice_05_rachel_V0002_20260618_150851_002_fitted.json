@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-18T15:14:35.739265+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "fwrefnt7jsrmy0cyvd6bpmxk90",
+  "raw_audio_url": "https://replicate.delivery/xezq/VpwawDRHnUrdO9qNc2fFctUKs4zLp2PPai86HT3ecBTa1bwWA/tmpavh3i3eg.mp3",
+  "raw_duration": 31.582041,
+  "fitted_duration": 18.912653,
+  "script_text": "If you're a Software Developer, you likely match several adjacent roles right now. Across approximately 95% of U.S. publicly posted jobs, employers hire on work-style fit , not just title overlap. Knowing your fit is the cheapest career insurance you can get. Get your Trait DNA Work-Style Report free , see the roles your work style actually fits. Free. 15 minutes. No credit card. Get your personal Work-Style Report.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0002_20260618_150851_002_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0002_20260618_150851_002_fitted.mp3"
+}

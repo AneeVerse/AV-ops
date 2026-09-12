@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T13:21:01.464038+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "w0xerqq7qhrmy0cz8w4t0n77z4",
+  "raw_audio_url": "https://replicate.delivery/xezq/SpFDvA4KdWqQCh8RfTCtZ6ediTjQpDt3Pj6yNPBFfCt4RqutA/tmprisev3bv.mp3",
+  "raw_duration": 1.750204,
+  "fitted_duration": 1.750204,
+  "script_text": "Do my strengths fit better jobs?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0036_20260709_132057_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0036_20260709_132057_section1_hook_fitted.mp3"
+}

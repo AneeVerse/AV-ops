@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T14:03:51.461445+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "5rjq5sm6hdrmw0cz2ert1t1tpg",
+  "raw_audio_url": "https://replicate.delivery/xezq/ODf0HE199hwWHarJkfNGggDx22xKdwW6VbO7VwbVTbmG1C0WA/tmp8u69w_zy.mp3",
+  "raw_duration": 5.616327,
+  "fitted_duration": 5.616327,
+  "script_text": "A Software Developer and adjacent roles share most of the work and one often pays noticeably more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section1_hook_fitted.mp3"
+}

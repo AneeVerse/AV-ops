@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "run_id": "builder_repeat_test_001",
+  "output_pptx_path": "/root/.openclaw/workspace/ppt_library/builder_repeat_test_brand_fixed.pptx",
+  "slide_count": 10,
+  "selected_source_slides": [
+    1,
+    14,
+    8,
+    8,
+    10,
+    10,
+    12,
+    12,
+    18,
+    15
+  ],
+  "replacements": {
+    "text": 21,
+    "images": 1
+  },
+  "warnings": [
+    "Slide 12 ignored unmapped/protected image roles: ['main_image']",
+    "Slide 12 ignored unmapped/protected image roles: ['main_image']",
+    "Slide 18 ignored unmapped/protected image roles: ['full_slide_image']"
+  ],
+  "errors": []
+}

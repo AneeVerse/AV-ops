@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T13:13:43.518045+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "dc63pr7x1srmy0cz32mt0nehcm",
+  "raw_audio_url": "https://replicate.delivery/xezq/DVoI67jwdyZtDR027Fiev8g7pLqyidC3veqWUOetC6JMYuotA/tmpkm1ska_n.mp3",
+  "raw_duration": 5.093878,
+  "fitted_duration": 5.093878,
+  "script_text": "Some of the best Software Developer roles rarely appear on LinkedIn or Indeed.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260630_124453_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260630_124453_section1_hook_fitted.mp3"
+}

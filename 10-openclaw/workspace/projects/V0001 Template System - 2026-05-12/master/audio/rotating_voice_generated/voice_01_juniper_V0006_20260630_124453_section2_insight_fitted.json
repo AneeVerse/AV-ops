@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T12:45:01.447580+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "tc1bwj5p65rmy0cz327rhb7xc0",
+  "raw_audio_url": "https://replicate.delivery/xezq/CtjYEfker3kSPUT1gYyvAveGe53Wts9mPYyhpQH6vvmwEbRbB/tmp7hcupls5.mp3",
+  "raw_duration": 3.422041,
+  "fitted_duration": 3.422041,
+  "script_text": "Hiring managers source from your background - by a different name.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260630_124453_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260630_124453_section2_insight_fitted.mp3"
+}

@@ -1,0 +1,217 @@
+{
+  "name": "PDF to PPT - Step 1 Upload Native2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-to-ppt-upload-native2",
+        "responseMode": "responseNode",
+        "options": {
+          "binaryPropertyName": "file"
+        }
+      },
+      "id": "748ab4d9-f515-47b9-8630-05697a596a61",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "25ec6866-c9b6-40eb-a860-7bde233271e2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.item;\nconst binaryKeys = Object.keys(item.binary || {});\nif (binaryKeys.length === 0) {\n  return [{ json: { ok: false, error: 'No PDF file received' } }];\n}\nconst binaryProperty = binaryKeys.includes('file') ? 'file' : binaryKeys[0];\nconst binaryMeta = item.binary[binaryProperty];\nconst originalName = binaryMeta.fileName || `upload-${Date.now()}.pdf`;\nif (!originalName.toLowerCase().endsWith('.pdf') && binaryMeta.mimeType !== 'application/pdf') {\n  return [{ json: { ok: false, error: 'Only PDF files are supported' } }];\n}\nconst uploadedAt = new Date().toISOString();\nconst jobId = `pdf-ppt-${uploadedAt.replace(/[-:.TZ]/g, '').slice(0, 14)}-${Math.random().toString(36).slice(2, 8)}`;\nreturn [{\n  json: {\n    ok: true,\n    job_id: jobId,\n    file_name: originalName,\n    uploaded_at: uploadedAt,\n    upload_name: `${jobId}__${originalName}`,\n  },\n  binary: { file: item.binary[binaryProperty] },\n}];"
+      },
+      "id": "00450b89-6200-4195-8f2e-fea014932cf3",
+      "name": "Prepare Job",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "upload",
+        "inputDataFieldName": "file",
+        "name": "={{ $json.upload_name }}",
+        "driveId": {
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "mode": "id",
+          "value": "1k58M7jIVPSTszWQpI-s9Ia3N9NxImX9m"
+        },
+        "options": {
+          "simplifyOutput": false
+        }
+      },
+      "id": "6a71eb5b-2e2d-4e2e-8a97-61d39b29cf44",
+      "name": "Upload PDF to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        740,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const helpers = this.helpers;\nconst uploaded = $input.item.json;\nconst prepared = $('Prepare Job').item.json;\nconst history = {\n  job_id: prepared.job_id,\n  file_name: prepared.file_name,\n  status: 'uploaded',\n  uploaded_at: prepared.uploaded_at,\n  drive_file_id: uploaded.id,\n  drive_file_url: uploaded.webViewLink || uploaded.webContentLink,\n  source: 'nextjs-ui-to-n8n',\n  step: 'step_1_upload_pipeline',\n};\nconst historyName = `${history.job_id}.json`;\nconst binary = await helpers.prepareBinaryData(Buffer.from(JSON.stringify(history, null, 2), 'utf8'), historyName, 'application/json');\nreturn [{ json: { ok: true, job: history, history_name: historyName }, binary: { file: binary } }];"
+      },
+      "id": "7a4d2538-69fe-47b8-9476-50a54caa2701",
+      "name": "Create History Binary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "upload",
+        "inputDataFieldName": "file",
+        "name": "={{ $json.history_name }}",
+        "driveId": {
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "mode": "id",
+          "value": "1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o"
+        },
+        "options": {
+          "simplifyOutput": false
+        }
+      },
+      "id": "863365a7-9376-4056-a2e5-70c757e57c80",
+      "name": "Upload History to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1220,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const job = $('Create History Binary').item.json.job;\nconst historyUpload = $input.item.json;\njob.history_file_id = historyUpload.id;\njob.history_file_url = historyUpload.webViewLink || historyUpload.webContentLink;\nreturn [{ json: { ok: true, job } }];"
+      },
+      "id": "62e9acbd-cef1-4d20-b97e-a566784e74d4",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "id": "874d75d2-284b-4714-844b-fee4c3fdf8f4",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1700,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare Job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Job": {
+      "main": [
+        [
+          {
+            "node": "Upload PDF to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload PDF to Drive": {
+      "main": [
+        [
+          {
+            "node": "Create History Binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create History Binary": {
+      "main": [
+        [
+          {
+            "node": "Upload History to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload History to Drive": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

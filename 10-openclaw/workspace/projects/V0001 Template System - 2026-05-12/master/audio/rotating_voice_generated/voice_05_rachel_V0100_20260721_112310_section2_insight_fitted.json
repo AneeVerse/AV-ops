@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-21T11:23:17.846867+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "d1mt6b3f05rmy0czghn81ztcqg",
+  "raw_audio_url": "https://replicate.delivery/xezq/I6Rfg0snFLU1aSXyEOrOMAiI4ZHEvK0efl1feeZ2BKzJpI0uF/tmponj5v3e6.mp3",
+  "raw_duration": 5.433469,
+  "fitted_duration": 5.433469,
+  "script_text": "Hiring demand momentum over time will give you a confident answer rather than today\u2019s headlines.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0100_20260721_112310_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0100_20260721_112310_section2_insight_fitted.mp3"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T10:14:16.080482+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "zbq2fna965rmw0cz9e2ra125pc",
+  "raw_audio_url": "https://replicate.delivery/xezq/Wc7edu66rel5k0MTTCBEefSSQrtLH4f920QJET4hDeCe7vzbLA/tmpx7ubvze0.mp3",
+  "raw_duration": 4.440816,
+  "fitted_duration": 4.440816,
+  "script_text": "You may be searching too narrowly while better-fit paths are nearby.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0041_20260710_101405_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0041_20260710_101405_section3_implication_fitted.mp3"
+}

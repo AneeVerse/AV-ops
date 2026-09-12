@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T15:52:02.913375+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "24ptzghczxrmy0cz8yaa79bc8r",
+  "raw_audio_url": "https://replicate.delivery/xezq/lzA2YCnHxYKbLx25f8yPRUSFeoKBOer0VBbRWwLkiWVCtuutA/tmpy0ikpnx8.mp3",
+  "raw_duration": 3.004082,
+  "fitted_duration": 3.004082,
+  "script_text": "How do I get more interviews from fewer applications?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_155158_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_155158_section1_hook_fitted.mp3"
+}

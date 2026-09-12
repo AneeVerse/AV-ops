@@ -1,0 +1,48 @@
+Report created: 
+	5/12/2026	1:13:11 PM
+
+Project name: V0001.aep
+
+Source files collected to: 
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\YT shorts\collected files\V0001 folder
+
+Source files collected: For selected comps
+
+Collected comps:  
+	V0001_Option1
+	CTA1
+	95Percent1
+	
+Number of collected files:  7
+
+Size of collected files:  53.6 MB
+
+Collected source files: 
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\images\CertificateImage1.png
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\images\CertificateImage2.png
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\images\CertificateImage3.png
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\music\Corporate.wav
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\videos\0_Cafe_Man_1080x1920.mp4
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\videos\hands-typing-on-a-laptop-keyboard-close-up-2026-01-20-15-06-20-utc.mp4
+	G:\My Drive\Content Beta (Animators)\Global Pros Edge\Social Media Banners\voiceover\VO1.mp3
+	
+Rendering plug-ins:
+	Classic 3D
+	
+Effects used:  5
+
+Effect:  
+	
+Effect:  Gaussian Blur
+	
+Effect:  Slider Control
+	
+Effect:  Tint
+	
+Effect:  Unknown Effect
+	
+
+Layer:  Text Layer
+	External dependencies:  
+		Font family: “Graphik Web”, Font style: “Bold”
+

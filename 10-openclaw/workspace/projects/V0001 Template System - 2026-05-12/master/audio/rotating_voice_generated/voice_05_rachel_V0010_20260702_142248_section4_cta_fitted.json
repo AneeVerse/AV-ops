@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T14:23:03.547737+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "7zn9v2sfznrmw0cz4cv8wm8m9r",
+  "raw_audio_url": "https://replicate.delivery/xezq/9b17gyT0NoI0AVBkobnWT9a1emSqM5aSMNBgiQUnR1QjMhaLA/tmp4aa4m9gg.mp3",
+  "raw_duration": 3.186939,
+  "fitted_duration": 3.186939,
+  "script_text": "See where you transfer - before your role shifts under you.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section4_cta_fitted.mp3"
+}

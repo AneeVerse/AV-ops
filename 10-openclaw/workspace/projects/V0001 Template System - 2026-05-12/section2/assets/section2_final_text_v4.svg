@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="grad95" x1="0%" y1="70%" x2="100%" y2="10%">
+      <stop offset="0%" stop-color="#b100b9"/>
+      <stop offset="38%" stop-color="#e2177c"/>
+      <stop offset="62%" stop-color="#ff8a00"/>
+      <stop offset="100%" stop-color="#7030d9"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#a855f7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="442" y="560" font-size="262" letter-spacing="14" fill="url(#grad95)" filter="url(#softShadow)">95</text>
+    <text x="715" y="560" font-size="132" letter-spacing="8" fill="#002b67">%</text>
+    <text x="540" y="725" font-size="88" letter-spacing="3" fill="#002b67">
+      <tspan x="540" dy="0">of U.S. publicly</tspan>
+      <tspan x="540" dy="105">posted jobs stay</tspan>
+      <tspan x="540" dy="105">invisible to</tspan>
+      <tspan x="540" dy="105">candidates who</tspan>
+      <tspan x="540" dy="105">don't know</tspan>
+      <tspan x="540" dy="105">to search them</tspan>
+    </text>
+  </g>
+</svg>

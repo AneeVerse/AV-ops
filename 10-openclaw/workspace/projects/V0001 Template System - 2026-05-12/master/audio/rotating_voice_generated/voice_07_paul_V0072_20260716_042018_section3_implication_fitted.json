@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-16T04:20:27.727422+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "4tvzp6c6nhrmy0czd4krv1wx24",
+  "raw_audio_url": "https://replicate.delivery/xezq/hrSSNsIuWcoPBZo6ATieLNeKq7aJ00qTsBvN6H0LzeIUwBztA/tmpmgb4xpsn.mp3",
+  "raw_duration": 3.239184,
+  "fitted_duration": 3.239184,
+  "script_text": "You may be accepting less than the market could support.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0072_20260716_042018_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0072_20260716_042018_section3_implication_fitted.mp3"
+}

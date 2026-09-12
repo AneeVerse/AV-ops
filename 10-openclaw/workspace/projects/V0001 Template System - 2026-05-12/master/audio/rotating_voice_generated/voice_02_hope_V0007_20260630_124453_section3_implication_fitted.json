@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T12:50:35.617844+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "jmwhdaee49rmw0cz32aahtp4r4",
+  "raw_audio_url": "https://replicate.delivery/xezq/cPjmUmKHFPo1FxaKRFtegq92erRkevu2nLxhxkYwiL21stotA/tmp8vi4idql.mp3",
+  "raw_duration": 3.239184,
+  "fitted_duration": 3.239184,
+  "script_text": "The roles paying more are hiring your exact background.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260630_124453_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260630_124453_section3_implication_fitted.mp3"
+}

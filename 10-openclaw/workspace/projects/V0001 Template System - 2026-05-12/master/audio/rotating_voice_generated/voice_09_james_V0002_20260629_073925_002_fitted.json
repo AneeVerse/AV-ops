@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T07:44:48.941418+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "95g9rcbm91rmr0cz29b8h726pg",
+  "raw_audio_url": "https://replicate.delivery/xezq/Fc6dJRD7eeuz4k1xHzRnwwxKktDh9Nm0nPblPxIREJefG1PbB/tmpr32rqeam.mp3",
+  "raw_duration": 26.226939,
+  "fitted_duration": 19.565714,
+  "script_text": "If you're a Software Developer, you likely match several adjacent roles right now. Across approximately 95% of U.S. publicly posted jobs, employers hire on work-style fit - not just title overlap. Knowing your fit is the cheapest career insurance you can get. Find out which roles you already qualify for - beyond your current title.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0002_20260629_073925_002_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0002_20260629_073925_002_fitted.mp3"
+}

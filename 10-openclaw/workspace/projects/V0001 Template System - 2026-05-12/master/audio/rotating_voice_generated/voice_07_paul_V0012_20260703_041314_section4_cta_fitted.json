@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T04:19:37.394905+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "9wdt4frnb9rmw0cz4rt82ppznw",
+  "raw_audio_url": "https://replicate.delivery/xezq/ceyCIOBqFlxAE6VjdnBnNe5WKZRZJPrUFrYQBLFkxOCYpO1WA/tmpgn8k3gqx.mp3",
+  "raw_duration": 3.526531,
+  "fitted_duration": 3.526531,
+  "script_text": "Find the emerging roles recruiting your background right now.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_041314_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_041314_section4_cta_fitted.mp3"
+}

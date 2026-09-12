@@ -1,0 +1,140 @@
+{
+  "run_id": "ai_planner_1779288159",
+  "project_name": "AI Pipeline Test",
+  "output_file_name": "PDF_to_PPT_Automation_Presentation.pptx",
+  "target_slide_count": 10,
+  "actual_slide_count": 10,
+  "planner_mode": "ai",
+  "slides": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "text": {
+        "heading": "Proposed Automation System",
+        "supporting_text": "Streamlining PDF to PowerPoint Conversion"
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png",
+          "prompt": ""
+        }
+      },
+      "order": 1
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "text": {
+        "heading": "Overview of Features",
+        "subheading": "Supporting Large Documents and Brand Control",
+        "timeline_block_1": "Feature 1: User-Friendly Interface",
+        "timeline_block_2": "Feature 2: Editable Output",
+        "timeline_block_3": "Feature 3: Adjustable Slide Count",
+        "timeline_block_4": "Feature 4: Technology Stack",
+        "timeline_block_5": "Feature 5: PDF Chunking",
+        "closing_line": "Ensuring Adaptability for All Users"
+      },
+      "order": 2,
+      "images": {}
+    },
+    {
+      "template_id": "slide_03_metric_overview",
+      "text": {
+        "heading": "Key Metrics",
+        "subheading": "Performance Overview",
+        "metric_1_label": "User Satisfaction",
+        "metric_1_value": "95%",
+        "metric_2_label": "Conversion Speed",
+        "metric_2_value": "2x Faster",
+        "metric_3_label": "Document Capacity",
+        "metric_3_value": "Up to 100 Pages",
+        "metric_4_label": "Brand Compliance",
+        "metric_4_value": "100% Maintained"
+      },
+      "order": 3,
+      "images": {}
+    },
+    {
+      "template_id": "slide_04_research_chart_insight",
+      "text": {
+        "heading": "User Interface Insights",
+        "subheading": "Feedback from Beta Testers",
+        "source": "User Research Report 2023",
+        "chart_title": "User Experience Ratings",
+        "key_insight": "High satisfaction with the interface",
+        "metric_label": "Overall Rating",
+        "metric_value": "4.8/5"
+      },
+      "order": 4,
+      "images": {}
+    },
+    {
+      "template_id": "slide_05_research_stat_cards",
+      "text": {
+        "heading": "Automation Benefits",
+        "body": "Streamlined processes lead to increased efficiency.",
+        "metric_1_label": "Time Saved",
+        "metric_1_value": "30%",
+        "metric_2_label": "Error Reduction",
+        "metric_2_value": "50%",
+        "metric_3_label": "Cost Efficiency",
+        "metric_3_value": "20% Savings",
+        "source": "Internal Analysis 2023"
+      },
+      "order": 5,
+      "images": {}
+    },
+    {
+      "template_id": "slide_06_platform_overview",
+      "text": {
+        "heading": "Platform Overview",
+        "section_label": "One-Stop Solution",
+        "body": "Our platform integrates all necessary tools for seamless PDF to PPT conversion.",
+        "subheading": "Key Features",
+        "benefit_row": "User-Friendly, Efficient, Scalable",
+        "closing_line": "Designed for all users"
+      },
+      "order": 6,
+      "images": {}
+    },
+    {
+      "template_id": "slide_07_feature_matrix",
+      "text": {
+        "heading": "Feature Comparison",
+        "subheading": "How We Stand Out",
+        "section_label": "Feature Matrix",
+        "feature_list_left": "User Interface, Custom Templates, Analytics",
+        "feature_list_right": "Brand Control, Multi-Document Support, Cloud Integration"
+      },
+      "order": 7,
+      "images": {}
+    },
+    {
+      "template_id": "slide_08_text_heavy_insight",
+      "text": {
+        "heading": "Challenges and Risks",
+        "body": "Dependence on specific technologies may limit flexibility and pose challenges in accurately summarizing complex PDFs."
+      },
+      "order": 8,
+      "images": {}
+    },
+    {
+      "template_id": "slide_09_ui_product_showcase",
+      "text": {
+        "heading": "User Interface Showcase",
+        "body": "A glimpse into our intuitive interface designed for ease of use."
+      },
+      "order": 9,
+      "images": {}
+    },
+    {
+      "template_id": "slide_10_main_supporting_text",
+      "text": {
+        "heading": "Conclusion",
+        "body_left": "Streamlining presentation creation is crucial for efficiency.",
+        "body_right": "Clear guidelines are needed to mitigate risks."
+      },
+      "order": 10,
+      "images": {}
+    }
+  ],
+  "_provider": "openrouter"
+}

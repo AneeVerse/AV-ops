@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T14:30:43.683876+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "x896zensdnrmy0cz8x4v8awy74",
+  "raw_audio_url": "https://replicate.delivery/xezq/cZR9thx3ptYPM1s6D0cVZCVaEt5TxsMvlJfj2GiKgdOJFrbLA/tmp07c8g022.mp3",
+  "raw_duration": 3.343673,
+  "fitted_duration": 3.343673,
+  "script_text": "No response does not always mean you were unqualified.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0039_20260709_135338_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0039_20260709_135338_section3_implication_fitted.mp3"
+}

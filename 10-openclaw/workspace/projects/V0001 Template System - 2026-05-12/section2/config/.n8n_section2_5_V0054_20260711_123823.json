@@ -1,0 +1,35 @@
+{
+  "duration_seconds": 8.1,
+  "fps": 30,
+  "size": [
+    1080,
+    1920
+  ],
+  "body_lines": [
+    "Career growth can",
+    "stall when your",
+    "responsibilities no",
+    "longer match your",
+    "strongest traits",
+    "or market demand",
+    "especially with AI taking over more and more tasks."
+  ],
+  "body_max_chars": 19,
+  "body_max_lines": 7,
+  "body_font_size": 72,
+  "body_start_y": 520,
+  "body_leading": 104,
+  "safe_text_width": 840,
+  "line_starts": [
+    0.2,
+    0.34,
+    0.5,
+    0.68,
+    0.86,
+    1.04
+  ],
+  "line_fade_seconds": 0.36,
+  "output_name": "section2_5_n8n_V0054_20260711_123823.mp4",
+  "audio_reference": "../../V0001 Sections 1-2 AE Match - 2026-05-12/output/V0001_section2_only_from_reference_v1.mp4",
+  "variant": "section2_5_text_only_no_stat"
+}

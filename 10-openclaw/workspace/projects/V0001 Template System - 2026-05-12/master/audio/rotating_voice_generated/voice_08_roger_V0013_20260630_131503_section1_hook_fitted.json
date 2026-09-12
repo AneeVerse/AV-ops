@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T13:26:30.177211+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "zxs0x6dgbsrmt0cz32tsfas0s0",
+  "raw_audio_url": "https://replicate.delivery/xezq/WfdJfSkD1Fm390wqpZDgInynLmagoRrffsBP12h81bbXgdRbB/tmplauzn2cj.mp3",
+  "raw_duration": 4.075102,
+  "fitted_duration": 4.075102,
+  "script_text": "Most Data Scientists qualify for more job titles than they apply to.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260630_131503_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260630_131503_section1_hook_fitted.mp3"
+}

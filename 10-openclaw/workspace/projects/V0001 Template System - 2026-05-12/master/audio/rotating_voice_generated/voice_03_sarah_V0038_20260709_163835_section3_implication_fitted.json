@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T16:38:51.170179+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "fe5yxrr571rmt0cz8yzvxy2jzg",
+  "raw_audio_url": "https://replicate.delivery/xezq/t8tecInxjvRzHykVBMY1SLYdqcT2HDopEMEOxYejKAKZCY3WA/tmpn21a_t5m.mp3",
+  "raw_duration": 3.604898,
+  "fitted_duration": 3.604898,
+  "script_text": "Your current role may be becoming more valuable, or more disrupted.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0038_20260709_163835_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0038_20260709_163835_section3_implication_fitted.mp3"
+}

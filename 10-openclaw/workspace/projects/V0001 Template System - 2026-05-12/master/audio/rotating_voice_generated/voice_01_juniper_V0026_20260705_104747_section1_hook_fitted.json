@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:53:14.713661+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "yr116ascp9rmr0cz67msw84fsg",
+  "raw_audio_url": "https://replicate.delivery/xezq/MMt17ff7DWg2dUgQsbyh3AgjuP5jb2ZyMCPwciHtyhzZmertA/tmpts5c8rgk.mp3",
+  "raw_duration": 3.709388,
+  "fitted_duration": 3.709388,
+  "script_text": "If you're a AI Engineer, you likely match several adjacent roles right now.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0026_20260705_104747_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0026_20260705_104747_section1_hook_fitted.mp3"
+}

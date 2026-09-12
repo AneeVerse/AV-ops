@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T10:06:52.770069+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "53wgqpr0y9rmt0cz4xsac60mx0",
+  "raw_audio_url": "https://replicate.delivery/xezq/n2eNBzaVxMWXHqow3RVpXFYkEsrxsomqCGzFzGkqteA7uT1WA/tmp3xl97_dn.mp3",
+  "raw_duration": 5.746939,
+  "fitted_duration": 5.746939,
+  "script_text": "Roles recruiting Software Developer backgrounds right now are titles you've probably never heard of.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_100648_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_100648_section1_hook_fitted.mp3"
+}

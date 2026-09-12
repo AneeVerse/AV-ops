@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-16T04:12:49.908130+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "abctx5w8d1rmy0czd4g93btp7w",
+  "raw_audio_url": "https://replicate.delivery/xezq/bseYGl3ODKQRVieXjy2RpehZ3rICea8O96pU79f9YOWGIGM3C/tmpvs69y357.mp3",
+  "raw_duration": 8.124082,
+  "fitted_duration": 8.124082,
+  "script_text": "The best opportunities are often found through employer targeting, adjacent roles, and timing , not only job boards.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0071_20260716_041242_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0071_20260716_041242_section2_insight_fitted.mp3"
+}

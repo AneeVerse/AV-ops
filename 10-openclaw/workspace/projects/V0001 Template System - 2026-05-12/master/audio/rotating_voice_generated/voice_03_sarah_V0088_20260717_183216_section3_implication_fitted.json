@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T18:32:26.327904+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "hcpazrz5h1rmy0cze5crgq8ftw",
+  "raw_audio_url": "https://replicate.delivery/xezq/IZoUZmWCp85yP5Jett6GV9REHEA89k2Zwye06mF0QKE5cC6WA/tmp7xoz0_86.mp3",
+  "raw_duration": 3.239184,
+  "fitted_duration": 3.239184,
+  "script_text": "To safely make a move you need confidence in your decision.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0088_20260717_183216_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0088_20260717_183216_section3_implication_fitted.mp3"
+}

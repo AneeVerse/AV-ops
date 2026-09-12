@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:37:18.952346+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "eewj2cwg0xrmw0cz67d906nc6w",
+  "raw_audio_url": "https://replicate.delivery/xezq/cQgLPA5wDeyDAqjaUlE5Dzk9FVTrWIUccqPRkrqanFRuLf1WA/tmpqi3q0g_z.mp3",
+  "raw_duration": 5.564082,
+  "fitted_duration": 5.564082,
+  "script_text": "Roles recruiting Data Scientist backgrounds right now are titles you've probably never heard of.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0024_20260705_101751_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0024_20260705_101751_section1_hook_fitted.mp3"
+}

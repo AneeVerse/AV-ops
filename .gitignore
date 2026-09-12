@@ -30,6 +30,7 @@ huly-login.txt
 node_modules/
 .next/
 .venv/
+.venv*/
 venv/
 __pycache__/
 .DS_Store
@@ -37,3 +38,6 @@ __pycache__/
 *.webm
 *.AppImage
 json-tables.tar.gz
+.git-backup-from-vps/
+.env.backup*
+.env.backup.txt

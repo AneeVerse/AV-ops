@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-06T11:50:00.195079+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "tvsss63y2hrmy0cz6x1t9pndkr",
+  "raw_audio_url": "https://replicate.delivery/xezq/uxJrmELHpYqRKJ2OPdvGeb7VhtvZxYyvqJ5dOg0bdQhzQKbLA/tmpdls97jsk.mp3",
+  "raw_duration": 4.440816,
+  "fitted_duration": 4.440816,
+  "script_text": "Waiting for public postings may put you behind better-positioned candidates.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260706_114949_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260706_114949_section3_implication_fitted.mp3"
+}

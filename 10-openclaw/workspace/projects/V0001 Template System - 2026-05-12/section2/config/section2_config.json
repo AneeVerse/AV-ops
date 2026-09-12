@@ -1,0 +1,50 @@
+{
+  "section_id": "section2_stat",
+  "duration_seconds": 5,
+  "fps": 30,
+  "size": "1080x1920",
+  "stat_value": 95,
+  "stat_suffix": "%",
+  "body_lines": [
+    "of U.S. publicly posted jobs",
+    "stay invisible to candidates",
+    "who don't know",
+    "to search them."
+  ],
+  "font_family_ass": "Graphik Web",
+  "font_dir": "../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0",
+  "font_file": "../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/Graphik-Bold.ttf",
+  "colors": {
+    "background": "0xFFFFFF",
+    "card": "0xFFF5F2",
+    "navy": "0x102C66",
+    "stat_left": "0xBA1B9A",
+    "stat_right": "0xF27024"
+  },
+  "layout": {
+    "card_x": 50,
+    "card_y": 52.5,
+    "card_w": 980,
+    "card_h": 1815,
+    "stat_font_size": 350,
+    "suffix_font_size": 185,
+    "stat_y": 410,
+    "stat_x": 285,
+    "suffix_x": 708,
+    "suffix_y": 530,
+    "body_font_size": 76,
+    "body_start_y": 860,
+    "body_line_gap": 96,
+    "card_radius": 30
+  },
+  "animation": {
+    "count_duration": 1.45,
+    "body_first_start": 0.85,
+    "body_stagger": 0.14,
+    "body_slide_px": 28,
+    "fade_in_ms": 220,
+    "fade_out_ms": 250
+  },
+  "output_name": "section2_template_background_v3.mp4",
+  "background_svg": "assets/section2_background_card.svg"
+}

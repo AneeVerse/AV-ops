@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T12:24:57.955881+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "mvdas7jdbdrmy0cza4hr2y1qwr",
+  "raw_audio_url": "https://replicate.delivery/xezq/kFSJEjcPQ1rxOtKkdhASeLinuvmTabPmfL51RExAY9vZgevtA/tmpm0dwhs99.mp3",
+  "raw_duration": 6.164898,
+  "fitted_duration": 6.164898,
+  "script_text": "Employed professionals often browse casually but avoid making a move without clear evidence.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0052_20260711_122452_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0052_20260711_122452_section2_insight_fitted.mp3"
+}

@@ -1,0 +1,40 @@
+{
+  "section_id": "section4_cta",
+  "duration_seconds": 5,
+  "fps": 30,
+  "size": "1080x1920",
+  "background_video": "assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4",
+  "font_family": "Graphik Web, Graphik, Arial, sans-serif",
+  "cta_box": {
+    "x": 86,
+    "y": 1408,
+    "width": 908,
+    "height": 196,
+    "radius": 30,
+    "fill": "#bd16f4",
+    "opacity": 0.96
+  },
+  "main_text": [
+    "Find out which roles you",
+    "already qualify for \u2014",
+    "beyond your current title."
+  ],
+  "main_font_size": 52,
+  "main_font_weight": 700,
+  "main_line_gap": 57,
+  "main_y": 1532,
+  "small_text": [
+    "Free. No card. Your full match list in",
+    "15 to 20 minutes."
+  ],
+  "small_font_size": 31,
+  "small_font_weight": 500,
+  "small_line_gap": 36,
+  "small_y": 1748,
+  "animation": {
+    "fade_in_seconds": 0.35,
+    "slide_px": 26,
+    "start_seconds": 0.5
+  },
+  "output_name": "section4_n8n_V0002_20260629_055339_001.mp4"
+}

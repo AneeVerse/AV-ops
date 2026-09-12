@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T05:35:29.191092+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "0jgf5r1awnrmw0cz459v8dz6bm",
+  "raw_audio_url": "https://replicate.delivery/xezq/IREXyaXNh9ZXJRTR5N2D4M2Be6dkwFcmDfcudYGgm2mfU1ptA/tmpv3f4w9__.mp3",
+  "raw_duration": 9.325714,
+  "fitted_duration": 9.325714,
+  "script_text": "Across approximately 95% of U.S. publicly posted jobs, employers hire on work-style fit - not just title overlap.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section2_insight_fitted.mp3"
+}

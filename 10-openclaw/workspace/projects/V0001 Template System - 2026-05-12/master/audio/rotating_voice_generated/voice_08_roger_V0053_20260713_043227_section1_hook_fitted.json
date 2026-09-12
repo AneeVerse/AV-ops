@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-13T04:32:30.995023+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "ndq5gpvvyxrmt0czb6ztg0ncg8",
+  "raw_audio_url": "https://replicate.delivery/xezq/dMOfVAtseFqPQ0rrePsb6ecRaUVW7xcaUHR7ye51E0pyLOE3C/tmpq8it6i1a.mp3",
+  "raw_duration": 2.821224,
+  "fitted_duration": 2.821224,
+  "script_text": "Why do others get interviews while I get ignored?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0053_20260713_043227_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0053_20260713_043227_section1_hook_fitted.mp3"
+}

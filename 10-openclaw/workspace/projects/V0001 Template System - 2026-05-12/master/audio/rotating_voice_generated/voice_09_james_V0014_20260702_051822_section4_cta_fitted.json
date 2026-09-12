@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T05:35:35.063221+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "0e08w6j4hsrmr0cz459r0qwtwc",
+  "raw_audio_url": "https://replicate.delivery/xezq/RtriNjv2I3KfZ66kkPIG4is0eNGbDF9UR8Egq6qeiEhMV1ptA/tmprr_2o19y.mp3",
+  "raw_duration": 5.093878,
+  "fitted_duration": 5.093878,
+  "script_text": "Find out which roles you already qualify for - beyond your current title.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section4_cta_fitted.mp3"
+}

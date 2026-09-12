@@ -1,0 +1,27 @@
+{
+  "document_summary": "Automating PDF to PPT: System Overview Key Goals: Efficiency & Brand Consistency The User Workflow: From PDF Upload to PPTX",
+  "recommended_slide_count": 10,
+  "storyline": [
+    "Automating PDF to PPT: System Overview",
+    "Key Goals: Efficiency & Brand Consistency",
+    "The User Workflow: From PDF Upload to PPTX",
+    "AI-Powered Content & Outline Generation",
+    "Template-Driven Design & Image Management",
+    "Ensuring Brand Integrity in Final PPTX"
+  ],
+  "key_messages": [
+    "Automating PDF to PPT: System Overview",
+    "Key Goals: Efficiency & Brand Consistency",
+    "The User Workflow: From PDF Upload to PPTX",
+    "AI-Powered Content & Outline Generation",
+    "Template-Driven Design & Image Management",
+    "Ensuring Brand Integrity in Final PPTX"
+  ],
+  "content_risks": [
+    "AI provider unavailable; fallback heuristic plan used."
+  ],
+  "image_opportunities": [
+    "Hero image for slide 1."
+  ],
+  "_provider": "fallback_no_ai openrouter=HTTP Error 401: Unauthorized gemini=HTTP Error 503: Service Unavailable"
+}

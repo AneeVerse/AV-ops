@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T08:15:10.124987+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "7m86me82n1rmt0cz3jzsgx1ah0",
+  "raw_audio_url": "https://replicate.delivery/xezq/1OIdcjEBPAIZM5k6EPwbBWAwvTTaJEbc3nrSk50Sp2djeTaLA/tmp4_6p9qcn.mp3",
+  "raw_duration": 7.653878,
+  "fitted_duration": 7.653878,
+  "script_text": "Most applicants self-limit to their current title. Hiring doesn't and the pay gap between titles is wider than most candidates realize.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260701_081503_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260701_081503_section2_insight_fitted.mp3"
+}

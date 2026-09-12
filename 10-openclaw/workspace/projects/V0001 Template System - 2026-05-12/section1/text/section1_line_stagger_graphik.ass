@@ -1,0 +1,17 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Graphik Web,132,&H00FFFFFF,&H00FFFFFF,&H8A000000,&H00000000,-1,0,0,0,100,100,-1,0,1,0,5,5,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+; AE-style staggered line reveal: each line fades/slides upward independently and holds.
+Dialogue: 0,0:00:00.05,0:00:04.86,Hook,,0,0,0,,{\fad(220,250)\move(540,165,540,130,0,360)}Most Software
+Dialogue: 0,0:00:00.17,0:00:04.86,Hook,,0,0,0,,{\fad(220,250)\move(540,295,540,260,0,360)}Developers
+Dialogue: 0,0:00:00.29,0:00:04.86,Hook,,0,0,0,,{\fad(220,250)\move(540,425,540,390,0,360)}qualify for more
+Dialogue: 0,0:00:00.41,0:00:04.86,Hook,,0,0,0,,{\fad(220,250)\move(540,555,540,520,0,360)}job titles than
+Dialogue: 0,0:00:00.53,0:00:04.86,Hook,,0,0,0,,{\fad(220,250)\move(540,685,540,650,0,360)}they apply to.

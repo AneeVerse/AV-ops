@@ -1,0 +1,131 @@
+```yaml
+version: 1.0.0
+name: Truckstop Design System
+description: A robust, modern-industrial design framework for the freight transportation industry, prioritizing high-legibility, data-density, and reliability.
+author: Lead Product Designer
+colors:
+  primary: "#D70119"
+  surface: "#FFFFFF"
+  text: "#1A1A1B"
+  neutral: "#5B5D5A"
+  background: "#F4F4F4"
+typography:
+  primary: "Inter"
+  display: "Industry Bold"
+  system: "Geometric Sans-Serif"
+```
+
+## Overview: Brand Strategy & Aesthetic
+
+Truckstop is the backbone of the freight community. The brand aesthetic—**Modern-Industrial**—reflects the intersection of physical grit and digital precision. We balance the "safety" aesthetics of the logistics world (high-visibility, bold signaling) with a sophisticated tech-forward software experience.
+
+*   **Tone:** Authoritative, reliable, and hardworking.
+*   **Voice:** Direct and industry-savvy. We speak the language of the road, not just the language of code.
+*   **Visual Strategy:** High contrast, heavy-weight typography, and modular data structures that allow for rapid scanning in high-pressure environments.
+
+---
+
+## Logo Architecture
+
+The Truckstop wordmark is a grounded, heavy-weight sans-serif. It symbolizes the stability of a trusted partner. The stylized iconography represents movement and the logistics chain, ensuring the brand is recognizable even at small scales on mobile devices or dashboard hardware.
+
+### Primary Mark
+![Logo](data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgzIiBoZWlnaHQ9IjY3IiB2aWV3Qm94PSIwIDAgMjgzIDY3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTlfMTcpIj4KPHBhdGggZD0iTTczLjk0IDEzLjExNjVWMTcuODU4Nkg2Ny42Mzc1VjM0LjU1NDdDNjcuNjM3NSAzNy45NzMgNjkuMzc4MiAzOC42MDUzIDcxLjMxOSAzOC42MDUzQzcyLjI3OTQgMzguNjA1MyA3My4wMTk3IDM4LjQyNzUgNzMuNDE5OCAzOC4zNDg0TDc0LjUwMDIgNDMuMjI4OEM3My44IDQzLjQ4NTcgNzIuNTE5NSA0My44NDE0IDcwLjYxODcgNDMuODYxMUM2NS44OTY4IDQzLjk1OTkgNjEuNjM1MSA0MS4yOTI1IDYxLjY1NTEgMzUuNzc5OFYxNy44NTg2SDU3LjE1MzNWMTMuMTE2NUg2MS42NTUxVjUuODQ1MjFINjcuNjM3NVYxMy4xMTY1SDczLjk0WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTc3LjE3NzIgNDMuNDY2MVYxMy4xMTY2SDgyLjk1OTVWMTcuOTM3N0g4My4yNzk2Qzg0LjQwMDEgMTQuNjc3NSA4Ny40ODEzIDEyLjY2MjEgOTEuMDgyOCAxMi42NjIxQzkxLjg0MzEgMTIuNjYyMSA5My4wMjM1IDEyLjcyMTQgOTMuNjIzOCAxMi44MDA0VjE4LjQ1MTVDOTMuMTQzNiAxOC4zMTMxIDkxLjc0MyAxOC4wOTU4IDkwLjUwMjUgMTguMDk1OEM4Ni4yNjA4IDE4LjA5NTggODMuMTU5NiAyMC45NjA4IDgzLjE1OTYgMjQuOTMyM1Y0My40NjYxSDc3LjE3NzJaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMTE1LjM4MiAzMC44Nzk4VjEzLjExNjdIMTIxLjM4NFY0My40NjYySDExNS41MDJWMzguMjEwM0gxMTUuMTgyQzExMy43NjEgNDEuNDUwOCAxMTAuNjIgNDMuODYxMyAxMDUuOTk4IDQzLjg2MTNDMTAwLjA5NiA0My44NjEzIDk1LjkxNDMgMzkuOTQ5MSA5NS45MTQzIDMyLjQyMVYxMy4xMTY3SDEwMS44OTdWMzEuNzA5N0MxMDEuODk3IDM1LjgzOTMgMTA0LjQ1OCAzOC40ODY5IDEwOC4xNTkgMzguNDg2OUMxMTEuNTIxIDM4LjQ4NjkgMTE1LjQwMiAzNi4wMzY5IDExNS4zODIgMzAuODc5OFoiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0xMzguOTg3IDQ0LjA3ODRDMTMwLjA2NCA0NC4wNzg0IDEyNC42NjIgMzcuNTc3NyAxMjQuNjYyIDI4LjQyOTRDMTI0LjY2MiAxOS4xNjI2IDEzMC4yNjQgMTIuNzIxMiAxMzguOTI3IDEyLjcyMTJDMTQ1LjkxIDEyLjcyMTIgMTUwLjQ3OCAxNi43OTE1IDE1MS4xMTggMjIuOTE2N0gxNDUuMjk2QzE0NC42NTYgMjAuMDcxNSAxNDIuODI5IDE3LjcwMDQgMTM5LjAyNyAxNy43MDA0QzEzNC4wMjUgMTcuNzAwNCAxMzAuNzA0IDIxLjc5MDUgMTMwLjcwNCAyOC4yOTExQzEzMC43MDQgMzQuOTEwMyAxMzMuOTY1IDM5LjA3OTQgMTM5LjAyNyAzOS4wNzk0QzE0Mi40NDkgMzkuMDc5NCAxNDUuMDMgMzcuMTQzIDE0NS43OSAzMy44NjMxSDE1MS42MTJDMTUwLjk1MiAzOS43NzEgMTQ2LjI1IDQ0LjA3ODQgMTM4Ljk4NyA0NC4wNzg0WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE1NC42MjkgNDMuNDY2TDE1NC4xMzUgM0gxNjAuMTE4TDE2MC42MTIgMjUuOTU5N0gxNjEuMTMyTDE3My4zNzcgMTMuMTE2NUgxODAuNTRMMTY4LjA5NSAyNi4xMzc1TDE4MS4zOCA0My40NjZIMTc0LjAzN0wxNjMuNTkzIDI5Ljc1MzRMMTYwLjYxMiAzMi42OTc0VjQzLjQ2NkgxNTQuNjI5WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTIwMy44MDUgMjAuNTI1OUwxOTguMzgzIDIxLjQ3NDNDMTk3LjY4MiAxOS40MzkyIDE5NS45NjIgMTcuNDA0IDE5Mi4yNCAxNy40MDRDMTg4LjgzOSAxNy40MDQgMTg2LjI3OCAxOS4wNjM4IDE4Ni4yOTggMjEuMzk1M0MxODYuMjc4IDIzLjQ1MDIgMTg3LjczOCAyNC41NzY1IDE5MS4xMiAyNS4zNjY4TDE5Ni4wMDIgMjYuNDczM0MyMDEuNjQ0IDI3Ljc1NzYgMjA0LjQwNSAzMC40MDUzIDIwNC40MDUgMzQuNjkzQzIwNC40MDUgNDAuMTg1OSAxOTkuMjYzIDQ0LjA3ODQgMTkxLjg0IDQ0LjA3ODRDMTg0LjkzNyA0NC4wNzg0IDE4MC40MTYgNDEuMDU1MyAxNzkuNDE1IDM1LjY4MDlMMTg1LjE5NyAzNC44MTE1QzE4NS45MTggMzcuNzk1MSAxODguMjE5IDM5LjMxNjUgMTkxLjggMzkuMzE2NUMxOTUuNzIyIDM5LjMxNjUgMTk4LjI2MyAzNy40Nzg5IDE5OC4yNjMgMzUuMTI3N0MxOTguMjYzIDMzLjIzMDggMTk2Ljg4MiAzMS45MjY3IDE5My45MjEgMzEuMjc0N0wxODguMTM5IDI5Ljc1MzNDMTgzLjE5OCAyOC40MDk3IDE4MS4xNjMgMjUuMDU1MyAxODEuMTYzIDIxLjQ2NzVDMTgxLjE2MyAxNi4wOTMxIDE4NS4yMzggMTIuNzIxMiAxOTIuMTggMTIuNzIxMkMxOTguODIzIDEyLjcyMTIgMjAyLjU2NCAxNS44MDM2IDIwMy44MDUgMjAuNTI1OVoiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0yMjEuOTQ4IDEzLjExNjVWMTcuODU4NkgyMTUuNjQ1VjM0LjU1NDdDMjE1LjY0NSAzNy45NzMgMjE3LjM4NiAzOC42MDUzIDIxOS4zMjcgMzguNjA1M0MyMjAuMjg3IDM4LjYwNTMgMjIxLjAyOCAzOC40Mjc1IDIyMS40MjggMzguMzQ4NEwyMjIuNTA4IDQzLjIyODhDMjIxLjgwOCA0My40ODU3IDIyMC41MjcgNDMuODQxNCAyMTguNjI3IDQzLjg2MTFDMjEzLjkwNSA0My45NTk5IDIwOS42NDMgNDEuMjkyNSAyMDkuNjYzIDM1Ljc3OThWMTcuODU4NkgyMDUuMTYxVjEzLjExNjVIMjA5LjY2M1Y1Ljg0NTIxSDIxNS42NDVWMTMuMTE2NUgyMjEuOTQ4WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTIzNy4zMDYgNDQuMDc4NEMyMjguNjQzIDQ0LjA3ODQgMjIyLjk4IDM3LjgxNDggMjIyLjk4IDI4LjQyOTRDMjIyLjk4IDE4Ljk4NDcgMjI4LjY0MyAxMi43MjEyIDIzNy4zMDYgMTIuNzIxMkMyNDUuOTY5IDEyLjcyMTIgMjUxLjYzMiAxOC45ODQ3IDI1MS42MzIgMjguNDI5NEMyNTEuNjMyIDM3LjgxNDggMjQ1LjU2OSA0NC4wNzg0IDIzNy4zMDYgNDQuMDc4NFpNMjM3LjMyNiAzOS4xMTg5QzI0Mi45NDggMzkuMTE4OSAyNDUuNTg5IDM0LjIzODUgMjQ1LjU4OSAyOC40MDk3QzI0NS41ODkgMjIuNjAwNiAyNDIuOTQ4IDE3LjY2MDkgMjM3LjMyNiAxNy42NjA5QzIzMS42NjQgMTcuNjYwOSAyMjkuMDIzIDIyLjYwMDYgMjI5LjAyMyAyOC40MDk3QzIyOS4wMjMgMzQuMjM4NSAyMzEuNjY0IDM5LjExODkgMjM3LjMyNiAzOS4xMTg5WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTI1NC45MjkgNjMuOTk5OVYxMy4xMTY0SDI2MC43NzFWMTguMDM2M0gyNjEuMjcxQzI2Mi4zMzIgMTYuMTU5MiAyNjQuMzkzIDEyLjcyMTIgMjcwLjA5NSAxMi43MjEyQzI3Ny41MTggMTIuNzIxMiAyODMgMTguNTEwNSAyODMgMjguMzUwNEMyODMgMzguMTcwNSAyNzcuNTk4IDQ0LjA1ODYgMjcwLjE1NSA0NC4wNTg2QzI2NC41NTMgNDQuMDU4NiAyNjIuMzUyIDQwLjY3OTkgMjYxLjI3MSAzOC43NDM1SDI2MC45MTFWNjMuOTk5OUgyNTQuOTI5Wk0yNjAuNzkxIDI4LjI5MTFDMjYwLjc5MSAzNC42NzMyIDI2My42NzIgMzkuMDIwMSAyNjguODE0IDM5LjAyMDFDMjc0LjE1NiAzOS4wMjAxIDI3Ni45NTggMzQuMzc2OCAyNzYuOTU4IDI4LjI5MTFDMjc2Ljk1OCAyMi4yNjQ3IDI3NC4yMzYgMTcuNzM5OSAyNjguODE0IDE3LjczOTlDMjYzLjU5MiAxNy43Mzk5IDI2MC43OTEgMjEuOTQ4NiAyNjAuNzkxIDI4LjI5MTFaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMTk5LjQ0MyA2My41MDI5QzE5OC40NzMgNjMuNTAyOSAxOTcuNjggNjIuNzI4MyAxOTcuNjggNjEuNzYyMkMxOTcuNjggNjAuODEzNiAxOTguNDczIDYwLjAzMDMgMTk5LjQ0MyA2MC4wMzAzQzIwMC40MDMgNjAuMDMwMyAyMDEuMjA1IDYwLjgxMzYgMjAxLjIwNSA2MS43NjIyQzIwMS4yMDUgNjIuNzI4MyAyMDAuNDAzIDYzLjUwMjkgMTk5LjQ0MyA2My41MDI5WiIgZmlsbD0iIzVCNUQ1QSIvPgo8cGF0aCBkPSJNMjA5LjQ0NCA2My42MDc1QzIwNS41MTMgNjMuNjA3NSAyMDMuMTM0IDYwLjc0NDIgMjAzLjEzNCA1Ni43MTQ1QzIwMy4xMzQgNTIuNjMyNyAyMDUuNjAyIDQ5Ljc5NTQgMjA5LjQxOCA0OS43OTU0QzIxMi40OTMgNDkuNzk1NCAyMTQuNzIzIDUxLjU4ODMgMjE1LjAwNSA1NC4yODYzSDIxMi40NDFDMjEyLjE1OSA1My4wMzMxIDIxMS4xMzYgNTEuOTg4NyAyMDkuNDYyIDUxLjk4ODdDMjA3LjI1OCA1MS45ODg3IDIwNS43OTYgNTMuNzkwMiAyMDUuNzk2IDU2LjY1MzZDMjA1Ljc5NiA1OS41NjkyIDIwNy4yMzIgNjEuNDA1NiAyMDkuNDYyIDYxLjQwNTZDMjEwLjk2OSA2MS40MDU2IDIxMi4xMDYgNjAuNTUyNyAyMTIuNDQxIDU5LjEwNzlIMjE1LjAwNUMyMTQuNzE0IDYxLjcxMDIgMjEyLjY0MyA2My42MDc1IDIwOS40NDQgNjMuNjA3NVoiIGZpbGw9IiM1QjVENUEiLz4KPHBhdGggZD0iTTIyMi41MzIgNjMuNjA3NUMyMTguNzE2IDYzLjYwNzUgMjE2LjIyMiA2MC44NDg2IDIxNi4yMjIgNTYuNzE0NUMyMTYuMjIyIDUyLjU1NDQgMjE4LjcxNiA0OS43OTU0IDIyMi41MzIgNDkuNzk1NEMyMjYuMzQ4IDQ5Ljc5NTQgMjI4LjY0MyA1Mi41NTQ0IDIyOC44NDMgNTYuNzE0NUMyMjguODQzIDYwLjg0ODYgMjI2LjM0OCA2My42MDc1IDIyMi41MzIgNjMuNjA3NVpNMjIyLjU0MSA2MS40MjNDMjI1LjAxOCA2MS40MjMgMjI2LjE4MSA1OS4yNzMzIDIyNi4xODEgNTYuNzA1OEMyMjYuMTgxIDU0LjE0NzEgMjI1LjAxOCA1MS45NzEzIDIyMi41NDEgNTEuOTcxM0MyMjAuMDQ3IDUxLjk3MTMgMjE4LjguODQgNTQuMTQ3MSAyMTguODg0IDU2LjY1MzZDMjE4Ljg4NCA1OS4yNzMzIDIyMC4wNDcgNjEuNDIzIDIyMi41NDEgNjEuNDIzWiIgZmlsbD0iIzVCNUQ1QSIvPgo8cGF0aCBkPSJNMjMwLjc5MSAYzLjMzNzdWNDkuOTY5NUgyMzMuMzIxVjUyLjE0NTNIMjMzLjQ4OEMyMzQuMDUyIDUwLjY3NDUgMjM1LjM4MyA0OS43OTU0IDIzNy4xNzIgNDkuNzk1NEMyMzguOTc5IDQ5Ljc5NTQgMjQwLjIyMSA1MC42ODMyIDI0MC44MTIgNTIuMTQ1M0gyNDAuOTUzQzI0MS42MDUgNTAuNzE4IDI0My4wNjggNDkuNzk1NCAyNDUuMDE1IDQ5Ljc5NTRDMjQ3LjQ2NSA0OS43OTU0IDI0OS4xOTMgNTEuMzE4NSAyNDkuMTkzIDU0LjM3MzRWNjMuMzM3N0gyNDYuNTU4VjU0LjYxNzFDMjQ2LjU1OCA1Mi44MDY4IDI0NS40MTIgNTIuMDQwOSAyNDQuMDIgNTIuMDQwOUMyNDIuMzAxIDUyLjA0MDkgMjQxLjMwNSA1My4yMDcxIDI0MS4zMDUgNTQuODE3MlY2My4zMzc3SDIzOC42NzlWNTQuNDUxN0MyMzguNjc5IDUyLjk5ODIgMjM3LjY2NSA1Mi4wNDA5IDIzNi4yMDIgNTIuMDQwOUMyMzQuNzA0IDUyLjA0MDkgMjMzLjQyNiA1My4yOTQyIDIzMy40MjYgNTUuMDk1N1Y2My4zMzc3SDIzMC43OTFaIiBmaWxsPSIjNUI1RDVBIi8+CjxwYXRoIGQ9Ik0yNi40ODI4IDMuMDg1NDVDMzkuNDQwNyAzLjEwNjU4IDQ5LjkzODQgMTMuNDc5MyA0OS45NTI1IDI2LjI3NTlDNDkuOTY5NyAzMS40MjU1IDQ4LjIzMTMgMzYuNDMxIDQ1LjAxOCA0MC40ODY4TDI2LjQ3MDEgNjMuNjE3N0w3LjkyNjIgNDAuNDkxN0M0LjcxNTIxIDM2LjQzMzUgMi45ODAyMSAzMS40MjYgMy4wMDA0MiAyNi4yNzU5QzMuMDE0NjIgMTMuNDc0MyAxMy41MTk4IDMuMDk5NDcgMjYuNDgyOCAzLjA4NTQ1Wk0yNi40MTA2IDQuNDIwNDFDMTQuMjE2MiA0LjQzMTI2IDQuMzMwMzkgMTQuMTkzMyA0LjMxOTc1IDI2LjIzNThDNC4yOTg1NiAzMS4wOCA1LjkzNzU5IDM1Ljc5ODQgOC45NTk0IDM5LjYxMjhMMjYuNDEwNiA2MS4yMDc1TDQzLjg1MiAzOS42MDNDNDYuODczOSAzNS43ODg1IDQ4LjUwMTIgMzEuMDgwMSA0OC40OTA2IDI2LjIzNThDNDguNDggMTQuMTkzMSAzOC42MDUyIDQuNDQxNDMgMjYuNDEwNiA0LjQyMDQxWk0xMy41OTkgMTIuNTIyQzIwLjgzNDkgNS45MzMyIDMxLjk3NjQgNS45MzMxNyAzOS4yMTIzIDEyLjUyMkgzOS4yMjMxQzQ2LjQ1ODggMTkuMTEwNyA0Ny4zNTI2IDMwLjA4MTggNDEuMjc2OCAzNy43MzE5TDI2LjQxMDYgNTUuNzc0OUwxMS41NDUzIDM3LjczMTlDNS40Njk1MiAzMC4wOTI0IDYuMzYzNDYgMTkuMTEwOCAxMy41OTkgMTIuNTIyWk0yNi40MzIgMjUuMzYzOEMyNC42NDQ3IDI1LjM2MzggMjMuMTAxNyAyNS40MDUyIDIxLjc2MTEgMjUuNDY4M1Y0NC41NzI4QzIyLjI5MzEgNDQuODI0OSAyMi45NzM3IDQ1LjA4ODQgMjMuNzM5NyA0NS4zMDkxVjI3LjE0OTlDMjQuMjM5NyAyNy4xMTg0IDI0LjgxNDkgMjcuMDk3OSAyNS40MzIgMjcuMDg3NFY0NS42ODdDMjUuODY4MiA0NS43NSAyNi4zMjYxIDQ1Ljc4MTcgMjYuNzgzNiA0NS43ODE3QzI2Ljk5NjMgNDUuNzgxNyAyNy4xOTg4IDQ1Ljc4MTIgMjcuNDAwOCA0NS43NjAzVjI3LjA5NzJDMjguMDI4NCAyNy4wOTcyIDI4LjYxMzggMjcuMTM5OSAyOS4xMjQ0IDI3LjE3MTRWNDUuNDg3OEMyOS44NDc4IDQ1LjMxOTcgMzAuNDk3IDQ1LjA4NzggMzEuMDUwMiA0NC44NDYyVjI1LjQ1ODVDMjkuNzMwOCAyNS4zOTU1IDI4LjE5ODIgMjUuMzYzOCAyNi40MzIgMjUuMzYzOFpNMTYuNTU3IDMyLjQxNDZDMTUuMzk3NCAzMi40MTQ5IDE0LjQ1MDYgMzMuMzUwNCAxNC40NTA2IDM0LjQ5NTZDMTQuNDUwOSAzNS42NDA2IDE1LjM4NyAzNi41NzU0IDE2LjU1NyAzNi41NzU3QzE3LjcxNjcgMzYuNTc1NyAxOC42NjQyIDM1LjY1MTMgMTguNjY0NSAzNC40OTU2QzE4LjY2NDUgMzMuOTM4NyAxOC40NDEgMzMuNDEyNyAxOC4wNDczIDMzLjAyMzlDMTcuNjUzNiAzMi42MzUyIDE3LjExMDMgMzIuNDE0NiAxNi41NTcgMzIuNDE0NlpNMzYuMDgzNCAzMi40MTQ2QzM0LjkyMzggMzIuNDE0OCAzMy45NzcgMzMuMzUwMyAzMy45NzcgMzQuNDk1NkMzMy45NzcyIDM1LjY0MDcgMzQuOTEzMyAzNi41NzU0IDM2LjA4MzQgMzYuNTc1N0MzNy4yNDMxIDM2LjU3NTcgMzguMTkwNiAzNS42NTEzIDM4LjE5MDggMzQuNDk1NkMzOC4xOTA4IDMzLjkzODcgMzcuOTY3MyAzMy40MTI3IDM3LjU3MzYgMzMuMDIzOUMzNy4xNzk5IDMyLjYzNTEgMzYuNjM2NyAzMi40MTQ2IDM2LjA4MzQgMzIuNDE0NlpNMjYuMzQ3MSAxNS44NzQ1QzE4LjY0MzIgMTUuODc0NSAxNS4yMzc3IDE2LjU2NzkgMTUuMjM3NyAxNi41Njc5TDE0LjM3NjQgMjMuNzg3NkMxNC40MDkzIDIzLjc3NjcgMTcuMzg1IDIyLjc5OTQgMjYuNDIxMyAyMi43OTkzQzM1LjQ3MTMgMjIuNzk5MyAzOC40MzIyIDIzLjc3OTUgMzguNDU2NSAyMy43ODc2TDM3LjU2MjkgMTYuNTY3OUgzNy41NzM2QzM3LjU0NTcgMTYuNTYyNCAzNC4wMjA1IDE1Ljg3NDUgMjYuMzQ3MSAxNS44NzQ1Wk0zMi4wMTkgMTIuODI2N0MzMS4zNyAxMi44MjY4IDMwLjgxNTggMTMuMjQ3NSAzMC42MTM3IDEzLjg1NjlDMzEuNjk5IDEzLjg5OSAzMi42NTc3IDEzLjk1MTEgMzMuNDg3NyAxNC4wMTQyQzMzLjMzODcgMTMuMzEwMiAzMi43MjExIDEyLjgxNjIgMzIuMDE5IDEyLjgyNjdaTTIwLjgwMzEgMTIuODI2N0MyMC4xMDA5IDEyLjgyNjggMTkuNDk0MSAxMy4zMjE0IDE5LjM0NTEgMTQuMDA0NEMyMC4xNjMxIDEzLjk0MTQgMjEuMTE5NSAxMy44ODgyIDIyLjIxMzMgMTMuODQ2MkMyMi4wMDggMTMuMjQyNyAyMS40NDgzIDEyLjgyNjcgMjAuODAzMSAxMi44MjY3Wk0yMi4yMTMzIDEzLjg0NjJDMjIuMjE0NiAxMy44NDk4IDIyLjIxNyAxMy44NTMzIDIyLjIxODIgMTMuODU2OVYxMy44NDYyQzIyLjIxNjYgMTMuODQ2MiAyMi4yMTQ4IDEzLjg0NjEgMjIuMjEzMyAxMy44NDYyWk0yNi40MTA2IDEyLjY1ODdDMjUuNzYxNyAxMi42NTkgMjUuMjA4OCAxMy4xMjE5IDI1LjA0OTIgMTMuNzgzN0gyNy43NzI5QzI3LjYxMzIgMTMuMTMyMiAyNy4wNTk3IDEyLjY1ODcgMjYuNDEwNiAxMi42NTg3WiIgZmlsbD0iI0Q3MUYyNyIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzE5XzE3Ij4KPHJlY3Qgd2lkdGg9IjI4MyIgaGVpZ2h0PSI2NyIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K)
+
+---
+
+## Colors
+
+The palette is optimized for high visibility and clear hierarchy. #D70119 (Truckstop Red) is our primary action color, used sparingly but powerfully for critical UI elements.
+
+### Brand Palette
+| Color | Hex | Role |
+| :--- | :--- | :--- |
+| **Primary Red** | `#D70119` | Action Buttons, Critical Status, Branding |
+| **Deep Onyx** | `#1A1A1B` | Headings, Primary Text, Navigation Background |
+| **Safety Grey** | `#5B5D5A` | Secondary Text, Icons, Borders |
+| **Cloud White** | `#FFFFFF` | Module Surfaces, Card Backgrounds |
+| **Highway Grey** | `#F4F4F4` | App Background, Workspace Areas |
+
+### Semantic Tokens
+*   **Success:** `#28A745` (Confirmed Loads, Paid Status)
+*   **Warning:** `#FFC107` (Late Arrival, Expiring Documents)
+*   **Danger:** `#DC3545` (Cancelled Load, Security Alert)
+
+---
+
+## Typography & Assets
+
+We utilize **Inter** for its exceptional legibility in data-dense tables and **Industry Bold** for high-impact display moments.
+
+### Font Implementation
+```css
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  font-weight: 400 700;
+  font-style: normal;
+}
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Industry Bold', sans-serif; /* Uploaded Font Name */
+}
+```
+
+### Typographic Scale
+*   **Display 1:** Industry Bold | 48px | -2% Letter Spacing
+*   **Heading 1:** Inter Bold | 32px | -1% Letter Spacing
+*   **Body (Primary):** Inter Medium | 16px | 150% Line Height
+*   **Data/Table:** Inter Regular | 14px | 120% Line Height
+
+---
+
+## Imagery Style
+
+Truckstop photography must feel **authentic and lived-in**. We avoid clinical, overly-bright stock photography.
+
+*   **Real-World Logistics:** Use high-resolution shots of truck drivers in cabs, grease on hands, and expansive highways under realistic lighting (golden hour or overcast).
+*   **Office Environment:** Freight brokers shown in collaborative, active office settings with realistic tech setups.
+*   **UI Screenshots:** Must be shown within high-clarity browser mocks or tablet frames, highlighting simplified modular components rather than overwhelming full-page screenshots.
+
+---
+
+## UI Screens & Layouts
+
+Our architecture prioritizes **rapid scanning** and **functional density**.
+
+### 1. The Global Load Board
+*   **Search Header:** Prominent, full-width search bar with multi-select filtering for equipment type, rate, and distance.
+*   **Data Tables:** Zebra-striping avoided in favor of subtle border-bottom separators (`1px solid #E0E0E0`).
+*   **Column Priority:** Origin/Dest > Payout > Deadhead > Equipment Type.
+
+### 2. Module Design (Cards)
+*   **Load Details:** Use card-based layouts for mobile views. Each card features a high-contrast top-right badge for "Book Now" or "Offer" status.
+*   **Side Navigation:** SaaS-standard 240px width sidebar. Collapsible to 64px icon-only view for power users.
+
+---
+
+## Spacing & Elevation
+
+Truckstop uses an **8px grid system** to maintain industrial alignment.
+
+| Level | Value | Usage |
+| :--- | :--- | :--- |
+| **Grid Base** | 8px | All padding and margins |
+| **Elevation Low** | `0px 2px 4px rgba(0,0,0,0.05)` | Default Card State |
+| **Elevation High** | `0px 8px 16px rgba(0,0,0,0.12)` | Modals, Dropdowns |
+
+---
+
+## Do's & Don'ts
+
+### Do
+*   Use high contrast for status indicators (Red text on light grey background is acceptable for legibility).
+*   Provide clear "affordance" for clickable table rows.
+*   Keep icons simple and geometric.
+
+### Don't
+*   **Don't** use gradients in the UI. Keep it flat and robust.
+*   **Don't** use the Truckstop Red for non-actionable text; it should signify utility or critical brand presence.
+*   **Don't** use generic truck illustrations; prefer real photography or technical schematics.

@@ -1,0 +1,206 @@
+{
+  "name": "PDF to PPT - Step 1 History HTTP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "pdf-to-ppt-history-http",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "03ae7d55-931e-42b8-ba55-32b3a89ffb2c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "c2e3fece-ec49-48b7-82ed-d62db9ef1070"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://www.googleapis.com/drive/v3/files",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendQuery": true,
+        "sendHeaders": false,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "specifyQuery": "keypair",
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "'1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o' in parents and trashed = false and name contains '.json'"
+            },
+            {
+              "name": "fields",
+              "value": "files(id,name,webViewLink,createdTime)"
+            },
+            {
+              "name": "orderBy",
+              "value": "createdTime desc"
+            },
+            {
+              "name": "pageSize",
+              "value": "50"
+            }
+          ]
+        }
+      },
+      "id": "3f8c2320-5bad-47b4-a8af-47e0bc90d570",
+      "name": "List History Files",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const files = $input.item.json.files || [];\nreturn files.map(file => ({ json: file }));"
+      },
+      "id": "17e4491d-3a64-45fa-b276-72ac3e36c23f",
+      "name": "Build File Items",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://www.googleapis.com/drive/v3/files/{{ $json.id }}?alt=media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendQuery": false,
+        "sendHeaders": false,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "21113b8d-316c-480e-9568-7a005ef6bbd6",
+      "name": "Download History JSON",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst history = [];\nfor (const item of items) {\n  if (item.json && item.json.job_id) history.push(item.json);\n}\nhistory.sort((a, b) => new Date(b.uploaded_at || 0).getTime() - new Date(a.uploaded_at || 0).getTime());\nreturn [{ json: { ok: true, history } }];"
+      },
+      "id": "47c9597f-41b8-465d-b3f8-5af99b639469",
+      "name": "Build History Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "id": "b01861bf-6af3-4d73-a945-5ae03830b518",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1540,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "List History Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List History Files": {
+      "main": [
+        [
+          {
+            "node": "Build File Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build File Items": {
+      "main": [
+        [
+          {
+            "node": "Download History JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download History JSON": {
+      "main": [
+        [
+          {
+            "node": "Build History Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build History Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

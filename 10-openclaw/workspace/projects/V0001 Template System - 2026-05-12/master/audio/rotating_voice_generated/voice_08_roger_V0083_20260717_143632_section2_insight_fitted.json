@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T14:36:40.691982+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "1yvvmtgbbnrmt0cze21900q6yw",
+  "raw_audio_url": "https://replicate.delivery/xezq/dmGkfYYlwD2DGChsofLcuuYEk2x43hx6g5bmfWhtsYFuf7nbB/tmpkfagg71p.mp3",
+  "raw_duration": 5.250612,
+  "fitted_duration": 5.250612,
+  "script_text": "Interviews often go to candidates who match the employer\u2019s signals earlier and more clearly.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0083_20260717_143632_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0083_20260717_143632_section2_insight_fitted.mp3"
+}

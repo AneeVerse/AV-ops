@@ -1,0 +1,77 @@
+{
+  "name": "Shopify NY Budget Batch - Two Tab",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shopify-ny-budget-batch",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "36d3dcae-f8fe-45c7-842f-3edf3d36b21d",
+      "name": "Webhook - Run Budget Batch",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json || {};\nconst payload = {\n  batch: Number(body.batch ?? 47),\n  maxCandidates: Math.max(1, Math.min(Number(body.maxCandidates ?? 8), 25)),\n  maxQueries: Math.max(1, Math.min(Number(body.maxQueries ?? 4), 12)),\n  resultsPerPage: Math.max(1, Math.min(Number(body.resultsPerPage ?? 3), 10)),\n  verifyTimeout: Math.max(3, Math.min(Number(body.verifyTimeout ?? 5), 10)),\n};\nconst response = await fetch('http://127.0.0.1:8011/shopify-ny-budget-batch', {\n  method: 'POST',\n  headers: {'Content-Type': 'application/json'},\n  body: JSON.stringify(payload),\n});\nconst text = await response.text();\nlet data;\ntry { data = JSON.parse(text); } catch (e) { data = {raw: text}; }\nreturn [{json: {ok: response.ok && data.ok !== false, status: response.status, request: payload, result: data}}];"
+      },
+      "id": "7da98205-8f91-4fb4-8aba-32a54fdd8e0a",
+      "name": "Run Budget API",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "29c5a200-391e-4bf6-b8f3-31ec3b69215b",
+      "name": "Respond JSON",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        40,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook - Run Budget Batch": {
+      "main": [
+        [
+          {
+            "node": "Run Budget API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run Budget API": {
+      "main": [
+        [
+          {
+            "node": "Respond JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  }
+}

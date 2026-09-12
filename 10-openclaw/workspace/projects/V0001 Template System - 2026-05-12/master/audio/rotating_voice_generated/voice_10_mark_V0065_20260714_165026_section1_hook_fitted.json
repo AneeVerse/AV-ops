@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-14T16:50:29.986016+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "pv142xvwbxrmy0czc64t4tger8",
+  "raw_audio_url": "https://replicate.delivery/xezq/P7Opqixefusr1kDEGRUVJ09hrn6RB6krVs3NLJmX6BNVrB5WA/tmpem59fp42.mp3",
+  "raw_duration": 2.638367,
+  "fitted_duration": 2.638367,
+  "script_text": "Am I missing jobs by only responding to job ads?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0065_20260714_165026_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0065_20260714_165026_section1_hook_fitted.mp3"
+}

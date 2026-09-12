@@ -1,0 +1,27 @@
+{
+  "approved_at": "2026-05-13",
+  "sections": {
+    "section1": {
+      "status": "approved_locked",
+      "file": "../section1/output/section1_template_match_section3_animation_v4.mp4",
+      "note": "Approved: animation matched to Section 3 smooth line-by-line style"
+    },
+    "section2": {
+      "status": "approved_locked",
+      "file": "../section2/output/section2_editable_match_95_v7.mp4",
+      "config": "../section2/config/section2_editable_match.json",
+      "script": "../section2/scripts/render_section2_editable_match.py",
+      "note": "Approved: fully editable code-generated Section 2 template; number/text/timing editable from config"
+    },
+    "section3": {
+      "status": "approved_locked",
+      "file": "../section3/output/section3_template_match_section1_values_v5.mp4",
+      "note": "Approved: font/position/animation values matched to Section 1"
+    },
+    "section4": {
+      "status": "approved_locked",
+      "file": "../section4/output/section4_template_text_only_v9_2px_up.mp4",
+      "note": "Approved: text-only over existing BG, moved 2px up from v8"
+    }
+  }
+}

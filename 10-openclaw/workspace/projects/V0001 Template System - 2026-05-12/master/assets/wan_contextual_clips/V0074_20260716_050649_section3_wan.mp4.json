@@ -1,0 +1,45 @@
+{
+  "section": "section3",
+  "label": "V0074_20260716_050649",
+  "text": "You could be leaving money and personal fulfillment on the table.",
+  "prompt": "Create realistic professional b-roll for a career-intelligence/job-application tool that helps people make smarter decisions about job search, role fit, career direction, compensation, market demand, and where they have the best chance of getting hired.\n\nUse You could be leaving money and personal fulfillment on the table. only to understand the situation, emotion, and scene direction. Do not display, type, or render any words on screen.\nOffice or desk setting only. Show one professional in a realistic job-search or career-decision moment. Vary the subject\u2019s gender across generations: use male professionals across outputs. Also vary age, ethnicity, role, outfit, desk setup, posture, expression, and action so videos do not look the same.\nChoose the scene based on the hook:\nMore interviews/fewer applications: carefully compare a few opportunities and narrow choices.\nAI changing role value: review skills, responsibilities, and career notes with thoughtful uncertainty.\nEmployers not responding: check application status or inbox, pause with mild frustration, reconsider strategy.\nCareer path cooling: study market or role research on a laptop, composed but uncertain.\nMissing opportunities/where to look: search across job resources, use laptop and notebook, focused but unsure.\nLeaving money on the table: compare compensation-related notes and job options thoughtfully.\nApplying where they have a chance: compare resume/notes against a role before deciding to apply.\nToo many applications/low results: organize an overwhelming job-search workflow into focused next steps.\nCareer direction uncertainty: pause at a desk while weighing different paths.\nBroad/unclear hook: review opportunities, take notes, and make a careful application decision.\nMood: subtle frustration, hesitation, uncertainty, quiet concern, or thoughtful focus. No panic, exaggerated sadness, dramatic reactions, or stock-photo smiling.\nKeep the botom 25% of the frame clean, bright, minimal, and light-toned for future text overlay. Place subject in the lower/middle frame. Natural office lighting, calm modern tone, realistic camera movement, shallow depth of field.\nNo text, captions, logos, readable screens, readable documents, company names, job titles, salary numbers, brand names, or watermarks.",
+  "negative_prompt": "text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, shaky camera, low quality, suit, boardroom, conference room",
+  "model": "kwaivgi/kling-v3-video",
+  "prediction_id": "yc83nskpk1rmy0czd5b9vqev94",
+  "url": "https://replicate.delivery/xezq/PPDtEImpPE4qLFN0zwT94f5WHzRfVUYJZua3DxGJBs6Ith5WA/tmp1cpowvbd.mp4",
+  "downloaded": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0074_20260716_050649_section3_wan.mp4",
+  "result": {
+    "id": "yc83nskpk1rmy0czd5b9vqev94",
+    "model": "kwaivgi/kling-v3-video",
+    "version": "hidden",
+    "input": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "negative_prompt": "text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, shaky camera, low quality, suit, boardroom, conference room",
+      "prompt": "Create realistic professional b-roll for a career-intelligence/job-application tool that helps people make smarter decisions about job search, role fit, career direction, compensation, market demand, and where they have the best chance of getting hired.\n\nUse You could be leaving money and personal fulfillment on the table. only to understand the situation, emotion, and scene direction. Do not display, type, or render any words on screen.\nOffice or desk setting only. Show one professional in a realistic job-search or career-decision moment. Vary the subject\u2019s gender across generations: use male professionals across outputs. Also vary age, ethnicity, role, outfit, desk setup, posture, expression, and action so videos do not look the same.\nChoose the scene based on the hook:\nMore interviews/fewer applications: carefully compare a few opportunities and narrow choices.\nAI changing role value: review skills, responsibilities, and career notes with thoughtful uncertainty.\nEmployers not responding: check application status or inbox, pause with mild frustration, reconsider strategy.\nCareer path cooling: study market or role research on a laptop, composed but uncertain.\nMissing opportunities/where to look: search across job resources, use laptop and notebook, focused but unsure.\nLeaving money on the table: compare compensation-related notes and job options thoughtfully.\nApplying where they have a chance: compare resume/notes against a role before deciding to apply.\nToo many applications/low results: organize an overwhelming job-search workflow into focused next steps.\nCareer direction uncertainty: pause at a desk while weighing different paths.\nBroad/unclear hook: review opportunities, take notes, and make a careful application decision.\nMood: subtle frustration, hesitation, uncertainty, quiet concern, or thoughtful focus. No panic, exaggerated sadness, dramatic reactions, or stock-photo smiling.\nKeep the botom 25% of the frame clean, bright, minimal, and light-toned for future text overlay. Place subject in the lower/middle frame. Natural office lighting, calm modern tone, realistic camera movement, shallow depth of field.\nNo text, captions, logos, readable screens, readable documents, company names, job titles, salary numbers, brand names, or watermarks."
+    },
+    "logs": "Using model: kling-v3 in pro mode\nGenerating video...\nGenerated video in 313.7sec\nGenerated video ID: 906599584347066372\nDownloading 5671028 bytes\nDownloaded 5.41MB in 0.60sec\n",
+    "output": "https://replicate.delivery/xezq/PPDtEImpPE4qLFN0zwT94f5WHzRfVUYJZua3DxGJBs6Ith5WA/tmp1cpowvbd.mp4",
+    "data_removed": false,
+    "error": null,
+    "source": "api",
+    "status": "succeeded",
+    "created_at": "2026-07-16T05:11:41.976Z",
+    "started_at": "2026-07-16T05:11:42.0005435Z",
+    "completed_at": "2026-07-16T05:16:56.70373736Z",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/yc83nskpk1rmy0czd5b9vqev94/cancel",
+      "get": "https://api.replicate.com/v1/predictions/yc83nskpk1rmy0czd5b9vqev94",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-6cuymvie57rkdgknthtl7vkrqlvqvw52lqmn6s4wjcaoo3vzh6oq",
+      "web": "https://replicate.com/p/yc83nskpk1rmy0czd5b9vqev94"
+    },
+    "metrics": {
+      "model_variant": "pro",
+      "predict_time": 314.70319384,
+      "total_time": 314.72773736,
+      "video_output_duration_seconds": 5,
+      "with_audio": false
+    }
+  }
+}

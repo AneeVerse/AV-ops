@@ -1,0 +1,15 @@
++ gog sheets get 1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE '300_Video_Master_Attribution!A1:BZ200' --json --no-input
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 470, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 453, in main
+    a=generate_section_audio(rv, vcfg, voice, text, label, sec)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 248, in generate_section_audio
+    return rv.generate_replicate_voiceover(cfg, voice, clean_vo_text(text), suffix)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/scripts/render_with_rotating_voice.py", line 355, in generate_replicate_voiceover
+    raise RuntimeError(f"Replicate prediction failed: {prediction}")
+RuntimeError: Replicate prediction failed: {'id': '2ptmwfyj91rmr0cz8wkt7fgnp0', 'model': 'elevenlabs/v2-multilingual', 'version': 'hidden', 'input': {'language_code': 'en', 'prompt': 'How do I get more interviews from fewer applications?', 'similarity_boost': 0.8, 'speed': 1, 'stability': 0.5, 'style': 0, 'voice': 'Hope'}, 'logs': '', 'output': None, 'data_removed': False, 'error': 'Director: unexpected error handling prediction (E6802)', 'source': 'api', 'status': 'failed', 'created_at': '2026-07-09T13:53:39.912Z', 'started_at': '2026-07-09T13:53:39.916940963Z', 'completed_at': '2026-07-09T13:53:39.916940963Z', 'urls': {'cancel': 'https://api.replicate.com/v1/predictions/2ptmwfyj91rmr0cz8wkt7fgnp0/cancel', 'get': 'https://api.replicate.com/v1/predictions/2ptmwfyj91rmr0cz8wkt7fgnp0', 'stream': 'https://stream.replicate.com/v1/files/jbxs-rygwvlhsdhslujicvgzfpmqcfmgrg7jr3qbx7wqz66x2ixbmioka', 'web': 'https://replicate.com/p/2ptmwfyj91rmr0cz8wkt7fgnp0'}}

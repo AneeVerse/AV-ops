@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-16T04:34:37.449685+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "4vx9h3bvw1rmr0czd4ta8z21m8",
+  "raw_audio_url": "https://replicate.delivery/xezq/7n4iANeVZkQdS6A7S1Mbq9JeqQn64Q7YfI7irfiTLcXxVEmbB/tmpr4s5yki5.mp3",
+  "raw_duration": 9.848163,
+  "fitted_duration": 9.848163,
+  "script_text": "Most people don\u2019t realize their natural work-style strengths fit a number of roles other than the one they\u2019re currently in, with some paying significantly more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0074_20260716_043430_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0074_20260716_043430_section2_insight_fitted.mp3"
+}

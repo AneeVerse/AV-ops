@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-08T11:51:44.045218+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "xa3x2geav5rmy0cz868vk844h0",
+  "raw_audio_url": "https://replicate.delivery/xezq/n7e2fTayHnuSmEqiifhsitJ5LqAVPUxwMgqZSEwU2ev486bbB/tmpbyeuuj36.mp3",
+  "raw_duration": 6.922449,
+  "fitted_duration": 6.922449,
+  "script_text": "Pay ranges are inconsistent, and salary leverage varies by occupation, location, and demand.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0032_20260708_115137_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0032_20260708_115137_section2_insight_fitted.mp3"
+}

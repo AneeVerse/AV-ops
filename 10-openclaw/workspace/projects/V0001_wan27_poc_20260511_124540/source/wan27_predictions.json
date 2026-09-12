@@ -1,0 +1,126 @@
+[
+  {
+    "name": "01_hook",
+    "id": "tajaj4emvnrmw0cy2w9aeg1xxw",
+    "prompt": "Vertical 9:16 cinematic professional video of a software developer typing on a laptop in a modern workspace, vibrant natural color, soft daylight, subtle camera movement, shallow depth of field, high quality, no text, no captions, no logos, no watermark.",
+    "submit": {
+      "id": "tajaj4emvnrmw0cy2w9aeg1xxw",
+      "model": "wan-video/wan-2.7-t2v",
+      "version": "hidden",
+      "input": {
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "enable_prompt_expansion": true,
+        "negative_prompt": "dull colors, desaturated, grey washed out color, low contrast, blur, distortion, watermark, logo, captions, subtitles, readable text, gibberish text, bad anatomy, flicker",
+        "prompt": "Vertical 9:16 cinematic professional video of a software developer typing on a laptop in a modern workspace, vibrant natural color, soft daylight, subtle camera movement, shallow depth of field, high quality, no text, no captions, no logos, no watermark.",
+        "resolution": "1080p"
+      },
+      "logs": "",
+      "output": null,
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "starting",
+      "created_at": "2026-05-11T12:46:10.653Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/tajaj4emvnrmw0cy2w9aeg1xxw/cancel",
+        "get": "https://api.replicate.com/v1/predictions/tajaj4emvnrmw0cy2w9aeg1xxw",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-rnnrgxt3og4w4jump4tmtyunbxsafmbuhjncd27zitpqouyqwvxa",
+        "web": "https://replicate.com/p/tajaj4emvnrmw0cy2w9aeg1xxw"
+      }
+    }
+  },
+  {
+    "name": "02_insight",
+    "id": "dxh1hrgps9rmt0cy2w9tfse3xc",
+    "prompt": "Vertical 9:16 clean professional abstract data visualization background with moving charts, job search network nodes, subtle digital lines, vibrant off-white navy and magenta palette, modern premium SaaS look, no readable text, no captions, no logos, no watermark.",
+    "submit": {
+      "id": "dxh1hrgps9rmt0cy2w9tfse3xc",
+      "model": "wan-video/wan-2.7-t2v",
+      "version": "hidden",
+      "input": {
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "enable_prompt_expansion": true,
+        "negative_prompt": "dull colors, desaturated, grey washed out color, low contrast, blur, distortion, watermark, logo, captions, subtitles, readable text, gibberish text, bad anatomy, flicker",
+        "prompt": "Vertical 9:16 clean professional abstract data visualization background with moving charts, job search network nodes, subtle digital lines, vibrant off-white navy and magenta palette, modern premium SaaS look, no readable text, no captions, no logos, no watermark.",
+        "resolution": "1080p"
+      },
+      "logs": "",
+      "output": null,
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "starting",
+      "created_at": "2026-05-11T12:46:27.53Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/dxh1hrgps9rmt0cy2w9tfse3xc/cancel",
+        "get": "https://api.replicate.com/v1/predictions/dxh1hrgps9rmt0cy2w9tfse3xc",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-ekmdqi2vwfbddry7qailxvpeiohukuwnypu3ebg3rvr6zechcrjq",
+        "web": "https://replicate.com/p/dxh1hrgps9rmt0cy2w9tfse3xc"
+      }
+    }
+  },
+  {
+    "name": "03_implication",
+    "id": "73t08v2s9nrmr0cy2w9t5ykyz8",
+    "prompt": "Vertical 9:16 professional person reviewing job listings on laptop, thoughtful career search mood, modern office, vibrant natural colors, gentle camera movement, high quality, no readable text, no captions, no logos, no watermark.",
+    "submit": {
+      "id": "73t08v2s9nrmr0cy2w9t5ykyz8",
+      "model": "wan-video/wan-2.7-t2v",
+      "version": "hidden",
+      "input": {
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "enable_prompt_expansion": true,
+        "negative_prompt": "dull colors, desaturated, grey washed out color, low contrast, blur, distortion, watermark, logo, captions, subtitles, readable text, gibberish text, bad anatomy, flicker",
+        "prompt": "Vertical 9:16 professional person reviewing job listings on laptop, thoughtful career search mood, modern office, vibrant natural colors, gentle camera movement, high quality, no readable text, no captions, no logos, no watermark.",
+        "resolution": "1080p"
+      },
+      "logs": "",
+      "output": null,
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "starting",
+      "created_at": "2026-05-11T12:46:44.557Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/73t08v2s9nrmr0cy2w9t5ykyz8/cancel",
+        "get": "https://api.replicate.com/v1/predictions/73t08v2s9nrmr0cy2w9t5ykyz8",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-x53qnpaadyakku2ad42lbmrhyon7trqdqkzwsdilp2oi2zdfj2gq",
+        "web": "https://replicate.com/p/73t08v2s9nrmr0cy2w9t5ykyz8"
+      }
+    }
+  },
+  {
+    "name": "04_cta",
+    "id": "e0f2gxwvwxrmt0cy2w9txeggr0",
+    "prompt": "Vertical 9:16 polished SaaS work style report and dashboard background, floating clean UI cards over vibrant purple orange gradient, premium technology product feel, no readable text, no captions, no logos, no watermark.",
+    "submit": {
+      "id": "e0f2gxwvwxrmt0cy2w9txeggr0",
+      "model": "wan-video/wan-2.7-t2v",
+      "version": "hidden",
+      "input": {
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "enable_prompt_expansion": true,
+        "negative_prompt": "dull colors, desaturated, grey washed out color, low contrast, blur, distortion, watermark, logo, captions, subtitles, readable text, gibberish text, bad anatomy, flicker",
+        "prompt": "Vertical 9:16 polished SaaS work style report and dashboard background, floating clean UI cards over vibrant purple orange gradient, premium technology product feel, no readable text, no captions, no logos, no watermark.",
+        "resolution": "1080p"
+      },
+      "logs": "",
+      "output": null,
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "starting",
+      "created_at": "2026-05-11T12:47:01.607Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/e0f2gxwvwxrmt0cy2w9txeggr0/cancel",
+        "get": "https://api.replicate.com/v1/predictions/e0f2gxwvwxrmt0cy2w9txeggr0",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-dh72n3covywc72mr6ly7v26szsxqbqqfcaahsrno5gj4k6fmdaya",
+        "web": "https://replicate.com/p/e0f2gxwvwxrmt0cy2w9txeggr0"
+      }
+    }
+  }
+]

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="grad9" gradientUnits="userSpaceOnUse" cx="365" cy="455" r="190" fx="398" fy="425">
+      <stop offset="0%" stop-color="#ffd12a"/><stop offset="27%" stop-color="#ff7a20"/><stop offset="52%" stop-color="#e93276"/><stop offset="76%" stop-color="#af18bd"/><stop offset="100%" stop-color="#6535ce"/>
+    </radialGradient>
+    <radialGradient id="grad5" gradientUnits="userSpaceOnUse" cx="520" cy="450" r="195" fx="505" fy="455">
+      <stop offset="0%" stop-color="#ff9a1d"/><stop offset="30%" stop-color="#fa5749"/><stop offset="56%" stop-color="#d72986"/><stop offset="78%" stop-color="#9430c3"/><stop offset="100%" stop-color="#6236cc"/>
+    </radialGradient>
+    <radialGradient id="gradNum" gradientUnits="userSpaceOnUse" cx="500" cy="528.0" r="220" fx="505" fy="508.0">
+      <stop offset="0%" stop-color="#ffd12a"/><stop offset="28%" stop-color="#ff7a20"/><stop offset="55%" stop-color="#e93276"/><stop offset="80%" stop-color="#af18bd"/><stop offset="100%" stop-color="#6535ce"/>
+    </radialGradient>
+    <filter id="softShadow" x="-18%" y="-18%" width="136%" height="136%"><feDropShadow dx="0" dy="4" stdDeviation="4.8" flood-color="#7a2fd6" flood-opacity="0.15"/></filter>
+  </defs>
+  <rect x="0" y="0" width="1080" height="1920" fill="#ffffff"/>
+  <rect x="50" y="52.5" width="980" height="1815" rx="30" ry="30" fill="#fff5f2"/>
+  <g text-anchor="middle">
+    <text x="500.0" y="633.0" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="227.5" letter-spacing="0" fill="url(#gradNum)" filter="url(#softShadow)">60</text>
+    <text x="704.8" y="633.0" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="400" font-size="127.4" letter-spacing="0" fill="#002763">%</text>
+    <text x="540" y="728.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="1.000">of U.S. publicly</text>
+    <text x="540" y="807.8" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="0.889">posted jobs stay</text>
+    <text x="540" y="904.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="0.000">invisible to</text>
+    <text x="540" y="980.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="0.000">candidates who</text>
+    <text x="540" y="1056.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="0.000">don&#x27;t know</text>
+    <text x="540" y="1132.6" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="78" letter-spacing="0" fill="#002763" opacity="0.000">to search them</text>
+  </g>
+</svg>

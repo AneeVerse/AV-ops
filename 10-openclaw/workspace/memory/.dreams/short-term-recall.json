@@ -1,0 +1,3650 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-26T14:14:32.887Z",
+  "entries": {
+    "memory:memory/2026-03-28.md:17:27": {
+      "key": "memory:memory/2026-03-28.md:17:27",
+      "path": "memory/2026-03-28.md",
+      "startLine": 17,
+      "endLine": 27,
+      "source": "memory",
+      "snippet": "- User preference: when user says \"search\", treat it as a web/Google-style search by default. - User preference: when asked for active clients or ongoing client list, return Ongoing + Leads, kept separate by bifurcation. - User preference: when asked for full list or all client list, return the full client list with bifurcation by status. - User preference: use openrouter/stepfun/step-3.5-flash:free for heartbeat/background tasks by default. - User preference: use openrouter/stepfun/step-3.5-flash:free for cron jobs and reminders by default unless stronger reasoning is needed. - Workspace knowledge: business system is a custom ticket + task management platform at https://app.aneeverse.com/ w",
+      "recallCount": 9,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.619271569247014,
+      "maxScore": 0.780748404855497,
+      "firstRecalledAt": "2026-04-09T06:45:39.670Z",
+      "lastRecalledAt": "2026-08-26T14:14:32.887Z",
+      "queryHashes": [
+        "b4e2df7cce4a",
+        "7bfae4f0d6c7",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "2a2708cb3215",
+        "59752cf50441",
+        "3e9489f856f8",
+        "625d5d7f1863",
+        "965b3b6f3f82"
+      ],
+      "recallDays": [
+        "2026-04-09",
+        "2026-04-12",
+        "2026-04-22",
+        "2026-05-05",
+        "2026-05-09",
+        "2026-08-26"
+      ],
+      "conceptTags": [
+        "router",
+        "web/google-style",
+        "heartbeat/background",
+        "app.aneeverse.com",
+        "preference",
+        "when",
+        "says",
+        "treat"
+      ]
+    },
+    "memory:memory/2026-03-28.md:24:33": {
+      "key": "memory:memory/2026-03-28.md:24:33",
+      "path": "memory/2026-03-28.md",
+      "startLine": 24,
+      "endLine": 33,
+      "source": "memory",
+      "snippet": "- Client means company, not individual. Required fields: Company Name, User Name (contact person), Phone Number, Email, Password. - Clients currently do not log in. Requests are created internally on behalf of clients. - Request means project (example: Website Development). Each Request is broken into multiple Tasks. - Task means actionable unit of work. Each Task is assigned to exactly one team member. - Team roles: Anees = Operations/task allocation/coordination; Abhijeet = Finance/blogs/client communication/lead generation; Suraj = Ecommerce + Ads (Google Ads + Meta Ads); Mayur = Senior Developer (core development); Sanket = Junior Developer (supports Mayur); Himanshi = Graphic Designer (",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.8704972714185713,
+      "maxScore": 0.5252337753772736,
+      "firstRecalledAt": "2026-04-09T06:45:39.670Z",
+      "lastRecalledAt": "2026-05-05T02:58:34.592Z",
+      "queryHashes": [
+        "b4e2df7cce4a",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "59752cf50441"
+      ],
+      "recallDays": [
+        "2026-04-09",
+        "2026-04-22",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "operations/task",
+        "allocation/coordination",
+        "finance/blogs/client",
+        "communication/lead",
+        "client",
+        "means",
+        "company",
+        "not"
+      ]
+    },
+    "memory:memory/2026-03-28.md:1:19": {
+      "key": "memory:memory/2026-03-28.md:1:19",
+      "path": "memory/2026-03-28.md",
+      "startLine": 1,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "# 2026-03-28 - Bootstrapped identity. - Assistant name: AV_BOT. - User: Ahmad Anees. - Business: aneeverse.com. - Role: help with day-to-day business operations. - Style: analytical, practical, direct, brutally logical, fact-based, no sugar-coating, no guessing. - Emoji: 🤖. - Set up OpenClaw web UI behind Nginx with Let's Encrypt at https://bot.aneeverse.com on VPS; OpenClaw upstream is 127.0.0.1:18789. - Added OpenClaw gateway.controlUi.allowedOrigins for https://bot.aneeverse.com and restarted gateway. - Diagnosed Control UI auth flow: gateway token prompt was expected, then browser device pairing was required; approved pending browser device and generated operator device token for the p",
+      "recallCount": 9,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.143274360895156,
+      "maxScore": 0.4854071587324142,
+      "firstRecalledAt": "2026-04-09T06:45:39.670Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "b4e2df7cce4a",
+        "7bfae4f0d6c7",
+        "b356e3f5a749",
+        "a2e7449c126d",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "2a2708cb3215",
+        "3e9489f856f8",
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-04-09",
+        "2026-04-12",
+        "2026-04-22",
+        "2026-05-09",
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "gateway",
+        "av-bot",
+        "aneeverse.com",
+        "day-to-day",
+        "fact-based",
+        "sugar-coating",
+        "bot.aneeverse.com",
+        "127.0.0.1"
+      ]
+    },
+    "memory:memory/2026-03-29.md:1:6": {
+      "key": "memory:memory/2026-03-29.md:1:6",
+      "path": "memory/2026-03-29.md",
+      "startLine": 1,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "- Important correction for Drive classification work: never move the client folder itself; move only actual files. Sensitive files (MOU, scope of work, POA, invoices, finance-related, sensitive/admin/commercial docs) must stay in CLIENTS FILES/<client>, never nested under CLIENTS PROJECTS/<client>. - Tight reusable Drive triage prompt established: search whole Drive for a client, classify actual files only into CLIENTS PROJECTS/<client> vs CLIENTS FILES/<client>, never move folder references, never create client/client nesting, leave unclear items unmoved and report them. - HORECA1 cleaned with the tight prompt: project/working files moved to CLIENTS PROJECTS/HORECA1; sensitive files (H1 Lab",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.777836629748344,
+      "maxScore": 0.5246478140354156,
+      "firstRecalledAt": "2026-04-12T03:07:22.392Z",
+      "lastRecalledAt": "2026-06-22T19:20:22.326Z",
+      "queryHashes": [
+        "7bfae4f0d6c7",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "2a2708cb3215",
+        "625d5d7f1863",
+        "39673c55abb9"
+      ],
+      "recallDays": [
+        "2026-04-12",
+        "2026-04-22",
+        "2026-05-09",
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "finance-related",
+        "sensitive/admin/commercial",
+        "client/client",
+        "project/working",
+        "projects/horeca1",
+        "important",
+        "correction",
+        "drive"
+      ]
+    },
+    "memory:memory/2026-03-29.md:5:8": {
+      "key": "memory:memory/2026-03-29.md:5:8",
+      "path": "memory/2026-03-29.md",
+      "startLine": 5,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "- NAME CHANGE GAZETTE corrected after user reported leftovers: direct folder audit moved Scope of work.docx, MOU.docx, Invoice.xlsm, and FINANCE into CLIENTS FILES/NAME CHANGE GAZETTE. - BLESSED BEGINNING was removed from Aneerequest and moved in Drive to NOT-CONVERTED from CLIENTS PROJECTS; user had already deleted it from CLIENTS FILES. - CE WORLD WIDE was deleted from Aneerequest and both Drive-side client folders (CLIENTS PROJECTS + CLIENTS FILES) were moved into NOT-CONVERTED.",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.816675281524658,
+      "maxScore": 0.5174722701311111,
+      "firstRecalledAt": "2026-04-12T03:07:22.392Z",
+      "lastRecalledAt": "2026-05-09T02:38:04.498Z",
+      "queryHashes": [
+        "7bfae4f0d6c7",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "2a2708cb3215",
+        "59752cf50441",
+        "625d5d7f1863"
+      ],
+      "recallDays": [
+        "2026-04-12",
+        "2026-04-22",
+        "2026-05-05",
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "work.docx",
+        "mou.docx",
+        "invoice.xlsm",
+        "files/name",
+        "not-converted",
+        "drive-side",
+        "name",
+        "change"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1:7": {
+      "key": "memory:memory/2026-04-12.md:1:7",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "- Built Hostinger VPS snapshot n8n workflow and activated it: `Hostinger VPS Snapshot - Twice Daily` (`qqnqbHa7kyewmG9H`). - Final approved schedule for Hostinger snapshot workflow: timezone `Asia/Kolkata`, cron `0 2,14 * * *` (2:00 AM IST and 2:00 PM IST). - User requested a standing preference for n8n automations: always include a manual trigger/button for testing when creating workflows. - Diagnosed Hostinger workflow blocker: n8n execution could not access `HOSTINGER_API_KEY` via `$env`; fix was to place the key into `/etc/n8n/n8n.env` and restart n8n. - Polished Hostinger workflow structure with manual trigger, schedule trigger, success formatting, failure formatting, and Google Chat no",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6427021712064742,
+      "maxScore": 0.5787942886352538,
+      "firstRecalledAt": "2026-04-12T03:27:44.885Z",
+      "lastRecalledAt": "2026-04-22T08:43:46.542Z",
+      "queryHashes": [
+        "b356e3f5a749",
+        "a2e7449c126d",
+        "8a981b7bb942"
+      ],
+      "recallDays": [
+        "2026-04-12",
+        "2026-04-22"
+      ],
+      "conceptTags": [
+        "asia/kolkata",
+        "trigger/button",
+        "hostinger-api-key",
+        "etc/n8n/n8n.env",
+        "built",
+        "hostinger",
+        "vps",
+        "snapshot"
+      ]
+    },
+    "memory:memory/2026-04-09.md:1:5": {
+      "key": "memory:memory/2026-04-09.md:1:5",
+      "path": "memory/2026-04-09.md",
+      "startLine": 1,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "# 2026-04-09 - User preference: always take action first, try to complete the task independently, avoid assumptions, work on the basis of data, perform the task first, then proceed to the next step, and come back with results. - Gog manual auth command confirmed by user for terminal-only VPS flow: `gog auth add anees@aneeverse.com --services gmail,calendar,chat,classroom,drive,docs,slides,contacts,tasks,sheets,people,forms,appscript --manual`.",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.7600970298051832,
+      "maxScore": 0.48879243731498717,
+      "firstRecalledAt": "2026-04-12T03:27:44.885Z",
+      "lastRecalledAt": "2026-05-09T02:38:04.498Z",
+      "queryHashes": [
+        "b356e3f5a749",
+        "a2e7449c126d",
+        "8a981b7bb942",
+        "4dd7e71bd18a",
+        "2a2708cb3215",
+        "625d5d7f1863"
+      ],
+      "recallDays": [
+        "2026-04-12",
+        "2026-04-22",
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "terminal-only",
+        "aneeverse.com",
+        "user",
+        "preference",
+        "always",
+        "take",
+        "action",
+        "first"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1:11": {
+      "key": "memory:memory/2026-04-12.md:1:11",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "- Built Hostinger VPS snapshot n8n workflow and activated it: `Hostinger VPS Snapshot - Twice Daily` (`qqnqbHa7kyewmG9H`). - Final approved schedule for Hostinger snapshot workflow: timezone `Asia/Kolkata`, cron `0 2,14 * * *` (2:00 AM IST and 2:00 PM IST). - User requested a standing preference for n8n automations: always include a manual trigger/button for testing when creating workflows. - Diagnosed Hostinger workflow blocker: n8n execution could not access `HOSTINGER_API_KEY` via `$env`; fix was to place the key into `/etc/n8n/n8n.env` and restart n8n. - Polished Hostinger workflow structure with manual trigger, schedule trigger, success formatting, failure formatting, and Google Chat no",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9701253414154052,
+      "maxScore": 0.5368279993534087,
+      "firstRecalledAt": "2026-04-22T09:46:03.445Z",
+      "lastRecalledAt": "2026-04-22T09:47:55.380Z",
+      "queryHashes": [
+        "4dd7e71bd18a",
+        "2a2708cb3215"
+      ],
+      "recallDays": [
+        "2026-04-22"
+      ],
+      "conceptTags": [
+        "asia/kolkata",
+        "trigger/button",
+        "hostinger-api-key",
+        "etc/n8n/n8n.env",
+        "built",
+        "hostinger",
+        "vps",
+        "snapshot"
+      ]
+    },
+    "memory:memory/2026-04-12.md:10:20": {
+      "key": "memory:memory/2026-04-12.md:10:20",
+      "path": "memory/2026-04-12.md",
+      "startLine": 10,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "- Diagnosed Hostinger workflow blocker: n8n execution could not access `HOSTINGER_API_KEY` via `$env`; fix was to place the key into `/etc/n8n/n8n.env` and restart n8n. - Polished Hostinger workflow structure with manual trigger, schedule trigger, success formatting, failure formatting, and Google Chat notification path. - User wants to test the Hostinger automation first before setting up workflow-level error notifications or time-saved tracking. - Built n8n workflow `Hostinger Domain Expiry Alerts` (`MuD6rgCHi4UtgjFS`) to send Google Chat reminders for domains exactly 30, 7, 4, 3, 2, and 1 days before expiry. - Domain expiry workflow uses the same Google Chat space/webhook as the Hostinger",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5490566462278366,
+      "maxScore": 0.5490566462278366,
+      "firstRecalledAt": "2026-04-22T09:47:55.380Z",
+      "lastRecalledAt": "2026-04-22T09:47:55.380Z",
+      "queryHashes": [
+        "2a2708cb3215"
+      ],
+      "recallDays": [
+        "2026-04-22"
+      ],
+      "conceptTags": [
+        "hostinger-api-key",
+        "etc/n8n/n8n.env",
+        "workflow-level",
+        "time-saved",
+        "space/webhook",
+        "diagnosed",
+        "hostinger",
+        "workflow"
+      ]
+    },
+    "memory:memory/2026-04-22.md:17:22": {
+      "key": "memory:memory/2026-04-22.md:17:22",
+      "path": "memory/2026-04-22.md",
+      "startLine": 17,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "- Automation 10 work progressed on 2026-04-22: assistant read the Google Doc/tab `work of Automation 10`, created a one-task-at-a-time execution list in the `Task list` tab of doc `1jn6EYiQ_Vot99FkTJfMqDHEEDkUAO1L5vzf1h6gH-yw`, and updated the doc to use emoji status tracking (⌛️ pending, ✍️ ongoing, ✅ completed). - Automation 10 Task 1 schema audit completed against live Supabase/Aneerequest data: confirmed tables `clients`, `requests`, `tasks`, `task_request_links`, and `team_members`; counts at time of audit were clients 38, requests 34, tasks 43, task_request_links 43, team_members 7. - Automation 10 Task 1 also confirmed current live enum-like values: `tasks.status` = Todo / In Progress",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0096036940813065,
+      "maxScore": 0.510190811753273,
+      "firstRecalledAt": "2026-05-09T02:33:26.936Z",
+      "lastRecalledAt": "2026-05-09T02:38:04.498Z",
+      "queryHashes": [
+        "3e9489f856f8",
+        "625d5d7f1863"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "doc/tab",
+        "one-task-at-a-time",
+        "supabase/aneerequest",
+        "task-request-links",
+        "team-members",
+        "enum-like",
+        "tasks.status",
+        "automation"
+      ]
+    },
+    "memory:memory/2026-04-28.md:1:7": {
+      "key": "memory:memory/2026-04-28.md:1:7",
+      "path": "memory/2026-04-28.md",
+      "startLine": 1,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "- Automation 10 local prototype now has 4 working pieces in workspace scripts: `automation10_assignment_dispatcher_local.py` (10-A grouped assignment dispatch), `automation10_ack_tracker_local.py` (10-B acknowledgement/progress state transitions), `automation10_followup_engine_local.py` (10-C follow-up/escalation event generation), and `automation10_dashboard_local.py` (10-D ops dashboard summary), plus `automation10_local_cycle.py` to run dispatcher + follow-up + dashboard together. - User reviewed Google Chat assignment messages and said the task list is very messy; preference is to simplify chat output to mainly the task name, and link/URL only if the link is real and verified. - User pre",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.471053695678711,
+      "maxScore": 0.5109021306037903,
+      "firstRecalledAt": "2026-05-09T02:33:26.936Z",
+      "lastRecalledAt": "2026-08-03T06:38:57.488Z",
+      "queryHashes": [
+        "3e9489f856f8",
+        "5e2308356e95",
+        "3ad18c4ee9fa"
+      ],
+      "recallDays": [
+        "2026-05-09",
+        "2026-07-06",
+        "2026-08-03"
+      ],
+      "conceptTags": [
+        "10-a",
+        "10-b",
+        "acknowledgement/progress",
+        "10-c",
+        "follow-up/escalation",
+        "automation10-dashboard-local.py",
+        "10-d",
+        "automation10-local-cycle.py"
+      ]
+    },
+    "memory:memory/2026-04-29.md:1:9": {
+      "key": "memory:memory/2026-04-29.md:1:9",
+      "path": "memory/2026-04-29.md",
+      "startLine": 1,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "## 2026-04-29 - Automation 10 direction changed by user decision: move from grouped multi-task dispatch per teammate to single active-task control per teammate. - New operating rule: one teammate = one current tracked task; choose top priority by due date for now. - Expected workflow: send only one top-priority task to each teammate, ask if they are working on it, track until done/blocked, and if not working on it, ask what they are actually doing. - Dispatcher was refactored accordingly; verified live behavior sent one task each for 5 teammates, skipped 2, failed 0. - Example live selected priority tasks included Sanket -> NOVINO - 11 Mar - Social media post; Suraj -> URONiYX - 11 Mar - ads",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.48647704720497126,
+      "maxScore": 0.48647704720497126,
+      "firstRecalledAt": "2026-05-09T02:33:26.936Z",
+      "lastRecalledAt": "2026-05-09T02:33:26.936Z",
+      "queryHashes": [
+        "3e9489f856f8"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "multi-task",
+        "active-task",
+        "top-priority",
+        "done/blocked",
+        "automation",
+        "direction",
+        "changed",
+        "user"
+      ]
+    },
+    "memory:memory/2026-05-08.md:1:6": {
+      "key": "memory:memory/2026-05-08.md:1:6",
+      "path": "memory/2026-05-08.md",
+      "startLine": 1,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "- 2026-05-08: BOOTSTRAP.md was checked and contains no active checklist; treat bootstrap as not required unless explicit actionable startup steps are added below its note. - 2026-05-08: Began the next sales UI quality pass focused on real data loading, stronger loading/empty/error states, more consistent ChatGPT-like styling, and mobile responsiveness. - 2026-05-08: Replaced the live HTML for `/var/www/bot.aneeverse.com/sales/index.html`, `/var/www/bot.aneeverse.com/sales/reports/index.html`, and `/var/www/bot.aneeverse.com/sales/leads/detail/index.html` with a shared darker responsive shell and explicit client-side loading/error handling. - 2026-05-08: Browser/screenshot validation was not",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9486573100090026,
+      "maxScore": 0.48751034438610075,
+      "firstRecalledAt": "2026-05-09T02:38:04.498Z",
+      "lastRecalledAt": "2026-06-22T19:20:22.326Z",
+      "queryHashes": [
+        "625d5d7f1863",
+        "39673c55abb9"
+      ],
+      "recallDays": [
+        "2026-05-09",
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "gpt",
+        "bootstrap.md",
+        "loading/empty/error",
+        "chatgpt-like",
+        "client-side",
+        "loading/error",
+        "browser/screenshot",
+        "was"
+      ]
+    },
+    "memory:memory/2026-05-08.md:5:11": {
+      "key": "memory:memory/2026-05-08.md:5:11",
+      "path": "memory/2026-05-08.md",
+      "startLine": 5,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "- 2026-05-08: A git commit attempt went wrong because `git add .` pulled in unintended noise from `tmp/automation-api-venv/...`; this needs cleanup before the final proper commit for the UI pass. - 2026-05-08: Continued sales UI restructuring by creating `/root/.openclaw/workspace/web/sales` as a tracked mirror of the live `/var/www/bot.aneeverse.com/sales` site, establishing the intended flow: edit in `web/sales`, deploy via `rsync`, then verify live pages. - 2026-05-08: Deployed the tracked `web/sales` mirror back to `/var/www/bot.aneeverse.com/sales` and live-verified authenticated `200` responses for key pages including `/sales/`, `/sales/reports/`, `/sales/reminders/`, `/sales/outreach/",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9446125537157057,
+      "maxScore": 0.4838494002819061,
+      "firstRecalledAt": "2026-05-09T02:38:04.498Z",
+      "lastRecalledAt": "2026-06-22T19:20:22.326Z",
+      "queryHashes": [
+        "625d5d7f1863",
+        "39673c55abb9"
+      ],
+      "recallDays": [
+        "2026-05-09",
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "tmp/automation-api-venv",
+        "openclaw/workspace/web/sales",
+        "var/www/bot.aneeverse.com/sales",
+        "web/sales",
+        "live-verified",
+        "sales/reports",
+        "sales/reminders",
+        "sales/outreach"
+      ]
+    },
+    "memory:memory/2026-04-22.md:12:18": {
+      "key": "memory:memory/2026-04-22.md:12:18",
+      "path": "memory/2026-04-22.md",
+      "startLine": 12,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "- Saved durable personal context: date of birth 2003-01-16; location Ghansoli, Navi Mumbai, currently in Bettiah, West Champaran, Bihar; entrepreneur/developer/digital marketer running aneeverse.com. - Saved durable preference updates: questions before answers, personalized responses, simple language, one-step-at-a-time guidance, likes structured formats and tables. - Saved broader personal/business goals: prioritize money/business growth, target ₹20 crores by age 28, short-term target ₹1 lakh/month. - Saved task-tracking visual preference: use ⌛️ for pending tasks, ✍️ for ongoing tasks, and ✅ for completed tasks. - Saved supporting personal context: partners Abhijeet and Suraj are equal par",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.48120788037776946,
+      "maxScore": 0.48120788037776946,
+      "firstRecalledAt": "2026-05-09T02:38:04.498Z",
+      "lastRecalledAt": "2026-05-09T02:38:04.498Z",
+      "queryHashes": [
+        "625d5d7f1863"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "entrepreneur/developer/digital",
+        "aneeverse.com",
+        "one-step-at-a-time",
+        "personal/business",
+        "money/business",
+        "short-term",
+        "lakh/month",
+        "task-tracking"
+      ]
+    },
+    "memory:memory/2026-05-07.md:1:9": {
+      "key": "memory:memory/2026-05-07.md:1:9",
+      "path": "memory/2026-05-07.md",
+      "startLine": 1,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "- Built a separate sales operating system under `https://bot.aneeverse.com/sales/` with protected nginx basic auth credentials username `Anee` and password `0090` per Ahmad's explicit request. - Sales system uses separate PostgreSQL tables, isolated from existing mirror business tables: `sales_leads`, `sales_pipeline_events`, `sales_followups`, `sales_templates`, `sales_activity_logs`. - Live modules built and connected: `/sales/`, `/sales/leads/`, `/sales/pipeline/`, `/sales/followups/`, `/sales/templates/`, `/sales/reports/`, `/sales/reminders/`. - Working capabilities now include: lead create/read/search/filter/edit/delete; pipeline stage update; follow-up create/read/search/filter/edit/d",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5153814271092414,
+      "maxScore": 0.5297688737511634,
+      "firstRecalledAt": "2026-05-09T02:38:04.498Z",
+      "lastRecalledAt": "2026-08-26T14:14:32.887Z",
+      "queryHashes": [
+        "625d5d7f1863",
+        "7b762ec4d555",
+        "965b3b6f3f82"
+      ],
+      "recallDays": [
+        "2026-05-09",
+        "2026-06-23",
+        "2026-08-26"
+      ],
+      "conceptTags": [
+        "bot.aneeverse.com/sales",
+        "sales-leads",
+        "sales-pipeline-events",
+        "sales-followups",
+        "sales-templates",
+        "sales-activity-logs",
+        "sales/leads",
+        "sales/pipeline"
+      ]
+    },
+    "memory:memory/2026-06-22.md:288:300": {
+      "key": "memory:memory/2026-06-22.md:288:300",
+      "path": "memory/2026-06-22.md",
+      "startLine": 288,
+      "endLine": 300,
+      "source": "memory",
+      "snippet": "- Ahmad requested moving the Section 2 tilde 10px more down. - Updated Section 2 only; no full video. - Changed `stat_prefix_y_offset` from -90 to -80 while keeping x/animation settings unchanged. - Rendered and uploaded Section 2-only review video. - Review link: https://drive.google.com/file/d/1zchku_zvyEmFih0F1P12Kn5-UUb4bMLY/view?usp=drivesdk ## AI video Section 2 tilde moved another 10px down - Ahmad requested moving the Section 2 tilde 10px down again. - Updated Section 2 only; no full video. - Changed `stat_prefix_y_offset` from -80 to -70 while keeping x/animation settings unchanged. - Rendered and uploaded Section 2-only review video. - Review link: https://drive.google.com/file/d/",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5283004030585289,
+      "maxScore": 0.5283004030585289,
+      "firstRecalledAt": "2026-06-23T04:10:27.603Z",
+      "lastRecalledAt": "2026-06-23T04:10:27.603Z",
+      "queryHashes": [
+        "862a3f52c1ed"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "stat-prefix-y-offset",
+        "x/animation",
+        "2-only",
+        "drive.google.com/file/d",
+        "ahmad",
+        "requested",
+        "moving",
+        "section"
+      ]
+    },
+    "memory:memory/2026-06-22.md:87:101": {
+      "key": "memory:memory/2026-06-22.md:87:101",
+      "path": "memory/2026-06-22.md",
+      "startLine": 87,
+      "endLine": 101,
+      "source": "memory",
+      "snippet": "- Ahmad approved generating full video after Section 2-only reference fix. - Initial n8n webhook returned empty because the local bridge on port 8013 was down; restarted bridge with `python3 scripts/ai_video_n8n_bridge.py` and re-ran through n8n webhook. - Final run used Google Sheet row V0001 source + n8n webhook + Kling v2.6 only. - Section 2 tilde config used: `stat_prefix_x_factor` 0.635, `stat_prefix_y_offset` -124. - Final Drive link: https://drive.google.com/file/d/1hyyvsyjrgwilixZI34u1HGFxAmYvgUoZ/view?usp=drivesdk - Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_193343_001.mp4`. - Verified:",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5919565483927727,
+      "maxScore": 0.5504725977778434,
+      "firstRecalledAt": "2026-06-23T04:10:27.603Z",
+      "lastRecalledAt": "2026-06-29T04:39:40.554Z",
+      "queryHashes": [
+        "862a3f52c1ed",
+        "91d2021f99eb",
+        "b1a491fdf70d"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "2-only",
+        "scripts/ai-video-n8n-bridge.py",
+        "re-ran",
+        "v2.6",
+        "stat-prefix-x-factor",
+        "0.635",
+        "stat-prefix-y-offset",
+        "projects/v0001"
+      ]
+    },
+    "memory:memory/2026-06-22.md:186:199": {
+      "key": "memory:memory/2026-06-22.md:186:199",
+      "path": "memory/2026-06-22.md",
+      "startLine": 186,
+      "endLine": 199,
+      "source": "memory",
+      "snippet": "- Updated `section2/scripts/render_section2_editable_match.py` to render optional `stat_prefix` before the animated stat, using existing dark-blue percent styling and without changing count keys, animation, gradients, or body text. - Section 2 standalone visual QC confirmed `~95%` appears and layout/colors remain intact. - Regenerated V0001 through n8n webhook using Google Sheet source + Kling v2.6 only + updated Section 4 background. - Final Drive link: https://drive.google.com/file/d/1UnuADSg49ykF7S4qfhatYl8AhAPQVmhq/view?usp=drivesdk - Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_160557_001.mp4",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.641084118187427,
+      "maxScore": 0.5367776915431022,
+      "firstRecalledAt": "2026-06-23T04:10:27.603Z",
+      "lastRecalledAt": "2026-06-30T12:31:01.871Z",
+      "queryHashes": [
+        "862a3f52c1ed",
+        "b1020c6cfe25",
+        "3de36f2791b4",
+        "c584e2c9bf29",
+        "9494812aeed8",
+        "e3129cae0f4c",
+        "185507193090"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-25",
+        "2026-06-29",
+        "2026-06-30"
+      ],
+      "conceptTags": [
+        "stat-prefix",
+        "dark-blue",
+        "layout/colors",
+        "v2.6",
+        "projects/v0001",
+        "updated",
+        "section2",
+        "scripts"
+      ]
+    },
+    "memory:memory/2026-06-22.md:197:212": {
+      "key": "memory:memory/2026-06-22.md:197:212",
+      "path": "memory/2026-06-22.md",
+      "startLine": 197,
+      "endLine": 212,
+      "source": "memory",
+      "snippet": "- Updated `section2/config/section2_editable_match.json`: `stat_prefix_x_factor` = 0.62 and `stat_prefix_y_offset` = -125. - Updated renderer to read configurable `stat_prefix_x_factor` and `stat_prefix_y_offset`. - Standalone Section 2 QC confirmed tilde is above/left and not overlapping; palette/animation unchanged. - Regenerated V0001 through Google Sheet source + n8n webhook + Kling v2.6 only. - Final Drive link: https://drive.google.com/file/d/1AKYPX6j6XRYGGPOeSND2UNy_kJ0AjAq8/view?usp=drivesdk - Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_162548_001.mp4`. - Verified: 1080x1920, 30fps, 20s,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5232777267694473,
+      "maxScore": 0.5232777267694473,
+      "firstRecalledAt": "2026-06-23T04:10:27.603Z",
+      "lastRecalledAt": "2026-06-23T04:10:27.603Z",
+      "queryHashes": [
+        "862a3f52c1ed"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "stat-prefix-x-factor",
+        "0.62",
+        "stat-prefix-y-offset",
+        "above/left",
+        "palette/animation",
+        "v2.6",
+        "projects/v0001",
+        "updated"
+      ]
+    },
+    "memory:memory/2026-06-22.md:99:116": {
+      "key": "memory:memory/2026-06-22.md:99:116",
+      "path": "memory/2026-06-22.md",
+      "startLine": 99,
+      "endLine": 116,
+      "source": "memory",
+      "snippet": "- Rendered Section 2 only: `projects/V0001 Template System - 2026-05-12/section2/output/section2_tilde_left_fix_20260622.mp4`. - Visual QC confirmed `~` is clearly visible and separated from `9`, while still reading as `~95%`. - Uploaded Section 2-only review video: https://drive.google.com/file/d/16lXCd5gJ8o70pZPm6Rh4y4YowHlEeS2M/view?usp=drivesdk - No full 20s video was regenerated in this step. ## AI video Section 2 tilde final-only fix - Ahmad reviewed Section 2-only video and said `~` becomes covered once the stat hits two digits. - Diagnosis: drawing `~` throughout the count-up causes collision/visual swallowing by animated two-digit numbers. - Fix: renderer now shows `stat_prefix` on",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5174565404653549,
+      "maxScore": 0.5174565404653549,
+      "firstRecalledAt": "2026-06-23T04:10:27.603Z",
+      "lastRecalledAt": "2026-06-23T04:10:27.603Z",
+      "queryHashes": [
+        "862a3f52c1ed"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "2-only",
+        "final-only",
+        "count-up",
+        "collision/visual",
+        "two-digit",
+        "stat-prefix",
+        "rendered"
+      ]
+    },
+    "memory:memory/2026-06-22.md:209:225": {
+      "key": "memory:memory/2026-06-22.md:209:225",
+      "path": "memory/2026-06-22.md",
+      "startLine": 209,
+      "endLine": 225,
+      "source": "memory",
+      "snippet": "- Adjusted only Section 2 config: `stat_prefix_x_factor` from 0.62 to 0.635 and `stat_prefix_y_offset` final to -124. - Rendered Section 2 only; did not regenerate full video, per Ahmad's instruction. - Final Section 2 output remains `section2/output/section2_editable_match_95_v7.mp4`. - Final QC frame: `section2/qc/tilde_reference_final_20260622/section2_tilde_reference_final_2s.jpg`. - Visual comparison confirmed the tilde position matches the reference closely. ## AI video final generated after Section 2 reference tilde fix - Ahmad approved generating full video after Section 2-only reference fix. - Initial n8n webhook returned empty because the local bridge on port 8013 was down; restar",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6050704166293142,
+      "maxScore": 0.5454686343669891,
+      "firstRecalledAt": "2026-06-23T04:31:52.667Z",
+      "lastRecalledAt": "2026-06-29T05:33:41.842Z",
+      "queryHashes": [
+        "91d2021f99eb",
+        "b1a491fdf70d",
+        "e24430d8b554"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "stat-prefix-x-factor",
+        "0.62",
+        "0.635",
+        "stat-prefix-y-offset",
+        "2-only",
+        "adjusted",
+        "only",
+        "section"
+      ]
+    },
+    "memory:memory/2026-06-22.md:125:142": {
+      "key": "memory:memory/2026-06-22.md:125:142",
+      "path": "memory/2026-06-22.md",
+      "startLine": 125,
+      "endLine": 142,
+      "source": "memory",
+      "snippet": "- Current tilde coordinates: x=194, y=576, font size=190, with `stat_prefix_x_factor` 0.90 and `stat_prefix_y_offset` -124. - Renderer still draws tilde after digits so it stays visible. - Rendered Section 2 only; no full video. - Frame-by-frame visual QC confirmed tilde is visible throughout, not hidden by digits, and stable through 94/95 transition. - Review link: https://drive.google.com/file/d/1KHLTYdVkp26Vme4IVtVzxt4_MdTn-GiM/view?usp=drivesdk ## AI video V0001 regenerated from updated sheet - Pulled current source Excel from Drive file `1RXru75yd4vluuk8nVOsMeZfg2akRzbSA` into `tmp/ai_video_source_excel_current.xlsx`. - First-row source fields used: V0001, current Hook/Insight/Implicat",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5410509452223777,
+      "maxScore": 0.5410509452223777,
+      "firstRecalledAt": "2026-06-23T04:31:52.667Z",
+      "lastRecalledAt": "2026-06-23T04:31:52.667Z",
+      "queryHashes": [
+        "91d2021f99eb"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "stat-prefix-x-factor",
+        "0.90",
+        "stat-prefix-y-offset",
+        "frame-by-frame",
+        "94/95",
+        "first-row",
+        "hook/insight/implicat",
+        "current"
+      ]
+    },
+    "memory:memory/2026-06-18.md:1:14": {
+      "key": "memory:memory/2026-06-18.md:1:14",
+      "path": "memory/2026-06-18.md",
+      "startLine": 1,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "## Aneerequest Supabase update — approved task plan inserted - Inserted Ahmad-approved task plan into Supabase for app.aneeverse.com using Client -> Request -> Task model. - Created 16 tasks total and verified all 16 have matching `task_request_links` rows. - Created new ANEEVERSE request: `03-Aneeverse Growth / Marketing / Sales` (`3efde84f-9c73-4ef2-ae3f-3c2f69329e0a`) with 7 internal growth/marketing/sales tasks. - Existing request task inserts: HORECA1, NISHA ROADWAYS, M'Waves, EAZYVISA, BOOK MY COPERATE PARTY/BMCP SEO, JM VISA SERVICES CRM, BMCP landing page, 1FC, TigerTerrain. - AmazonLead was not inserted because client placement was ambiguous; Ahmad needs to clarify whether it is a",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.032577507197857,
+      "maxScore": 0.5341425344347953,
+      "firstRecalledAt": "2026-06-23T08:11:34.140Z",
+      "lastRecalledAt": "2026-07-06T06:56:57.580Z",
+      "queryHashes": [
+        "7b762ec4d555",
+        "5980c75a831c"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "ahmad-approved",
+        "app.aneeverse.com",
+        "task-request-links",
+        "03-aneeverse",
+        "growth/marketing/sales",
+        "party/bmcp",
+        "aneerequest",
+        "supabase"
+      ]
+    },
+    "memory:memory/2026-05-09.md:11:13": {
+      "key": "memory:memory/2026-05-09.md:11:13",
+      "path": "memory/2026-05-09.md",
+      "startLine": 11,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "- During live Supabase client-by-client task audit, JM VISA SERVICES was reviewed. Existing tasks Monthly Review (Report), Monthly Invoice, and GMB Management were accepted as relevant. Added live Supabase request `CRM Development` for JM VISA SERVICES with task `Collect and update CRM requirements from Abhijeet`, assigned to Abhi, linked via `task_request_links`. User said EAZYVISA should be revisited at the end. - HORECA1 client context from Ahmad during task audit: Aneeverse is developing a platform similar to Hyperpure where hotels/restaurants can order grocery/kitchen supplies in bulk at distributor rates, and distributors can join to sell products. A GitHub commit-summary automation wa",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5241258352994919,
+      "maxScore": 0.5241258352994919,
+      "firstRecalledAt": "2026-06-23T08:11:34.140Z",
+      "lastRecalledAt": "2026-06-23T08:11:34.140Z",
+      "queryHashes": [
+        "7b762ec4d555"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "client-by-client",
+        "task-request-links",
+        "hotels/restaurants",
+        "grocery/kitchen",
+        "commit-summary",
+        "live",
+        "supabase",
+        "client"
+      ]
+    },
+    "memory:memory/2026-06-22.md:1:19": {
+      "key": "memory:memory/2026-06-22.md:1:19",
+      "path": "memory/2026-06-22.md",
+      "startLine": 1,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "## AI video V0001 regenerated from updated sheet - Pulled current source Excel from Drive file `1RXru75yd4vluuk8nVOsMeZfg2akRzbSA` into `tmp/ai_video_source_excel_current.xlsx`. - First-row source fields used: V0001, current Hook/Insight/Implication/CTA/CTA Sub Text from `300_Video_Master_Attribution`. - Active n8n/Kling render failed twice with Replicate 504 on `kwaivgi/kling-v2.6` before clip generation. - Used WAN fallback model `wan-video/wan-2.7-t2v` for contextual Section 1/3 clips, then normal fresh VO + music workflow. - Generated final voiced video: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_14173",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.6548637747764587,
+      "maxScore": 0.5287120550870895,
+      "firstRecalledAt": "2026-06-23T10:56:08.562Z",
+      "lastRecalledAt": "2026-07-05T08:40:50.667Z",
+      "queryHashes": [
+        "0bd4fa66f86f",
+        "9bb08c4c5e7c",
+        "b1a491fdf70d",
+        "1bfbc96f86a6",
+        "7b8aacc6a392",
+        "81ba2a3d92fd",
+        "6194a8834ede"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-29",
+        "2026-07-02",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "first-row",
+        "hook/insight/implication/cta/cta",
+        "300-video-master-attribution",
+        "n8n/kling",
+        "kwaivgi/kling-v2.6",
+        "wan-video/wan-2.7-t2v",
+        "1/3",
+        "projects/v0001"
+      ]
+    },
+    "memory:memory/2026-06-22.md:164:178": {
+      "key": "memory:memory/2026-06-22.md:164:178",
+      "path": "memory/2026-06-22.md",
+      "startLine": 164,
+      "endLine": 178,
+      "source": "memory",
+      "snippet": "- Pulled row 2 / V0001 directly from Google Sheets before triggering n8n webhook. - Render source fields included updated CTA: `See every role your background actually qualifies for.` and CTA Sub Text: `Free. No card. Your full match list in 20 minutes.` - Restored rotation so the corrected render used Drew (voice 6), then ran through n8n webhook and active Kling model `kwaivgi/kling-v2.6` only. - Final correct video: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_152733_001.mp4`. - Drive link: https://drive.google.com/file/d/1AJuvfb1sw0w7z-QtK13ANJZk4EPXSppw/view?usp=drivesdk - Verified: 1080x1920, 30fps, 20s,",
+      "recallCount": 10,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 5.194344697892666,
+      "maxScore": 0.550896057486534,
+      "firstRecalledAt": "2026-06-23T10:56:08.562Z",
+      "lastRecalledAt": "2026-07-05T22:31:05.569Z",
+      "queryHashes": [
+        "0bd4fa66f86f",
+        "9bb08c4c5e7c",
+        "f0b1d64ec47d",
+        "612cf959036e",
+        "b1a491fdf70d",
+        "e24430d8b554",
+        "3de36f2791b4",
+        "81ba2a3d92fd",
+        "690d297276f1",
+        "298fdba303c4"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-29",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "kwaivgi/kling-v2.6",
+        "projects/v0001",
+        "pulled",
+        "row",
+        "v0001",
+        "directly",
+        "google",
+        "sheets"
+      ]
+    },
+    "memory:memory/2026-06-22.md:152:166": {
+      "key": "memory:memory/2026-06-22.md:152:166",
+      "path": "memory/2026-06-22.md",
+      "startLine": 152,
+      "endLine": 166,
+      "source": "memory",
+      "snippet": "- Drive link: https://drive.google.com/file/d/1mqdDvb08wuAp06h3RGe0EwLXfJ70C9Js/view?usp=drivesdk - Verified: 1080x1920, 30fps, 20s, AAC audio. - Next voice number after this valid run: 7 (Paul). ## AI video source sheet correction - Ahmad asked whether workflow takes script from Google Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab gid `483960125` (`300_Video_Master_Attribution`). - Verified this sheet has updated V0001 CTA: `See every role your background actually qualifies for.` and CTA Sub Text: `Free. No card. Your full match list in 20 minutes.` - The previous V0001 Kling regenerate used the older/source file context with CTA `Start with your TraitDNA™ Work-Style Report — f",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5514699950814246,
+      "maxScore": 0.5259821757674217,
+      "firstRecalledAt": "2026-06-23T10:56:08.562Z",
+      "lastRecalledAt": "2026-06-29T04:39:40.554Z",
+      "queryHashes": [
+        "0bd4fa66f86f",
+        "9bb08c4c5e7c",
+        "b1a491fdf70d"
+      ],
+      "recallDays": [
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "300-video-master-attribution",
+        "older/source",
+        "work-style",
+        "drive",
+        "link",
+        "https",
+        "drive.google.com",
+        "view"
+      ]
+    },
+    "memory:memory/2026-06-22.md:29:42": {
+      "key": "memory:memory/2026-06-22.md:29:42",
+      "path": "memory/2026-06-22.md",
+      "startLine": 29,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "- Verified this sheet has updated V0001 CTA: `See every role your background actually qualifies for.` and CTA Sub Text: `Free. No card. Your full match list in 20 minutes.` - The previous V0001 Kling regenerate used the older/source file context with CTA `Start with your TraitDNA™ Work-Style Report — free, 15 minutes.`; therefore it did NOT use this corrected sheet. - Important: n8n webhook currently renders rows passed in the request payload; it does not independently fetch this sheet unless we add/configure a Sheets read step or construct payload from this sheet before triggering. ## Correct V0001 generated from Ahmad's Google Sheet via n8n + Kling - Source of truth sheet: `1MMslDeXLGBKG6",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.578216969966888,
+      "maxScore": 0.5245972871780396,
+      "firstRecalledAt": "2026-06-24T07:14:38.523Z",
+      "lastRecalledAt": "2026-07-02T05:17:10.202Z",
+      "queryHashes": [
+        "9bb08c4c5e7c",
+        "f0b1d64ec47d",
+        "b1a491fdf70d",
+        "66c5534042d9",
+        "7b8aacc6a392"
+      ],
+      "recallDays": [
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-29",
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "older/source",
+        "work-style",
+        "add/configure",
+        "verified",
+        "sheet",
+        "has",
+        "updated",
+        "v0001"
+      ]
+    },
+    "memory:memory/2026-06-22.md:176:189": {
+      "key": "memory:memory/2026-06-22.md:176:189",
+      "path": "memory/2026-06-22.md",
+      "startLine": 176,
+      "endLine": 189,
+      "source": "memory",
+      "snippet": "- New source video is 1080x1920, 30fps, 3.433s; Section 4 renderer pads/clones to 5s. - Re-rendered final V0001 through n8n webhook using Google Sheet source + Kling v2.6 only. Restored rotation so revised V0001 used Drew again. - Final Drive link: https://drive.google.com/file/d/1G61F31PZLJ1BCeaYnLVsul547stazWZX/view?usp=drivesdk - Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_154637_001.mp4`. - Verified: 1080x1920, 30fps, 20s, AAC audio. Visual QC at 16.2s confirmed new Section 4 background + readable CTA text from sheet. - Next voice number after valid revised V0001: 7 (Paul). ## AI video Secti",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.10684023052454,
+      "maxScore": 0.5368602097034454,
+      "firstRecalledAt": "2026-06-24T07:14:38.523Z",
+      "lastRecalledAt": "2026-07-02T13:24:48.584Z",
+      "queryHashes": [
+        "9bb08c4c5e7c",
+        "b1020c6cfe25",
+        "f0b1d64ec47d",
+        "612cf959036e",
+        "b1a491fdf70d",
+        "3de36f2791b4",
+        "7b8aacc6a392",
+        "81ba2a3d92fd"
+      ],
+      "recallDays": [
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-29",
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "3.433s",
+        "pads/clones",
+        "re-rendered",
+        "v2.6",
+        "projects/v0001",
+        "16.2s",
+        "new",
+        "source"
+      ]
+    },
+    "memory:memory/2026-06-18.md:130:143": {
+      "key": "memory:memory/2026-06-18.md:130:143",
+      "path": "memory/2026-06-18.md",
+      "startLine": 130,
+      "endLine": 143,
+      "source": "memory",
+      "snippet": "- Removed active/frozen bridge manual `top_safe_zone_height` insertion and strengthened Section 1 prompt to require wide medium shot, extra headroom, subject/action in lower half/lower third, and top 25-30% clean generated negative space. - Generated Section 1 only with Kling 2.6, reused Sections 2/3/4 from previous full run, stitched and uploaded. - Drive link: https://drive.google.com/file/d/1JK7Nf3pD3WIDdI0dlSaTJhON-DcdbQb3/view?usp=drivesdk - Section 1 generation: 5s output, predict_time 125.20s, audio off. Full wall-clock: 171s / 2m51s. - Vision frame check: yes, subject/action mostly in lower half with relatively clean upper area for text; note text currently extends down near subject",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.309291496525017,
+      "maxScore": 0.7695020746686136,
+      "firstRecalledAt": "2026-06-25T12:39:04.487Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "2373b9d1c827",
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "active/frozen",
+        "top-safe-zone-height",
+        "subject/action",
+        "half/lower",
+        "25-30",
+        "2.6",
+        "2/3/4",
+        "predict-time"
+      ]
+    },
+    "memory:memory/2026-06-24.md:9:20": {
+      "key": "memory:memory/2026-06-24.md:9:20",
+      "path": "memory/2026-06-24.md",
+      "startLine": 9,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "- Verified via ffprobe: 1080x1920, 30fps, 20s, AAC audio. Voice used: Juniper (voice 1); next voice: 2. ## AI video V0001 regenerated with new rear/side-angle developer B-roll prompt - Ahmad provided a new base Kling prompt emphasizing back-side/side-angle/over-shoulder developer B-roll, screens facing the subject not camera, no readable screen content, and top 25-30% clean negative space. - Tightened the prompt to avoid Kling/Replicate 2500-char truncation while preserving the key constraints. Final prompt lengths: Section 1 = 2476 chars; Section 3 = 2462 chars. No truncation in logs. - Updated `scripts/ai_video_n8n_bridge.py` prompt templates for Section 1 and Section 3. Restarted local b",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.2082174122333527,
+      "maxScore": 0.553555017709732,
+      "firstRecalledAt": "2026-06-25T12:39:04.487Z",
+      "lastRecalledAt": "2026-07-05T09:29:15.086Z",
+      "queryHashes": [
+        "2373b9d1c827",
+        "07f32207ed47",
+        "7b8aacc6a392",
+        "81ba2a3d92fd",
+        "6194a8834ede",
+        "58efe3afbae9"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "rear/side-angle",
+        "b-roll",
+        "25-30",
+        "kling/replicate",
+        "2500-char",
+        "scripts/ai-video-n8n-bridge.py",
+        "verified",
+        "via"
+      ]
+    },
+    "memory:memory/2026-06-18.md:12:22": {
+      "key": "memory:memory/2026-06-18.md:12:22",
+      "path": "memory/2026-06-18.md",
+      "startLine": 12,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "- Patched `/root/.openclaw/workspace/scripts/ai_video_n8n_bridge.py` Section 1 WAN prompt to keep the top fifth simple/empty and place main visual activity in the lower 80%. - Added negative prompt terms for busy/cluttered top fifth, faces/objects/screens/signs in top area, plus existing no text/captions/logos/watermark constraints. - Restarted local bridge on `127.0.0.1:8013` and generated a new test video. - New Drive link: https://drive.google.com/file/d/1NHf5ra9gASTP5taEp6-D1ApDTVa4EiNt/view?usp=drivesdk - Output verified: 1080x1920, 30fps, 20.0s, file `traitdna_n8n_bulk_V0001_section1_top20_clean_test_20260618_041414_001.mp4`. ## AI video workflow — Section 1 single scene + top 30% cle",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5129790306091309,
+      "maxScore": 0.5129790306091309,
+      "firstRecalledAt": "2026-06-25T12:39:04.487Z",
+      "lastRecalledAt": "2026-06-25T12:39:04.487Z",
+      "queryHashes": [
+        "2373b9d1c827"
+      ],
+      "recallDays": [
+        "2026-06-25"
+      ],
+      "conceptTags": [
+        "simple/empty",
+        "busy/cluttered",
+        "faces/objects/screens/signs",
+        "text/captions/logos/watermark",
+        "127.0.0.1",
+        "20.0s",
+        "patched",
+        "root"
+      ]
+    },
+    "memory:memory/2026-06-24.md:1:12": {
+      "key": "memory:memory/2026-06-24.md:1:12",
+      "path": "memory/2026-06-24.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "## AI video V0001 regenerated from latest Google Sheet script - Ahmad said he changed the script in the Google Sheet and asked to check + generate a new video. - Pulled current row 2 / V0001 from Google Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`. - Current sheet fields used: Hook `Most Software Developers qualify for more job titles than they apply to.`; Insight `Most of the ~95% of U.S. publicly posted jobs stay invisible to candidates who don't know to search them.`; Implication `Your strongest matches may be roles you've never searched.`; CTA `See every role your background actually qualifies for.`; CTA Sub Text `Free. No card. Your full matc",
+      "recallCount": 10,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 5.323527665436267,
+      "maxScore": 0.555272826552391,
+      "firstRecalledAt": "2026-06-25T12:39:04.487Z",
+      "lastRecalledAt": "2026-07-05T08:40:50.667Z",
+      "queryHashes": [
+        "2373b9d1c827",
+        "612cf959036e",
+        "b1a491fdf70d",
+        "1bfbc96f86a6",
+        "e24430d8b554",
+        "07f32207ed47",
+        "7b8aacc6a392",
+        "81ba2a3d92fd",
+        "690d297276f1",
+        "6194a8834ede"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-06-29",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "300-video-master-attribution",
+        "u.s",
+        "video",
+        "v0001",
+        "regenerated",
+        "latest",
+        "google",
+        "sheet"
+      ]
+    },
+    "memory:memory/2026-06-18.md:90:104": {
+      "key": "memory:memory/2026-06-18.md:90:104",
+      "path": "memory/2026-06-18.md",
+      "startLine": 90,
+      "endLine": 104,
+      "source": "memory",
+      "snippet": "- Negative prompt is now exactly: `text, subtitles, logo, visible laptop screen, readable screen, UI overlay, chart, graph, branding, cartoon, animation, CGI, hologram, serious expression unless context requires it, distorted face, distorted hands, extra fingers, fast camera movement, shaky camera, low quality`. - Restarted bridge and verified it is healthy with Kling 2.6 and Section 1/3 prompts identical. - Did not generate automatically because Kling generation costs approx $1 / ₹94 per full run; wait for Ahmad's confirmation to spend credits/money. ## AI video workflow — exact prompt Kling 2.6 generation - Ahmad confirmed to generate with the exact shared prompt for both Section 1 and Se",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0323604732751845,
+      "maxScore": 0.5248948991298675,
+      "firstRecalledAt": "2026-06-25T12:39:04.487Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "2373b9d1c827",
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "2.6",
+        "1/3",
+        "credits/money",
+        "negative",
+        "prompt",
+        "now",
+        "exactly",
+        "subtitles"
+      ]
+    },
+    "memory:memory/2026-06-18.md:140:146": {
+      "key": "memory:memory/2026-06-18.md:140:146",
+      "path": "memory/2026-06-18.md",
+      "startLine": 140,
+      "endLine": 146,
+      "source": "memory",
+      "snippet": "- State before render: next voice was Sarah (#3), last used Hope (#2). Used Sarah for this render and advanced next voice to Alexandra (#4). - Voiceover script used: `master/audio/female_full_vo_v1/full_voiceover.txt`. - Generated fresh ElevenLabs/Replicate VO using Sarah, fitted raw 21.81s audio to 18.91s, mixed with Corporate.wav background music. - Base video used: `traitdna_n8n_bulk_V0001_kling26_section1_lowerthird_test_20260618_141727.mp4`. - Final voiced Drive link: https://drive.google.com/file/d/1PPAf6REemSfSs2w14MuL1elsQXYiCDJB/view?usp=drivesdk - Final file: `traitdna_rotating_voice_03_sarah_V0001_kling26_lowerthird_with_vo.mp4`.",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.13723061978817,
+      "maxScore": 0.5326506882905959,
+      "firstRecalledAt": "2026-06-25T12:57:44.661Z",
+      "lastRecalledAt": "2026-06-29T16:42:56.490Z",
+      "queryHashes": [
+        "b1020c6cfe25",
+        "bb6530584b21",
+        "9139bffaecfa",
+        "c584e2c9bf29",
+        "c749a50dc980",
+        "e86c2bdbace2"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "elevenlabs/replicate",
+        "21.81s",
+        "18.91s",
+        "corporate.wav",
+        "state",
+        "render",
+        "voice",
+        "was"
+      ]
+    },
+    "memory:memory/2026-06-22.md:221:236": {
+      "key": "memory:memory/2026-06-22.md:221:236",
+      "path": "memory/2026-06-22.md",
+      "startLine": 221,
+      "endLine": 236,
+      "source": "memory",
+      "snippet": "- Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_193343_001.mp4`. - Verified: 1080x1920, 30fps, 20s, AAC audio. Visual QC against reference confirmed Section 2 tilde placement matches closely and reads `~95%`. - Voice used: Drew; next voice after this valid final V0001 is Paul (voice 7). ## AI video Section 2 tilde moved left only - Ahmad said final video Section 2 `~` looked hidden/tucked and asked to move only `~` left, without regenerating full video. - Adjusted only `section2/config/section2_editable_match.json`: `stat_prefix_x_factor` changed from 0.635 to 0.76; `stat_prefix_y_offset` stayed -",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.99671511054039,
+      "maxScore": 0.5127791345119476,
+      "firstRecalledAt": "2026-06-25T12:57:44.661Z",
+      "lastRecalledAt": "2026-06-25T13:42:00.855Z",
+      "queryHashes": [
+        "b1020c6cfe25",
+        "f0b1d64ec47d"
+      ],
+      "recallDays": [
+        "2026-06-25"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "hidden/tucked",
+        "stat-prefix-x-factor",
+        "0.635",
+        "0.76",
+        "stat-prefix-y-offset",
+        "final",
+        "projects"
+      ]
+    },
+    "memory:memory/2026-06-22.md:61:77": {
+      "key": "memory:memory/2026-06-22.md:61:77",
+      "path": "memory/2026-06-22.md",
+      "startLine": 61,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "- Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_160557_001.mp4`. - Verified: 1080x1920, 30fps, 20s, AAC audio. Visual QC from final video confirmed Section 2 displays `~95%` and style/colors unchanged. - Next voice number after this valid revised V0001: 7 (Paul). ## AI video Section 2 tilde position adjusted - Ahmad provided/reference-requested adjustment for `~` position in Section 2. - Drive reference file `1SzI7kst3XiT9XScRe08NGXckiAdNwGgI` was still inaccessible to API/browser (404/sign-in), so adjusted based on current visual QC: tilde was too low and close/overlapping. - Updated `section2/co",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.48379805982112883,
+      "maxScore": 0.48379805982112883,
+      "firstRecalledAt": "2026-06-25T12:57:44.661Z",
+      "lastRecalledAt": "2026-06-25T12:57:44.661Z",
+      "queryHashes": [
+        "b1020c6cfe25"
+      ],
+      "recallDays": [
+        "2026-06-25"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "style/colors",
+        "provided/reference-requested",
+        "api/browser",
+        "404/sign-in",
+        "close/overlapping",
+        "section2/co",
+        "final"
+      ]
+    },
+    "memory:memory/2026-06-25.md:15:26": {
+      "key": "memory:memory/2026-06-25.md:15:26",
+      "path": "memory/2026-06-25.md",
+      "startLine": 15,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "- Final v2 script was 36 words, ElevenLabs speed 0.80, raw duration 19.49s and fitted duration 19.49s (zero time-compression). - Final slower VO Drive link: https://drive.google.com/file/d/1lZbkGPMOZSvvYxWOzLzwJpnkvduWea0O/view?usp=drivesdk - Updated `master/config/voice_rotation_config.json`: `voiceover_generation.fit_to_seconds` 18.9 -> 19.8 and `settings.speed` 1.0 -> 0.8 for future calmer pacing. ## AI video V0001 complete-script 19.55s voiceover correction - Ahmad rejected the shortened slower VO approach: script must not be cut down; complete script must be fitted into 19.55 seconds. - Re-rendered voice/audio only using same silent visuals, full 61-word script, Sarah voice, Replicate/",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5422880917787551,
+      "maxScore": 0.5422880917787551,
+      "firstRecalledAt": "2026-06-25T13:42:00.855Z",
+      "lastRecalledAt": "2026-06-25T13:42:00.855Z",
+      "queryHashes": [
+        "f0b1d64ec47d"
+      ],
+      "recallDays": [
+        "2026-06-25"
+      ],
+      "conceptTags": [
+        "0.80",
+        "19.49s",
+        "time-compression",
+        "18.9",
+        "19.8",
+        "settings.speed",
+        "1.0",
+        "0.8"
+      ]
+    },
+    "memory:memory/2026-06-25.md:38:44": {
+      "key": "memory:memory/2026-06-25.md:38:44",
+      "path": "memory/2026-06-25.md",
+      "startLine": 38,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "- Patched `master/scripts/render_full_video.py` to support per-section `duration_seconds` and to `tpad`/clone last frame before trimming so 5s source clips can safely extend to 7s. - Rendered revised video from existing latest section clips; no fresh Kling generation. - Reused no-CTA-Sub-Text VO rule. New VO script length 49 words; raw/fitted duration 19.174s, no compression. - Drive link: https://drive.google.com/file/d/120qiJKN0hjAkOGhNhzSCKOcbRf-4Y872/view?usp=drivesdk - Verified final video: 1080x1920, 30fps, 20s, AAC audio. - Updated `master/config/full_video_config.json` so future renders default to section durations 5/7/5/3.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5346029192209243,
+      "maxScore": 0.5346029192209243,
+      "firstRecalledAt": "2026-06-25T14:30:55.868Z",
+      "lastRecalledAt": "2026-06-25T14:30:55.868Z",
+      "queryHashes": [
+        "bb6530584b21"
+      ],
+      "recallDays": [
+        "2026-06-25"
+      ],
+      "conceptTags": [
+        "per-section",
+        "duration-seconds",
+        "no-cta-sub-text",
+        "raw/fitted",
+        "19.174s",
+        "5/7/5/3",
+        "patched",
+        "master"
+      ]
+    },
+    "memory:memory/2026-06-25.md:27:40": {
+      "key": "memory:memory/2026-06-25.md:27:40",
+      "path": "memory/2026-06-25.md",
+      "startLine": 27,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "## AI video V0001 voiceover excludes CTA Sub Text - Ahmad clarified VO should not include the last Google Sheet column / CTA Sub Text: `Free. No card. Your full match list in 15 to 20 minutes.` - Re-rendered voice/audio only from same silent visuals, Sarah voice, full main script excluding CTA Sub Text, target fit 19.55s. - New VO script length: 49 words. Raw duration: 19.644s. Fitted duration: 19.540s. Only ~0.5% speed-up, so pacing should be much more natural. - Drive link: https://drive.google.com/file/d/1lhB6RjZjynDkxR0VA_AbD5Yo5m7RT91x/view?usp=drivesdk - Verified final video: 1080x1920, 30fps, 20s, AAC audio. - Updated `scripts/ai_video_n8n_bridge.py` so `compose_voiceover_text()` uses",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9865344494581221,
+      "maxScore": 0.5173036038875579,
+      "firstRecalledAt": "2026-06-25T14:30:55.868Z",
+      "lastRecalledAt": "2026-07-05T22:31:05.569Z",
+      "queryHashes": [
+        "bb6530584b21",
+        "298fdba303c4"
+      ],
+      "recallDays": [
+        "2026-06-25",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "re-rendered",
+        "voice/audio",
+        "19.55s",
+        "19.644s",
+        "19.540s",
+        "0.5",
+        "speed-up",
+        "scripts/ai-video-n8n-bridge.py"
+      ]
+    },
+    "memory:memory/2026-06-22.md:38:54": {
+      "key": "memory:memory/2026-06-22.md:38:54",
+      "path": "memory/2026-06-22.md",
+      "startLine": 38,
+      "endLine": 54,
+      "source": "memory",
+      "snippet": "- Final correct video: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_152733_001.mp4`. - Drive link: https://drive.google.com/file/d/1AJuvfb1sw0w7z-QtK13ANJZk4EPXSppw/view?usp=drivesdk - Verified: 1080x1920, 30fps, 20s, AAC audio. - Next voice number after this valid corrected render: 7 (Paul). ## AI video Section 4 background changed and V0001 regenerated - Ahmad provided new Section 4 background video Drive file `1i9qMVUcXAu-2WgLCNipTwT4vRSbuOoKG` (`V0001_finalCTA.mp4`). - Downloaded to `projects/V0001 Template System - 2026-05-12/section4/assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4`. - Updated `sec",
+      "recallCount": 11,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 5.8868932902812965,
+      "maxScore": 0.5583494260907172,
+      "firstRecalledAt": "2026-06-29T04:39:01.430Z",
+      "lastRecalledAt": "2026-07-05T09:29:15.086Z",
+      "queryHashes": [
+        "612cf959036e",
+        "e24430d8b554",
+        "350aad4758d0",
+        "3de36f2791b4",
+        "70d0c4de75c0",
+        "9494812aeed8",
+        "cf1aafbf4971",
+        "800fbf477370",
+        "81ba2a3d92fd",
+        "690d297276f1",
+        "58efe3afbae9"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "v0001-finalcta.mp4",
+        "final",
+        "correct",
+        "video",
+        "projects",
+        "v0001",
+        "template"
+      ]
+    },
+    "memory:memory/2026-06-22.md:50:65": {
+      "key": "memory:memory/2026-06-22.md:50:65",
+      "path": "memory/2026-06-22.md",
+      "startLine": 50,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_154637_001.mp4`. - Verified: 1080x1920, 30fps, 20s, AAC audio. Visual QC at 16.2s confirmed new Section 4 background + readable CTA text from sheet. - Next voice number after valid revised V0001: 7 (Paul). ## AI video Section 2 tilde change and final V0001 regenerated - Ahmad requested Section 2 statistic change from `95%` to `~95%`, with all animation/colors/palette unchanged. - Updated `section2/config/section2_editable_match.json` to include `\"stat_prefix\": \"~\"`. - Updated `section2/scripts/render_section2_editable_match.py` to render optional `st",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.1149622291326517,
+      "maxScore": 0.5349959939718246,
+      "firstRecalledAt": "2026-06-29T04:39:01.430Z",
+      "lastRecalledAt": "2026-07-05T09:29:15.086Z",
+      "queryHashes": [
+        "612cf959036e",
+        "b1a491fdf70d",
+        "3de36f2791b4",
+        "58efe3afbae9"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "16.2s",
+        "animation/colors/palette",
+        "stat-prefix",
+        "final",
+        "projects",
+        "v0001",
+        "template"
+      ]
+    },
+    "memory:memory/2026-05-26.md:1:19": {
+      "key": "memory:memory/2026-05-26.md:1:19",
+      "path": "memory/2026-05-26.md",
+      "startLine": 1,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "## AI video automation template naming - Ahmad decided to name the previous V0001 AI video POC as `AI video automation template-01`. - New project created: `projects/AI video automation template-02`. - Plan: Ahmad will send a reference video; analyze it into a reusable video automation template with scene timeline, visual style, text overlays, audio pattern, prompts, render automation, and future n8n notes. ## AI video automation template-02 analysis completed - Source Drive video downloaded to `projects/AI video automation template-02/source_video.mp4`. - Video specs: 18.23s, 1080x1920 vertical, 30fps, H.264 + AAC. - Extracted 10 sample frames into `projects/AI video automation template-0",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5149740695953369,
+      "maxScore": 0.5149740695953369,
+      "firstRecalledAt": "2026-06-29T04:39:40.554Z",
+      "lastRecalledAt": "2026-06-29T04:39:40.554Z",
+      "queryHashes": [
+        "b1a491fdf70d"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "template-01",
+        "projects/ai",
+        "template-02",
+        "template-02/source-video.mp4",
+        "18.23s",
+        "h.264",
+        "template-0",
+        "video"
+      ]
+    },
+    "memory:memory/2026-06-18.md:80:91": {
+      "key": "memory:memory/2026-06-18.md:80:91",
+      "path": "memory/2026-06-18.md",
+      "startLine": 80,
+      "endLine": 91,
+      "source": "memory",
+      "snippet": "- Section 1 Kling generation: predict_time 127.60s, 5s output, audio off. - Section 3 Kling generation: predict_time 125.55s, 5s output, audio off. - Total Kling generated output charged basis: 10 seconds (two 5s clips). Estimated Replicate Kling 2.6 Pro cost at ~$0.10/output second = ~$1.00 total, approx ₹94.3 at USD/INR ~94.3. Replicate bills money, not native Kling credits. - Final output verified: 1080x1920, 30fps, 20s, file `traitdna_n8n_bulk_V0001_kling26_broll_no_screens_test_20260618_130545_001.mp4`. ## AI video workflow — exact shared prompt for Section 1 and Section 3 - Ahmad provided an exact prompt to use for both generated contextual videos. - Updated active `/root/.openclaw/wo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.528047789633274,
+      "maxScore": 0.528047789633274,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "predict-time",
+        "127.60s",
+        "125.55s",
+        "2.6",
+        "0.10/output",
+        "1.00",
+        "94.3",
+        "usd/inr"
+      ]
+    },
+    "memory:memory/2026-06-25.md:1:18": {
+      "key": "memory:memory/2026-06-25.md:1:18",
+      "path": "memory/2026-06-25.md",
+      "startLine": 1,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "## AI video V0001 regenerated again - Ahmad asked to generate the last video again. - Used latest V0001 row from Google Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`. - Restarted local `scripts/ai_video_n8n_bridge.py` on `127.0.0.1:8013` and generated through the same Kling v2.6 / rotating voice pipeline. - Final video: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_n8n_bulk_20260625_124025_001_20260625_124025_001.mp4`. - Drive link: https://drive.google.com/file/d/1H5PZ6WUVtS1STyefTztCvcCFdOMJmQ_t/view?usp=drivesdk - Verified via ffprobe: 1080x1920, 30fps, 20s, AAC audio. Voice us",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.1178393602371215,
+      "maxScore": 0.5555632621049881,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-07-02T13:24:48.584Z",
+      "queryHashes": [
+        "1bfbc96f86a6",
+        "70d0c4de75c0",
+        "7b8aacc6a392",
+        "81ba2a3d92fd"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "300-video-master-attribution",
+        "scripts/ai-video-n8n-bridge.py",
+        "127.0.0.1",
+        "v2.6",
+        "projects/v0001",
+        "video",
+        "v0001",
+        "regenerated"
+      ]
+    },
+    "memory:memory/2026-06-18.md:100:114": {
+      "key": "memory:memory/2026-06-18.md:100:114",
+      "path": "memory/2026-06-18.md",
+      "startLine": 100,
+      "endLine": 114,
+      "source": "memory",
+      "snippet": "- Total Kling generated output charged basis: 10 seconds. Estimated Replicate Kling 2.6 Pro cost at ~$0.10/output second = ~$1.00 total, approx ₹94 at USD/INR ~94.3. - Final output verified: 1080x1920, 30fps, 20s, file `traitdna_n8n_bulk_V0001_kling26_exact_prompt_test_20260618_132311_001.mp4`. ## AI video workflow — Section 1 top 20% composition line added - Ahmad approved adding a small Section 1-only composition line, not replacing the full prompt. - Added to active and frozen bridge Section 1 prompt after Camera line: `Composition: keep the top 20% of the frame clean, simple, and mostly empty as blank space for a text overlay; place the subject and main visual activity in the lower 80%",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5248674035072326,
+      "maxScore": 0.5248674035072326,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "2.6",
+        "0.10/output",
+        "1.00",
+        "usd/inr",
+        "94.3",
+        "1-only",
+        "total",
+        "kling"
+      ]
+    },
+    "memory:memory/2026-06-22.md:137:157": {
+      "key": "memory:memory/2026-06-22.md:137:157",
+      "path": "memory/2026-06-22.md",
+      "startLine": 137,
+      "endLine": 157,
+      "source": "memory",
+      "snippet": "- Voice used: Drew (voice 6). Next voice number is 7 (Paul). - Drive link: https://drive.google.com/file/d/1r7vHtoZ1Ho6MdIJgG_JmwxJYj6iHK8V5/view?usp=drivesdk - Verification: 1080x1920, 30fps, 20s, AAC audio. ## Correction from Ahmad — AI video model constraint - Ahmad corrected that the fixed workflow must use Kling, not WAN. - Do not switch to WAN fallback or any alternate video model without explicit permission, even if Kling/Replicate fails. - The WAN fallback V0001 generated on 2026-06-22 should be treated as invalid unless Ahmad explicitly accepts it. - Need approval before deleting the invalid Drive file or reverting voice rotation state. ## AI video V0001 regenerated correctly with",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0336104393005372,
+      "maxScore": 0.5242968797683716,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-07-02T05:17:10.202Z",
+      "queryHashes": [
+        "1bfbc96f86a6",
+        "7b8aacc6a392"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "kling/replicate",
+        "voice",
+        "used",
+        "drew",
+        "number",
+        "paul",
+        "drive",
+        "link"
+      ]
+    },
+    "memory:memory/2026-06-22.md:73:89": {
+      "key": "memory:memory/2026-06-22.md:73:89",
+      "path": "memory/2026-06-22.md",
+      "startLine": 73,
+      "endLine": 89,
+      "source": "memory",
+      "snippet": "- Final file: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_162548_001.mp4`. - Verified: 1080x1920, 30fps, 20s, AAC audio. Final visual QC confirmed `~95%` with tilde upper-left and not overlapping. - Next voice after valid revised V0001 remains Paul (voice 7). ## AI video Section 2 tilde reference match finalized - Ahmad provided accessible image reference Drive file `1Wj9uDV8t7ZHupsZZCN0ZXijD3ekWnBQV` (`vlcsnap-2026-06-22-22h04m30s277.png`) for the Section 2 `~` position. - Downloaded reference to `projects/V0001 Template System - 2026-05-12/section2/reference_tilde_fix_20260622_1Wj9/reference_file`. - Adju",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5241118371486664,
+      "maxScore": 0.5241118371486664,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "upper-left",
+        "final",
+        "projects",
+        "v0001",
+        "template",
+        "master",
+        "output"
+      ]
+    },
+    "memory:memory/2026-06-25.md:38:53": {
+      "key": "memory:memory/2026-06-25.md:38:53",
+      "path": "memory/2026-06-25.md",
+      "startLine": 38,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "- Patched `master/scripts/render_full_video.py` to support per-section `duration_seconds` and to `tpad`/clone last frame before trimming so 5s source clips can safely extend to 7s. - Rendered revised video from existing latest section clips; no fresh Kling generation. - Reused no-CTA-Sub-Text VO rule. New VO script length 49 words; raw/fitted duration 19.174s, no compression. - Drive link: https://drive.google.com/file/d/120qiJKN0hjAkOGhNhzSCKOcbRf-4Y872/view?usp=drivesdk - Verified final video: 1080x1920, 30fps, 20s, AAC audio. - Updated `master/config/full_video_config.json` so future renders default to section durations 5/7/5/3. ## AI video V0001 section timing adjusted to 5/8/4/3 - Ahma",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5237815141677856,
+      "maxScore": 0.5237815141677856,
+      "firstRecalledAt": "2026-06-29T05:06:04.889Z",
+      "lastRecalledAt": "2026-06-29T05:06:04.889Z",
+      "queryHashes": [
+        "1bfbc96f86a6"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "per-section",
+        "duration-seconds",
+        "no-cta-sub-text",
+        "raw/fitted",
+        "19.174s",
+        "5/7/5/3",
+        "5/8/4/3",
+        "patched"
+      ]
+    },
+    "memory:memory/2026-06-22.md:15:30": {
+      "key": "memory:memory/2026-06-22.md:15:30",
+      "path": "memory/2026-06-22.md",
+      "startLine": 15,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "- The WAN fallback V0001 generated on 2026-06-22 should be treated as invalid unless Ahmad explicitly accepts it. - Need approval before deleting the invalid Drive file or reverting voice rotation state. ## AI video V0001 regenerated correctly with Kling - After Ahmad corrected that WAN must not be used, restored voice rotation from invalid WAN run so real regenerate used Drew. - Retried V0001 through active n8n/Kling workflow using `kwaivgi/kling-v2.6` only. - Kling section1 and section3 completed successfully; fresh VO + music mixed and uploaded. - Correct Kling final video: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.569463025033474,
+      "maxScore": 0.5450248762965202,
+      "firstRecalledAt": "2026-06-29T05:33:41.842Z",
+      "lastRecalledAt": "2026-07-05T22:31:05.569Z",
+      "queryHashes": [
+        "e24430d8b554",
+        "66c5534042d9",
+        "cf1aafbf4971",
+        "7b8aacc6a392",
+        "298fdba303c4"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-02",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "n8n/kling",
+        "kwaivgi/kling-v2.6",
+        "projects/v0001",
+        "wan",
+        "fallback",
+        "v0001",
+        "generated",
+        "treated"
+      ]
+    },
+    "memory:memory/2026-06-29.md:1:12": {
+      "key": "memory:memory/2026-06-29.md:1:12",
+      "path": "memory/2026-06-29.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "## AI video template-02 Final_Batch V0001-V0005 - Ahmad approved/freezed the latest Truckstop template output and requested first 5 videos named V0001-V0005 in Drive folder `Final_Batch`. - Created local batch at `projects/AI video automation template-02/output/Final_Batch/` using approved source `output/truckstop_partner_2_section_video_top_white_bottom_black_gradient_with_outro.mp4`. - Uploaded to Google Drive folder `Final_Batch`: https://drive.google.com/drive/folders/1mq4hi0pB72E6nYXQ7NJPk2V3ppBwysKm - Files are public-anyone-with-link reader: V0001 `1N9ljshwE8ucwctGAlQYHzMgYqGSeFaPV`, V0002 `1dwmEAuWbF7NAu0jq1T8SEXi_PhgZ5Pqt`, V0003 `1FcdSe8O-OUH42MICoPGufSEeZwXSmivr`, V0004 `17x017uo",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.571136938035488,
+      "maxScore": 0.5263820305466651,
+      "firstRecalledAt": "2026-06-29T06:40:11.425Z",
+      "lastRecalledAt": "2026-07-03T04:12:38.055Z",
+      "queryHashes": [
+        "350aad4758d0",
+        "742d79f6bd5a",
+        "817a9b057140"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-01",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "template-02",
+        "final-batch",
+        "v0001-v0005",
+        "approved/freezed",
+        "projects/ai",
+        "template-02/output/final-batch",
+        "public-anyone-with-link",
+        "video"
+      ]
+    },
+    "memory:memory/2026-06-29.md:11:19": {
+      "key": "memory:memory/2026-06-29.md:11:19",
+      "path": "memory/2026-06-29.md",
+      "startLine": 11,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "- Correct source is last approved 2026-06-25 AI video workflow render with timing 5/8/4/3, no CTA-sub VO, 49 words, final VO 19.54s, Drive reference `1Bht71KHXJglHDqgToW1qDFo3AF6DVCop`. - Correct local file used: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_V0001_timed_s2_8_s3_4_s4_3_no_cta_sub_vo_20260625_1430.mp4`. - Replaced wrong `Final_Batch/V0001.mp4` Drive file `1N9ljshwE8ucwctGAlQYHzMgYqGSeFaPV` with correct AI workflow video, preserving same link. Verified Drive size 9,324,090 bytes; local ffprobe 1080x1920, 30fps, 20s, AAC. - Do not proceed with V0002-V0005 until Ahmad confirms corrected V0001 preview. ## Perman",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5235850811004639,
+      "maxScore": 0.5235850811004639,
+      "firstRecalledAt": "2026-06-29T06:40:11.425Z",
+      "lastRecalledAt": "2026-06-29T06:40:11.425Z",
+      "queryHashes": [
+        "350aad4758d0"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "5/8/4/3",
+        "cta-sub",
+        "19.54s",
+        "projects/v0001",
+        "final-batch/v0001.mp4",
+        "v0002-v0005",
+        "correct",
+        "source"
+      ]
+    },
+    "memory:memory/2026-06-29.md:20:25": {
+      "key": "memory:memory/2026-06-29.md:20:25",
+      "path": "memory/2026-06-29.md",
+      "startLine": 20,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "## TraitDNA BatchFlow Final_Batch V0001-V0005 completed - Completed correct TraitDNA BatchFlow Final_Batch from Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`, using approved 5/8/4/3 timing and no CTA-sub VO rule. - Drive folder: https://drive.google.com/drive/folders/1sWXvY3f1QzBWzK3YBo76nRXGuEPy4QZM - Links: V0001 https://drive.google.com/file/d/1kZaVJ0MRUsR1pmjs-Eif8idtcJ85pCf6/view?usp=drivesdk; V0002 https://drive.google.com/file/d/1H0J5YDEh2Mh_CdKnYGt9xy6x94YyvCho/view?usp=drivesdk; V0003 https://drive.google.com/file/d/1GMMjP1oxNrSk_sDRN0QYXZh8BKP2BgHo/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1iV6Iy633ygGs2vE-bCiIRdTtxf7bYP1v/v",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.1185312226414679,
+      "maxScore": 0.5739650622010231,
+      "firstRecalledAt": "2026-06-29T07:13:01.719Z",
+      "lastRecalledAt": "2026-06-29T07:20:09.181Z",
+      "queryHashes": [
+        "3de36f2791b4",
+        "9139bffaecfa"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "v0001-v0005",
+        "300-video-master-attribution",
+        "5/8/4/3",
+        "cta-sub",
+        "traitdna",
+        "batchflow",
+        "v0001"
+      ]
+    },
+    "memory:memory/2026-06-29.md:11:22": {
+      "key": "memory:memory/2026-06-29.md:11:22",
+      "path": "memory/2026-06-29.md",
+      "startLine": 11,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "- Correct source is last approved 2026-06-25 AI video workflow render with timing 5/8/4/3, no CTA-sub VO, 49 words, final VO 19.54s, Drive reference `1Bht71KHXJglHDqgToW1qDFo3AF6DVCop`. - Correct local file used: `projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_V0001_timed_s2_8_s3_4_s4_3_no_cta_sub_vo_20260625_1430.mp4`. - Replaced wrong `Final_Batch/V0001.mp4` Drive file `1N9ljshwE8ucwctGAlQYHzMgYqGSeFaPV` with correct AI workflow video, preserving same link. Verified Drive size 9,324,090 bytes; local ffprobe 1080x1920, 30fps, 20s, AAC. - Do not proceed with V0002-V0005 until Ahmad confirms corrected V0001 preview. ## Perman",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.283479641377926,
+      "maxScore": 0.5725462943315506,
+      "firstRecalledAt": "2026-06-29T07:13:01.719Z",
+      "lastRecalledAt": "2026-07-03T04:11:45.963Z",
+      "queryHashes": [
+        "3de36f2791b4",
+        "9139bffaecfa",
+        "70d0c4de75c0",
+        "f905367e7dd7",
+        "b722b393d32e",
+        "0772b4a1ea63",
+        "91b438b3917c",
+        "8eb46c8da4a3"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "5/8/4/3",
+        "cta-sub",
+        "19.54s",
+        "projects/v0001",
+        "final-batch/v0001.mp4",
+        "v0002-v0005",
+        "correct",
+        "source"
+      ]
+    },
+    "memory:memory/2026-06-29.md:20:29": {
+      "key": "memory:memory/2026-06-29.md:20:29",
+      "path": "memory/2026-06-29.md",
+      "startLine": 20,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "## TraitDNA BatchFlow Final_Batch V0001-V0005 completed - Completed correct TraitDNA BatchFlow Final_Batch from Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`, using approved 5/8/4/3 timing and no CTA-sub VO rule. - Drive folder: https://drive.google.com/drive/folders/1sWXvY3f1QzBWzK3YBo76nRXGuEPy4QZM - Links: V0001 https://drive.google.com/file/d/1kZaVJ0MRUsR1pmjs-Eif8idtcJ85pCf6/view?usp=drivesdk; V0002 https://drive.google.com/file/d/1H0J5YDEh2Mh_CdKnYGt9xy6x94YyvCho/view?usp=drivesdk; V0003 https://drive.google.com/file/d/1GMMjP1oxNrSk_sDRN0QYXZh8BKP2BgHo/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1iV6Iy633ygGs2vE-bCiIRdTtxf7bYP1v/v",
+      "recallCount": 13,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 7.049435314536094,
+      "maxScore": 0.5829692423343658,
+      "firstRecalledAt": "2026-06-29T07:31:42.585Z",
+      "lastRecalledAt": "2026-07-05T19:00:11.621Z",
+      "queryHashes": [
+        "70d0c4de75c0",
+        "f905367e7dd7",
+        "b722b393d32e",
+        "0772b4a1ea63",
+        "91b438b3917c",
+        "fc4891d9c807",
+        "cf1aafbf4971",
+        "07f32207ed47",
+        "742d79f6bd5a",
+        "229b20c671fe",
+        "8eb46c8da4a3",
+        "55dfed66b203",
+        "5b8d782b3fdc"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "v0001-v0005",
+        "300-video-master-attribution",
+        "5/8/4/3",
+        "cta-sub",
+        "traitdna",
+        "batchflow",
+        "v0001"
+      ]
+    },
+    "memory:memory/2026-06-29.md:27:36": {
+      "key": "memory:memory/2026-06-29.md:27:36",
+      "path": "memory/2026-06-29.md",
+      "startLine": 27,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "- Ahmad asked if the V0001 section timing/VO changes were made in the template for 300 videos in batches of 5. - Confirmed timing was already in `master/config/full_video_config.json`: Section 1 5s, Section 2 8s, Section 3 4s, Section 4 3s. - Found VO template bug: `scripts/ai_video_n8n_bridge.py` prioritized sheet `Voiceover_Text`, which included CTA Sub Text and caused V0002-V0005 VO to be too long/compressed. - Patched `compose_voiceover_text()` to always build VO from Hook + Insight + Implication + CTA Text only, never `Voiceover_Text`; CTA Sub Text remains visual-only. - Verification after patch using sheet V0001-V0005: V0001 49 words, V0002 55, V0003 53, V0004 44, V0005 45; all `contai",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.0999034315347673,
+      "maxScore": 0.5370971977710723,
+      "firstRecalledAt": "2026-06-29T08:28:06.509Z",
+      "lastRecalledAt": "2026-06-29T12:55:30.369Z",
+      "queryHashes": [
+        "f905367e7dd7",
+        "0772b4a1ea63",
+        "91b438b3917c",
+        "fc4891d9c807"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "timing/vo",
+        "scripts/ai-video-n8n-bridge.py",
+        "voiceover-text",
+        "v0002-v0005",
+        "long/compressed",
+        "compose-voiceover-text",
+        "visual-only",
+        "v0001-v0005"
+      ]
+    },
+    "memory:memory/2026-06-29.md:36:43": {
+      "key": "memory:memory/2026-06-29.md:36:43",
+      "path": "memory/2026-06-29.md",
+      "startLine": 36,
+      "endLine": 43,
+      "source": "memory",
+      "snippet": "- Links: V0001 https://drive.google.com/file/d/1t59Z07z9GCIAZ8G5O-XcHVWodpX1W9NB/view?usp=drivesdk; V0002 https://drive.google.com/file/d/1OD_6oYHSBlnWDq2DlQAqKONf_lP0DWev/view?usp=drivesdk; V0003 https://drive.google.com/file/d/1MB1Qb8KfJgDAmurrVeFZBmgNvjyIIY7U/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1VJTP3iWRcHs86voT-nPOuqtesRWPHVTa/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1hw_klU1xLwIe8bFt2mwyLbMOG_tN4-IC/view?usp=drivesdk. - Verified all 5: H.264 1080x1920, 30fps, 20.000s, AAC audio, named V0001.mp4-V0005.mp4 in Final_Batch. Local summary: `projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_corrected_all5_20260629_073352/FINAL_SUMMARY.j",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.258708348870277,
+      "maxScore": 0.5470799967646598,
+      "firstRecalledAt": "2026-06-29T11:51:10.922Z",
+      "lastRecalledAt": "2026-07-03T04:11:45.963Z",
+      "queryHashes": [
+        "c584e2c9bf29",
+        "b722b393d32e",
+        "0772b4a1ea63",
+        "91b438b3917c",
+        "fc4891d9c807",
+        "e3129cae0f4c",
+        "229b20c671fe",
+        "8eb46c8da4a3"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-02",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "h.264",
+        "20.000s",
+        "v0001.mp4-v0005.mp4",
+        "final-batch",
+        "projects/v0001",
+        "links",
+        "v0001",
+        "https"
+      ]
+    },
+    "memory:memory/2026-06-29.md:41:51": {
+      "key": "memory:memory/2026-06-29.md:41:51",
+      "path": "memory/2026-06-29.md",
+      "startLine": 41,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "- Added reusable Section 2.5 renderer: `projects/V0001 Template System - 2026-05-12/section2/scripts/render_section2_5_text_only.py` and config `section2/config/section2_5_text_only.json`. - Section 2.5 keeps the Section 2 card style but removes all statistic elements: no `~`, no `95`, no `%`; it renders full Insight_Text as centered larger text. - Patched `scripts/ai_video_n8n_bridge.py` to auto-select: normal Section 2 when Insight_Text contains regex `~?\\\\s*95\\\\s*%`; Section 2.5 otherwise. - Verified routing for first 5: V0001/V0002 -> Section 2; V0003/V0004/V0005 -> Section 2.5. Rendered V0003 Section 2.5 test `section2/output/section2_5_test_V0003.mp4`; visual QC contact sheet has no 95",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5206136554479599,
+      "maxScore": 0.5206136554479599,
+      "firstRecalledAt": "2026-06-29T11:59:34.102Z",
+      "lastRecalledAt": "2026-06-29T11:59:34.102Z",
+      "queryHashes": [
+        "b722b393d32e"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "2.5",
+        "projects/v0001",
+        "insight-text",
+        "scripts/ai-video-n8n-bridge.py",
+        "auto-select",
+        "v0001/v0002",
+        "v0003/v0004/v0005",
+        "added"
+      ]
+    },
+    "memory:memory/2026-06-29.md:53:62": {
+      "key": "memory:memory/2026-06-29.md:53:62",
+      "path": "memory/2026-06-29.md",
+      "startLine": 53,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "- User uploaded screenshot file `1lOyyt3ED4khLFnloj7R6mkXw0Gr_EwSv` showing Section 2.5 text too wide/touching card margins. - Measured old frame dark text bbox around x=42..1037 (996px wide), too close/bleeding past card margin. - Patched Section 2.5 wrapping/type: config body_max_chars 19, body_max_lines 7, font size 72, leading 104; bridge parse_section2_5 matches max_chars 19/max_lines 7. - New V0003 corrected preview link: https://drive.google.com/file/d/1KTHMk7Fp4gvmbnIzcN724Ju8DYKm0CQ4/view?usp=drivesdk - Verified output 1080x1920, 30fps, 20s, AAC. New Section 2.5 frame text bbox x=210..867 (658px wide), safe inside margins. ## TraitDNA dynamic 4-part VO timing implemented - Implemen",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.662561471760273,
+      "maxScore": 0.5473173186182976,
+      "firstRecalledAt": "2026-06-29T13:27:36.410Z",
+      "lastRecalledAt": "2026-06-30T06:20:12.651Z",
+      "queryHashes": [
+        "9494812aeed8",
+        "e3129cae0f4c",
+        "c749a50dc980",
+        "be4101b700e5",
+        "800fbf477370"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-06-30"
+      ],
+      "conceptTags": [
+        "2.5",
+        "wide/touching",
+        "close/bleeding",
+        "wrapping/type",
+        "body-max-chars",
+        "body-max-lines",
+        "parse-section2-5",
+        "max-chars"
+      ]
+    },
+    "memory:memory/2026-06-29.md:61:65": {
+      "key": "memory:memory/2026-06-29.md:61:65",
+      "path": "memory/2026-06-29.md",
+      "startLine": 61,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- Rendered V0004 and V0005 using this logic into Drive Final_Batch folder `1PCdgbhvt3sJt09XpmWn7VNEhIxF1k7Vb`. - V0004 link: https://drive.google.com/file/d/1IMVFEVBOpeQrx6w3vil9qedocD7QVmmg/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO total 17.528s, gaps 0.5/0.5/0.5, section starts 0.0/6.9667/11.3333/16.1667. - V0005 initially rendered 20.033s due frame rounding; patched timing to reduce silent gaps first when rounding would exceed 20s, reassembled V0005 from existing section/VO assets to exactly 20.000s. - Correct V0005 link: https://drive.google.com/file/d/1nv2NCOdi62srrl2DqC1epvAs7CuEu25C/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO tot",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5426678985357284,
+      "maxScore": 0.5426678985357284,
+      "firstRecalledAt": "2026-06-29T13:27:36.410Z",
+      "lastRecalledAt": "2026-06-29T13:27:36.410Z",
+      "queryHashes": [
+        "9494812aeed8"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "20.000s",
+        "17.528s",
+        "0.5/0.5/0.5",
+        "0.0/6.9667/11.3333/16.1667",
+        "20.033s",
+        "section/vo",
+        "rendered"
+      ]
+    },
+    "memory:memory/2026-06-29.md:61:70": {
+      "key": "memory:memory/2026-06-29.md:61:70",
+      "path": "memory/2026-06-29.md",
+      "startLine": 61,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "- Rendered V0004 and V0005 using this logic into Drive Final_Batch folder `1PCdgbhvt3sJt09XpmWn7VNEhIxF1k7Vb`. - V0004 link: https://drive.google.com/file/d/1IMVFEVBOpeQrx6w3vil9qedocD7QVmmg/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO total 17.528s, gaps 0.5/0.5/0.5, section starts 0.0/6.9667/11.3333/16.1667. - V0005 initially rendered 20.033s due frame rounding; patched timing to reduce silent gaps first when rounding would exceed 20s, reassembled V0005 from existing section/VO assets to exactly 20.000s. - Correct V0005 link: https://drive.google.com/file/d/1nv2NCOdi62srrl2DqC1epvAs7CuEu25C/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO tot",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.214654409885407,
+      "maxScore": 0.5629669174551963,
+      "firstRecalledAt": "2026-06-29T13:35:21.698Z",
+      "lastRecalledAt": "2026-07-03T09:53:15.361Z",
+      "queryHashes": [
+        "e3129cae0f4c",
+        "c749a50dc980",
+        "800fbf477370",
+        "6724d622c46d"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "20.000s",
+        "17.528s",
+        "0.5/0.5/0.5",
+        "0.0/6.9667/11.3333/16.1667",
+        "20.033s",
+        "section/vo",
+        "rendered"
+      ]
+    },
+    "memory:memory/2026-06-29.md:69:72": {
+      "key": "memory:memory/2026-06-29.md:69:72",
+      "path": "memory/2026-06-29.md",
+      "startLine": 69,
+      "endLine": 72,
+      "source": "memory",
+      "snippet": "- Patched `scripts/ai_video_n8n_bridge.py` so when a section needs extension beyond source duration, it freezes a stable text-visible frame at `source_duration - 0.25s` instead of the true final frame. - Reassembled V0004/V0005 from existing section clips + 4-part VO, no external regeneration needed. OCR checked extended moments: V0004 section1, V0005 section1, V0005 section2 all retained text during freeze. - New corrected links: V0004 https://drive.google.com/file/d/1WHK4KFGovC0xPF88T0gmuIwbtwtvQ8gF/view?usp=drivesdk; V0005 https://drive.google.com/file/d/17Gt0MOP_-EsbsvtXGUkj4e5wudlhsdy_/view?usp=drivesdk. Both verified 1080x1920, 30fps, 20.000s, AAC.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5479976892471313,
+      "maxScore": 0.5479976892471313,
+      "firstRecalledAt": "2026-06-29T13:35:21.698Z",
+      "lastRecalledAt": "2026-06-29T13:35:21.698Z",
+      "queryHashes": [
+        "e3129cae0f4c"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "scripts/ai-video-n8n-bridge.py",
+        "text-visible",
+        "source-duration",
+        "0.25s",
+        "v0004/v0005",
+        "4-part",
+        "drive.google.com/file/d/17gt0mop",
+        "20.000s"
+      ]
+    },
+    "memory:memory/2026-06-29.md:69:77": {
+      "key": "memory:memory/2026-06-29.md:69:77",
+      "path": "memory/2026-06-29.md",
+      "startLine": 69,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "- Patched `scripts/ai_video_n8n_bridge.py` so when a section needs extension beyond source duration, it freezes a stable text-visible frame at `source_duration - 0.25s` instead of the true final frame. - Reassembled V0004/V0005 from existing section clips + 4-part VO, no external regeneration needed. OCR checked extended moments: V0004 section1, V0005 section1, V0005 section2 all retained text during freeze. - New corrected links: V0004 https://drive.google.com/file/d/1WHK4KFGovC0xPF88T0gmuIwbtwtvQ8gF/view?usp=drivesdk; V0005 https://drive.google.com/file/d/17Gt0MOP_-EsbsvtXGUkj4e5wudlhsdy_/view?usp=drivesdk. Both verified 1080x1920, 30fps, 20.000s, AAC. ## TraitDNA freeze opacity fix - Ahm",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5508684054017067,
+      "maxScore": 0.5508684054017067,
+      "firstRecalledAt": "2026-06-29T13:40:55.316Z",
+      "lastRecalledAt": "2026-06-29T13:40:55.316Z",
+      "queryHashes": [
+        "c749a50dc980"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "scripts/ai-video-n8n-bridge.py",
+        "text-visible",
+        "source-duration",
+        "0.25s",
+        "v0004/v0005",
+        "4-part",
+        "drive.google.com/file/d/17gt0mop",
+        "20.000s"
+      ]
+    },
+    "memory:memory/2026-06-29.md:167:175": {
+      "key": "memory:memory/2026-06-29.md:167:175",
+      "path": "memory/2026-06-29.md",
+      "startLine": 167,
+      "endLine": 175,
+      "source": "memory",
+      "snippet": "- Reused existing silent videos and existing 4 VO clips; no video regeneration. Remixed/uploaded V0003-V0005. Drive folder: https://drive.google.com/drive/folders/1r4stIWhXLS6AXUnnvJqPChwNyuVsa6fi - Links: V0003 https://drive.google.com/file/d/1TG8g3sjTCn22VW_v-_hd85jgz3TCQzbt/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1vEhNmDba8DIKWYdbn0zi6P3PzPZ6_sg3/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1kKoyjMEXb4Xr-O_K4nnhGETT-UrM5HdV/view?usp=drivesdk. - Verified all 3 remain 20.000s, 1080x1920, 30fps, AAC. Local remix script: `tmp/remix_traitdna_v0003_v0005_consistent_vo.py`; local summary under `projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_con",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.53492112159729,
+      "maxScore": 0.53492112159729,
+      "firstRecalledAt": "2026-06-29T16:42:56.490Z",
+      "lastRecalledAt": "2026-06-29T16:42:56.490Z",
+      "queryHashes": [
+        "e86c2bdbace2"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "remixed/uploaded",
+        "v0003-v0005",
+        "hd85jgz3tcqzbt/view",
+        "20.000s",
+        "projects/v0001",
+        "reused",
+        "existing",
+        "silent"
+      ]
+    },
+    "memory:memory/2026-06-29.md:187:195": {
+      "key": "memory:memory/2026-06-29.md:187:195",
+      "path": "memory/2026-06-29.md",
+      "startLine": 187,
+      "endLine": 195,
+      "source": "memory",
+      "snippet": "- Permanent patch in `scripts/ai_video_n8n_bridge.py`: `render_sectioned_voice_mix()` now normalizes each section VO to WAV, creates explicit WAV silence gaps, concatenates those physical files into `voice_track.wav`, then mixes only that single stereo VO WAV with background music. No parallel delayed VO streams remain. - Rendered/uploaded final baked-WAV V0003-V0005. Folder: https://drive.google.com/drive/folders/1O4m1q30UrSFKeSxbJWl7IzRiz6BbWwZ0 - Links: V0003 https://drive.google.com/file/d/1E73wwTB_W_Gg_tufALt0exwRe1Lfkhrm/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1OOrz_u7JwKVJG8JtrWptl3nV9TnP3ADM/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1wbO4XPqQf4mCOrQWVr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5333942383527756,
+      "maxScore": 0.5333942383527756,
+      "firstRecalledAt": "2026-06-29T16:42:56.490Z",
+      "lastRecalledAt": "2026-06-29T16:42:56.490Z",
+      "queryHashes": [
+        "e86c2bdbace2"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "scripts/ai-video-n8n-bridge.py",
+        "render-sectioned-voice-mix",
+        "voice-track.wav",
+        "rendered/uploaded",
+        "baked-wav",
+        "v0003-v0005",
+        "permanent",
+        "patch"
+      ]
+    },
+    "memory:memory/2026-06-29.md:193:205": {
+      "key": "memory:memory/2026-06-29.md:193:205",
+      "path": "memory/2026-06-29.md",
+      "startLine": 193,
+      "endLine": 205,
+      "source": "memory",
+      "snippet": "- Ahmad asked to make BG music a little lower so voiceover is more audible. - Patched `scripts/ai_video_n8n_bridge.py` sectioned mix music multiplier from `0.96` to `0.82` of configured music volume, keeping baked sequential VO WAV method intact. - Re-remixed/uploaded V0003-V0005. Folder: https://drive.google.com/drive/folders/1kbvTjIBHHZTH19zs37hxm-40z7t-Q1QW - Links: V0003 https://drive.google.com/file/d/1eZvp9iGEO1aeaosUxU0ebFK1waDk64W-/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1l2jeosFaLTBJiPj1L51IwkrTsRqIUghX/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1j1HVP_rWnwDH5Z9cKVM_Xj64yRWHkloR/view?usp=drivesdk. - Verified all remain 20.000s, 1080x1920, 30fps, AAC.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.531378984451294,
+      "maxScore": 0.531378984451294,
+      "firstRecalledAt": "2026-06-29T16:42:56.490Z",
+      "lastRecalledAt": "2026-06-29T16:42:56.490Z",
+      "queryHashes": [
+        "e86c2bdbace2"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "scripts/ai-video-n8n-bridge.py",
+        "0.96",
+        "0.82",
+        "re-remixed/uploaded",
+        "v0003-v0005",
+        "20.000s",
+        "ahmad",
+        "asked"
+      ]
+    },
+    "memory:memory/2026-06-29.md:160:168": {
+      "key": "memory:memory/2026-06-29.md:160:168",
+      "path": "memory/2026-06-29.md",
+      "startLine": 160,
+      "endLine": 168,
+      "source": "memory",
+      "snippet": "- Verified all 3: 1080x1920, 30fps, H.264 video + AAC audio, duration exactly 20.000s. - Local runner: `tmp/run_traitdna_dynamic_v0003_v0004_v0005.py`; local output summary under `projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_dynamic_slowtext_V0003_V0005_*`. ## TraitDNA VO volume consistency + background music reduction - Ahmad said the duration-aware V0003-V0005 looked good, but VO volume sounded reduced from Section 2 onward and requested consistent VO level throughout plus background music reduced by 3-5%. - Root cause identified in `render_sectioned_voice_mix()`: each VO section was delayed first, then loudness-normalized, causing Section 2+ loudnorm to include l",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5290111795067787,
+      "maxScore": 0.5290111795067787,
+      "firstRecalledAt": "2026-06-29T16:42:56.490Z",
+      "lastRecalledAt": "2026-06-29T16:42:56.490Z",
+      "queryHashes": [
+        "e86c2bdbace2"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "h.264",
+        "20.000s",
+        "projects/v0001",
+        "duration-aware",
+        "v0003-v0005",
+        "3-5",
+        "render-sectioned-voice-mix",
+        "loudness-normalized"
+      ]
+    },
+    "memory:memory/2026-06-29.md:96:105": {
+      "key": "memory:memory/2026-06-29.md:96:105",
+      "path": "memory/2026-06-29.md",
+      "startLine": 96,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "## TraitDNA BatchFlow Final_Batch V0001-V0005 completed - Completed correct TraitDNA BatchFlow Final_Batch from Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`, using approved 5/8/4/3 timing and no CTA-sub VO rule. - Drive folder: https://drive.google.com/drive/folders/1sWXvY3f1QzBWzK3YBo76nRXGuEPy4QZM - Links: V0001 https://drive.google.com/file/d/1kZaVJ0MRUsR1pmjs-Eif8idtcJ85pCf6/view?usp=drivesdk; V0002 https://drive.google.com/file/d/1H0J5YDEh2Mh_CdKnYGt9xy6x94YyvCho/view?usp=drivesdk; V0003 https://drive.google.com/file/d/1GMMjP1oxNrSk_sDRN0QYXZh8BKP2BgHo/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1iV6Iy633ygGs2vE-bCiIRdTtxf7bYP1v/v",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.307924522459507,
+      "maxScore": 0.5588498443365096,
+      "firstRecalledAt": "2026-06-29T22:44:40.275Z",
+      "lastRecalledAt": "2026-07-05T19:00:11.621Z",
+      "queryHashes": [
+        "66c5534042d9",
+        "cf1aafbf4971",
+        "07f32207ed47",
+        "742d79f6bd5a",
+        "229b20c671fe",
+        "8eb46c8da4a3",
+        "55dfed66b203",
+        "5b8d782b3fdc"
+      ],
+      "recallDays": [
+        "2026-06-29",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "v0001-v0005",
+        "300-video-master-attribution",
+        "5/8/4/3",
+        "cta-sub",
+        "traitdna",
+        "batchflow",
+        "v0001"
+      ]
+    },
+    "memory:memory/2026-06-29.md:223:238": {
+      "key": "memory:memory/2026-06-29.md:223:238",
+      "path": "memory/2026-06-29.md",
+      "startLine": 223,
+      "endLine": 238,
+      "source": "memory",
+      "snippet": "- Generated V0005 using latest template settings: baked sequential VO, BG music 0.60x, Section 1/2/3 body text standardized to 108px. - Uploaded exact-named file `V0005.mp4`: https://drive.google.com/file/d/14_MazKT_nxWCS5pvtRtGvpkYQ5b822TM/view?usp=drivesdk - Folder: https://drive.google.com/drive/folders/19688EWl3ZM1HHaV9InVmIcWGgSnX2ZIP - Verified 20.000s, 1080x1920, 30fps, H.264 + AAC. ## TraitDNA V0005 font revert and regeneration - Ahmad reported the standardized 108px font changes looked very bad and asked to undo them and regenerate V0005. - Reverted font/template changes: - Section 1 config back to `font_size: 132`, `position_y_end: 95`. - Section 2.5 config back to `body_font_",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5342848420143127,
+      "maxScore": 0.5342848420143127,
+      "firstRecalledAt": "2026-06-29T22:50:48.599Z",
+      "lastRecalledAt": "2026-06-29T22:50:48.599Z",
+      "queryHashes": [
+        "cf1aafbf4971"
+      ],
+      "recallDays": [
+        "2026-06-29"
+      ],
+      "conceptTags": [
+        "0.60x",
+        "1/2/3",
+        "exact-named",
+        "v0005.mp4",
+        "20.000s",
+        "h.264",
+        "font/template",
+        "font-size"
+      ]
+    },
+    "memory:memory/2026-06-29.md:237:250": {
+      "key": "memory:memory/2026-06-29.md:237:250",
+      "path": "memory/2026-06-29.md",
+      "startLine": 237,
+      "endLine": 250,
+      "source": "memory",
+      "snippet": "- Verified 20.000s, 1080x1920, 30fps, H.264 + AAC. Visual QC frames for Sections 1/2.5/3/4 passed after revert. ## TraitDNA Video Platform MVP1 started and implemented - Ahmad approved starting development in small verified chunks and requested notification when MVP1 is done. - Created project folder `projects/traitdna-video-platform/`. - Added MVP1 spec/runbook: `docs/MVP1_PLAN.md` and `README.md`. - Implemented SQLite MVP1 tracking layer with tables: `videos`, `video_versions`, `render_jobs`, `render_assets`. - Implemented real Sheet sync from Google Sheet `1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE`, tab `300_Video_Master_Attribution`, through column AF `Production_Status`. - Implement",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5682239219546318,
+      "maxScore": 0.5682239219546318,
+      "firstRecalledAt": "2026-06-30T04:44:42.832Z",
+      "lastRecalledAt": "2026-06-30T04:44:42.832Z",
+      "queryHashes": [
+        "be4101b700e5"
+      ],
+      "recallDays": [
+        "2026-06-30"
+      ],
+      "conceptTags": [
+        "20.000s",
+        "h.264",
+        "1/2.5/3/4",
+        "projects/traitdna-video-platform",
+        "spec/runbook",
+        "docs/mvp1-plan.md",
+        "readme.md",
+        "video-versions"
+      ]
+    },
+    "memory:memory/2026-06-29.md:223:242": {
+      "key": "memory:memory/2026-06-29.md:223:242",
+      "path": "memory/2026-06-29.md",
+      "startLine": 223,
+      "endLine": 242,
+      "source": "memory",
+      "snippet": "- Generated V0005 using latest template settings: baked sequential VO, BG music 0.60x, Section 1/2/3 body text standardized to 108px. - Uploaded exact-named file `V0005.mp4`: https://drive.google.com/file/d/14_MazKT_nxWCS5pvtRtGvpkYQ5b822TM/view?usp=drivesdk - Folder: https://drive.google.com/drive/folders/19688EWl3ZM1HHaV9InVmIcWGgSnX2ZIP - Verified 20.000s, 1080x1920, 30fps, H.264 + AAC. ## TraitDNA V0005 font revert and regeneration - Ahmad reported the standardized 108px font changes looked very bad and asked to undo them and regenerate V0005. - Reverted font/template changes: - Section 1 config back to `font_size: 132`, `position_y_end: 95`. - Section 2.5 config back to `body_font_",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5864227518439291,
+      "maxScore": 0.5564208522439003,
+      "firstRecalledAt": "2026-06-30T04:44:42.832Z",
+      "lastRecalledAt": "2026-07-05T07:59:57.733Z",
+      "queryHashes": [
+        "be4101b700e5",
+        "800fbf477370",
+        "790e4f622ff8"
+      ],
+      "recallDays": [
+        "2026-06-30",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "0.60x",
+        "1/2/3",
+        "exact-named",
+        "v0005.mp4",
+        "20.000s",
+        "h.264",
+        "font/template",
+        "font-size"
+      ]
+    },
+    "memory:memory/2026-06-29.md:129:138": {
+      "key": "memory:memory/2026-06-29.md:129:138",
+      "path": "memory/2026-06-29.md",
+      "startLine": 129,
+      "endLine": 138,
+      "source": "memory",
+      "snippet": "- User uploaded screenshot file `1lOyyt3ED4khLFnloj7R6mkXw0Gr_EwSv` showing Section 2.5 text too wide/touching card margins. - Measured old frame dark text bbox around x=42..1037 (996px wide), too close/bleeding past card margin. - Patched Section 2.5 wrapping/type: config body_max_chars 19, body_max_lines 7, font size 72, leading 104; bridge parse_section2_5 matches max_chars 19/max_lines 7. - New V0003 corrected preview link: https://drive.google.com/file/d/1KTHMk7Fp4gvmbnIzcN724Ju8DYKm0CQ4/view?usp=drivesdk - Verified output 1080x1920, 30fps, 20s, AAC. New Section 2.5 frame text bbox x=210..867 (658px wide), safe inside margins. ## TraitDNA dynamic 4-part VO timing implemented - Implemen",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5885277837514877,
+      "maxScore": 0.5473173186182976,
+      "firstRecalledAt": "2026-06-30T04:44:42.832Z",
+      "lastRecalledAt": "2026-07-02T13:36:18.084Z",
+      "queryHashes": [
+        "be4101b700e5",
+        "800fbf477370",
+        "391e9f27094d"
+      ],
+      "recallDays": [
+        "2026-06-30",
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "2.5",
+        "wide/touching",
+        "close/bleeding",
+        "wrapping/type",
+        "body-max-chars",
+        "body-max-lines",
+        "parse-section2-5",
+        "max-chars"
+      ]
+    },
+    "memory:memory/2026-06-29.md:211:225": {
+      "key": "memory:memory/2026-06-29.md:211:225",
+      "path": "memory/2026-06-29.md",
+      "startLine": 211,
+      "endLine": 225,
+      "source": "memory",
+      "snippet": "- Reassembled only V0004 with existing Sections 2-4, current baked sequential VO track, and current BG music 0.60x. Uploaded fixed V0004: https://drive.google.com/file/d/1bJzElv10X2wU2OdWis9XOhIk6PbTxCte/view?usp=drivesdk. Folder: https://drive.google.com/drive/folders/1l5f4YEfUeUVSoOfsfdZDbHVnA8jwN_BE. Verified 20.000s, 1080x1920, 30fps, AAC. ## TraitDNA template font-size standardization - Ahmad requested Section 2 and Section 3 font size match Section 1. - Standardized template text font size to approved fixed Section 1 size `108px`. - Patched `section1/config/section1_config.json` from 132 to 108 and y to 115. - Patched Section 2 normal config `section2/config/section2_editable_match.js",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.324003902077674,
+      "maxScore": 0.5642145887017249,
+      "firstRecalledAt": "2026-06-30T04:44:42.832Z",
+      "lastRecalledAt": "2026-07-05T08:07:42.310Z",
+      "queryHashes": [
+        "be4101b700e5",
+        "800fbf477370",
+        "185507193090",
+        "391e9f27094d",
+        "d3ed1c2ca23e",
+        "50c3ed933c22",
+        "790e4f622ff8",
+        "af8e7d19a552"
+      ],
+      "recallDays": [
+        "2026-06-30",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "2-4",
+        "0.60x",
+        "20.000s",
+        "font-size",
+        "reassembled",
+        "only",
+        "v0004",
+        "existing"
+      ]
+    },
+    "memory:memory/2026-06-29.md:203:214": {
+      "key": "memory:memory/2026-06-29.md:203:214",
+      "path": "memory/2026-06-29.md",
+      "startLine": 203,
+      "endLine": 214,
+      "source": "memory",
+      "snippet": "- Links: V0003 https://drive.google.com/file/d/14bclwsOnHtv_wh9CLoIaFJZ8BxqxIIFI/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1br6FMgChE4PtnOJV6jorFsYZuSELE3_T/view?usp=drivesdk; V0005 https://drive.google.com/file/d/11U-9r9Iu1AGNHLCjbo8j72ux6h6li1Rp/view?usp=drivesdk. - Verified all remain 20.000s, 1080x1920, 30fps, AAC. ## TraitDNA V0004 Section 1 visual fix - Ahmad shared screenshot/Drive file `1TEJUuTslSSo1E0TZGnmqVEue9p8rHRqR` showing V0004 Section 1 looked off. The shared file was a PNG screenshot, not a video. - Diagnosis: Section 1 text was too large/stacked for the V0004 hook and caused visual overlap/glitch around “isn't always”; current dynamic Section 1 background al",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.1712317913770676,
+      "maxScore": 0.5497221633791923,
+      "firstRecalledAt": "2026-06-30T06:20:12.651Z",
+      "lastRecalledAt": "2026-07-05T08:07:42.310Z",
+      "queryHashes": [
+        "800fbf477370",
+        "391e9f27094d",
+        "d3ed1c2ca23e",
+        "af8e7d19a552"
+      ],
+      "recallDays": [
+        "2026-06-30",
+        "2026-07-02",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "20.000s",
+        "screenshot/drive",
+        "large/stacked",
+        "overlap/glitch",
+        "links",
+        "v0003",
+        "https",
+        "drive.google.com"
+      ]
+    },
+    "memory:memory/2026-06-29.md:137:146": {
+      "key": "memory:memory/2026-06-29.md:137:146",
+      "path": "memory/2026-06-29.md",
+      "startLine": 137,
+      "endLine": 146,
+      "source": "memory",
+      "snippet": "- Rendered V0004 and V0005 using this logic into Drive Final_Batch folder `1PCdgbhvt3sJt09XpmWn7VNEhIxF1k7Vb`. - V0004 link: https://drive.google.com/file/d/1IMVFEVBOpeQrx6w3vil9qedocD7QVmmg/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO total 17.528s, gaps 0.5/0.5/0.5, section starts 0.0/6.9667/11.3333/16.1667. - V0005 initially rendered 20.033s due frame rounding; patched timing to reduce silent gaps first when rounding would exceed 20s, reassembled V0005 from existing section/VO assets to exactly 20.000s. - Correct V0005 link: https://drive.google.com/file/d/1nv2NCOdi62srrl2DqC1epvAs7CuEu25C/view?usp=drivesdk; verified 1080x1920, 30fps, 20.000s, AAC. Timing: VO tot",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6455181047320366,
+      "maxScore": 0.5629669174551963,
+      "firstRecalledAt": "2026-06-30T06:20:12.651Z",
+      "lastRecalledAt": "2026-07-03T09:53:15.361Z",
+      "queryHashes": [
+        "800fbf477370",
+        "185507193090",
+        "6724d622c46d"
+      ],
+      "recallDays": [
+        "2026-06-30",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "final-batch",
+        "20.000s",
+        "17.528s",
+        "0.5/0.5/0.5",
+        "0.0/6.9667/11.3333/16.1667",
+        "20.033s",
+        "section/vo",
+        "rendered"
+      ]
+    },
+    "memory:memory/2026-06-29.md:117:131": {
+      "key": "memory:memory/2026-06-29.md:117:131",
+      "path": "memory/2026-06-29.md",
+      "startLine": 117,
+      "endLine": 131,
+      "source": "memory",
+      "snippet": "- Added reusable Section 2.5 renderer: `projects/V0001 Template System - 2026-05-12/section2/scripts/render_section2_5_text_only.py` and config `section2/config/section2_5_text_only.json`. - Section 2.5 keeps the Section 2 card style but removes all statistic elements: no `~`, no `95`, no `%`; it renders full Insight_Text as centered larger text. - Patched `scripts/ai_video_n8n_bridge.py` to auto-select: normal Section 2 when Insight_Text contains regex `~?\\\\s*95\\\\s*%`; Section 2.5 otherwise. - Verified routing for first 5: V0001/V0002 -> Section 2; V0003/V0004/V0005 -> Section 2.5. Rendered V0003 Section 2.5 test `section2/output/section2_5_test_V0003.mp4`; visual QC contact sheet has no 95",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5494462057948112,
+      "maxScore": 0.5494462057948112,
+      "firstRecalledAt": "2026-06-30T12:31:01.871Z",
+      "lastRecalledAt": "2026-06-30T12:31:01.871Z",
+      "queryHashes": [
+        "185507193090"
+      ],
+      "recallDays": [
+        "2026-06-30"
+      ],
+      "conceptTags": [
+        "2.5",
+        "projects/v0001",
+        "insight-text",
+        "scripts/ai-video-n8n-bridge.py",
+        "auto-select",
+        "v0001/v0002",
+        "v0003/v0004/v0005",
+        "added"
+      ]
+    },
+    "memory:memory/2026-06-29.md:41:55": {
+      "key": "memory:memory/2026-06-29.md:41:55",
+      "path": "memory/2026-06-29.md",
+      "startLine": 41,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "- Added reusable Section 2.5 renderer: `projects/V0001 Template System - 2026-05-12/section2/scripts/render_section2_5_text_only.py` and config `section2/config/section2_5_text_only.json`. - Section 2.5 keeps the Section 2 card style but removes all statistic elements: no `~`, no `95`, no `%`; it renders full Insight_Text as centered larger text. - Patched `scripts/ai_video_n8n_bridge.py` to auto-select: normal Section 2 when Insight_Text contains regex `~?\\\\s*95\\\\s*%`; Section 2.5 otherwise. - Verified routing for first 5: V0001/V0002 -> Section 2; V0003/V0004/V0005 -> Section 2.5. Rendered V0003 Section 2.5 test `section2/output/section2_5_test_V0003.mp4`; visual QC contact sheet has no 95",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5494462057948112,
+      "maxScore": 0.5494462057948112,
+      "firstRecalledAt": "2026-06-30T12:31:01.871Z",
+      "lastRecalledAt": "2026-06-30T12:31:01.871Z",
+      "queryHashes": [
+        "185507193090"
+      ],
+      "recallDays": [
+        "2026-06-30"
+      ],
+      "conceptTags": [
+        "2.5",
+        "projects/v0001",
+        "insight-text",
+        "scripts/ai-video-n8n-bridge.py",
+        "auto-select",
+        "v0001/v0002",
+        "v0003/v0004/v0005",
+        "added"
+      ]
+    },
+    "memory:memory/2026-06-29.md:76:87": {
+      "key": "memory:memory/2026-06-29.md:76:87",
+      "path": "memory/2026-06-29.md",
+      "startLine": 76,
+      "endLine": 87,
+      "source": "memory",
+      "snippet": "- Reassembled V0004/V0005 from existing assets and uploaded corrected files: V0004 https://drive.google.com/file/d/1eYmWvFt0AWSRAagkgq5bb85XhNdUU5uA/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1v41CfnYB5XuNAo0RRdwo2Us4GJgMIbPL/view?usp=drivesdk. ## AI video template-02 Final_Batch V0001-V0005 - Ahmad approved/freezed the latest Truckstop template output and requested first 5 videos named V0001-V0005 in Drive folder `Final_Batch`. - Created local batch at `projects/AI video automation template-02/output/Final_Batch/` using approved source `output/truckstop_partner_2_section_video_top_white_bottom_black_gradient_with_outro.mp4`. - Uploaded to Google Drive folder `Final_Batch`: ht",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0349435389041899,
+      "maxScore": 0.5199577659368515,
+      "firstRecalledAt": "2026-07-01T07:14:26.625Z",
+      "lastRecalledAt": "2026-07-03T04:12:38.055Z",
+      "queryHashes": [
+        "742d79f6bd5a",
+        "817a9b057140"
+      ],
+      "recallDays": [
+        "2026-07-01",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "v0004/v0005",
+        "template-02",
+        "final-batch",
+        "v0001-v0005",
+        "approved/freezed",
+        "projects/ai",
+        "template-02/output/final-batch",
+        "reassembled"
+      ]
+    },
+    "memory:memory/2026-06-29.md:112:119": {
+      "key": "memory:memory/2026-06-29.md:112:119",
+      "path": "memory/2026-06-29.md",
+      "startLine": 112,
+      "endLine": 119,
+      "source": "memory",
+      "snippet": "- Links: V0001 https://drive.google.com/file/d/1t59Z07z9GCIAZ8G5O-XcHVWodpX1W9NB/view?usp=drivesdk; V0002 https://drive.google.com/file/d/1OD_6oYHSBlnWDq2DlQAqKONf_lP0DWev/view?usp=drivesdk; V0003 https://drive.google.com/file/d/1MB1Qb8KfJgDAmurrVeFZBmgNvjyIIY7U/view?usp=drivesdk; V0004 https://drive.google.com/file/d/1VJTP3iWRcHs86voT-nPOuqtesRWPHVTa/view?usp=drivesdk; V0005 https://drive.google.com/file/d/1hw_klU1xLwIe8bFt2mwyLbMOG_tN4-IC/view?usp=drivesdk. - Verified all 5: H.264 1080x1920, 30fps, 20.000s, AAC audio, named V0001.mp4-V0005.mp4 in Final_Batch. Local summary: `projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_corrected_all5_20260629_073352/FINAL_SUMMARY.j",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0912342652678488,
+      "maxScore": 0.5470799967646598,
+      "firstRecalledAt": "2026-07-02T05:16:11.001Z",
+      "lastRecalledAt": "2026-07-03T04:11:45.963Z",
+      "queryHashes": [
+        "229b20c671fe",
+        "8eb46c8da4a3"
+      ],
+      "recallDays": [
+        "2026-07-02",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "h.264",
+        "20.000s",
+        "v0001.mp4-v0005.mp4",
+        "final-batch",
+        "projects/v0001",
+        "links",
+        "v0001",
+        "https"
+      ]
+    },
+    "memory:memory/2026-07-02.md:1:15": {
+      "key": "memory:memory/2026-07-02.md:1:15",
+      "path": "memory/2026-07-02.md",
+      "startLine": 1,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "## TraitDNA V0006 section 4 update - Ahmad requested V0006 remake with section 4 background replaced by Drive video `1nNdVHN1ceDKpFAFX-r9Dkp0kpwigq-I8`, no on-screen CTA/text on section 4, and section 4 VO changed to: “Free Trait D-N-A report - tap the profile link.” - Reused V0006 sections 1-3 from `Regenerated_V0006_V0001_visual_prompt_20260701_071533`; rendered section 4 background-only by looping/covering the 3.433s source clip into the existing ~7.067s section slot. - Final local: `projects/V0001 Template System - 2026-05-12/master/output/Remade_V0006_section4_bg_no_text_new_vo_20260702_123448/V0006.mp4`. - Drive link: https://drive.google.com/file/d/1N7qJHYjmmOq5upd3d_c1Qk4d-OD49jpV/v",
+      "recallCount": 8,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.268108284473419,
+      "maxScore": 0.5546281293034553,
+      "firstRecalledAt": "2026-07-02T13:24:48.584Z",
+      "lastRecalledAt": "2026-07-06T06:56:57.580Z",
+      "queryHashes": [
+        "81ba2a3d92fd",
+        "391e9f27094d",
+        "d3ed1c2ca23e",
+        "50c3ed933c22",
+        "690d297276f1",
+        "790e4f622ff8",
+        "af8e7d19a552",
+        "5980c75a831c"
+      ],
+      "recallDays": [
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05",
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "on-screen",
+        "cta/text",
+        "d-n-a",
+        "1-3",
+        "background-only",
+        "looping/covering",
+        "3.433s",
+        "7.067s"
+      ]
+    },
+    "memory:memory/2026-07-02.md:23:29": {
+      "key": "memory:memory/2026-07-02.md:23:29",
+      "path": "memory/2026-07-02.md",
+      "startLine": 23,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "- Ahmad approved the latest V0006 fix and asked to create V0007, V0008, V0009, V0010. - Reused already-generated V0007-V0010 sections 1-3 from the V0001 visual prompt runs, then applied the corrected section 4 approach: replacement background `1nNdVHN1ceDKpFAFX-r9Dkp0kpwigq-I8`, shown once only, no on-screen section-4 text, section-4 VO “Free Trait D-N-A report - tap the profile link.” - Output folder: `projects/V0001 Template System - 2026-05-12/master/output/Remade_V0007_V0010_section4_once_no_text_20260702_132814/`. - Drive links: V0007 https://drive.google.com/file/d/1w3GXxwCCGH0yGb-ThMSqZFcZSEac7SzO/view?usp=drivesdk; V0008 https://drive.google.com/file/d/1TDEQ0eee2GGoK3aFHn1hi4ZHa2K58B",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5543433681130409,
+      "maxScore": 0.5543433681130409,
+      "firstRecalledAt": "2026-07-02T13:36:18.084Z",
+      "lastRecalledAt": "2026-07-02T13:36:18.084Z",
+      "queryHashes": [
+        "391e9f27094d"
+      ],
+      "recallDays": [
+        "2026-07-02"
+      ],
+      "conceptTags": [
+        "already-generated",
+        "v0007-v0010",
+        "1-3",
+        "on-screen",
+        "section-4",
+        "d-n-a",
+        "projects/v0001",
+        "ahmad"
+      ]
+    },
+    "memory:memory/2026-07-02.md:23:30": {
+      "key": "memory:memory/2026-07-02.md:23:30",
+      "path": "memory/2026-07-02.md",
+      "startLine": 23,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "- Ahmad approved the latest V0006 fix and asked to create V0007, V0008, V0009, V0010. - Reused already-generated V0007-V0010 sections 1-3 from the V0001 visual prompt runs, then applied the corrected section 4 approach: replacement background `1nNdVHN1ceDKpFAFX-r9Dkp0kpwigq-I8`, shown once only, no on-screen section-4 text, section-4 VO “Free Trait D-N-A report - tap the profile link.” - Output folder: `projects/V0001 Template System - 2026-05-12/master/output/Remade_V0007_V0010_section4_once_no_text_20260702_132814/`. - Drive links: V0007 https://drive.google.com/file/d/1w3GXxwCCGH0yGb-ThMSqZFcZSEac7SzO/view?usp=drivesdk; V0008 https://drive.google.com/file/d/1TDEQ0eee2GGoK3aFHn1hi4ZHa2K58B",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6454433783888818,
+      "maxScore": 0.5715565979480743,
+      "firstRecalledAt": "2026-07-02T14:21:49.449Z",
+      "lastRecalledAt": "2026-07-03T16:28:04.032Z",
+      "queryHashes": [
+        "d3ed1c2ca23e",
+        "6724d622c46d",
+        "690d297276f1"
+      ],
+      "recallDays": [
+        "2026-07-02",
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "already-generated",
+        "v0007-v0010",
+        "1-3",
+        "on-screen",
+        "section-4",
+        "d-n-a",
+        "projects/v0001",
+        "ahmad"
+      ]
+    },
+    "memory:memory/2026-07-02.md:12:24": {
+      "key": "memory:memory/2026-07-02.md:12:24",
+      "path": "memory/2026-07-02.md",
+      "startLine": 12,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "- Final local: `projects/V0001 Template System - 2026-05-12/master/output/Remade_V0006_section4_once_no_text_new_vo_20260702_130554/V0006.mp4`. - Drive link: https://drive.google.com/file/d/1OgGGcv7MDsdwZ8yKE4xGmqqmXV230wFQ/view?usp=drivesdk - Verified ffprobe: H.264 1080x1920, 30fps, 20.000s, AAC audio. ## TraitDNA V0006 rerender to fix 5-6s glitch - Ahmad said corrected V0006 looked glitchy around 5-6s. Cause was likely the prior timing that stretched section 1 to 6s / transition around that area. - Remade V0006 keeping section 1 at natural 4.633333s, section 4 once only/no text at 3.433333s, and redistributed extra time to sections 2 and 3. - Timings: S1 4.633333s, S2 6.0s, S3 5.933334s,",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.777076080441475,
+      "maxScore": 0.5666665077209472,
+      "firstRecalledAt": "2026-07-02T14:21:49.449Z",
+      "lastRecalledAt": "2026-07-05T08:07:42.310Z",
+      "queryHashes": [
+        "d3ed1c2ca23e",
+        "817a9b057140",
+        "6724d622c46d",
+        "50c3ed933c22",
+        "55dfed66b203",
+        "790e4f622ff8",
+        "af8e7d19a552"
+      ],
+      "recallDays": [
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "h.264",
+        "20.000s",
+        "5-6s",
+        "4.633333s",
+        "only/no",
+        "3.433333s",
+        "6.0s"
+      ]
+    },
+    "memory:memory/2026-07-02.md:37:49": {
+      "key": "memory:memory/2026-07-02.md:37:49",
+      "path": "memory/2026-07-02.md",
+      "startLine": 37,
+      "endLine": 49,
+      "source": "memory",
+      "snippet": "- Final fixed V0007 uses preserved Section 2 lines: “Most applicants / self-limit to their / current title. / Hiring doesn't. / The pay gap between / titles is wider than / most candidates realize.” - Final local: `projects/V0001 Template System - 2026-05-12/master/output/Fixed_V0007_section2_layout_20260702_134236/V0007.mp4`. - Drive link: https://drive.google.com/file/d/1PLS7E5OMhJUEvOBkwpKge6ZP1i4gkFRQ/view?usp=drivesdk - Verified ffprobe: H.264 1080x1920, 30fps, 20.000s, AAC audio. OCR on Section 2 QC frame confirms no “Hiring doesn't and” or “current title. Hiring” line merge. ## TraitDNA V0010 fresh regeneration fixed - Ahmad said V0010 had something wrong and asked to regenerate/send",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0974556297063827,
+      "maxScore": 0.5663934811949729,
+      "firstRecalledAt": "2026-07-03T04:12:38.055Z",
+      "lastRecalledAt": "2026-07-03T09:53:15.361Z",
+      "queryHashes": [
+        "817a9b057140",
+        "6724d622c46d"
+      ],
+      "recallDays": [
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "self-limit",
+        "projects/v0001",
+        "h.264",
+        "20.000s",
+        "regenerate/send",
+        "final",
+        "fixed",
+        "v0007"
+      ]
+    },
+    "memory:memory/2026-07-03.md:1:17": {
+      "key": "memory:memory/2026-07-03.md:1:17",
+      "path": "memory/2026-07-03.md",
+      "startLine": 1,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "## TraitDNA reusable template fix for V0010-style Section 4 - Ahmad confirmed V0011-V0015 were not similar to V0010 and asked to make the V0010-style changes reusable in the template. - Updated `projects/V0001 Template System - 2026-05-12/master/scripts/render_batch_v0006_v0015.py` so future runs use the approved V0010 Section 4 behavior by default: background `section4_bg_1nNdVHN1ceDKpFAFX-r9Dkp0kpwigq-I8.mp4`, once only, no renderer-added CTA/subtext overlay, fixed CTA VO “Free Trait D-N-A report - tap the profile link.”, and Section 4 VO fit capped to 3.3s. - Verified both the reusable batch script and V0011 fixer script compile with `python3 -m py_compile`. ## TraitDNA BatchFlow V0012-",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5844836920499801,
+      "maxScore": 0.5844836920499801,
+      "firstRecalledAt": "2026-07-03T12:41:30.409Z",
+      "lastRecalledAt": "2026-07-03T12:41:30.409Z",
+      "queryHashes": [
+        "50c3ed933c22"
+      ],
+      "recallDays": [
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "v0010-style",
+        "v0011-v0015",
+        "projects/v0001",
+        "renderer-added",
+        "cta/subtext",
+        "d-n-a",
+        "3.3s",
+        "py-compile"
+      ]
+    },
+    "memory:memory/2026-07-02.md:29:38": {
+      "key": "memory:memory/2026-07-02.md:29:38",
+      "path": "memory/2026-07-02.md",
+      "startLine": 29,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "- Ahmad shared screenshot `1lk1JnASqIA5ukx_8T-8sEMVel3SpXzhu` showing V0007 Section 2 was not good. Diagnosis: bad visual wrap made the sentence read as “Hiring doesn’t and…”. - Re-rendered V0007 Section 2 with manual safe lines: “Most applicants / self-limit to their / current title. / Hiring doesn't. / The pay gap between / titles is wider than / most candidates realize.” - Patched `master/scripts/render_batch_v0006_v0015.py` Section 2.5 wrapper to avoid weak conjunction line breaks and normalize the known “Hiring doesn't and the pay gap” display issue for future batches. - Final local: `projects/V0001 Template System - 2026-05-12/master/output/Fixed_V0007_section2_layout_20260702_134024/V",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5495266690850258,
+      "maxScore": 0.5495266690850258,
+      "firstRecalledAt": "2026-07-03T12:41:30.409Z",
+      "lastRecalledAt": "2026-07-03T12:41:30.409Z",
+      "queryHashes": [
+        "50c3ed933c22"
+      ],
+      "recallDays": [
+        "2026-07-03"
+      ],
+      "conceptTags": [
+        "re-rendered",
+        "self-limit",
+        "2.5",
+        "projects/v0001",
+        "ahmad",
+        "shared",
+        "screenshot",
+        "1lk1jnasqia5ukx-8t"
+      ]
+    },
+    "memory:memory/2026-07-03.md:1:18": {
+      "key": "memory:memory/2026-07-03.md:1:18",
+      "path": "memory/2026-07-03.md",
+      "startLine": 1,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "## TraitDNA reusable template fix for V0010-style Section 4 - Ahmad confirmed V0011-V0015 were not similar to V0010 and asked to make the V0010-style changes reusable in the template. - Updated `projects/V0001 Template System - 2026-05-12/master/scripts/render_batch_v0006_v0015.py` so future runs use the approved V0010 Section 4 behavior by default: background `section4_bg_1nNdVHN1ceDKpFAFX-r9Dkp0kpwigq-I8.mp4`, once only, no renderer-added CTA/subtext overlay, fixed CTA VO “Free Trait D-N-A report - tap the profile link.”, and Section 4 VO fit capped to 3.3s. - Verified both the reusable batch script and V0011 fixer script compile with `python3 -m py_compile`. ## TraitDNA BatchFlow V0012-",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.1527646631002426,
+      "maxScore": 0.5564010441303253,
+      "firstRecalledAt": "2026-07-05T07:47:40.498Z",
+      "lastRecalledAt": "2026-07-05T19:00:11.621Z",
+      "queryHashes": [
+        "55dfed66b203",
+        "790e4f622ff8",
+        "58efe3afbae9",
+        "5b8d782b3fdc"
+      ],
+      "recallDays": [
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "v0010-style",
+        "v0011-v0015",
+        "projects/v0001",
+        "renderer-added",
+        "cta/subtext",
+        "d-n-a",
+        "3.3s",
+        "py-compile"
+      ]
+    },
+    "memory:memory/2026-07-05.md:1:8": {
+      "key": "memory:memory/2026-07-05.md:1:8",
+      "path": "memory/2026-07-05.md",
+      "startLine": 1,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "## TraitDNA V0016 correction using V0011 old template - Ahmad flagged V0016 as using the wrong template and asked to find the exact workflow used for V0011 Drive file `1S6CjO2yoLOqMu-qsvAyn0NuET9wm9r6k`. - Found that V0011 was `V0011_old_code_screen_side_profile_fixed.mp4`, built from local output `projects/V0001 Template System - 2026-05-12/master/output/Fixed_V0011_old_20260702_code_screen_side_profile_20260703_163848/V0011.mp4`. - Exact V0011 visual sources/template: old 20260702 code-screen side-profile clips `master/assets/wan_contextual_clips/V0011_20260702_051822_section1_wan.mp4` and `master/assets/wan_contextual_clips/V0011_20260702_051822_section3_wan.mp4`, with current V0011 Sect",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.102194806933403,
+      "maxScore": 0.5685657918453216,
+      "firstRecalledAt": "2026-07-05T08:07:42.310Z",
+      "lastRecalledAt": "2026-07-05T08:40:50.667Z",
+      "queryHashes": [
+        "af8e7d19a552",
+        "6194a8834ede"
+      ],
+      "recallDays": [
+        "2026-07-05"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "sources/template",
+        "code-screen",
+        "side-profile",
+        "traitdna",
+        "v0016",
+        "correction",
+        "v0011"
+      ]
+    },
+    "memory:memory/2026-06-18.md:21:35": {
+      "key": "memory:memory/2026-06-18.md:21:35",
+      "path": "memory/2026-06-18.md",
+      "startLine": 21,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "- Updated Section 1 composition rule from top 20% to top 30%: clean, empty, bright, minimal, white/negative space for headline overlay; main subject/activity in lower 70%. - Added negative prompt terms for multiple cuts, rapid cuts, jump cuts, montage, scene changes, multiple scenes, shot reverse shot, fast editing, and cluttered top third. - Synced the same changes to the frozen workflow copy at `AI_Video_Workflow/frozen_versions/locked_bulk_n8n_smooth_section1_2026-06-17/scripts/ai_video_n8n_bridge.py`. - Restarted bridge and generated new test video: https://drive.google.com/file/d/1hdCd_8hDEs-x3I6-9YIc9DTAJijD8_hK/view?usp=drivesdk - Output verified: 1080x1920, 30fps, 20.0s, file `traitd",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.3861774832010267,
+      "maxScore": 0.4759373784065246,
+      "firstRecalledAt": "2026-07-05T22:31:05.569Z",
+      "lastRecalledAt": "2026-07-06T09:13:04.804Z",
+      "queryHashes": [
+        "298fdba303c4",
+        "d2963a881c06",
+        "d077827edfbc"
+      ],
+      "recallDays": [
+        "2026-07-05",
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "white/negative",
+        "subject/activity",
+        "20.0s",
+        "updated",
+        "section",
+        "composition",
+        "rule",
+        "top"
+      ]
+    },
+    "memory:memory/2026-07-05.md:11:19": {
+      "key": "memory:memory/2026-07-05.md:11:19",
+      "path": "memory/2026-07-05.md",
+      "startLine": 11,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "- Ahmad asked to clean up and move the main chat interface from Telegram to Discord. - Audited OpenClaw status/config: Telegram and Discord both healthy; Discord account `cb_ai_video` already existed and was routed broadly to `cb_ai_video`. - Applied validated config cleanup patch via `openclaw config patch` and restarted Gateway. - Added Discord DM route for main agent: Discord account `cb_ai_video`, direct peer `1415397077902692546` -> `main`. - Preserved Discord channel `1523403656509264002` -> `cb_ai_video`. - Linked identity: `telegram:844645603` + `discord:1415397077902692546` as Ahmad. - Enabled Discord elevated/exec approval access for Ahmad while keeping Telegram fallback. - Verific",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.5593578204512597,
+      "maxScore": 0.5346756115555763,
+      "firstRecalledAt": "2026-07-05T22:44:22.455Z",
+      "lastRecalledAt": "2026-08-03T06:38:57.488Z",
+      "queryHashes": [
+        "d68761dd1231",
+        "d2963a881c06",
+        "d077827edfbc",
+        "5e2308356e95",
+        "3ad18c4ee9fa"
+      ],
+      "recallDays": [
+        "2026-07-05",
+        "2026-07-06",
+        "2026-08-03"
+      ],
+      "conceptTags": [
+        "gateway",
+        "status/config",
+        "cb-ai-video",
+        "elevated/exec",
+        "ahmad",
+        "asked",
+        "clean",
+        "chat"
+      ]
+    },
+    "memory:memory/2026-06-18.md:41:52": {
+      "key": "memory:memory/2026-06-18.md:41:52",
+      "path": "memory/2026-06-18.md",
+      "startLine": 41,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "- Added Nginx vhost `/etc/nginx/sites-available/chat.aneeverse.com` proxying to `127.0.0.1:3010`; Nginx config test passed and route works locally with Host header. - Public blocker: DNS for `chat.aneeverse.com` does not resolve yet. Required A record: `chat` -> `148.230.67.132`. Certbot/HTTPS cannot complete until DNS resolves. Production cookies are Secure, so browser login requires HTTPS. - DNS for `chat.aneeverse.com` propagated publicly to `148.230.67.132`. - Ran Certbot with PATH including `/usr/sbin`; HTTPS enabled for `chat.aneeverse.com`. - Certificate path: `/etc/letsencrypt/live/chat.aneeverse.com/fullchain.pem`; expires 2026-09-16. - Final HTTPS smoke tests passed: HTTP redirects",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9280325889587402,
+      "maxScore": 0.4646353632211685,
+      "firstRecalledAt": "2026-07-05T22:44:22.455Z",
+      "lastRecalledAt": "2026-07-06T19:53:40.401Z",
+      "queryHashes": [
+        "d68761dd1231",
+        "5e2308356e95"
+      ],
+      "recallDays": [
+        "2026-07-05",
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "127.0.0.1",
+        "chat.aneeverse.com",
+        "148.230.67.132",
+        "certbot/https",
+        "usr/sbin",
+        "added",
+        "nginx",
+        "vhost"
+      ]
+    },
+    "memory:memory/2026-05-09.md:8:11": {
+      "key": "memory:memory/2026-05-09.md:8:11",
+      "path": "memory/2026-05-09.md",
+      "startLine": 8,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "- Critical unresolved issue: public `/sales/` root still showed the temporary migration landing page instead of the real dashboard, even after source changes attempting redirect/root replacement. Direct `/sales/dashboard` worked; root-route/build/routing inconsistency remained unresolved at flush time. - The assistant explicitly confirmed the root-page issue was real, not browser cache, and informed Ahmad to use `/sales/dashboard` until `/sales/` root is fixed. - Fixed n8n workflow `HORECA1 - 2 Day GitHub Summary to Google Chat` (`RO2awb1AN2nEef36`): removed the final `Notify HORECA1 Space` node because n8n blocks `$env.HORECA1_GOOGLE_CHAT_WEBHOOK` inside node expressions. The local Automati",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5013321101665497,
+      "maxScore": 0.5013321101665497,
+      "firstRecalledAt": "2026-07-06T06:56:57.580Z",
+      "lastRecalledAt": "2026-07-06T06:56:57.580Z",
+      "queryHashes": [
+        "5980c75a831c"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "redirect/root",
+        "sales/dashboard",
+        "root-route/build/routing",
+        "root-page",
+        "env.horeca1-google-chat-webhook",
+        "critical",
+        "unresolved",
+        "issue"
+      ]
+    },
+    "memory:memory/2026-06-22.md:260:275": {
+      "key": "memory:memory/2026-06-22.md:260:275",
+      "path": "memory/2026-06-22.md",
+      "startLine": 260,
+      "endLine": 275,
+      "source": "memory",
+      "snippet": "## Pending follow-up after latest Section 2 review - Ahmad reviewed Section 2 review link `1KHLTYdVkp26Vme4IVtVzxt4_MdTn-GiM` and requested more fine tweaks. - User wants frame-by-frame matching, accurate analysis/calculation, then changes. Still only Section 2; do not generate the full final video until explicitly approved. - Current known Section 2 tilde settings before next tweak: `stat_prefix_lock_final_position: true`, `stat_prefix_x_factor: 0.90`, `stat_prefix_y_offset: -124`, calculated tilde x≈194, y≈576, font size≈190, `stat_prefix_min_progress: 0.0`. ## AI video Section 2 tilde animated with locked horizontal position - Ahmad reviewed `1KHLTYdVkp26Vme4IVtVzxt4_MdTn-GiM` and said t",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4981686323881149,
+      "maxScore": 0.4981686323881149,
+      "firstRecalledAt": "2026-07-06T06:56:57.580Z",
+      "lastRecalledAt": "2026-07-06T06:56:57.580Z",
+      "queryHashes": [
+        "5980c75a831c"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "follow-up",
+        "frame-by-frame",
+        "analysis/calculation",
+        "stat-prefix-lock-final-position",
+        "stat-prefix-x-factor",
+        "0.90",
+        "stat-prefix-y-offset",
+        "stat-prefix-min-progress"
+      ]
+    },
+    "memory:memory/2026-07-05.md:1:13": {
+      "key": "memory:memory/2026-07-05.md:1:13",
+      "path": "memory/2026-07-05.md",
+      "startLine": 1,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "## TraitDNA V0016 correction using V0011 old template - Ahmad flagged V0016 as using the wrong template and asked to find the exact workflow used for V0011 Drive file `1S6CjO2yoLOqMu-qsvAyn0NuET9wm9r6k`. - Found that V0011 was `V0011_old_code_screen_side_profile_fixed.mp4`, built from local output `projects/V0001 Template System - 2026-05-12/master/output/Fixed_V0011_old_20260702_code_screen_side_profile_20260703_163848/V0011.mp4`. - Exact V0011 visual sources/template: old 20260702 code-screen side-profile clips `master/assets/wan_contextual_clips/V0011_20260702_051822_section1_wan.mp4` and `master/assets/wan_contextual_clips/V0011_20260702_051822_section3_wan.mp4`, with current V0011 Sect",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4345783323049544,
+      "maxScore": 0.49569235742092127,
+      "firstRecalledAt": "2026-07-06T06:56:57.580Z",
+      "lastRecalledAt": "2026-07-06T19:53:40.401Z",
+      "queryHashes": [
+        "5980c75a831c",
+        "d077827edfbc",
+        "5e2308356e95"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "projects/v0001",
+        "sources/template",
+        "code-screen",
+        "side-profile",
+        "traitdna",
+        "v0016",
+        "correction",
+        "v0011"
+      ]
+    },
+    "memory:memory/2026-05-10.md:1:30": {
+      "key": "memory:memory/2026-05-10.md:1:30",
+      "path": "memory/2026-05-10.md",
+      "startLine": 1,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "## Aneeverse logo assets Ahmad shared company logo files and asked to use them in every system wherever possible. Stored copies under `brand/assets/logos/`: - Primary horizontal logo: `brand/assets/logos/aneeverse-av-logo.png` - Variants: `aneeverse-artboard-7.png`, `aneeverse-artboard-8.png`, `aneeverse-artboard-9.png`, `aneeverse-logo-copy-artboard-9.png` - Brand note: `brand/BRAND.md` ## ScrapeGraphAI installation Installed ScrapeGraphAI system-wide for shared server use in isolated venv: - `/opt/scrapegraphai/.venv` - shared Playwright browsers: `/opt/scrapegraphai/ms-playwright` - wrappers: `/usr/local/bin/scrapegraphai-python`, `/usr/local/bin/scrapegraphai-pip`, `/usr/local/bin/sc",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4482308655977249,
+      "maxScore": 0.4482308655977249,
+      "firstRecalledAt": "2026-07-06T08:10:39.302Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "brand/assets/logos",
+        "aneeverse-artboard-7.png",
+        "aneeverse-artboard-8.png",
+        "aneeverse-artboard-9.png",
+        "brand/brand.md",
+        "system-wide",
+        "opt/scrapegraphai",
+        "opt/scrapegraphai/ms-playwright"
+      ]
+    },
+    "memory:memory/2026-05-09.md:15:26": {
+      "key": "memory:memory/2026-05-09.md:15:26",
+      "path": "memory/2026-05-09.md",
+      "startLine": 15,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "- Added new Telegram bot account `cb` / CB (`@Anee_CB_Bot`) to OpenClaw config, allowlisted to Ahmad (844645603). Gateway restarted and config validated. First outbound test from CB failed with chat not found because Ahmad has not started the bot DM yet. ## ERPNext on sales1.aneeverse.com - Replaced public `sales1.aneeverse.com` route with a self-hosted ERPNext install. - Installed separately from OpenClaw under `/opt/erpnext-sales1` using Docker Compose project `erpnext-sales1`. - ERPNext version: `frappe/erpnext:v16.17.0`. - Public Nginx route now proxies `sales1.aneeverse.com` to `127.0.0.1:8081` and uses existing Let's Encrypt SSL. - Backup of previous sales app/config: `/opt/backups/sa",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4467279106378555,
+      "maxScore": 0.4467279106378555,
+      "firstRecalledAt": "2026-07-06T08:10:39.302Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "backup",
+        "backups",
+        "gateway",
+        "anee-cb-bot",
+        "sales1.aneeverse.com",
+        "self-hosted",
+        "opt/erpnext-sales1",
+        "erpnext-sales1"
+      ]
+    },
+    "memory:memory/2026-05-10.md:25:42": {
+      "key": "memory:memory/2026-05-10.md:25:42",
+      "path": "memory/2026-05-10.md",
+      "startLine": 25,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "- DNS was not resolving at setup time; needs A record to VPS IP `148.230.67.132`. - Basic auth user: `ahmad`; password stored in `/etc/scrapegraphai/webui.env` and `/root/.openclaw/workspace/.scrapegraphai-web-credentials-created`. - Needs LLM API key in `/etc/scrapegraphai/webui.env` (`OPENAI_API_KEY` or `GEMINI_API_KEY`) before real AI scraping works. ## ScrapeGraphAI web login updated Updated ScrapeGraphAI web UI basic auth username to `anees@aneeverse.com`. Password was changed per Ahmad's instruction and stored in `/etc/scrapegraphai/webui.env`. Service restarted and login verified HTTP 200. ## ScrapeGraphAI OpenRouter configuration Configured ScrapeGraphAI web UI to use OpenRouter",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.44358587861061094,
+      "maxScore": 0.44358587861061094,
+      "firstRecalledAt": "2026-07-06T08:10:39.302Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "openai",
+        "router",
+        "148.230.67.132",
+        "etc/scrapegraphai/webui.env",
+        "openclaw/workspace",
+        "openai-api-key",
+        "gemini-api-key",
+        "aneeverse.com"
+      ]
+    },
+    "memory:memory/2026-05-09.md:13:20": {
+      "key": "memory:memory/2026-05-09.md:13:20",
+      "path": "memory/2026-05-09.md",
+      "startLine": 13,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "- Live Supabase task audit URONiYX: per Ahmad, brand guidelines are done. Deleted tasks `Uroniyx - 11 march meet`, `Meeting pending`, and `Invoice pending`. Kept `Uroniyx - 11 march ads report`, assigned to Suraj with description that ad/report is not being done now and Suraj must check with URONiYX whether to do it next. Updated `Uroniyx - 11 march Invoice`, assigned to Abhi with description to ask URONiYX to clear the brand guidelines invoice. Kept SecureLifeFincorp Meta ad management request with no tasks. Added `Invoice` task under `Uroniyx Broshers (5)`, assigned to Abhi, description to ask URONiYX to clear brochure invoice. - Live Supabase task audit NISHA ROADWAYS: Ahmad said website",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.43583643138408656,
+      "maxScore": 0.43583643138408656,
+      "firstRecalledAt": "2026-07-06T08:10:39.302Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "ad/report",
+        "live",
+        "supabase",
+        "task",
+        "audit",
+        "uroniyx",
+        "per",
+        "ahmad"
+      ]
+    },
+    "memory:memory/2026-07-03.md:13:24": {
+      "key": "memory:memory/2026-07-03.md:13:24",
+      "path": "memory/2026-07-03.md",
+      "startLine": 13,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "- V0013: https://drive.google.com/file/d/1Jm87f5WEB08JY4EHbYEEPYndCR4csHjV/view?usp=drivesdk - V0014: https://drive.google.com/file/d/18iJ-Z-2IeQgwGxQWyotdkd-KErYk7uDM/view?usp=drivesdk - V0015: https://drive.google.com/file/d/1562q3gJh0oswF98ohD1cE_zNOJ6-aDTa/view?usp=drivesdk - Routing: V0012-V0014 used section2; V0015 correctly used section2_5. ## AI-Video/template-1 created - Ahmad asked to create folder `AI-Video` and keep the TraitDNA BatchFlow reusable template under it as `template-1`. - Created local copy: `AI-Video/template-1/` from `projects/V0001 Template System - 2026-05-12/`. - Excluded heavy generated folders: `master/output/`, `master/work/`, `master/assets/wan_context",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4340813010931015,
+      "maxScore": 0.4340813010931015,
+      "firstRecalledAt": "2026-07-06T08:10:39.302Z",
+      "lastRecalledAt": "2026-07-06T08:10:39.302Z",
+      "queryHashes": [
+        "d2963a881c06"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "v0012-v0014",
+        "section2-5",
+        "ai-video/template-1",
+        "ai-video",
+        "template-1",
+        "projects/v0001",
+        "master/output",
+        "master/work"
+      ]
+    },
+    "memory:memory/2026-07-06.md:1:12": {
+      "key": "memory:memory/2026-07-06.md:1:12",
+      "path": "memory/2026-07-06.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "# 2026-07-06 ## Discord migration - av_scraper - Ahmad asked to move `surajscarpe11` to Discord and rename it to `av_scraper`. - Renamed configured agent id/name from `surajscarpe11` to `av_scraper`. - Moved local state/workspace directories to `/root/.openclaw/agents/av_scraper` and `/root/.openclaw/workspace-av_scraper`. - Added Discord account `av_scraper` using secret-file token ref `/discord/av_scraper/token` from provider `discordtokens`. - Routed Discord server `1517510738619666578`, channel `1517769668629233724` to agent `av_scraper` with no mention requirement. - Validated config and restarted gateway; `openclaw status` shows Gateway running and Discord OK with 3/3 accounts. - Invi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.534325584769249,
+      "maxScore": 0.534325584769249,
+      "firstRecalledAt": "2026-07-06T19:53:40.401Z",
+      "lastRecalledAt": "2026-07-06T19:53:40.401Z",
+      "queryHashes": [
+        "5e2308356e95"
+      ],
+      "recallDays": [
+        "2026-07-06"
+      ],
+      "conceptTags": [
+        "gateway",
+        "av-scraper",
+        "id/name",
+        "state/workspace",
+        "openclaw/agents/av-scraper",
+        "openclaw/workspace-av-scraper",
+        "secret-file",
+        "discord/av-scraper/token"
+      ]
+    },
+    "memory:memory/2026-07-06.md:1:19": {
+      "key": "memory:memory/2026-07-06.md:1:19",
+      "path": "memory/2026-07-06.md",
+      "startLine": 1,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "# 2026-07-06 ## Discord migration - av_scraper - Ahmad asked to move `surajscarpe11` to Discord and rename it to `av_scraper`. - Renamed configured agent id/name from `surajscarpe11` to `av_scraper`. - Moved local state/workspace directories to `/root/.openclaw/agents/av_scraper` and `/root/.openclaw/workspace-av_scraper`. - Added Discord account `av_scraper` using secret-file token ref `/discord/av_scraper/token` from provider `discordtokens`. - Routed Discord server `1517510738619666578`, channel `1517769668629233724` to agent `av_scraper` with no mention requirement. - Validated config and restarted gateway; `openclaw status` shows Gateway running and Discord OK with 3/3 accounts. - Invi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5290289744734764,
+      "maxScore": 0.5290289744734764,
+      "firstRecalledAt": "2026-08-03T06:38:57.488Z",
+      "lastRecalledAt": "2026-08-03T06:38:57.488Z",
+      "queryHashes": [
+        "3ad18c4ee9fa"
+      ],
+      "recallDays": [
+        "2026-08-03"
+      ],
+      "conceptTags": [
+        "gateway",
+        "av-scraper",
+        "id/name",
+        "state/workspace",
+        "openclaw/agents/av-scraper",
+        "openclaw/workspace-av-scraper",
+        "secret-file",
+        "discord/av-scraper/token"
+      ]
+    },
+    "memory:memory/2026-07-06.md:29:33": {
+      "key": "memory:memory/2026-07-06.md:29:33",
+      "path": "memory/2026-07-06.md",
+      "startLine": 29,
+      "endLine": 33,
+      "source": "memory",
+      "snippet": "- Gateway logs show `novino` bot probe resolved as `@novino`, client id `1523717039125041384`, but channel is currently unresolved until Ahmad invites/adds the bot to the server/channel. - Invite link provided: https://discord.com/oauth2/authorize?client_id=1523717039125041384&permissions=8&integration_type=0&scope=bot+applications.commands - Old Telegram route `accountId: novino` remains as fallback for now; remove after Discord is confirmed working. - Security note: token was pasted in Discord; advise rotating after confirming bot works.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.518629589676857,
+      "maxScore": 0.518629589676857,
+      "firstRecalledAt": "2026-08-03T06:38:57.488Z",
+      "lastRecalledAt": "2026-08-03T06:38:57.488Z",
+      "queryHashes": [
+        "3ad18c4ee9fa"
+      ],
+      "recallDays": [
+        "2026-08-03"
+      ],
+      "conceptTags": [
+        "gateway",
+        "invites/adds",
+        "server/channel",
+        "discord.com/oauth2/authorize",
+        "client-id",
+        "integration-type",
+        "applications.commands",
+        "logs"
+      ]
+    },
+    "memory:memory/2026-07-06.md:17:30": {
+      "key": "memory:memory/2026-07-06.md:17:30",
+      "path": "memory/2026-07-06.md",
+      "startLine": 17,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "- Added Discord account `1fc` using secret-file token ref `/discord/1fc/token` from provider `discordtokens`. - Routed Discord server `1517510738619666578`, channel `1517769720286416927` to agent `1fc` with no mention requirement. - Validated config and restarted gateway; `openclaw status` shows Gateway running and Discord OK with 4/4 accounts. - Invite link provided: https://discord.com/oauth2/authorize?client_id=1523658477443223552&permissions=8&integration_type=0&scope=bot+applications.commands - Old Telegram route `accountId: onefc` remains as fallback for now; remove after Discord is confirmed working. - Security note: token was pasted in Discord; advise rotating after confirming bot wo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5114692330360412,
+      "maxScore": 0.5114692330360412,
+      "firstRecalledAt": "2026-08-03T06:38:57.488Z",
+      "lastRecalledAt": "2026-08-03T06:38:57.488Z",
+      "queryHashes": [
+        "3ad18c4ee9fa"
+      ],
+      "recallDays": [
+        "2026-08-03"
+      ],
+      "conceptTags": [
+        "gateway",
+        "secret-file",
+        "discord/1fc/token",
+        "4/4",
+        "discord.com/oauth2/authorize",
+        "client-id",
+        "integration-type",
+        "applications.commands"
+      ]
+    },
+    "memory:memory/2026-05-18.md:6:10": {
+      "key": "memory:memory/2026-05-18.md:6:10",
+      "path": "memory/2026-05-18.md",
+      "startLine": 6,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "- ERP CRM Calling tab note double-popup fix: updated Client Script `Lead Form - Calling Tab Actions` to remove custom `av_bind_native_crm_buttons` handlers and custom `add_note` dialog. Task/Event/Note buttons now intentionally rely on ERPNext native handlers only while Calling panel/status/log remain custom. - ERP CRM Calling log timestamp formatting updated: replaced `frappe.datetime.comment_when()` HTML output with plain text `DD-MM-YYYY HH:mm:ss | X days, Y hours, Z minutes ago/from now`, and changed log type separator from `·` to `:`. - ERP CRM Calling log mobile UI improved: log entries now stack as type + short date, metadata line, body text, and mobile-only relative age. Task title i",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5086967229843139,
+      "maxScore": 0.5086967229843139,
+      "firstRecalledAt": "2026-08-26T14:14:32.887Z",
+      "lastRecalledAt": "2026-08-26T14:14:32.887Z",
+      "queryHashes": [
+        "965b3b6f3f82"
+      ],
+      "recallDays": [
+        "2026-08-26"
+      ],
+      "conceptTags": [
+        "double-popup",
+        "av-bind-native-crm-buttons",
+        "add-note",
+        "task/event/note",
+        "panel/status/log",
+        "frappe.datetime.comment-when",
+        "dd-mm-yyyy",
+        "ago/from"
+      ]
+    },
+    "memory:memory/2026-05-18.md:1:7": {
+      "key": "memory:memory/2026-05-18.md:1:7",
+      "path": "memory/2026-05-18.md",
+      "startLine": 1,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "# 2026-05-18 - Ahmad clarified that the CRM currently being discussed is the ERP CRM at `sales1.aneeverse.com`, not the task/request platform at `app.aneeverse.com`. - Issue reported: new ERP section called \"Calling\" behaves strangely when opening a lead. Screenshot shows a blocking message: \"Insufficient Permission for Event Participants\" over the Lead detail page. Likely permission/config issue around Event/Event Participants used by call logging or activity creation. - Fixed ERP CRM Calling issue by updating Frappe Client Script `Lead Form - Calling Tab Actions`: removed direct `frappe.client.get_list` query on child doctype `Event Participants` and replaced it with `Event` query filtere",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5067328929901123,
+      "maxScore": 0.5067328929901123,
+      "firstRecalledAt": "2026-08-26T14:14:32.887Z",
+      "lastRecalledAt": "2026-08-26T14:14:32.887Z",
+      "queryHashes": [
+        "965b3b6f3f82"
+      ],
+      "recallDays": [
+        "2026-08-26"
+      ],
+      "conceptTags": [
+        "sales1.aneeverse.com",
+        "task/request",
+        "app.aneeverse.com",
+        "permission/config",
+        "event/event",
+        "frappe.client.get-list",
+        "ahmad",
+        "clarified"
+      ]
+    },
+    "memory:memory/2026-05-10.md:63:70": {
+      "key": "memory:memory/2026-05-10.md:63:70",
+      "path": "memory/2026-05-10.md",
+      "startLine": 63,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "Created improved location-name cleaned sheet for call-ready NGO CRM leads. Removed pincode/digit locations from location column and replaced many with inferred city/district names from address. Sheet ID `1zWbrNRI_eyFdURafrKKoEaBDjAWhZxcwejpdlnbXT4g`: https://docs.google.com/spreadsheets/d/1zWbrNRI_eyFdURafrKKoEaBDjAWhZxcwejpdlnbXT4g/edit?usp=drivesdk. Remaining blank locations: 237; digit/pincode locations: 0. ## ERP CRM NGO import completed Prepared Hindi-priority CRM import CSV and loaded 1NGO call-ready NGO leads into ERPNext Lead on sales1.aneeverse.com. Total input rows: 1,445; unique CRM leads inserted: 1,444 because one CSV row was a duplicate organization+phone (`Shree Chandan Kale",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5058969467878341,
+      "maxScore": 0.5058969467878341,
+      "firstRecalledAt": "2026-08-26T14:14:32.887Z",
+      "lastRecalledAt": "2026-08-26T14:14:32.887Z",
+      "queryHashes": [
+        "965b3b6f3f82"
+      ],
+      "recallDays": [
+        "2026-08-26"
+      ],
+      "conceptTags": [
+        "location-name",
+        "call-ready",
+        "pincode/digit",
+        "city/district",
+        "digit/pincode",
+        "hindi-priority",
+        "sales1.aneeverse.com",
+        "created"
+      ]
+    }
+  }
+}

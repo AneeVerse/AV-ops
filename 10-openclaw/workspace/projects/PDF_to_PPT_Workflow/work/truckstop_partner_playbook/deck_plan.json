@@ -1,0 +1,188 @@
+{
+  "deck_title": "Truckstop Partner Community",
+  "deck_subtitle": "Driving Mutual Success in Freight Logistics",
+  "audience": "general business audience",
+  "tone": "clear, professional, concise",
+  "slide_count": 10,
+  "slides": [
+    {
+      "slide_number": 1,
+      "layout": "title",
+      "title": "Welcome to the Truckstop Partner Community",
+      "subtitle": "Driving Mutual Success in Freight Logistics",
+      "bullets": [
+        "Embark on a collaborative journey for mutual success",
+        "Foster innovation and growth in the transportation industry",
+        "Maximize your partnership potential with Truckstop"
+      ],
+      "body": "We believe in the power of partnerships and the strength of community. Together, we can achieve more.",
+      "visual_direction": "Hero image of diverse business professionals collaborating, with the Truckstop logo prominently displayed.",
+      "speaker_notes": "Welcome our partners and set the stage for the value of joining the Truckstop Partner Community.",
+      "source_pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "slide_number": 2,
+      "layout": "content",
+      "title": "Truckstop: Nearly 30 Years of Innovation",
+      "subtitle": "Empowering the Freight Community Since 1995",
+      "bullets": [
+        "Founded in 1995 as the Internet's first load board",
+        "Delivering innovative solutions across the freight lifecycle",
+        "Supporting carriers, brokers, and shippers with essential technology"
+      ],
+      "body": "Our mission is to empower the freight community with trusted and innovative solutions, creating a 'Better Way' for everyone to grow and prosper.",
+      "visual_direction": "Timeline graphic highlighting key milestones from 1995 to present, with a focus on innovation in freight technology.",
+      "speaker_notes": "Provide a brief history of Truckstop, emphasizing our legacy and ongoing commitment to the industry.",
+      "source_pages": [
+        4
+      ]
+    },
+    {
+      "slide_number": 3,
+      "layout": "content",
+      "title": "The Truckstop Partner Community: An Ecosystem of Value",
+      "subtitle": "Extend Your Reach to a Vast Audience",
+      "bullets": [
+        "An extension of our internal teams, fostering collaboration",
+        "Drives value and delivers exceptional results for all stakeholders",
+        "Connects your business to carriers, brokers, and shippers"
+      ],
+      "body": "Join our vibrant ecosystem where ideas flourish, and innovation fuels the transportation industry. Your offerings will be listed in the industry's most comprehensive freight marketplace.",
+      "visual_direction": "Infographic showing interconnected circles representing partners, Truckstop, carriers, brokers, and shippers, highlighting a seamless ecosystem.",
+      "speaker_notes": "Explain the core purpose and benefits of the Partner Community, emphasizing market reach.",
+      "source_pages": [
+        4,
+        5
+      ]
+    },
+    {
+      "slide_number": 4,
+      "layout": "two_column",
+      "title": "Partnership Models: Referral & Integrations",
+      "subtitle": "Choose the Path That Best Fits Your Business",
+      "bullets": [
+        "**Referral Partners:** Introduce Truckstop, earn fees",
+        "**Integrations Partners:** Deep technical integration, marketplace listing",
+        "Gain access to our PartnerStack portal for resources and tracking"
+      ],
+      "body": "Not sure which model is right for you? You can be both! Our team can help you explore the best fit for your business goals.",
+      "visual_direction": "Two-column layout. Left: 'Referral Partnership' with icons for introduction and reward. Right: 'Integrations Partnership' with icons for API and marketplace listing. A 'Best of Both Worlds' callout.",
+      "speaker_notes": "Detail the two main types of partnerships, their requirements, and key benefits, including the PartnerStack platform.",
+      "source_pages": [
+        5,
+        6
+      ]
+    },
+    {
+      "slide_number": 5,
+      "layout": "content",
+      "title": "Your Path to Success with Truckstop",
+      "subtitle": "A Structured Approach to Growth and Engagement",
+      "bullets": [
+        "**Raise Awareness:** Utilize resources to reach new audiences",
+        "**Activate Your Community:** Engage with our robust network",
+        "**Drive Growth:** Access Truckstop's products and integrations"
+      ],
+      "body": "We provide best-in-class resources to help you deliver solutions for carriers, brokers, and shippers, ensuring mutual growth.",
+      "visual_direction": "Flowchart or journey map graphic illustrating the three stages: Raise Awareness, Activate Community, Drive Growth, with arrows connecting them.",
+      "speaker_notes": "Outline the strategic framework for partners to achieve success within the Truckstop ecosystem.",
+      "source_pages": [
+        7
+      ]
+    },
+    {
+      "slide_number": 6,
+      "layout": "content",
+      "title": "Connect & Engage with Our Community",
+      "subtitle": "Stay Informed and Network with Industry Leaders",
+      "bullets": [
+        "**Partner Team:** Direct support and contact for all inquiries",
+        "**Social Media:** Follow us on LinkedIn, Twitter, Facebook, and more",
+        "**Industry Events:** Meet us in person at key conferences like MATS and FreightWaves"
+      ],
+      "body": "Join our network of internal partners and stay up-to-date with the latest Truckstop news, insights, and opportunities.",
+      "visual_direction": "Layout with icons for social media channels, a headshot of a key partner team member, and images from industry events.",
+      "speaker_notes": "Encourage partners to actively engage with Truckstop through various channels for support and networking.",
+      "source_pages": [
+        8,
+        9
+      ]
+    },
+    {
+      "slide_number": 7,
+      "layout": "content",
+      "title": "Learn & Develop Your Partnership",
+      "subtitle": "Enhance Expertise and Gain Recognition",
+      "bullets": [
+        "**Training & Development:** Access videos for all user types",
+        "**Certification:** Technical integration process with dedicated support",
+        "**Partner Spotlight Series:** Feature strategic partners monthly"
+      ],
+      "body": "We provide the tools and recognition to help you maximize your partnership value and showcase your commitment.",
+      "visual_direction": "Icons representing training videos, a certification badge, and a 'spotlight' graphic with an example partner logo.",
+      "speaker_notes": "Highlight the learning and development opportunities, including the certification process and the Partner Spotlight program.",
+      "source_pages": [
+        10,
+        11
+      ]
+    },
+    {
+      "slide_number": 8,
+      "layout": "content",
+      "title": "Grow Your Business with Partner Resources",
+      "subtitle": "Leverage Our Tools for Maximum Impact",
+      "bullets": [
+        "**Partner Marketplace:** List your offerings to expand reach",
+        "**Webinars & Podcasts:** Access industry insights on demand",
+        "**Co-Marketing Toolkit:** Ready-to-use assets for your campaigns"
+      ],
+      "body": "Explore our extensive library of resources designed to help you expand your reach, educate your audience, and grow your business.",
+      "visual_direction": "Layout with distinct sections for 'Partner Marketplace' (with a screenshot of the directory), 'Webinars/Podcasts' (with play buttons), and 'Co-Marketing Toolkit' (with document icons).",
+      "speaker_notes": "Showcase the various resources available to partners for marketing, education, and business development.",
+      "source_pages": [
+        12,
+        13
+      ]
+    },
+    {
+      "slide_number": 9,
+      "layout": "content",
+      "title": "Co-Marketing Best Practices & Guidelines",
+      "subtitle": "Ensure Consistency and Compliance in Your Campaigns",
+      "bullets": [
+        "**Brand Guidelines:** Access official logos, colors, and fonts",
+        "**Content Approvals:** Submit proposed content for review",
+        "**Product & Pricing:** Understand Truckstop solutions and licensing"
+      ],
+      "body": "Collaborate effectively to present a unified and professional brand message. Avoid placing Truckstop alongside direct competitors in communications.",
+      "visual_direction": "Visuals representing brand guidelines (e.g., a style guide cover), an approval workflow, and a list of Truckstop products.",
+      "speaker_notes": "Emphasize the importance of adhering to co-marketing guidelines for brand consistency and legal compliance.",
+      "source_pages": [
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "slide_number": 10,
+      "layout": "cta",
+      "title": "Join Us Today: Your Next Steps",
+      "subtitle": "Start Your Journey with the Truckstop Partner Community",
+      "bullets": [
+        "**Submit a Referral:** Log in to PartnerStack and share your unique link",
+        "**Partner Support:** Contact our dedicated Partnerships & Alliances Team",
+        "**Customer Resources:** Access our Community for training and help articles"
+      ],
+      "body": "We are committed to supporting your growth and success every step of the way. Let's create exceptional value together.",
+      "visual_direction": "Clear call-to-action button 'Get Started Now' or 'Submit a Referral'. Contact information for the partner team and a link to the PartnerStack portal.",
+      "speaker_notes": "Provide clear instructions on how to get started, submit referrals, and access ongoing support.",
+      "source_pages": [
+        24,
+        25
+      ]
+    }
+  ]
+}

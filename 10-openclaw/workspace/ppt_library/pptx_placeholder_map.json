@@ -1,0 +1,3185 @@
+{
+  "project": "PDF to PPT Automation",
+  "version": "placeholder_map_v2_brand_protected",
+  "description": "Shape-level mapping for replacing only approved text and intended image placeholders in PPTX templates.",
+  "template_count": 18,
+  "rules": {
+    "preserve_design": true,
+    "pptx_only": true,
+    "do_not_use_google_slides_for_build": true,
+    "replace_text_only_in_existing_shapes": true,
+    "replace_only_intended_image_placeholders": true,
+    "do_not_touch_brand_assets": true,
+    "image_provider_primary": "replicate",
+    "image_provider_fallback": "chatgpt_image_model",
+    "brand_side_images_protected": true,
+    "current_replaceable_image_slides": "Only Slide 01 hero image is replaceable in this map. Other image generation requires explicit future placeholder creation."
+  },
+  "templates": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "slide_no": 1,
+      "template_name": "Slide 01 - Hero Cover",
+      "category": "Cover",
+      "sub_category": "Hero Cover",
+      "final_template_file_name": "Slide 01 - Hero Cover.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 01 - Keep Freight Moving.  With Less Friction..pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 2,
+          "shape_name": "Title 5",
+          "current_text": "Keep Freight Moving. \u000bWith Less Friction.",
+          "location": {
+            "left_in": 0.536,
+            "top_in": 0.878,
+            "width_in": 8.851,
+            "height_in": 1.736
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "supporting_text",
+          "shape_index": 3,
+          "shape_name": "Text Placeholder 6",
+          "current_text": "EASY TO WORK WITH:\nFrom sourcing to compliance to payment, all in one place\nRun it all on a secure, connected platform",
+          "location": {
+            "left_in": 0.536,
+            "top_in": 2.75,
+            "width_in": 6.964,
+            "height_in": 1.526
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 4,
+          "shape_name": "Text 1",
+          "current_text": "INTRODUCTION",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [
+        {
+          "role": "hero_image",
+          "shape_index": 0,
+          "shape_name": "Picture 3",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 0.0,
+            "width_in": 13.333,
+            "height_in": 7.5
+          },
+          "replace": true,
+          "fit": "cover",
+          "provider": "replicate_primary_chatgpt_fallback",
+          "protected_from_logo_replacement": true,
+          "notes": "Replace only this intended image area; do not touch logos/brand assets."
+        }
+      ],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 2,
+          "name": "Title 5",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.536,
+            "top_in": 0.878,
+            "width_in": 8.851,
+            "height_in": 1.736
+          },
+          "current_text": "Keep Freight Moving. \u000bWith Less Friction."
+        },
+        {
+          "shape_index": 3,
+          "name": "Text Placeholder 6",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.536,
+            "top_in": 2.75,
+            "width_in": 6.964,
+            "height_in": 1.526
+          },
+          "current_text": "EASY TO WORK WITH:\nFrom sourcing to compliance to payment, all in one place\nRun it all on a secure, connected platform"
+        },
+        {
+          "shape_index": 4,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "INTRODUCTION"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Picture 3",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 0.0,
+            "width_in": 13.333,
+            "height_in": 7.5
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 5",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.72,
+            "top_in": 6.179,
+            "width_in": 3.271,
+            "height_in": 0.776
+          }
+        }
+      ],
+      "protected_image_note": "Only shape 0 hero image is replaceable. Logo/brand assets are protected."
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "slide_no": 2,
+      "template_name": "Slide 02 - Strategic Roadmap",
+      "category": "Process / Timeline",
+      "sub_category": "Strategic Roadmap",
+      "final_template_file_name": "Slide 02 - Strategic Roadmap.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 02 - Where Truckstop Is Going.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 5,
+          "shape_name": "Title 10",
+          "current_text": "Where Truckstop Is Going",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 6,
+          "shape_name": "TextBox 13",
+          "current_text": "From finding capacity → to controlling your network\nTruckstop is becoming the system brokers use to source, manage, and pay carriers in one place.",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.563,
+            "width_in": 10.328,
+            "height_in": 0.572
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_1",
+          "shape_index": 7,
+          "shape_name": "Rectangle 14",
+          "current_text": "Capacity You Control\n\u000bMove from searching to directing freight\u000b\nPrivate Loads as your owned network\nWaterfall routing to tier and release capacity\nReach carriers you trust first, then expand\nBetter coverage with fewer calls",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.727
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_2",
+          "shape_index": 9,
+          "shape_name": "Rectangle 16",
+          "current_text": "MCP-Connected Workflows\n\u000bWork inside your TMS, email, and tools\u000b\nPush loads directly from your TMS\nDeep links from email into live capacity\nNo rekeying. No swivel chair\nFaster execution across your team",
+          "location": {
+            "left_in": 4.199,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_3",
+          "shape_index": 11,
+          "shape_name": "Rectangle 18",
+          "current_text": "AI That Improves Decisions\n\u000bLess guesswork. Better outcomes\u000b\nSmart carrier matching based on history and behavior\nRate guidance tied to real market data\nAI support inside daily workflows\nFaster decisions under pressure",
+          "location": {
+            "left_in": 7.814,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_4",
+          "shape_index": 13,
+          "shape_name": "Rectangle 20",
+          "current_text": "Built-In Compliance and Risk\n\u000bProtect every load without slowing down\u000b\nRMIS and Risk Factors in every decision\nContinuous monitoring, not one-time onboarding\nFraud signals before you assign the load\nFewer surprises after pickup",
+          "location": {
+            "left_in": 2.391,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_5",
+          "shape_index": 15,
+          "shape_name": "Rectangle 22",
+          "current_text": "Payments and Back Office in Flow\n\u000bFrom booking → to getting paid and paying carriers\u000b\nFactoring and payment tools built in\nFaster carrier payments to secure capacity\nClear visibility into pay terms and risk\nLess time chasing paperwork",
+          "location": {
+            "left_in": 6.007,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "timeline_block_6",
+          "shape_index": 17,
+          "shape_name": "Rectangle 24",
+          "current_text": "Coverage Across All Freight Types\n\u000bHandle more loads without adding complexity\u000b\nStandard, specialized, and heavy haul in one system\nBetter tools for complex moves\nExpand into higher-value freight with confidence",
+          "location": {
+            "left_in": 9.622,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "closing_line",
+          "shape_index": 19,
+          "shape_name": "Rectangle 26",
+          "current_text": "Source faster.  Cover smarter.  Build a network that works for you.",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 6.779,
+            "width_in": 12.358,
+            "height_in": 0.358
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 20,
+          "shape_name": "Text 1",
+          "current_text": "DIRECTION & MOMENTUM",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 11,
+      "detected_picture_count": 9,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 4,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "2"
+        },
+        {
+          "shape_index": 5,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Where Truckstop Is Going"
+        },
+        {
+          "shape_index": 6,
+          "name": "TextBox 13",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.563,
+            "width_in": 10.328,
+            "height_in": 0.572
+          },
+          "current_text": "From finding capacity → to controlling your network\nTruckstop is becoming the system brokers use to source, manage, and pay carriers in one place."
+        },
+        {
+          "shape_index": 7,
+          "name": "Rectangle 14",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.727
+          },
+          "current_text": "Capacity You Control\n\u000bMove from searching to directing freight\u000b\nPrivate Loads as your owned network\nWaterfall routing to tier and release capacity\nReach carriers you trust first, then expand\nBetter coverage with fewer calls"
+        },
+        {
+          "shape_index": 9,
+          "name": "Rectangle 16",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 4.199,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "current_text": "MCP-Connected Workflows\n\u000bWork inside your TMS, email, and tools\u000b\nPush loads directly from your TMS\nDeep links from email into live capacity\nNo rekeying. No swivel chair\nFaster execution across your team"
+        },
+        {
+          "shape_index": 11,
+          "name": "Rectangle 18",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 7.814,
+            "top_in": 2.291,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "current_text": "AI That Improves Decisions\n\u000bLess guesswork. Better outcomes\u000b\nSmart carrier matching based on history and behavior\nRate guidance tied to real market data\nAI support inside daily workflows\nFaster decisions under pressure"
+        },
+        {
+          "shape_index": 13,
+          "name": "Rectangle 20",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 2.391,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "current_text": "Built-In Compliance and Risk\n\u000bProtect every load without slowing down\u000b\nRMIS and Risk Factors in every decision\nContinuous monitoring, not one-time onboarding\nFraud signals before you assign the load\nFewer surprises after pickup"
+        },
+        {
+          "shape_index": 15,
+          "name": "Rectangle 22",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 6.007,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "current_text": "Payments and Back Office in Flow\n\u000bFrom booking → to getting paid and paying carriers\u000b\nFactoring and payment tools built in\nFaster carrier payments to secure capacity\nClear visibility into pay terms and risk\nLess time chasing paperwork"
+        },
+        {
+          "shape_index": 17,
+          "name": "Rectangle 24",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 9.622,
+            "top_in": 4.805,
+            "width_in": 3.319,
+            "height_in": 1.735
+          },
+          "current_text": "Coverage Across All Freight Types\n\u000bHandle more loads without adding complexity\u000b\nStandard, specialized, and heavy haul in one system\nBetter tools for complex moves\nExpand into higher-value freight with confidence"
+        },
+        {
+          "shape_index": 19,
+          "name": "Rectangle 26",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 6.779,
+            "width_in": 12.358,
+            "height_in": 0.358
+          },
+          "current_text": "Source faster.  Cover smarter.  Build a network that works for you."
+        },
+        {
+          "shape_index": 20,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "DIRECTION & MOMENTUM"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Picture 9",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 3,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        },
+        {
+          "shape_index": 28,
+          "name": "Graphic 24",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 2.03,
+            "top_in": 3.865,
+            "width_in": 0.426,
+            "height_in": 0.426
+          }
+        },
+        {
+          "shape_index": 29,
+          "name": "Graphic 25",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 3.851,
+            "top_in": 4.63,
+            "width_in": 0.4,
+            "height_in": 0.4
+          }
+        },
+        {
+          "shape_index": 30,
+          "name": "Graphic 22",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 5.602,
+            "top_in": 3.816,
+            "width_in": 0.5,
+            "height_in": 0.493
+          }
+        },
+        {
+          "shape_index": 31,
+          "name": "Graphic 21",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 7.466,
+            "top_in": 4.611,
+            "width_in": 0.4,
+            "height_in": 0.4
+          }
+        },
+        {
+          "shape_index": 32,
+          "name": "Graphic 24",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 9.208,
+            "top_in": 3.822,
+            "width_in": 0.5,
+            "height_in": 0.5
+          }
+        },
+        {
+          "shape_index": 33,
+          "name": "Graphic 25",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.1,
+            "top_in": 4.612,
+            "width_in": 0.4,
+            "height_in": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_03_metric_overview",
+      "slide_no": 3,
+      "template_name": "Slide 03 - Metric Overview",
+      "category": "Data / Stats",
+      "sub_category": "Metric Overview",
+      "final_template_file_name": "Slide 03 - Metric Overview.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 03 - Truckstop by the Numbers.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Title 10",
+          "current_text": "Truckstop by the Numbers",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 5,
+          "shape_name": "TextBox 6",
+          "current_text": "The largest verified load board in freight - active, real, and growing.",
+          "location": {
+            "left_in": 0.623,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 6,
+          "shape_name": "Text 1",
+          "current_text": "COMPANY OVERVIEW",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_1_value",
+          "shape_index": 7,
+          "shape_name": "TextBox 8",
+          "current_text": "720K+",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 2.757,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_1_label",
+          "shape_index": 8,
+          "shape_name": "TextBox 9",
+          "current_text": "Loads on the network",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 3.556,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_2_value",
+          "shape_index": 9,
+          "shape_name": "TextBox 10",
+          "current_text": "555K+",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 4.815,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_2_label",
+          "shape_index": 10,
+          "shape_name": "TextBox 11",
+          "current_text": "Powered by 45K+ carriers",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 5.615,
+            "width_in": 3.178,
+            "height_in": 0.37
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_3_value",
+          "shape_index": 11,
+          "shape_name": "TextBox 12",
+          "current_text": "700K+",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 2.757,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_3_label",
+          "shape_index": 12,
+          "shape_name": "TextBox 13",
+          "current_text": "Truck postings per day",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 3.556,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_4_value",
+          "shape_index": 13,
+          "shape_name": "TextBox 14",
+          "current_text": "59M+",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 4.815,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_4_label",
+          "shape_index": 14,
+          "shape_name": "TextBox 15",
+          "current_text": "Monthly load searches",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 5.615,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_5_value",
+          "shape_index": 20,
+          "shape_name": "TextBox 21",
+          "current_text": "71%",
+          "location": {
+            "left_in": 8.77,
+            "top_in": 3.842,
+            "width_in": 1.58,
+            "height_in": 0.707
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_5_label",
+          "shape_index": 21,
+          "shape_name": "TextBox 22",
+          "current_text": "via digital channels",
+          "location": {
+            "left_in": 8.895,
+            "top_in": 4.396,
+            "width_in": 1.33,
+            "height_in": 0.572
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 14,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "3"
+        },
+        {
+          "shape_index": 4,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Truckstop by the Numbers"
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 6",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.623,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "current_text": "The largest verified load board in freight - active, real, and growing."
+        },
+        {
+          "shape_index": 6,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "COMPANY OVERVIEW"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 2.757,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "current_text": "720K+"
+        },
+        {
+          "shape_index": 8,
+          "name": "TextBox 9",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 3.556,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "current_text": "Loads on the network"
+        },
+        {
+          "shape_index": 9,
+          "name": "TextBox 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 4.815,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "current_text": "555K+"
+        },
+        {
+          "shape_index": 10,
+          "name": "TextBox 11",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.705,
+            "top_in": 5.615,
+            "width_in": 3.178,
+            "height_in": 0.37
+          },
+          "current_text": "Powered by 45K+ carriers"
+        },
+        {
+          "shape_index": 11,
+          "name": "TextBox 12",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 2.757,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "current_text": "700K+"
+        },
+        {
+          "shape_index": 12,
+          "name": "TextBox 13",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 3.556,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "current_text": "Truck postings per day"
+        },
+        {
+          "shape_index": 13,
+          "name": "TextBox 14",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 4.815,
+            "width_in": 2.337,
+            "height_in": 0.841
+          },
+          "current_text": "59M+"
+        },
+        {
+          "shape_index": 14,
+          "name": "TextBox 15",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 4.738,
+            "top_in": 5.615,
+            "width_in": 2.938,
+            "height_in": 0.37
+          },
+          "current_text": "Monthly load searches"
+        },
+        {
+          "shape_index": 20,
+          "name": "TextBox 21",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 8.77,
+            "top_in": 3.842,
+            "width_in": 1.58,
+            "height_in": 0.707
+          },
+          "current_text": "71%"
+        },
+        {
+          "shape_index": 21,
+          "name": "TextBox 22",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 8.895,
+            "top_in": 4.396,
+            "width_in": 1.33,
+            "height_in": 0.572
+          },
+          "current_text": "via digital channels"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 2",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_04_research_chart_insight",
+      "slide_no": 4,
+      "template_name": "Slide 04 - Research Chart Insight",
+      "category": "Data / Stats",
+      "sub_category": "Research Chart Insight",
+      "final_template_file_name": "Slide 04 - Research Chart Insight.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 04 - Carriers  How They Book Loads.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 6,
+          "shape_name": "Title 10",
+          "current_text": "Carriers: How They Book Loads",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 7,
+          "shape_name": "TextBox 7",
+          "current_text": "2025 Truckstop Carrier Research  ·  n = 1,200+ active carriers",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 8,
+          "shape_name": "Text 1",
+          "current_text": "MARKET INTELLIGENCE",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "source",
+          "shape_index": 9,
+          "shape_name": "TextBox 10",
+          "current_text": "Source: Truckstop 2025 Carrier Research Report",
+          "location": {
+            "left_in": 8.904,
+            "top_in": 6.042,
+            "width_in": 3.538,
+            "height_in": 0.219
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "chart_title",
+          "shape_index": 10,
+          "shape_name": "Text 18",
+          "current_text": "Booking Method by Carrier Tenure",
+          "location": {
+            "left_in": 0.63,
+            "top_in": 2.292,
+            "width_in": 4.8,
+            "height_in": 0.4
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "key_insight",
+          "shape_index": 12,
+          "shape_name": "Rectangle 13",
+          "current_text": "Key Insight\n\u000bNewer carriers use load boards 70% more than experienced carriers - \u000byour Load Board posting strategy directly shapes carrier adoption.",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 4.889,
+            "width_in": 5.667,
+            "height_in": 1.371
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_value",
+          "shape_index": 13,
+          "shape_name": "TextBox 18",
+          "current_text": "71%",
+          "location": {
+            "left_in": 7.839,
+            "top_in": 3.752,
+            "width_in": 1.58,
+            "height_in": 0.707
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_label",
+          "shape_index": 14,
+          "shape_name": "TextBox 19",
+          "current_text": "via digital channels",
+          "location": {
+            "left_in": 7.964,
+            "top_in": 4.306,
+            "width_in": 1.33,
+            "height_in": 0.572
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 9,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 5,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "4"
+        },
+        {
+          "shape_index": 6,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Carriers: How They Book Loads"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 7",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "current_text": "2025 Truckstop Carrier Research  ·  n = 1,200+ active carriers"
+        },
+        {
+          "shape_index": 8,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "MARKET INTELLIGENCE"
+        },
+        {
+          "shape_index": 9,
+          "name": "TextBox 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 8.904,
+            "top_in": 6.042,
+            "width_in": 3.538,
+            "height_in": 0.219
+          },
+          "current_text": "Source: Truckstop 2025 Carrier Research Report"
+        },
+        {
+          "shape_index": 10,
+          "name": "Text 18",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.63,
+            "top_in": 2.292,
+            "width_in": 4.8,
+            "height_in": 0.4
+          },
+          "current_text": "Booking Method by Carrier Tenure"
+        },
+        {
+          "shape_index": 12,
+          "name": "Rectangle 13",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 4.889,
+            "width_in": 5.667,
+            "height_in": 1.371
+          },
+          "current_text": "Key Insight\n\u000bNewer carriers use load boards 70% more than experienced carriers - \u000byour Load Board posting strategy directly shapes carrier adoption."
+        },
+        {
+          "shape_index": 13,
+          "name": "TextBox 18",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.839,
+            "top_in": 3.752,
+            "width_in": 1.58,
+            "height_in": 0.707
+          },
+          "current_text": "71%"
+        },
+        {
+          "shape_index": 14,
+          "name": "TextBox 19",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.964,
+            "top_in": 4.306,
+            "width_in": 1.33,
+            "height_in": 0.572
+          },
+          "current_text": "via digital channels"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Picture 3",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_05_research_stat_cards",
+      "slide_no": 5,
+      "template_name": "Slide 05 - Research + Stat Cards",
+      "category": "Data / Stats",
+      "sub_category": "Research + Stat Cards",
+      "final_template_file_name": "Slide 05 - Research + Stat Cards.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 05 - Carriers Work with More Brokers Than You Thin.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Title 10",
+          "current_text": "Carriers Work with More Brokers Than You Think.",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 5,
+          "shape_name": "TextBox 6",
+          "current_text": "2025 data shows carriers are onboarded to far more brokers than they actively haul for. Being onboarded is not the same as being chosen.\nCarriers are registered with far more brokers than they actively work with\nOnly 43% of onboarded brokers receive a load in any given month\nCarriers are expanding their broker network to diversify load access",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.222,
+            "width_in": 5.757,
+            "height_in": 3.467
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 6,
+          "shape_name": "Text 1",
+          "current_text": "MARKET INTELLIGENCE",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_1_value",
+          "shape_index": 7,
+          "shape_name": "TextBox 8",
+          "current_text": "35",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 2.182,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_1_label",
+          "shape_index": 8,
+          "shape_name": "TextBox 9",
+          "current_text": "Median brokers onboarded",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 2.75,
+            "width_in": 3.477,
+            "height_in": 0.303
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_2_value",
+          "shape_index": 9,
+          "shape_name": "TextBox 10",
+          "current_text": "15",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 3.535,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_2_label",
+          "shape_index": 10,
+          "shape_name": "TextBox 11",
+          "current_text": "Median brokers hauled monthly",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 4.102,
+            "width_in": 3.978,
+            "height_in": 0.303
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_3_value",
+          "shape_index": 13,
+          "shape_name": "TextBox 14",
+          "current_text": "+22%",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 4.883,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "metric_3_label",
+          "shape_index": 14,
+          "shape_name": "TextBox 15",
+          "current_text": "Growth in broker relationships 2023→2025",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 5.45,
+            "width_in": 3.978,
+            "height_in": 0.303
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "source",
+          "shape_index": 16,
+          "shape_name": "Text 40",
+          "current_text": "Source: Truckstop 2025 Carrier Research Report",
+          "location": {
+            "left_in": 0.667,
+            "top_in": 6.89,
+            "width_in": 12.0,
+            "height_in": 0.24
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 11,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "5"
+        },
+        {
+          "shape_index": 4,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Carriers Work with More Brokers Than You Think."
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 6",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.222,
+            "width_in": 5.757,
+            "height_in": 3.467
+          },
+          "current_text": "2025 data shows carriers are onboarded to far more brokers than they actively haul for. Being onboarded is not the same as being chosen.\nCarriers are registered with far more brokers than they actively work with\nOnly 43% of onboarded brokers receive a load in any given month\nCarriers are expanding their broker network to diversify load access"
+        },
+        {
+          "shape_index": 6,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "MARKET INTELLIGENCE"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 2.182,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "current_text": "35"
+        },
+        {
+          "shape_index": 8,
+          "name": "TextBox 9",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 2.75,
+            "width_in": 3.477,
+            "height_in": 0.303
+          },
+          "current_text": "Median brokers onboarded"
+        },
+        {
+          "shape_index": 9,
+          "name": "TextBox 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 3.535,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "current_text": "15"
+        },
+        {
+          "shape_index": 10,
+          "name": "TextBox 11",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 4.102,
+            "width_in": 3.978,
+            "height_in": 0.303
+          },
+          "current_text": "Median brokers hauled monthly"
+        },
+        {
+          "shape_index": 13,
+          "name": "TextBox 14",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 4.883,
+            "width_in": 2.337,
+            "height_in": 0.64
+          },
+          "current_text": "+22%"
+        },
+        {
+          "shape_index": 14,
+          "name": "TextBox 15",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.863,
+            "top_in": 5.45,
+            "width_in": 3.978,
+            "height_in": 0.303
+          },
+          "current_text": "Growth in broker relationships 2023→2025"
+        },
+        {
+          "shape_index": 16,
+          "name": "Text 40",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.667,
+            "top_in": 6.89,
+            "width_in": 12.0,
+            "height_in": 0.24
+          },
+          "current_text": "Source: Truckstop 2025 Carrier Research Report"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 1",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_06_platform_overview",
+      "slide_no": 6,
+      "template_name": "Slide 06 - Platform Overview",
+      "category": "Agenda / Overview",
+      "sub_category": "Platform Overview",
+      "final_template_file_name": "Slide 06 - Platform Overview.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 06 - One Place To Run Your Freight.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Title 10",
+          "current_text": "One Place To Run Your Freight",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 5,
+          "shape_name": "Text 1",
+          "current_text": "PLATFORM OVERVIEW",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 6,
+          "shape_name": "TextBox 7",
+          "current_text": "Everything lives in one place\nReduce tool switching with one connected sidebar\nSee loads, carriers, and status without switching screens",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 3.146,
+            "width_in": 2.858,
+            "height_in": 2.524
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 7,
+          "shape_name": "TextBox 8",
+          "current_text": "What changes",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.545,
+            "width_in": 2.503,
+            "height_in": 0.404
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "benefit_row",
+          "shape_index": 8,
+          "shape_name": "Rectangle 9",
+          "current_text": "Make decisions faster      |      Keep loads moving      |      Stay in control of the day",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 6.779,
+            "width_in": 12.358,
+            "height_in": 0.358
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "closing_line",
+          "shape_index": 9,
+          "shape_name": "TextBox 10",
+          "current_text": "Load board, TMS, compliance, payments. All in one view.",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.773,
+            "width_in": 3.727,
+            "height_in": 0.572
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 7,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "6"
+        },
+        {
+          "shape_index": 4,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "One Place To Run Your Freight"
+        },
+        {
+          "shape_index": 5,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "PLATFORM OVERVIEW"
+        },
+        {
+          "shape_index": 6,
+          "name": "TextBox 7",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 3.146,
+            "width_in": 2.858,
+            "height_in": 2.524
+          },
+          "current_text": "Everything lives in one place\nReduce tool switching with one connected sidebar\nSee loads, carriers, and status without switching screens"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 2.545,
+            "width_in": 2.503,
+            "height_in": 0.404
+          },
+          "current_text": "What changes"
+        },
+        {
+          "shape_index": 8,
+          "name": "Rectangle 9",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.583,
+            "top_in": 6.779,
+            "width_in": 12.358,
+            "height_in": 0.358
+          },
+          "current_text": "Make decisions faster      |      Keep loads moving      |      Stay in control of the day"
+        },
+        {
+          "shape_index": 9,
+          "name": "TextBox 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.773,
+            "width_in": 3.727,
+            "height_in": 0.572
+          },
+          "current_text": "Load board, TMS, compliance, payments. All in one view."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 2",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_07_feature_matrix",
+      "slide_no": 7,
+      "template_name": "Slide 07 - Feature Matrix",
+      "category": "Feature / Capability",
+      "sub_category": "Feature Matrix",
+      "final_template_file_name": "Slide 07 - Feature Matrix.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 07 - What s Available Today..pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Title 10",
+          "current_text": "What's Available Today.",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 5,
+          "shape_name": "TextBox 20",
+          "current_text": "This is the foundation - current, real functionality that enterprise brokers can use now.",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "section_label",
+          "shape_index": 6,
+          "shape_name": "Text 1",
+          "current_text": "CURRENT STATE",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "feature_list_left",
+          "shape_index": 7,
+          "shape_name": "TextBox 22",
+          "current_text": "Load Board (Basic, Pro, Premium)\nPrivate Loads - RMIS and specified carrier lists\nBook It Now - direct digital booking, all load types\nWaterfall timing controls - carrier tier-based sequencing\nBroker Factorability signal\nRate Insights - same-day market data\nHeavy Haul Rates - open deck & oversized pricing\nRMIS carrier onboarding & monitoring\nFreight Validate - identity verification\nCarrier Performance Ratings\nLoad Insights - competitive positioning",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 2.181,
+            "width_in": 5.891,
+            "height_in": 5.049
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "feature_list_right",
+          "shape_index": 8,
+          "shape_name": "TextBox 23",
+          "current_text": "Real-Time Live Loads (Pro)\nPredictive Carrier Sourcing (Premium)\nMCP - conversational Al interface\nCatina Al - sourcing & workflow automation\nRMIS Onboarded Status on load board\nAPI access (582M+ API hits, +53% YoY)\nTMS integrations (1,000+ integrations)\nTruckstop Financial - payments and factoring\nRisk Factors - fraud & compliance signals\nCarrier Monitoring - ongoing compliance",
+          "location": {
+            "left_in": 6.826,
+            "top_in": 2.181,
+            "width_in": 6.12,
+            "height_in": 4.578
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 6,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Slide Number Placeholder 1",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "7"
+        },
+        {
+          "shape_index": 4,
+          "name": "Title 10",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "What's Available Today."
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 20",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 1.488,
+            "width_in": 10.328,
+            "height_in": 0.337
+          },
+          "current_text": "This is the foundation - current, real functionality that enterprise brokers can use now."
+        },
+        {
+          "shape_index": 6,
+          "name": "Text 1",
+          "shape_type": "AUTO_SHAPE (1)",
+          "location": {
+            "left_in": 0.607,
+            "top_in": 0.3,
+            "width_in": 6.667,
+            "height_in": 0.267
+          },
+          "current_text": "CURRENT STATE"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 22",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.532,
+            "top_in": 2.181,
+            "width_in": 5.891,
+            "height_in": 5.049
+          },
+          "current_text": "Load Board (Basic, Pro, Premium)\nPrivate Loads - RMIS and specified carrier lists\nBook It Now - direct digital booking, all load types\nWaterfall timing controls - carrier tier-based sequencing\nBroker Factorability signal\nRate Insights - same-day market data\nHeavy Haul Rates - open deck & oversized pricing\nRMIS carrier onboarding & monitoring\nFreight Validate - identity verification\nCarrier Performance Ratings\nLoad Insights - competitive positioning"
+        },
+        {
+          "shape_index": 8,
+          "name": "TextBox 23",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 6.826,
+            "top_in": 2.181,
+            "width_in": 6.12,
+            "height_in": 4.578
+          },
+          "current_text": "Real-Time Live Loads (Pro)\nPredictive Carrier Sourcing (Premium)\nMCP - conversational Al interface\nCatina Al - sourcing & workflow automation\nRMIS Onboarded Status on load board\nAPI access (582M+ API hits, +53% YoY)\nTMS integrations (1,000+ integrations)\nTruckstop Financial - payments and factoring\nRisk Factors - fraud & compliance signals\nCarrier Monitoring - ongoing compliance"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 2",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_08_text_heavy_insight",
+      "slide_no": 8,
+      "template_name": "Slide 08 - Text-Heavy Insight",
+      "category": "Content Slide",
+      "sub_category": "Text-Heavy Insight",
+      "final_template_file_name": "Slide 08 - Text Heavy Insight.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 08 - Strong carrier networks help brokers cover fr.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 5,
+          "shape_name": "Title 10",
+          "current_text": "Why Carrier Networks Matter",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 4,
+          "shape_name": "TextBox 8",
+          "current_text": "Strong carrier networks help brokers cover freight faster, reduce manual calls, and build more reliable capacity over time.\nThe goal is not just to onboard more carriers; it is to activate the right carriers when the right load appears.\nA connected network gives teams better visibility into who is available, who is trusted, and who is most likely to perform.\nUse this slide for a text-heavy insight, market explanation, or strategic point that needs more detail.",
+          "location": {
+            "left_in": 0.546,
+            "top_in": 1.938,
+            "width_in": 11.328,
+            "height_in": 4.78
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;684;p114",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "8"
+        },
+        {
+          "shape_index": 4,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.546,
+            "top_in": 1.938,
+            "width_in": 11.328,
+            "height_in": 4.78
+          },
+          "current_text": "Strong carrier networks help brokers cover freight faster, reduce manual calls, and build more reliable capacity over time.\nThe goal is not just to onboard more carriers; it is to activate the right carriers when the right load appears.\nA connected network gives teams better visibility into who is available, who is trusted, and who is most likely to perform.\nUse this slide for a text-heavy insight, market explanation, or strategic point that needs more detail."
+        },
+        {
+          "shape_index": 5,
+          "name": "Title 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Why Carrier Networks Matter"
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;682;p114",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.953,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 3,
+          "name": "Picture 11",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_09_ui_product_showcase",
+      "slide_no": 9,
+      "template_name": "Slide 09 - UI / Product Showcase",
+      "category": "Content Slide",
+      "sub_category": "UI / Product Showcase",
+      "final_template_file_name": "Slide 09 - UI Product Showcase.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 09 - Live Dashboard Visibility.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Google Shape;695;p116",
+          "current_text": "Live Dashboard Visibility",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 1.317,
+            "width_in": 5.378,
+            "height_in": 1.424
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 7,
+          "shape_name": "TextBox 23",
+          "current_text": "A live operations dashboard helps teams see load status, carrier activity, and next actions in one place.\nThis type of layout works well for product screenshots, platform walkthroughs, workflow previews, or before-and-after process explanations.\nUse short supporting text beside the visual so the audience understands what they are looking at without needing a long explanation.",
+          "location": {
+            "left_in": 0.475,
+            "top_in": 2.882,
+            "width_in": 5.051,
+            "height_in": 3.77
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;697;p116",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "9"
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;695;p116",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 1.317,
+            "width_in": 5.378,
+            "height_in": 1.424
+          },
+          "current_text": "Live Dashboard Visibility"
+        },
+        {
+          "shape_index": 7,
+          "name": "TextBox 23",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.475,
+            "top_in": 2.882,
+            "width_in": 5.051,
+            "height_in": 3.77
+          },
+          "current_text": "A live operations dashboard helps teams see load status, carrier activity, and next actions in one place.\nThis type of layout works well for product screenshots, platform walkthroughs, workflow previews, or before-and-after process explanations.\nUse short supporting text beside the visual so the audience understands what they are looking at without needing a long explanation."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 5,
+          "name": "Picture 17",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ],
+      "protected_image_note": "All existing picture shapes on this slide are treated as brand/decorative assets unless a new explicit content-image placeholder is added later."
+    },
+    {
+      "template_id": "slide_10_main_supporting_text",
+      "slide_no": 10,
+      "template_name": "Slide 10 - Main + Supporting Text",
+      "category": "Content Slide",
+      "sub_category": "Main + Supporting Text",
+      "final_template_file_name": "Slide 10 - Main + Supporting Text.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 10 - Simplify Freight Operations.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 3,
+          "shape_name": "Google Shape;710;p117",
+          "current_text": "Simplify Freight Operations",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 6.126,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body_left",
+          "shape_index": 5,
+          "shape_name": "TextBox 10",
+          "current_text": "Freight teams lose time when sourcing, compliance, booking, and payment are handled across separate tools.\nA connected workflow reduces manual re-entry, improves visibility, and helps teams act faster during high-pressure coverage moments.",
+          "location": {
+            "left_in": 0.586,
+            "top_in": 1.784,
+            "width_in": 5.757,
+            "height_in": 4.679
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body_right",
+          "shape_index": 6,
+          "shape_name": "TextBox 11",
+          "current_text": "Use this slide when you need a clear main point with supporting context.\nIt can work as a paragraph slide, a short bullet slide, or a combination of both depending on the message.",
+          "location": {
+            "left_in": 7.716,
+            "top_in": 1.784,
+            "width_in": 4.651,
+            "height_in": 4.073
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 4,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;707;p117",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "10"
+        },
+        {
+          "shape_index": 3,
+          "name": "Google Shape;710;p117",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 6.126,
+            "height_in": 1.255
+          },
+          "current_text": "Simplify Freight Operations"
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 10",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.586,
+            "top_in": 1.784,
+            "width_in": 5.757,
+            "height_in": 4.679
+          },
+          "current_text": "Freight teams lose time when sourcing, compliance, booking, and payment are handled across separate tools.\nA connected workflow reduces manual re-entry, improves visibility, and helps teams act faster during high-pressure coverage moments."
+        },
+        {
+          "shape_index": 6,
+          "name": "TextBox 11",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 7.716,
+            "top_in": 1.784,
+            "width_in": 4.651,
+            "height_in": 4.073
+          },
+          "current_text": "Use this slide when you need a clear main point with supporting context.\nIt can work as a paragraph slide, a short bullet slide, or a combination of both depending on the message."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 2,
+          "name": "Google Shape;708;p117",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 4,
+          "name": "Picture 9",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_11_content_image_basic",
+      "slide_no": 11,
+      "template_name": "Slide 11 - Content + Image Basic",
+      "category": "Content Slide",
+      "sub_category": "Content + Image Basic",
+      "final_template_file_name": "Slide 11 - Content + Image Basic.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 11 - Compliance Built Into Workflow.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 2,
+          "shape_name": "Google Shape;720;p118",
+          "current_text": "Compliance Built Into Workflow",
+          "location": {
+            "left_in": 5.181,
+            "top_in": 1.04,
+            "width_in": 7.236,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 5,
+          "shape_name": "TextBox 12",
+          "current_text": "Compliance works best when it is part of the daily booking process, not a separate step that slows the team down.\nWith risk signals, onboarding status, and verification data available during carrier selection, brokers can protect loads while keeping freight moving.\nUse this layout for one focused explanation supported by a visual, icon, or screenshot.",
+          "location": {
+            "left_in": 5.302,
+            "top_in": 2.295,
+            "width_in": 7.236,
+            "height_in": 3.467
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;716;p118",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "11"
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;720;p118",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 5.181,
+            "top_in": 1.04,
+            "width_in": 7.236,
+            "height_in": 1.255
+          },
+          "current_text": "Compliance Built Into Workflow"
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 12",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 5.302,
+            "top_in": 2.295,
+            "width_in": 7.236,
+            "height_in": 3.467
+          },
+          "current_text": "Compliance works best when it is part of the daily booking process, not a separate step that slows the team down.\nWith risk signals, onboarding status, and verification data available during carrier selection, brokers can protect loads while keeping freight moving.\nUse this layout for one focused explanation supported by a visual, icon, or screenshot."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;717;p118",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 3,
+          "name": "Picture 10",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;723;p119",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.972,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ],
+      "protected_image_note": "All existing picture shapes on this slide are treated as brand/decorative assets unless a new explicit content-image placeholder is added later."
+    },
+    {
+      "template_id": "slide_12_content_image",
+      "slide_no": 12,
+      "template_name": "Slide 12 - Content + Image",
+      "category": "Content Slide",
+      "sub_category": "Content + Image",
+      "final_template_file_name": "Slide 12 - Content + Image.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 12 - Faster Load Coverage.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Google Shape;727;p119",
+          "current_text": "Faster Load Coverage",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 7.587,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 5,
+          "shape_name": "TextBox 8",
+          "current_text": "Better coverage starts with knowing which carriers are available, trusted, and suitable for the load.\nTeams can move faster when carrier history, market data, and operational context are available in the same workflow.\nThis layout is useful for explaining a product benefit, workflow improvement, or customer outcome with supporting detail.",
+          "location": {
+            "left_in": 0.504,
+            "top_in": 1.655,
+            "width_in": 7.615,
+            "height_in": 4.409
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Google Shape;725;p119",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "12"
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;727;p119",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 7.587,
+            "height_in": 1.255
+          },
+          "current_text": "Faster Load Coverage"
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.504,
+            "top_in": 1.655,
+            "width_in": 7.615,
+            "height_in": 4.409
+          },
+          "current_text": "Better coverage starts with knowing which carriers are available, trusted, and suitable for the load.\nTeams can move faster when carrier history, market data, and operational context are available in the same workflow.\nThis layout is useful for explaining a product benefit, workflow improvement, or customer outcome with supporting detail."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 7",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 2,
+          "name": "Google Shape;723;p119",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.0,
+            "top_in": 4.972,
+            "width_in": 2.533,
+            "height_in": 2.547
+          }
+        }
+      ],
+      "protected_image_note": "All existing picture shapes on this slide are treated as brand/decorative assets unless a new explicit content-image placeholder is added later."
+    },
+    {
+      "template_id": "slide_13_standard_content",
+      "slide_no": 13,
+      "template_name": "Slide 13 - Standard Content",
+      "category": "Content Slide",
+      "sub_category": "Standard Content",
+      "final_template_file_name": "Slide 13 - Standard Content.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 13 - Operational Control.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 2,
+          "shape_name": "Google Shape;733;p120",
+          "current_text": "Operational Control",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 4,
+          "shape_name": "TextBox 8",
+          "current_text": "Operational control improves when every team member works from the same source of truth.\nInstead of chasing updates across systems, teams can see load status, carrier information, compliance signals, and next steps in one clear operating view.\nUse this slide for concise business context, executive summaries, or any message that needs space for a longer paragraph.",
+          "location": {
+            "left_in": 0.504,
+            "top_in": 1.655,
+            "width_in": 11.817,
+            "height_in": 4.645
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 2,
+          "name": "Google Shape;733;p120",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.402,
+            "top_in": 0.4,
+            "width_in": 12.0,
+            "height_in": 1.255
+          },
+          "current_text": "Operational Control"
+        },
+        {
+          "shape_index": 3,
+          "name": "Google Shape;735;p120",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "13"
+        },
+        {
+          "shape_index": 4,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.504,
+            "top_in": 1.655,
+            "width_in": 11.817,
+            "height_in": 4.645
+          },
+          "current_text": "Operational control improves when every team member works from the same source of truth.\nInstead of chasing updates across systems, teams can see load status, carrier information, compliance signals, and next steps in one clear operating view.\nUse this slide for concise business context, executive summaries, or any message that needs space for a longer paragraph."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 7",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_14_section_divider_pattern",
+      "slide_no": 14,
+      "template_name": "Slide 14 - Section Divider - Pattern",
+      "category": "Section Divider",
+      "sub_category": "Section Divider - Pattern",
+      "final_template_file_name": "Slide 14 - Section Divider Pattern.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 14 - Platform Capabilities.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 3,
+          "shape_name": "Google Shape;752;p122",
+          "current_text": "Platform Capabilities",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 2.136,
+            "width_in": 12.024,
+            "height_in": 1.45
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 4,
+          "shape_name": "Google Shape;753;p122",
+          "current_text": "A connected system for sourcing, compliance, execution, and payments.",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 3.616,
+            "width_in": 12.024,
+            "height_in": 0.975
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 2,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Google Shape;752;p122",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 2.136,
+            "width_in": 12.024,
+            "height_in": 1.45
+          },
+          "current_text": "Platform Capabilities"
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;753;p122",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 3.616,
+            "width_in": 12.024,
+            "height_in": 0.975
+          },
+          "current_text": "A connected system for sourcing, compliance, execution, and payments."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 1,
+          "name": "Google Shape;746;p122",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.867,
+            "top_in": 6.299,
+            "width_in": 3.3,
+            "height_in": 0.72
+          }
+        },
+        {
+          "shape_index": 5,
+          "name": "Picture 9",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_15_section_divider_diagonal",
+      "slide_no": 15,
+      "template_name": "Slide 15 - Section Divider - Diagonal",
+      "category": "Section Divider",
+      "sub_category": "Section Divider - Diagonal",
+      "final_template_file_name": "Slide 15 - Section Divider Diagonal.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 15 - Market Intelligence.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 3,
+          "shape_name": "Google Shape;758;p123",
+          "current_text": "Market Intelligence",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 2.136,
+            "width_in": 12.024,
+            "height_in": 1.45
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "subheading",
+          "shape_index": 4,
+          "shape_name": "Google Shape;759;p123",
+          "current_text": "Use data to understand capacity, pricing, carrier behavior, and freight movement trends.",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 3.616,
+            "width_in": 12.024,
+            "height_in": 0.975
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 2,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 3,
+          "name": "Google Shape;758;p123",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 2.136,
+            "width_in": 12.024,
+            "height_in": 1.45
+          },
+          "current_text": "Market Intelligence"
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;759;p123",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 0.392,
+            "top_in": 3.616,
+            "width_in": 12.024,
+            "height_in": 0.975
+          },
+          "current_text": "Use data to understand capacity, pricing, carrier behavior, and freight movement trends."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 2,
+          "name": "Google Shape;757;p123",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 0.849,
+            "top_in": 6.299,
+            "width_in": 3.309,
+            "height_in": 0.72
+          }
+        },
+        {
+          "shape_index": 5,
+          "name": "Picture 6",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_16_general_content_variant_a",
+      "slide_no": 16,
+      "template_name": "Slide 16 - General Content Variant A",
+      "category": "Content Slide",
+      "sub_category": "General Content Variant A",
+      "final_template_file_name": "Slide 16 - General Content Variant A.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 16 - Smarter Broker Workflows.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 2,
+          "shape_name": "Google Shape;762;p124",
+          "current_text": "Smarter Broker Workflows",
+          "location": {
+            "left_in": 4.914,
+            "top_in": 1.203,
+            "width_in": 7.834,
+            "height_in": 1.45
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 5,
+          "shape_name": "TextBox 8",
+          "current_text": "Broker teams need workflows that support speed without creating unnecessary risk.\nBy connecting load posting, carrier selection, compliance checks, and booking activity, teams can reduce repetitive work and make better decisions faster.\nUse this slide for process explanations, workflow improvements, or feature-benefit messaging.",
+          "location": {
+            "left_in": 5.023,
+            "top_in": 2.664,
+            "width_in": 7.615,
+            "height_in": 4.409
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 2,
+          "name": "Google Shape;762;p124",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 4.914,
+            "top_in": 1.203,
+            "width_in": 7.834,
+            "height_in": 1.45
+          },
+          "current_text": "Smarter Broker Workflows"
+        },
+        {
+          "shape_index": 3,
+          "name": "Google Shape;764;p124",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "16"
+        },
+        {
+          "shape_index": 5,
+          "name": "TextBox 8",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 5.023,
+            "top_in": 2.664,
+            "width_in": 7.615,
+            "height_in": 4.409
+          },
+          "current_text": "Broker teams need workflows that support speed without creating unnecessary risk.\nBy connecting load posting, carrier selection, compliance checks, and booking activity, teams can reduce repetitive work and make better decisions faster.\nUse this slide for process explanations, workflow improvements, or feature-benefit messaging."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 19",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 4,
+          "name": "Google Shape;769;p125",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": -0.013,
+            "top_in": 0.0,
+            "width_in": 4.329,
+            "height_in": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_17_content_with_sidebar",
+      "slide_no": 17,
+      "template_name": "Slide 17 - Content with Sidebar",
+      "category": "Content Slide",
+      "sub_category": "Content with Sidebar",
+      "final_template_file_name": "Slide 17 - Content with Sidebar.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 17 - Connected Freight Operations.pptx",
+      "text_placeholders": [
+        {
+          "role": "heading",
+          "shape_index": 4,
+          "shape_name": "Google Shape;770;p125",
+          "current_text": "Connected Freight Operations",
+          "location": {
+            "left_in": 6.292,
+            "top_in": 1.203,
+            "width_in": 6.522,
+            "height_in": 1.45
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        },
+        {
+          "role": "body",
+          "shape_index": 6,
+          "shape_name": "TextBox 15",
+          "current_text": "Connected operations give teams a clearer view of what is happening across freight activity.\nWhen load data, carrier data, risk information, and workflow actions are connected, teams can reduce handoffs and keep execution moving.\nThis layout works well for platform messaging, operational benefits, or a focused explanation with supporting sidebar context.",
+          "location": {
+            "left_in": 6.43,
+            "top_in": 2.554,
+            "width_in": 5.863,
+            "height_in": 4.679
+          },
+          "replace": true,
+          "preserve_formatting": true,
+          "notes": "Replace text only; do not move/resize/recolor."
+        }
+      ],
+      "image_placeholders": [],
+      "detected_text_shape_count": 3,
+      "detected_picture_count": 3,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [
+        {
+          "shape_index": 4,
+          "name": "Google Shape;770;p125",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 6.292,
+            "top_in": 1.203,
+            "width_in": 6.522,
+            "height_in": 1.45
+          },
+          "current_text": "Connected Freight Operations"
+        },
+        {
+          "shape_index": 5,
+          "name": "Google Shape;772;p125",
+          "shape_type": "PLACEHOLDER (14)",
+          "location": {
+            "left_in": 12.814,
+            "top_in": 7.052,
+            "width_in": 0.399,
+            "height_in": 0.399
+          },
+          "current_text": "17"
+        },
+        {
+          "shape_index": 6,
+          "name": "TextBox 15",
+          "shape_type": "TEXT_BOX (17)",
+          "location": {
+            "left_in": 6.43,
+            "top_in": 2.554,
+            "width_in": 5.863,
+            "height_in": 4.679
+          },
+          "current_text": "Connected operations give teams a clearer view of what is happening across freight activity.\nWhen load data, carrier data, risk information, and workflow actions are connected, teams can reduce handoffs and keep execution moving.\nThis layout works well for platform messaging, operational benefits, or a focused explanation with supporting sidebar context."
+        }
+      ],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 14",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        },
+        {
+          "shape_index": 3,
+          "name": "Google Shape;769;p125",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": -0.013,
+            "top_in": 0.0,
+            "width_in": 4.329,
+            "height_in": 7.5
+          }
+        }
+      ]
+    },
+    {
+      "template_id": "slide_18_image_only_slide",
+      "slide_no": 18,
+      "template_name": "Slide 18 - Visual-Only / Blank",
+      "category": "Visual / Image Gallery",
+      "sub_category": "Image-only Slide",
+      "final_template_file_name": "Slide 18 - Image Only Slide.pptx",
+      "source_local_file": "/root/.openclaw/workspace/ppt_library/revised_single_slide_ppts/Slide 18 - Untitled Template.pptx",
+      "text_placeholders": [],
+      "image_placeholders": [],
+      "detected_text_shape_count": 0,
+      "detected_picture_count": 2,
+      "protected_elements_rule": "Do not modify fonts, font colors, logos, icons, brand assets, layout, decorative shapes, or backgrounds.",
+      "all_detected_text_shapes": [],
+      "all_detected_picture_shapes": [
+        {
+          "shape_index": 0,
+          "name": "Google Shape;699;p116",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 11.874,
+            "top_in": 0.0,
+            "width_in": 1.459,
+            "height_in": 7.54
+          }
+        },
+        {
+          "shape_index": 1,
+          "name": "Picture 2",
+          "shape_type": "PICTURE (13)",
+          "location": {
+            "left_in": 12.538,
+            "top_in": 0.238,
+            "width_in": 0.597,
+            "height_in": 0.597
+          }
+        }
+      ],
+      "protected_image_note": "All existing picture shapes on this slide are treated as brand/decorative assets unless a new explicit content-image placeholder is added later."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T04:36:35.524937+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "wfv67xwxrhrmt0cz4s1t1x9car",
+  "raw_audio_url": "https://replicate.delivery/xezq/ENQcWqNKPrrkINw9LdWHjhdr9KJjeWGlTrYUVdUe4NwS5O1WA/tmpznnts4ny.mp3",
+  "raw_duration": 3.892245,
+  "fitted_duration": 3.892245,
+  "script_text": "The Data Scientists getting hired aren't better qualified. They're better positioned.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260703_041314_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260703_041314_section1_hook_fitted.mp3"
+}

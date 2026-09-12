@@ -1,0 +1,46 @@
+{
+  "run_id": "ai_planner_1779325261",
+  "project_name": "AI Pipeline Test",
+  "output_file_name": "PDF_to_PPT_Automation_Presentation.pptx",
+  "target_slide_count": 2,
+  "actual_slide_count": 2,
+  "planner_mode": "ai",
+  "slides": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "text": {
+        "heading": "Automate your PDF to PPT conversion with ease.",
+        "supporting_text": "This presentation outlines a proposed automation system designed to convert PDFs into PowerPoint presentations, focusing on user-friendliness, brand control, and efficient content management."
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779325261/generated_images/slide_01_hero_image.png",
+          "prompt": "professional business presentation hero visual. Presentation topic: Automate your PDF to PPT conversion with ease.. Context: This presentation outlines a proposed automation system designed to convert PDFs into PowerPoint presentations, focusing on user-friendliness, brand control, and efficient content management.. Create a premium 16:9 business presentation hero image. STRICT: no text, no letters, no numbers, no captions, no UI labels, no logo, no brand marks, no watermark. Composition: left 40 percent clean, empty, darker, low-detail negative space for slide title; main visual detail concentrated on the right side. Modern cinematic lighting, professional, realistic/abstract business style, clean background.",
+          "provider": "replicate",
+          "model": "black-forest-labs/flux-schnell",
+          "source_url": "https://replicate.delivery/xezq/yWSuY2Pm7JJkBVjMCfNoR4CC0hAnqQvxXWrBDDFZcebhuAnWA/out-0.png",
+          "prediction_id": "ccxv9m8tdsrmy0cy9079me0674"
+        }
+      },
+      "order": 1
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "text": {
+        "heading": "Overview of the User-Friendly Interface",
+        "subheading": "Streamlined PDF Uploading and Customization",
+        "timeline_block_1": "Introduction to the system",
+        "timeline_block_2": "User interface walkthrough",
+        "timeline_block_3": "PDF text extraction process",
+        "timeline_block_4": "Brand integrity maintenance",
+        "timeline_block_5": "Editable PowerPoint outputs",
+        "timeline_block_6": "Technical architecture overview",
+        "closing_line": "Join us in revolutionizing document processing.",
+        "section_label": "Strategic Roadmap"
+      },
+      "images": {},
+      "order": 2
+    }
+  ],
+  "_provider": "openrouter"
+}

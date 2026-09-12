@@ -1,0 +1,114 @@
+{
+  "name": "Shopify NY Budget Batch - Two Tab",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shopify-ny-budget-batch",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "438f263d-02d1-4585-8707-a3c9dffc646f",
+      "name": "Webhook - Run Budget Batch",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        0
+      ],
+      "webhookId": "6eb36307-7ddd-461d-8bbf-c90f5dba2785"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json || {};\nreturn [{json:{\n  batch: Number(body.batch ?? 47),\n  maxCandidates: Math.max(1, Math.min(Number(body.maxCandidates ?? 8), 25)),\n  maxQueries: Math.max(1, Math.min(Number(body.maxQueries ?? 4), 12)),\n  resultsPerPage: Math.max(1, Math.min(Number(body.resultsPerPage ?? 3), 10)),\n  verifyTimeout: Math.max(3, Math.min(Number(body.verifyTimeout ?? 5), 10)),\n}}];"
+      },
+      "id": "7a982701-c8e7-4b9f-a62f-fdea17417cb0",
+      "name": "Build Safe Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8011/shopify-ny-budget-batch",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "contentType": "json",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "cee74669-9d40-49d0-856a-9dc4c02d63fe",
+      "name": "Call Local Budget API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "eced13e5-6f3a-4043-b8ae-dab242350716",
+      "name": "Respond JSON",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        40,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook - Run Budget Batch": {
+      "main": [
+        [
+          {
+            "node": "Build Safe Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Safe Payload": {
+      "main": [
+        [
+          {
+            "node": "Call Local Budget API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Local Budget API": {
+      "main": [
+        [
+          {
+            "node": "Respond JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  }
+}

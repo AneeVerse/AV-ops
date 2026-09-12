@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T11:09:45.615365+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "5wphbc2bm9rmr0cz67waact9jc",
+  "raw_audio_url": "https://replicate.delivery/xezq/meV9sDZHRPz3HiUtUOKNDLGmg7RltQHIOTc0fDLrvE641ertA/tmp07073ru2.mp3",
+  "raw_duration": 3.186939,
+  "fitted_duration": 3.186939,
+  "script_text": "Knowing the overlap tells you where to apply next.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0029_20260705_104747_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0029_20260705_104747_section3_implication_fitted.mp3"
+}

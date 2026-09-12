@@ -1,0 +1,12 @@
+{
+  "run_id": "builder_image_test_001",
+  "project_name": "Image Replacement Test",
+  "output_file_name": "builder_image_test_output.pptx",
+  "slides": [
+    {"order": 1, "template_id": "slide_01_hero_cover", "text": {"heading": "Image Safe Hero Slide", "supporting_text": "The hero image is replaced while text, logo, and brand styling stay untouched.", "section_label": "IMAGE TEST"}, "images": {"hero_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png"}}},
+    {"order": 2, "template_id": "slide_09_ui_product_showcase", "text": {"heading": "Generated UI Visual", "body": "The builder replaces only the intended screenshot/image placeholder and leaves the surrounding layout unchanged."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/ui.png"}}},
+    {"order": 3, "template_id": "slide_11_content_image_basic", "text": {"heading": "Content With Image", "body": "This layout supports a short explanation with one generated or approved visual."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/content_a.png"}}},
+    {"order": 4, "template_id": "slide_12_content_image", "text": {"heading": "Outcome With Visual", "body": "The image area can be replaced while keeping the template's typography and content area intact."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/content_b.png"}}},
+    {"order": 5, "template_id": "slide_18_image_only_slide", "text": {}, "images": {"full_slide_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/full.png"}}}
+  ]
+}

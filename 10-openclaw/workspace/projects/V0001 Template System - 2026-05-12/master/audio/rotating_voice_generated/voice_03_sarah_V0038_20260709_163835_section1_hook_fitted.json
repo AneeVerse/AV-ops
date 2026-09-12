@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T16:38:42.885982+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "0dtyw5f3z9rmw0cz8yza7118mc",
+  "raw_audio_url": "https://replicate.delivery/xezq/FN3OwIyiDyYYDpSLiORDxo2ZkNfxxgUNPuoKWIQV1HgIBsbLA/tmpo93sj67_.mp3",
+  "raw_duration": 2.35102,
+  "fitted_duration": 2.35102,
+  "script_text": "Is AI changing the value of my role?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0038_20260709_163835_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0038_20260709_163835_section1_hook_fitted.mp3"
+}

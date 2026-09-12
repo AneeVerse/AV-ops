@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T21:40:45.393948+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "acbv6x6j81rmy0cz2n9tfh87t8",
+  "raw_audio_url": "https://replicate.delivery/xezq/mJoTTGPeY6x2DSD8nyHePkaQMq1KZNS12ZkqCpEtMrKbhJ0WA/tmpdxqtldcy.mp3",
+  "raw_duration": 2.690612,
+  "fitted_duration": 2.690612,
+  "script_text": "See which title pays more for your exact skill set.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section4_cta_fitted.mp3"
+}

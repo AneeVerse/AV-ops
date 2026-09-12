@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T17:09:17.261565+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "basw5q7405rmy0cz8zdadf7r04",
+  "raw_audio_url": "https://replicate.delivery/xezq/ECAfig6ifCoD1UDHsfP1I7MUQGfl59IEVJfqfKw4C6HCvH2tF/tmpv0a09v4g.mp3",
+  "raw_duration": 2.324898,
+  "fitted_duration": 2.324898,
+  "script_text": "Am I in a career path that\u2019s cooling?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_170914_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_170914_section1_hook_fitted.mp3"
+}

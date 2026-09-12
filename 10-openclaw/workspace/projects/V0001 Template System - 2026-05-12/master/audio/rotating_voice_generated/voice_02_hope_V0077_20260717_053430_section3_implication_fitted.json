@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T05:34:41.429791+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "rj7j4syqydrmw0czdt8typm8xg",
+  "raw_audio_url": "https://replicate.delivery/xezq/J7ME6UMFtTZFNlECg7O7A9yJETySDgpbjVeNX2DulZV4h7cLA/tmpr9rjw0ab.mp3",
+  "raw_duration": 3.709388,
+  "fitted_duration": 3.709388,
+  "script_text": "Even qualified candidates can get lost in crowded applicant pools.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0077_20260717_053430_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0077_20260717_053430_section3_implication_fitted.mp3"
+}

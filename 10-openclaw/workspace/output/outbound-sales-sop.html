@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aneeverse Outbound Sales SOP</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #1a2347;
+      --text: #eef2ff;
+      --muted: #a7b0d6;
+      --accent: #6ea8fe;
+      --good: #34d399;
+      --warn: #fbbf24;
+      --bad: #f87171;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #0a0f1d 0%, #10162b 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 20px 80px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(110,168,254,.18), rgba(52,211,153,.10));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    h1, h2, h3 { margin: 0 0 12px; }
+    h1 { font-size: 38px; line-height: 1.1; }
+    h2 { font-size: 24px; margin-top: 28px; }
+    h3 { font-size: 18px; color: #dbe5ff; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .grid { display: grid; gap: 16px; }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .card {
+      background: rgba(18,25,51,.92);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(110,168,254,.14);
+      color: #cfe0ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    li { margin: 8px 0; }
+    .metric {
+      font-size: 30px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .tag { font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; }
+    .good { background: rgba(52,211,153,.16); color: #7ef0c4; }
+    .warn { background: rgba(251,191,36,.14); color: #ffd978; }
+    .bad { background: rgba(248,113,113,.14); color: #ffb3b3; }
+    .flow { display: grid; gap: 12px; }
+    .step {
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { color: #dbe5ff; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer {
+      margin-top: 26px;
+      font-size: 13px;
+      color: #8d97c2;
+    }
+    code {
+      background: rgba(255,255,255,.06);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="pill">Aneeverse • Main Mission</div>
+      <h1>Outbound Sales SOP</h1>
+      <p>Primary objective: generate revenue through cold email, cold calling, disciplined follow-up, and clear tracking.</p>
+      <div class="grid cols-3" style="margin-top:18px;">
+        <div class="card">
+          <div class="metric">100+</div>
+          <p>new leads added per day</p>
+        </div>
+        <div class="card">
+          <div class="metric">30–50</div>
+          <p>cold calls per day</p>
+        </div>
+        <div class="card">
+          <div class="metric">2–4</div>
+          <p>meetings booked per week target to start</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid cols-2">
+      <section class="card">
+        <div class="pill">System Rules</div>
+        <h2>Non-negotiables</h2>
+        <ul>
+          <li>Every lead must be tracked in one system.</li>
+          <li>No lead without next action.</li>
+          <li>No call or email without offer clarity.</li>
+          <li>Follow-up matters more than first contact.</li>
+          <li>Daily reporting is mandatory.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Core Stack</div>
+        <h2>Minimum working setup</h2>
+        <ul>
+          <li><strong>Lead list:</strong> Google Sheets / CRM</li>
+          <li><strong>Storage folder:</strong> ACS2</li>
+          <li><strong>Pipeline:</strong> New → Researched → Contacted → Follow-up → Interested → Meeting Booked → Closed / Lost</li>
+          <li><strong>Channels:</strong> cold email + cold calls</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="pill">Daily Workflow</div>
+      <h2>Execution flow</h2>
+      <div class="flow">
+        <div class="step"><strong>1. Lead sourcing:</strong> identify companies in target niches and add them to CRM.</div>
+        <div class="step"><strong>2. Qualification:</strong> check if the company fits service potential, budget potential, and decision-maker availability.</div>
+        <div class="step"><strong>3. Contact finding:</strong> collect owner/founder/marketing contact, email, phone, website, location.</div>
+        <div class="step"><strong>4. Personalization:</strong> add one relevant note: weak website, poor SEO, weak ads, bad branding, no funnel, etc.</div>
+        <div class="step"><strong>5. First outreach:</strong> send cold email and/or make first call with a short clear pitch.</div>
+        <div class="step"><strong>6. Logging:</strong> record date, status, response, and next action immediately.</div>
+        <div class="step"><strong>7. Follow-up:</strong> continue on a fixed cadence until reply, meeting, or clear rejection.</div>
+        <div class="step"><strong>8. Handover:</strong> interested leads move to meeting/closing process.</div>
+      </div>
+    </section>
+
+    <div class="grid cols-2">
+      <section class="card">
+        <div class="pill">Cold Email SOP</div>
+        <h2>Email rules</h2>
+        <ul>
+          <li>Subject lines must be short and natural.</li>
+          <li>First line must prove relevance.</li>
+          <li>Pitch one problem, one promise, one CTA.</li>
+          <li>Keep under 120 words for first email.</li>
+          <li>CTA should ask for a short call, not a big commitment.</li>
+        </ul>
+        <h3 style="margin-top:16px;">Suggested cadence</h3>
+        <ul>
+          <li>Day 1: first email</li>
+          <li>Day 3: follow-up 1</li>
+          <li>Day 6: follow-up 2</li>
+          <li>Day 10: final bump</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Cold Calling SOP</div>
+        <h2>Call rules</h2>
+        <ul>
+          <li>Open fast: who you are + why you called.</li>
+          <li>Do not over-explain in first 15 seconds.</li>
+          <li>Qualify interest quickly.</li>
+          <li>If not decision-maker, ask for the right person.</li>
+          <li>End every call with a defined next step.</li>
+        </ul>
+        <h3 style="margin-top:16px;">Basic structure</h3>
+        <ul>
+          <li>Opening</li>
+          <li>Reason for call</li>
+          <li>Pain/opportunity hook</li>
+          <li>Question</li>
+          <li>CTA: book call / send details / callback time</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="pill">Pipeline</div>
+      <h2>Lead stages</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Meaning</th>
+            <th>Required next action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag warn">New</span></td>
+            <td>Lead added, not researched yet</td>
+            <td>Research and qualify</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">Researched</span></td>
+            <td>Data ready for outreach</td>
+            <td>Send first email / make first call</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">Contacted</span></td>
+            <td>Initial outreach done</td>
+            <td>Schedule follow-up</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">Follow-up</span></td>
+            <td>Waiting or continuing outreach</td>
+            <td>Next touchpoint on date</td>
+          </tr>
+          <tr>
+            <td><span class="tag good">Interested</span></td>
+            <td>Lead showed intent</td>
+            <td>Qualify and book meeting</td>
+          </tr>
+          <tr>
+            <td><span class="tag good">Meeting Booked</span></td>
+            <td>Call/demo scheduled</td>
+            <td>Prep and close</td>
+          </tr>
+          <tr>
+            <td><span class="tag bad">Lost</span></td>
+            <td>Rejected / not fit / dead</td>
+            <td>Document reason</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="grid cols-2">
+      <section class="card">
+        <div class="pill">Daily Metrics</div>
+        <h2>What to report every day</h2>
+        <ul>
+          <li>new leads added</li>
+          <li>emails sent</li>
+          <li>calls made</li>
+          <li>responses received</li>
+          <li>follow-ups completed</li>
+          <li>meetings booked</li>
+          <li>deals closed</li>
+          <li>top blockers</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Weakness Checks</div>
+        <h2>What usually breaks this system</h2>
+        <ul>
+          <li>No single owner for daily execution</li>
+          <li>Bad or generic offer</li>
+          <li>Low-quality leads</li>
+          <li>No follow-up discipline</li>
+          <li>Tracking outside the system</li>
+          <li>Too much manual work without templates</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="pill">Next Build</div>
+      <h2>Recommended next version</h2>
+      <p>This page is the SOP layer. The next useful step is a working operational dashboard with:</p>
+      <ul>
+        <li>lead entry form</li>
+        <li>pipeline board</li>
+        <li>daily KPI counters</li>
+        <li>email/call task queue</li>
+        <li>follow-up reminders</li>
+      </ul>
+      <p class="footer">File: <code>/root/.openclaw/workspace/output/outbound-sales-sop.html</code></p>
+    </section>
+  </div>
+</body>
+</html>

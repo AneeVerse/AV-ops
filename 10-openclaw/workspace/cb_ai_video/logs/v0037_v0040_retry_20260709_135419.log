@@ -1,0 +1,33 @@
++ gog sheets get 1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE '300_Video_Master_Attribution!A1:BZ200' --json --no-input
+Generate VO: Replicate ElevenLabs voice 2 / Hope
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 478, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 461, in main
+    a=generate_section_audio(rv, vcfg, voice, text, label, sec)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 248, in generate_section_audio
+    return rv.generate_replicate_voiceover(cfg, voice, clean_vo_text(text), suffix)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/scripts/render_with_rotating_voice.py", line 352, in generate_replicate_voiceover
+    with urllib.request.urlopen(req, timeout=180) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 402: Payment Required

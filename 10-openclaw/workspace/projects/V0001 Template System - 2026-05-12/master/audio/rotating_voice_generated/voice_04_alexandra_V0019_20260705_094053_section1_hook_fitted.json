@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T09:40:57.454837+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "zwep3kqxyxrmy0cz66k8h34vvm",
+  "raw_audio_url": "https://replicate.delivery/xezq/ohEPAP9mFAI2F1f3apKRQmQssMtrxh7uVUTf5ZKoKV2oi91WA/tmpodpgq_b1.mp3",
+  "raw_duration": 4.127347,
+  "fitted_duration": 4.127347,
+  "script_text": "Data Scientists who widen their search tend to land offers that pay more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0019_20260705_094053_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0019_20260705_094053_section1_hook_fitted.mp3"
+}

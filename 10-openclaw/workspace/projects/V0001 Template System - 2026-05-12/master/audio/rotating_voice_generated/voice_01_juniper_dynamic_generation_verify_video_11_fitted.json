@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-05-14T03:27:41.122738+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "zkf8shw5h9rmy0cy4j38xgza24",
+  "raw_audio_url": "https://replicate.delivery/xezq/ikuNZfcteKhUlEsayqN0aeQaWiTbIuzVu6CXEhB3ANOWZeSaB/tmpg6psnf2o.mp3",
+  "raw_duration": 19.774694,
+  "fitted_duration": 18.886531,
+  "script_text": "Most software developers qualify for more job titles than they actually apply to. Most of the ninety five percent of publicly posted jobs in the U.S. stay invisible to candidates who do not know what to search for. Your strongest matches may be roles you have never searched. Start with your Trait DNA Work Style Report. Free, fifteen minutes, no credit card.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_dynamic_generation_verify_video_11_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_dynamic_generation_verify_video_11_fitted.mp3"
+}

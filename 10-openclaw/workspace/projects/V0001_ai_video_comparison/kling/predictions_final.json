@@ -1,0 +1,158 @@
+[
+  {
+    "name": "01_hook",
+    "id": "tpq3mr84hdrmy0cy2s9b7xwpbr",
+    "prompt": "A software developer typing on a laptop in a modern workspace, subtle cinematic camera movement, professional lighting, no text, no logos.",
+    "result": {
+      "id": "tpq3mr84hdrmy0cy2s9b7xwpbr",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, unreadable text, watermark, logo, subtitles, captions",
+        "prompt": "A software developer typing on a laptop in a modern workspace, subtle cinematic camera movement, professional lighting, no text, no logos.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.6sec\nGenerated video ID: 882743357552861269\nDownloading 2797243 bytes\nDownloaded 2.67MB in 2.50sec\n",
+      "output": "https://replicate.delivery/xezq/xTe2BHFl6o1sAKf6aMNV3Sgywr5AL9Gc5GRQDiJ8P8zzC1jWA/tmp0edxdknr.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:15:34.411Z",
+      "started_at": "2026-05-11T09:15:34.429261155Z",
+      "completed_at": "2026-05-11T09:17:40.364316031Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/tpq3mr84hdrmy0cy2s9b7xwpbr/cancel",
+        "get": "https://api.replicate.com/v1/predictions/tpq3mr84hdrmy0cy2s9b7xwpbr",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-rk5qpwhax4576j4n67ccrsyife2cmsfby5r5e5r2v3vyobvli3wa",
+        "web": "https://replicate.com/p/tpq3mr84hdrmy0cy2s9b7xwpbr"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 125.935054877,
+        "total_time": 125.953316031,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/xTe2BHFl6o1sAKf6aMNV3Sgywr5AL9Gc5GRQDiJ8P8zzC1jWA/tmp0edxdknr.mp4"
+  },
+  {
+    "name": "02_insight",
+    "id": "q30v1b8renrmt0cy2s996xg06c",
+    "prompt": "Clean abstract data visualization background with moving charts and network lines, professional off-white and navy palette, no readable text, no logos.",
+    "result": {
+      "id": "q30v1b8renrmt0cy2s996xg06c",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, unreadable text, watermark, logo, subtitles, captions",
+        "prompt": "Clean abstract data visualization background with moving charts and network lines, professional off-white and navy palette, no readable text, no logos.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.9sec\nGenerated video ID: 882743379644260400\nDownloading 1607606 bytes\nDownloaded 1.53MB in 2.34sec\n",
+      "output": "https://replicate.delivery/xezq/hP1xkYyEV0KwNlaX1Q8W1BwJJs3RXq9cDGDSV9vj5wauQ9oF/tmp35mofsdk.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:15:39.509Z",
+      "started_at": "2026-05-11T09:15:39.524020578Z",
+      "completed_at": "2026-05-11T09:17:45.413590983Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/q30v1b8renrmt0cy2s996xg06c/cancel",
+        "get": "https://api.replicate.com/v1/predictions/q30v1b8renrmt0cy2s996xg06c",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-wzkdcb2asdlr46luiijkktvgwawq525pvkihqjy2yliv3g4asgcq",
+        "web": "https://replicate.com/p/q30v1b8renrmt0cy2s996xg06c"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 125.889570406,
+        "total_time": 125.904590983,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/hP1xkYyEV0KwNlaX1Q8W1BwJJs3RXq9cDGDSV9vj5wauQ9oF/tmp35mofsdk.mp4"
+  },
+  {
+    "name": "03_implication",
+    "id": "spkdmzsd4xrmy0cy2s9bwe7v8m",
+    "prompt": "Professional person reviewing job listings on laptop, thoughtful career search mood, gentle motion, no readable text, no logos.",
+    "result": {
+      "id": "spkdmzsd4xrmy0cy2s9bwe7v8m",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, unreadable text, watermark, logo, subtitles, captions",
+        "prompt": "Professional person reviewing job listings on laptop, thoughtful career search mood, gentle motion, no readable text, no logos.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 123.2sec\nGenerated video ID: 882743403987996696\nDownloading 2077782 bytes\nDownloaded 1.98MB in 1.13sec\n",
+      "output": "https://replicate.delivery/xezq/9H4GOgYdPXIPAx7mmbJ1gLa1x8Og3Jzm9UYcfuU1inyeC1jWA/tmptdpvp114.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:15:44.807Z",
+      "started_at": "2026-05-11T09:15:44.828605844Z",
+      "completed_at": "2026-05-11T09:17:50.004043804Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/spkdmzsd4xrmy0cy2s9bwe7v8m/cancel",
+        "get": "https://api.replicate.com/v1/predictions/spkdmzsd4xrmy0cy2s9bwe7v8m",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-jthvllenm3wq7ruu6wbb2i74ysadkjpysp4dtcgaqjsjt6wyplza",
+        "web": "https://replicate.com/p/spkdmzsd4xrmy0cy2s9bwe7v8m"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 125.175437954,
+        "total_time": 125.197043804,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/9H4GOgYdPXIPAx7mmbJ1gLa1x8Og3Jzm9UYcfuU1inyeC1jWA/tmptdpvp114.mp4"
+  },
+  {
+    "name": "04_cta",
+    "id": "7pn5y79zjsrmr0cy2s9bbwsdg0",
+    "prompt": "Polished SaaS product report style background, abstract UI cards floating over purple orange gradient, professional, no readable text, no logos.",
+    "result": {
+      "id": "7pn5y79zjsrmr0cy2s9bbwsdg0",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, unreadable text, watermark, logo, subtitles, captions",
+        "prompt": "Polished SaaS product report style background, abstract UI cards floating over purple orange gradient, professional, no readable text, no logos.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.7sec\nGenerated video ID: 882743420920406069\nDownloading 2298858 bytes\nDownloaded 2.19MB in 2.43sec\n",
+      "output": "https://replicate.delivery/xezq/1qr5tNr8rr62M9TITrhCsrLvCVklvUYIWpY2TfbIcJYhh6RLA/tmpusfq1acs.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:15:49.526Z",
+      "started_at": "2026-05-11T09:15:49.538163064Z",
+      "completed_at": "2026-05-11T09:17:55.984599813Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/7pn5y79zjsrmr0cy2s9bbwsdg0/cancel",
+        "get": "https://api.replicate.com/v1/predictions/7pn5y79zjsrmr0cy2s9bbwsdg0",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-kqnhiocxzyxk775p3qrpvbcn6ebcs6ydpmaesfsw3squthyrnnda",
+        "web": "https://replicate.com/p/7pn5y79zjsrmr0cy2s9bbwsdg0"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 126.44643675,
+        "total_time": 126.458599813,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/1qr5tNr8rr62M9TITrhCsrLvCVklvUYIWpY2TfbIcJYhh6RLA/tmpusfq1acs.mp4"
+  }
+]

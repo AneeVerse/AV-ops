@@ -1,0 +1,70 @@
+{
+  "model": "wan-video/wan-2.7-t2v",
+  "pricing_source": "Replicate model page embedded pricing: $0.10 per second of output video",
+  "generated_clips": 4,
+  "output_seconds_total": 20,
+  "price_per_output_second_usd": 0.1,
+  "estimated_clip_generation_cost_usd": 2.0,
+  "clip_metrics": [
+    {
+      "name": "01_hook",
+      "id": "tajaj4emvnrmw0cy2w9aeg1xxw",
+      "status": "succeeded",
+      "metrics": {
+        "predict_time": 72.554461902,
+        "resolution_target": "1080p",
+        "total_time": 72.595114128,
+        "video_output_count": 1,
+        "video_output_duration_seconds": 5
+      },
+      "created_at": "2026-05-11T12:46:10.653Z",
+      "started_at": "2026-05-11T12:46:10.693652226Z",
+      "completed_at": "2026-05-11T12:47:23.248114128Z"
+    },
+    {
+      "name": "02_insight",
+      "id": "dxh1hrgps9rmt0cy2w9tfse3xc",
+      "status": "succeeded",
+      "metrics": {
+        "predict_time": 113.010815039,
+        "resolution_target": "1080p",
+        "total_time": 113.022756298,
+        "video_output_count": 1,
+        "video_output_duration_seconds": 5
+      },
+      "created_at": "2026-05-11T12:46:27.53Z",
+      "started_at": "2026-05-11T12:46:27.541941259Z",
+      "completed_at": "2026-05-11T12:48:20.552756298Z"
+    },
+    {
+      "name": "03_implication",
+      "id": "73t08v2s9nrmr0cy2w9t5ykyz8",
+      "status": "succeeded",
+      "metrics": {
+        "predict_time": 114.281708501,
+        "resolution_target": "1080p",
+        "total_time": 114.293572435,
+        "video_output_count": 1,
+        "video_output_duration_seconds": 5
+      },
+      "created_at": "2026-05-11T12:46:44.557Z",
+      "started_at": "2026-05-11T12:46:44.568863934Z",
+      "completed_at": "2026-05-11T12:48:38.850572435Z"
+    },
+    {
+      "name": "04_cta",
+      "id": "e0f2gxwvwxrmt0cy2w9txeggr0",
+      "status": "succeeded",
+      "metrics": {
+        "predict_time": 64.358165042,
+        "resolution_target": "1080p",
+        "total_time": 64.382389724,
+        "video_output_count": 1,
+        "video_output_duration_seconds": 5
+      },
+      "created_at": "2026-05-11T12:47:01.607Z",
+      "started_at": "2026-05-11T12:47:01.631224681Z",
+      "completed_at": "2026-05-11T12:48:05.989389724Z"
+    }
+  ]
+}

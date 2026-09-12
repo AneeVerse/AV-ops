@@ -1,0 +1,172 @@
+{
+  "id": "PDF2PPTPRODq86GshHc",
+  "name": "PDF to PPT - Production V9 Images",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pdf-to-ppt-production-v9-images",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5372c0a6-708f-41bc-b78d-ba04b9daca88",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\nconst { spawnSync } = require('child_process');\n\nconst FOLDERS = {\n  uploaded_pdfs: '10A0EiuyCodhhWBDEnC_1QG301NCczWws',\n  generated_content: '1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT',\n  generated_images: '1cXk6KrLLd1Z5w28nA68p0270BUfhsLTS',\n  final_outputs: '1yxxMEjUt6gNky3SWzGnTxYxoo64LehB_',\n  logs_debug: '11YmnnsEeoLUbEdOIuRqIB3i2b49XJMzJ',\n};\nconst body = $json.body || $json || {};\nconst binaryKeys = Object.keys($binary || {});\nif (!binaryKeys.length) throw new Error('No PDF file uploaded');\nconst key = binaryKeys.includes('pdf_file') ? 'pdf_file' : (binaryKeys.includes('file') ? 'file' : binaryKeys[0]);\nconst meta = $binary[key];\nconst originalName = meta.fileName || body.fileName || 'uploaded.pdf';\nif (!originalName.toLowerCase().endsWith('.pdf') && meta.mimeType !== 'application/pdf') throw new Error('Uploaded file must be PDF');\n\nconst runId = 'pdf_to_ppt_' + new Date().toISOString().replace(/[-:.TZ]/g,'').slice(0,14) + '_' + Math.random().toString(36).slice(2,7);\nconst uploadDir = '/var/lib/n8n/pdf_to_ppt_backend/uploads';\nfs.mkdirSync(uploadDir, { recursive: true });\nconst localPdf = path.join(uploadDir, `${runId}.pdf`);\nconst pdfBuffer = await this.helpers.getBinaryDataBuffer(0, key);\nfs.writeFileSync(localPdf, pdfBuffer);\n\nconst targetSlides = String(body.target_slide_count || body.slide_count || body.slides || '10');\nconst projectName = String(body.project_name || body.project || path.basename(originalName, path.extname(originalName)) || 'AI Pipeline Test');\nconst env = {\n  PATH: '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',\n  HOME: '/var/lib/n8n',\n  PPT_WORKSPACE: '/var/lib/n8n/pdf_to_ppt_backend/workspace',\n  PPT_PIPELINE_BASE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_pipeline',\n  PPT_LIBRARY_BASE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_library',\n  PPT_ENV_FILE: '/var/lib/n8n/pdf_to_ppt_backend/workspace/.env',\n  PPT_PLANNER_MODEL: 'openai/gpt-4o-mini',\n  PPT_PROJECT_NAME: projectName,\n  PPT_TARGET_SLIDE_COUNT: targetSlides,\n  PPT_IMAGE_PROVIDER: body.image_provider || 'auto',\n};\nconst py = '/var/lib/n8n/pdf_to_ppt_backend/.venv-ppt/bin/python';\nconst script = '/var/lib/n8n/pdf_to_ppt_backend/workspace/ppt_pipeline/scripts/run_ai_pipeline.py';\nconst proc = spawnSync(py, [script, localPdf], { env, encoding: 'utf8', timeout: 1200000, maxBuffer: 1024 * 1024 * 100 });\nif (proc.error) throw proc.error;\nif (proc.status !== 0) throw new Error(`Backend failed (${proc.status}): ${proc.stderr || proc.stdout}`);\nlet parsed;\ntry { parsed = JSON.parse(proc.stdout); } catch (e) { throw new Error('Backend did not return JSON: ' + proc.stdout.slice(0, 1000)); }\nif (!parsed.success) throw new Error('Backend returned success=false');\nif (!fs.existsSync(parsed.final_pptx)) throw new Error('Final PPTX missing: ' + parsed.final_pptx);\n\nfunction safeName(name) { return String(name || 'presentation').replace(/[^a-z0-9_.-]+/gi, '_').replace(/^_+|_+$/g, '').slice(0, 90) || 'presentation'; }\nfunction multipartBody(metadata, fileBuffer, mimeType) {\n  const boundary = `pdf_to_ppt_${Date.now()}_${Math.random().toString(16).slice(2)}`;\n  const delimiter = `--${boundary}\\r\\n`;\n  const close = `\\r\\n--${boundary}--`;\n  const body = Buffer.concat([\n    Buffer.from(delimiter),\n    Buffer.from('Content-Type: application/json; charset=UTF-8\\r\\n\\r\\n'),\n    Buffer.from(JSON.stringify(metadata)),\n    Buffer.from('\\r\\n'),\n    Buffer.from(delimiter),\n    Buffer.from(`Content-Type: ${mimeType}\\r\\n\\r\\n`),\n    Buffer.isBuffer(fileBuffer) ? fileBuffer : Buffer.from(fileBuffer),\n    Buffer.from(close),\n  ]);\n  return { boundary, body };\n}\nfunction fileOrJsonBuffer(filePath, fallbackObj) {\n  if (filePath && fs.existsSync(filePath)) return fs.readFileSync(filePath);\n  return Buffer.from(JSON.stringify(fallbackObj || {}, null, 2), 'utf8');\n}\nconst project = safeName(projectName);\nconst outputDir = parsed.output_dir;\nconst artifacts = [\n  { kind: 'source_pdf', folderId: FOLDERS.uploaded_pdfs, fileName: `${runId}__${project}__source.pdf`, mimeType: 'application/pdf', buffer: pdfBuffer },\n  { kind: 'final_pptx', folderId: FOLDERS.final_outputs, fileName: `${runId}__${project}.pptx`, mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', buffer: fs.readFileSync(parsed.final_pptx) },\n  { kind: 'extracted_text', folderId: FOLDERS.generated_content, fileName: `${runId}__${project}__extracted_text.txt`, mimeType: 'text/plain', buffer: fileOrJsonBuffer(path.join(outputDir, 'extraction', 'extracted_text.txt'), { missing: 'extracted_text.txt' }) },\n  { kind: 'build_payload', folderId: FOLDERS.generated_content, fileName: `${runId}__${project}__build_payload.json`, mimeType: 'application/json', buffer: fileOrJsonBuffer(parsed.planner?.output || path.join(outputDir, 'planner', 'build_payload.json'), parsed) },\n  { kind: 'generated_images_manifest', folderId: FOLDERS.generated_content, fileName: `${runId}__${project}__generated_images_manifest.json`, mimeType: 'application/json', buffer: fileOrJsonBuffer(path.join(outputDir, 'generated_images', 'generated_images_manifest.json'), parsed.images || {}) },\n  { kind: 'validation_report', folderId: FOLDERS.logs_debug, fileName: `${runId}__${project}__validation_report.json`, mimeType: 'application/json', buffer: fileOrJsonBuffer(path.join(outputDir, 'planner', 'validation_report.json'), parsed.validation || {}) },\n  { kind: 'run_summary', folderId: FOLDERS.logs_debug, fileName: `${runId}__${project}__run_summary.json`, mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ ...parsed, n8n_run_id: runId, original_file_name: originalName, project_name: projectName, stdout_tail: proc.stdout.slice(-2000), stderr_tail: proc.stderr.slice(-2000) }, null, 2), 'utf8') },\n];\nlet imageIndex = 0;\nfor (const img of (parsed.images?.generated || [])) {\n  if (!img.path || !fs.existsSync(img.path)) continue;\n  imageIndex += 1;\n  const role = safeName(img.role || 'image');\n  artifacts.push({\n    kind: `generated_image_${String(imageIndex).padStart(2, '0')}_${role}`,\n    folderId: FOLDERS.generated_images,\n    fileName: `${runId}__${project}__slide_${String(img.order || imageIndex).padStart(2, '0')}__${role}.png`,\n    mimeType: 'image/png',\n    buffer: fs.readFileSync(img.path),\n  });\n}\nconst common = {\n  run_id: runId,\n  original_file_name: originalName,\n  provider: parsed.planner?.provider,\n  image_provider: parsed.images?.generated?.[0]?.provider || null,\n  pdf_pages: parsed.extraction?.page_count,\n  text_chars: parsed.extraction?.text_char_count,\n  chunks: parsed.extraction?.chunk_count,\n  slide_count: parsed.builder?.slide_count,\n  validation_valid: parsed.validation?.valid,\n  validation_issues: parsed.validation?.issues?.length || 0,\n};\nconst items = [];\nfor (const artifact of artifacts) {\n  const { boundary, body: multipartBuffer } = multipartBody({ name: artifact.fileName, parents: [artifact.folderId] }, artifact.buffer, artifact.mimeType);\n  const binary = await this.helpers.prepareBinaryData(multipartBuffer, `${artifact.kind}.multipart.bin`, 'application/octet-stream');\n  items.push({ json: { ...common, kind: artifact.kind, target_file_name: artifact.fileName, folder_id: artifact.folderId, content_type: `multipart/related; boundary=${boundary}` }, binary: { body: binary } });\n}\nreturn items;\n"
+      },
+      "id": "b3eb204c-680d-4bc0-8e23-b62dadf32ff6",
+      "name": "Prepare Upload Items",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink,webContentLink,createdTime",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDriveOAuth2Api",
+        "sendHeaders": true,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 1200000,
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 1000
+            }
+          }
+        },
+        "specifyHeaders": "keypair",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "={{ $json.content_type }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "body"
+      },
+      "id": "cad69dd0-275c-49f9-892e-eb564ce67435",
+      "name": "Upload Artifacts to Drive",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const prepared = $('Prepare Upload Items').all();\nconst uploaded = $input.all();\nconst artifacts = {};\nconst generatedImages = [];\nfor (let i = 0; i < uploaded.length; i++) {\n  const meta = prepared[i]?.json || {};\n  const drive = uploaded[i]?.json || {};\n  const item = {\n    drive_id: drive.id,\n    name: drive.name || meta.target_file_name,\n    link: drive.webViewLink || drive.webContentLink,\n    mimeType: drive.mimeType,\n    folder_id: meta.folder_id,\n  };\n  if ((meta.kind || '').startsWith('generated_image_')) generatedImages.push(item);\n  else artifacts[meta.kind || `item_${i}`] = item;\n}\nconst base = prepared[0]?.json || {};\nreturn [{ json: {\n  success: true,\n  run_id: base.run_id,\n  original_file_name: base.original_file_name,\n  provider: base.provider,\n  image_provider: base.image_provider,\n  pdf_pages: base.pdf_pages,\n  text_chars: base.text_chars,\n  chunks: base.chunks,\n  slide_count: base.slide_count,\n  validation_valid: base.validation_valid,\n  validation_issues: base.validation_issues,\n  final_ppt_drive_id: artifacts.final_pptx?.drive_id,\n  final_ppt_link: artifacts.final_pptx?.link,\n  final_ppt_file: artifacts.final_pptx?.name,\n  source_pdf_link: artifacts.source_pdf?.link,\n  extracted_text_link: artifacts.extracted_text?.link,\n  build_payload_link: artifacts.build_payload?.link,\n  generated_images_manifest_link: artifacts.generated_images_manifest?.link,\n  generated_image_links: generatedImages.map(x => x.link),\n  validation_report_link: artifacts.validation_report?.link,\n  run_summary_link: artifacts.run_summary?.link,\n  artifacts: { ...artifacts, generated_images: generatedImages },\n}}];"
+      },
+      "id": "e103d7df-6856-4431-932a-6345425d0e1b",
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "ec5ff164-6a57-462e-af27-67aa8faa6eb4",
+      "name": "Respond With PPTX Link",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare Upload Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Upload Items": {
+      "main": [
+        [
+          {
+            "node": "Upload Artifacts to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Artifacts to Drive": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond With PPTX Link",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "active": false,
+  "pinData": {},
+  "tags": [
+    {
+      "name": "pdf-to-ppt"
+    },
+    {
+      "name": "runtime-code"
+    }
+  ]
+}

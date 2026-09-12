@@ -1,0 +1,31 @@
+{
+  "project_id": "traitdna_V0003_section3_font132",
+  "size": "1080x1920",
+  "fps": 30,
+  "section_duration_seconds": 5,
+  "total_duration_seconds": 20,
+  "audio_mode": "silent_placeholder",
+  "output_name": "traitdna_V0003_section3_font132_silent_20260630_062700.mp4",
+  "sections": [
+    {
+      "id": "section1_hook",
+      "source": "../section1/output/section1_n8n_V0003_20260629_135232_001.mp4",
+      "duration_seconds": 5.3
+    },
+    {
+      "id": "section2_insight",
+      "source": "../section2/output/section2_5_n8n_V0003_20260629_135232_001.mp4",
+      "duration_seconds": 6.2
+    },
+    {
+      "id": "section3_implication",
+      "source": "../section3/output/section3_n8n_V0003_20260629_135232_001_font132.mp4",
+      "duration_seconds": 4.1
+    },
+    {
+      "id": "section4_cta",
+      "source": "../section4/output/section4_n8n_V0003_20260629_135232_001.mp4",
+      "duration_seconds": 4.4
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T09:24:59.842063+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "fezg0qsdb5rmr0cz9dc8gfq8tc",
+  "raw_audio_url": "https://replicate.delivery/xezq/KuuqJVBB3cLbAhFLABXhMAROUU2r5bcd5nmGxiN1emA1YzbLA/tmpa6nh9kk6.mp3",
+  "raw_duration": 4.022857,
+  "fitted_duration": 4.022857,
+  "script_text": "Am I missing job opportunities because I don\u2019t know where to look?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0041_20260710_092456_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0041_20260710_092456_section1_hook_fitted.mp3"
+}

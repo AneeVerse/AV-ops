@@ -1,0 +1,17 @@
+{
+  "run_id": "builder_repeat_test_001",
+  "project_name": "Repeated Template Builder Test",
+  "output_file_name": "builder_repeat_test_output.pptx",
+  "slides": [
+    {"order": 1, "template_id": "slide_01_hero_cover", "text": {"heading": "Repeated Template Support", "supporting_text": "The builder can now reuse the same approved template multiple times in one PPTX.", "section_label": "BUILDER TEST"}, "images": {"hero_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png"}}},
+    {"order": 2, "template_id": "slide_14_section_divider_pattern", "text": {"heading": "Content Section", "subheading": "Testing repeated content templates."}},
+    {"order": 3, "template_id": "slide_08_text_heavy_insight", "text": {"heading": "First Text Insight", "body": "This is the first use of the text-heavy insight template. It explains one strategic point in a controlled format.\n\nThe same template will be used again later with different content."}},
+    {"order": 4, "template_id": "slide_08_text_heavy_insight", "text": {"heading": "Second Text Insight", "body": "This is the second use of the same text-heavy template. The slide design stays consistent while the message changes.\n\nThis is important for real PDF-to-PPT generation."}},
+    {"order": 5, "template_id": "slide_10_main_supporting_text", "text": {"heading": "First Two-Block Slide", "body_left": "Left block explains the first point clearly.", "body_right": "Right block adds supporting context without changing design."}},
+    {"order": 6, "template_id": "slide_10_main_supporting_text", "text": {"heading": "Second Two-Block Slide", "body_left": "The same layout can be reused for another idea.", "body_right": "Repeated templates make the deck easier to scale."}},
+    {"order": 7, "template_id": "slide_12_content_image", "text": {"heading": "First Image Content", "body": "This slide uses the content-plus-image template for the first visual example."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/content_a.png"}}},
+    {"order": 8, "template_id": "slide_12_content_image", "text": {"heading": "Second Image Content", "body": "This slide repeats the same image template with a different generated visual."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/content_b.png"}}},
+    {"order": 9, "template_id": "slide_18_image_only_slide", "text": {}, "images": {"full_slide_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/full.png"}}},
+    {"order": 10, "template_id": "slide_15_section_divider_diagonal", "text": {"heading": "Repeat Test Complete", "subheading": "Text, images, order, and repeated templates verified."}}
+  ]
+}

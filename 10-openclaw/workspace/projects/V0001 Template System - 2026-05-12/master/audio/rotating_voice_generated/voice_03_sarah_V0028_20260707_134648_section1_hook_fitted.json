@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-07T13:46:52.334454+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "sc1qw6ythnrmw0cz7kaaav0gb8",
+  "raw_audio_url": "https://replicate.delivery/xezq/q1UvHjOUpTbeAikrJqVnfLeZozR2pv0sVshZpDJBrpGXqWttA/tmp8zmidixn.mp3",
+  "raw_duration": 5.694694,
+  "fitted_duration": 5.694694,
+  "script_text": "An AI Engineer and adjacent roles share most of the work - and one often pays noticeably more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0028_20260707_134648_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0028_20260707_134648_section1_hook_fitted.mp3"
+}

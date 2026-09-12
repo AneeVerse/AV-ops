@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "run_id": "ai_pipeline_1779284097",
+  "input_pdf": "/root/.openclaw/workspace/ppt_pipeline/samples/sample_source.pdf",
+  "output_dir": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779284097",
+  "extraction": {
+    "source_pdf": "/root/.openclaw/workspace/ppt_pipeline/samples/sample_source.pdf",
+    "source_size_bytes": 3312,
+    "page_count": 1,
+    "text_char_count": 2202,
+    "chunk_count": 1,
+    "extract_all_pages": true,
+    "status": "ok"
+  },
+  "planner": {
+    "status": "ok",
+    "provider": "fallback_no_ai openrouter=HTTP Error 401: Unauthorized gemini=HTTP Error 503: Service Unavailable",
+    "slides": 10,
+    "valid": true,
+    "issues": 0,
+    "output": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779284097/planner/build_payload.json"
+  },
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "slide_count": 10
+  },
+  "builder": {
+    "success": true,
+    "run_id": "ai_planner_1779284097",
+    "output_pptx_path": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779284097/ai_pipeline_output.pptx",
+    "slide_count": 10,
+    "selected_source_slides": [
+      1,
+      14,
+      8,
+      10,
+      13,
+      3,
+      8,
+      10,
+      18,
+      15
+    ],
+    "replacements": {
+      "text": 32,
+      "images": 1
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "final_pptx": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779284097/ai_pipeline_output.pptx"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T16:53:42.963189+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "bag2jac20drmw0cze3zr64bz5c",
+  "raw_audio_url": "https://replicate.delivery/xezq/9PX1b3oELD6RAp5rx1paVfaBlmBW5JcIlu8P8opTfUNWAB6WA/tmpl16e7mmn.mp3",
+  "raw_duration": 4.675918,
+  "fitted_duration": 4.675918,
+  "script_text": "You need to know whether a role is AI-resilient, AI-augmented, or AI-disrupted.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0085_20260717_165327_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0085_20260717_165327_section3_implication_fitted.mp3"
+}

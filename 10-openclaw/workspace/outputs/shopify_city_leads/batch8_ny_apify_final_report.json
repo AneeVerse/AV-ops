@@ -1,0 +1,1391 @@
+{
+  "runs": [
+    {
+      "label": "batch8-group1",
+      "run_id": "6AQ6asEv1L6gzcoG4",
+      "status": "SUCCEEDED",
+      "dataset_id": "J3P0OILOvakzCxJgT",
+      "cost": 0.041499999999999995,
+      "queries": [
+        "Brooklyn handmade fine jewelry Shopify email",
+        "Brooklyn demi fine jewelry Shopify contact",
+        "Brooklyn gold vermeil jewelry Shopify contact",
+        "Brooklyn 14k gold jewelry Shopify email",
+        "Brooklyn gemstone jewelry Shopify email",
+        "Brooklyn engagement ring Shopify contact",
+        "Brooklyn jewelry boutique Shopify email",
+        "Manhattan handmade fine jewelry Shopify email",
+        "Manhattan demi fine jewelry Shopify contact",
+        "Manhattan 14k gold jewelry Shopify email"
+      ],
+      "dataset_items": 10,
+      "candidates": 72,
+      "added": 0,
+      "added_leads": [],
+      "rejected": 40,
+      "skipped": 32,
+      "blanked_emails": 0,
+      "reject_breakdown": {
+        "duplicate_or_bad_domain": 32,
+        "fetch_failed": 31,
+        "not_shopify": 4,
+        "candidate_timeout": 4,
+        "category_mismatch": 1
+      },
+      "rejects_sample": [
+        {
+          "domain": "catbirdnyc.com",
+          "url": "https://catbirdnyc.com/",
+          "query": "Brooklyn handmade fine jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "machastudio.com › collections › one-of-a-kind",
+          "url": "https://machastudio.com › collections › one-of-a-kind/",
+          "query": "Brooklyn handmade fine jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "shayanyc.com",
+          "url": "https://shayanyc.com/",
+          "query": "Brooklyn handmade fine jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "shayanyc.com › contact",
+          "url": "https://shayanyc.com › contact/",
+          "query": "Brooklyn handmade fine jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tinesranchco.com › products › brooklyn-engagem...",
+          "url": "https://tinesranchco.com › products › brooklyn-engagem.../",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brilliantearth.com",
+          "url": "https://brilliantearth.com/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brilliantearth.com › customer service",
+          "url": "https://brilliantearth.com › customer service/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "yelp.com › shopping",
+          "url": "https://yelp.com › shopping/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "theyellowdoor.com",
+          "url": "https://theyellowdoor.com/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "mapquest.com",
+          "url": "https://mapquest.com/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "mapquest.com › ... › new york › brooklyn",
+          "url": "https://mapquest.com › ... › new york › brooklyn/",
+          "query": "Brooklyn engagement ring Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "gorjana.com › pages › cobble-hill-store-details",
+          "url": "https://gorjana.com › pages › cobble-hill-store-details/",
+          "query": "Brooklyn 14k gold jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "ecomheroes.dev",
+          "url": "https://ecomheroes.dev/",
+          "query": "Brooklyn 14k gold jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "ecomheroes.dev › blogs › shopify-help › best-sho...",
+          "url": "https://ecomheroes.dev › blogs › shopify-help › best-sho.../",
+          "query": "Brooklyn 14k gold jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "poetryofmaterialthings.com",
+          "url": "https://poetryofmaterialthings.com/",
+          "query": "Manhattan handmade fine jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "dokasch.com",
+          "url": "https://dokasch.com/",
+          "query": "Manhattan handmade fine jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "dokasch.com › ...",
+          "url": "https://dokasch.com › .../",
+          "query": "Manhattan handmade fine jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brilliantearth.com › stores",
+          "url": "https://brilliantearth.com › stores/",
+          "query": "Brooklyn gemstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "bario-neal.com",
+          "url": "https://bario-neal.com/",
+          "query": "Brooklyn gemstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "bario-neal.com › nyc-shop",
+          "url": "https://bario-neal.com › nyc-shop/",
+          "query": "Brooklyn gemstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brooklyngemologist.com",
+          "url": "https://brooklyngemologist.com/",
+          "query": "Brooklyn gemstone jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "brooklyngemologist.com › contact",
+          "url": "https://brooklyngemologist.com › contact/",
+          "query": "Brooklyn gemstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "quillfinejewelry.com › products › brooklyn-gold...",
+          "url": "https://quillfinejewelry.com › products › brooklyn-gold.../",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brooklyncharm.com",
+          "url": "https://brooklyncharm.com/",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "bayridgejewelers.com",
+          "url": "https://bayridgejewelers.com/",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "bayridgejewelers.com › contact-us",
+          "url": "https://bayridgejewelers.com › contact-us/",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "wolfandbadger.com",
+          "url": "https://wolfandbadger.com/",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "wolfandbadger.com › brooklyn-gold-verm...",
+          "url": "https://wolfandbadger.com › brooklyn-gold-verm.../",
+          "query": "Brooklyn gold vermeil jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "phyllisandrosie.com › pages › contact",
+          "url": "https://phyllisandrosie.com › pages › contact/",
+          "query": "Brooklyn demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "preetisandhu.com › pages › vermeil-jewelry",
+          "url": "https://preetisandhu.com › pages › vermeil-jewelry/",
+          "query": "Brooklyn demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "mollysjewelers.com",
+          "url": "https://mollysjewelers.com/",
+          "query": "Brooklyn demi fine jewelry Shopify contact",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "mollysjewelers.com › jewelry",
+          "url": "https://mollysjewelers.com › jewelry/",
+          "query": "Brooklyn demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "deandavidson.com › pages › contact",
+          "url": "https://deandavidson.com › pages › contact/",
+          "query": "Brooklyn demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "writtenbyforest.com",
+          "url": "https://writtenbyforest.com/",
+          "query": "Brooklyn jewelry boutique Shopify email",
+          "reason": "category_mismatch"
+        },
+        {
+          "domain": "camillejewelry.com",
+          "url": "https://camillejewelry.com/",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "nefj.com",
+          "url": "https://nefj.com/",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "nefj.com › company › contact",
+          "url": "https://nefj.com › company › contact/",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "maitredediamant.com › pages › contact",
+          "url": "https://maitredediamant.com › pages › contact/",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tradicao.pt",
+          "url": "https://tradicao.pt/",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tradicao.pt › ...",
+          "url": "https://tradicao.pt › .../",
+          "query": "Manhattan demi fine jewelry Shopify contact",
+          "reason": "fetch_failed"
+        }
+      ],
+      "cleanup": [],
+      "baseline": {
+        "total_rows": 379,
+        "new_york_rows": 308,
+        "emails_found": 289,
+        "new_york_emails": 229,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      },
+      "final": {
+        "total_rows": 381,
+        "new_york_rows": 310,
+        "emails_found": 290,
+        "new_york_emails": 230,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      }
+    },
+    {
+      "label": "batch8-group2",
+      "run_id": "gLEfvNSpwXr2tIJhb",
+      "status": "SUCCEEDED",
+      "dataset_id": "LiTnNtPBsschxv2pg",
+      "cost": 0.041499999999999995,
+      "queries": [
+        "Manhattan diamond jewelry Shopify contact",
+        "Manhattan jewelry boutique Shopify email",
+        "NYC custom jewelry Shopify contact email",
+        "NYC personalized jewelry Shopify email",
+        "NYC birthstone jewelry Shopify email",
+        "NYC zodiac jewelry Shopify email",
+        "NYC permanent jewelry Shopify contact",
+        "NYC welded bracelet Shopify jewelry email",
+        "NYC minimalist jewelry Shopify email",
+        "NYC sculptural jewelry Shopify email"
+      ],
+      "dataset_items": 10,
+      "candidates": 91,
+      "added": 12,
+      "added_leads": [
+        {
+          "Store Name": "The Sourced Studio",
+          "Link": "https://thesourcedstudio.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Demi-fine Jewellery",
+          "Email": "info@thesourcedstudio.com",
+          "Email Source URL": "https://thesourcedstudio.com/pages/contact-us",
+          "Email Source Type": "Contact Page",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Jill Platner",
+          "Link": "https://jillplatner.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "info@jillplatner.com",
+          "Email Source URL": "https://jillplatner.com/pages/contact",
+          "Email Source Type": "Contact Page",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Rutheny",
+          "Link": "https://ruthenyjewelry.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified; Email blanked as unreliable/vendor/non-domain (jrutheny@gmail.com)"
+        },
+        {
+          "Store Name": "Lady Grey",
+          "Link": "https://ladygreyjewelry.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "info@ladygreyjewelry.com",
+          "Email Source URL": "https://ladygreyjewelry.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Uniform Object",
+          "Link": "https://uniformobject.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "studio@uniformobject.com",
+          "Email Source URL": "https://uniformobject.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Lolabean",
+          "Link": "https://lolabean.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Demi-fine Jewellery",
+          "Email": "hello@lolabean.com",
+          "Email Source URL": "https://lolabean.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "CAMELLIA",
+          "Link": "https://camellianyc.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Demi-fine Jewellery",
+          "Email": "support@camellianyc.com",
+          "Email Source URL": "https://camellianyc.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "ZodiacJules",
+          "Link": "https://zodiacjules.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Demi-fine Jewellery",
+          "Email": "julie@zodiacjules.com",
+          "Email Source URL": "https://zodiacjules.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "Country verified; city inferred from search"
+        },
+        {
+          "Store Name": "MONTSERRAT New York",
+          "Link": "https://montserrat-nyc.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "operations@montserrat-nyc.com",
+          "Email Source URL": "https://montserrat-nyc.com/policies/privacy-policy",
+          "Email Source Type": "Privacy Policy",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Sequin Jewelry",
+          "Link": "https://sequin-nyc.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "info@sequin-nyc.com",
+          "Email Source URL": "https://sequin-nyc.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "effyjewelry.com",
+          "Link": "https://effyjewelry.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Demi-fine Jewellery",
+          "Email": "privacy@effyjewelry.com",
+          "Email Source URL": "https://effyjewelry.com/pages/privacy-policy",
+          "Email Source Type": "Privacy Policy",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Too Dreamy Jewelry",
+          "Link": "https://toodreamy.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "No public email found; Country verified; city inferred from search"
+        }
+      ],
+      "rejected": 58,
+      "skipped": 21,
+      "blanked_emails": 1,
+      "reject_breakdown": {
+        "fetch_failed": 43,
+        "duplicate_or_bad_domain": 21,
+        "not_shopify": 9,
+        "category_mismatch": 2,
+        "candidate_timeout": 4
+      },
+      "rejects_sample": [
+        {
+          "domain": "help.shopify.com › manual › your-account › cont...",
+          "url": "https://help.shopify.com › manual › your-account › cont.../",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "ecijewelers.com › pages › contact",
+          "url": "https://ecijewelers.com › pages › contact/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "jennifermillerjewelry.com › pages › contact-us",
+          "url": "https://jennifermillerjewelry.com › pages › contact-us/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "aeolidia.com",
+          "url": "https://aeolidia.com/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "aeolidia.com › shop-type › jewelry-accessories",
+          "url": "https://aeolidia.com › shop-type › jewelry-accessories/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "netalico.com",
+          "url": "https://netalico.com/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "netalico.com › shopify agencies",
+          "url": "https://netalico.com › shopify agencies/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "castlecliff.nyc",
+          "url": "https://castlecliff.nyc/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "category_mismatch"
+        },
+        {
+          "domain": "castlecliff.nyc › pages › contact-us",
+          "url": "https://castlecliff.nyc › pages › contact-us/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "blackbeltcommerce.com",
+          "url": "https://blackbeltcommerce.com/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "blackbeltcommerce.com › services-2",
+          "url": "https://blackbeltcommerce.com › services-2/",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "community.shopify.com › how-to-do-offer-cust...",
+          "url": "https://community.shopify.com › how-to-do-offer-cust.../",
+          "query": "NYC custom jewelry Shopify contact email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "catbirdnyc.com",
+          "url": "https://catbirdnyc.com/",
+          "query": "NYC minimalist jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "etsy.com › ... › website templates",
+          "url": "https://etsy.com › ... › website templates/",
+          "query": "NYC minimalist jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "nyminimalist.com",
+          "url": "https://nyminimalist.com/",
+          "query": "NYC minimalist jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "loveweld.com",
+          "url": "https://loveweld.com/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "category_mismatch"
+        },
+        {
+          "domain": "loveweld.com › pages › permanent-bracelets-in-nyc",
+          "url": "https://loveweld.com › pages › permanent-bracelets-in-nyc/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "auburnjewelry.com › pages › auburn-everlasting",
+          "url": "https://auburnjewelry.com › pages › auburn-everlasting/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "reddit.com",
+          "url": "https://reddit.com/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "yelp.com › shopping",
+          "url": "https://yelp.com › shopping/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "letsbatch.com",
+          "url": "https://letsbatch.com/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "letsbatch.com › experiences",
+          "url": "https://letsbatch.com › experiences/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "thesourcedstudio.com › pages › permanent-jewelry",
+          "url": "https://thesourcedstudio.com › pages › permanent-jewelry/",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "amarewear.com › products › permanent-jewelry-n...",
+          "url": "https://amarewear.com › products › permanent-jewelry-n.../",
+          "query": "NYC welded bracelet Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "events.shopifyny.com",
+          "url": "https://events.shopifyny.com/",
+          "query": "NYC sculptural jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "events.shopifyny.com › shopifyny",
+          "url": "https://events.shopifyny.com › shopifyny/",
+          "query": "NYC sculptural jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "poetryofmaterialthings.com",
+          "url": "https://poetryofmaterialthings.com/",
+          "query": "NYC sculptural jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "loveweld.com › pages › permanent-jewelry-nyc",
+          "url": "https://loveweld.com › pages › permanent-jewelry-nyc/",
+          "query": "NYC permanent jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "analuisa.com › permanent-jewelry-soho-ny",
+          "url": "https://analuisa.com › permanent-jewelry-soho-ny/",
+          "query": "NYC permanent jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "kikichicshop.com › products › permanent-bracelet",
+          "url": "https://kikichicshop.com › products › permanent-bracelet/",
+          "query": "NYC permanent jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "estatediamondjewelry.com",
+          "url": "https://estatediamondjewelry.com/",
+          "query": "Manhattan diamond jewelry Shopify contact",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "estatediamondjewelry.com › jewelry blog",
+          "url": "https://estatediamondjewelry.com › jewelry blog/",
+          "query": "Manhattan diamond jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "idjewelry.com",
+          "url": "https://idjewelry.com/",
+          "query": "Manhattan diamond jewelry Shopify contact",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "idjewelry.com › jewelry-district-nyc",
+          "url": "https://idjewelry.com › jewelry-district-nyc/",
+          "query": "Manhattan diamond jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "gemfind.com › pages › contact",
+          "url": "https://gemfind.com › pages › contact/",
+          "query": "Manhattan diamond jewelry Shopify contact",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tjbnyc.com",
+          "url": "https://tjbnyc.com/",
+          "query": "Manhattan jewelry boutique Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "sohogem.com",
+          "url": "https://sohogem.com/",
+          "query": "Manhattan jewelry boutique Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "sohogem.com › jewelry",
+          "url": "https://sohogem.com › jewelry/",
+          "query": "Manhattan jewelry boutique Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tiffany.com",
+          "url": "https://tiffany.com/",
+          "query": "Manhattan jewelry boutique Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "apps.shopify.com › join-roxie",
+          "url": "https://apps.shopify.com › join-roxie/",
+          "query": "NYC personalized jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "ajsjewelers.com › pages › custom-nameplate...",
+          "url": "https://ajsjewelers.com › pages › custom-nameplate.../",
+          "query": "NYC personalized jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "gabrielny.com",
+          "url": "https://gabrielny.com/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "gabrielny.com › gifts › birthstone-jewelry",
+          "url": "https://gabrielny.com › gifts › birthstone-jewelry/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "catbirdnyc.com › collections › birth-month",
+          "url": "https://catbirdnyc.com › collections › birth-month/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "birthstone.com › pages › contact",
+          "url": "https://birthstone.com › pages › contact/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "shaneco.com",
+          "url": "https://shaneco.com/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "shaneco.com › birthstones-by-month",
+          "url": "https://shaneco.com › birthstones-by-month/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "bondeyejewelry.com › pages › birthstone-jewelry",
+          "url": "https://bondeyejewelry.com › pages › birthstone-jewelry/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "camellianyc.com › collections › birthstones",
+          "url": "https://camellianyc.com › collections › birthstones/",
+          "query": "NYC birthstone jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "montserrat-nyc.com › products › zodiac-necklace",
+          "url": "https://montserrat-nyc.com › products › zodiac-necklace/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "catbirdnyc.com › collections › zodiac-jewelry",
+          "url": "https://catbirdnyc.com › collections › zodiac-jewelry/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "sequin-nyc.com › collections › zodiac-jewelry",
+          "url": "https://sequin-nyc.com › collections › zodiac-jewelry/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "artistsandfleas.com",
+          "url": "https://artistsandfleas.com/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "artistsandfleas.com › meet-our-members-zodi...",
+          "url": "https://artistsandfleas.com › meet-our-members-zodi.../",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "davidwebb.com › collections › zodiac",
+          "url": "https://davidwebb.com › collections › zodiac/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "effyjewelry.com › collections › zodiac",
+          "url": "https://effyjewelry.com › collections › zodiac/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "toodreamy.com › collections › zodiac-necklaces",
+          "url": "https://toodreamy.com › collections › zodiac-necklaces/",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "traxnyc.com › collections › womens-zodiac-neckla...",
+          "url": "https://traxnyc.com › collections › womens-zodiac-neckla.../",
+          "query": "NYC zodiac jewelry Shopify email",
+          "reason": "fetch_failed"
+        }
+      ],
+      "cleanup": [],
+      "baseline": {
+        "total_rows": 381,
+        "new_york_rows": 310,
+        "emails_found": 290,
+        "new_york_emails": 230,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      },
+      "final": {
+        "total_rows": 399,
+        "new_york_rows": 328,
+        "emails_found": 302,
+        "new_york_emails": 242,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      }
+    },
+    {
+      "label": "batch8-group3",
+      "run_id": "CMO8oeLk6xWasoy5q",
+      "status": "SUCCEEDED",
+      "dataset_id": "Zs93KNDUaqnmaABNh",
+      "cost": 0.037,
+      "queries": [
+        "New York ethical jewelry Shopify email",
+        "New York sustainable jewelry Shopify email",
+        "New York lab grown diamond Shopify jewelry email",
+        "New York moissanite ring Shopify email",
+        "New York signet ring Shopify email",
+        "New York charm jewelry Shopify email",
+        "New York pearl jewelry Shopify email",
+        "New York enamel jewelry Shopify email",
+        "New York chain jewelry Shopify email",
+        "New York piercing jewelry Shopify email"
+      ],
+      "dataset_items": 10,
+      "candidates": 89,
+      "added": 12,
+      "added_leads": [
+        {
+          "Store Name": "TJE",
+          "Link": "https://thejewelryedit.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "support@thejewelryedit.com",
+          "Email Source URL": "https://thejewelryedit.com/pages/privacy-policy",
+          "Email Source Type": "Privacy Policy",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "MARIA TASH",
+          "Link": "https://mariatash.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "No public email found; Country verified; city inferred from search"
+        },
+        {
+          "Store Name": "VERAMEAT",
+          "Link": "https://verameat.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "manager@verameat.com",
+          "Email Source URL": "https://verameat.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "MATEO",
+          "Link": "https://mateonewyork.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "sales@mateonewyork.com",
+          "Email Source URL": "https://mateonewyork.com/pages/contact",
+          "Email Source Type": "Contact Page",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "ITI NYC",
+          "Link": "https://itinyc.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "sales@itinyc.com",
+          "Email Source URL": "https://itinyc.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Rockford Collection",
+          "Link": "https://rockfordcollection.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified; Email blanked as unreliable/vendor/non-domain (ecom-swiper@11.css)"
+        },
+        {
+          "Store Name": "B.Tiff New York",
+          "Link": "https://btiff.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "info@btiff.com",
+          "Email Source URL": "https://btiff.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "AVIR New York",
+          "Link": "https://avirnewyork.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "No public email found; City and country verified"
+        },
+        {
+          "Store Name": "Philippe Enamel Jewelry",
+          "Link": "https://philippeenamel.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "",
+          "Email Source URL": "",
+          "Email Source Type": "",
+          "Shopify Verified": "Yes",
+          "Notes": "Country verified; city inferred from search; Email blanked as unreliable/vendor/non-domain (philippeenameljewelry@gmail.com)"
+        },
+        {
+          "Store Name": "Verdura",
+          "Link": "https://verdura.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "info@verdura.com",
+          "Email Source URL": "https://verdura.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        },
+        {
+          "Store Name": "Pearl Factory",
+          "Link": "https://pearl-factory.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "customerservice@pearl-factory.com",
+          "Email Source URL": "https://pearl-factory.com/",
+          "Email Source Type": "Homepage/Footer",
+          "Shopify Verified": "Yes",
+          "Notes": "Country verified; city inferred from search"
+        },
+        {
+          "Store Name": "Roseate Jewelry",
+          "Link": "https://roseatejewelry.com/",
+          "Country": "US",
+          "City": "New York",
+          "Category": "Fine Jewellery",
+          "Email": "sales@roseatejewelry.com",
+          "Email Source URL": "https://roseatejewelry.com/pages/contact",
+          "Email Source Type": "Contact Page",
+          "Shopify Verified": "Yes",
+          "Notes": "City and country verified"
+        }
+      ],
+      "rejected": 57,
+      "skipped": 20,
+      "blanked_emails": 2,
+      "reject_breakdown": {
+        "duplicate_or_bad_domain": 20,
+        "fetch_failed": 36,
+        "candidate_timeout": 8,
+        "not_shopify": 11,
+        "category_mismatch": 2
+      },
+      "rejects_sample": [
+        {
+          "domain": "ringcometrue.com › pages › new-york-city-mois...",
+          "url": "https://ringcometrue.com › pages › new-york-city-mois.../",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "laurenbjewelry.com",
+          "url": "https://laurenbjewelry.com/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "laurenbjewelry.com › moissanite-engageme...",
+          "url": "https://laurenbjewelry.com › moissanite-engageme.../",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "venazia.com",
+          "url": "https://venazia.com/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "venazia.com › ... › new york › manhattan",
+          "url": "https://venazia.com › ... › new york › manhattan/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "moissaniteco.com",
+          "url": "https://moissaniteco.com/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "yelp.com › shopping",
+          "url": "https://yelp.com › shopping/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "ritani.com",
+          "url": "https://ritani.com/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "charlesandcolvard.com",
+          "url": "https://charlesandcolvard.com/",
+          "query": "New York moissanite ring Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "grownbrilliance.com",
+          "url": "https://grownbrilliance.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "foreverdiamondsny.com",
+          "url": "https://foreverdiamondsny.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "solitairelabdiamond.com",
+          "url": "https://solitairelabdiamond.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "adadiamonds.com",
+          "url": "https://adadiamonds.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "lioridiamonds.com › pages › home-page",
+          "url": "https://lioridiamonds.com › pages › home-page/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "reddit.com",
+          "url": "https://reddit.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "loosegrowndiamond.com",
+          "url": "https://loosegrowndiamond.com/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "loosegrowndiamond.com › contact-us",
+          "url": "https://loosegrowndiamond.com › contact-us/",
+          "query": "New York lab grown diamond Shopify jewelry email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "enverojewelry.com › pages › contact-us",
+          "url": "https://enverojewelry.com › pages › contact-us/",
+          "query": "New York ethical jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "nyjewelryhouse.com › pages › contact-us",
+          "url": "https://nyjewelryhouse.com › pages › contact-us/",
+          "query": "New York ethical jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "gstattoogroup.com",
+          "url": "https://gstattoogroup.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "ninemoonspiercing.com",
+          "url": "https://ninemoonspiercing.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "wildlike.com",
+          "url": "https://wildlike.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "category_mismatch"
+        },
+        {
+          "domain": "magpienewyork.com",
+          "url": "https://magpienewyork.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "magpienewyork.com › contact-us",
+          "url": "https://magpienewyork.com › contact-us/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "sogoldstudios.com",
+          "url": "https://sogoldstudios.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "theendisnearbrooklyn.com",
+          "url": "https://theendisnearbrooklyn.com/",
+          "query": "New York piercing jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "verameat.com › new-york-preorder",
+          "url": "https://verameat.com › new-york-preorder/",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "roen.nyc › products › leor-signet-ring",
+          "url": "https://roen.nyc › products › leor-signet-ring/",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "mateonewyork.com › products › gold-signet-ring-1",
+          "url": "https://mateonewyork.com › products › gold-signet-ring-1/",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "catbirdnyc.com",
+          "url": "https://catbirdnyc.com/",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "catbirdnyc.com › rings › signet-rings",
+          "url": "https://catbirdnyc.com › rings › signet-rings/",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "itinyc.com › products › round-signet-rings-sterli...",
+          "url": "https://itinyc.com › products › round-signet-rings-sterli.../",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "rockfordcollection.com › pages › signet-ri...",
+          "url": "https://rockfordcollection.com › pages › signet-ri.../",
+          "query": "New York signet ring Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "tiffany.com",
+          "url": "https://tiffany.com/",
+          "query": "New York chain jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "timesact.com",
+          "url": "https://timesact.com/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "timesact.com › 2026",
+          "url": "https://timesact.com › 2026/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "shopify.com › blog › their-jewelry-sustaina...",
+          "url": "https://shopify.com › blog › their-jewelry-sustaina.../",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "avirnewyork.com › pages › sustainability",
+          "url": "https://avirnewyork.com › pages › sustainability/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "whimsyjewelry.com › pages › sustainable-jewelry",
+          "url": "https://whimsyjewelry.com › pages › sustainable-jewelry/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "bondeyejewelry.com › pages › contact",
+          "url": "https://bondeyejewelry.com › pages › contact/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "essentials-jewelry.com",
+          "url": "https://essentials-jewelry.com/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "essentials-jewelry.com › newyork",
+          "url": "https://essentials-jewelry.com › newyork/",
+          "query": "New York sustainable jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "community.shopify.com › is-this-shopify-email-l...",
+          "url": "https://community.shopify.com › is-this-shopify-email-l.../",
+          "query": "New York enamel jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "philippeenamel.com › pages › contact-us",
+          "url": "https://philippeenamel.com › pages › contact-us/",
+          "query": "New York enamel jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "netslibertyfoundation5050.myshopify.com › pages",
+          "url": "https://netslibertyfoundation5050.myshopify.com › pages/",
+          "query": "New York enamel jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "shop.nypl.org › collections › jewelry",
+          "url": "https://shop.nypl.org › collections › jewelry/",
+          "query": "New York enamel jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brooklyncharm.com",
+          "url": "https://brooklyncharm.com/",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "candidate_timeout"
+        },
+        {
+          "domain": "timeout.com",
+          "url": "https://timeout.com/",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "timeout.com › newyork › news › brooklyn...",
+          "url": "https://timeout.com › newyork › news › brooklyn.../",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "community.shopify.com › custom-charm-necklace",
+          "url": "https://community.shopify.com › custom-charm-necklace/",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "brighton.com",
+          "url": "https://brighton.com/",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "category_mismatch"
+        },
+        {
+          "domain": "brighton.com › products › new-york-charm",
+          "url": "https://brighton.com › products › new-york-charm/",
+          "query": "New York charm jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "pearlandthebeast.com",
+          "url": "https://pearlandthebeast.com/",
+          "query": "New York pearl jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "nypost.com",
+          "url": "https://nypost.com/",
+          "query": "New York pearl jewelry Shopify email",
+          "reason": "not_shopify"
+        },
+        {
+          "domain": "nypost.com › 2024",
+          "url": "https://nypost.com › 2024/",
+          "query": "New York pearl jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "roseatejewelry.com › pages › location",
+          "url": "https://roseatejewelry.com › pages › location/",
+          "query": "New York pearl jewelry Shopify email",
+          "reason": "fetch_failed"
+        },
+        {
+          "domain": "thepearlsource.com",
+          "url": "https://thepearlsource.com/",
+          "query": "New York pearl jewelry Shopify email",
+          "reason": "candidate_timeout"
+        }
+      ],
+      "cleanup": [],
+      "baseline": {
+        "total_rows": 399,
+        "new_york_rows": 328,
+        "emails_found": 302,
+        "new_york_emails": 242,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      },
+      "final": {
+        "total_rows": 411,
+        "new_york_rows": 340,
+        "emails_found": 310,
+        "new_york_emails": 250,
+        "duplicate_domains": 0,
+        "bad_emails": []
+      }
+    }
+  ],
+  "total_cost": 0.12,
+  "total_added": 24,
+  "final": {
+    "total_rows": 411,
+    "new_york_rows": 340,
+    "emails_found": 310,
+    "new_york_emails": 250,
+    "duplicate_domains": 0,
+    "bad_emails": []
+  },
+  "remaining_to_1000": 660
+}

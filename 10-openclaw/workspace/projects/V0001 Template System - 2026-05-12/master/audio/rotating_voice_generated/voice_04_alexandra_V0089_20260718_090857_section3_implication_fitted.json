@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-18T09:11:40.412107+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "baa5appv6nrmr0czehz9ra970w",
+  "raw_audio_url": "https://replicate.delivery/xezq/GRMe0RmUmI0xf0vXipC1O33vCxxLlMdziT4AIVCKul2LVP6WA/tmpfk6t8yzy.mp3",
+  "raw_duration": 3.526531,
+  "fitted_duration": 3.526531,
+  "script_text": "You may need a smarter application strategy, not more effort.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section3_implication_fitted.mp3"
+}

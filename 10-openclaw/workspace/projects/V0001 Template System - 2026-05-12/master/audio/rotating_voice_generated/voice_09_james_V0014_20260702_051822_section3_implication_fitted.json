@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T05:35:31.599052+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "6dwphysqdxrmr0cz459t1x1pd0",
+  "raw_audio_url": "https://replicate.delivery/xezq/Y1640eyCJhXTA6ZmDdwTu3ZfbH0meRfRdyEJCEwbi1LJqqTbB/tmp3t53zgjv.mp3",
+  "raw_duration": 3.474286,
+  "fitted_duration": 3.474286,
+  "script_text": "Knowing your fit is the cheapest career insurance you can get.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260702_051822_section3_implication_fitted.mp3"
+}

@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "run_id": "ai_planner_1779284867",
+  "output_pptx_path": "/root/.openclaw/workspace/ppt_pipeline/outputs/ai_pipeline_1779284867/ai_pipeline_real_ai_normalized_output.pptx",
+  "slide_count": 10,
+  "selected_source_slides": [
+    1,
+    6,
+    6,
+    13,
+    13,
+    13,
+    3,
+    8,
+    11,
+    13
+  ],
+  "replacements": {
+    "text": 40,
+    "images": 1
+  },
+  "warnings": [],
+  "errors": []
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T06:16:58.957581+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "npx63j8as9rmw0cz2839s47184",
+  "raw_audio_url": "https://replicate.delivery/xezq/QjvHthCE3lpVK1wDKat7jXQDqzyCZaCeznyt0fXOqmGZf3ntA/tmpcter5qbz.mp3",
+  "raw_duration": 25.80898,
+  "fitted_duration": 19.565714,
+  "script_text": "A Software Developer and adjacent roles share most of the work , and one often pays noticeably more. Same skills, different title , same resume, different outcome. Knowing the overlap tells you where to apply next. See which title pays more for your exact skill set. Free. No card. Your comparison takes 15 to 20 minutes.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_061130_004_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_061130_004_fitted.mp3"
+}

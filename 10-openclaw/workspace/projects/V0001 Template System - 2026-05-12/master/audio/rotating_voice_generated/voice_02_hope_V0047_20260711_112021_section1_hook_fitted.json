@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T11:20:25.910447+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "at7907hrgxrmw0cza3mahh08j8",
+  "raw_audio_url": "https://replicate.delivery/xezq/QPJbopyghv4RFNwTMgHSsOWR5r58zO4MI3EIIe2VVRw8xe3WA/tmptccphwd4.mp3",
+  "raw_duration": 3.056327,
+  "fitted_duration": 3.056327,
+  "script_text": "What\u2019s the competition for the jobs I\u2019m applying for?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0047_20260711_112021_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0047_20260711_112021_section1_hook_fitted.mp3"
+}

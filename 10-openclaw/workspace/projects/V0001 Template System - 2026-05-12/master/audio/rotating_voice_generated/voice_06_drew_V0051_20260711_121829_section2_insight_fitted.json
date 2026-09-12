@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T12:18:35.549180+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "qtsdg6vp3drmr0cza4ev17vprg",
+  "raw_audio_url": "https://replicate.delivery/xezq/SiJNNtvl4a6bJla8fps9fL38roY0dEBvXLSqtFtTC6TaaevtA/tmpnywzm2dl.mp3",
+  "raw_duration": 7.340408,
+  "fitted_duration": 7.340408,
+  "script_text": "Many roles are influenced by referrals, internal movement, recruiter outreach, and employer timing.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0051_20260711_121829_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0051_20260711_121829_section2_insight_fitted.mp3"
+}

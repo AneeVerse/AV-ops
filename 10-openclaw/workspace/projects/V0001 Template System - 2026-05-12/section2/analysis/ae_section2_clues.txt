@@ -1,0 +1,220 @@
+655:95Percent1LIST
+679:(ADBE Text Document
+898:(ADBE Position
+907:(ADBE Position_0
+917:(ADBE Position_1
+3343:(ADBE Position
+3352:(ADBE Position_0
+3362:(ADBE Position_1
+3759:(ADBE Position
+3767:(ADBE Position_0
+3777:(ADBE Position_1
+3787:(ADBE Position_2
+3815:(ADBE Opacity
+3909:(ADBE Position
+3917:(ADBE Position_0
+3927:(ADBE Position_1
+3937:(ADBE Position_2
+3955:(ADBE Opacity
+4046:(ADBE Position
+4054:(ADBE Position_0
+4064:(ADBE Position_1
+4074:(ADBE Position_2
+4092:(ADBE Opacity
+4182:(ADBE Position
+4190:(ADBE Position_0
+4200:(ADBE Position_1
+4210:(ADBE Position_2
+4228:(ADBE Opacity
+4319:(ADBE Position
+4327:(ADBE Position_0
+4337:(ADBE Position_1
+4347:(ADBE Position_2
+4365:(ADBE Opacity
+4457:(ADBE Position
+4465:(ADBE Position_0
+4475:(ADBE Position_1
+4485:(ADBE Position_2
+4503:(ADBE Opacity
+4594:(ADBE Position
+4602:(ADBE Position_0
+4612:(ADBE Position_1
+4622:(ADBE Position_2
+4640:(ADBE Opacity
+4732:(ADBE Position
+4740:(ADBE Position_0
+4750:(ADBE Position_1
+4760:(ADBE Position_2
+4788:(ADBE Opacity
+4880:(ADBE Position
+4888:(ADBE Position_0
+4898:(ADBE Position_1
+4908:(ADBE Position_2
+4936:(ADBE Opacity
+5028:(ADBE Position
+5036:(ADBE Position_0
+5046:(ADBE Position_1
+5056:(ADBE Position_2
+5084:(ADBE Opacity
+5168:(ADBE Position
+5176:(ADBE Position_0
+5186:(ADBE Position_1
+5652:(ADBE Text Document
+5803:(ADBE Position
+5814:(ADBE Position_0
+5824:(ADBE Position_1
+6213:(ADBE Text Document
+6350:(ADBE Text Animators
+6356:(ADBE Text Animator
+6434:(ADBE Text Animator Properties
+6470:(ADBE Position
+6479:(ADBE Position_0
+6489:(ADBE Position_1
+7025:(ADBE Position
+7034:(ADBE Position_0
+7044:(ADBE Position_1
+7441:(ADBE Position
+7449:(ADBE Position_0
+7459:(ADBE Position_1
+7469:(ADBE Position_2
+7497:(ADBE Opacity
+7591:(ADBE Position
+7599:(ADBE Position_0
+7609:(ADBE Position_1
+7619:(ADBE Position_2
+7637:(ADBE Opacity
+7728:(ADBE Position
+7736:(ADBE Position_0
+7746:(ADBE Position_1
+7756:(ADBE Position_2
+7774:(ADBE Opacity
+7864:(ADBE Position
+7872:(ADBE Position_0
+7882:(ADBE Position_1
+7892:(ADBE Position_2
+7910:(ADBE Opacity
+8001:(ADBE Position
+8009:(ADBE Position_0
+8019:(ADBE Position_1
+8029:(ADBE Position_2
+8047:(ADBE Opacity
+8139:(ADBE Position
+8147:(ADBE Position_0
+8157:(ADBE Position_1
+8167:(ADBE Position_2
+8185:(ADBE Opacity
+8276:(ADBE Position
+8284:(ADBE Position_0
+8294:(ADBE Position_1
+8304:(ADBE Position_2
+8322:(ADBE Opacity
+8414:(ADBE Position
+8422:(ADBE Position_0
+8432:(ADBE Position_1
+8442:(ADBE Position_2
+8470:(ADBE Opacity
+8562:(ADBE Position
+8570:(ADBE Position_0
+8580:(ADBE Position_1
+8590:(ADBE Position_2
+8618:(ADBE Opacity
+8710:(ADBE Position
+8718:(ADBE Position_0
+8728:(ADBE Position_1
+8738:(ADBE Position_2
+8766:(ADBE Opacity
+8850:(ADBE Position
+8858:(ADBE Position_0
+8868:(ADBE Position_1
+9651:(ADBE Position_0
+9661:(ADBE Position_1
+10110:(ADBE Position_0
+10120:(ADBE Position_1
+10569:(ADBE Position_0
+10579:(ADBE Position_1
+11028:(ADBE Position_0
+11038:(ADBE Position_1
+11487:(ADBE Position_0
+11497:(ADBE Position_1
+11989:(ADBE Text Document
+12126:(ADBE Text Animators
+12132:(ADBE Text Animator
+12251:(ADBE Text Animator Properties
+12370:(ADBE Position
+12378:(ADBE Position_0
+12388:(ADBE Position_1
+12822:(ADBE Text Document
+12958:(ADBE Text Animators
+12964:(ADBE Text Animator
+13083:(ADBE Text Animator Properties
+13184:(ADBE Position
+13192:(ADBE Position_0
+13202:(ADBE Position_1
+13636:(ADBE Text Document
+13771:(ADBE Text Animators
+13777:(ADBE Text Animator
+13896:(ADBE Text Animator Properties
+13997:(ADBE Position
+14006:(ADBE Position_0
+14016:(ADBE Position_1
+14413:(ADBE Position
+14421:(ADBE Position_0
+14431:(ADBE Position_1
+14902:(ADBE Position
+14911:(ADBE Position_0
+14921:(ADBE Position_1
+15483:(ADBE Position
+15491:(ADBE Position_0
+15501:(ADBE Position_1
+16084:(ADBE Position
+16092:(ADBE Position_0
+16102:(ADBE Position_1
+16655:(ADBE Position
+16664:(ADBE Position_0
+16674:(ADBE Position_1
+17344:(ADBE Position
+17352:(ADBE Position_0
+17362:(ADBE Position_1
+18008:(ADBE Position
+18016:(ADBE Position_0
+18026:(ADBE Position_1
+18672:(ADBE Position
+18680:(ADBE Position_0
+18690:(ADBE Position_1
+19279:(ADBE Position
+19287:(ADBE Position_0
+19297:(ADBE Position_1
+21537:(ADBE Position_0
+21547:(ADBE Position_1
+21980:(ADBE Text Document
+22119:(ADBE Text Animators
+22125:(ADBE Text Animator
+22244:(ADBE Text Animator Properties
+22362:(ADBE Position
+22370:(ADBE Position_0
+22380:(ADBE Position_1
+23010:(ADBE Position_0
+23020:(ADBE Position_1
+23417:(ADBE Position_0
+23427:(ADBE Position_1
+23974:(ADBE Position
+23986:(ADBE Position_0
+23996:(ADBE Position_1
+24444:(ADBE Text Document
+24596:(ADBE Position
+24605:(ADBE Position_0
+24615:(ADBE Position_1
+25012:(ADBE Position
+25020:(ADBE Position_0
+25030:(ADBE Position_1
+25469:of U.S. publicly  posted jobs s
+25471:\of U.S. publicly  posted jobs stay  invisible to  candidates who  don't know  to search themLIST
+25527:(ADBE Text Document
+25668:(ADBE Text Animators
+25674:(ADBE Text Animator
+25795:(ADBE Text Animator Properties
+25923:(ADBE Position
+25933:(ADBE Position_0
+25943:(ADBE Position_1
+26459:(ADBE Position_0
+26469:(ADBE Position_1

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-13T04:32:35.778537+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "8n91cgwe69rmw0czb6zvv9xwfg",
+  "raw_audio_url": "https://replicate.delivery/xezq/1aC0KbIlzf0yGyML5naH5aTcjLyNIgI66KlZqTEuP1Ix4QcLA/tmp3sqcrpye.mp3",
+  "raw_duration": 4.545306,
+  "fitted_duration": 4.545306,
+  "script_text": "It may be positioning, timing, or targeting , not just r\u00e9sum\u00e9 quality.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0053_20260713_043227_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0053_20260713_043227_section3_implication_fitted.mp3"
+}

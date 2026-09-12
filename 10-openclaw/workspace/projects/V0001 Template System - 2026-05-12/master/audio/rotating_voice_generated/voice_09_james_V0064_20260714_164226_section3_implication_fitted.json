@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-14T16:42:35.271137+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "1y181shxvhrmr0czc61b7yz328",
+  "raw_audio_url": "https://replicate.delivery/xezq/NWtDg57BzL5BAFqiAv8tVpfmcsKeJpgNfDigIW4j6hE1HDytA/tmp2ja38jya.mp3",
+  "raw_duration": 4.205714,
+  "fitted_duration": 4.205714,
+  "script_text": "You may be missing adjacent occupations with better fit or upside.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0064_20260714_164226_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0064_20260714_164226_section3_implication_fitted.mp3"
+}

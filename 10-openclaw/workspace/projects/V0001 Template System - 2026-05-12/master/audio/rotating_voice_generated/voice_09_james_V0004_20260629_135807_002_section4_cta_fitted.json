@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T13:58:18.568905+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "zmnxb5kkjdrmr0cz2ep99gss40",
+  "raw_audio_url": "https://replicate.delivery/xezq/hT4rBefiuboYT0ZHfrozot1UDoTNztB9tBXHrtrxeecJfrAtF/tmph3r2eh31.mp3",
+  "raw_duration": 2.873469,
+  "fitted_duration": 2.873469,
+  "script_text": "Find the roles paying more for what you already do.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section4_cta_fitted.mp3"
+}

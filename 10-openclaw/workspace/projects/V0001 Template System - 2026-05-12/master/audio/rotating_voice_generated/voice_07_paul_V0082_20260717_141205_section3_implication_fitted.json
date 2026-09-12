@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T14:12:15.603669+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "tj4egrng0drmw0cze1nr16bx3g",
+  "raw_audio_url": "https://replicate.delivery/xezq/fYSIfP89IYm08EYdVCZmBwAwtmFXjTbXf7zlAPsWwOv9R9ztA/tmp10l6kce0.mp3",
+  "raw_duration": 4.493061,
+  "fitted_duration": 4.493061,
+  "script_text": "You may stay because the unknown feels riskier than the current job.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0082_20260717_141205_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0082_20260717_141205_section3_implication_fitted.mp3"
+}

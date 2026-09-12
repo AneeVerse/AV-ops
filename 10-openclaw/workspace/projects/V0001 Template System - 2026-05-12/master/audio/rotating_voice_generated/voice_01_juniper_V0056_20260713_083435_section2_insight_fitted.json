@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-13T08:34:43.081312+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "gv208c9resrmy0czbaeragwm5g",
+  "raw_audio_url": "https://replicate.delivery/xezq/f7KjJMXLuBwYMCzDZb4fIb2b1NjnIyYOFSAGKtlDtB0iUl4WA/tmpjfydp0lc.mp3",
+  "raw_duration": 7.131429,
+  "fitted_duration": 7.131429,
+  "script_text": "A job can look attractive because of title, brand, or salary while scoring poorly on fit, demand, or AI exposure.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section2_insight_fitted.mp3"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T04:01:48.101269+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "qc3gbxx3wsrmw0cz9xb919qzjr",
+  "raw_audio_url": "https://replicate.delivery/xezq/9pdUe6Ecc70qbCL1g80NZrdDjxUJ8hJT8elH2u6cu5CrI33WA/tmp2505tzgy.mp3",
+  "raw_duration": 3.056327,
+  "fitted_duration": 3.056327,
+  "script_text": "Is this employer really hiring, or just collecting r\u00e9sum\u00e9s?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0045_20260711_040143_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0045_20260711_040143_section1_hook_fitted.mp3"
+}

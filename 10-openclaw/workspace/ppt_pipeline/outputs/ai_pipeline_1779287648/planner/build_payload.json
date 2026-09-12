@@ -1,0 +1,147 @@
+{
+  "run_id": "ai_planner_1779287648",
+  "project_name": "AI Pipeline Test",
+  "output_file_name": "Truckstop_Partner_Community_Presentation.pptx",
+  "target_slide_count": 10,
+  "actual_slide_count": 10,
+  "planner_mode": "ai",
+  "slides": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "text": {
+        "heading": "Welcome to Truckstop's Partner Community",
+        "supporting_text": ""
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png",
+          "prompt": ""
+        }
+      },
+      "order": 1
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "text": {
+        "heading": "Mission and Vision",
+        "subheading": "Our Commitment to Partners",
+        "timeline_block_1": "Establishing partnerships",
+        "timeline_block_2": "Developing resources",
+        "timeline_block_3": "Enhancing services",
+        "timeline_block_4": "Expanding community",
+        "timeline_block_5": "Continuous support",
+        "timeline_block_6": "",
+        "closing_line": "Join us in our journey!",
+        "section_label": ""
+      },
+      "images": {},
+      "order": 2
+    },
+    {
+      "template_id": "slide_03_metric_overview",
+      "text": {
+        "heading": "Truckstop at a Glance",
+        "subheading": "Key Metrics",
+        "section_label": "Performance Overview",
+        "metric_1_value": "500+",
+        "metric_1_label": "Partners",
+        "metric_2_value": "1000+",
+        "metric_2_label": "Freight Listings",
+        "metric_3_value": "24/7",
+        "metric_3_label": "Support Availability",
+        "metric_4_value": "95%",
+        "metric_4_label": "Customer Satisfaction",
+        "metric_5_value": "10+",
+        "metric_5_label": "Years in Business"
+      },
+      "images": {},
+      "order": 3
+    },
+    {
+      "template_id": "slide_04_research_chart_insight",
+      "text": {
+        "heading": "Partner Marketplace Insights",
+        "subheading": "Understanding Our Community",
+        "section_label": "Market Trends",
+        "source": "Industry Reports",
+        "chart_title": "Growth in Partnerships",
+        "key_insight": "Significant increase in partner engagement.",
+        "metric_value": "30%",
+        "metric_label": "Year-over-Year Growth"
+      },
+      "images": {},
+      "order": 4
+    },
+    {
+      "template_id": "slide_05_research_stat_cards",
+      "text": {
+        "heading": "Benefits of Joining",
+        "body": "Collaborative success through partnerships.",
+        "section_label": "Key Advantages",
+        "metric_1_value": "80%",
+        "metric_1_label": "Increased Efficiency",
+        "metric_2_value": "70%",
+        "metric_2_label": "Cost Savings",
+        "metric_3_value": "60%",
+        "metric_3_label": "Access to Resources",
+        "source": "Partner Feedback"
+      },
+      "images": {},
+      "order": 5
+    },
+    {
+      "template_id": "slide_06_platform_overview",
+      "text": {
+        "heading": "Overview of Truckstop Services",
+        "section_label": "Our Offerings",
+        "body": "Comprehensive tools for freight operations.",
+        "subheading": "Streamlined Processes",
+        "benefit_row": "Real-time load and rate data.",
+        "closing_line": "Empower your business today!"
+      },
+      "images": {},
+      "order": 6
+    },
+    {
+      "template_id": "slide_07_feature_matrix",
+      "text": {
+        "heading": "Feature Comparison",
+        "subheading": "Our Services vs Competitors",
+        "section_label": "Capabilities",
+        "feature_list_left": "Load Board, RMIS, Training Resources",
+        "feature_list_right": "Customer Support, Analytics, Marketplace Access"
+      },
+      "images": {},
+      "order": 7
+    },
+    {
+      "template_id": "slide_08_text_heavy_insight",
+      "text": {
+        "heading": "Support Options",
+        "body": "Extensive training and support resources available for all partners."
+      },
+      "images": {},
+      "order": 8
+    },
+    {
+      "template_id": "slide_09_ui_product_showcase",
+      "text": {
+        "heading": "User Interface Showcase",
+        "body": "A glimpse into our platform's user-friendly design."
+      },
+      "images": {},
+      "order": 9
+    },
+    {
+      "template_id": "slide_10_main_supporting_text",
+      "text": {
+        "heading": "Join the Partner Community",
+        "body_left": "Collaborate for success.",
+        "body_right": "Maximize your profitability."
+      },
+      "images": {},
+      "order": 10
+    }
+  ],
+  "_provider": "openrouter"
+}

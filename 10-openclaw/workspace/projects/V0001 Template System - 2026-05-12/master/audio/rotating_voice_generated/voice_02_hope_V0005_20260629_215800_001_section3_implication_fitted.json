@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T21:58:09.626848+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "te1ba9e4x5rmr0cz2nhrtfrm2w",
+  "raw_audio_url": "https://replicate.delivery/xezq/YgmXIrn5z75HItQ5AB1p2qsxuosHh4HluVCBiMDtzxPccCtF/tmptuyb_gov.mp3",
+  "raw_duration": 2.873469,
+  "fitted_duration": 2.873469,
+  "script_text": "Knowing the overlap tells you where to apply next.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section3_implication_fitted.mp3"
+}

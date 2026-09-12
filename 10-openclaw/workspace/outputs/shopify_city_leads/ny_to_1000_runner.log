@@ -1,0 +1,1533 @@
+[2026-06-05 01:30:24] START {'total_rows': 253, 'new_york_rows': 182, 'emails_found_new_york': 159, 'duplicate_domains': 0}
+[2026-06-05 01:30:26] BATCH 1/12 ny_rows=182 queries=24
+[2026-06-05 01:30:27] Apify start status=201
+[2026-06-05 01:30:28] Apify run qBC0D9BC9gXtmpnSX status=RUNNING
+[2026-06-05 01:30:44] Apify run qBC0D9BC9gXtmpnSX status=RUNNING
+[2026-06-05 01:31:00] Apify run qBC0D9BC9gXtmpnSX status=RUNNING
+[2026-06-05 01:31:16] Apify run qBC0D9BC9gXtmpnSX status=SUCCEEDED
+[2026-06-05 01:31:17] Apify items=24 candidates=121 cost=0.10899999999999999
+[2026-06-05 01:31:39] ADDED batch=1 count=1 total_ny~183 Michellia Fine Jewelry | https://michellia.com/ | Fine Jewellery | email=vendors@layout.theme.js
+[2026-06-05 01:31:45] ADDED batch=1 count=2 total_ny~184 Von T Jewelry | https://vontfinejewelry.com/ | Demi-fine Jewellery | email=sales@vontfinejewelry.com
+[2026-06-05 01:31:59] ADDED batch=1 count=3 total_ny~185 770FJ | https://770finejewelry.com/ | Fine Jewellery | email=xxx@xxx.xxx
+[2026-06-05 01:32:09] ADDED batch=1 count=4 total_ny~186 Haejin Jewelry | https://haejinjewelry.com/ | Fine Jewellery | email=haejinjewelry@gmail.com
+[2026-06-05 01:34:28] ADDED batch=1 count=5 total_ny~187 The M Jewelers | https://themjewelersny.com/ | Demi-fine Jewellery | email=contact@themjewelersny.com
+[2026-06-05 01:34:40] ADDED batch=1 count=6 total_ny~188 JET SET CANDY | https://jetsetcandy.com/ | Demi-fine Jewellery | email=customercare@jetsetcandy.com
+[2026-06-05 01:37:20] START {'total_rows': 259, 'new_york_rows': 188, 'emails_found_new_york': 163, 'duplicate_domains': 0}
+[2026-06-05 01:37:21] BATCH 1/20 ny_rows=188 queries=24
+[2026-06-05 01:37:22] Apify start status=201
+[2026-06-05 01:37:23] Apify run BFtooQfbHaMSp1aCR status=RUNNING
+[2026-06-05 01:37:39] Apify run BFtooQfbHaMSp1aCR status=RUNNING
+[2026-06-05 01:37:55] Apify run BFtooQfbHaMSp1aCR status=RUNNING
+[2026-06-05 01:38:11] Apify run BFtooQfbHaMSp1aCR status=RUNNING
+[2026-06-05 01:38:27] Apify run BFtooQfbHaMSp1aCR status=RUNNING
+[2026-06-05 01:38:43] Apify run BFtooQfbHaMSp1aCR status=SUCCEEDED
+[2026-06-05 01:38:45] Apify items=25 candidates_to_verify=70 cost=0.10899999999999999
+[2026-06-05 01:42:21] START {'total_rows': 259, 'new_york_rows': 188, 'emails_found_new_york': 163, 'duplicate_domains': 0}
+[2026-06-05 01:42:22] BATCH 3 ny_rows=188 queries=24
+[2026-06-05 01:42:24] Apify start status=201
+[2026-06-05 01:42:25] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:42:41] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:42:57] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:43:13] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:43:29] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:43:45] Apify run 7kRbJhFpS128FrGU2 status=RUNNING
+[2026-06-05 01:44:01] Apify run 7kRbJhFpS128FrGU2 status=SUCCEEDED
+[2026-06-05 01:44:03] Apify items=26 candidates_to_verify=100 cost=0.118
+[2026-06-05 01:44:09] ADDED batch=3 count=1 total_ny~189 Blauweiss Berkowitz Jewelers | https://blauberk.com/ | Fine Jewellery | email=jewels@blauberk.com
+[2026-06-05 01:44:13] ADDED batch=3 count=2 total_ny~190 INAYA | https://inayajewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:44:27] ADDED batch=3 count=3 total_ny~191 Astrid & Miyu | https://astridandmiyu.com/ | Fine Jewellery | email=customerconnection@astridandmiyu.com
+[2026-06-05 01:44:33] PROGRESS batch=3 verified_candidates=20/100 added=3
+[2026-06-05 01:44:43] ADDED batch=3 count=4 total_ny~192 AJ's Jewelers | https://ajsjewelers.com/ | Fine Jewellery | email=info@stagheaddesigns.com
+[2026-06-05 01:45:13] ADDED batch=3 count=5 total_ny~193 Gennaro Jewelers | https://gennarojewelers.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:45:22] ADDED batch=3 count=6 total_ny~194 Studs | https://studs.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:45:35] PROGRESS batch=3 verified_candidates=60/100 added=6
+[2026-06-05 01:45:39] ADDED batch=3 count=7 total_ny~195 Landsberg Jewelers | https://landsbergjewelers.com/ | Fine Jewellery | email=sales@landsbergjewelers.com
+[2026-06-05 01:45:42] ADDED batch=3 count=8 total_ny~196 Nature Sparkle | https://naturesparkle.com/ | Fine Jewellery | email=support@naturesparkle.com
+[2026-06-05 01:45:52] ADDED batch=3 count=9 total_ny~197 Vale Jewelry | https://shopvale.com/ | Fine Jewellery | email=info@shopvale.com
+[2026-06-05 01:45:56] ADDED batch=3 count=10 total_ny~198 Z Fine Jewelry | https://shop.zfinejewelry.com/ | Fine Jewellery | email=info@zfinejewelry.com
+[2026-06-05 01:46:02] ADDED batch=3 count=11 total_ny~199 Boho Betty USA | https://boho-betty.com/ | Fine Jewellery | email=785f65520d6648d5b0eb7d6e7c01481d@error-tracking.zipify.com
+[2026-06-05 01:46:16] PROGRESS batch=3 verified_candidates=80/100 added=11
+[2026-06-05 01:46:26] ADDED batch=3 count=12 total_ny~200 Genesis Gems | https://genesisgemsnyc.com/ | Fine Jewellery | email=info@genesisgemsnyc.com
+[2026-06-05 01:46:38] ADDED batch=3 count=13 total_ny~201 by charlotte | https://bycharlotte.com.au/ | Demi-fine Jewellery | email=customercare@bycharlotte.com.au
+[2026-06-05 01:46:57] ADDED batch=3 count=14 total_ny~202 Gather Brooklyn | https://gatherbk.com/ | Demi-fine Jewellery | email=friend@gatherbk.com
+[2026-06-05 01:47:00] ADDED batch=3 count=15 total_ny~203 Everett | https://everettfinejewelry.com/ | Fine Jewellery | email=ali@everettfinejewelry.com
+[2026-06-05 01:47:11] PROGRESS batch=3 scanned=100/100 added=15
+[2026-06-05 01:47:14] BATCH 4 ny_rows=203 queries=24
+[2026-06-05 01:47:16] Apify start status=201
+[2026-06-05 01:47:17] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:47:33] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:47:49] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:48:05] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:48:21] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:48:37] Apify run 1DyKrOmoap8WnCfhL status=RUNNING
+[2026-06-05 01:48:53] Apify run 1DyKrOmoap8WnCfhL status=SUCCEEDED
+[2026-06-05 01:48:54] Apify items=25 candidates_to_verify=100 cost=0.11349999999999999
+[2026-06-05 01:49:33] ADDED batch=4 count=1 total_ny~204 Diamanti NYC | https://diamantinyc.com/ | Fine Jewellery | email=diamantinyc@gmail.com
+[2026-06-05 01:49:35] PROGRESS batch=4 verified_candidates=20/100 added=1
+[2026-06-05 01:49:57] ADDED batch=4 count=2 total_ny~205 Dana Rebecca Designs | https://danarebeccadesigns.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:50:07] PROGRESS batch=4 verified_candidates=40/100 added=2
+[2026-06-05 01:50:43] PROGRESS batch=4 verified_candidates=60/100 added=2
+[2026-06-05 01:50:46] ADDED batch=4 count=3 total_ny~206 Jewels Aficionado | https://jewelsaficionado.com/ | Fine Jewellery | email=sales@jewelsaficionado.com
+[2026-06-05 01:51:02] ADDED batch=4 count=4 total_ny~207 Marteau | https://marteau.co/ | Fine Jewellery | email=hello@marteau.co
+[2026-06-05 01:51:13] PROGRESS batch=4 verified_candidates=80/100 added=4
+[2026-06-05 01:51:16] ADDED batch=4 count=5 total_ny~208 Frank Darling | https://frankdarling.com/ | Fine Jewellery | email=hello@frankdarling.com
+[2026-06-05 01:51:42] ADDED batch=4 count=6 total_ny~209 Jewelili | https://jewelili.com/ | Fine Jewellery | email=customerservice@jewelili.com
+[2026-06-05 01:51:52] PROGRESS batch=4 scanned=100/100 added=6
+[2026-06-05 01:51:54] BATCH 5 ny_rows=209 queries=24
+[2026-06-05 01:51:55] Apify start status=201
+[2026-06-05 01:51:56] Apify run W2zgDVsezRZeVrRFa status=RUNNING
+[2026-06-05 01:52:12] Apify run W2zgDVsezRZeVrRFa status=RUNNING
+[2026-06-05 01:52:28] Apify run W2zgDVsezRZeVrRFa status=RUNNING
+[2026-06-05 01:52:44] Apify run W2zgDVsezRZeVrRFa status=RUNNING
+[2026-06-05 01:53:00] Apify run W2zgDVsezRZeVrRFa status=RUNNING
+[2026-06-05 01:53:16] Apify run W2zgDVsezRZeVrRFa status=SUCCEEDED
+[2026-06-05 01:53:18] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 01:53:30] ADDED batch=5 count=1 total_ny~210 Felix Z Designs | https://felixz.com/ | Fine Jewellery | email=info@felixz.com
+[2026-06-05 01:53:33] ADDED batch=5 count=2 total_ny~211 Spectra Fine Jewelry | https://spectrafinejewelry.com/ | Fine Jewellery | email=info@spectrafinejewelry.com
+[2026-06-05 01:53:53] ADDED batch=5 count=3 total_ny~212 Gem | https://shopgemjewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:53:56] ADDED batch=5 count=4 total_ny~213 Healing Emerald | https://healingemerald.com/ | Fine Jewellery | email=support@simprosys.com
+[2026-06-05 01:54:08] ADDED batch=5 count=5 total_ny~214 Golden NYC Jewelry and Watches Golden NYC Jewelry® | https://goldennycjewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:54:11] PROGRESS batch=5 verified_candidates=40/100 added=5
+[2026-06-05 01:54:25] PROGRESS batch=5 scanned=50/100 added=5
+[2026-06-05 01:54:38] PROGRESS batch=5 verified_candidates=60/100 added=5
+[2026-06-05 01:54:49] ADDED batch=5 count=6 total_ny~215 Golden Eagle of Brooklyn | https://goldeneagleofbrooklyn.com/ | Fine Jewellery | email=sales@goldeneagleofbrooklyn.com
+[2026-06-05 01:54:52] ADDED batch=5 count=7 total_ny~216 bhj | https://bhjewelry.shop/ | Fine Jewellery | email=blank
+[2026-06-05 01:54:57] ADDED batch=5 count=8 total_ny~217 QUEEN MAY | https://queenmay.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:55:14] PROGRESS batch=5 verified_candidates=80/100 added=8
+[2026-06-05 01:55:25] ADDED batch=5 count=9 total_ny~218 OKG Jewelry | https://okgjewelry.com/ | Fine Jewellery | email=okgjewelry@gmail.com
+[2026-06-05 01:55:58] PROGRESS batch=5 verified_candidates=100/100 added=9
+[2026-06-05 01:56:01] BATCH 6 ny_rows=218 queries=24
+[2026-06-05 01:56:03] Apify start status=201
+[2026-06-05 01:56:04] Apify run STNPgIDY8TwtR1utP status=RUNNING
+[2026-06-05 01:56:20] Apify run STNPgIDY8TwtR1utP status=RUNNING
+[2026-06-05 01:56:36] Apify run STNPgIDY8TwtR1utP status=RUNNING
+[2026-06-05 01:56:52] Apify run STNPgIDY8TwtR1utP status=RUNNING
+[2026-06-05 01:57:08] Apify run STNPgIDY8TwtR1utP status=SUCCEEDED
+[2026-06-05 01:57:09] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 01:57:34] PROGRESS batch=6 verified_candidates=20/100 added=0
+[2026-06-05 01:57:38] ADDED batch=6 count=1 total_ny~219 Goldish | https://begoldish.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:57:39] PROGRESS batch=6 scanned=25/100 added=1
+[2026-06-05 01:57:43] ADDED batch=6 count=2 total_ny~220 Lafiny Jewelry | https://lafinyjewelry.online/ | Fine Jewellery | email=lafinyjewelry@gmail.com
+[2026-06-05 01:57:54] PROGRESS batch=6 verified_candidates=40/100 added=2
+[2026-06-05 01:57:59] ADDED batch=6 count=3 total_ny~221 bnbluxuryny | https://bnbluxuryny.com/ | Fine Jewellery | email=hello@bnbluxuryny.com
+[2026-06-05 01:58:02] ADDED batch=6 count=4 total_ny~222 Fearless Jewelry NYC | https://fearlessjewelrynyc.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:58:08] PROGRESS batch=6 scanned=50/100 added=4
+[2026-06-05 01:58:20] ADDED batch=6 count=5 total_ny~223 Catherine Angiel | https://catherineangiel.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:58:28] ADDED batch=6 count=6 total_ny~224 Chelsea Leigh Jewelry | https://chelsealeighjewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:58:40] ADDED batch=6 count=7 total_ny~225 Fantasy Gems and Jewelry | https://fantasygemstones.com/ | Fine Jewellery | email=fantasygemstones@gmail.com
+[2026-06-05 01:58:52] ADDED batch=6 count=8 total_ny~226 Quill Fine Jewelry and Lifestyle | https://quillfinejewelry.com/ | Demi-fine Jewellery | email=blank
+[2026-06-05 01:58:57] ADDED batch=6 count=9 total_ny~227 Breslin Jewelry Co. | https://breslinjewelryco.com/ | Demi-fine Jewellery | email=blank
+[2026-06-05 01:59:01] ADDED batch=6 count=10 total_ny~228 Erica Sara Designs | https://ericasara.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:59:04] ADDED batch=6 count=11 total_ny~229 Israel Rose | https://newyorkestatejewelry.com/ | Fine Jewellery | email=info@stagheaddesigns.com
+[2026-06-05 01:59:25] ADDED batch=6 count=12 total_ny~230 VDB Shopify App Demo Store | https://shopify.vdbapp.com/ | Fine Jewellery | email=info@vdbapp.com
+[2026-06-05 01:59:28] ADDED batch=6 count=13 total_ny~231 Fereshteh Broumand Inc | https://fereshtehb.com/ | Fine Jewellery | email=blank
+[2026-06-05 01:59:41] PROGRESS batch=6 scanned=100/100 added=13
+[2026-06-05 01:59:44] BATCH 7 ny_rows=231 queries=24
+[2026-06-05 01:59:45] Apify start status=201
+[2026-06-05 01:59:46] Apify run Er6EKuthefFKhPghI status=RUNNING
+[2026-06-05 02:00:02] Apify run Er6EKuthefFKhPghI status=RUNNING
+[2026-06-05 02:00:18] Apify run Er6EKuthefFKhPghI status=RUNNING
+[2026-06-05 02:00:35] Apify run Er6EKuthefFKhPghI status=SUCCEEDED
+[2026-06-05 02:00:36] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 02:00:50] ADDED batch=7 count=1 total_ny~232 Blue Diamond Jeweler | https://bluediamondjeweler.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:01:01] ADDED batch=7 count=2 total_ny~233 myGemma | https://mygemma.com/ | Fine Jewellery | email=contact@mygemma.com
+[2026-06-05 02:01:16] PROGRESS batch=7 scanned=25/100 added=2
+[2026-06-05 02:01:39] ADDED batch=7 count=3 total_ny~234 Delia Langan Jewelry | https://delialangan.com/ | Fine Jewellery | email=info@delialangan.com
+[2026-06-05 02:01:44] PROGRESS batch=7 scanned=50/100 added=3
+[2026-06-05 02:02:01] PROGRESS batch=7 verified_candidates=60/100 added=3
+[2026-06-05 02:02:06] ADDED batch=7 count=4 total_ny~235 Adore Brooklyn Inc | https://adorebrooklyn.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:02:09] ADDED batch=7 count=5 total_ny~236 George Rings | https://georgerings.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:02:32] PROGRESS batch=7 verified_candidates=80/100 added=5
+[2026-06-05 02:03:06] ADDED batch=7 count=6 total_ny~237 Keyzar Â· Homepage | https://keyzarjewelry.com/ | Fine Jewellery | email=contact@keyzarjewelry.com
+[2026-06-05 02:03:08] PROGRESS batch=7 verified_candidates=100/100 added=6
+[2026-06-05 02:03:11] BATCH 8 ny_rows=237 queries=24
+[2026-06-05 02:03:12] Apify start status=201
+[2026-06-05 02:03:13] Apify run mFvt6e2prAJS7QL1a status=RUNNING
+[2026-06-05 02:03:29] Apify run mFvt6e2prAJS7QL1a status=RUNNING
+[2026-06-05 02:03:45] Apify run mFvt6e2prAJS7QL1a status=RUNNING
+[2026-06-05 02:04:01] Apify run mFvt6e2prAJS7QL1a status=RUNNING
+[2026-06-05 02:04:17] Apify run mFvt6e2prAJS7QL1a status=SUCCEEDED
+[2026-06-05 02:04:19] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:04:48] PROGRESS batch=8 verified_candidates=20/100 added=0
+[2026-06-05 02:05:00] PROGRESS batch=8 scanned=25/100 added=0
+[2026-06-05 02:05:17] PROGRESS batch=8 verified_candidates=40/100 added=0
+[2026-06-05 02:05:39] ADDED batch=8 count=1 total_ny~238 Mida Fine Jewelry | https://midafinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:06:02] PROGRESS batch=8 scanned=75/100 added=1
+[2026-06-05 02:06:13] PROGRESS batch=8 verified_candidates=80/100 added=1
+[2026-06-05 02:06:41] ADDED batch=8 count=2 total_ny~239 Marlyn Schiff | https://marlynschiff.com/ | Demi-fine Jewellery | email=customerservice@marlynschiff.com
+[2026-06-05 02:06:43] PROGRESS batch=8 scanned=100/100 added=2
+[2026-06-05 02:06:45] BATCH 9 ny_rows=239 queries=24
+[2026-06-05 02:06:46] Apify start status=201
+[2026-06-05 02:06:47] Apify run 5rtxRB2iUd9yVenrp status=RUNNING
+[2026-06-05 02:07:03] Apify run 5rtxRB2iUd9yVenrp status=RUNNING
+[2026-06-05 02:07:19] Apify run 5rtxRB2iUd9yVenrp status=RUNNING
+[2026-06-05 02:07:35] Apify run 5rtxRB2iUd9yVenrp status=SUCCEEDED
+[2026-06-05 02:07:37] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:07:47] ADDED batch=9 count=1 total_ny~240 Missoma US | https://us.missoma.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:08:04] ADDED batch=9 count=2 total_ny~241 Mauli Jewels | https://maulijewels.com/ | Fine Jewellery | email=cs@maulijewels.com
+[2026-06-05 02:08:41] PROGRESS batch=9 scanned=50/100 added=2
+[2026-06-05 02:08:51] PROGRESS batch=9 verified_candidates=60/100 added=2
+[2026-06-05 02:09:05] ADDED batch=9 count=3 total_ny~242 Helen Ficalora | https://helenficalora.com/ | Fine Jewellery | email=info@helenficalora.com
+[2026-06-05 02:09:16] PROGRESS batch=9 scanned=75/100 added=3
+[2026-06-05 02:09:51] PROGRESS batch=9 scanned=100/100 added=3
+[2026-06-05 02:09:54] BATCH 10 ny_rows=242 queries=24
+[2026-06-05 02:09:55] Apify start status=201
+[2026-06-05 02:09:56] Apify run LmWZXQyrfKjucbYar status=RUNNING
+[2026-06-05 02:10:12] Apify run LmWZXQyrfKjucbYar status=RUNNING
+[2026-06-05 02:10:28] Apify run LmWZXQyrfKjucbYar status=RUNNING
+[2026-06-05 02:10:44] Apify run LmWZXQyrfKjucbYar status=SUCCEEDED
+[2026-06-05 02:10:46] Apify items=24 candidates_to_verify=100 cost=0.09549999999999999
+[2026-06-05 02:10:56] ADDED batch=10 count=1 total_ny~243 Artiste Jewelers | https://artistejewelers.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:11:44] ADDED batch=10 count=2 total_ny~244 Maitre De Diamant | https://maitredediamant.com/ | Fine Jewellery | email=service@maitredediamant.com
+[2026-06-05 02:11:45] PROGRESS batch=10 verified_candidates=40/100 added=2
+[2026-06-05 02:11:53] ADDED batch=10 count=3 total_ny~245 Liori Diamonds | https://lioridiamonds.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:12:16] PROGRESS batch=10 verified_candidates=60/100 added=3
+[2026-06-05 02:12:34] ADDED batch=10 count=4 total_ny~247 Susan Kottemann Fine Jewelry | https://susankottemann.com/ | Fine Jewellery | email=susan@susankottemann.com
+[2026-06-05 02:12:39] PROGRESS batch=10 scanned=75/100 added=4
+[2026-06-05 02:12:47] PROGRESS batch=10 verified_candidates=80/100 added=4
+[2026-06-05 02:13:04] ADDED batch=10 count=5 total_ny~248 Tines Ranch Co Jewellery | https://tinesranchco.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:13:06] ADDED batch=10 count=6 total_ny~249 CTWF | https://considerthewldflwrs.com/ | Fine Jewellery | email=considerthewldflwrs@gmail.com
+[2026-06-05 02:13:20] PROGRESS batch=10 verified_candidates=100/100 added=6
+[2026-06-05 02:13:22] BATCH 11 ny_rows=250 queries=24
+[2026-06-05 02:13:24] Apify start status=201
+[2026-06-05 02:13:25] Apify run Vcq1WFzcDwTrd5W6R status=RUNNING
+[2026-06-05 02:13:41] Apify run Vcq1WFzcDwTrd5W6R status=RUNNING
+[2026-06-05 02:13:57] Apify run Vcq1WFzcDwTrd5W6R status=RUNNING
+[2026-06-05 02:14:13] Apify run Vcq1WFzcDwTrd5W6R status=SUCCEEDED
+[2026-06-05 02:14:14] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:14:45] ADDED batch=11 count=1 total_ny~251 Laura B. Smith Jewelry | https://lbjewelrystore.com/ | Demi-fine Jewellery | email=blank
+[2026-06-05 02:16:00] PROGRESS batch=11 scanned=75/100 added=1
+[2026-06-05 02:16:04] ADDED batch=11 count=2 total_ny~252 Jelena Behrend Studio | https://jelenabehrendstudio.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:16:11] PROGRESS batch=11 verified_candidates=80/100 added=2
+[2026-06-05 02:16:22] ADDED batch=11 count=3 total_ny~253 Danielli Fine Jewelry | https://daniellinyc.com/ | Fine Jewellery | email=info@daniellinyc.com
+[2026-06-05 02:16:28] ADDED batch=11 count=4 total_ny~254 MICHAEL F & CO | https://michaelfdiamonds.com/ | Fine Jewellery | email=ecom-swiper@11.css
+[2026-06-05 02:16:51] PROGRESS batch=11 verified_candidates=100/100 added=4
+[2026-06-05 02:16:54] BATCH 12 ny_rows=254 queries=24
+[2026-06-05 02:16:55] Apify start status=201
+[2026-06-05 02:16:56] Apify run xc7Ps9K7U21jHaBeI status=RUNNING
+[2026-06-05 02:17:12] Apify run xc7Ps9K7U21jHaBeI status=RUNNING
+[2026-06-05 02:17:28] Apify run xc7Ps9K7U21jHaBeI status=RUNNING
+[2026-06-05 02:17:44] Apify run xc7Ps9K7U21jHaBeI status=SUCCEEDED
+[2026-06-05 02:17:46] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:18:54] PROGRESS batch=12 verified_candidates=40/100 added=0
+[2026-06-05 02:19:24] ADDED batch=12 count=1 total_ny~255 AVNTGRDNY,INC | https://avntgrdny.com/ | Fine Jewellery | email=avntgrdny@gmail.com
+[2026-06-05 02:19:34] ADDED batch=12 count=2 total_ny~256 LTM & CO. | https://ltmjewels.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:19:38] ADDED batch=12 count=3 total_ny~257 Melanie Auld Jewelry | https://melanieauld.com/ | Fine Jewellery | email=toronto@melanieauld.com
+[2026-06-05 02:20:17] PROGRESS batch=12 scanned=100/100 added=3
+[2026-06-05 02:20:20] BATCH 13 ny_rows=257 queries=24
+[2026-06-05 02:20:21] Apify start status=201
+[2026-06-05 02:20:22] Apify run iIhy3Fr5LGMIqkg3F status=RUNNING
+[2026-06-05 02:20:38] Apify run iIhy3Fr5LGMIqkg3F status=RUNNING
+[2026-06-05 02:20:54] Apify run iIhy3Fr5LGMIqkg3F status=RUNNING
+[2026-06-05 02:21:10] Apify run iIhy3Fr5LGMIqkg3F status=SUCCEEDED
+[2026-06-05 02:21:12] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:21:36] PROGRESS batch=13 verified_candidates=20/100 added=0
+[2026-06-05 02:21:56] PROGRESS batch=13 verified_candidates=40/100 added=0
+[2026-06-05 02:22:06] ADDED batch=13 count=1 total_ny~258 Blessie 18k Italian Gold | https://blessiegold.com/ | Fine Jewellery | email=info@blessiegold.com
+[2026-06-05 02:22:10] PROGRESS batch=13 scanned=50/100 added=1
+[2026-06-05 02:22:39] PROGRESS batch=13 verified_candidates=60/100 added=1
+[2026-06-05 02:22:51] ADDED batch=13 count=2 total_ny~259 Natural Diamonds of NYC | https://naturaldiamondsofnyc.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:23:10] ADDED batch=13 count=3 total_ny~262 Black Pearl of Queens | https://blackpearlofqueens.com/ | Fine Jewellery | email=info@blackpearlofqueens.com
+[2026-06-05 02:23:58] PROGRESS batch=13 scanned=100/100 added=3
+[2026-06-05 02:24:00] BATCH 14 ny_rows=262 queries=24
+[2026-06-05 02:24:01] Apify start status=201
+[2026-06-05 02:24:02] Apify run cQRYTL5At4kxSgS1m status=RUNNING
+[2026-06-05 02:24:18] Apify run cQRYTL5At4kxSgS1m status=RUNNING
+[2026-06-05 02:24:34] Apify run cQRYTL5At4kxSgS1m status=RUNNING
+[2026-06-05 02:24:50] Apify run cQRYTL5At4kxSgS1m status=SUCCEEDED
+[2026-06-05 02:24:52] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:25:22] PROGRESS batch=14 verified_candidates=20/100 added=0
+[2026-06-05 02:26:00] ADDED batch=14 count=1 total_ny~263 Moissy Fine Jewelry | https://moissyfinejewelry.com/ | Demi-fine Jewellery | email=arizonacare@moissyfj.com
+[2026-06-05 02:26:06] ADDED batch=14 count=2 total_ny~264 Chelsea Blue | https://chelseabluejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:26:16] PROGRESS batch=14 verified_candidates=60/100 added=2
+[2026-06-05 02:26:39] PROGRESS batch=14 scanned=75/100 added=2
+[2026-06-05 02:27:05] PROGRESS batch=14 scanned=100/100 added=2
+[2026-06-05 02:27:08] BATCH 15 ny_rows=265 queries=24
+[2026-06-05 02:27:10] Apify start status=201
+[2026-06-05 02:27:11] Apify run rDgG8iwZZ8isBqL0n status=RUNNING
+[2026-06-05 02:27:27] Apify run rDgG8iwZZ8isBqL0n status=RUNNING
+[2026-06-05 02:27:43] Apify run rDgG8iwZZ8isBqL0n status=SUCCEEDED
+[2026-06-05 02:27:44] Apify items=24 candidates_to_verify=100 cost=0.09999999999999999
+[2026-06-05 02:28:13] PROGRESS batch=15 scanned=25/100 added=0
+[2026-06-05 02:28:31] PROGRESS batch=15 verified_candidates=40/100 added=0
+[2026-06-05 02:28:37] ADDED batch=15 count=1 total_ny~271 prcnyc jewels | https://prcnyc.jewelry/ | Fine Jewellery | email=blank
+[2026-06-05 02:28:57] ADDED batch=15 count=2 total_ny~272 milanojewelersny.com | https://milanojewelersny.com/ | Fine Jewellery | email=milanojewels@gmail.com
+[2026-06-05 02:29:15] PROGRESS batch=15 scanned=75/100 added=2
+[2026-06-05 02:29:19] ADDED batch=15 count=3 total_ny~276 Cove Fine Jewelry | https://covefinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:30:03] PROGRESS batch=15 scanned=100/100 added=3
+[2026-06-05 02:30:06] BATCH 16 ny_rows=281 queries=24
+[2026-06-05 02:30:07] Apify start status=201
+[2026-06-05 02:30:08] Apify run aw7NfvGIpsIa4iysb status=RUNNING
+[2026-06-05 02:30:24] Apify run aw7NfvGIpsIa4iysb status=RUNNING
+[2026-06-05 02:30:40] Apify run aw7NfvGIpsIa4iysb status=RUNNING
+[2026-06-05 02:30:56] Apify run aw7NfvGIpsIa4iysb status=SUCCEEDED
+[2026-06-05 02:30:58] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:32:00] PROGRESS batch=16 verified_candidates=40/100 added=0
+[2026-06-05 02:32:07] ADDED batch=16 count=1 total_ny~299 BONDEYE JEWELRY ® | https://bondeyejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:32:55] PROGRESS batch=16 verified_candidates=80/100 added=1
+[2026-06-05 02:33:24] PROGRESS batch=16 verified_candidates=100/100 added=1
+[2026-06-05 02:33:26] BATCH 17 ny_rows=303 queries=24
+[2026-06-05 02:33:28] Apify start status=201
+[2026-06-05 02:33:29] Apify run 4nmWx5qyJil2YcWNg status=RUNNING
+[2026-06-05 02:33:45] Apify run 4nmWx5qyJil2YcWNg status=RUNNING
+[2026-06-05 02:34:01] Apify run 4nmWx5qyJil2YcWNg status=RUNNING
+[2026-06-05 02:34:17] Apify run 4nmWx5qyJil2YcWNg status=SUCCEEDED
+[2026-06-05 02:34:18] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:34:48] PROGRESS batch=17 verified_candidates=20/100 added=0
+[2026-06-05 02:34:53] PROGRESS batch=17 scanned=25/100 added=0
+[2026-06-05 02:35:43] PROGRESS batch=17 verified_candidates=60/100 added=0
+[2026-06-05 02:35:59] PROGRESS batch=17 scanned=75/100 added=0
+[2026-06-05 02:36:33] ADDED batch=17 count=1 total_ny~308 Bianca Jewelry | https://biancajewelers.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:36:38] PROGRESS batch=17 verified_candidates=100/100 added=1
+[2026-06-05 02:36:40] BATCH 18 ny_rows=308 queries=24
+[2026-06-05 02:36:41] Apify start status=201
+[2026-06-05 02:36:42] Apify run mD2zSNKkJIJoYNnOa status=RUNNING
+[2026-06-05 02:36:58] Apify run mD2zSNKkJIJoYNnOa status=RUNNING
+[2026-06-05 02:37:14] Apify run mD2zSNKkJIJoYNnOa status=RUNNING
+[2026-06-05 02:37:30] Apify run mD2zSNKkJIJoYNnOa status=SUCCEEDED
+[2026-06-05 02:37:32] Apify items=24 candidates_to_verify=94 cost=0.10899999999999999
+[2026-06-05 02:37:49] PROGRESS batch=18 scanned=25/94 added=0
+[2026-06-05 02:38:07] PROGRESS batch=18 verified_candidates=40/94 added=0
+[2026-06-05 02:38:44] PROGRESS batch=18 verified_candidates=60/94 added=0
+[2026-06-05 02:39:13] PROGRESS batch=18 verified_candidates=80/94 added=0
+[2026-06-05 02:39:49] BATCH 19 ny_rows=308 queries=24
+[2026-06-05 02:39:50] Apify start status=201
+[2026-06-05 02:39:51] Apify run lhxPG8eGtxntZF2XX status=RUNNING
+[2026-06-05 02:40:07] Apify run lhxPG8eGtxntZF2XX status=RUNNING
+[2026-06-05 02:40:23] Apify run lhxPG8eGtxntZF2XX status=SUCCEEDED
+[2026-06-05 02:40:25] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 02:40:58] PROGRESS batch=19 scanned=25/100 added=0
+[2026-06-05 02:41:31] PROGRESS batch=19 scanned=50/100 added=0
+[2026-06-05 02:41:33] ADDED batch=19 count=1 total_ny~309 Embellish Gold Jewelry & Diamond | https://embellishgold.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:41:37] ADDED batch=19 count=2 total_ny~310 14K 18K Gold Earrings | https://14k18kgold.com/ | Fine Jewellery | email=14k18kgold@gmail.com
+[2026-06-05 02:42:17] PROGRESS batch=19 verified_candidates=80/100 added=2
+[2026-06-05 02:42:49] PROGRESS batch=19 verified_candidates=100/100 added=2
+[2026-06-05 02:42:52] BATCH 20 ny_rows=310 queries=24
+[2026-06-05 02:42:53] Apify start status=201
+[2026-06-05 02:42:54] Apify run izBHVWtonNfLdQksb status=RUNNING
+[2026-06-05 02:43:10] Apify run izBHVWtonNfLdQksb status=RUNNING
+[2026-06-05 02:43:26] Apify run izBHVWtonNfLdQksb status=RUNNING
+[2026-06-05 02:43:42] Apify run izBHVWtonNfLdQksb status=SUCCEEDED
+[2026-06-05 02:43:44] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:43:55] ADDED batch=20 count=1 total_ny~311 Driggs Mercantile | https://driggsmercantile.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:44:09] PROGRESS batch=20 scanned=25/100 added=1
+[2026-06-05 02:44:21] ADDED batch=20 count=2 total_ny~312 Diamond For Good | https://diamondforgood.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:45:04] PROGRESS batch=20 scanned=75/100 added=2
+[2026-06-05 02:45:41] PROGRESS batch=20 verified_candidates=100/100 added=2
+[2026-06-05 02:45:43] BATCH 21 ny_rows=317 queries=24
+[2026-06-05 02:45:45] Apify start status=201
+[2026-06-05 02:45:46] Apify run GtxFPkGyCodK7bsft status=RUNNING
+[2026-06-05 02:46:02] Apify run GtxFPkGyCodK7bsft status=RUNNING
+[2026-06-05 02:46:18] Apify run GtxFPkGyCodK7bsft status=RUNNING
+[2026-06-05 02:46:34] Apify run GtxFPkGyCodK7bsft status=RUNNING
+[2026-06-05 02:46:50] Apify run GtxFPkGyCodK7bsft status=SUCCEEDED
+[2026-06-05 02:46:51] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:46:58] ADDED batch=21 count=1 total_ny~318 Rosier Fine Jewelry | https://rosierjewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 02:47:05] ADDED batch=21 count=2 total_ny~319 The Jewelry Shop | https://thejewelryshop.com/ | Demi-fine Jewellery | email=blank
+[2026-06-05 02:47:23] PROGRESS batch=21 verified_candidates=20/100 added=2
+[2026-06-05 02:47:26] PROGRESS batch=21 scanned=25/100 added=2
+[2026-06-05 02:47:45] ADDED batch=21 count=3 total_ny~320 Fenton | https://fentonand.co/ | Fine Jewellery | email=concierge@fentonand.co
+[2026-06-05 02:47:59] PROGRESS batch=21 scanned=50/100 added=3
+[2026-06-05 02:48:34] PROGRESS batch=21 scanned=75/100 added=3
+[2026-06-05 02:48:43] PROGRESS batch=21 verified_candidates=80/100 added=3
+[2026-06-05 02:49:09] ADDED batch=21 count=4 total_ny~326 Gwen Beloti | https://gwenbeloti.com/ | Demi-fine Jewellery | email=order@gwenbeloti.com
+[2026-06-05 02:49:17] PROGRESS batch=21 scanned=100/100 added=4
+[2026-06-05 02:49:19] BATCH 22 ny_rows=326 queries=24
+[2026-06-05 02:49:21] Apify start status=201
+[2026-06-05 02:49:22] Apify run WsAVs2FUTOvQYdMLm status=RUNNING
+[2026-06-05 02:49:38] Apify run WsAVs2FUTOvQYdMLm status=RUNNING
+[2026-06-05 02:49:54] Apify run WsAVs2FUTOvQYdMLm status=RUNNING
+[2026-06-05 02:50:10] Apify run WsAVs2FUTOvQYdMLm status=RUNNING
+[2026-06-05 02:50:26] Apify run WsAVs2FUTOvQYdMLm status=SUCCEEDED
+[2026-06-05 02:50:27] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:50:57] PROGRESS batch=22 scanned=25/100 added=0
+[2026-06-05 02:51:36] PROGRESS batch=22 scanned=50/100 added=0
+[2026-06-05 02:52:22] PROGRESS batch=22 scanned=75/100 added=0
+[2026-06-05 02:52:30] PROGRESS batch=22 verified_candidates=80/100 added=0
+[2026-06-05 02:52:52] PROGRESS batch=22 scanned=100/100 added=0
+[2026-06-05 02:52:55] BATCH 23 ny_rows=328 queries=24
+[2026-06-05 02:52:56] Apify start status=201
+[2026-06-05 02:52:57] Apify run a8dTThUgCWuP3t921 status=RUNNING
+[2026-06-05 02:53:13] Apify run a8dTThUgCWuP3t921 status=RUNNING
+[2026-06-05 02:53:29] Apify run a8dTThUgCWuP3t921 status=RUNNING
+[2026-06-05 02:53:45] Apify run a8dTThUgCWuP3t921 status=RUNNING
+[2026-06-05 02:54:01] Apify run a8dTThUgCWuP3t921 status=RUNNING
+[2026-06-05 02:54:17] Apify run a8dTThUgCWuP3t921 status=SUCCEEDED
+[2026-06-05 02:54:19] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 02:54:40] PROGRESS batch=23 verified_candidates=20/100 added=0
+[2026-06-05 02:54:43] PROGRESS batch=23 scanned=25/100 added=0
+[2026-06-05 02:55:18] PROGRESS batch=23 scanned=50/100 added=0
+[2026-06-05 02:55:45] PROGRESS batch=23 scanned=75/100 added=0
+[2026-06-05 02:55:53] PROGRESS batch=23 verified_candidates=80/100 added=0
+[2026-06-05 02:56:15] PROGRESS batch=23 verified_candidates=100/100 added=0
+[2026-06-05 02:56:17] BATCH 24 ny_rows=336 queries=24
+[2026-06-05 02:56:19] Apify start status=201
+[2026-06-05 02:56:20] Apify run ifdAjse8QHiytNjLf status=RUNNING
+[2026-06-05 02:56:36] Apify run ifdAjse8QHiytNjLf status=RUNNING
+[2026-06-05 02:56:52] Apify run ifdAjse8QHiytNjLf status=RUNNING
+[2026-06-05 02:57:08] Apify run ifdAjse8QHiytNjLf status=RUNNING
+[2026-06-05 02:57:24] Apify run ifdAjse8QHiytNjLf status=RUNNING
+[2026-06-05 02:57:40] Apify run ifdAjse8QHiytNjLf status=SUCCEEDED
+[2026-06-05 02:57:41] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 02:58:12] PROGRESS batch=24 verified_candidates=20/100 added=0
+[2026-06-05 02:58:17] PROGRESS batch=24 scanned=25/100 added=0
+[2026-06-05 02:58:48] PROGRESS batch=24 verified_candidates=40/100 added=0
+[2026-06-05 02:58:58] PROGRESS batch=24 scanned=50/100 added=0
+[2026-06-05 03:00:10] PROGRESS batch=24 scanned=100/100 added=0
+[2026-06-05 03:00:13] BATCH 25 ny_rows=343 queries=24
+[2026-06-05 03:00:14] Apify start status=201
+[2026-06-05 03:00:15] Apify run V57qRYohyDuw4GyeW status=RUNNING
+[2026-06-05 03:00:32] Apify run V57qRYohyDuw4GyeW status=RUNNING
+[2026-06-05 03:00:48] Apify run V57qRYohyDuw4GyeW status=RUNNING
+[2026-06-05 03:01:04] Apify run V57qRYohyDuw4GyeW status=RUNNING
+[2026-06-05 03:01:20] Apify run V57qRYohyDuw4GyeW status=RUNNING
+[2026-06-05 03:01:36] Apify run V57qRYohyDuw4GyeW status=SUCCEEDED
+[2026-06-05 03:01:37] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 03:02:19] PROGRESS batch=25 verified_candidates=20/100 added=0
+[2026-06-05 03:02:22] PROGRESS batch=25 scanned=25/100 added=0
+[2026-06-05 03:02:45] ADDED batch=25 count=1 total_ny~345 Lolovivi LLC | https://lolovivijewelry.com/ | Demi-fine Jewellery | email=blank
+[2026-06-05 03:02:52] PROGRESS batch=25 scanned=50/100 added=1
+[2026-06-05 03:03:21] PROGRESS batch=25 scanned=75/100 added=1
+[2026-06-05 03:03:25] PROGRESS batch=25 verified_candidates=80/100 added=1
+[2026-06-05 03:04:04] PROGRESS batch=25 scanned=100/100 added=1
+[2026-06-05 07:10:16] START {'total_rows': 442, 'new_york_rows': 371, 'emails_found_new_york': 280, 'duplicate_domains': 0}
+[2026-06-05 07:10:16] START {'total_rows': 442, 'new_york_rows': 371, 'emails_found_new_york': 280, 'duplicate_domains': 0}
+[2026-06-05 07:10:18] BATCH 27 ny_rows=371 queries=24
+[2026-06-05 07:10:18] BATCH 27 ny_rows=371 queries=24
+[2026-06-05 07:10:19] Apify start status=201
+[2026-06-05 07:10:19] Apify start status=201
+[2026-06-05 07:10:20] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:10:20] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:10:36] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:10:36] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:10:52] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:10:52] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:11:08] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:11:08] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:11:24] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:11:24] Apify run 1kFsid59fRoQ0AmbA status=RUNNING
+[2026-06-05 07:11:40] Apify run 1kFsid59fRoQ0AmbA status=SUCCEEDED
+[2026-06-05 07:11:40] Apify run 1kFsid59fRoQ0AmbA status=SUCCEEDED
+[2026-06-05 07:11:42] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:11:42] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:12:14] PROGRESS batch=27 scanned=25/100 added=0
+[2026-06-05 07:12:14] PROGRESS batch=27 scanned=25/100 added=0
+[2026-06-05 07:12:34] PROGRESS batch=27 verified_candidates=40/100 added=0
+[2026-06-05 07:12:34] PROGRESS batch=27 verified_candidates=40/100 added=0
+[2026-06-05 07:12:55] PROGRESS batch=27 scanned=50/100 added=0
+[2026-06-05 07:12:55] PROGRESS batch=27 scanned=50/100 added=0
+[2026-06-05 07:13:12] ADDED batch=27 count=1 total_ny~372 Mike The Jeweler | https://mikethejeweler.com/ | Fine Jewellery | email=mikesjewelryny@gmail.com
+[2026-06-05 07:13:12] ADDED batch=27 count=1 total_ny~372 Mike The Jeweler | https://mikethejeweler.com/ | Fine Jewellery | email=mikesjewelryny@gmail.com
+[2026-06-05 07:14:19] PROGRESS batch=27 verified_candidates=100/100 added=1
+[2026-06-05 07:14:19] PROGRESS batch=27 verified_candidates=100/100 added=1
+[2026-06-05 07:14:22] BATCH 28 ny_rows=372 queries=24
+[2026-06-05 07:14:22] BATCH 28 ny_rows=372 queries=24
+[2026-06-05 07:14:23] Apify start status=201
+[2026-06-05 07:14:23] Apify start status=201
+[2026-06-05 07:14:24] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:14:24] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:14:40] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:14:40] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:14:56] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:14:56] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:15:12] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:15:12] Apify run vbV02xvmnwgwwJvgV status=RUNNING
+[2026-06-05 07:15:28] Apify run vbV02xvmnwgwwJvgV status=SUCCEEDED
+[2026-06-05 07:15:28] Apify run vbV02xvmnwgwwJvgV status=SUCCEEDED
+[2026-06-05 07:15:30] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:15:30] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:16:40] ADDED batch=28 count=1 total_ny~373 Queen Gold | https://queengold.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:16:40] ADDED batch=28 count=1 total_ny~373 Queen Gold | https://queengold.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:17:45] ADDED batch=28 count=2 total_ny~374 Amjewelrynyc | https://amjewelrynyc.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:17:45] ADDED batch=28 count=2 total_ny~374 Amjewelrynyc | https://amjewelrynyc.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:18:01] PROGRESS batch=28 verified_candidates=100/100 added=2
+[2026-06-05 07:18:01] PROGRESS batch=28 verified_candidates=100/100 added=2
+[2026-06-05 07:18:03] BATCH 29 ny_rows=374 queries=24
+[2026-06-05 07:18:03] BATCH 29 ny_rows=374 queries=24
+[2026-06-05 07:18:05] Apify start status=201
+[2026-06-05 07:18:05] Apify start status=201
+[2026-06-05 07:18:06] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:06] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:22] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:22] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:38] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:38] Apify run 442yjmiBBgbBgrfJX status=RUNNING
+[2026-06-05 07:18:54] Apify run 442yjmiBBgbBgrfJX status=SUCCEEDED
+[2026-06-05 07:18:54] Apify run 442yjmiBBgbBgrfJX status=SUCCEEDED
+[2026-06-05 07:18:55] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:18:55] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:19:25] PROGRESS batch=29 scanned=25/100 added=0
+[2026-06-05 07:19:25] PROGRESS batch=29 scanned=25/100 added=0
+[2026-06-05 07:19:58] PROGRESS batch=29 verified_candidates=60/100 added=0
+[2026-06-05 07:19:58] PROGRESS batch=29 verified_candidates=60/100 added=0
+[2026-06-05 07:20:18] ADDED batch=29 count=1 total_ny~375 Jessica McCormack UK | https://jessicamccormack.com/ | Fine Jewellery | email=arianna.tosetto@jessicamccormack.com
+[2026-06-05 07:20:18] ADDED batch=29 count=1 total_ny~375 Jessica McCormack UK | https://jessicamccormack.com/ | Fine Jewellery | email=arianna.tosetto@jessicamccormack.com
+[2026-06-05 07:21:00] PROGRESS batch=29 scanned=100/100 added=1
+[2026-06-05 07:21:00] PROGRESS batch=29 scanned=100/100 added=1
+[2026-06-05 07:21:02] BATCH 30 ny_rows=375 queries=24
+[2026-06-05 07:21:02] BATCH 30 ny_rows=375 queries=24
+[2026-06-05 07:21:04] Apify start status=201
+[2026-06-05 07:21:04] Apify start status=201
+[2026-06-05 07:21:05] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:05] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:21] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:21] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:37] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:37] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:53] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:21:53] Apify run UTDL46Ahnb0ydOjJp status=RUNNING
+[2026-06-05 07:22:09] Apify run UTDL46Ahnb0ydOjJp status=SUCCEEDED
+[2026-06-05 07:22:09] Apify run UTDL46Ahnb0ydOjJp status=SUCCEEDED
+[2026-06-05 07:22:10] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:22:10] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:22:33] PROGRESS batch=30 verified_candidates=20/100 added=0
+[2026-06-05 07:22:33] PROGRESS batch=30 verified_candidates=20/100 added=0
+[2026-06-05 07:23:21] PROGRESS batch=30 scanned=50/100 added=0
+[2026-06-05 07:23:21] PROGRESS batch=30 scanned=50/100 added=0
+[2026-06-05 07:23:49] ADDED batch=30 count=1 total_ny~376 Adora Fine Jewelry | https://adorafinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:23:49] ADDED batch=30 count=1 total_ny~376 Adora Fine Jewelry | https://adorafinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:24:04] PROGRESS batch=30 scanned=75/100 added=1
+[2026-06-05 07:24:04] PROGRESS batch=30 scanned=75/100 added=1
+[2026-06-05 07:24:35] ADDED batch=30 count=2 total_ny~377 OLD J | https://oldjewelry.net/ | Fine Jewellery | email=blank
+[2026-06-05 07:24:35] ADDED batch=30 count=2 total_ny~377 OLD J | https://oldjewelry.net/ | Fine Jewellery | email=blank
+[2026-06-05 07:24:37] PROGRESS batch=30 scanned=100/100 added=2
+[2026-06-05 07:24:37] PROGRESS batch=30 scanned=100/100 added=2
+[2026-06-05 07:24:40] BATCH 31 ny_rows=377 queries=24
+[2026-06-05 07:24:40] BATCH 31 ny_rows=377 queries=24
+[2026-06-05 07:24:41] Apify start status=201
+[2026-06-05 07:24:41] Apify start status=201
+[2026-06-05 07:24:42] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:24:42] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:24:58] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:24:58] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:25:14] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:25:14] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:25:30] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:25:30] Apify run siTTPCwH3ftCBZZrp status=RUNNING
+[2026-06-05 07:25:46] Apify run siTTPCwH3ftCBZZrp status=SUCCEEDED
+[2026-06-05 07:25:46] Apify run siTTPCwH3ftCBZZrp status=SUCCEEDED
+[2026-06-05 07:25:48] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:25:48] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:27:20] PROGRESS batch=31 verified_candidates=60/100 added=0
+[2026-06-05 07:27:20] PROGRESS batch=31 verified_candidates=60/100 added=0
+[2026-06-05 07:27:25] ADDED batch=31 count=1 total_ny~378 KAIWORKS | https://kaiworksnyc.com/ | Demi-fine Jewellery | email=info@kaiworksnyc.com
+[2026-06-05 07:27:25] ADDED batch=31 count=1 total_ny~378 KAIWORKS | https://kaiworksnyc.com/ | Demi-fine Jewellery | email=info@kaiworksnyc.com
+[2026-06-05 07:27:29] ADDED batch=31 count=2 total_ny~379 ÉMILLIE ANNE | https://emillieanne.com/ | Demi-fine Jewellery | email=support@emillieanne.com
+[2026-06-05 07:27:29] ADDED batch=31 count=2 total_ny~379 ÉMILLIE ANNE | https://emillieanne.com/ | Demi-fine Jewellery | email=support@emillieanne.com
+[2026-06-05 07:27:46] PROGRESS batch=31 scanned=75/100 added=2
+[2026-06-05 07:27:46] PROGRESS batch=31 scanned=75/100 added=2
+[2026-06-05 07:28:29] PROGRESS batch=31 verified_candidates=100/100 added=2
+[2026-06-05 07:28:29] PROGRESS batch=31 verified_candidates=100/100 added=2
+[2026-06-05 07:28:31] BATCH 32 ny_rows=379 queries=24
+[2026-06-05 07:28:31] BATCH 32 ny_rows=379 queries=24
+[2026-06-05 07:28:32] Apify start status=201
+[2026-06-05 07:28:32] Apify start status=201
+[2026-06-05 07:28:33] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:28:33] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:28:49] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:28:49] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:05] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:05] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:21] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:21] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:37] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:37] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:53] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:29:53] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:30:09] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:30:09] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:30:25] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:30:25] Apify run VVka5L3aC8VtNS0XA status=RUNNING
+[2026-06-05 07:30:41] Apify run VVka5L3aC8VtNS0XA status=SUCCEEDED
+[2026-06-05 07:30:41] Apify run VVka5L3aC8VtNS0XA status=SUCCEEDED
+[2026-06-05 07:30:43] Apify items=24 candidates_to_verify=98 cost=0.1045
+[2026-06-05 07:30:43] Apify items=24 candidates_to_verify=98 cost=0.1045
+[2026-06-05 07:31:04] PROGRESS batch=32 verified_candidates=20/98 added=0
+[2026-06-05 07:31:04] PROGRESS batch=32 verified_candidates=20/98 added=0
+[2026-06-05 07:31:12] PROGRESS batch=32 scanned=25/98 added=0
+[2026-06-05 07:31:12] PROGRESS batch=32 scanned=25/98 added=0
+[2026-06-05 07:31:27] ADDED batch=32 count=1 total_ny~380 Vanessa Lianne | https://vanessalianne.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:31:27] ADDED batch=32 count=1 total_ny~380 Vanessa Lianne | https://vanessalianne.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:32:11] PROGRESS batch=32 scanned=75/98 added=1
+[2026-06-05 07:32:11] PROGRESS batch=32 scanned=75/98 added=1
+[2026-06-05 07:32:17] PROGRESS batch=32 verified_candidates=80/98 added=1
+[2026-06-05 07:32:17] PROGRESS batch=32 verified_candidates=80/98 added=1
+[2026-06-05 07:32:50] ADDED batch=32 count=2 total_ny~381 Me&Ro | https://meandrojewelry.com/ | Fine Jewellery | email=esales@meandrojewelry.com
+[2026-06-05 07:32:50] ADDED batch=32 count=2 total_ny~381 Me&Ro | https://meandrojewelry.com/ | Fine Jewellery | email=esales@meandrojewelry.com
+[2026-06-05 07:32:54] BATCH 33 ny_rows=381 queries=24
+[2026-06-05 07:32:54] BATCH 33 ny_rows=381 queries=24
+[2026-06-05 07:32:55] Apify start status=201
+[2026-06-05 07:32:55] Apify start status=201
+[2026-06-05 07:32:56] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:32:56] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:12] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:12] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:28] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:28] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:44] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:33:44] Apify run 1EFo2XBKB1DfnL88y status=RUNNING
+[2026-06-05 07:34:00] Apify run 1EFo2XBKB1DfnL88y status=SUCCEEDED
+[2026-06-05 07:34:00] Apify run 1EFo2XBKB1DfnL88y status=SUCCEEDED
+[2026-06-05 07:34:02] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:34:02] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:34:56] PROGRESS batch=33 verified_candidates=40/100 added=0
+[2026-06-05 07:34:56] PROGRESS batch=33 verified_candidates=40/100 added=0
+[2026-06-05 07:35:06] PROGRESS batch=33 scanned=50/100 added=0
+[2026-06-05 07:35:06] PROGRESS batch=33 scanned=50/100 added=0
+[2026-06-05 07:35:59] PROGRESS batch=33 verified_candidates=80/100 added=0
+[2026-06-05 07:35:59] PROGRESS batch=33 verified_candidates=80/100 added=0
+[2026-06-05 07:36:24] PROGRESS batch=33 verified_candidates=100/100 added=0
+[2026-06-05 07:36:24] PROGRESS batch=33 verified_candidates=100/100 added=0
+[2026-06-05 07:36:26] BATCH 34 ny_rows=381 queries=24
+[2026-06-05 07:36:26] BATCH 34 ny_rows=381 queries=24
+[2026-06-05 07:36:27] Apify start status=201
+[2026-06-05 07:36:27] Apify start status=201
+[2026-06-05 07:36:28] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:36:28] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:36:44] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:36:44] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:37:00] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:37:00] Apify run 5TW9OsBbTf9CnARuu status=RUNNING
+[2026-06-05 07:37:16] Apify run 5TW9OsBbTf9CnARuu status=SUCCEEDED
+[2026-06-05 07:37:16] Apify run 5TW9OsBbTf9CnARuu status=SUCCEEDED
+[2026-06-05 07:37:18] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:37:18] Apify items=24 candidates_to_verify=100 cost=0.1045
+[2026-06-05 07:37:41] PROGRESS batch=34 scanned=25/100 added=0
+[2026-06-05 07:37:41] PROGRESS batch=34 scanned=25/100 added=0
+[2026-06-05 07:38:08] PROGRESS batch=34 verified_candidates=40/100 added=0
+[2026-06-05 07:38:08] PROGRESS batch=34 verified_candidates=40/100 added=0
+[2026-06-05 07:38:22] PROGRESS batch=34 scanned=50/100 added=0
+[2026-06-05 07:38:22] PROGRESS batch=34 scanned=50/100 added=0
+[2026-06-05 07:39:01] PROGRESS batch=34 scanned=75/100 added=0
+[2026-06-05 07:39:01] PROGRESS batch=34 scanned=75/100 added=0
+[2026-06-05 07:39:20] PROGRESS batch=34 scanned=100/100 added=0
+[2026-06-05 07:39:20] PROGRESS batch=34 scanned=100/100 added=0
+[2026-06-05 07:39:23] BATCH 35 ny_rows=381 queries=24
+[2026-06-05 07:39:23] BATCH 35 ny_rows=381 queries=24
+[2026-06-05 07:39:24] Apify start status=201
+[2026-06-05 07:39:24] Apify start status=201
+[2026-06-05 07:39:25] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:39:25] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:39:41] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:39:41] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:39:57] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:39:57] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:40:13] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:40:13] Apify run RanexyyLbymN73G06 status=RUNNING
+[2026-06-05 07:40:29] Apify run RanexyyLbymN73G06 status=SUCCEEDED
+[2026-06-05 07:40:29] Apify run RanexyyLbymN73G06 status=SUCCEEDED
+[2026-06-05 07:40:31] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:40:31] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 07:41:08] PROGRESS batch=35 verified_candidates=20/100 added=0
+[2026-06-05 07:41:08] PROGRESS batch=35 verified_candidates=20/100 added=0
+[2026-06-05 07:41:14] PROGRESS batch=35 scanned=25/100 added=0
+[2026-06-05 07:41:14] PROGRESS batch=35 scanned=25/100 added=0
+[2026-06-05 07:41:46] ADDED batch=35 count=1 total_ny~382 Mr CVD | https://mrcvd.com/ | Fine Jewellery | email=info@mrcvd.com
+[2026-06-05 07:41:46] ADDED batch=35 count=1 total_ny~382 Mr CVD | https://mrcvd.com/ | Fine Jewellery | email=info@mrcvd.com
+[2026-06-05 07:41:51] ADDED batch=35 count=2 total_ny~383 Zen Diamond | https://us.zendiamond.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:41:51] ADDED batch=35 count=2 total_ny~383 Zen Diamond | https://us.zendiamond.com/ | Fine Jewellery | email=blank
+[2026-06-05 07:42:27] PROGRESS batch=35 verified_candidates=80/100 added=2
+[2026-06-05 07:42:27] PROGRESS batch=35 verified_candidates=80/100 added=2
+[2026-06-05 07:42:52] PROGRESS batch=35 scanned=100/100 added=2
+[2026-06-05 07:42:52] PROGRESS batch=35 scanned=100/100 added=2
+[2026-06-05 07:42:55] BATCH 36 ny_rows=383 queries=24
+[2026-06-05 07:42:55] BATCH 36 ny_rows=383 queries=24
+[2026-06-05 07:42:56] Apify start status=201
+[2026-06-05 07:42:56] Apify start status=201
+[2026-06-05 07:42:57] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:42:57] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:43:13] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:43:13] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:43:29] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:43:29] Apify run oHhwJwzuXvMxKcWbg status=RUNNING
+[2026-06-05 07:43:45] Apify run oHhwJwzuXvMxKcWbg status=SUCCEEDED
+[2026-06-05 07:43:45] Apify run oHhwJwzuXvMxKcWbg status=SUCCEEDED
+[2026-06-05 07:43:47] Apify items=24 candidates_to_verify=100 cost=0.0865
+[2026-06-05 07:43:47] Apify items=24 candidates_to_verify=100 cost=0.0865
+[2026-06-05 07:44:18] PROGRESS batch=36 verified_candidates=20/100 added=0
+[2026-06-05 07:44:18] PROGRESS batch=36 verified_candidates=20/100 added=0
+[2026-06-05 07:44:23] PROGRESS batch=36 scanned=25/100 added=0
+[2026-06-05 07:44:23] PROGRESS batch=36 scanned=25/100 added=0
+[2026-06-05 07:45:35] PROGRESS batch=36 verified_candidates=60/100 added=0
+[2026-06-05 07:45:35] PROGRESS batch=36 verified_candidates=60/100 added=0
+[2026-06-05 07:45:54] PROGRESS batch=36 scanned=75/100 added=0
+[2026-06-05 07:45:54] PROGRESS batch=36 scanned=75/100 added=0
+[2026-06-05 07:46:17] PROGRESS batch=36 verified_candidates=100/100 added=0
+[2026-06-05 07:46:17] PROGRESS batch=36 verified_candidates=100/100 added=0
+[2026-06-05 07:46:20] BATCH 37 ny_rows=383 queries=24
+[2026-06-05 07:46:20] BATCH 37 ny_rows=383 queries=24
+[2026-06-05 07:46:21] Apify start status=402
+[2026-06-05 07:46:21] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 148, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 116, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 75, in apify_run
+    r=requests.post('https://api.apify.com/v2/acts/apify~google-search-scraper/runs',params={'token':token(),'maxTotalChargeUsd':'0.50'},json=payload,timeout=60); log(f'Apify start status={r.status_code}'); r.raise_for_status()
+                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 402 Client Error: Payment Required for url: https://api.apify.com/v2/acts/apify~google-search-scraper/runs?token=apify_api_REDACTED&maxTotalChargeUsd=0.50
+[2026-06-05 07:47:20] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 07:47:20] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 07:47:21] BATCH 38 ny_rows=383 queries=24
+[2026-06-05 07:47:21] BATCH 38 ny_rows=383 queries=24
+[2026-06-05 07:47:22] Apify start status=402
+[2026-06-05 07:47:22] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 148, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 116, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 75, in apify_run
+    r=requests.post('https://api.apify.com/v2/acts/apify~google-search-scraper/runs',params={'token':token(),'maxTotalChargeUsd':'0.50'},json=payload,timeout=60); log(f'Apify start status={r.status_code}'); r.raise_for_status()
+                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 402 Client Error: Payment Required for url: https://api.apify.com/v2/acts/apify~google-search-scraper/runs?token=apify_api_REDACTED&maxTotalChargeUsd=0.50
+[2026-06-05 07:57:18] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 07:57:18] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 07:57:19] BATCH 39 ny_rows=383 queries=24
+[2026-06-05 07:57:19] BATCH 39 ny_rows=383 queries=24
+[2026-06-05 07:57:20] Apify start status=402
+[2026-06-05 07:57:20] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:02:20] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:02:20] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:02:21] BATCH 40 ny_rows=383 queries=24
+[2026-06-05 08:02:21] BATCH 40 ny_rows=383 queries=24
+[2026-06-05 08:02:22] Apify start status=402
+[2026-06-05 08:02:22] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:07:19] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:07:19] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:07:21] BATCH 41 ny_rows=383 queries=24
+[2026-06-05 08:07:21] BATCH 41 ny_rows=383 queries=24
+[2026-06-05 08:07:22] Apify start status=402
+[2026-06-05 08:07:22] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:12:23] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:12:23] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:12:25] BATCH 42 ny_rows=383 queries=24
+[2026-06-05 08:12:25] BATCH 42 ny_rows=383 queries=24
+[2026-06-05 08:12:26] Apify start status=402
+[2026-06-05 08:12:26] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:17:15] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:17:15] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:17:16] BATCH 43 ny_rows=383 queries=24
+[2026-06-05 08:17:16] BATCH 43 ny_rows=383 queries=24
+[2026-06-05 08:17:17] Apify start status=402
+[2026-06-05 08:17:17] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:22:16] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:22:16] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0}
+[2026-06-05 08:22:17] BATCH 44 ny_rows=383 queries=24
+[2026-06-05 08:22:17] BATCH 44 ny_rows=383 queries=24
+[2026-06-05 08:22:18] Apify start status=402
+[2026-06-05 08:22:18] Apify start status=402
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 155, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 123, in main
+    rid,data,items,cost=apify_run(queries); cs=candidates(items)[:MAX_CANDIDATES]; log(f'Apify items={len(items)} candidates_to_verify={len(cs)} cost={cost}')
+                        ^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/outputs/shopify_city_leads/ny_to_1000_runner.py", line 78, in apify_run
+    raise RuntimeError('Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50')
+RuntimeError: Apify 402 Payment Required: google-search-scraper cannot start even with maxTotalChargeUsd=0.50
+[2026-06-05 08:36:42] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 0}
+[2026-06-05 08:36:42] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 0}
+[2026-06-05 08:36:45] BATCH 45 ny_rows=383 queries=24
+[2026-06-05 08:36:45] BATCH 45 ny_rows=383 queries=24
+[2026-06-05 08:36:46] Apify start status=201
+[2026-06-05 08:36:46] Apify start status=201
+[2026-06-05 08:36:47] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:36:47] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:03] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:03] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:19] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:19] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:35] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:35] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:51] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:37:51] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:38:07] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:38:07] Apify run FJwZlWXcJln4aTBld status=RUNNING
+[2026-06-05 08:38:23] Apify run FJwZlWXcJln4aTBld status=SUCCEEDED
+[2026-06-05 08:38:23] Apify run FJwZlWXcJln4aTBld status=SUCCEEDED
+[2026-06-05 08:38:25] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 08:38:25] Apify items=24 candidates_to_verify=100 cost=0.10899999999999999
+[2026-06-05 08:38:43] ADDED_NON_SHOPIFY batch=45 count=1 SoHo Jewelry Store | https://sohogem.com/ | platform=BigCommerce | email=sales@sohogem.com
+[2026-06-05 08:38:43] ADDED_NON_SHOPIFY batch=45 count=1 SoHo Jewelry Store | https://sohogem.com/ | platform=BigCommerce | email=sales@sohogem.com
+[2026-06-05 08:38:46] ADDED_NON_SHOPIFY batch=45 count=2 B.V. Gems | https://bvgems.com/ | platform=Unknown | email=blank
+[2026-06-05 08:38:46] ADDED_NON_SHOPIFY batch=45 count=2 B.V. Gems | https://bvgems.com/ | platform=Unknown | email=blank
+[2026-06-05 08:38:51] ADDED_NON_SHOPIFY batch=45 count=3 50,000+ Certified Gemstones, Engagement Rings and Fine Jewelry | https://gemsny.com/ | platform=Unknown | email=ranjit@gemsny.in
+[2026-06-05 08:38:51] ADDED_NON_SHOPIFY batch=45 count=3 50,000+ Certified Gemstones, Engagement Rings and Fine Jewelry | https://gemsny.com/ | platform=Unknown | email=ranjit@gemsny.in
+[2026-06-05 08:38:55] ADDED_NON_SHOPIFY batch=45 count=4 Sell Gold, Silver, Diamonds in NYC & NJ | https://globalgoldandsilver.com/ | platform=Unknown | email=blank
+[2026-06-05 08:38:55] ADDED_NON_SHOPIFY batch=45 count=4 Sell Gold, Silver, Diamonds in NYC & NJ | https://globalgoldandsilver.com/ | platform=Unknown | email=blank
+[2026-06-05 08:39:02] ADDED_NON_SHOPIFY batch=45 count=5 The Rare Gem | https://raregemcollection.com/ | platform=Unknown | email=info@theraregem.com
+[2026-06-05 08:39:02] ADDED_NON_SHOPIFY batch=45 count=5 The Rare Gem | https://raregemcollection.com/ | platform=Unknown | email=info@theraregem.com
+[2026-06-05 08:39:07] ADDED_NON_SHOPIFY batch=45 count=6 NYC JEWELRY & WATCH BUYER | https://nycjewelryandwatchbuyers.com/ | platform=WordPress | email=blank
+[2026-06-05 08:39:07] ADDED_NON_SHOPIFY batch=45 count=6 NYC JEWELRY & WATCH BUYER | https://nycjewelryandwatchbuyers.com/ | platform=WordPress | email=blank
+[2026-06-05 08:39:16] PROGRESS batch=45 verified_candidates=20/100 added=0
+[2026-06-05 08:39:16] PROGRESS batch=45 verified_candidates=20/100 added=0
+[2026-06-05 08:39:22] PROGRESS batch=45 scanned=25/100 added=0
+[2026-06-05 08:39:22] PROGRESS batch=45 scanned=25/100 added=0
+[2026-06-05 08:39:28] ADDED_NON_SHOPIFY batch=45 count=7 Kunal Jewelers | https://kunaljewels.com/ | platform=WooCommerce | email=info@kunaljewels.com
+[2026-06-05 08:39:28] ADDED_NON_SHOPIFY batch=45 count=7 Kunal Jewelers | https://kunaljewels.com/ | platform=WooCommerce | email=info@kunaljewels.com
+[2026-06-05 08:39:31] ADDED_NON_SHOPIFY batch=45 count=8 Renaissance Global Limited | https://renaissanceglobal.com/ | platform=WordPress | email=info@renaissanceglobal.com
+[2026-06-05 08:39:31] ADDED_NON_SHOPIFY batch=45 count=8 Renaissance Global Limited | https://renaissanceglobal.com/ | platform=WordPress | email=info@renaissanceglobal.com
+[2026-06-05 08:39:37] ADDED_NON_SHOPIFY batch=45 count=9 Best Jewelry Long Island, NY | https://tricountyjewelers.com/ | platform=Unknown | email=cmccarthy@brightmorebrands.com
+[2026-06-05 08:39:37] ADDED_NON_SHOPIFY batch=45 count=9 Best Jewelry Long Island, NY | https://tricountyjewelers.com/ | platform=Unknown | email=cmccarthy@brightmorebrands.com
+Google API error (429 rateLimitExceeded): Quota exceeded for quota metric 'Read requests' and limit 'Read requests per minute per user' of service 'sheets.googleapis.com' for consumer 'project_number:944945226376'.
+[2026-06-05 08:39:53] ADDED_NON_SHOPIFY batch=45 count=10 SVS Fine Jewelry · Engagement Rings, Diamonds & Custom Design | https://svsfinejewelry.com/ | platform=Unknown | email=info@svsfinejewelry.com
+[2026-06-05 08:39:53] ADDED_NON_SHOPIFY batch=45 count=10 SVS Fine Jewelry · Engagement Rings, Diamonds & Custom Design | https://svsfinejewelry.com/ | platform=Unknown | email=info@svsfinejewelry.com
+[2026-06-05 08:39:59] ADDED_NON_SHOPIFY batch=45 count=11 Marinelli Jewelers | https://marinellijewelers.com/ | platform=WordPress | email=rl14k@aol.com
+[2026-06-05 08:39:59] ADDED_NON_SHOPIFY batch=45 count=11 Marinelli Jewelers | https://marinellijewelers.com/ | platform=WordPress | email=rl14k@aol.com
+[2026-06-05 08:40:09] ADDED_NON_SHOPIFY batch=45 count=12 Emily Chelsea | https://emilychelsea.com/ | platform=WooCommerce | email=blank
+[2026-06-05 08:40:09] ADDED_NON_SHOPIFY batch=45 count=12 Emily Chelsea | https://emilychelsea.com/ | platform=WooCommerce | email=blank
+[2026-06-05 08:40:20] PROGRESS batch=45 verified_candidates=40/100 added=0
+[2026-06-05 08:40:20] PROGRESS batch=45 verified_candidates=40/100 added=0
+[2026-06-05 08:40:27] ADDED_NON_SHOPIFY batch=45 count=13 The Yellow Door | https://theyellowdoor.com/ | platform=Unknown | email=mlech@theyellowdoor.biz
+[2026-06-05 08:40:27] ADDED_NON_SHOPIFY batch=45 count=13 The Yellow Door | https://theyellowdoor.com/ | platform=Unknown | email=mlech@theyellowdoor.biz
+[2026-06-05 08:40:33] ADDED_NON_SHOPIFY batch=45 count=14 Molly's Jewelers | https://mollysjewelers.com/ | platform=Unknown | email=blank
+[2026-06-05 08:40:33] ADDED_NON_SHOPIFY batch=45 count=14 Molly's Jewelers | https://mollysjewelers.com/ | platform=Unknown | email=blank
+[2026-06-05 08:41:00] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 14}
+[2026-06-05 08:41:02] BATCH 46 ny_rows=383 queries=24
+[2026-06-05 08:41:04] Apify start status=201
+[2026-06-05 08:41:05] Apify run BO4CK7fhFcpfNWRZJ status=RUNNING
+[2026-06-05 08:41:21] Apify run BO4CK7fhFcpfNWRZJ status=RUNNING
+[2026-06-05 08:41:37] Apify run BO4CK7fhFcpfNWRZJ status=RUNNING
+[2026-06-05 08:41:53] Apify run BO4CK7fhFcpfNWRZJ status=RUNNING
+[2026-06-05 08:42:09] Apify run BO4CK7fhFcpfNWRZJ status=SUCCEEDED
+[2026-06-05 08:42:11] Apify items=24 candidates_to_verify=15 cost=0.1045
+[2026-06-05 08:42:21] ADDED_NON_SHOPIFY batch=46 count=1 Jeffrey Burroughs Fine Jewelry + Design Studio | https://jeffreyburroughs.com/ | platform=WooCommerce | email=concierge@jeffreyburroughs.com
+[2026-06-05 08:42:31] ADDED_NON_SHOPIFY batch=46 count=2 Gabriel & Co. | https://gabrielny.com/ | platform=Unknown | email=cs@gabrielny.com
+[2026-06-05 08:42:48] ADDED_NON_SHOPIFY batch=46 count=3 Upper East Side Fine Jewelry | https://uesjewelry.com/ | platform=Unknown | email=blank
+[2026-06-05 08:57:11] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 17}
+[2026-06-05 08:57:13] BATCH 48 ny_rows=383 queries=3
+[2026-06-05 08:57:15] Apify start status=201
+[2026-06-05 08:57:16] Apify run aqDT3rALoo6GZ9tkh status=RUNNING
+[2026-06-05 08:57:32] Apify run aqDT3rALoo6GZ9tkh status=SUCCEEDED
+[2026-06-05 08:57:33] Apify items=3 candidates_to_verify=6 cost=0.001
+[2026-06-05 08:57:43] ADDED_NON_SHOPIFY batch=48 count=1 DANIELLES JEWELRY NYC | https://daniellesjewelrynyc.com/ | platform=Unknown | email=info@indiantypefoundry.com
+[2026-06-05 11:43:43] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 18}
+[2026-06-05 11:43:46] BATCH 49 ny_rows=383 queries=3
+[2026-06-05 11:43:47] Apify start status=201
+[2026-06-05 11:43:48] Apify run 2JAdw9nsLK4RsYNBV status=RUNNING
+[2026-06-05 11:44:04] Apify run 2JAdw9nsLK4RsYNBV status=RUNNING
+[2026-06-05 11:44:20] Apify run 2JAdw9nsLK4RsYNBV status=SUCCEEDED
+[2026-06-05 11:44:21] Apify items=3 candidates_to_verify=6 cost=0.014499999999999999
+[2026-06-05 11:46:01] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 18}
+[2026-06-05 11:46:04] BATCH 50 ny_rows=383 queries=4
+[2026-06-05 11:46:05] Apify start status=201
+[2026-06-05 11:46:06] Apify run FPcGidos8pazSuFs1 status=RUNNING
+[2026-06-05 11:46:23] Apify run FPcGidos8pazSuFs1 status=SUCCEEDED
+[2026-06-05 11:46:24] Apify items=4 candidates_to_verify=8 cost=0.014499999999999999
+[2026-06-05 12:00:12] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 18}
+[2026-06-05 12:00:15] BATCH 51 ny_rows=383 queries=3
+[2026-06-05 12:00:16] Apify start status=201
+[2026-06-05 12:00:17] Apify run A9iCTNczDz6FFNfQE status=RUNNING
+[2026-06-05 12:00:33] Apify run A9iCTNczDz6FFNfQE status=RUNNING
+[2026-06-05 12:00:49] Apify run A9iCTNczDz6FFNfQE status=SUCCEEDED
+[2026-06-05 12:00:51] Apify items=3 candidates_to_verify=6 cost=0.014499999999999999
+[2026-06-05 12:25:41] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 18}
+[2026-06-05 12:25:44] BATCH 52 ny_rows=383 queries=6
+[2026-06-05 12:25:45] Apify start status=201
+[2026-06-05 12:25:46] Apify run fGqxqrCmshPtgMvmE status=RUNNING
+[2026-06-05 12:26:02] Apify run fGqxqrCmshPtgMvmE status=RUNNING
+[2026-06-05 12:26:18] Apify run fGqxqrCmshPtgMvmE status=SUCCEEDED
+[2026-06-05 12:26:19] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 12:35:41] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 18}
+[2026-06-05 12:35:44] BATCH 53 ny_rows=383 queries=12
+[2026-06-05 12:35:45] Apify start status=201
+[2026-06-05 12:35:46] Apify run 1dJkUvjGCqWFRkqAj status=RUNNING
+[2026-06-05 12:36:02] Apify run 1dJkUvjGCqWFRkqAj status=RUNNING
+[2026-06-05 12:36:18] Apify run 1dJkUvjGCqWFRkqAj status=SUCCEEDED
+[2026-06-05 12:36:20] Apify items=12 candidates_to_verify=25 cost=0.050499999999999996
+[2026-06-05 12:36:57] ADDED_NON_SHOPIFY batch=53 count=1 DNR Diamonds | https://dnrdiamonds.com/ | platform=WordPress | email=blank
+[2026-06-05 12:37:27] PROGRESS batch=53 verified_candidates=20/25 added=0
+[2026-06-05 12:37:41] PROGRESS batch=53 scanned=25/25 added=0
+[2026-06-05 13:00:31] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 13:00:34] BATCH 54 ny_rows=383 queries=6
+[2026-06-05 13:00:35] Apify start status=201
+[2026-06-05 13:00:37] Apify run GfWoJ9MWuy1fKrYTN status=RUNNING
+[2026-06-05 13:00:53] Apify run GfWoJ9MWuy1fKrYTN status=RUNNING
+[2026-06-05 13:01:09] Apify run GfWoJ9MWuy1fKrYTN status=SUCCEEDED
+[2026-06-05 13:01:10] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-05 14:00:31] START {'total_rows': 454, 'new_york_rows': 383, 'emails_found_new_york': 286, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 14:00:33] BATCH 55 ny_rows=383 queries=6
+[2026-06-05 14:00:35] Apify start status=201
+[2026-06-05 14:00:36] Apify run 7Wz7njGsMRq83YJcP status=RUNNING
+[2026-06-05 14:00:52] Apify run 7Wz7njGsMRq83YJcP status=RUNNING
+[2026-06-05 14:01:08] Apify run 7Wz7njGsMRq83YJcP status=SUCCEEDED
+[2026-06-05 14:01:09] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-05 14:01:24] ADDED_SHOPIFY batch=55 count=1 total_ny~384 Nishi | https://nishiny.com/ | Fine Jewellery | email=joanna@nishiny.com
+[2026-06-05 14:01:34] ADDED_SHOPIFY batch=55 count=2 total_ny~385 Fewer Finer | https://fewerfiner.com/ | Fine Jewellery | email=blank
+[2026-06-05 15:00:32] START {'total_rows': 456, 'new_york_rows': 385, 'emails_found_new_york': 287, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 15:00:35] BATCH 56 ny_rows=385 queries=6
+[2026-06-05 15:00:36] Apify start status=201
+[2026-06-05 15:00:37] Apify run JS5hb7e5eJp3u3dQv status=RUNNING
+[2026-06-05 15:00:53] Apify run JS5hb7e5eJp3u3dQv status=RUNNING
+[2026-06-05 15:01:10] Apify run JS5hb7e5eJp3u3dQv status=SUCCEEDED
+[2026-06-05 15:01:11] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-05 15:01:32] ADDED_SHOPIFY batch=56 count=1 total_ny~386 Slicedbread Agency | https://slicedbread.agency/ | Fine Jewellery | email=blank
+[2026-06-05 16:00:31] START {'total_rows': 457, 'new_york_rows': 386, 'emails_found_new_york': 287, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 16:00:34] BATCH 57 ny_rows=386 queries=6
+[2026-06-05 16:00:35] Apify start status=201
+[2026-06-05 16:00:36] Apify run iK6vQigsbNqpROCzT status=RUNNING
+[2026-06-05 16:00:52] Apify run iK6vQigsbNqpROCzT status=RUNNING
+[2026-06-05 16:01:08] Apify run iK6vQigsbNqpROCzT status=SUCCEEDED
+[2026-06-05 16:01:10] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-05 17:00:31] START {'total_rows': 457, 'new_york_rows': 386, 'emails_found_new_york': 287, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 17:00:34] BATCH 58 ny_rows=386 queries=6
+[2026-06-05 17:00:35] Apify start status=201
+[2026-06-05 17:00:36] Apify run npYudWOkVBPnPjyzb status=RUNNING
+[2026-06-05 17:00:52] Apify run npYudWOkVBPnPjyzb status=RUNNING
+[2026-06-05 17:01:08] Apify run npYudWOkVBPnPjyzb status=SUCCEEDED
+[2026-06-05 17:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 17:01:38] ADDED_SHOPIFY batch=58 count=1 total_ny~387 Zayla | https://zaylanewyork.com/ | Fine Jewellery | email=hello@zaylanewyork.com
+[2026-06-05 18:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 18:00:34] BATCH 59 ny_rows=387 queries=6
+[2026-06-05 18:00:35] Apify start status=201
+[2026-06-05 18:00:36] Apify run TclzCqi8z3sc2tTxf status=RUNNING
+[2026-06-05 18:00:52] Apify run TclzCqi8z3sc2tTxf status=RUNNING
+[2026-06-05 18:01:08] Apify run TclzCqi8z3sc2tTxf status=SUCCEEDED
+[2026-06-05 18:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 19:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 19:00:34] BATCH 60 ny_rows=387 queries=6
+[2026-06-05 19:00:35] Apify start status=201
+[2026-06-05 19:00:36] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:00:52] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:01:08] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:01:24] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:01:40] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:01:56] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:02:12] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:02:28] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:02:44] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:03:00] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:03:16] Apify run IjNQ4XAalGaYw491r status=RUNNING
+[2026-06-05 19:03:32] Apify run IjNQ4XAalGaYw491r status=SUCCEEDED
+[2026-06-05 19:03:34] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 20:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 19}
+[2026-06-05 20:00:34] BATCH 61 ny_rows=387 queries=6
+[2026-06-05 20:00:35] Apify start status=201
+[2026-06-05 20:00:37] Apify run S1a5NQ6BTfntxPliT status=RUNNING
+[2026-06-05 20:00:53] Apify run S1a5NQ6BTfntxPliT status=RUNNING
+[2026-06-05 20:01:09] Apify run S1a5NQ6BTfntxPliT status=RUNNING
+[2026-06-05 20:01:25] Apify run S1a5NQ6BTfntxPliT status=RUNNING
+[2026-06-05 20:01:41] Apify run S1a5NQ6BTfntxPliT status=SUCCEEDED
+[2026-06-05 20:01:42] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 20:02:02] ADDED_NON_SHOPIFY batch=61 count=1 Sylvie Jewelry | https://sylviejewelry.com/ | platform=WordPress | email=info@sylviejewelry.com
+[2026-06-05 21:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 20}
+[2026-06-05 21:00:34] BATCH 62 ny_rows=387 queries=6
+[2026-06-05 21:00:35] Apify start status=201
+[2026-06-05 21:00:36] Apify run qFWTcdgqHvMl3imGQ status=RUNNING
+[2026-06-05 21:00:52] Apify run qFWTcdgqHvMl3imGQ status=RUNNING
+[2026-06-05 21:01:08] Apify run qFWTcdgqHvMl3imGQ status=RUNNING
+[2026-06-05 21:01:24] Apify run qFWTcdgqHvMl3imGQ status=SUCCEEDED
+[2026-06-05 21:01:25] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 22:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 20}
+[2026-06-05 22:00:34] BATCH 63 ny_rows=387 queries=6
+[2026-06-05 22:00:35] Apify start status=201
+[2026-06-05 22:00:36] Apify run XBN9eBBm6N4lrhL4h status=RUNNING
+[2026-06-05 22:00:52] Apify run XBN9eBBm6N4lrhL4h status=RUNNING
+[2026-06-05 22:01:08] Apify run XBN9eBBm6N4lrhL4h status=SUCCEEDED
+[2026-06-05 22:01:10] Apify items=6 candidates_to_verify=12 cost=0.014499999999999999
+[2026-06-05 23:00:31] START {'total_rows': 458, 'new_york_rows': 387, 'emails_found_new_york': 288, 'duplicate_domains': 0, 'non_shopify_rows': 20}
+[2026-06-05 23:00:33] BATCH 64 ny_rows=387 queries=6
+[2026-06-05 23:00:35] Apify start status=201
+[2026-06-05 23:00:36] Apify run 7ue0f6KpeXCNpV59V status=RUNNING
+[2026-06-05 23:00:52] Apify run 7ue0f6KpeXCNpV59V status=RUNNING
+[2026-06-05 23:01:08] Apify run 7ue0f6KpeXCNpV59V status=RUNNING
+[2026-06-05 23:01:24] Apify run 7ue0f6KpeXCNpV59V status=SUCCEEDED
+[2026-06-05 23:01:25] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-05 23:01:31] ADDED_NON_SHOPIFY batch=64 count=1 King's Fine Jewellery | https://kingsfinejewellery.com/ | platform=Unknown | email=blank
+[2026-06-05 23:01:38] ADDED_SHOPIFY batch=64 count=1 total_ny~388 Toronto Fine Jewelry | https://torontofinejewelry.ca/ | Fine Jewellery | email=torontofine@gmail.com
+[2026-06-05 23:01:47] ADDED_SHOPIFY batch=64 count=2 total_ny~389 HouseofModa | https://houseofmoda.ca/ | Demi-fine Jewellery | email=info@houseofmoda.ca
+[2026-06-05 23:01:57] ADDED_NON_SHOPIFY batch=64 count=2 Michael Hill Jewellers | https://michaelhill.ca/ | platform=Unknown | email=online@michaelhill.ca
+[2026-06-06 00:00:31] START {'total_rows': 460, 'new_york_rows': 389, 'emails_found_new_york': 290, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 00:00:34] BATCH 65 ny_rows=389 queries=6
+[2026-06-06 00:00:35] Apify start status=201
+[2026-06-06 00:00:36] Apify run cggQ37j5iNwGVZ3q6 status=RUNNING
+[2026-06-06 00:00:53] Apify run cggQ37j5iNwGVZ3q6 status=RUNNING
+[2026-06-06 00:01:09] Apify run cggQ37j5iNwGVZ3q6 status=RUNNING
+[2026-06-06 00:01:25] Apify run cggQ37j5iNwGVZ3q6 status=RUNNING
+[2026-06-06 00:01:41] Apify run cggQ37j5iNwGVZ3q6 status=SUCCEEDED
+[2026-06-06 00:01:42] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-06 00:01:57] ADDED_SHOPIFY batch=65 count=1 total_ny~390 Studio Chelsea | https://studiochelsea.ca/ | Fine Jewellery | email=blank
+[2026-06-06 01:00:31] START {'total_rows': 461, 'new_york_rows': 390, 'emails_found_new_york': 290, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 01:00:34] BATCH 66 ny_rows=390 queries=6
+[2026-06-06 01:00:36] Apify start status=201
+[2026-06-06 01:00:37] Apify run FvYUWaeVQkZSDpkwn status=RUNNING
+[2026-06-06 01:00:53] Apify run FvYUWaeVQkZSDpkwn status=RUNNING
+[2026-06-06 01:01:09] Apify run FvYUWaeVQkZSDpkwn status=RUNNING
+[2026-06-06 01:01:25] Apify run FvYUWaeVQkZSDpkwn status=SUCCEEDED
+[2026-06-06 01:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 02:00:31] START {'total_rows': 461, 'new_york_rows': 390, 'emails_found_new_york': 290, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 02:00:34] BATCH 67 ny_rows=390 queries=6
+[2026-06-06 02:00:35] Apify start status=201
+[2026-06-06 02:00:36] Apify run NkihSD6jUY9Bab3iG status=RUNNING
+[2026-06-06 02:00:52] Apify run NkihSD6jUY9Bab3iG status=RUNNING
+[2026-06-06 02:01:08] Apify run NkihSD6jUY9Bab3iG status=SUCCEEDED
+[2026-06-06 02:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 03:00:32] START {'total_rows': 461, 'new_york_rows': 390, 'emails_found_new_york': 290, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 03:00:34] BATCH 68 ny_rows=390 queries=6
+[2026-06-06 03:00:35] Apify start status=201
+[2026-06-06 03:00:37] Apify run 6vciO93tJkWJ1r3bT status=RUNNING
+[2026-06-06 03:00:53] Apify run 6vciO93tJkWJ1r3bT status=RUNNING
+[2026-06-06 03:01:09] Apify run 6vciO93tJkWJ1r3bT status=SUCCEEDED
+[2026-06-06 03:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 03:01:17] ADDED_SHOPIFY batch=68 count=1 total_ny~391 OSCARGAMA | https://oscargama.com/ | Fine Jewellery | email=info@oscargama.com
+[2026-06-06 03:01:22] ADDED_SHOPIFY batch=68 count=2 total_ny~392 lelasophiajewelry | https://lelasophiajewelry.com/ | Fine Jewellery | email=info@lelasophiajewelry.com
+[2026-06-06 03:01:33] ADDED_SHOPIFY batch=68 count=3 total_ny~393 Ivar | https://ivarjewelry.com/ | Fine Jewellery | email=info@ivarjewelry.com
+[2026-06-06 04:00:31] START {'total_rows': 464, 'new_york_rows': 393, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 04:00:33] BATCH 69 ny_rows=393 queries=6
+[2026-06-06 04:00:35] Apify start status=201
+[2026-06-06 04:00:36] Apify run VzeGzfmrl2zcd9otW status=RUNNING
+[2026-06-06 04:00:52] Apify run VzeGzfmrl2zcd9otW status=SUCCEEDED
+[2026-06-06 04:00:53] Apify items=6 candidates_to_verify=12 cost=0.0055
+[2026-06-06 05:00:31] START {'total_rows': 464, 'new_york_rows': 393, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 05:00:34] BATCH 70 ny_rows=393 queries=6
+[2026-06-06 05:00:35] Apify start status=201
+[2026-06-06 05:00:36] Apify run 43wQ2EKf2SZxOX1PE status=RUNNING
+[2026-06-06 05:00:52] Apify run 43wQ2EKf2SZxOX1PE status=RUNNING
+[2026-06-06 05:01:08] Apify run 43wQ2EKf2SZxOX1PE status=SUCCEEDED
+[2026-06-06 05:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 05:01:29] ADDED_SHOPIFY batch=70 count=1 total_ny~394 Sandrine France Studio | https://sandrinefrance.com/ | Demi-fine Jewellery | email=blank
+[2026-06-06 06:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 22}
+[2026-06-06 06:00:34] BATCH 71 ny_rows=394 queries=6
+[2026-06-06 06:00:35] Apify start status=201
+[2026-06-06 06:00:36] Apify run laTpVocIBmBWhdQmb status=RUNNING
+[2026-06-06 06:00:52] Apify run laTpVocIBmBWhdQmb status=SUCCEEDED
+[2026-06-06 06:00:54] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-06 06:01:00] ADDED_NON_SHOPIFY batch=71 count=1 SOHO Jewelry | https://sohojewelry.com/ | platform=Unknown | email=blank
+[2026-06-06 06:01:08] ADDED_NON_SHOPIFY batch=71 count=2 NYC Handmade Men’s Jewelry & Designer Apparel | https://lazarosoho.com/ | platform=Unknown | email=info@lazarosoho.com
+[2026-06-06 07:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 24}
+[2026-06-06 07:00:35] BATCH 72 ny_rows=394 queries=6
+[2026-06-06 07:00:37] Apify start status=201
+[2026-06-06 07:00:39] Apify run gvecZC5dML1BjECn5 status=RUNNING
+[2026-06-06 07:00:55] Apify run gvecZC5dML1BjECn5 status=RUNNING
+[2026-06-06 07:01:11] Apify run gvecZC5dML1BjECn5 status=SUCCEEDED
+[2026-06-06 07:01:13] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 08:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 24}
+[2026-06-06 08:00:34] BATCH 73 ny_rows=394 queries=6
+[2026-06-06 08:00:36] Apify start status=201
+[2026-06-06 08:00:37] Apify run uxnr3sxfn6oCGIiLs status=RUNNING
+[2026-06-06 08:00:54] Apify run uxnr3sxfn6oCGIiLs status=RUNNING
+[2026-06-06 08:01:10] Apify run uxnr3sxfn6oCGIiLs status=RUNNING
+[2026-06-06 08:01:26] Apify run uxnr3sxfn6oCGIiLs status=RUNNING
+[2026-06-06 08:01:42] Apify run uxnr3sxfn6oCGIiLs status=SUCCEEDED
+[2026-06-06 08:01:43] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 09:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 24}
+[2026-06-06 09:00:34] BATCH 74 ny_rows=394 queries=6
+[2026-06-06 09:00:35] Apify start status=201
+[2026-06-06 09:00:36] Apify run 0njvUpEQnKReltfL8 status=RUNNING
+[2026-06-06 09:00:52] Apify run 0njvUpEQnKReltfL8 status=SUCCEEDED
+[2026-06-06 09:00:54] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-06 09:01:07] ADDED_NON_SHOPIFY batch=74 count=1 Anna Sheffield Jewelry | https://annasheffield.com/ | platform=Unknown | email=blank
+[2026-06-06 10:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 10:00:34] BATCH 75 ny_rows=394 queries=6
+[2026-06-06 10:00:36] Apify start status=201
+[2026-06-06 10:00:37] Apify run 5xkTrc2Uh17WMEuyB status=RUNNING
+[2026-06-06 10:00:53] Apify run 5xkTrc2Uh17WMEuyB status=RUNNING
+[2026-06-06 10:01:09] Apify run 5xkTrc2Uh17WMEuyB status=SUCCEEDED
+[2026-06-06 10:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 11:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 11:00:34] BATCH 76 ny_rows=394 queries=6
+[2026-06-06 11:00:36] Apify start status=201
+[2026-06-06 11:00:37] Apify run oWPAJYpy1zBx8SRgL status=RUNNING
+[2026-06-06 11:00:53] Apify run oWPAJYpy1zBx8SRgL status=RUNNING
+[2026-06-06 11:01:09] Apify run oWPAJYpy1zBx8SRgL status=SUCCEEDED
+[2026-06-06 11:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 12:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 12:00:34] BATCH 77 ny_rows=394 queries=6
+[2026-06-06 12:00:36] Apify start status=201
+[2026-06-06 12:00:37] Apify run zJeyacECrxFHBcdZi status=RUNNING
+[2026-06-06 12:00:53] Apify run zJeyacECrxFHBcdZi status=RUNNING
+[2026-06-06 12:01:09] Apify run zJeyacECrxFHBcdZi status=SUCCEEDED
+[2026-06-06 12:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 13:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 13:00:34] BATCH 78 ny_rows=394 queries=6
+[2026-06-06 13:00:35] Apify start status=201
+[2026-06-06 13:00:36] Apify run edODoUA96Oh24eq3u status=RUNNING
+[2026-06-06 13:00:53] Apify run edODoUA96Oh24eq3u status=SUCCEEDED
+[2026-06-06 13:00:54] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 14:00:31] START {'total_rows': 465, 'new_york_rows': 394, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 14:00:34] BATCH 79 ny_rows=394 queries=6
+[2026-06-06 14:00:35] Apify start status=201
+[2026-06-06 14:00:36] Apify run 4sR3CrAswVGF099Pk status=RUNNING
+[2026-06-06 14:00:52] Apify run 4sR3CrAswVGF099Pk status=RUNNING
+[2026-06-06 14:01:08] Apify run 4sR3CrAswVGF099Pk status=SUCCEEDED
+[2026-06-06 14:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 14:01:26] ADDED_SHOPIFY batch=79 count=1 total_ny~395 Awe Inspired | https://aweinspired.com/ | Demi-fine Jewellery | email=blank
+[2026-06-06 15:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 15:00:36] BATCH 80 ny_rows=395 queries=6
+[2026-06-06 15:00:38] Apify start status=201
+[2026-06-06 15:00:39] Apify run eDT4FTkACJPm58j4E status=RUNNING
+[2026-06-06 15:00:55] Apify run eDT4FTkACJPm58j4E status=SUCCEEDED
+[2026-06-06 15:00:56] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 16:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 16:00:34] BATCH 81 ny_rows=395 queries=6
+[2026-06-06 16:00:35] Apify start status=201
+[2026-06-06 16:00:36] Apify run e7hbbImbJoIwNOa3l status=RUNNING
+[2026-06-06 16:00:52] Apify run e7hbbImbJoIwNOa3l status=RUNNING
+[2026-06-06 16:01:08] Apify run e7hbbImbJoIwNOa3l status=RUNNING
+[2026-06-06 16:01:24] Apify run e7hbbImbJoIwNOa3l status=SUCCEEDED
+[2026-06-06 16:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 17:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 17:00:34] BATCH 82 ny_rows=395 queries=6
+[2026-06-06 17:00:35] Apify start status=201
+[2026-06-06 17:00:36] Apify run XFMnMRFluKCoeO9db status=RUNNING
+[2026-06-06 17:00:52] Apify run XFMnMRFluKCoeO9db status=RUNNING
+[2026-06-06 17:01:08] Apify run XFMnMRFluKCoeO9db status=SUCCEEDED
+[2026-06-06 17:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 18:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 18:00:33] BATCH 83 ny_rows=395 queries=6
+[2026-06-06 18:00:35] Apify start status=201
+[2026-06-06 18:00:36] Apify run r5xqbXl1ievDZBtSE status=RUNNING
+[2026-06-06 18:00:52] Apify run r5xqbXl1ievDZBtSE status=RUNNING
+[2026-06-06 18:01:08] Apify run r5xqbXl1ievDZBtSE status=SUCCEEDED
+[2026-06-06 18:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-06 19:00:32] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-06 19:00:34] BATCH 84 ny_rows=395 queries=6
+[2026-06-06 19:00:36] Apify start status=201
+[2026-06-06 19:00:37] Apify run DGiqVnRWUBUPlxOFW status=RUNNING
+[2026-06-06 19:00:53] Apify run DGiqVnRWUBUPlxOFW status=SUCCEEDED
+[2026-06-06 19:00:54] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 00:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 25}
+[2026-06-07 00:00:34] BATCH 85 ny_rows=395 queries=6
+[2026-06-07 00:00:36] Apify start status=201
+[2026-06-07 00:00:37] Apify run 6aogy3Qoa98dMP9Q8 status=RUNNING
+[2026-06-07 00:00:53] Apify run 6aogy3Qoa98dMP9Q8 status=RUNNING
+[2026-06-07 00:01:09] Apify run 6aogy3Qoa98dMP9Q8 status=SUCCEEDED
+[2026-06-07 00:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 00:01:25] ADDED_NON_SHOPIFY batch=85 count=1 Contempo Jewelers | https://contempojewelers.com/ | platform=WooCommerce | email=blank
+[2026-06-07 01:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 01:00:33] BATCH 86 ny_rows=395 queries=6
+[2026-06-07 01:00:37] Apify start status=201
+[2026-06-07 01:00:38] Apify run sVbtzJ8W5uc1wq2u8 status=RUNNING
+[2026-06-07 01:00:54] Apify run sVbtzJ8W5uc1wq2u8 status=RUNNING
+[2026-06-07 01:01:10] Apify run sVbtzJ8W5uc1wq2u8 status=SUCCEEDED
+[2026-06-07 01:01:12] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 02:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 02:00:34] BATCH 87 ny_rows=395 queries=6
+[2026-06-07 02:00:37] Apify start status=201
+[2026-06-07 02:00:38] Apify run kgzEXl9GMDELXFtdu status=RUNNING
+[2026-06-07 02:00:54] Apify run kgzEXl9GMDELXFtdu status=SUCCEEDED
+[2026-06-07 02:00:55] Apify items=6 candidates_to_verify=12 cost=0.009999999999999998
+[2026-06-07 03:00:31] START {'total_rows': 466, 'new_york_rows': 395, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 03:00:34] BATCH 88 ny_rows=395 queries=6
+[2026-06-07 03:00:35] Apify start status=201
+[2026-06-07 03:00:36] Apify run zORArtagK5lUbcNob status=RUNNING
+[2026-06-07 03:00:52] Apify run zORArtagK5lUbcNob status=SUCCEEDED
+[2026-06-07 03:00:53] Apify items=6 candidates_to_verify=12 cost=0.009999999999999998
+[2026-06-07 03:01:08] ADDED_SHOPIFY batch=88 count=1 total_ny~396 Gemella Jewels | https://gemellajewels.com/ | Fine Jewellery | email=blank
+[2026-06-07 04:00:31] START {'total_rows': 467, 'new_york_rows': 396, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 04:00:33] BATCH 89 ny_rows=396 queries=6
+[2026-06-07 04:00:34] Apify start status=201
+[2026-06-07 04:00:36] Apify run x9xUbXywmO0t4hLpK status=RUNNING
+[2026-06-07 04:00:52] Apify run x9xUbXywmO0t4hLpK status=RUNNING
+[2026-06-07 04:01:08] Apify run x9xUbXywmO0t4hLpK status=SUCCEEDED
+[2026-06-07 04:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 05:00:31] START {'total_rows': 467, 'new_york_rows': 396, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 05:00:34] BATCH 90 ny_rows=396 queries=6
+[2026-06-07 05:00:35] Apify start status=201
+[2026-06-07 05:00:36] Apify run foD0FI8Hrs3NLIxCx status=RUNNING
+[2026-06-07 05:00:52] Apify run foD0FI8Hrs3NLIxCx status=SUCCEEDED
+[2026-06-07 05:00:53] Apify items=6 candidates_to_verify=12 cost=0.0055
+[2026-06-07 05:01:06] ADDED_SHOPIFY batch=90 count=1 total_ny~397 Enchanted Disney Fine Jewelry | https://enchantedfinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-07 05:01:13] ADDED_SHOPIFY batch=90 count=2 total_ny~398 BLOSSOM BOX JEWELRY | https://blossomboxjewelry.com/ | Fine Jewellery | email=blank
+[2026-06-07 06:00:31] START {'total_rows': 469, 'new_york_rows': 398, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 26}
+[2026-06-07 06:00:33] BATCH 91 ny_rows=398 queries=6
+[2026-06-07 06:00:34] Apify start status=201
+[2026-06-07 06:00:35] Apify run UEA3v7Yuqhwb0DLKq status=RUNNING
+[2026-06-07 06:00:51] Apify run UEA3v7Yuqhwb0DLKq status=RUNNING
+[2026-06-07 06:01:07] Apify run UEA3v7Yuqhwb0DLKq status=SUCCEEDED
+[2026-06-07 06:01:08] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 06:01:27] ADDED_NON_SHOPIFY batch=91 count=1 LA Jolla | https://lajollafinejewelers.com/ | platform=WordPress | email=info@lajollafinejewelers.com
+[2026-06-07 06:01:35] ADDED_NON_SHOPIFY batch=91 count=2 Mish Fine Jewelry | https://mishfinejewelry.com/ | platform=WordPress | email=blank
+[2026-06-07 07:00:31] START {'total_rows': 469, 'new_york_rows': 398, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 07:00:34] BATCH 92 ny_rows=398 queries=6
+[2026-06-07 07:00:36] Apify start status=201
+[2026-06-07 07:00:37] Apify run cd67Sjd8ZFVJOJZkI status=RUNNING
+[2026-06-07 07:00:53] Apify run cd67Sjd8ZFVJOJZkI status=RUNNING
+[2026-06-07 07:01:09] Apify run cd67Sjd8ZFVJOJZkI status=SUCCEEDED
+[2026-06-07 07:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 08:00:37] START {'total_rows': 469, 'new_york_rows': 398, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 08:00:42] BATCH 93 ny_rows=398 queries=6
+[2026-06-07 08:00:43] Apify start status=201
+[2026-06-07 08:00:44] Apify run pmXC1PkiNjAsjojdu status=RUNNING
+[2026-06-07 08:01:00] Apify run pmXC1PkiNjAsjojdu status=RUNNING
+[2026-06-07 08:01:16] Apify run pmXC1PkiNjAsjojdu status=SUCCEEDED
+[2026-06-07 08:01:17] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 09:00:31] START {'total_rows': 469, 'new_york_rows': 398, 'emails_found_new_york': 293, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 09:00:34] BATCH 94 ny_rows=398 queries=6
+[2026-06-07 09:00:35] Apify start status=201
+[2026-06-07 09:00:37] Apify run X8yrYgmToslPdP5qk status=RUNNING
+[2026-06-07 09:00:53] Apify run X8yrYgmToslPdP5qk status=SUCCEEDED
+[2026-06-07 09:00:54] Apify items=6 candidates_to_verify=12 cost=0.014499999999999999
+[2026-06-07 09:01:16] ADDED_SHOPIFY batch=94 count=1 total_ny~399 Emily Warden Designs | https://emilywardendesigns.com/ | Fine Jewellery | email=hello@emilywardendesigns.com
+[2026-06-07 10:00:31] START {'total_rows': 470, 'new_york_rows': 399, 'emails_found_new_york': 294, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 10:00:34] BATCH 95 ny_rows=399 queries=6
+[2026-06-07 10:00:35] Apify start status=201
+[2026-06-07 10:00:36] Apify run 11RHgi5DnBHWQpGi7 status=RUNNING
+[2026-06-07 10:00:52] Apify run 11RHgi5DnBHWQpGi7 status=RUNNING
+[2026-06-07 10:01:08] Apify run 11RHgi5DnBHWQpGi7 status=SUCCEEDED
+[2026-06-07 10:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 10:01:25] ADDED_SHOPIFY batch=95 count=1 total_ny~400 Nelly's and Co | https://nellysandco.com/ | Fine Jewellery | email=nellysandco@gmail.com
+[2026-06-07 11:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 11:00:34] BATCH 96 ny_rows=400 queries=6
+[2026-06-07 11:00:35] Apify start status=201
+[2026-06-07 11:00:36] Apify run 9N88NWfyzoShqJk7U status=RUNNING
+[2026-06-07 11:00:52] Apify run 9N88NWfyzoShqJk7U status=RUNNING
+[2026-06-07 11:01:08] Apify run 9N88NWfyzoShqJk7U status=SUCCEEDED
+[2026-06-07 11:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 12:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 28}
+[2026-06-07 12:00:34] BATCH 97 ny_rows=400 queries=6
+[2026-06-07 12:00:36] Apify start status=201
+[2026-06-07 12:00:37] Apify run D9q4vFRjZ9CWL8Gw5 status=RUNNING
+[2026-06-07 12:00:53] Apify run D9q4vFRjZ9CWL8Gw5 status=RUNNING
+[2026-06-07 12:01:09] Apify run D9q4vFRjZ9CWL8Gw5 status=SUCCEEDED
+[2026-06-07 12:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 12:01:24] ADDED_NON_SHOPIFY batch=97 count=1 nationaljeweler.com | https://nationaljeweler.com/ | platform=Unknown | email=blank
+[2026-06-07 13:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 13:00:34] BATCH 98 ny_rows=400 queries=6
+[2026-06-07 13:00:35] Apify start status=201
+[2026-06-07 13:00:36] Apify run MFKLgayZRAqYY3T3D status=RUNNING
+[2026-06-07 13:00:52] Apify run MFKLgayZRAqYY3T3D status=SUCCEEDED
+[2026-06-07 13:00:53] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-07 14:00:32] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 14:00:34] BATCH 99 ny_rows=400 queries=6
+[2026-06-07 14:00:35] Apify start status=201
+[2026-06-07 14:00:37] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:00:53] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:01:09] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:01:24] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:01:40] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:01:57] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:02:12] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:02:28] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:02:44] Apify run RfUG82cErjUYPm8Yd status=RUNNING
+[2026-06-07 14:03:00] Apify run RfUG82cErjUYPm8Yd status=SUCCEEDED
+[2026-06-07 14:03:01] Apify items=8 candidates_to_verify=12 cost=0.037
+[2026-06-07 15:00:32] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 15:00:36] BATCH 100 ny_rows=400 queries=6
+[2026-06-07 15:00:37] Apify start status=201
+[2026-06-07 15:00:38] Apify run 5jWwFt4MnE3gbP2De status=RUNNING
+[2026-06-07 15:00:54] Apify run 5jWwFt4MnE3gbP2De status=RUNNING
+[2026-06-07 15:01:10] Apify run 5jWwFt4MnE3gbP2De status=RUNNING
+[2026-06-07 15:01:26] Apify run 5jWwFt4MnE3gbP2De status=RUNNING
+[2026-06-07 15:01:42] Apify run 5jWwFt4MnE3gbP2De status=SUCCEEDED
+[2026-06-07 15:01:43] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 16:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 16:00:34] BATCH 101 ny_rows=400 queries=6
+[2026-06-07 16:00:35] Apify start status=201
+[2026-06-07 16:00:36] Apify run QnTOPtrqubLPPkmyS status=RUNNING
+[2026-06-07 16:00:52] Apify run QnTOPtrqubLPPkmyS status=SUCCEEDED
+[2026-06-07 16:00:54] Apify items=6 candidates_to_verify=12 cost=0.014499999999999999
+[2026-06-07 17:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 17:00:34] BATCH 102 ny_rows=400 queries=6
+[2026-06-07 17:00:36] Apify start status=201
+[2026-06-07 17:00:37] Apify run V6v62MHdgLYX2GM8i status=RUNNING
+[2026-06-07 17:00:53] Apify run V6v62MHdgLYX2GM8i status=RUNNING
+[2026-06-07 17:01:09] Apify run V6v62MHdgLYX2GM8i status=SUCCEEDED
+[2026-06-07 17:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 18:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 18:00:34] BATCH 103 ny_rows=400 queries=6
+[2026-06-07 18:00:35] Apify start status=201
+[2026-06-07 18:00:36] Apify run IfqLCDqrhxDXY69ia status=RUNNING
+[2026-06-07 18:00:52] Apify run IfqLCDqrhxDXY69ia status=RUNNING
+[2026-06-07 18:01:08] Apify run IfqLCDqrhxDXY69ia status=RUNNING
+[2026-06-07 18:01:24] Apify run IfqLCDqrhxDXY69ia status=SUCCEEDED
+[2026-06-07 18:01:25] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 19:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 19:00:34] BATCH 104 ny_rows=400 queries=6
+[2026-06-07 19:00:35] Apify start status=201
+[2026-06-07 19:00:36] Apify run L3KnXPSqRIUxZFjhL status=RUNNING
+[2026-06-07 19:00:51] Apify run L3KnXPSqRIUxZFjhL status=RUNNING
+[2026-06-07 19:01:07] Apify run L3KnXPSqRIUxZFjhL status=SUCCEEDED
+[2026-06-07 19:01:08] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 20:00:31] START {'total_rows': 471, 'new_york_rows': 400, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-07 20:00:34] BATCH 105 ny_rows=400 queries=6
+[2026-06-07 20:00:35] Apify start status=201
+[2026-06-07 20:00:36] Apify run pTEwoL6rgXjZF31zN status=RUNNING
+[2026-06-07 20:00:52] Apify run pTEwoL6rgXjZF31zN status=RUNNING
+[2026-06-07 20:01:08] Apify run pTEwoL6rgXjZF31zN status=SUCCEEDED
+[2026-06-07 20:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-07 20:01:36] ADDED_SHOPIFY batch=105 count=1 total_ny~401 Unique Boutique | https://uniqueboutiquejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-08 00:00:31] START {'total_rows': 472, 'new_york_rows': 401, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 00:00:34] BATCH 106 ny_rows=401 queries=6
+[2026-06-08 00:00:37] Apify start status=201
+[2026-06-08 00:00:38] Apify run fMYbrjbCttfh9NqCD status=RUNNING
+[2026-06-08 00:00:54] Apify run fMYbrjbCttfh9NqCD status=RUNNING
+[2026-06-08 00:01:10] Apify run fMYbrjbCttfh9NqCD status=RUNNING
+[2026-06-08 00:01:26] Apify run fMYbrjbCttfh9NqCD status=SUCCEEDED
+[2026-06-08 00:01:27] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-08 01:00:31] START {'total_rows': 472, 'new_york_rows': 401, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 01:00:34] BATCH 107 ny_rows=401 queries=6
+[2026-06-08 01:00:36] Apify start status=201
+[2026-06-08 01:00:37] Apify run hMUlqLY1d65dCebHo status=RUNNING
+[2026-06-08 01:00:52] Apify run hMUlqLY1d65dCebHo status=SUCCEEDED
+[2026-06-08 01:00:54] Apify items=6 candidates_to_verify=12 cost=0.009999999999999998
+[2026-06-08 02:00:31] START {'total_rows': 472, 'new_york_rows': 401, 'emails_found_new_york': 295, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 02:00:34] BATCH 108 ny_rows=401 queries=6
+[2026-06-08 02:00:35] Apify start status=201
+[2026-06-08 02:00:36] Apify run nzRkVhFIcLxCbCXD2 status=RUNNING
+[2026-06-08 02:00:52] Apify run nzRkVhFIcLxCbCXD2 status=RUNNING
+[2026-06-08 02:01:08] Apify run nzRkVhFIcLxCbCXD2 status=SUCCEEDED
+[2026-06-08 02:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 02:01:38] ADDED_SHOPIFY batch=108 count=1 total_ny~402 Collette Ishiyama Jewelry | https://colletteishiyama.com/ | Fine Jewellery | email=blank
+[2026-06-08 02:01:44] ADDED_SHOPIFY batch=108 count=2 total_ny~403 Rock Star Crystals | https://rockstarcrystals.com/ | Fine Jewellery | email=info@rockstarcrystals.com
+[2026-06-08 03:00:31] START {'total_rows': 474, 'new_york_rows': 403, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 03:00:34] BATCH 109 ny_rows=403 queries=6
+[2026-06-08 03:00:36] Apify start status=201
+[2026-06-08 03:00:37] Apify run pB8auRnFxjXwCuKYT status=RUNNING
+[2026-06-08 03:00:53] Apify run pB8auRnFxjXwCuKYT status=RUNNING
+[2026-06-08 03:01:09] Apify run pB8auRnFxjXwCuKYT status=SUCCEEDED
+[2026-06-08 03:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 04:00:31] START {'total_rows': 474, 'new_york_rows': 403, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 04:00:34] BATCH 110 ny_rows=403 queries=6
+[2026-06-08 04:00:36] Apify start status=201
+[2026-06-08 04:00:37] Apify run gkLqsn7guqfcdrK6y status=READY
+[2026-06-08 04:00:53] Apify run gkLqsn7guqfcdrK6y status=READY
+[2026-06-08 04:01:09] Apify run gkLqsn7guqfcdrK6y status=RUNNING
+[2026-06-08 04:01:25] Apify run gkLqsn7guqfcdrK6y status=SUCCEEDED
+[2026-06-08 04:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 05:00:31] START {'total_rows': 474, 'new_york_rows': 403, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 05:00:34] BATCH 111 ny_rows=403 queries=6
+[2026-06-08 05:00:36] Apify start status=201
+[2026-06-08 05:00:37] Apify run VEsytd7uErI87tFas status=READY
+[2026-06-08 05:00:52] Apify run VEsytd7uErI87tFas status=RUNNING
+[2026-06-08 05:01:09] Apify run VEsytd7uErI87tFas status=RUNNING
+[2026-06-08 05:01:25] Apify run VEsytd7uErI87tFas status=SUCCEEDED
+[2026-06-08 05:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 05:01:42] ADDED_SHOPIFY batch=111 count=1 total_ny~404 Natalie Borton Designs | https://natalieborton.com/ | Demi-fine Jewellery | email=blank
+[2026-06-08 06:00:31] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 06:00:34] BATCH 112 ny_rows=404 queries=6
+[2026-06-08 06:00:36] Apify start status=201
+[2026-06-08 06:00:37] Apify run 4eVg1Lsz2Roi6cTmc status=READY
+[2026-06-08 06:00:53] Apify run 4eVg1Lsz2Roi6cTmc status=READY
+[2026-06-08 06:01:09] Apify run 4eVg1Lsz2Roi6cTmc status=READY
+[2026-06-08 06:01:25] Apify run 4eVg1Lsz2Roi6cTmc status=READY
+[2026-06-08 06:01:41] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:01:57] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:02:13] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:02:29] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:02:45] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:03:01] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:03:17] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:03:32] Apify run 4eVg1Lsz2Roi6cTmc status=RUNNING
+[2026-06-08 06:03:48] Apify run 4eVg1Lsz2Roi6cTmc status=SUCCEEDED
+[2026-06-08 06:03:49] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 07:00:31] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 07:00:34] BATCH 113 ny_rows=404 queries=6
+[2026-06-08 07:00:36] Apify start status=201
+[2026-06-08 07:00:37] Apify run kXVmnVuoOMBYogPcg status=RUNNING
+[2026-06-08 07:00:53] Apify run kXVmnVuoOMBYogPcg status=RUNNING
+[2026-06-08 07:01:08] Apify run kXVmnVuoOMBYogPcg status=RUNNING
+[2026-06-08 07:01:24] Apify run kXVmnVuoOMBYogPcg status=RUNNING
+[2026-06-08 07:01:40] Apify run kXVmnVuoOMBYogPcg status=SUCCEEDED
+[2026-06-08 07:01:42] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 08:00:32] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 08:00:35] BATCH 114 ny_rows=404 queries=6
+[2026-06-08 08:00:36] Apify start status=201
+[2026-06-08 08:00:37] Apify run 7O3tmEDdd2GvC7S4h status=RUNNING
+[2026-06-08 08:00:53] Apify run 7O3tmEDdd2GvC7S4h status=SUCCEEDED
+[2026-06-08 08:00:54] Apify items=6 candidates_to_verify=12 cost=0.001
+[2026-06-08 09:00:32] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 09:00:34] BATCH 115 ny_rows=404 queries=6
+[2026-06-08 09:00:36] Apify start status=201
+[2026-06-08 09:00:37] Apify run GjCZszjMGt0Bn1Y5H status=RUNNING
+[2026-06-08 09:00:53] Apify run GjCZszjMGt0Bn1Y5H status=RUNNING
+[2026-06-08 09:01:08] Apify run GjCZszjMGt0Bn1Y5H status=SUCCEEDED
+[2026-06-08 09:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 10:00:31] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 10:00:34] BATCH 116 ny_rows=404 queries=6
+[2026-06-08 10:00:36] Apify start status=201
+[2026-06-08 10:00:36] Apify run BDQkKt9VgE6juSwlw status=RUNNING
+[2026-06-08 10:00:52] Apify run BDQkKt9VgE6juSwlw status=RUNNING
+[2026-06-08 10:01:08] Apify run BDQkKt9VgE6juSwlw status=RUNNING
+[2026-06-08 10:01:24] Apify run BDQkKt9VgE6juSwlw status=SUCCEEDED
+[2026-06-08 10:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 11:00:31] START {'total_rows': 475, 'new_york_rows': 404, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 29}
+[2026-06-08 11:00:34] BATCH 117 ny_rows=404 queries=6
+[2026-06-08 11:00:36] Apify start status=201
+[2026-06-08 11:00:36] Apify run gJFA2MNDbHr4RkJ21 status=RUNNING
+[2026-06-08 11:00:52] Apify run gJFA2MNDbHr4RkJ21 status=RUNNING
+[2026-06-08 11:01:09] Apify run gJFA2MNDbHr4RkJ21 status=RUNNING
+[2026-06-08 11:01:25] Apify run gJFA2MNDbHr4RkJ21 status=RUNNING
+[2026-06-08 11:01:41] Apify run gJFA2MNDbHr4RkJ21 status=SUCCEEDED
+[2026-06-08 11:01:42] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-08 11:02:00] ADDED_SHOPIFY batch=117 count=1 total_ny~405 Splash | https://splashjewels.com/ | Demi-fine Jewellery | email=blank
+[2026-06-08 11:02:05] ADDED_NON_SHOPIFY batch=117 count=1 VicStoneNYC Fine Jewelry | https://vicstonenyc.com/ | platform=Squarespace | email=vicstonenyc.jewelry@gmail.com
+[2026-06-08 12:00:32] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 12:00:34] BATCH 118 ny_rows=405 queries=6
+[2026-06-08 12:00:36] Apify start status=201
+[2026-06-08 12:00:36] Apify run MtjnbzE8pjDIorbf3 status=RUNNING
+[2026-06-08 12:00:52] Apify run MtjnbzE8pjDIorbf3 status=RUNNING
+[2026-06-08 12:01:08] Apify run MtjnbzE8pjDIorbf3 status=RUNNING
+[2026-06-08 12:01:25] Apify run MtjnbzE8pjDIorbf3 status=SUCCEEDED
+[2026-06-08 12:01:26] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 13:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 13:00:34] BATCH 119 ny_rows=405 queries=6
+[2026-06-08 13:00:35] Apify start status=201
+[2026-06-08 13:00:36] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:00:52] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:01:08] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:01:24] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:01:40] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:01:56] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:02:12] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:02:28] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:02:44] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:03:00] Apify run kGdz3FOiIMllYuBZF status=RUNNING
+[2026-06-08 13:03:16] Apify run kGdz3FOiIMllYuBZF status=SUCCEEDED
+[2026-06-08 13:03:17] Apify items=8 candidates_to_verify=12 cost=0.037
+[2026-06-08 14:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 14:00:34] BATCH 120 ny_rows=405 queries=6
+[2026-06-08 14:00:35] Apify start status=201
+[2026-06-08 14:00:36] Apify run Om6XKvjmrVMGZhzVE status=RUNNING
+[2026-06-08 14:00:52] Apify run Om6XKvjmrVMGZhzVE status=SUCCEEDED
+[2026-06-08 14:00:53] Apify items=6 candidates_to_verify=12 cost=0.0055
+[2026-06-08 15:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 15:00:34] BATCH 121 ny_rows=405 queries=6
+[2026-06-08 15:00:35] Apify start status=201
+[2026-06-08 15:00:36] Apify run wFsQWy2PW99p2vCmH status=RUNNING
+[2026-06-08 15:00:52] Apify run wFsQWy2PW99p2vCmH status=RUNNING
+[2026-06-08 15:01:08] Apify run wFsQWy2PW99p2vCmH status=RUNNING
+[2026-06-08 15:01:24] Apify run wFsQWy2PW99p2vCmH status=RUNNING
+[2026-06-08 15:01:40] Apify run wFsQWy2PW99p2vCmH status=RUNNING
+[2026-06-08 15:01:56] Apify run wFsQWy2PW99p2vCmH status=SUCCEEDED
+[2026-06-08 15:01:57] Apify items=7 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 16:00:32] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 16:00:34] BATCH 122 ny_rows=405 queries=6
+[2026-06-08 16:00:35] Apify start status=201
+[2026-06-08 16:00:36] Apify run yo9TzZVnjYiGlPOFJ status=RUNNING
+[2026-06-08 16:00:52] Apify run yo9TzZVnjYiGlPOFJ status=RUNNING
+[2026-06-08 16:01:08] Apify run yo9TzZVnjYiGlPOFJ status=RUNNING
+[2026-06-08 16:01:24] Apify run yo9TzZVnjYiGlPOFJ status=RUNNING
+[2026-06-08 16:01:40] Apify run yo9TzZVnjYiGlPOFJ status=SUCCEEDED
+[2026-06-08 16:01:41] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 17:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 17:00:34] BATCH 123 ny_rows=405 queries=6
+[2026-06-08 17:00:36] Apify start status=201
+[2026-06-08 17:00:36] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:00:52] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:01:08] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:01:24] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:01:40] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:01:56] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:02:12] Apify run IF4flggvVuZwLAOrE status=RUNNING
+[2026-06-08 17:02:28] Apify run IF4flggvVuZwLAOrE status=SUCCEEDED
+[2026-06-08 17:02:29] Apify items=7 candidates_to_verify=12 cost=0.0325
+[2026-06-08 18:00:32] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 18:00:34] BATCH 124 ny_rows=405 queries=6
+[2026-06-08 18:00:36] Apify start status=201
+[2026-06-08 18:00:37] Apify run hVIPWxaROahiqhPPV status=RUNNING
+[2026-06-08 18:00:53] Apify run hVIPWxaROahiqhPPV status=RUNNING
+[2026-06-08 18:01:09] Apify run hVIPWxaROahiqhPPV status=RUNNING
+[2026-06-08 18:01:25] Apify run hVIPWxaROahiqhPPV status=RUNNING
+[2026-06-08 18:01:41] Apify run hVIPWxaROahiqhPPV status=SUCCEEDED
+[2026-06-08 18:01:42] Apify items=6 candidates_to_verify=12 cost=0.019
+[2026-06-08 19:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 19:00:34] BATCH 125 ny_rows=405 queries=6
+[2026-06-08 19:00:35] Apify start status=201
+[2026-06-08 19:00:36] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:00:52] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:01:08] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:01:24] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:01:39] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:01:55] Apify run qL5RrG9DrWnI5FCSn status=RUNNING
+[2026-06-08 19:02:11] Apify run qL5RrG9DrWnI5FCSn status=SUCCEEDED
+[2026-06-08 19:02:12] Apify items=7 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 20:00:31] START {'total_rows': 476, 'new_york_rows': 405, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-08 20:00:34] BATCH 126 ny_rows=405 queries=6
+[2026-06-08 20:00:35] Apify start status=201
+[2026-06-08 20:00:36] Apify run D5h6IKSELVufsdCXF status=RUNNING
+[2026-06-08 20:00:52] Apify run D5h6IKSELVufsdCXF status=RUNNING
+[2026-06-08 20:01:08] Apify run D5h6IKSELVufsdCXF status=SUCCEEDED
+[2026-06-08 20:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-08 20:01:31] ADDED_SHOPIFY batch=126 count=1 total_ny~406 The Woods Fine Jewelry | https://thewoodsfinejewelry.com/ | Fine Jewellery | email=blank
+[2026-06-09 00:00:32] START {'total_rows': 477, 'new_york_rows': 406, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-09 00:00:34] BATCH 127 ny_rows=406 queries=6
+[2026-06-09 00:00:36] Apify start status=201
+[2026-06-09 00:00:37] Apify run 7HBpoChUbMWCZ3ADg status=RUNNING
+[2026-06-09 00:00:53] Apify run 7HBpoChUbMWCZ3ADg status=RUNNING
+[2026-06-09 00:01:09] Apify run 7HBpoChUbMWCZ3ADg status=SUCCEEDED
+[2026-06-09 00:01:10] Apify items=6 candidates_to_verify=12 cost=0.0235
+[2026-06-09 01:00:32] START {'total_rows': 477, 'new_york_rows': 406, 'emails_found_new_york': 296, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-09 01:00:34] BATCH 128 ny_rows=406 queries=6
+[2026-06-09 01:00:35] Apify start status=201
+[2026-06-09 01:00:37] Apify run ZhaPLcWttYZHQ17za status=RUNNING
+[2026-06-09 01:00:52] Apify run ZhaPLcWttYZHQ17za status=RUNNING
+[2026-06-09 01:01:08] Apify run ZhaPLcWttYZHQ17za status=SUCCEEDED
+[2026-06-09 01:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-09 01:01:19] ADDED_SHOPIFY batch=128 count=1 total_ny~407 KennethJayLane.com | https://kennethjaylane.com/ | Fine Jewellery | email=inquiries@kennethjaylane.com
+[2026-06-09 02:00:32] START {'total_rows': 478, 'new_york_rows': 407, 'emails_found_new_york': 297, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-09 02:00:35] BATCH 129 ny_rows=407 queries=6
+[2026-06-09 02:00:36] Apify start status=201
+[2026-06-09 02:00:37] Apify run TMEjQMVYy0mxIRDuJ status=RUNNING
+[2026-06-09 02:00:53] Apify run TMEjQMVYy0mxIRDuJ status=RUNNING
+[2026-06-09 02:01:09] Apify run TMEjQMVYy0mxIRDuJ status=SUCCEEDED
+[2026-06-09 02:01:10] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997
+[2026-06-09 02:01:24] ADDED_SHOPIFY batch=129 count=1 total_ny~408 Amore Fine Jewelry | https://amorefinejewelry.com/ | Fine Jewellery | email=sales@amorefinejewelry.com
+[2026-06-09 03:00:31] START {'total_rows': 479, 'new_york_rows': 408, 'emails_found_new_york': 298, 'duplicate_domains': 0, 'non_shopify_rows': 30}
+[2026-06-09 03:00:34] BATCH 130 ny_rows=408 queries=6
+[2026-06-09 03:00:35] Apify start status=201
+[2026-06-09 03:00:36] Apify run 8P6WE1D819VhiCNuQ status=RUNNING
+[2026-06-09 03:00:52] Apify run 8P6WE1D819VhiCNuQ status=RUNNING
+[2026-06-09 03:01:08] Apify run 8P6WE1D819VhiCNuQ status=SUCCEEDED
+[2026-06-09 03:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997

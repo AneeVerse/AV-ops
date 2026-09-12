@@ -1,0 +1,129 @@
+{
+  "name": "Shopify NY Budget Batch - Two Tab",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shopify-ny-budget-batch",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f71d34f9",
+      "name": "Webhook - Run Budget Batch",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst body = $json.body || {};\nconst batch = Number(body.batch ?? 45);\nconst maxCandidates = Math.max(1, Math.min(Number(body.maxCandidates ?? 8), 25));\nconst maxQueries = Math.max(1, Math.min(Number(body.maxQueries ?? 6), 12));\nconst resultsPerPage = Math.max(1, Math.min(Number(body.resultsPerPage ?? 5), 10));\nconst verifyTimeout = Math.max(3, Math.min(Number(body.verifyTimeout ?? 5), 10));\nconst workspace = '/root/.openclaw/workspace';\nconst runner = `${workspace}/outputs/shopify_city_leads/ny_to_1000_runner.py`;\nconst cmd = `cd ${workspace} && START_BATCH=${batch} MAX_APIFY_RUNS=${batch + 1} MAX_CANDIDATES_PER_RUN=${maxCandidates} MAX_QUERIES_PER_RUN=${maxQueries} APIFY_RESULTS_PER_PAGE=${resultsPerPage} VERIFY_TIMEOUT=${verifyTimeout} python3 ${runner}`;\nreturn [{json:{batch,maxCandidates,maxQueries,resultsPerPage,verifyTimeout,command:cmd,startedAt:new Date().toISOString()}}];\n"
+      },
+      "id": "2477107c",
+      "name": "Build Budget Command",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "command": "={{$json.command}}",
+        "options": {}
+      },
+      "id": "0103f363",
+      "name": "Run Local Verifier Batch",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst stdout = $json.stdout || '';\nconst stderr = $json.stderr || '';\nlet parsed = null;\nconst match = stdout.match(/\\{[\\s\\S]*\\}\\s*$/);\nif (match) { try { parsed = JSON.parse(match[0]); } catch (e) {} }\nreturn [{json:{ok: !$json.exitCode, exitCode: $json.exitCode, parsed, stdoutTail: stdout.slice(-4000), stderrTail: stderr.slice(-2000), finishedAt:new Date().toISOString()}}];\n"
+      },
+      "id": "afd9e69e",
+      "name": "Parse Batch Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "f7e65874",
+      "name": "Respond JSON",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook - Run Budget Batch": {
+      "main": [
+        [
+          {
+            "node": "Build Budget Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Budget Command": {
+      "main": [
+        [
+          {
+            "node": "Run Local Verifier Batch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run Local Verifier Batch": {
+      "main": [
+        [
+          {
+            "node": "Parse Batch Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Batch Output": {
+      "main": [
+        [
+          {
+            "node": "Respond JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

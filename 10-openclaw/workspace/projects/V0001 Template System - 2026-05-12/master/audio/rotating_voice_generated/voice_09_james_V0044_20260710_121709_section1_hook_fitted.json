@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T12:17:13.125743+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "d51s986tchrmt0cz9ftrpwvf8c",
+  "raw_audio_url": "https://replicate.delivery/xezq/0BKntb9KoNacNxCkSfjgrxiQHd1T8FZZh5lNCEs0ymPkp0bLA/tmpstvahrsu.mp3",
+  "raw_duration": 2.45551,
+  "fitted_duration": 2.45551,
+  "script_text": "Would I actually succeed in another role?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0044_20260710_121709_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0044_20260710_121709_section1_hook_fitted.mp3"
+}

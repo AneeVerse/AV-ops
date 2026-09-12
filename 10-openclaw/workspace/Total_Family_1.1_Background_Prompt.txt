@@ -1,0 +1,146 @@
+You are generating a premium 1:1 square social media background for Total Family.
+
+The goal is to recreate the background style of the sample creative, but WITHOUT any headline text, body text, CTA text, logo, brand mark, or readable marketing copy. The final image must be a clean background that allows designers to add text and logo later.
+
+Create a warm cinematic family-legacy background with a subtle product UI overlay.
+
+CORE VISUAL DIRECTION
+
+Generate a realistic, warm, intimate home scene in a kitchen or dining area at night or golden-hour evening.
+
+Scene:
+- A parent and young child sitting together at a kitchen table or counter.
+- They are looking down at a tablet, book, laptop, or shared family object.
+- The moment should feel quiet, thoughtful, and emotionally warm.
+- The setting should feel like a real lived-in family home, not a polished advertisement.
+- Use warm lamp light, amber kitchen lighting, soft shadows, and gentle film grain.
+- The mood should communicate family values, legacy, connection, and intergenerational care.
+
+IMPORTANT: Leave clean negative space for future text placement.
+
+LAYOUT STRUCTURE
+
+Create a 1:1 square social media background.
+
+Top-left area:
+- Keep clean and dark enough for a future white logo overlay.
+- Do not generate any logo, wordmark, symbol, or placeholder.
+
+Upper-right / center-right area:
+- Keep a calm, readable empty zone for a future headline overlay.
+- Avoid faces, busy objects, strong highlights, or detailed clutter in this area.
+- Use softly blurred kitchen background, warm wall/cabinet texture, or gentle shadow.
+
+Lower third:
+- Leave space for a future frosted text panel overlay.
+- The lower area can be darker and softly blurred.
+- Do not add any text panel with writing; only keep the background suitable for one.
+
+Product UI zone:
+- Add one subtle floating desktop software UI mockup in the lower-right or lower-center area.
+- The UI should be secondary, not the main hero.
+- It should feel integrated into the scene with soft shadow, slight transparency, and warm color grading.
+- Do not make the UI too large or too sharp.
+
+BACKGROUND IMAGE STYLE
+
+Use:
+- warm cinematic photography
+- realistic family home interior
+- kitchen or dining room setting
+- amber lamp light
+- soft vignette
+- subtle film grain
+- shallow depth of field
+- slightly nostalgic color grading
+- muted browns, creams, warm black, amber, and soft beige
+- natural human posture and candid emotion
+
+Avoid:
+- polished corporate stock photo look
+- luxury mansion interiors
+- modern sterile white kitchens
+- office boardrooms
+- overly perfect smiling poses
+- bright daylight commercial photography
+- cartoon or illustration style
+- futuristic AI look
+- cold SaaS blue lighting
+
+PRODUCT UI MOCKUP STYLE
+
+Create a calm family-legacy software interface, similar to a guided family Vision platform.
+
+UI should include:
+- dark left sidebar
+- light beige/ivory main panel
+- rounded cards
+- soft shadows
+- small family-member profile cards or avatar circles
+- one family photo/video preview card
+- simple values cards or milestone cards
+- subtle muted orange/rust accents
+- premium, calm, organized layout
+
+Use only tiny generic UI labels if unavoidable, such as:
+Vision, Values, Family, Milestones, Notes, Shared, Progress.
+
+Keep UI text minimal and not clearly readable. The UI should visually suggest a family legacy platform, not contain real copy.
+
+UI restrictions:
+- Do not include the Total Family logo.
+- Do not include any brand name.
+- Do not include real names.
+- Do not include readable personal data.
+- Do not include third-party logos.
+- Do not create a raw screenshot.
+- Do not make the UI the main subject.
+
+TEXT AND LOGO RESTRICTIONS
+
+Do not generate:
+- logo
+- brand mark
+- headline
+- subheadline
+- body copy
+- CTA
+- button text
+- watermark
+- fake brand name
+- readable marketing text
+- captions
+- labels outside the UI
+
+The image must be a clean background only.
+
+COMPOSITION DETAILS
+
+- Main human subjects should be positioned mostly on the left or lower-left side, similar to a warm parent-child kitchen moment.
+- Keep the upper-right area visually calm for future headline placement.
+- Keep the lower third slightly darker and softer for future overlay text panel.
+- Add subtle dark gradient overlays around edges to improve future text readability.
+- Maintain at least 80px safe margin from all edges.
+- Do not place important faces or UI too close to the edges.
+
+COLOR PALETTE
+
+Use:
+- deep warm black / charcoal shadows
+- amber lamp glow
+- muted walnut brown
+- warm beige
+- cream highlights
+- soft ivory UI cards
+- muted rust/orange UI accents
+
+Avoid:
+- bright blue
+- neon purple
+- saturated red
+- cold gray corporate palette
+- high-contrast tech gradients
+
+FINAL OUTPUT
+
+A premium 1:1 square background image for a Total Family social media creative: warm cinematic parent-child kitchen scene, clean text-safe space, no logo, no headline, no marketing copy, and one subtle floating family-legacy platform UI mockup in the lower-right/lower-center area. The final image should be ready for designers to add the Total Family logo, headline, and lower text panel manually.

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T18:24:28.375736+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "b2yfk2wsbdrmt0cze598npck2g",
+  "raw_audio_url": "https://replicate.delivery/xezq/GpeQSxsjkg19HK2NtpJWLG5WXe7Xslxqnx6VRmwDDBybVC6WA/tmpte6v9r1v.mp3",
+  "raw_duration": 2.507755,
+  "fitted_duration": 2.507755,
+  "script_text": "Should I apply to this job or skip it?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260717_182424_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260717_182424_section1_hook_fitted.mp3"
+}

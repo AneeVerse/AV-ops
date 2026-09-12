@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T14:11:55.650835+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "5y67jbss85rmr0cza62rvr3dhc",
+  "raw_audio_url": "https://replicate.delivery/xezq/URCvaLWtMl78EZJQwisoZGiI6yhzpIevzumFbMiJFfWqEA4WA/tmpzmr89aaq.mp3",
+  "raw_duration": 9.978776,
+  "fitted_duration": 9.978776,
+  "script_text": "Career growth can stall when your responsibilities no longer match your strongest traits or market demand especially with AI taking over more and more tasks.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_141148_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_141148_section2_insight_fitted.mp3"
+}

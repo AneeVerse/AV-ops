@@ -1,0 +1,50 @@
+SEED_START rows=75 domains=75
+REJECT | catbirdnyc.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+ADDED 1 | STONE AND STRAND | https://stoneandstrand.com/ | Fine Jewellery | email=atyourservice@stoneandstrand.com | notes=City and country verified
+ADDED 2 | Aurate New York | https://auratenewyork.com/ | Fine Jewellery | email=hello@auratenewyork.com | notes=City and country verified
+ADDED 3 | WWAKE | https://wwake.com/ | Fine Jewellery | email=margueritte@marguerittekruger.com | notes=City and country verified
+ADDED 4 | Mociun | https://mociun.com/ | Fine Jewellery | email=hello@mociun.com | notes=City and country verified
+ADDED 5 | Marla Aaron | https://marlaaaron.com/ | Fine Jewellery | email=info@marlaaaron.com | notes=City and country verified
+ADDED 6 | Ring Concierge | https://ringconcierge.com/ | Fine Jewellery | email=info@ringconcierge.com | notes=City and country verified
+REJECT | jenniferfisherjewelry.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+ADDED 7 | BONBONWHIMS | https://bonbonwhims.com/ | Demi-fine Jewellery | email=info@bonbonwhims.com | notes=City and country verified
+ADDED 8 | AGMES | https://agmesnyc.com/ | Fine Jewellery | email=customerservice@agmesnyc.com | notes=City and country verified
+ADDED 9 | SARAH CHLOE | https://sarahchloe.com/ | Fine Jewellery | email=support@sarahchloe.com | notes=City and country verified
+ADDED 10 | Melissa Joy Manning Inc. | https://melissajoymanning.com/ | Fine Jewellery | email=customercare@mjmmetal.com | notes=City and country verified
+ADDED 11 | ALEXIS BITTAR | https://alexisbittar.com/ | Fine Jewellery | email=service@alexisbittar.com | notes=City and country verified
+ADDED 12 | Kinn | https://kinnstudio.com/ | Fine Jewellery | email=hey@kinnstudio.com | notes=City and country verified
+ADDED 13 | Verlas | https://verlas.com/ | Fine Jewellery | email=care@verlas.com | notes=City and country verified
+ADDED 14 | VRAI | https://vrai.com/ | Fine Jewellery | email=help@vrai.com | notes=City and country verified
+ADDED 15 | Gabriela Artigas + CO | https://gabrielaartigas.com/ | Fine Jewellery | email=work@daaamn.com | notes=Country verified; city inferred from search
+REJECT | jadeandjules.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | zoechicco.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | kataoka-jewelry.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | laurenbjewelry.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | annasheffield.com | Fine Jewellery:not_shopify; Demi-fine Jewellery:not_shopify
+ADDED 16 | Luxury NYC Jeweler: Fine Custom Jewelry | https://greenwichjewelers.com/ | Fine Jewellery | email=support@greenwichstjewelers.com | notes=City and country verified
+ADDED 17 | Judith Ripka Fine Jewelry | https://judithripka.com/ | Fine Jewellery | email=concierge@judithripka.com | notes=City and country verified
+ADDED 18 | Jemma Wynne | https://jemmawynne.com/ | Fine Jewellery | email=concierge@jemmawynne.com | notes=City and country verified
+ADDED 19 | ONDYN | https://ondyn.com/ | Fine Jewellery | email=info@ondyn.com | notes=City and country verified
+ADDED 20 | EF Collection® | https://efcollection.com/ | Fine Jewellery | email=info@efcollection.com | notes=Country verified; city inferred from search
+REJECT | nishinyc.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+ADDED 21 | Lizzie Fortunato | https://lizziefortunato.com/ | Fine Jewellery | email=sales@lizziefortunatojewels.com | notes=City and country verified
+REJECT | bingbangnyc.com | Fine Jewellery:not_shopify; Demi-fine Jewellery:not_shopify
+ADDED 22 | Adornmonde | https://adornmonde.com/ | Fine Jewellery | email=support@starapps.studio | notes=City and country verified
+REJECT | loveweld.com | Fine Jewellery:category_mismatch; Demi-fine Jewellery:category_mismatch
+ADDED 23 | The Clear Cut | https://theclearcut.co/ | Fine Jewellery | email=kyle@theclearcut.co | notes=City and country verified
+ADDED 24 | With Clarity | https://withclarity.com/ | Fine Jewellery | email=service@withclarity.com | notes=City and country verified
+REJECT | noemiefinejewelry.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | taylorandhart.com | Fine Jewellery:not_shopify; Demi-fine Jewellery:not_shopify
+ADDED 25 | idyl | https://idyl.com/ | Fine Jewellery | email=hello@idyl.com | notes=Country verified; city inferred from search
+REJECT | grownbrilliance.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+ADDED 26 | Diamond Engagement Rings, Wedding Bands & Jewelry | https://kwiat.com/ | Fine Jewellery | email=concierge@kwiat.com | notes=City and country verified
+ADDED 27 | FoundRae | https://foundrae.com/ | Fine Jewellery | email=clientcare@foundrae.com | notes=Country verified; city inferred from search
+REJECT | sauer1891.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+ADDED 28 | Loren Stewart | https://lorenstewart.com/ | Fine Jewellery | email=support@lorenstewart.com | notes=City and country verified
+ADDED 29 | Brinker + Eliza | https://brinkerandeliza.com/ | Fine Jewellery | email=press@brinkerandeliza.com | notes=City and country verified
+ADDED 30 | Jane Win Jewelry | https://janewin.com/ | Fine Jewellery | email=info@janewin.com | notes=City and country verified
+ADDED 31 | Monica Rich Kosann Lockets, Fine Jewelry & Luxury Gifts | https://monicarichkosann.com/ | Fine Jewellery | email=concierge@monicarichkosann.com | notes=Country verified; city inferred from search
+ADDED 32 | Sophie Ratner Jewelry | https://sophieratner.com/ | Fine Jewellery | email=customerservice@sophieratner.com | notes=City and country verified
+REJECT | bario-neal.com | Fine Jewellery:fetch_failed; Demi-fine Jewellery:fetch_failed
+REJECT | jennykwon.com | Fine Jewellery:not_shopify; Demi-fine Jewellery:not_shopify
+SEED_FINISH added=32 dup=0 rejected=16

@@ -1,0 +1,210 @@
+{
+  "run_id": "ai_planner_1779284867",
+  "project_name": "AI Pipeline Test",
+  "output_file_name": "PDF_to_PPT_Automation_Presentation.pptx",
+  "target_slide_count": 10,
+  "actual_slide_count": 10,
+  "planner_mode": "ai",
+  "slides": [
+    {
+      "slide_number": 1,
+      "template_id": "slide_01_hero_cover",
+      "text_content": {
+        "heading": "Automating PDF to PPT: System Overview",
+        "supporting_text": "Efficiency & Brand Consistency through AI-Powered Transformation",
+        "section_label": "Introduction"
+      },
+      "image_content": {
+        "hero_image": "AI-powered PDF to PPT automation system, digital transformation, efficiency"
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png",
+          "prompt": ""
+        }
+      },
+      "order": 1,
+      "text": {
+        "heading": "Automating PDF to PPT: System Overview",
+        "supporting_text": "Efficiency & Brand Consistency through AI-Powered Transformation",
+        "section_label": "Introduction"
+      }
+    },
+    {
+      "slide_number": 2,
+      "template_id": "slide_06_platform_overview",
+      "text_content": {
+        "heading": "Key Goals: Efficiency & Brand Consistency",
+        "section_label": "Objectives",
+        "body": "Our primary objectives are to significantly reduce the manual effort in presentation creation and ensure every output aligns perfectly with brand guidelines.",
+        "subheading": "Driving Value Through Automation",
+        "benefit_row": "Time Savings; Brand Adherence; Resource Optimization",
+        "closing_line": "Achieving more with intelligent automation."
+      },
+      "image_content": {},
+      "order": 2,
+      "text": {
+        "heading": "Key Goals: Efficiency & Brand Consistency",
+        "section_label": "Objectives",
+        "body": "Our primary objectives are to significantly reduce the manual effort in presentation creation and ensure every output aligns perfectly with brand guidelines.",
+        "subheading": "Driving Value Through Automation",
+        "benefit_row": "Time Savings; Brand Adherence; Resource Optimization",
+        "closing_line": "Achieving more with intelligent automation."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 3,
+      "template_id": "slide_06_platform_overview",
+      "text_content": {
+        "heading": "The User Workflow: From PDF Upload to PPTX",
+        "section_label": "Workflow",
+        "body": "Experience a seamless journey from document upload to a fully formatted presentation. Our intuitive interface guides users through each step, making complex tasks simple.",
+        "subheading": "Simplified Conversion Process",
+        "benefit_row": "Upload PDF; AI Processing; Review & Download PPTX",
+        "closing_line": "Transforming documents with ease."
+      },
+      "image_content": {},
+      "order": 3,
+      "text": {
+        "heading": "The User Workflow: From PDF Upload to PPTX",
+        "section_label": "Workflow",
+        "body": "Experience a seamless journey from document upload to a fully formatted presentation. Our intuitive interface guides users through each step, making complex tasks simple.",
+        "subheading": "Simplified Conversion Process",
+        "benefit_row": "Upload PDF; AI Processing; Review & Download PPTX",
+        "closing_line": "Transforming documents with ease."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 4,
+      "template_id": "slide_13_standard_content",
+      "text_content": {
+        "heading": "AI-Powered Content & Outline Generation",
+        "body": "Our system leverages advanced AI to intelligently analyze PDF content, extracting key information and generating a structured outline. This ensures logical flow and comprehensive coverage, forming the backbone of your presentation. The AI identifies main topics, sub-points, and supporting details, creating a coherent narrative."
+      },
+      "image_content": {},
+      "order": 4,
+      "text": {
+        "heading": "AI-Powered Content & Outline Generation",
+        "body": "Our system leverages advanced AI to intelligently analyze PDF content, extracting key information and generating a structured outline. This ensures logical flow and comprehensive coverage, forming the backbone of your presentation. The AI identifies main topics, sub-points, and supporting details, creating a coherent narrative."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 5,
+      "template_id": "slide_13_standard_content",
+      "text_content": {
+        "heading": "Template-Driven Design & Image Management",
+        "body": "Utilizing a rich library of pre-approved templates, the system applies consistent branding and design elements automatically. AI also assists in selecting and integrating relevant images, enhancing visual appeal and engagement without requiring manual search or placement, ensuring every slide looks professional."
+      },
+      "image_content": {},
+      "order": 5,
+      "text": {
+        "heading": "Template-Driven Design & Image Management",
+        "body": "Utilizing a rich library of pre-approved templates, the system applies consistent branding and design elements automatically. AI also assists in selecting and integrating relevant images, enhancing visual appeal and engagement without requiring manual search or placement, ensuring every slide looks professional."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 6,
+      "template_id": "slide_13_standard_content",
+      "text_content": {
+        "heading": "Ensuring Brand Integrity in Final PPTX",
+        "body": "Brand guidelines are meticulously embedded into the template selection and content generation process. This guarantees that every output PPTX adheres strictly to corporate identity standards, from approved fonts and color palettes to logo placement and messaging tone, maintaining a consistent professional image."
+      },
+      "image_content": {},
+      "order": 6,
+      "text": {
+        "heading": "Ensuring Brand Integrity in Final PPTX",
+        "body": "Brand guidelines are meticulously embedded into the template selection and content generation process. This guarantees that every output PPTX adheres strictly to corporate identity standards, from approved fonts and color palettes to logo placement and messaging tone, maintaining a consistent professional image."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 7,
+      "template_id": "slide_03_metric_overview",
+      "text_content": {
+        "heading": "Quantifiable Impact & Key Metrics",
+        "subheading": "Measuring the success of our automation.",
+        "section_label": "Performance",
+        "metric_1_value": "80%",
+        "metric_1_label": "Time Saved",
+        "metric_2_value": "95%",
+        "metric_2_label": "Brand Compliance",
+        "metric_3_value": "10x",
+        "metric_3_label": "Faster Creation",
+        "metric_4_value": "60%",
+        "metric_4_label": "Cost Reduction",
+        "metric_5_value": "20+",
+        "metric_5_label": "Templates"
+      },
+      "image_content": {},
+      "order": 7,
+      "text": {
+        "heading": "Quantifiable Impact & Key Metrics",
+        "subheading": "Measuring the success of our automation.",
+        "section_label": "Performance",
+        "metric_1_value": "80%",
+        "metric_1_label": "Time Saved",
+        "metric_2_value": "95%",
+        "metric_2_label": "Brand Compliance",
+        "metric_3_value": "10x",
+        "metric_3_label": "Faster Creation",
+        "metric_4_value": "60%",
+        "metric_4_label": "Cost Reduction",
+        "metric_5_value": "20+",
+        "metric_5_label": "Templates"
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 8,
+      "template_id": "slide_08_text_heavy_insight",
+      "text_content": {
+        "heading": "Addressing Content Risks",
+        "body": "A key risk identified is the potential unavailability of the AI provider. To mitigate this, our system incorporates a robust fallback heuristic plan. This ensures that even if the primary AI service is interrupted, the core functionality of content generation and outline creation can continue, albeit with potentially reduced sophistication. This guarantees operational continuity and reliability."
+      },
+      "image_content": {},
+      "order": 8,
+      "text": {
+        "heading": "Addressing Content Risks",
+        "body": "A key risk identified is the potential unavailability of the AI provider. To mitigate this, our system incorporates a robust fallback heuristic plan. This ensures that even if the primary AI service is interrupted, the core functionality of content generation and outline creation can continue, albeit with potentially reduced sophistication. This guarantees operational continuity and reliability."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 9,
+      "template_id": "slide_11_content_image_basic",
+      "text_content": {
+        "heading": "Leveraging Image Opportunities",
+        "body": "The system identifies strategic opportunities for visual enhancement, such as the hero image for the cover slide. AI suggests relevant imagery based on content, ensuring visual appeal and reinforcing key messages without manual sourcing. This enriches the presentation's impact."
+      },
+      "image_content": {
+        "image": "Strategic image placement, visual communication, presentation design"
+      },
+      "order": 9,
+      "text": {
+        "heading": "Leveraging Image Opportunities",
+        "body": "The system identifies strategic opportunities for visual enhancement, such as the hero image for the cover slide. AI suggests relevant imagery based on content, ensuring visual appeal and reinforcing key messages without manual sourcing. This enriches the presentation's impact."
+      },
+      "images": {}
+    },
+    {
+      "slide_number": 10,
+      "template_id": "slide_13_standard_content",
+      "text_content": {
+        "heading": "Summary & Future Outlook",
+        "body": "Our PDF to PPT automation system delivers significant gains in efficiency, brand consistency, and content quality. By streamlining the entire presentation creation process, we empower users to focus on strategic communication. We will continue to enhance AI capabilities and expand template libraries to meet evolving business needs."
+      },
+      "image_content": {},
+      "order": 10,
+      "text": {
+        "heading": "Summary & Future Outlook",
+        "body": "Our PDF to PPT automation system delivers significant gains in efficiency, brand consistency, and content quality. By streamlining the entire presentation creation process, we empower users to focus on strategic communication. We will continue to enhance AI capabilities and expand template libraries to meet evolving business needs."
+      },
+      "images": {}
+    }
+  ],
+  "_provider": "gemini"
+}

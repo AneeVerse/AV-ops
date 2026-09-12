@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T15:41:28.159631+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "pbyv3gvx4hrmt0cz8y58v72xng",
+  "raw_audio_url": "https://replicate.delivery/xezq/OtPtPWfcwWSDSCSP13F0mZX6gzwBYIFP7ct1leSKfPIPZuutA/tmp9j62rf37.mp3",
+  "raw_duration": 3.996735,
+  "fitted_duration": 3.996735,
+  "script_text": "Fewer, better-targeted applications may outperform mass applying.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_154117_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_154117_section3_implication_fitted.mp3"
+}

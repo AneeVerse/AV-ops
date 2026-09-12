@@ -1,0 +1,167 @@
+{
+  "run_id": "8fByG3XrUO40FyGHB",
+  "apify_cost": 0.1045,
+  "apify_run_usage_fields": {
+    "usageUsd": null,
+    "usageTotalUsd": 0.1045,
+    "chargedUsageUsd": null,
+    "usage": null,
+    "status": "SUCCEEDED"
+  },
+  "dataset_items": 24,
+  "candidates_found": 83,
+  "added_count": 9,
+  "added": [
+    {
+      "Store Name": "Mark Steel Jewelry",
+      "Link": "https://marksteeljewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Demi-fine Jewellery",
+      "Email": "marksteeljewelry@gmail.com",
+      "Email Source URL": "https://marksteeljewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "Country verified; city inferred from search",
+      "Domain": "marksteeljewelry.com"
+    },
+    {
+      "Store Name": "RIVA New York",
+      "Link": "https://rivanewyork.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "email@newsletter.com",
+      "Email Source URL": "https://rivanewyork.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "rivanewyork.com"
+    },
+    {
+      "Store Name": "Versani",
+      "Link": "https://versani.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "v@versani.com",
+      "Email Source URL": "https://versani.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "versani.com"
+    },
+    {
+      "Store Name": "Paul Morelli Design, Inc.",
+      "Link": "https://paulmorelli.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "concierge@paulmorelli.com",
+      "Email Source URL": "https://paulmorelli.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "paulmorelli.com"
+    },
+    {
+      "Store Name": "Golden Planet Jewelry",
+      "Link": "https://goldenplanetjewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "support@goldenplanetusa.com",
+      "Email Source URL": "https://goldenplanetjewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "goldenplanetjewelry.com"
+    },
+    {
+      "Store Name": "NYC Diamond District",
+      "Link": "https://nycdiamonddistrict.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@nycdiamonddistrict.com",
+      "Email Source URL": "https://nycdiamonddistrict.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "nycdiamonddistrict.com"
+    },
+    {
+      "Store Name": "Alex Diamond Jewelry",
+      "Link": "https://alexdiamondjewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "alexdiamondny1370@gmail.com",
+      "Email Source URL": "https://alexdiamondjewelry.com/policies/privacy-policy",
+      "Email Source Type": "Privacy Policy",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "alexdiamondjewelry.com"
+    },
+    {
+      "Store Name": "SIMON ARDEM",
+      "Link": "https://simonardem.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "simonardem@gmail.com",
+      "Email Source URL": "https://simonardem.com/pages/contact",
+      "Email Source Type": "Contact Page",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "simonardem.com"
+    },
+    {
+      "Store Name": "Blue Star Gems NY LLC",
+      "Link": "https://bluestargemstones.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "bluestargemsny@gmail.com",
+      "Email Source URL": "https://bluestargemstones.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "bluestargemstones.com"
+    }
+  ],
+  "rejected_skipped": 74,
+  "reject_reasons": {
+    "duplicate_domain": 41,
+    "not_shopify": 23,
+    "fetch_failed": 8,
+    "category_mismatch": 2
+  },
+  "cleanup_cleared": [
+    {
+      "row": 247,
+      "domain": "rivanewyork.com",
+      "old_email": "email@newsletter.com"
+    },
+    {
+      "row": 250,
+      "domain": "goldenplanetjewelry.com",
+      "old_email": "support@goldenplanetusa.com"
+    }
+  ],
+  "duplicate_details_postrun": [],
+  "start_stats": {
+    "total_rows": 244,
+    "new_york_rows": 173,
+    "emails_found_total": 212,
+    "emails_found_new_york": 152,
+    "duplicate_domains": 0
+  },
+  "end_stats": {
+    "total_rows": 253,
+    "new_york_rows": 182,
+    "emails_found_total": 219,
+    "emails_found_new_york": 159,
+    "duplicate_domains": 0
+  }
+}

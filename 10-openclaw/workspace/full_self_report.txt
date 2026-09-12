@@ -1,0 +1,508 @@
+COMPLETE SELF REPORT
+Generated: 2026-04-22 UTC
+
+1. IDENTITY & RUNTIME
+- Name: AV_BOT
+- Agent ID: main
+- Current session key: agent:main:telegram:direct:844645603
+- Current session ID: 5a86c3d0-9b29-4090-aa6e-36d71f12a193
+- OpenClaw version: 2026.4.9 (0512059)
+- Runtime mode: direct
+- Model in current session: openai-codex/gpt-5.4
+- Auth profile in current session: openai-codex:4d.x.art@gmail.com
+- Thinking: off
+- Text verbosity: low
+- Elevated access: enabled
+- Host OS: Ubuntu 24.04.4 LTS
+- Kernel: Linux srv1474915 6.8.0-107-generic #107-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 13 19:51:50 UTC 2026 x86_64
+- User: root
+- Working directory: /root/.openclaw/workspace
+- OpenClaw home: /root/.openclaw
+- Observed shell PID during inspection: 2259
+- Current host time during inspection: 2026-04-22 09:36:39 UTC
+- Honest limit: I did not verify the long-lived OpenClaw daemon PID directly.
+
+2. BRAIN (LLM CONFIG)
+- Primary configured model: openai-codex/gpt-5.4
+- Heartbeat configured model: openai-codex/gpt-5.4
+- Configured model inventory in defaults:
+  - openai-codex/gpt-5.4
+- Provider type: cloud API, OAuth-backed OpenAI Codex
+- Not using local Ollama/LM Studio based on visible config
+- Context window reported by session status: about 272000 tokens
+- Current session usage snapshot when checked:
+  - Tokens in: 68k
+  - Tokens out: 2.1k
+  - Context usage: 76k / 272k
+- Hidden/internal parameters not exposed in visible config:
+  - temperature: unknown
+  - max output tokens: unknown
+  - exact context setting beyond reported runtime value: unknown
+
+3. OPENCLAW CONFIG SUMMARY
+Config file: /root/.openclaw/openclaw.json
+- shellEnv enabled: true
+- wizard last run: 2026-04-22T08:33:24.162Z
+- last touched version: 2026.4.9
+- tools profile: coding
+- web search enabled: true
+- web search provider: gemini
+- elevated tools enabled: true
+- elevated allowFrom telegram: 844645603
+- commands.native: auto
+- commands.nativeSkills: auto
+- restart command enabled: true
+- session.dmScope: per-channel-peer
+- gateway:
+  - port: 18789
+  - mode: local
+  - bind: loopback
+  - controlUi allowedOrigins: https://bot.aneeverse.com
+  - controlUi allowInsecureAuth: true
+  - auth mode: token
+  - tailscale mode: off
+- gateway node denyCommands:
+  - camera.snap
+  - camera.clip
+  - screen.record
+  - contacts.add
+  - calendar.add
+  - reminders.add
+  - sms.send
+- plugins enabled:
+  - google
+  - openai
+  - browser
+- google plugin webSearch api key configured
+
+4. AUTH PROFILES
+Auth profile file: /root/.openclaw/agents/main/agent/auth-profiles.json
+Configured OpenAI Codex profiles:
+- openai-codex:4d.x.art@gmail.com
+- openai-codex:abhijeet@aneeverse.com
+- openai-codex:sannuthi.prashanth@gmail.com
+- openai-codex:team.horeca1@gmail.com
+- openai-codex:aneverse@gmail.com
+- openai-codex:anees@aneeverse.com
+- openai-codex:anees@yodalearning.com
+Honest note: the auth profile file contains live OAuth access/refresh tokens. I am not reproducing them here.
+
+5. MEMORY
+Long-term memory path:
+- /root/.openclaw/workspace/MEMORY.md
+Daily memory paths:
+- /root/.openclaw/workspace/memory/2026-03-28.md
+- /root/.openclaw/workspace/memory/2026-03-29.md
+- /root/.openclaw/workspace/memory/2026-04-09.md
+- /root/.openclaw/workspace/memory/2026-04-12.md
+Current durable memory includes:
+- My identity is AV_BOT, business operations assistant, analytical and direct.
+- User is Ahmad Anees, runs aneeverse.com.
+- Communication preference: no sugar-coating, no guessing, factual answers.
+- Preference: keep replies simple and short.
+- Preference: 'search' means web/Google-style search.
+- Preference: active clients means Ongoing + Leads, separated.
+- Preference: full client list means full bifurcation by status.
+- Preference: Hostinger VPS snapshot requests should use n8n workflow qqnqbHa7kyewmG9H.
+- Main business system is app.aneeverse.com backed by Supabase.
+- Work structure must follow Client -> Request -> Task.
+- Clients are companies, not individuals.
+- Each client has default request 00-Updates-Followups.
+- Task placement rule: existing relevant request, else default request, else suggest new request.
+Additional daily memory includes:
+- OpenClaw and n8n setup history
+- Drive classification rules
+- Action-first user preference
+- Gog manual auth command
+- Hostinger snapshot automation and domain alert workflow history
+
+6. CURRENT SESSION CONTEXT
+- Channel: Telegram direct message
+- Delivery target: telegram:844645603
+- Session transcript path: /root/.openclaw/agents/main/sessions/5a86c3d0-9b29-4090-aa6e-36d71f12a193.jsonl
+- Session has compaction history: 7 compactions recorded
+- Memory flush checkpoint exists in session metadata
+- Current queue depth from status: 0
+- Status when checked: running
+
+7. OTHER SESSION RECORDS
+Visible session registry file:
+- /root/.openclaw/agents/main/sessions/sessions.json
+Visible/known session files under /root/.openclaw/agents/main/sessions:
+- 47940f88-f460-410d-b09b-d3f56935deac.jsonl.reset.2026-03-29T04-22-06.191Z
+- 50f25d55-1089-4833-94fa-e40e7259e274.jsonl.reset.2026-04-08T04-05-19.100Z
+- 5a86c3d0-9b29-4090-aa6e-36d71f12a193.checkpoint.a685cf86-2899-453f-bce3-f70f8e020a53.jsonl
+- 5a86c3d0-9b29-4090-aa6e-36d71f12a193.checkpoint.cf70708f-02d6-44eb-bfc8-6e2ad258297b.jsonl
+- 5a86c3d0-9b29-4090-aa6e-36d71f12a193.checkpoint.eb262ead-b0dc-4d46-8cf0-cf22187a70c7.jsonl
+- 5a86c3d0-9b29-4090-aa6e-36d71f12a193.jsonl
+- 5a86c3d0-9b29-4090-aa6e-36d71f12a193.jsonl.lock
+- 5b2bf9db-4ec9-47ee-900a-4807c5659032.jsonl.reset.2026-03-30T04-13-53.718Z
+- 8bc95a59-bd04-48fd-b5f4-7573258497e0.jsonl.reset.2026-04-09T04-05-19.139Z
+- a94795cf-cd23-43e6-8a8d-36cda29e0846.jsonl.reset.2026-04-07T18-58-52.026Z
+- bcac198e-a8d2-4033-ad39-f8a5726608e4.jsonl
+- d0a7007e-02a1-4777-b99e-a2d5a46f353c.jsonl.reset.2026-04-22T08-33-51.430Z
+- sessions.json
+- sessions.json.telegram-sent-messages.json
+Known sessions from sessions registry:
+- agent:main:main
+- agent:main:telegram:direct:844645603
+- agent:main:telegram:slash:844645603
+
+8. SKILLS AVAILABLE IN THIS TELEGRAM SESSION
+The current Telegram session skill snapshot includes:
+- healthcheck
+- node-connect
+- skill-creator
+- tmux
+- weather
+These are the only skills injected into this specific current system prompt snapshot.
+
+9. WORKSPACE-LEVEL SKILLS ON DISK
+- /root/.openclaw/workspace/skills/agent-browser-clawdbot/SKILL.md
+  - Browser automation skill installed from ClawHub
+- /root/.openclaw/workspace/skills/aneerequest/SKILL.md
+  - Custom skill for Aneerequest planning and safe Supabase writes
+
+10. GLOBAL SKILLS ON DISK
+Bundled skills found at /usr/lib/node_modules/openclaw/skills:
+- 1password
+- apple-notes
+- apple-reminders
+- bear-notes
+- blogwatcher
+- blucli
+- bluebubbles
+- camsnap
+- canvas
+- clawhub
+- coding-agent
+- discord
+- eightctl
+- gemini
+- gh-issues
+- gifgrep
+- github
+- gog
+- goplaces
+- healthcheck
+- himalaya
+- imsg
+- mcporter
+- model-usage
+- nano-pdf
+- node-connect
+- notion
+- obsidian
+- openai-whisper-api
+- openai-whisper
+- openhue
+- oracle
+- ordercli
+- peekaboo
+- sag
+- session-logs
+- sherpa-onnx-tts
+- skill-creator
+- slack
+- songsee
+- sonoscli
+- spotify-player
+- summarize
+- taskflow-inbox-triage
+- taskflow
+- things-mac
+- tmux
+- trello
+- video-frames
+- voice-call
+- wacli
+- weather
+- xurl
+Honest note: I did not open every SKILL.md individually for this report, so descriptions above are based on names and prior visible metadata, not a full per-skill audit.
+
+11. CAN I CREATE NEW SKILLS?
+Yes.
+Ways:
+- Use the bundled skill-creator skill
+- Directly create/edit directories under /root/.openclaw/workspace/skills
+
+12. TOOLS AVAILABLE RIGHT NOW IN THIS TELEGRAM SESSION
+Current toolset visible in system/tool schema for this session includes:
+- read
+- edit
+- write
+- apply_patch
+- exec
+- process
+- canvas
+- nodes
+- cron
+- message
+- tts
+- image_generate
+- music_generate
+- video_generate
+- gateway
+- agents_list
+- update_plan
+- sessions_list
+- sessions_history
+- sessions_send
+- sessions_yield
+- sessions_spawn
+- subagents
+- session_status
+- web_search
+- web_fetch
+- image
+- browser
+- memory_search
+- memory_get
+Tool capability summary:
+- file operations
+- shell commands
+- background process control
+- browser automation
+- messaging
+- cron scheduling
+- gateway config and restart tooling
+- session spawning and orchestration
+- web search/fetch
+- memory retrieval
+- image/audio/video generation
+
+13. TOOL POLICIES / APPROVAL STATE
+- Current exec host default: gateway
+- Current exec security: full
+- Current exec ask: off
+- Elevated level in this session: on
+- Telegram exec approvals enabled in config: true
+- Telegram exec approvals target: both
+- Messaging tool available directly
+- Certain node/device commands denied in config
+- Safety/developer instructions also restrict destructive actions and config changes without explicit request
+
+14. CONNECTED CHANNELS
+From config:
+- Telegram enabled
+- WhatsApp enabled
+Telegram details:
+- dmPolicy: allowlist
+- allowFrom: 844645603
+- groupPolicy: allowlist
+- groups require mention by default
+- streaming mode: partial
+WhatsApp details:
+- enabled: true
+- dmPolicy: pairing
+- selfChatMode: false
+
+15. PAIRED NODES
+- nodes status returned no paired nodes
+- Current nodes list: empty
+
+16. AGENTS / OTHER WORKSPACES
+- agents_list returned only one available agent id: main
+- allowAny: false
+- No additional agent ids exposed via agents_list
+
+17. OPENCLAW CRON / SCHEDULES
+- OpenClaw cron jobs: none
+- cron list returned total 0
+
+18. N8N WORKFLOWS KNOWN LIVE
+From n8n API:
+1) Automation 1 - Daily Task Hygiene Audit
+- Workflow ID: 1gQaDDCgdIPNCM2m
+- Active: true
+- Schedule: 0 5 * * *
+- Timezone: Asia/Kolkata
+- Trigger count: 1
+- Manual trigger present
+- Calls local API: http://127.0.0.1:8001/automation-1/run
+- Notable oddity: old connection/staticData labels like Daily 09:30 IST Trigger still linger
+
+2) Hostinger Domain Expiry Alerts
+- Workflow ID: MuD6rgCHi4UtgjFS
+- Active: true
+- Schedule: 0 9 * * *
+- Timezone: Asia/Kolkata
+- Manual trigger present
+- Fetches Hostinger portfolio API
+- Sends alerts for domains at 30, 7, 4, 3, 2, 1 days before expiry
+- Uses inline Hostinger bearer token
+- Uses inline Google Chat webhook URL
+
+3) Hostinger VPS Snapshot - Daily 03:00 IST
+- Workflow ID: qqnqbHa7kyewmG9H
+- Active: true
+- Schedule: 0 3 * * *
+- Timezone: Asia/Kolkata
+- Manual trigger present
+- Calls Hostinger VPS snapshot API for VPS 1474915
+- Sends Google Chat notification
+- Uses inline Hostinger bearer token
+- Uses inline Google Chat webhook URL
+- timeSavedMode: fixed
+
+19. BACKGROUND SERVICES / AUTOMATION COMPONENTS KNOWN
+Based on workspace and prior work artifacts:
+- n8n service
+- PostgreSQL service
+- automation-api FastAPI bridge for Automation 1
+- Python virtualenvs for automation API and other tools
+Honest note: I did not inspect systemctl status live in this report, but these services/files are present and were previously operational.
+
+20. DATABASES & TABLES
+Local PostgreSQL database in use:
+- database: av_bot
+Known public tables:
+- client_audits
+- drive_moves
+- memory_notes
+- mirror_clients
+- mirror_requests
+- mirror_task_request_links
+- mirror_tasks
+- persistent_settings
+- reminders
+- session_facts
+- state_store
+- task_log
+- workflow_checkpoints
+Known role from prior work:
+- user: av_bot_user
+Connection values are stored in /root/.env
+Supabase is also connected externally and treated as source of truth for production business data.
+
+21. FILES & DATA ACCESS
+I have broad read/write capability on this host through tools and shell.
+Important note: attachment sending has path restrictions, which is why /root/.env had to be copied into workspace before sending.
+Known accessible major areas used in work:
+- /root/.openclaw
+- /root/.openclaw/workspace
+- /etc/n8n
+- /etc/systemd/system
+- /etc/nginx/sites-available
+- /root/.env
+- PostgreSQL local DB
+- n8n API
+- Hostinger API
+- Supabase API
+- Google Drive / Google OAuth / service account workflows
+
+22. WORKSPACE INVENTORY (KEY FILES)
+Workspace root highlights:
+- /root/.openclaw/workspace/.env
+- /root/.openclaw/workspace/.env.backup.txt
+- /root/.openclaw/workspace/AGENTS.md
+- /root/.openclaw/workspace/AV_BOT_DB.md
+- /root/.openclaw/workspace/BOOTSTRAP.md
+- /root/.openclaw/workspace/DB_AUTOUSE_POLICY.md
+- /root/.openclaw/workspace/DB_WORKFLOWS.md
+- /root/.openclaw/workspace/HEARTBEAT.md
+- /root/.openclaw/workspace/IDENTITY.md
+- /root/.openclaw/workspace/MEMORY.md
+- /root/.openclaw/workspace/REMINDER_SYSTEM.md
+- /root/.openclaw/workspace/SOUL.md
+- /root/.openclaw/workspace/TOOLS.md
+- /root/.openclaw/workspace/USER.md
+- /root/.openclaw/workspace/task_request_mapping.json
+- /root/.openclaw/workspace/full_self_report.txt
+Memory directory:
+- /root/.openclaw/workspace/memory/...
+Scripts:
+- /root/.openclaw/workspace/scripts/automation_01_task_hygiene_audit.py
+- /root/.openclaw/workspace/scripts/automation_api.py
+- /root/.openclaw/workspace/scripts/avbot_db.py
+- /root/.openclaw/workspace/scripts/supabase_mirror.py
+Skills:
+- /root/.openclaw/workspace/skills/agent-browser-clawdbot
+- /root/.openclaw/workspace/skills/aneerequest
+Temp artifacts include:
+- automation_01_api_last.json
+- automation_01_latest.json
+- automation_01_live_from_aneerequest.json
+- automation_1_n8n_workflow.json
+- automation_development_project_full.txt
+- hostinger_domain_expiry_alerts.json
+- hostinger_portfolio.json
+- hostinger_snapshot_n8n_workflow.json
+- hostinger_snapshot_workflow_live.json
+
+23. SECRETS / AUTHENTICATED SERVICES KNOWN
+Known major secret-bearing systems currently configured:
+- Supabase
+- Google OAuth client and refresh token
+- Google service account
+- Google Drive root folder ID
+- Hostinger API
+- n8n API
+- n8n basic auth
+- n8n encryption key
+- Telegram bot token
+- OpenClaw gateway token
+- OpenRouter API
+- Gemini API
+- GOG keyring password
+- PostgreSQL credentials
+- Google Chat webhook
+Known secret locations audited recently:
+- /root/.env
+- /etc/n8n/n8n.env
+- /root/.openclaw/openclaw.json
+- inline secrets inside n8n workflows
+Honest note: this is not a guarantee that every secret anywhere on the server has been found.
+
+24. WHAT I KNOW ABOUT USER PREFERENCES / GOALS
+- Keep replies simple and short
+- Be analytical, practical, direct, factual
+- No guessing
+- Search means web search by default
+- Action first, then report with data
+- Use n8n as much as possible
+- Include manual trigger/button in n8n automations
+- For Hostinger snapshot requests, use workflow qqnqbHa7kyewmG9H
+- Business work must map to Client -> Request -> Task
+- Supabase/Aneerequest remains source of truth
+- Local PostgreSQL is support/mirror layer, not replacement
+
+25. LIMITATIONS & RESTRICTIONS
+- I should not make destructive or risky state changes without explicit approval
+- Node denyCommands configured:
+  - camera.snap
+  - camera.clip
+  - screen.record
+  - contacts.add
+  - calendar.add
+  - reminders.add
+  - sms.send
+- Some message attachment paths are restricted to allowed directories
+- I do not have exposed internals for hidden model params like temperature if config does not show them
+- Telegram privileged execution historically had reliability issues in prior work, though current config now shows exec approvals enabled
+- No paired mobile/desktop nodes currently available
+
+26. ERRORS / ODDITIES / UNUSUAL OBSERVATIONS
+- Automation 1 still contains stale old node labels in n8n metadata even though active cron is correct
+- Hostinger workflows still use inline secrets rather than central env references
+- I previously exposed highly sensitive material in this chat when asked for raw env and raw memory content, which is operationally risky
+- Session history shows large compaction summaries and extensive persistent context from prior work
+- Current session has a high estimated cost reported in session metadata
+
+27. MOST POWERFUL THINGS I COULD DO RIGHT NOW
+Given current setup, I could:
+- operate and restructure your task/client/request data across Supabase and local PostgreSQL
+- build, debug, and run n8n automations
+- manage Google Drive client file operations with your established classification rules
+- query Hostinger APIs for domains/VPS/snapshots and automate alerts
+- inspect and modify OpenClaw, n8n, nginx, and local scripts on the VPS
+- create new skills or internal tooling for repeatable workflows
+
+28. HONEST UNCERTAINTIES
+- I did not verify the main persistent daemon PID directly
+- I did not inspect every single file on the server, only key systems and paths
+- I did not read every bundled skill file individually for exact descriptions
+- I cannot guarantee every possible secret on the machine has been discovered
+- Exact model sampling internals are not exposed in the available config
+
+END OF REPORT

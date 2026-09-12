@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T07:15:44.143452+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "c8sd4cmq3srmt0cz3j494sazkm",
+  "raw_audio_url": "https://replicate.delivery/xezq/czPbOacpeZUYAKThhCwVYarjdIzBFpEHT4rBoeeugqe6JcSbB/tmppgrhv521.mp3",
+  "raw_duration": 2.324898,
+  "fitted_duration": 2.324898,
+  "script_text": "The gap is positioning, not qualification.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260701_071533_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0006_20260701_071533_section3_implication_fitted.mp3"
+}

@@ -1,0 +1,91 @@
+{
+  "name": "PDF to PPT - Step 1 History from Google Drive ACTIVE",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "pdf-to-ppt-history",
+        "responseMode": "responseNode",
+        "options": {
+          "binaryPropertyName": "file"
+        }
+      },
+      "id": "pdf-to-ppt-history-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const HISTORY_FOLDER_ID = '1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o';\n\nfunction requiredEnv(name) {\n  const value = process.env[name];\n  if (!value) throw new Error(`${name} is missing in n8n environment`);\n  return value;\n}\n\nasync function getAccessToken() {\n  const response = await fetch('https://oauth2.googleapis.com/token', {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },\n    body: new URLSearchParams({\n      client_id: requiredEnv('GOOGLE_OAUTH_CLIENT_ID'),\n      client_secret: requiredEnv('GOOGLE_OAUTH_CLIENT_SECRET'),\n      refresh_token: requiredEnv('GOOGLE_OAUTH_REFRESH_TOKEN'),\n      grant_type: 'refresh_token',\n    }),\n  });\n\n  const payload = await response.json();\n  if (!response.ok) throw new Error(`Google token failed: ${JSON.stringify(payload)}`);\n  return payload.access_token;\n}\n\nconst accessToken = await getAccessToken();\nconst q = `'${HISTORY_FOLDER_ID}' in parents and trashed = false and name contains '.json'`;\nconst listUrl = new URL('https://www.googleapis.com/drive/v3/files');\nlistUrl.searchParams.set('q', q);\nlistUrl.searchParams.set('fields', 'files(id,name,webViewLink,createdTime,modifiedTime)');\nlistUrl.searchParams.set('orderBy', 'createdTime desc');\nlistUrl.searchParams.set('pageSize', '50');\n\nconst listResponse = await fetch(listUrl, {\n  headers: { Authorization: `Bearer ${accessToken}` },\n});\nconst listPayload = await listResponse.json();\nif (!listResponse.ok) throw new Error(`Drive list failed: ${JSON.stringify(listPayload)}`);\n\nconst history = [];\nfor (const file of listPayload.files || []) {\n  const mediaResponse = await fetch(`https://www.googleapis.com/drive/v3/files/${file.id}?alt=media`, {\n    headers: { Authorization: `Bearer ${accessToken}` },\n  });\n  if (!mediaResponse.ok) continue;\n  try {\n    const record = await mediaResponse.json();\n    history.push({ ...record, history_file_id: file.id, history_file_url: file.webViewLink });\n  } catch {}\n}\n\nhistory.sort((a, b) => new Date(b.uploaded_at || 0).getTime() - new Date(a.uploaded_at || 0).getTime());\n\nreturn [{ json: { ok: true, history } }];\n"
+      },
+      "id": "pdf-to-ppt-history-code",
+      "name": "Google Drive Handler",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ]
+          }
+        }
+      },
+      "id": "pdf-to-ppt-history-respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        780,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Drive Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Handler": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

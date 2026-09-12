@@ -1,0 +1,16 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,DejaVu Sans,86,&H00FFFFFF,&H00FFFFFF,&H85000000,&H00000000,-1,0,0,0,100,100,-1,0,1,0,5,8,70,70,185,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.20,Hook,,0,0,0,,{\fad(80,0)\move(540,245,540,225,0,200)}Most
+Dialogue: 0,0:00:00.20,0:00:00.42,Hook,,0,0,0,,{\fad(80,0)\move(540,250,540,230,0,220)}Most Software\NDevelopers
+Dialogue: 0,0:00:00.42,0:00:00.68,Hook,,0,0,0,,{\fad(80,0)\move(540,250,540,230,0,260)}Most Software\NDevelopers qualify\Nfor more
+Dialogue: 0,0:00:00.68,0:00:01.00,Hook,,0,0,0,,{\fad(80,0)\move(540,250,540,230,0,280)}Most Software\NDevelopers qualify\Nfor more job titles
+Dialogue: 0,0:00:01.00,0:00:04.86,Hook,,0,0,0,,{\fad(100,250)\move(540,250,540,230,0,300)}Most Software\NDevelopers qualify\Nfor more job titles\Nthan they apply to.

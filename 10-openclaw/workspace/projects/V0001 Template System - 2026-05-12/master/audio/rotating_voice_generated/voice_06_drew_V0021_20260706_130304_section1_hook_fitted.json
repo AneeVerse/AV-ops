@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-06T13:03:08.784877+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "4km6vgbp25rmy0cz6y38txe0f8",
+  "raw_audio_url": "https://replicate.delivery/xezq/FEeqg8VTWXX0LSQdapsJArNBbDe2Sk8SdfHqgYC2yROWMrstA/tmpy58c1_n4.mp3",
+  "raw_duration": 3.343673,
+  "fitted_duration": 3.343673,
+  "script_text": "Am I missing jobs that never make it to job boards?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260706_130304_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260706_130304_section1_hook_fitted.mp3"
+}

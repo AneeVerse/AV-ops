@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T13:58:15.974862+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "3x398xk755rmw0cz2epb0514tc",
+  "raw_audio_url": "https://replicate.delivery/xezq/5pR8YLpPQOKiE5vIgQQYFf6SI3bs1WWLQNubUzARRXI7XBaLA/tmpn4e97gsj.mp3",
+  "raw_duration": 4.127347,
+  "fitted_duration": 4.127347,
+  "script_text": "A lateral-then-up move can pay more than waiting for promotion.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section3_implication_fitted.mp3"
+}

@@ -1,0 +1,153 @@
+{
+  "root": "1WqcKhXHoxneRSy-Akps_ltgaHM22rXvL",
+  "folders": {
+    "01_final_output": "1_MbbScwH1d6Ly8bZJus8pwkbQyMZX6PF",
+    "02_wan27_clips": "1YVmx4JjzraTByZLi_PA4KzrHrrwJTyan",
+    "03_audio": "1fWs5wEVKVjrc8YF6AwNAPZeVJxX_2OMS",
+    "04_source_and_cost": "15ST54NrjHRLUZMuGGnknCgjFBhSXNGMp",
+    "05_scripts": "1vn1zgoz1S5826nRx4w6SF8Sg70R5Rd82",
+    "06_full_archive": "1mu9qSyP5VVo9ruJxtbX2h70sysVUVm9F"
+  },
+  "uploads": {
+    "V0001_Wan27_POC_final.mp4": {
+      "id": "1jr5JdR8JgM_9tlH1Yb3BiBKQaf2ykQyi",
+      "mimeType": "video/mp4",
+      "name": "V0001_Wan27_POC_final.mp4",
+      "size": "19802225",
+      "webViewLink": "https://drive.google.com/file/d/1jr5JdR8JgM_9tlH1Yb3BiBKQaf2ykQyi/view?usp=drivesdk"
+    },
+    "V0001_Wan27_POC_final_ffprobe.json": {
+      "id": "11OFgFj6FJGTv9bN5Z8jlo56wBltNxU2Y",
+      "mimeType": "application/json",
+      "name": "V0001_Wan27_POC_final_ffprobe.json",
+      "size": "269",
+      "webViewLink": "https://drive.google.com/file/d/11OFgFj6FJGTv9bN5Z8jlo56wBltNxU2Y/view?usp=drivesdk"
+    },
+    "01_hook.mp4": {
+      "id": "1qbes9GXuihQyuQWAeBCBkEeB5jnJyq3-",
+      "mimeType": "video/mp4",
+      "name": "01_hook.mp4",
+      "size": "7657971",
+      "webViewLink": "https://drive.google.com/file/d/1qbes9GXuihQyuQWAeBCBkEeB5jnJyq3-/view?usp=drivesdk"
+    },
+    "02_insight.mp4": {
+      "id": "1EWu5a5703-bZ83AYfAJcd4XCp1CSFLCl",
+      "mimeType": "video/mp4",
+      "name": "02_insight.mp4",
+      "size": "5812396",
+      "webViewLink": "https://drive.google.com/file/d/1EWu5a5703-bZ83AYfAJcd4XCp1CSFLCl/view?usp=drivesdk"
+    },
+    "03_implication.mp4": {
+      "id": "1dIKooWaO2bwMHbprQFwKHQRDw6kbcrXq",
+      "mimeType": "video/mp4",
+      "name": "03_implication.mp4",
+      "size": "9003297",
+      "webViewLink": "https://drive.google.com/file/d/1dIKooWaO2bwMHbprQFwKHQRDw6kbcrXq/view?usp=drivesdk"
+    },
+    "04_cta.mp4": {
+      "id": "1shkN4Gn8JSr4OLCPFdyFRP5mIffe7CrM",
+      "mimeType": "video/mp4",
+      "name": "04_cta.mp4",
+      "size": "7164113",
+      "webViewLink": "https://drive.google.com/file/d/1shkN4Gn8JSr4OLCPFdyFRP5mIffe7CrM/view?usp=drivesdk"
+    },
+    "soft_bg_music.wav": {
+      "id": "1cuELl1zpuKLiqveXX4rTpzxY66_2fBF4",
+      "mimeType": "audio/x-wav",
+      "name": "soft_bg_music.wav",
+      "size": "1764078",
+      "webViewLink": "https://drive.google.com/file/d/1cuELl1zpuKLiqveXX4rTpzxY66_2fBF4/view?usp=drivesdk"
+    },
+    "01_hook.mp3": {
+      "id": "1s3naueGKc13Qn5TUO6Q5qeoOSR76MTke",
+      "mimeType": "audio/mpeg",
+      "name": "01_hook.mp3",
+      "size": "26928",
+      "webViewLink": "https://drive.google.com/file/d/1s3naueGKc13Qn5TUO6Q5qeoOSR76MTke/view?usp=drivesdk"
+    },
+    "02_insight.mp3": {
+      "id": "186-Su8VAQeVAesW4QKXh5EsiL787M_wD",
+      "mimeType": "audio/mpeg",
+      "name": "02_insight.mp3",
+      "size": "27072",
+      "webViewLink": "https://drive.google.com/file/d/186-Su8VAQeVAesW4QKXh5EsiL787M_wD/view?usp=drivesdk"
+    },
+    "03_implication.mp3": {
+      "id": "1RaJDJy-F_SN5RikMRckKH-KekhKszYes",
+      "mimeType": "audio/mpeg",
+      "name": "03_implication.mp3",
+      "size": "21456",
+      "webViewLink": "https://drive.google.com/file/d/1RaJDJy-F_SN5RikMRckKH-KekhKszYes/view?usp=drivesdk"
+    },
+    "04_cta.mp3": {
+      "id": "1sGivJSoRKzEqM6HorPCVC4w-B-4hOyEp",
+      "mimeType": "audio/mpeg",
+      "name": "04_cta.mp3",
+      "size": "29088",
+      "webViewLink": "https://drive.google.com/file/d/1sGivJSoRKzEqM6HorPCVC4w-B-4hOyEp/view?usp=drivesdk"
+    },
+    "README.md": {
+      "id": "1rzar6uGNm40y2Yao37Cm73HFCY9gjQ-E",
+      "mimeType": "text/markdown",
+      "name": "README.md",
+      "size": "652",
+      "webViewLink": "https://drive.google.com/file/d/1rzar6uGNm40y2Yao37Cm73HFCY9gjQ-E/view?usp=drivesdk"
+    },
+    "v0001_script.json": {
+      "id": "13svPBqM8NoJjbzyXs2gWiG5U6TNDn3C0",
+      "mimeType": "application/json",
+      "name": "v0001_script.json",
+      "size": "505",
+      "webViewLink": "https://drive.google.com/file/d/13svPBqM8NoJjbzyXs2gWiG5U6TNDn3C0/view?usp=drivesdk"
+    },
+    "cost_report.md": {
+      "id": "1pjeU0_22MMsBNUXM-4so9UE2tNYuTLw6",
+      "mimeType": "text/markdown",
+      "name": "cost_report.md",
+      "size": "410",
+      "webViewLink": "https://drive.google.com/file/d/1pjeU0_22MMsBNUXM-4so9UE2tNYuTLw6/view?usp=drivesdk"
+    },
+    "cost_report.json": {
+      "id": "1Ax0qAEIY1F_256OZSioKqbkloG5FtMP4",
+      "mimeType": "application/json",
+      "name": "cost_report.json",
+      "size": "2234",
+      "webViewLink": "https://drive.google.com/file/d/1Ax0qAEIY1F_256OZSioKqbkloG5FtMP4/view?usp=drivesdk"
+    },
+    "wan27_predictions_final.json": {
+      "id": "1N4Yi4xT-FrKxO5arjfZrkbRfFbOT_c7Z",
+      "mimeType": "application/json",
+      "name": "wan27_predictions_final.json",
+      "size": "16826",
+      "webViewLink": "https://drive.google.com/file/d/1N4Yi4xT-FrKxO5arjfZrkbRfFbOT_c7Z/view?usp=drivesdk"
+    },
+    "wan27_cost_metrics.json": {
+      "id": "1YzCh-iVFtowNq3PcbzkXr1sn5r8S4oZT",
+      "mimeType": "application/json",
+      "name": "wan27_cost_metrics.json",
+      "size": "1822",
+      "webViewLink": "https://drive.google.com/file/d/1YzCh-iVFtowNq3PcbzkXr1sn5r8S4oZT/view?usp=drivesdk"
+    },
+    "generate_wan27_clips.py": {
+      "id": "1SzNVT1hoJhOtYE5Nyyc1QMUP4bWErtrU",
+      "mimeType": "text/x-python",
+      "name": "generate_wan27_clips.py",
+      "size": "3954",
+      "webViewLink": "https://drive.google.com/file/d/1SzNVT1hoJhOtYE5Nyyc1QMUP4bWErtrU/view?usp=drivesdk"
+    },
+    "render_wan27_v0001.sh": {
+      "id": "1pDT7vFYSVcSHFCIbYHn4J6sxTLCac2o4",
+      "mimeType": "text/x-sh",
+      "name": "render_wan27_v0001.sh",
+      "size": "3634",
+      "webViewLink": "https://drive.google.com/file/d/1pDT7vFYSVcSHFCIbYHn4J6sxTLCac2o4/view?usp=drivesdk"
+    },
+    "V0001_wan27_poc_full_project.tar.gz": {
+      "id": "1vEcx1A5HGlzjQfFbRNIT-X0bJwN9_EyR",
+      "mimeType": "application/x-gzip",
+      "name": "V0001_wan27_poc_full_project.tar.gz",
+      "size": "73213775",
+      "webViewLink": "https://drive.google.com/file/d/1vEcx1A5HGlzjQfFbRNIT-X0bJwN9_EyR/view?usp=drivesdk"
+    }
+  }
+}

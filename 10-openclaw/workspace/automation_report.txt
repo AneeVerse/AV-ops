@@ -1,0 +1,192 @@
+AUTOMATION REPORT
+Generated from live n8n inventory + saved memory context
+
+1. EXECUTIVE SUMMARY
+Current verified live automation count in n8n:
+- Total workflows found: 3
+- Active workflows: 3
+- Inactive workflows currently found in n8n: 0
+OpenClaw cron jobs:
+- 0
+Known future/planned automations from saved memory:
+- Automation 2 - Priority Engine
+- Automation 8 - Google Chat -> Hashnode content workflow
+Additional future direction discussed:
+- broader Hostinger service monitor beyond domains only
+
+2. ACTIVE AUTOMATIONS (LIVE IN N8N)
+
+2.1 Automation 1 - Daily Task Hygiene Audit
+- Workflow ID: 1gQaDDCgdIPNCM2m
+- Status: active
+- Created at: 2026-04-09T09:11:17.379Z
+- Updated at: 2026-04-12T00:29:34.092Z
+- Timezone: Asia/Kolkata
+- Schedule: 0 5 * * *
+- Meaning: daily at 5:00 AM IST
+- Trigger count: 1
+- Manual trigger present: yes
+- Architecture:
+  - schedule/manual trigger
+  - HTTP POST to local API bridge
+  - endpoint: http://127.0.0.1:8001/automation-1/run
+- Functional purpose:
+  - runs daily task hygiene audit against live Aneerequest/Supabase-backed data
+- Known supporting components from prior work:
+  - FastAPI bridge: /root/.openclaw/workspace/scripts/automation_api.py
+  - Audit script: /root/.openclaw/workspace/scripts/automation_01_task_hygiene_audit.py
+  - systemd service used in prior setup: automation-api.service
+- Known behaviour from prior project state:
+  - reads live data
+  - summarizes hygiene issues
+  - was restored after automation loss
+- Notable oddity:
+  - stale legacy node/static labels like Daily 09:30 IST Trigger still appear in workflow metadata, but active schedule is 5:00 AM IST
+
+2.2 Hostinger Domain Expiry Alerts
+- Workflow ID: MuD6rgCHi4UtgjFS
+- Status: active
+- Created at: 2026-04-12T03:37:12.222Z
+- Updated at: 2026-04-12T04:06:10.035Z
+- Timezone: Asia/Kolkata
+- Schedule: 0 9 * * *
+- Meaning: daily at 9:00 AM IST
+- Trigger count: 1
+- Manual trigger present: yes
+- Functional purpose:
+  - checks Hostinger domain portfolio daily
+  - sends reminders only when a domain hits exact reminder windows
+- Reminder windows configured:
+  - 30 days before expiry
+  - 7 days before expiry
+  - 4 days before expiry
+  - 3 days before expiry
+  - 2 days before expiry
+  - 1 day before expiry
+- Flow structure:
+  - manual trigger
+  - daily schedule trigger
+  - Fetch Hostinger Domains
+  - Build Expiry Alerts
+  - Has Alerts?
+  - Notify Domain Alerts
+- Notification target:
+  - Google Chat webhook space already in use for Hostinger notifications
+- Important implementation note:
+  - uses inline Hostinger bearer token in workflow node
+  - uses inline Google Chat webhook URL in workflow node
+- Known history:
+  - first manual run failed with code-node error: raw is not iterable
+  - fixed by iterating over n8n items
+  - user later confirmed it works
+
+2.3 Hostinger VPS Snapshot - Daily 03:00 IST
+- Workflow ID: qqnqbHa7kyewmG9H
+- Status: active
+- Created at: 2026-04-12T01:39:43.689Z
+- Updated at: 2026-04-12T03:02:21.408Z
+- Timezone: Asia/Kolkata
+- Schedule: 0 3 * * *
+- Meaning: daily at 3:00 AM IST
+- Trigger count: 1
+- Manual trigger present: yes
+- Functional purpose:
+  - triggers a Hostinger VPS snapshot for VPS 1474915
+  - sends Google Chat success notification
+- Flow structure:
+  - manual trigger
+  - daily schedule trigger
+  - Create Hostinger Snapshot
+  - Format Success Message
+  - Prepare Chat Payload
+  - Notify AI agents
+  - Format Failure Message
+- Notification target:
+  - same Google Chat space/webhook used for Hostinger alerts
+- Important implementation note:
+  - uses inline Hostinger bearer token in workflow node
+  - uses inline Google Chat webhook URL in workflow node
+- Known history:
+  - workflow was hardened after env-var and JSON payload issues
+  - user preference saved: when user asks to take a Hostinger VPS snapshot, this workflow should be used instead of ad hoc snapshot logic
+
+3. INACTIVE AUTOMATIONS (CURRENT VERIFIED N8N STATE)
+- Verified inactive workflows currently found via n8n API: none
+- Current inactive count: 0
+Important note:
+- This means no inactive workflows were returned by the current live n8n inventory.
+- It does not prove that no older automation concepts ever existed.
+- It only proves the current live n8n workflow list has 3 workflows and all 3 are active.
+
+4. OPENCLAW CRON / OTHER SCHEDULERS
+- OpenClaw cron jobs found: 0
+- So currently, your scheduled automation layer is effectively centered in n8n, not OpenClaw cron.
+
+5. FUTURE / PLANNED AUTOMATIONS FROM SAVED MEMORY
+These are not confirmed active now, but they were identified as future or likely next automations:
+
+5.1 Automation 2 - Priority Engine
+- Status: planned / candidate for restoration
+- Source: recovered automation notes and saved project context
+- Meaning:
+  - this was identified as an important next automation after Automation 1
+- Current state:
+  - not verified as present in live n8n inventory
+  - not restored yet in the current verified workflow list
+
+5.2 Automation 8 - Google Chat -> Hashnode Content Workflow
+- Status: planned / candidate for restoration
+- Source: recovered automation notes and saved project context
+- Meaning:
+  - this existed previously as a usable V1 according to recovered document context
+- Current state:
+  - not verified as present in live n8n inventory
+  - not restored yet in the current verified workflow list
+
+5.3 Broader Hostinger Service Monitor
+- Status: future direction discussed, not yet built as a live workflow
+- Reason:
+  - domain monitoring is already working
+  - VPS and snapshot status data are available from Hostinger API
+- Discussed expansion areas:
+  - domain expiry
+  - VPS state/lock checks
+  - latest snapshot status / expiry
+- Current state:
+  - discussed and researched
+  - not verified as a live current workflow
+
+6. KNOWN HISTORICAL / PROJECT AUTOMATION CONTEXT
+From prior recovered notes and memory:
+- A larger automation list 1-12 existed historically in the recovered AV_BOT/automation documentation.
+- Automation 1 was rebuilt and reactivated.
+- Automation 8 was identified as previously existing in usable form.
+- The system recovery process focused first on restoring the most operationally valuable automations.
+
+7. AUTOMATION STANDARDS / RULES YOU ASKED TO FOLLOW
+Saved user automation preferences/rules that affect future builds:
+- Prefer n8n as much as possible.
+- Always include a manual trigger/button when creating n8n automations.
+- For Hostinger snapshot requests, use the dedicated n8n snapshot workflow.
+- Test important automations first before adding extra workflow-level features.
+
+8. RISKS / MAINTENANCE NOTES
+- The 2 Hostinger workflows currently use inline secrets inside workflow nodes.
+- Automation 1 has harmless stale metadata labels from earlier revisions.
+- No OpenClaw cron schedules exist, so n8n is the current practical automation control center.
+
+9. DIRECT CONCLUSION
+Current live automation state is:
+- 3 active workflows in n8n
+- 0 inactive workflows currently present in n8n
+- 0 OpenClaw cron jobs
+- At least 3 known future/planned directions:
+  - Automation 2 - Priority Engine
+  - Automation 8 - Google Chat -> Hashnode workflow
+  - broader Hostinger service monitor
+
+10. HONEST LIMIT
+This report is based on:
+- current live n8n API workflow inventory
+- saved memory about restored and planned automations
+It is not a full historical reconstruction of every automation ever created unless that automation still exists live or was saved into memory/project notes.

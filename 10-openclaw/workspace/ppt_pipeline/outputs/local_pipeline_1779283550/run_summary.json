@@ -1,0 +1,45 @@
+{
+  "success": true,
+  "run_id": "local_pipeline_1779283550",
+  "input_pdf": "/root/.openclaw/workspace/ppt_pipeline/samples/sample_source.pdf",
+  "output_dir": "/root/.openclaw/workspace/ppt_pipeline/outputs/local_pipeline_1779283550",
+  "extraction": {
+    "source_pdf": "/root/.openclaw/workspace/ppt_pipeline/samples/sample_source.pdf",
+    "source_size_bytes": 3312,
+    "page_count": 1,
+    "text_char_count": 2202,
+    "chunk_count": 1,
+    "extract_all_pages": true,
+    "status": "ok"
+  },
+  "planning": {
+    "status": "ok",
+    "slides": 10,
+    "output": "/root/.openclaw/workspace/ppt_pipeline/outputs/local_pipeline_1779283550/build_payload.json"
+  },
+  "builder": {
+    "success": true,
+    "run_id": "local_pipeline_test_001",
+    "output_pptx_path": "/root/.openclaw/workspace/ppt_pipeline/outputs/local_pipeline_1779283550/local_pipeline_output.pptx",
+    "slide_count": 10,
+    "selected_source_slides": [
+      1,
+      14,
+      8,
+      10,
+      12,
+      3,
+      8,
+      10,
+      18,
+      15
+    ],
+    "replacements": {
+      "text": 32,
+      "images": 1
+    },
+    "warnings": [],
+    "errors": []
+  },
+  "final_pptx": "/root/.openclaw/workspace/ppt_pipeline/outputs/local_pipeline_1779283550/local_pipeline_output.pptx"
+}

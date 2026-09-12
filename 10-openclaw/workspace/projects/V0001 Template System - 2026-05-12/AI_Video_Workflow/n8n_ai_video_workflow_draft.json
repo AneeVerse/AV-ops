@@ -1,0 +1,193 @@
+{
+  "name": "AI Video Workflow - Sheet to Drive Render MVP",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": "REPLACE_WITH_GOOGLE_SHEET_ID",
+        "sheetName": "REPLACE_WITH_SHEET_TAB",
+        "options": {}
+      },
+      "id": "read-google-sheet",
+      "name": "Read Google Sheet Rows",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        -680,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.Status || ''}}",
+              "operation": "notEqual",
+              "value2": "Done"
+            },
+            {
+              "value1": "={{$json.Status || ''}}",
+              "operation": "notEqual",
+              "value2": "Rendering"
+            }
+          ]
+        }
+      },
+      "id": "filter-pending",
+      "name": "Filter Pending Rows",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = items[0].json;\nreturn [{ json: {\n  row_id: row.row_number || row.id || row.Row || '1',\n  hook_text: row.Hook_Text,\n  insight_text: row.Insight_Text,\n  implication_text: row.Implication_Text,\n  cta_text: row.CTA_Text,\n  cta_sub_text: row['CTA Sub Text'],\n  drive_folder_id: '1EyEPyPk6orAkP1abcqivX_GwsaQKnYmP'\n}}];"
+      },
+      "id": "prepare-render-payload",
+      "name": "Prepare Render Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "REPLACE_WITH_RENDER_ENDPOINT_URL",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {
+          "timeout": 1800000
+        }
+      },
+      "id": "call-render-service",
+      "name": "Call Render Service",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        20,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": "REPLACE_WITH_GOOGLE_SHEET_ID",
+        "sheetName": "REPLACE_WITH_SHEET_TAB",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "Done",
+            "Video_Link": "={{$json.drive_link}}",
+            "Rendered_At": "={{new Date().toISOString()}}",
+            "Voice_Name": "={{$json.voice_name}}",
+            "Music_Name": "={{$json.music_name}}",
+            "Error": ""
+          }
+        },
+        "options": {}
+      },
+      "id": "update-sheet-success",
+      "name": "Update Sheet Success",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        260,
+        -100
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read Google Sheet Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Google Sheet Rows": {
+      "main": [
+        [
+          {
+            "node": "Filter Pending Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Pending Rows": {
+      "main": [
+        [
+          {
+            "node": "Prepare Render Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Render Payload": {
+      "main": [
+        [
+          {
+            "node": "Call Render Service",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Render Service": {
+      "main": [
+        [
+          {
+            "node": "Update Sheet Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "versionId": "draft-ai-video-workflow-mvp"
+}

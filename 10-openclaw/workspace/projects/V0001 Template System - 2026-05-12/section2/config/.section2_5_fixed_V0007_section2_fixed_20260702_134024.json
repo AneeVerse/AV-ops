@@ -1,0 +1,34 @@
+{
+  "duration_seconds": 8.204953,
+  "fps": 30,
+  "size": [
+    1080,
+    1920
+  ],
+  "body_lines": [
+    "Most applicants",
+    "self-limit to their",
+    "current title.",
+    "Hiring doesn't.",
+    "The pay gap between",
+    "titles is wider than",
+    "most candidates realize."
+  ],
+  "body_max_chars": 21,
+  "body_max_lines": 7,
+  "body_font_size": 70,
+  "body_start_y": 520,
+  "body_leading": 100,
+  "safe_text_width": 840,
+  "line_starts": [
+    0.2,
+    0.34,
+    0.5,
+    0.68,
+    0.86,
+    1.04
+  ],
+  "line_fade_seconds": 0.36,
+  "output_name": "section2_5_fixed_V0007_section2_fixed_20260702_134024.mp4",
+  "audio_reference": "../../V0001 Sections 1-2 AE Match - 2026-05-12/output/V0001_section2_only_from_reference_v1.mp4"
+}

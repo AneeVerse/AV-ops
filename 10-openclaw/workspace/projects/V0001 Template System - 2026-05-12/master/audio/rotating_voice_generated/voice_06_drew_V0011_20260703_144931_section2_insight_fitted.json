@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T14:49:38.505138+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "k84s5t6z25rmr0cz51t95yhpdm",
+  "raw_audio_url": "https://replicate.delivery/xezq/fdsBWyemIYuSiEQGTBKfLYLsqa15Hil1i1TJMjYN3scDwvqtA/tmp4g98b4cp.mp3",
+  "raw_duration": 11.702857,
+  "fitted_duration": 11.702857,
+  "script_text": "Across the approximately 95% of U.S. publicly posted jobs, fast-growing titles get low applicant volume because candidates don't know to search for them.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260703_144931_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0011_20260703_144931_section2_insight_fitted.mp3"
+}

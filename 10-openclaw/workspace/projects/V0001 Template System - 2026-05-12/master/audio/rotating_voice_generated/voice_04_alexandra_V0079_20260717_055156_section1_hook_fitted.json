@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T05:51:59.809825+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "xdznrz5fwhrmr0czdtgrpw2bgw",
+  "raw_audio_url": "https://replicate.delivery/xezq/93ka46fiZ0W0LqIA3PPAgQN4q2wAQ1Bgygz9LrMLrwBfT35WA/tmpo9kzx0uh.mp3",
+  "raw_duration": 1.985306,
+  "fitted_duration": 1.985306,
+  "script_text": "Are there better jobs my strengths fit?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0079_20260717_055156_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0079_20260717_055156_section1_hook_fitted.mp3"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T10:42:42.028800+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "83tyc85de1rmt0cza32t9fa42c",
+  "raw_audio_url": "https://replicate.delivery/xezq/dWPA2nPMqfRXNit5qLT2lnYg1zanAHt8h7LcggcfqfHDB6vtA/tmpml9hliao.mp3",
+  "raw_duration": 4.257959,
+  "fitted_duration": 4.257959,
+  "script_text": "Knowing confidently if switching makes sense can result in significant upside.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_104231_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0046_20260711_104231_section3_implication_fitted.mp3"
+}

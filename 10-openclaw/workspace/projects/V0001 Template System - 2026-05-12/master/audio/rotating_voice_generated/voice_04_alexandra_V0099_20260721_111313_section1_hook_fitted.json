@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-21T11:13:19.039779+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "sf08y1a8ssrmw0czghgvpvsszc",
+  "raw_audio_url": "https://replicate.delivery/xezq/lOqLgSZACBJXENKy0tpKi9MxDVLkEATvi3N3uftZd27mModLA/tmprwk_cl9h.mp3",
+  "raw_duration": 3.160816,
+  "fitted_duration": 3.160816,
+  "script_text": "Why are employers not responding to my applications?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0099_20260721_111313_section1_hook_fitted.mp3"
+}

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "run_id": "builder_image_test_001",
+  "output_pptx_path": "/root/.openclaw/workspace/ppt_library/builder_image_test_output.pptx",
+  "slide_count": 5,
+  "selected_source_slides": [
+    1,
+    9,
+    11,
+    12,
+    18
+  ],
+  "replacements": {
+    "text": 9,
+    "images": 5
+  },
+  "warnings": [],
+  "errors": []
+}

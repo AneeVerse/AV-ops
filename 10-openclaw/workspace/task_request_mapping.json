@@ -1,0 +1,383 @@
+[dotenv@17.3.1] injecting env (0) from ../../root/.env -- tip: ⚙️  suppress all logs with { quiet: true }
+[
+  {
+    "client": "BISBO",
+    "requests": [
+      "01-Text To Video (n8n Automation)",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Collect ₹10,000 payment",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "ANEEVERSE",
+    "requests": [
+      "01-ANEEREQUEST",
+      "02-Anee-influncers",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Debit card application",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Money application",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "Akash verma",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Package for Aakash",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "HORECA1",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "February invoice",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Backend development",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      },
+      {
+        "task": "Claude access",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      },
+      {
+        "task": "GitHub handover",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      },
+      {
+        "task": "Textstack setup",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      },
+      {
+        "task": "Frontend review",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      },
+      {
+        "task": "Logic review",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Website / Development"
+      }
+    ]
+  },
+  {
+    "client": "NISHA ROADWAYS",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Logo done",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Branding / Design"
+      },
+      {
+        "task": "Animation done",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Branding / Design"
+      },
+      {
+        "task": "Website UI changes pending",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "NOVINO",
+    "requests": [
+      "04-Novino Flowers of the Wild Instgram post",
+      "01-Social Media post",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "New concept photoshoot",
+        "status": "missing",
+        "placeIn": "01-Social Media post",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Drone video",
+        "status": "missing",
+        "placeIn": "01-Social Media post",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "AI UGC content",
+        "status": "missing",
+        "placeIn": "01-Social Media post",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "URONiYX",
+    "requests": [
+      "Uroniyx Broshers (5)",
+      "SecureLifeFincorp Meta ad management",
+      "01-Uroniyx  brand guidelines ",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Meeting pending",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Invoice pending",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "1FC",
+    "requests": [
+      "02-req2",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Follow up",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "JmVisa",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Invoice",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Monthly review for February and March",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "New blog post",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Meeting",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Report",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      }
+    ]
+  },
+  {
+    "client": "EAZYVISA",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Blog post",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Monthly review",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Invoice",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Meeting",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "Report",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      }
+    ]
+  },
+  {
+    "client": "TinyTusk",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Follow up",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "TigerTerrain",
+    "requests": [],
+    "tasks": [
+      {
+        "task": "Call",
+        "status": "missing",
+        "placeIn": null,
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "TAB",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "SEO for Gold Fish Mishia",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Japan TAB Kim",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      },
+      {
+        "task": "TAB related pending items",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "SAAD SERVICES",
+    "requests": [],
+    "tasks": [
+      {
+        "task": "Domain work",
+        "status": "missing",
+        "placeIn": null,
+        "suggestNewRequest": "Domain / Website Support"
+      }
+    ]
+  },
+  {
+    "client": "DesignBar Refference",
+    "requests": [
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Lead follow up / friend reference",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  },
+  {
+    "client": "Book My Coperate Party",
+    "requests": [
+      "01-test-client-req",
+      "00-Updates-Followups"
+    ],
+    "tasks": [
+      {
+        "task": "Blogs",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Monthly review",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Report",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": "Marketing / Content / Monthly Management"
+      },
+      {
+        "task": "Invoice",
+        "status": "missing",
+        "placeIn": "00-Updates-Followups",
+        "suggestNewRequest": null
+      }
+    ]
+  }
+]

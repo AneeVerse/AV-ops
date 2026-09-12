@@ -1,0 +1,114 @@
+Generate WAN contextual clip: section1 / kwaivgi/kling-v2.6
+submit section1 202 {"id":"vsa4ac9e01rmy0cyz2arkf738r","model":"kwaivgi/kling-v2.6","version":"hidden","input":{"aspect_ratio":"9:16","duration":5,"generate_audio":false,"negative_prompt":"text, subtitles, logo, visible laptop screen, readable screen, UI overlay, chart, graph, branding, cartoon, animation, CGI, hologram, serious expression unless context requires it, 
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 succeeded
+Generate WAN contextual clip: section3 / kwaivgi/kling-v2.6
+submit section3 202 {"id":"c3zcnavwa9rmw0cyz2bth4hse4","model":"kwaivgi/kling-v2.6","version":"hidden","input":{"aspect_ratio":"9:16","duration":5,"generate_audio":false,"negative_prompt":"text, subtitles, logo, visible laptop screen, readable screen, UI overlay, chart, graph, branding, cartoon, animation, CGI, hologram, serious expression unless context requires it, 
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 succeeded
+Generate VO: Replicate ElevenLabs voice 2 / Hope
++ ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_raw.mp3' -filter:a atempo=1.15962 -c:a libmp3lame -b:a 128k '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_fitted.mp3'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_raw.mp3':
+  Metadata:
+    encoder         : Lavf60.16.101
+  Duration: 00:00:21.92, start: 0.025057, bitrate: 128 kb/s
+  Stream #0:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_fitted.mp3':
+  Metadata:
+    TSSE            : Lavf60.16.100
+  Stream #0:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 libmp3lame
+size=       0kB time=N/A bitrate=N/A speed=N/A    [out#0/mp3 @ 0x58ffbfc50880] video:0kB audio:296kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.152676%
+size=     296kB time=00:00:18.86 bitrate= 128.5kbits/s speed= 146x    
++ ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_new_prompt_20260624_074303_001.mp4' -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_fitted.mp3' -ss 1.0 -i '/root/.openclaw/workspace/projects/AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav' -filter_complex '[1:a]adelay=250|250,loudnorm=I=-16.0:TP=-1.5:LRA=11.0,volume=1.05,apad=pad_dur=20.0,atrim=0:20.0[vo];[2:a]atrim=0:20.0,volume=0.32[music];[vo][music]amix=inputs=2:duration=longest:dropout_transition=0,alimiter=limit=0.95,atrim=0:20.0[aout]' -map 0:v:0 -map '[aout]' -t 20.0 -c:v copy -c:a aac -b:a 192k -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0001_new_prompt_20260624_074303_001.mp4'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_new_prompt_20260624_074303_001.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:20.00, start: 0.000000, bitrate: 4030 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 4019 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Input #1, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_fitted.mp3':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Duration: 00:00:18.91, start: 0.025057, bitrate: 128 kb/s
+  Stream #1:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+[aist#2:0/pcm_s16le @ 0x5e0336d2e6c0] Guessed Channel Layout: stereo
+Input #2, wav, from '/root/.openclaw/workspace/projects/AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav':
+  Metadata:
+    encoder         : FL Studio 20
+  Duration: 00:02:09.68, bitrate: 1411 kb/s
+  Stream #2:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Stream mapping:
+  Stream #1:0 (mp3float) -> adelay:default
+  Stream #2:0 (pcm_s16le) -> atrim:default
+  Stream #0:0 -> #0:0 (copy)
+  atrim:default -> Stream #0:1 (aac)
+Press [q] to stop, [?] for help
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0001_new_prompt_20260624_074303_001.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 4019 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 96000 Hz, mono, fltp, 192 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 aac
+size=       0kB time=00:00:00.06 bitrate=   6.0kbits/s speed=3.86x    [mp4 @ 0x5e0336ddd800] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5e0336d81e00] video:9812kB audio:480kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.214264%
+size=   10314kB time=00:00:19.99 bitrate=4225.8kbits/s speed=41.5x    
+[aac @ 0x5e0336ddf340] Qavg: 255.830

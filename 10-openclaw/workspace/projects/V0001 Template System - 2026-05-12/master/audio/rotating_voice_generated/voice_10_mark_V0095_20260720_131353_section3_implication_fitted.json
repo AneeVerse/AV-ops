@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-20T13:14:03.709003+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "6dwdbv3wt9rmy0czfymr2ehxtm",
+  "raw_audio_url": "https://replicate.delivery/xezq/5dHecIAXFk2BL6QAC2uGPc3wzwDyjNyIkTrbtaBd2wBNie6WA/tmp40wk6_zu.mp3",
+  "raw_duration": 3.474286,
+  "fitted_duration": 3.474286,
+  "script_text": "If you only react to job ads, you may always be late to the opportunity.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0095_20260720_131353_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0095_20260720_131353_section3_implication_fitted.mp3"
+}

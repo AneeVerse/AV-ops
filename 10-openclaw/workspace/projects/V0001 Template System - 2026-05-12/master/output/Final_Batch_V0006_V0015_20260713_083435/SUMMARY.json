@@ -1,0 +1,76 @@
+{
+  "run_id": "20260713_083435",
+  "drive_folder_id": "1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND",
+  "videos": {
+    "V0056": {
+      "label": "V0056_20260713_083435",
+      "variant": "section2_5",
+      "voice": {
+        "number": 1,
+        "name": "Juniper"
+      },
+      "section_audio_durations": [
+        1.985306,
+        7.131429,
+        2.873469,
+        2.533878
+      ],
+      "section_durations": [
+        4.2,
+        7.533333333333333,
+        3.3,
+        3.4666666666666686
+      ],
+      "gaps": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "starts_ms": [
+        0,
+        4700,
+        12733,
+        16533
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0056_20260713_083435_section4_cta_fitted.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0056_20260713_083435.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260713_083435/V0056.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "7457975",
+          "bit_rate": "2983190"
+        }
+      },
+      "drive": {
+        "id": "1NgOadHQmzh4sKw8Tp8dii9bNUBssb8Po",
+        "link": "https://drive.google.com/file/d/1NgOadHQmzh4sKw8Tp8dii9bNUBssb8Po/view?usp=drivesdk",
+        "name": "V0056.mp4",
+        "size": "7457975"
+      }
+    }
+  },
+  "section2_routing": {
+    "V0056": "section2_5"
+  }
+}

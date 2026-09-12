@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:47:52.005152+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "f3cvwhj00xrmt0cz67j92xs46r",
+  "raw_audio_url": "https://replicate.delivery/xezq/FdWnnWIaCiIEAp8JQtEDmL2jhOLfsYeq4mslFvuuJIeuC9rtA/tmpvkiwi60p.mp3",
+  "raw_duration": 3.474286,
+  "fitted_duration": 3.474286,
+  "script_text": "Most AI Engineers qualify for more job titles than they apply to.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0025_20260705_104747_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0025_20260705_104747_section1_hook_fitted.mp3"
+}

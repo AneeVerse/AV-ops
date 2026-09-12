@@ -1,0 +1,2373 @@
+{
+  "inserted": 975,
+  "skipped": 470,
+  "errors": [
+    {
+      "row": 1,
+      "organization": "Sanjivan Santha",
+      "error": "InvalidPhoneNumberError: +918459330084, +919881132150 is not a valid Phone Number"
+    },
+    {
+      "row": 2,
+      "organization": "Akshara Seva Trust",
+      "error": "InvalidPhoneNumberError: +919010060302, +919440279962 is not a valid Phone Number"
+    },
+    {
+      "row": 3,
+      "organization": "Bharath Urban And Rural Development Trust",
+      "error": "InvalidPhoneNumberError: +917892443765, +918017796603, +919844995374 is not a valid Phone Number"
+    },
+    {
+      "row": 4,
+      "organization": "Heed Swayam Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +917892443765, +919844995374 is not a valid Phone Number"
+    },
+    {
+      "row": 5,
+      "organization": "Jana Samrudhi Trust (R)",
+      "error": "InvalidPhoneNumberError: +919434847485, +919743770250 is not a valid Phone Number"
+    },
+    {
+      "row": 6,
+      "organization": "Nandadeepa Education and Rehabilitation Society (NERS)",
+      "error": "InvalidPhoneNumberError: +919448613562, +919448613652 is not a valid Phone Number"
+    },
+    {
+      "row": 7,
+      "organization": "Raksha Foundation",
+      "error": "InvalidPhoneNumberError: +917204840255, +919844970447 is not a valid Phone Number"
+    },
+    {
+      "row": 8,
+      "organization": "Sri Pandavas Foundation",
+      "error": "InvalidPhoneNumberError: +917019481578, +919945252097 is not a valid Phone Number"
+    },
+    {
+      "row": 9,
+      "organization": "Swarna Vihar Seva Trust",
+      "error": "InvalidPhoneNumberError: +919550206560, +919704230744 is not a valid Phone Number"
+    },
+    {
+      "row": 10,
+      "organization": "VIJAYA NAGARA MATTU GRAMINABHIVRIDDHI SAMSTHE (R)",
+      "error": "InvalidPhoneNumberError: +916421933141, +919632767140 is not a valid Phone Number"
+    },
+    {
+      "row": 11,
+      "organization": "Vikasa Organization for Social and Educational Development",
+      "error": "InvalidPhoneNumberError: +919731907292, +919743766166 is not a valid Phone Number"
+    },
+    {
+      "row": 12,
+      "organization": "Arushi Home Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917262720222, +919686566812 is not a valid Phone Number"
+    },
+    {
+      "row": 13,
+      "organization": "Dream Big Charitable Trust",
+      "error": "InvalidPhoneNumberError: +916360220633, +919448112652 is not a valid Phone Number"
+    },
+    {
+      "row": 14,
+      "organization": "Health Education Agricultural Development Society",
+      "error": "InvalidPhoneNumberError: +916217074671, +919440044575, +919739444818 is not a valid Phone Number"
+    },
+    {
+      "row": 15,
+      "organization": "Karnataka Mahila Kshemabivruddhi Sangha",
+      "error": "InvalidPhoneNumberError: +917679114661, +919972604197 is not a valid Phone Number"
+    },
+    {
+      "row": 16,
+      "organization": "Karnataka Rajarathna Rakshana Vedike",
+      "error": "InvalidPhoneNumberError: +917040521060, +919036243176 is not a valid Phone Number"
+    },
+    {
+      "row": 17,
+      "organization": "Madhu Mansion Charitable Trust",
+      "error": "InvalidPhoneNumberError: +919591768570, +919591768571 is not a valid Phone Number"
+    },
+    {
+      "row": 18,
+      "organization": "Poojya Mandi Hariyanna Academy for Futuristic Skills and Competitive Studies",
+      "error": "InvalidPhoneNumberError: +919113647474, +919740917735 is not a valid Phone Number"
+    },
+    {
+      "row": 19,
+      "organization": "Samagra Karnataka Karmikara Sangha",
+      "error": "InvalidPhoneNumberError: +917352322957, +917974534350, +918792003777, +918792210666 is not a valid Phone Number"
+    },
+    {
+      "row": 20,
+      "organization": "Sandeep Seva Nilayam",
+      "error": "InvalidPhoneNumberError: +919448463174, +919620391473 is not a valid Phone Number"
+    },
+    {
+      "row": 21,
+      "organization": "Sneha Sanjivini Ladies and Children Welfare Association",
+      "error": "InvalidPhoneNumberError: +916362413522, +917514655544, +919986822007 is not a valid Phone Number"
+    },
+    {
+      "row": 22,
+      "organization": "Sri Chamundeshwari Devi Seva Samithi Trust",
+      "error": "InvalidPhoneNumberError: +916352230222, +919590888814 is not a valid Phone Number"
+    },
+    {
+      "row": 23,
+      "organization": "Sri Vinayaka Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918884278999, +918884343999 is not a valid Phone Number"
+    },
+    {
+      "row": 24,
+      "organization": "Sridevi Rural & Urban Development Association (R)",
+      "error": "InvalidPhoneNumberError: +917131320070, +919591863921, +919902847930 is not a valid Phone Number"
+    },
+    {
+      "row": 25,
+      "organization": "Voice of Needy Foundation",
+      "error": "InvalidPhoneNumberError: +917411520526, +919019466099 is not a valid Phone Number"
+    },
+    {
+      "row": 27,
+      "organization": "Ashadeepa Angavikalara Sarva Abhiwruddhi Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +916363878477, +919040177909, +919986509910 is not a valid Phone Number"
+    },
+    {
+      "row": 28,
+      "organization": "Bijapur Integrated Rural Development Society",
+      "error": "InvalidPhoneNumberError: +917747878597, +918351200260, +919448117058, +919731341150 is not a valid Phone Number"
+    },
+    {
+      "row": 29,
+      "organization": "Shri Chandalingeswara Graminabhivraddhi Sangha",
+      "error": "InvalidPhoneNumberError: +918310226424, +918698747213 is not a valid Phone Number"
+    },
+    {
+      "row": 30,
+      "organization": "Shri Mata Kalyanatayi Seetamanagiri Grameena Abhivruddhi Sangha",
+      "error": "InvalidPhoneNumberError: +919449965007, +919845838889 is not a valid Phone Number"
+    },
+    {
+      "row": 31,
+      "organization": "Shri Vishwakarma Grameena Abhivruddhi Samsthe",
+      "error": "InvalidPhoneNumberError: +917676327752, +919742994694 is not a valid Phone Number"
+    },
+    {
+      "row": 32,
+      "organization": "Amarkalyan Urban and Rural Development Society",
+      "error": "InvalidPhoneNumberError: +918091420070, +919886299731 is not a valid Phone Number"
+    },
+    {
+      "row": 33,
+      "organization": "Basava Yoga Mantapa Trust(R)",
+      "error": "InvalidPhoneNumberError: +919008496087, +919845305031 is not a valid Phone Number"
+    },
+    {
+      "row": 34,
+      "organization": "Indiragandhi Kattada Mattu Asangatita Karmikar Kshemabhirudhi Sanga (IKMAKKS)",
+      "error": "InvalidPhoneNumberError: +917619245679, +918197066632 is not a valid Phone Number"
+    },
+    {
+      "row": 35,
+      "organization": "Janasparsha Vidya Seva Samste",
+      "error": "InvalidPhoneNumberError: +916455240525, +919880204954 is not a valid Phone Number"
+    },
+    {
+      "row": 36,
+      "organization": "Arunodaya POIRADA",
+      "error": "InvalidPhoneNumberError: +918394246045, +918971399278 is not a valid Phone Number"
+    },
+    {
+      "row": 37,
+      "organization": "Jyothi Foundation",
+      "error": "InvalidPhoneNumberError: +917795184393, +918747893802 is not a valid Phone Number"
+    },
+    {
+      "row": 38,
+      "organization": "Biradar Education Society",
+      "error": "InvalidPhoneNumberError: +917153238343, +919986123256 is not a valid Phone Number"
+    },
+    {
+      "row": 39,
+      "organization": "Chaitanya Education and Rural Development Society",
+      "error": "InvalidPhoneNumberError: +917022393230, +917760602149 is not a valid Phone Number"
+    },
+    {
+      "row": 40,
+      "organization": "Dr B R Ambedkar Dhamma Dhatu Buddhist Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917975024350, +918792929337 is not a valid Phone Number"
+    },
+    {
+      "row": 41,
+      "organization": "Hope Source Educational Charitable Trust",
+      "error": "InvalidPhoneNumberError: +919828490573, +919880937123 is not a valid Phone Number"
+    },
+    {
+      "row": 42,
+      "organization": "Rural Education and Child Health Bidar",
+      "error": "InvalidPhoneNumberError: +918075625738, +919663130347 is not a valid Phone Number"
+    },
+    {
+      "row": 43,
+      "organization": "Swarnabhumi Pidit Parivar Sangh",
+      "error": "InvalidPhoneNumberError: +919341831636, +919986547982 is not a valid Phone Number"
+    },
+    {
+      "row": 44,
+      "organization": "VISHWA JYOTI EDUCATION AND RURAL DEVELOPMENT SOCIETY",
+      "error": "InvalidPhoneNumberError: +918123675443, +919945756791 is not a valid Phone Number"
+    },
+    {
+      "row": 45,
+      "organization": "Anveshana Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918030807080, +919222926292, +919972652043 is not a valid Phone Number"
+    },
+    {
+      "row": 46,
+      "organization": "Sri Male Mahadeshwara Prerana Foundation Trust",
+      "error": "InvalidPhoneNumberError: +918120309179, +919945183106 is not a valid Phone Number"
+    },
+    {
+      "row": 47,
+      "organization": "Divine Foundation",
+      "error": "InvalidPhoneNumberError: +919008799453, +919113995686 is not a valid Phone Number"
+    },
+    {
+      "row": 48,
+      "organization": "Bhagya Jyothi Education Trust",
+      "error": "InvalidPhoneNumberError: +916100000808, +919611445521 is not a valid Phone Number"
+    },
+    {
+      "row": 49,
+      "organization": "Nandeeshwara Rural Development Center (R)",
+      "error": "InvalidPhoneNumberError: +916042329252, +916202723262, +917022956998, +918217863336 is not a valid Phone Number"
+    },
+    {
+      "row": 50,
+      "organization": "Navachaitanya Urban and Rural Development",
+      "error": "InvalidPhoneNumberError: +919380364969, +919448523377, +919620793084 is not a valid Phone Number"
+    },
+    {
+      "row": 51,
+      "organization": "Chinthana Foundation",
+      "error": "InvalidPhoneNumberError: +917155230743, +919481590140 is not a valid Phone Number"
+    },
+    {
+      "row": 52,
+      "organization": "Sri Annapoorneshwari Charity Foundation",
+      "error": "InvalidPhoneNumberError: +917101340516, +919008515124 is not a valid Phone Number"
+    },
+    {
+      "row": 53,
+      "organization": "S G Dhananjayamurthy",
+      "error": "InvalidPhoneNumberError: +919143339353, +919972723953 is not a valid Phone Number"
+    },
+    {
+      "row": 54,
+      "organization": "Bharath Peace Educational and Chariatable Trust",
+      "error": "InvalidPhoneNumberError: +917353037676, +919738027955 is not a valid Phone Number"
+    },
+    {
+      "row": 55,
+      "organization": "Adhirakshana Samaja Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +918916006547, +919741883605 is not a valid Phone Number"
+    },
+    {
+      "row": 56,
+      "organization": "Franciscan Sisters of mary (Nisarga) Hosadurga",
+      "error": "InvalidPhoneNumberError: +919482241009, +919482260587 is not a valid Phone Number"
+    },
+    {
+      "row": 57,
+      "organization": "Prasara Trust",
+      "error": "InvalidPhoneNumberError: +919060170575, +919986720984 is not a valid Phone Number"
+    },
+    {
+      "row": 58,
+      "organization": "PRAZWALA",
+      "error": "InvalidPhoneNumberError: +917019336302, +918548912621 is not a valid Phone Number"
+    },
+    {
+      "row": 59,
+      "organization": "Shree Manya Charitable Trust\u00ae",
+      "error": "InvalidPhoneNumberError: +917619671103, +917620000021, +918951284280 is not a valid Phone Number"
+    },
+    {
+      "row": 60,
+      "organization": "SPEECH",
+      "error": "InvalidPhoneNumberError: +919110867090, +919740114246, +919964765246 is not a valid Phone Number"
+    },
+    {
+      "row": 61,
+      "organization": "Sri Priyadarshini Vidya Samsthe \u00ae",
+      "error": "InvalidPhoneNumberError: +917349031149, +917406480201 is not a valid Phone Number"
+    },
+    {
+      "row": 62,
+      "organization": "Swarnabhoomi Goushala Trust",
+      "error": "InvalidPhoneNumberError: +918125039402, +919108605635 is not a valid Phone Number"
+    },
+    {
+      "row": 63,
+      "organization": "People",
+      "error": "InvalidPhoneNumberError: +918041246791, +919591741481, +919972974831 is not a valid Phone Number"
+    },
+    {
+      "row": 64,
+      "organization": "Nisarga Grameenabhivruddi Mattu Vidya Samsthe",
+      "error": "InvalidPhoneNumberError: +919035345630, +919181809080 is not a valid Phone Number"
+    },
+    {
+      "row": 65,
+      "organization": "Sri Shambhavi Mahila mattu Makkala Sabalikarana Samsthe",
+      "error": "InvalidPhoneNumberError: +918123026043, +918971706119, +919901518252 is not a valid Phone Number"
+    },
+    {
+      "row": 66,
+      "organization": "Vimukthi Vidya Samsthe",
+      "error": "InvalidPhoneNumberError: +918362935342, +919902752205 is not a valid Phone Number"
+    },
+    {
+      "row": 67,
+      "organization": "Youths Rural Development Org",
+      "error": "InvalidPhoneNumberError: +919620411123, +919980261579 is not a valid Phone Number"
+    },
+    {
+      "row": 68,
+      "organization": "Aril Association of Rural & Urban Development",
+      "error": "InvalidPhoneNumberError: +917105209545, +917134046848, +918082134835, +919223224347, +919481734442, +919739746222 is not a valid Phone Number"
+    },
+    {
+      "row": 69,
+      "organization": "Jeevanshaala Trust",
+      "error": "InvalidPhoneNumberError: +917005008939, +919844512885 is not a valid Phone Number"
+    },
+    {
+      "row": 70,
+      "organization": "Kalpavruksha Women and Rural Development Society",
+      "error": "InvalidPhoneNumberError: +918660970697, +918884665548 is not a valid Phone Number"
+    },
+    {
+      "row": 71,
+      "organization": "SANKALP SAMSTHE",
+      "error": "InvalidPhoneNumberError: +917001007759, +918867186343 is not a valid Phone Number"
+    },
+    {
+      "row": 72,
+      "organization": "Shree Swastik Women's Youth and Rural Development Society(R)",
+      "error": "InvalidPhoneNumberError: +919113275967, +919164945070, +919620322158 is not a valid Phone Number"
+    },
+    {
+      "row": 73,
+      "organization": "A. M. R. Sankalpa Sanjeevini Sansthe",
+      "error": "InvalidPhoneNumberError: +917795515929, +919035274452 is not a valid Phone Number"
+    },
+    {
+      "row": 74,
+      "organization": "Parivarthana Urban Rural Development And Multy Skills Training Center",
+      "error": "InvalidPhoneNumberError: +917353383783, +919902695345 is not a valid Phone Number"
+    },
+    {
+      "row": 75,
+      "organization": "Global charitable trust (R)",
+      "error": "InvalidPhoneNumberError: +917259974852, +919481624000 is not a valid Phone Number"
+    },
+    {
+      "row": 76,
+      "organization": "Sri Vigneshwara Angavikalara Kshemabhivruddi Sangha",
+      "error": "InvalidPhoneNumberError: +917021327000, +919901118050 is not a valid Phone Number"
+    },
+    {
+      "row": 77,
+      "organization": "Chaitanya Rural Development Society(CRDS)",
+      "error": "InvalidPhoneNumberError: +918375234772, +919739218691, +919886518772 is not a valid Phone Number"
+    },
+    {
+      "row": 78,
+      "organization": "Janavikasa Foundation",
+      "error": "InvalidPhoneNumberError: +917349401338, +918375234772, +919739218691 is not a valid Phone Number"
+    },
+    {
+      "row": 79,
+      "organization": "Advaita Foundation Sulibele",
+      "error": "InvalidPhoneNumberError: +918027951555, +918811803384, +919964096900, +919972737610 is not a valid Phone Number"
+    },
+    {
+      "row": 80,
+      "organization": "Sumadhwa Seva Pratishthana",
+      "error": "InvalidPhoneNumberError: +917373436252, +919448122733 is not a valid Phone Number"
+    },
+    {
+      "row": 81,
+      "organization": "TAXASHILA SAMAJIKA HAGU MAHILA ABHIVRADDHI SANSTHE",
+      "error": "InvalidPhoneNumberError: +917760166943, +919448224434 is not a valid Phone Number"
+    },
+    {
+      "row": 82,
+      "organization": "Allamprabhu Urban & Rural Development Welfare Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917760677948, +919632138485 is not a valid Phone Number"
+    },
+    {
+      "row": 83,
+      "organization": "Jagruti Yuva Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +917213433322, +919060064614 is not a valid Phone Number"
+    },
+    {
+      "row": 84,
+      "organization": "Matru Devo Bhava Social Rural Development Seva Society",
+      "error": "InvalidPhoneNumberError: +917899990874, +919449883722, +919972874285 is not a valid Phone Number"
+    },
+    {
+      "row": 85,
+      "organization": "Sannidhi Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917202734213, +919796919890 is not a valid Phone Number"
+    },
+    {
+      "row": 86,
+      "organization": "Shree Gurupadeshwar Education Society (R)",
+      "error": "InvalidPhoneNumberError: +919590903555, +919880169907 is not a valid Phone Number"
+    },
+    {
+      "row": 87,
+      "organization": "Smt. Indumati Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918050065554, +918431745143 is not a valid Phone Number"
+    },
+    {
+      "row": 88,
+      "organization": "St. Luke Medical Society",
+      "error": "InvalidPhoneNumberError: +918472211831, +919986918426 is not a valid Phone Number"
+    },
+    {
+      "row": 89,
+      "organization": "Tirumala Education Society",
+      "error": "InvalidPhoneNumberError: +916366523762, +918389859499 is not a valid Phone Number"
+    },
+    {
+      "row": 90,
+      "organization": "Shri Saraswati Mahila Mandal",
+      "error": "InvalidPhoneNumberError: +918968409407, +919611429379 is not a valid Phone Number"
+    },
+    {
+      "row": 91,
+      "organization": "Siddarth Rural Education Development Society (R) SREDS",
+      "error": "InvalidPhoneNumberError: +916101019996, +919916383783, +919972555953 is not a valid Phone Number"
+    },
+    {
+      "row": 92,
+      "organization": "Antharaganga Vidya Samsthe",
+      "error": "InvalidPhoneNumberError: +917795077455, +919448114778, +919663212502 is not a valid Phone Number"
+    },
+    {
+      "row": 93,
+      "organization": "Arohana Grameenabhivruddi Samsthe",
+      "error": "InvalidPhoneNumberError: +917676486470, +919448903604 is not a valid Phone Number"
+    },
+    {
+      "row": 94,
+      "organization": "Chowdeshwari Urban and Rural Development Trust \u00ae",
+      "error": "InvalidPhoneNumberError: +919510105410, +919606744169 is not a valid Phone Number"
+    },
+    {
+      "row": 95,
+      "organization": "Dream Light",
+      "error": "InvalidPhoneNumberError: +917019477026, +919035898063, +919108598593, +919844003828 is not a valid Phone Number"
+    },
+    {
+      "row": 96,
+      "organization": "Nava Chaithanya Foundation",
+      "error": "InvalidPhoneNumberError: +919564159090, +919742076802 is not a valid Phone Number"
+    },
+    {
+      "row": 97,
+      "organization": "Yuvashakthi karnataka orphanage & goshala development trust",
+      "error": "InvalidPhoneNumberError: +918431390309, +919945047473 is not a valid Phone Number"
+    },
+    {
+      "row": 98,
+      "organization": "Women & Environment Development Society (WEDS)",
+      "error": "InvalidPhoneNumberError: +918539231422, +919483066631 is not a valid Phone Number"
+    },
+    {
+      "row": 99,
+      "organization": "Sant Sri Bharamasad Punyastala, Sri KasanHari Kshetra Abhivruddhi Nirvahana Seva Prathishtana",
+      "error": "InvalidPhoneNumberError: +917338018249, +917454537101, +919901144707, +919901518252 is not a valid Phone Number"
+    },
+    {
+      "row": 100,
+      "organization": "Sri. Dr. A.P.J Abdul Kalam Foundation Trust",
+      "error": "InvalidPhoneNumberError: +918151001139, +919902844038 is not a valid Phone Number"
+    },
+    {
+      "row": 101,
+      "organization": "Ananya Health Education and Rural Development Trusta",
+      "error": "InvalidPhoneNumberError: +919686008819, +919916599956 is not a valid Phone Number"
+    },
+    {
+      "row": 102,
+      "organization": "Bheem Integrated Development Society (BIRDS)",
+      "error": "InvalidPhoneNumberError: +916405749454, +918151857258, +919972599563 is not a valid Phone Number"
+    },
+    {
+      "row": 103,
+      "organization": "Dhrusya Trust",
+      "error": "InvalidPhoneNumberError: +916202721267, +917259926431 is not a valid Phone Number"
+    },
+    {
+      "row": 104,
+      "organization": "Divyanga Seva Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917996883158, +918880382832, +919844281040, +919945327432 is not a valid Phone Number"
+    },
+    {
+      "row": 105,
+      "organization": "Samooha Trust",
+      "error": "InvalidPhoneNumberError: +916360931513, +919482676591 is not a valid Phone Number"
+    },
+    {
+      "row": 106,
+      "organization": "Shri Raksha Federation For Rural Development",
+      "error": "InvalidPhoneNumberError: +918258262654, +919483811705 is not a valid Phone Number"
+    },
+    {
+      "row": 107,
+      "organization": "Janani Integrated Development Society (R)",
+      "error": "InvalidPhoneNumberError: +919900659208, +919902893932 is not a valid Phone Number"
+    },
+    {
+      "row": 108,
+      "organization": "AVSS",
+      "error": "InvalidPhoneNumberError: +917383837646, +919980483303 is not a valid Phone Number"
+    },
+    {
+      "row": 109,
+      "organization": "CREDIT - I",
+      "error": "InvalidPhoneNumberError: +918212957614, +919448988746, +919972798765 is not a valid Phone Number"
+    },
+    {
+      "row": 110,
+      "organization": "Sri Anulaxmi Charitable Trust (R)",
+      "error": "InvalidPhoneNumberError: +917349641104, +919886967104 is not a valid Phone Number"
+    },
+    {
+      "row": 111,
+      "organization": "GNANA KALA CHETANA VIVIDODDESHAGALA SAMSTHE",
+      "error": "InvalidPhoneNumberError: +918951466503, +919844643074 is not a valid Phone Number"
+    },
+    {
+      "row": 112,
+      "organization": "Shri Sharadhambe Swaudyog Tarabeti Samsthe, Navalgund",
+      "error": "InvalidPhoneNumberError: +919113020523, +919980410272 is not a valid Phone Number"
+    },
+    {
+      "row": 113,
+      "organization": "Jagannath Manvikar Rural Development Association",
+      "error": "InvalidPhoneNumberError: +917683590677, +919880074577 is not a valid Phone Number"
+    },
+    {
+      "row": 114,
+      "organization": "Navajeevana Grameena Abhivriddhi Samsthe",
+      "error": "InvalidPhoneNumberError: +917898086948, +918618374395, +919448825470 is not a valid Phone Number"
+    },
+    {
+      "row": 115,
+      "organization": "Padmavathi Gramina and Nagarabhiruddhi Mahila Vividoddesha Trust",
+      "error": "InvalidPhoneNumberError: +916361486123, +917975415881 is not a valid Phone Number"
+    },
+    {
+      "row": 116,
+      "organization": "Ranga Kanasu Ranga Kendra (R)",
+      "error": "InvalidPhoneNumberError: +919030906091, +919445970575 is not a valid Phone Number"
+    },
+    {
+      "row": 117,
+      "organization": "Sadguru Shikshana Grameena Abhiruddi Jana Seva Sangh (R), Hutti",
+      "error": "InvalidPhoneNumberError: +917829890697, +919900490306 is not a valid Phone Number"
+    },
+    {
+      "row": 118,
+      "organization": "Sankalpa rural development society",
+      "error": "InvalidPhoneNumberError: +919621646079, +919945966170 is not a valid Phone Number"
+    },
+    {
+      "row": 119,
+      "organization": "Shri Puneeth Punnyashrama Seva Trust",
+      "error": "InvalidPhoneNumberError: +918884442061, +919353666634 is not a valid Phone Number"
+    },
+    {
+      "row": 120,
+      "organization": "Sri Chandreshwara Grameenabhivruddhi Sikhshana Kalyana Samsthe",
+      "error": "InvalidPhoneNumberError: +916406537309, +919008199890 is not a valid Phone Number"
+    },
+    {
+      "row": 121,
+      "organization": "Jivodhaya Trust",
+      "error": "InvalidPhoneNumberError: +918892791823, +919538112293 is not a valid Phone Number"
+    },
+    {
+      "row": 122,
+      "organization": "Savi Samskruthika Kala Trust",
+      "error": "InvalidPhoneNumberError: +916642784531, +918971802196 is not a valid Phone Number"
+    },
+    {
+      "row": 123,
+      "organization": "Janani Janmabhoomi",
+      "error": "InvalidPhoneNumberError: +919739071569, +919901763582, +919972725445 is not a valid Phone Number"
+    },
+    {
+      "row": 124,
+      "organization": "Akhila Bharata Sarvakala Tarabeti mattu Samshodhane Samsthe",
+      "error": "InvalidPhoneNumberError: +917259153076, +918283051358, +918317421182, +918376286293 is not a valid Phone Number"
+    },
+    {
+      "row": 125,
+      "organization": "Aasare Angavikalara Kshemabhivruddhi & Grameenabhivruddhi Samsthe\u00ae",
+      "error": "InvalidPhoneNumberError: +918487242422, +919902695345 is not a valid Phone Number"
+    },
+    {
+      "row": 126,
+      "organization": "Pooja Charitable Trust (R)",
+      "error": "InvalidPhoneNumberError: +916701994399, +918762394120 is not a valid Phone Number"
+    },
+    {
+      "row": 127,
+      "organization": "Srusti Swayam Seva Samsthe(R)",
+      "error": "InvalidPhoneNumberError: +917631894791, +919742089081, +919980587308 is not a valid Phone Number"
+    },
+    {
+      "row": 128,
+      "organization": "Gethsemane Assembly Trust",
+      "error": "InvalidPhoneNumberError: +917121561464, +917424531161, +918880667947 is not a valid Phone Number"
+    },
+    {
+      "row": 129,
+      "organization": "Jeeva Spandana Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918088844455, +919591444867, +919945385818 is not a valid Phone Number"
+    },
+    {
+      "row": 130,
+      "organization": "Brahmasri Dyavarpparya Achala Bhajana Kala Trust",
+      "error": "InvalidPhoneNumberError: +919449935604, +919949031575 is not a valid Phone Number"
+    },
+    {
+      "row": 131,
+      "organization": "Bharathaksha Foundation",
+      "error": "InvalidPhoneNumberError: +919029485780, +919652460802 is not a valid Phone Number"
+    },
+    {
+      "row": 132,
+      "organization": "Nadanoopura Yakshothana Trust",
+      "error": "InvalidPhoneNumberError: +917240767336, +918021883292, +918277560171 is not a valid Phone Number"
+    },
+    {
+      "row": 133,
+      "organization": "Huligemma Devi Gramina Abhivruddi Samsthe(R),Chigalli",
+      "error": "InvalidPhoneNumberError: +918123420104, +919632985399 is not a valid Phone Number"
+    },
+    {
+      "row": 134,
+      "organization": "Pandala Charitable Trust",
+      "error": "InvalidPhoneNumberError: +916097076064, +919035711483 is not a valid Phone Number"
+    },
+    {
+      "row": 135,
+      "organization": "Shrishail Malikarjun Arogya Shikshana mattu Grameen Abhivruddi Samsthe",
+      "error": "InvalidPhoneNumberError: +919008489855, +919521455485 is not a valid Phone Number"
+    },
+    {
+      "row": 136,
+      "organization": "Rural Education & Child Health Societies of India",
+      "error": "InvalidPhoneNumberError: +918123190159, +919448309859 is not a valid Phone Number"
+    },
+    {
+      "row": 137,
+      "organization": "Sabala Organisation",
+      "error": "InvalidPhoneNumberError: +917342625262, +919448118204 is not a valid Phone Number"
+    },
+    {
+      "row": 138,
+      "organization": "Aniketana Social and Educational Development Society",
+      "error": "InvalidPhoneNumberError: +919591691044, +919986041999 is not a valid Phone Number"
+    },
+    {
+      "row": 139,
+      "organization": "Hongirana Samagra Grameenabhivruddi Hagoo Shaikshanika Samasthe (R)",
+      "error": "InvalidPhoneNumberError: +916151675685, +917090829869, +918317419429 is not a valid Phone Number"
+    },
+    {
+      "row": 140,
+      "organization": "Karnataka Angavikalara Ikyatha Vedike",
+      "error": "InvalidPhoneNumberError: +919731731755, +919902666933 is not a valid Phone Number"
+    },
+    {
+      "row": 141,
+      "organization": "Tejaswini Grameenabhivruddi Samsthe",
+      "error": "InvalidPhoneNumberError: +916071014130, +919449182594, +919901072955 is not a valid Phone Number"
+    },
+    {
+      "row": 142,
+      "organization": "T-Shree Social Development Foundation",
+      "error": "InvalidPhoneNumberError: +918676974466, +919691958799 is not a valid Phone Number"
+    },
+    {
+      "row": 160,
+      "organization": "Career Booster",
+      "error": "InvalidPhoneNumberError: +918072236295, +919962776740 is not a valid Phone Number"
+    },
+    {
+      "row": 161,
+      "organization": "Real Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918284838582, +919710394002 is not a valid Phone Number"
+    },
+    {
+      "row": 185,
+      "organization": "Aakanshaa Foundation",
+      "error": "InvalidPhoneNumberError: +918240735574, +918439344609 is not a valid Phone Number"
+    },
+    {
+      "row": 378,
+      "organization": "Ashankura",
+      "error": "InvalidPhoneNumberError: +918588067168, +919845545601 is not a valid Phone Number"
+    },
+    {
+      "row": 379,
+      "organization": "Christ International Ministries",
+      "error": "InvalidPhoneNumberError: +918147887595, +918505254441 is not a valid Phone Number"
+    },
+    {
+      "row": 380,
+      "organization": "Karuna Seva Samithi",
+      "error": "InvalidPhoneNumberError: +919019793555, +919379258133 is not a valid Phone Number"
+    },
+    {
+      "row": 381,
+      "organization": "Nisarga Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917676804443, +919740409523 is not a valid Phone Number"
+    },
+    {
+      "row": 382,
+      "organization": "The Organisation for the Development of People",
+      "error": "InvalidPhoneNumberError: +916363160044, +918212494195 is not a valid Phone Number"
+    },
+    {
+      "row": 383,
+      "organization": "Emmanuel Orphange and Childcare Center",
+      "error": "InvalidPhoneNumberError: +917410128301, +919886164144 is not a valid Phone Number"
+    },
+    {
+      "row": 384,
+      "organization": "Hosabelaku Trust",
+      "error": "InvalidPhoneNumberError: +917204226247, +918454240486, +918660854201, +918970089198 is not a valid Phone Number"
+    },
+    {
+      "row": 385,
+      "organization": "Sa-Mudra Foundation",
+      "error": "InvalidPhoneNumberError: +919743104551, +919880396331 is not a valid Phone Number"
+    },
+    {
+      "row": 386,
+      "organization": "Sanjeevini Plus Old Age Home",
+      "error": "InvalidPhoneNumberError: +919663755998, +919844428909 is not a valid Phone Number"
+    },
+    {
+      "row": 387,
+      "organization": "Vidyanikethan",
+      "error": "InvalidPhoneNumberError: +919262123082, +919341239364 is not a valid Phone Number"
+    },
+    {
+      "row": 388,
+      "organization": "Samruddha Foundation For The Disabled",
+      "error": "InvalidPhoneNumberError: +918792139345, +919035592382 is not a valid Phone Number"
+    },
+    {
+      "row": 389,
+      "organization": "Vijayalaxmi Rural Development Society",
+      "error": "InvalidPhoneNumberError: +919002180206, +919164617143 is not a valid Phone Number"
+    },
+    {
+      "row": 390,
+      "organization": "Pragati Grameena Abhivruddhi Samsthes",
+      "error": "InvalidPhoneNumberError: +916405549484, +919845434423 is not a valid Phone Number"
+    },
+    {
+      "row": 391,
+      "organization": "Sri Mathru Mahila Mandali",
+      "error": "InvalidPhoneNumberError: +917101045833, +917892467314, +919844064445 is not a valid Phone Number"
+    },
+    {
+      "row": 392,
+      "organization": "Suraksha Association",
+      "error": "InvalidPhoneNumberError: +917341319151, +919845259265 is not a valid Phone Number"
+    },
+    {
+      "row": 393,
+      "organization": "Socio Moral Integration of Living Educe (SMILE) Organization",
+      "error": "InvalidPhoneNumberError: +917760363425, +919964342805 is not a valid Phone Number"
+    },
+    {
+      "row": 394,
+      "organization": "Aksha Welfare Society",
+      "error": "InvalidPhoneNumberError: +919686768676, +919902395324 is not a valid Phone Number"
+    },
+    {
+      "row": 395,
+      "organization": "Krupavara Ministries",
+      "error": "InvalidPhoneNumberError: +916250208040, +918050777821 is not a valid Phone Number"
+    },
+    {
+      "row": 396,
+      "organization": "Action for Social and Educational Development Association (ASEDA)",
+      "error": "InvalidPhoneNumberError: +919448260531, +919481120579 is not a valid Phone Number"
+    },
+    {
+      "row": 397,
+      "organization": "Dr. Bhim Trust For Development",
+      "error": "InvalidPhoneNumberError: +918121087665, +919611345162 is not a valid Phone Number"
+    },
+    {
+      "row": 398,
+      "organization": "Belaku Grameena Abhiuvruddhi Samsthe, Chitradurga",
+      "error": "InvalidPhoneNumberError: +917349594088, +918993829594 is not a valid Phone Number"
+    },
+    {
+      "row": 399,
+      "organization": "RAIN TRUST (R)",
+      "error": "InvalidPhoneNumberError: +918105331729, +919945941880 is not a valid Phone Number"
+    },
+    {
+      "row": 400,
+      "organization": "Siddeswara Rural Development Society(R)",
+      "error": "InvalidPhoneNumberError: +916322437246, +919900973339 is not a valid Phone Number"
+    },
+    {
+      "row": 401,
+      "organization": "Action Initiative For Development (AID)",
+      "error": "InvalidPhoneNumberError: +919035247600, +919449604002 is not a valid Phone Number"
+    },
+    {
+      "row": 402,
+      "organization": "Sampradaya Trust",
+      "error": "InvalidPhoneNumberError: +916101009128, +918296890244 is not a valid Phone Number"
+    },
+    {
+      "row": 403,
+      "organization": "Agricultural Science Foundation",
+      "error": "InvalidPhoneNumberError: +918372289606, +919448358772 is not a valid Phone Number"
+    },
+    {
+      "row": 404,
+      "organization": "Sri Raghavendra Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917382038323, +919620582583 is not a valid Phone Number"
+    },
+    {
+      "row": 405,
+      "organization": "S.S.V. Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +917151907001, +917760990584 is not a valid Phone Number"
+    },
+    {
+      "row": 406,
+      "organization": "Vanasiri Rural Development Society",
+      "error": "InvalidPhoneNumberError: +916223423223, +917619128602 is not a valid Phone Number"
+    },
+    {
+      "row": 407,
+      "organization": "Spandana Sanskritik Andolan",
+      "error": "InvalidPhoneNumberError: +917070802090, +917150708150, +919886048039 is not a valid Phone Number"
+    },
+    {
+      "row": 408,
+      "organization": "AMMA EDUCATION AND RURAL DEVELOPMENT SOCIETY",
+      "error": "InvalidPhoneNumberError: +917019015693, +919590313987 is not a valid Phone Number"
+    },
+    {
+      "row": 409,
+      "organization": "Bhagyodaya Welfare Society",
+      "error": "InvalidPhoneNumberError: +917201036826, +919480106265 is not a valid Phone Number"
+    },
+    {
+      "row": 410,
+      "organization": "Chaitanya Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918414954414, +918472252445, +919731622445 is not a valid Phone Number"
+    },
+    {
+      "row": 411,
+      "organization": "Sanman Education & Rural Development Society",
+      "error": "InvalidPhoneNumberError: +919448946702, +919972297462 is not a valid Phone Number"
+    },
+    {
+      "row": 412,
+      "organization": "NCUI Cooperative Education Field Project",
+      "error": "InvalidPhoneNumberError: +916208645727, +919448364778 is not a valid Phone Number"
+    },
+    {
+      "row": 413,
+      "organization": "Shrimati Ganga Matoshri National Association for the Handicapped",
+      "error": "InvalidPhoneNumberError: +919686974386, +919902451828 is not a valid Phone Number"
+    },
+    {
+      "row": 414,
+      "organization": "Janchinthana Urban and Rural Development Organization",
+      "error": "InvalidPhoneNumberError: +917665443424, +919449620632 is not a valid Phone Number"
+    },
+    {
+      "row": 415,
+      "organization": "Young India Development Society",
+      "error": "InvalidPhoneNumberError: +918792037738, +918805059391, +919738437738 is not a valid Phone Number"
+    },
+    {
+      "row": 416,
+      "organization": "Dr. Abdul Kalam Health, Educational & Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918050507012, +919008807012 is not a valid Phone Number"
+    },
+    {
+      "row": 417,
+      "organization": "Dr. Basalingappa Hallur Integrated Rural Development Society",
+      "error": "InvalidPhoneNumberError: +918414773545, +918660775868 is not a valid Phone Number"
+    },
+    {
+      "row": 418,
+      "organization": "Mahila Dhwani Educational and Rural Development Welfare Society",
+      "error": "InvalidPhoneNumberError: +916362880857, +919663132663 is not a valid Phone Number"
+    },
+    {
+      "row": 419,
+      "organization": "Spandana Educational Social and Cultural Organization",
+      "error": "InvalidPhoneNumberError: +916050077505, +919902956111 is not a valid Phone Number"
+    },
+    {
+      "row": 420,
+      "organization": "Janaspandana Foundation",
+      "error": "InvalidPhoneNumberError: +919686148224, +919737877786 is not a valid Phone Number"
+    },
+    {
+      "row": 421,
+      "organization": "Nirman Foundation",
+      "error": "InvalidPhoneNumberError: +918217648860, +919611075215 is not a valid Phone Number"
+    },
+    {
+      "row": 422,
+      "organization": "Nisarga Foundation",
+      "error": "InvalidPhoneNumberError: +918228257873, +919480168124, +919587948187 is not a valid Phone Number"
+    },
+    {
+      "row": 423,
+      "organization": "Sevayana Trust",
+      "error": "InvalidPhoneNumberError: +919513984848, +919535426335, +919980929313 is not a valid Phone Number"
+    },
+    {
+      "row": 424,
+      "organization": "Sadhana Raichur",
+      "error": "InvalidPhoneNumberError: +918618284104, +919886345310 is not a valid Phone Number"
+    },
+    {
+      "row": 425,
+      "organization": "The Cross Roads for Human Development Society (CRHD)",
+      "error": "InvalidPhoneNumberError: +919901574958, +919901584815 is not a valid Phone Number"
+    },
+    {
+      "row": 426,
+      "organization": "Karnataka Rajya Bennuhuri Apagatada Angavikalara Sanga",
+      "error": "InvalidPhoneNumberError: +916564456564, +917353540064 is not a valid Phone Number"
+    },
+    {
+      "row": 427,
+      "organization": "Navodaya Education and Environment Developmental Service",
+      "error": "InvalidPhoneNumberError: +919742135009, +919972363984 is not a valid Phone Number"
+    },
+    {
+      "row": 428,
+      "organization": "Tippu Welfare Trust",
+      "error": "InvalidPhoneNumberError: +919141133991, +919362536453 is not a valid Phone Number"
+    },
+    {
+      "row": 429,
+      "organization": "Nevil Foundation",
+      "error": "InvalidPhoneNumberError: +918105251333, +918105254888, +919606600942 is not a valid Phone Number"
+    },
+    {
+      "row": 430,
+      "organization": "Institute for Rural Development (IRD)",
+      "error": "InvalidPhoneNumberError: +919448507305, +919480120391 is not a valid Phone Number"
+    },
+    {
+      "row": 431,
+      "organization": "Samaprabha Educational and Youth Volunteer Association, Vijayapur",
+      "error": "InvalidPhoneNumberError: +916360943455, +917892167820 is not a valid Phone Number"
+    },
+    {
+      "row": 432,
+      "organization": "Amma Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918156272444, +918660430001, +919880762444 is not a valid Phone Number"
+    },
+    {
+      "row": 433,
+      "organization": "Pradnya Economical and Rural Mahila Vikas Karya Samiti",
+      "error": "InvalidPhoneNumberError: +918026940761, +919606375801 is not a valid Phone Number"
+    },
+    {
+      "row": 434,
+      "organization": "Srishti Integrated Urban and Rural Development Society (R)",
+      "error": "InvalidPhoneNumberError: +919449428255, +919739555941, +919743621098 is not a valid Phone Number"
+    },
+    {
+      "row": 442,
+      "organization": "Karnataka Drivers and Owners Welfare Association",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00165\">CRM-LEAD-2026-00165</a></strong>"
+    },
+    {
+      "row": 569,
+      "organization": "Chaitanya Global Foundation(R)",
+      "error": "InvalidPhoneNumberError: +919663520786, +919753239243 is not a valid Phone Number"
+    },
+    {
+      "row": 577,
+      "organization": "New Hope India",
+      "error": "InvalidPhoneNumberError: +917873065997, +919676160676 is not a valid Phone Number"
+    },
+    {
+      "row": 578,
+      "organization": "Binapani Alipurduar Welfare Society",
+      "error": "InvalidPhoneNumberError: +918761024375, +919832365712 is not a valid Phone Number"
+    },
+    {
+      "row": 579,
+      "organization": "Indian Social Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917376115940, +919984130764 is not a valid Phone Number"
+    },
+    {
+      "row": 580,
+      "organization": "Human and Natural Resources Development Society",
+      "error": "InvalidPhoneNumberError: +919027531873, +919182741433 is not a valid Phone Number"
+    },
+    {
+      "row": 581,
+      "organization": "AAJAD KALYAN SAMAJ SEWA SAMITI",
+      "error": "InvalidPhoneNumberError: +916591956515, +919918084757 is not a valid Phone Number"
+    },
+    {
+      "row": 582,
+      "organization": "Surakshita Mahila Abhivruddhi Sangha",
+      "error": "InvalidPhoneNumberError: +918310101154, +918951366963, +919845861531, +919886471256 is not a valid Phone Number"
+    },
+    {
+      "row": 583,
+      "organization": "YOUTH ACTIVISTS FORUM (YAF)",
+      "error": "InvalidPhoneNumberError: +918093474509, +919439596084 is not a valid Phone Number"
+    },
+    {
+      "row": 584,
+      "organization": "SEHYOG WELFARE FOUNDATION",
+      "error": "InvalidPhoneNumberError: +919455115011, +919455444233 is not a valid Phone Number"
+    },
+    {
+      "row": 585,
+      "organization": "TREES(Team for reformation of education and environmental services)",
+      "error": "InvalidPhoneNumberError: +917232724293, +919448518396 is not a valid Phone Number"
+    },
+    {
+      "row": 586,
+      "organization": "Basic Integrated Rural Development Society (BIRDS)",
+      "error": "InvalidPhoneNumberError: +918760093444, +919345280993 is not a valid Phone Number"
+    },
+    {
+      "row": 587,
+      "organization": "Chetak Vividoddeshgala Sangha",
+      "error": "InvalidPhoneNumberError: +918310074950, +919323528343 is not a valid Phone Number"
+    },
+    {
+      "row": 588,
+      "organization": "ASK AGRI",
+      "error": "InvalidPhoneNumberError: +919439370399, +919658005110 is not a valid Phone Number"
+    },
+    {
+      "row": 589,
+      "organization": "CYBORG CHARITABLE AND EDUCATIONAL TRUST",
+      "error": "InvalidPhoneNumberError: +917978929674, +919040939255 is not a valid Phone Number"
+    },
+    {
+      "row": 590,
+      "organization": "Jeevan Pramita",
+      "error": "InvalidPhoneNumberError: +916392725363, +919090677136 is not a valid Phone Number"
+    },
+    {
+      "row": 591,
+      "organization": "Yelukoti mailarling rural development society",
+      "error": "InvalidPhoneNumberError: +918197696519, +919741113592, +919902846363 is not a valid Phone Number"
+    },
+    {
+      "row": 592,
+      "organization": "Health and Education Amelioration for Rural Trust (HEART)",
+      "error": "InvalidPhoneNumberError: +918870261162, +919790518703 is not a valid Phone Number"
+    },
+    {
+      "row": 593,
+      "organization": "Asha Kiran Seva Sansthan",
+      "error": "InvalidPhoneNumberError: +917825638978, +918210402069 is not a valid Phone Number"
+    },
+    {
+      "row": 594,
+      "organization": "Jeevandeep",
+      "error": "InvalidPhoneNumberError: +917545805222, +918210241614 is not a valid Phone Number"
+    },
+    {
+      "row": 595,
+      "organization": "National Road Safety Club",
+      "error": "InvalidPhoneNumberError: +916554867404, +919546099944 is not a valid Phone Number"
+    },
+    {
+      "row": 596,
+      "organization": "Spandana Samudaya Nirvahana Sampanmula Samsthe",
+      "error": "InvalidPhoneNumberError: +918224297945, +919886814937 is not a valid Phone Number"
+    },
+    {
+      "row": 597,
+      "organization": "FEVOURD-K",
+      "error": "InvalidPhoneNumberError: +919448190613, +919844732196 is not a valid Phone Number"
+    },
+    {
+      "row": 598,
+      "organization": "Adarsh Path",
+      "error": "InvalidPhoneNumberError: +918201901080, +919709101567 is not a valid Phone Number"
+    },
+    {
+      "row": 599,
+      "organization": "Rural Star Trust",
+      "error": "InvalidPhoneNumberError: +918595548167, +919677620256 is not a valid Phone Number"
+    },
+    {
+      "row": 600,
+      "organization": "Nisarga Trust(R)",
+      "error": "InvalidPhoneNumberError: +916505751564, +919108570976 is not a valid Phone Number"
+    },
+    {
+      "row": 601,
+      "organization": "Safal India",
+      "error": "InvalidPhoneNumberError: +916200849302, +917050208888, +917050401030, +917633004157, +917717721766, +918271920974, +919122782355, +919304682308, +919931080996, +9199 is not a valid Phone Number"
+    },
+    {
+      "row": 602,
+      "organization": "Twinkles Trust",
+      "error": "InvalidPhoneNumberError: +919442305426, +919965884493 is not a valid Phone Number"
+    },
+    {
+      "row": 603,
+      "organization": "Vimukthi AIDS Thadegattuva Mahila Sangha",
+      "error": "InvalidPhoneNumberError: +918548093170, +919886649520 is not a valid Phone Number"
+    },
+    {
+      "row": 604,
+      "organization": "Voluntary Association for Rural Development (VARD)",
+      "error": "InvalidPhoneNumberError: +917212724372, +919337076167 is not a valid Phone Number"
+    },
+    {
+      "row": 605,
+      "organization": "Gramin Samaj Kalyan Vikas Manch",
+      "error": "InvalidEmailAddressError: ujjawalapalamu@gmail. is not a valid Email Address"
+    },
+    {
+      "row": 606,
+      "organization": "PRABHA BHARTI",
+      "error": "InvalidPhoneNumberError: +919110015355, +919934772934 is not a valid Phone Number"
+    },
+    {
+      "row": 607,
+      "organization": "Swabhimaan",
+      "error": "InvalidPhoneNumberError: +916959187848, +917004911153, +918788848782 is not a valid Phone Number"
+    },
+    {
+      "row": 608,
+      "organization": "Uddyian Holestic Life Care society",
+      "error": "InvalidPhoneNumberError: +917061918369, +917488421056, +918409423197, +918507642287, +919204876344, +919304062074, +919304127432, +919525151852, +919835346984 is not a valid Phone Number"
+    },
+    {
+      "row": 609,
+      "organization": "Sonal Bal Kalyan Samiti",
+      "error": "InvalidPhoneNumberError: +917587249101, +918770442084 is not a valid Phone Number"
+    },
+    {
+      "row": 610,
+      "organization": "Action for Integrated Development(AID)",
+      "error": "InvalidPhoneNumberError: +919549069813, +919866692754 is not a valid Phone Number"
+    },
+    {
+      "row": 611,
+      "organization": "Udaan Welfare Trust",
+      "error": "InvalidPhoneNumberError: +917011931780, +917417692176 is not a valid Phone Number"
+    },
+    {
+      "row": 612,
+      "organization": "Spoorthi Mahila Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +918139991747, +919740666519 is not a valid Phone Number"
+    },
+    {
+      "row": 613,
+      "organization": "Noor E Falah",
+      "error": "InvalidPhoneNumberError: +918050801290, +918252160040, +919835258435 is not a valid Phone Number"
+    },
+    {
+      "row": 614,
+      "organization": "Narayan Kunj Social Welfare Foundation",
+      "error": "InvalidPhoneNumberError: +919125376590, +919450947466 is not a valid Phone Number"
+    },
+    {
+      "row": 615,
+      "organization": "Gramika India",
+      "error": "InvalidPhoneNumberError: +916204025501, +916206710815, +917070659093, +917482806810, +917766910173, +918294104807, +919110901475, +919431132968, +919431370380, +9199 is not a valid Phone Number"
+    },
+    {
+      "row": 616,
+      "organization": "ART(Advancement Rural Technology) Trust",
+      "error": "InvalidPhoneNumberError: +919481714479, +919901517651 is not a valid Phone Number"
+    },
+    {
+      "row": 617,
+      "organization": "DALITSANGH",
+      "error": "InvalidPhoneNumberError: +917000431690, +919300731926 is not a valid Phone Number"
+    },
+    {
+      "row": 618,
+      "organization": "Shri Ganga Social Foundation and educational society",
+      "error": "InvalidPhoneNumberError: +916268779588, +918770481588, +919009065352 is not a valid Phone Number"
+    },
+    {
+      "row": 619,
+      "organization": "24 Mahakal Help Foundation",
+      "error": "InvalidPhoneNumberError: +917008374322, +919589464285, +919913087266 is not a valid Phone Number"
+    },
+    {
+      "row": 620,
+      "organization": "POWER (People\u2019s Organization for Wasteland and Environment Regeneration)",
+      "error": "InvalidPhoneNumberError: +918352267638, +919448472075 is not a valid Phone Number"
+    },
+    {
+      "row": 621,
+      "organization": "Al Mustafa Welfare Trust and Blood Bank",
+      "error": "InvalidPhoneNumberError: +917889650455, +918171852192, +919150938255, +919150945033, +919150951304, +919150958489 is not a valid Phone Number"
+    },
+    {
+      "row": 622,
+      "organization": "Bhartiya Baikalpik Chiktsha Parisad",
+      "error": "InvalidPhoneNumberError: +916572914530, +917202926767 is not a valid Phone Number"
+    },
+    {
+      "row": 623,
+      "organization": "Aadivasi Mamta Jiwan Darpan Sanstha",
+      "error": "InvalidPhoneNumberError: +918095217798, +919523360758 is not a valid Phone Number"
+    },
+    {
+      "row": 624,
+      "organization": "WCSF CHARITYSPIRIT FOUNDATION",
+      "error": "InvalidPhoneNumberError: +918779003617, +919819387203 is not a valid Phone Number"
+    },
+    {
+      "row": 625,
+      "organization": "Jnana Jyoti Prathisthan",
+      "error": "InvalidPhoneNumberError: +919448275434, +919449354982, +919741816579 is not a valid Phone Number"
+    },
+    {
+      "row": 626,
+      "organization": "Margadarshi Charitable Trust, Kalaburgi",
+      "error": "InvalidPhoneNumberError: +917259749838, +919449310489 is not a valid Phone Number"
+    },
+    {
+      "row": 627,
+      "organization": "Shree Seva Sanstha",
+      "error": "InvalidPhoneNumberError: +916360155128, +919380259303 is not a valid Phone Number"
+    },
+    {
+      "row": 628,
+      "organization": "Shree Swami Vivekananda Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +919090959090, +919900146413 is not a valid Phone Number"
+    },
+    {
+      "row": 629,
+      "organization": "Aditya Skill Academy",
+      "error": "InvalidPhoneNumberError: +917007125088, +919343921332 is not a valid Phone Number"
+    },
+    {
+      "row": 630,
+      "organization": "Shree Veerabhadreshwara Shikhshana Hagu Grameenabhivruddhi Samsthe (R)",
+      "error": "InvalidPhoneNumberError: +916101028381, +919972224825, +919986963020 is not a valid Phone Number"
+    },
+    {
+      "row": 631,
+      "organization": "Project Pioneer Welfare Society",
+      "error": "InvalidPhoneNumberError: +916052228242, +919676882778 is not a valid Phone Number"
+    },
+    {
+      "row": 632,
+      "organization": "Association of Positive People for Living Excellence (APPLE)",
+      "error": "InvalidPhoneNumberError: +919110791785, +919394706831 is not a valid Phone Number"
+    },
+    {
+      "row": 633,
+      "organization": "Pon Crystal Foundation",
+      "error": "InvalidPhoneNumberError: +917305377971, +918778514510, +918986868981, +919247970082 is not a valid Phone Number"
+    },
+    {
+      "row": 634,
+      "organization": "Aam yuva berojgar kisan vikas samiti",
+      "error": "InvalidPhoneNumberError: +919445970575, +919455337214 is not a valid Phone Number"
+    },
+    {
+      "row": 635,
+      "organization": "Absolute Paramedical & management college",
+      "error": "InvalidPhoneNumberError: +917352322957, +919554818040, +919621652247, +919936541446 is not a valid Phone Number"
+    },
+    {
+      "row": 636,
+      "organization": "Agreta Foundation",
+      "error": "InvalidPhoneNumberError: +918808003300, +919415085263 is not a valid Phone Number"
+    },
+    {
+      "row": 637,
+      "organization": "Ank Foundation",
+      "error": "InvalidPhoneNumberError: +917054466515, +918052580845, +919242223790 is not a valid Phone Number"
+    },
+    {
+      "row": 638,
+      "organization": "BIBI FATIMA FOUNDATION",
+      "error": "InvalidPhoneNumberError: +919450609788, +919936265887 is not a valid Phone Number"
+    },
+    {
+      "row": 639,
+      "organization": "Anusaya Shinde Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917972681437, +919449306827, +919535297082 is not a valid Phone Number"
+    },
+    {
+      "row": 640,
+      "organization": "Sarvodaya Mahila and Gramin Abhivruddi Samste",
+      "error": "InvalidPhoneNumberError: +916383234263, +919964951111 is not a valid Phone Number"
+    },
+    {
+      "row": 641,
+      "organization": "Nayi Kiran Help Foundation",
+      "error": "InvalidPhoneNumberError: +916005333954, +919596390706 is not a valid Phone Number"
+    },
+    {
+      "row": 642,
+      "organization": "Karunya Special School",
+      "error": "InvalidPhoneNumberError: +916444744545, +919742352647 is not a valid Phone Number"
+    },
+    {
+      "row": 643,
+      "organization": "iscerd",
+      "error": "InvalidPhoneNumberError: +919845232889, +919964635199 is not a valid Phone Number"
+    },
+    {
+      "row": 644,
+      "organization": "Aai Shree Social and Welfare Society",
+      "error": "InvalidPhoneNumberError: +918273126223, +918818808158 is not a valid Phone Number"
+    },
+    {
+      "row": 645,
+      "organization": "Carmel Seva Trust",
+      "error": "InvalidPhoneNumberError: +917022420321, +919113672617 is not a valid Phone Number"
+    },
+    {
+      "row": 646,
+      "organization": "U.K Arts and Cultural Trust",
+      "error": "InvalidPhoneNumberError: +919448535158, +919449637356 is not a valid Phone Number"
+    },
+    {
+      "row": 647,
+      "organization": "Peace Foundation",
+      "error": "InvalidPhoneNumberError: +917388983425, +919443259025 is not a valid Phone Number"
+    },
+    {
+      "row": 648,
+      "organization": "Sangram",
+      "error": "InvalidPhoneNumberError: +918297969186, +918893930020, +919437674560 is not a valid Phone Number"
+    },
+    {
+      "row": 649,
+      "organization": "Om Nirman Bharti",
+      "error": "InvalidPhoneNumberError: +916644349454, +919507205000, +919912867030 is not a valid Phone Number"
+    },
+    {
+      "row": 650,
+      "organization": "Nesara the Voluntary Organization",
+      "error": "InvalidPhoneNumberError: +918135071921, +919945207288 is not a valid Phone Number"
+    },
+    {
+      "row": 651,
+      "organization": "Om Shree Sai Jankalyan Samiti",
+      "error": "InvalidPhoneNumberError: +918092298556, +919140920070 is not a valid Phone Number"
+    },
+    {
+      "row": 652,
+      "organization": "Mulabagilu Food Bank",
+      "error": "InvalidPhoneNumberError: +919606411146, +919686542557 is not a valid Phone Number"
+    },
+    {
+      "row": 653,
+      "organization": "Sreekrishnapuram Organic Farmers Producer Company Limited",
+      "error": "InvalidPhoneNumberError: +918606300180, +919961621841 is not a valid Phone Number"
+    },
+    {
+      "row": 654,
+      "organization": "Asian Minority Action Network",
+      "error": "InvalidPhoneNumberError: +919102748795, +919197909691 is not a valid Phone Number"
+    },
+    {
+      "row": 655,
+      "organization": "Bal Adhikaar Suraksha Samiti",
+      "error": "InvalidPhoneNumberError: +918059994931, +918118860062 is not a valid Phone Number"
+    },
+    {
+      "row": 656,
+      "organization": "Citizen\u2019s Action Group",
+      "error": "InvalidPhoneNumberError: +918210562780, +919996929996 is not a valid Phone Number"
+    },
+    {
+      "row": 657,
+      "organization": "Rahi Welfare And Research Society",
+      "error": "InvalidPhoneNumberError: +916131463444, +917974746602, +919303128660 is not a valid Phone Number"
+    },
+    {
+      "row": 658,
+      "organization": "Agrani Sanket",
+      "error": "InvalidPhoneNumberError: +919323328293, +919933363063 is not a valid Phone Number"
+    },
+    {
+      "row": 659,
+      "organization": "Jagruti Sanskrutika Yuva Sangathana",
+      "error": "InvalidPhoneNumberError: +917978877697, +919870343766 is not a valid Phone Number"
+    },
+    {
+      "row": 660,
+      "organization": "VECARD TRUST",
+      "error": "InvalidPhoneNumberError: +916054228529, +919448555994 is not a valid Phone Number"
+    },
+    {
+      "row": 661,
+      "organization": "Vananchal Vikas Parishad",
+      "error": "InvalidPhoneNumberError: +918271876100, +918294600144 is not a valid Phone Number"
+    },
+    {
+      "row": 662,
+      "organization": "Diamond Trust",
+      "error": "InvalidPhoneNumberError: +918778544748, +919843307815 is not a valid Phone Number"
+    },
+    {
+      "row": 663,
+      "organization": "Bhartiya Jan Jagriti Kendra",
+      "error": "InvalidPhoneNumberError: +916332835282, +919431366522 is not a valid Phone Number"
+    },
+    {
+      "row": 664,
+      "organization": "Aabhijan",
+      "error": "InvalidPhoneNumberError: +917092734825, +918001882195, +919851487770 is not a valid Phone Number"
+    },
+    {
+      "row": 665,
+      "organization": "RURAL UPLIFTMENT TRUST",
+      "error": "InvalidPhoneNumberError: +917929594959, +918980336503, +919409412278 is not a valid Phone Number"
+    },
+    {
+      "row": 666,
+      "organization": "Bal Avam Gram Vikas Sansthan",
+      "error": "InvalidPhoneNumberError: +916396703429, +919457191751 is not a valid Phone Number"
+    },
+    {
+      "row": 667,
+      "organization": "Social Awareness and Rural Development Society -SARDS",
+      "error": "InvalidPhoneNumberError: +919060040111, +919845873208 is not a valid Phone Number"
+    },
+    {
+      "row": 668,
+      "organization": "People Service Organization",
+      "error": "InvalidPhoneNumberError: +917273238273, +919505112666 is not a valid Phone Number"
+    },
+    {
+      "row": 669,
+      "organization": "Basavanna Education Rural and Urban Development Society",
+      "error": "InvalidPhoneNumberError: +916545745435, +919845611092 is not a valid Phone Number"
+    },
+    {
+      "row": 670,
+      "organization": "ABHIVRUDDI- Society for Social Development",
+      "error": "InvalidPhoneNumberError: +918162280404, +918565163444, +919448370387 is not a valid Phone Number"
+    },
+    {
+      "row": 671,
+      "organization": "Social Education and Environment Development Society (SEEDS)",
+      "error": "InvalidPhoneNumberError: +916585221060, +919440011352 is not a valid Phone Number"
+    },
+    {
+      "row": 672,
+      "organization": "Gandhi Golden Trust",
+      "error": "InvalidPhoneNumberError: +917779977767, +918509461285, +918617557406, +919060626504, +919658929680, +919800136440 is not a valid Phone Number"
+    },
+    {
+      "row": 673,
+      "organization": "AS SHIKSHA SAMITI",
+      "error": "InvalidPhoneNumberError: +917968494989, +919639698403 is not a valid Phone Number"
+    },
+    {
+      "row": 674,
+      "organization": "Deepam",
+      "error": "InvalidPhoneNumberError: +917587012812, +919143339353, +919443118638 is not a valid Phone Number"
+    },
+    {
+      "row": 675,
+      "organization": "DR. MUTHULAKSHMI CHARITABLE TRUST",
+      "error": "InvalidPhoneNumberError: +918825641616, +918838273515 is not a valid Phone Number"
+    },
+    {
+      "row": 676,
+      "organization": "Great Vision Society",
+      "error": "InvalidPhoneNumberError: +918466871884, +918584294984, +919493871884 is not a valid Phone Number"
+    },
+    {
+      "row": 677,
+      "organization": "Social Infrastructure Developmental Society (SINDS). (R)",
+      "error": "InvalidPhoneNumberError: +919449102108, +919986364681 is not a valid Phone Number"
+    },
+    {
+      "row": 678,
+      "organization": "Gnyan Jyoti Grameena Abhivrudhi Samsthe",
+      "error": "InvalidPhoneNumberError: +918147130023, +919945894165 is not a valid Phone Number"
+    },
+    {
+      "row": 679,
+      "organization": "VISHWA KALYAN GADAG",
+      "error": "InvalidPhoneNumberError: +917892348973, +919036925145, +919341837110 is not a valid Phone Number"
+    },
+    {
+      "row": 680,
+      "organization": "Bhagyajyoti Network of Positive People",
+      "error": "InvalidPhoneNumberError: +919393621393, +919620271330 is not a valid Phone Number"
+    },
+    {
+      "row": 681,
+      "organization": "Ek Soch Nai Soch",
+      "error": "InvalidPhoneNumberError: +917015551486, +919215610076 is not a valid Phone Number"
+    },
+    {
+      "row": 682,
+      "organization": "Lava Yuva Club",
+      "error": "InvalidPhoneNumberError: +917004304287, +918651493717, +919304378235 is not a valid Phone Number"
+    },
+    {
+      "row": 683,
+      "organization": "Bhim Army Bharat Ekta Mission",
+      "error": "InvalidPhoneNumberError: +917505612806, +919458001661 is not a valid Phone Number"
+    },
+    {
+      "row": 684,
+      "organization": "Cymaa Trust",
+      "error": "InvalidPhoneNumberError: +917369311756, +919994752121 is not a valid Phone Number"
+    },
+    {
+      "row": 685,
+      "organization": "Faisalendu Mahila Grah Uddyog",
+      "error": "InvalidPhoneNumberError: +917054466515, +918052580845 is not a valid Phone Number"
+    },
+    {
+      "row": 686,
+      "organization": "FLOURISH INDIA TRUST",
+      "error": "InvalidPhoneNumberError: +916644349454, +917377545872 is not a valid Phone Number"
+    },
+    {
+      "row": 687,
+      "organization": "Gold India Voluntary Organization",
+      "error": "InvalidPhoneNumberError: +919652304589, +919912199639 is not a valid Phone Number"
+    },
+    {
+      "row": 688,
+      "organization": "Jan Chetna Kendra, Samajik Sanstha",
+      "error": "InvalidPhoneNumberError: +916302302252, +918006400860, +918838289868, +919557180581 is not a valid Phone Number"
+    },
+    {
+      "row": 689,
+      "organization": "Jana Seva Foundation",
+      "error": "InvalidPhoneNumberError: +917342302252, +919738706444 is not a valid Phone Number"
+    },
+    {
+      "row": 690,
+      "organization": "Janashakthi Swayam Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +919066653532, +919481854854 is not a valid Phone Number"
+    },
+    {
+      "row": 691,
+      "organization": "LAL BHADUR EDUCATION SOCIETY",
+      "error": "InvalidPhoneNumberError: +919241266491, +919448258340 is not a valid Phone Number"
+    },
+    {
+      "row": 692,
+      "organization": "MIRA UPKAR Trust",
+      "error": "InvalidPhoneNumberError: +919789279747, +919894622637 is not a valid Phone Number"
+    },
+    {
+      "row": 693,
+      "organization": "Samajika Shaikshanika Parisara Abhivrudhi Trust",
+      "error": "InvalidPhoneNumberError: +919740407760, +919845726144 is not a valid Phone Number"
+    },
+    {
+      "row": 694,
+      "organization": "Samatha Society for Rural Education and Development",
+      "error": "InvalidPhoneNumberError: +919014389425, +919346645667, +919440259681, +919948396309, +919989779028 is not a valid Phone Number"
+    },
+    {
+      "row": 695,
+      "organization": "Sarojini Education and Volunatry Action Trust (SEVA)",
+      "error": "InvalidPhoneNumberError: +917406772213, +918861685124 is not a valid Phone Number"
+    },
+    {
+      "row": 696,
+      "organization": "Sri Math Seva Trust",
+      "error": "InvalidPhoneNumberError: +919110858985, +919731983111 is not a valid Phone Number"
+    },
+    {
+      "row": 697,
+      "organization": "STEEV",
+      "error": "InvalidPhoneNumberError: +918260883934, +919439388235 is not a valid Phone Number"
+    },
+    {
+      "row": 698,
+      "organization": "Sulekha Education Welfare Society",
+      "error": "InvalidPhoneNumberError: +917797496758, +919749808307 is not a valid Phone Number"
+    },
+    {
+      "row": 699,
+      "organization": "Vahini Development Society",
+      "error": "InvalidPhoneNumberError: +919449569022, +919481175200 is not a valid Phone Number"
+    },
+    {
+      "row": 700,
+      "organization": "Vijayanagar Disable Welfare Association",
+      "error": "InvalidPhoneNumberError: +919632042317, +919964179038 is not a valid Phone Number"
+    },
+    {
+      "row": 895,
+      "organization": "Haji Naeemul Haque Degree College",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00457\">CRM-LEAD-2026-00457</a></strong>"
+    },
+    {
+      "row": 973,
+      "organization": "Anisha Educational and Social Welfare Trust",
+      "error": "InvalidPhoneNumberError: +917904630090, +919626331055 is not a valid Phone Number"
+    },
+    {
+      "row": 974,
+      "organization": "Ashadeepa special school",
+      "error": "InvalidPhoneNumberError: +918532234647, +919663324234, +919981976952 is not a valid Phone Number"
+    },
+    {
+      "row": 975,
+      "organization": "Bommanur Society For Village Development(BSVD)",
+      "error": "InvalidPhoneNumberError: +919487200887, +919790161829 is not a valid Phone Number"
+    },
+    {
+      "row": 976,
+      "organization": "Community Rural Development Society - CRDS",
+      "error": "InvalidPhoneNumberError: +916001000447, +919443910434 is not a valid Phone Number"
+    },
+    {
+      "row": 977,
+      "organization": "Dr Bhimrao Ambedkar Shiksha Sansthan",
+      "error": "InvalidPhoneNumberError: +916235596145, +919431939616 is not a valid Phone Number"
+    },
+    {
+      "row": 978,
+      "organization": "Evergreen Rural Development Trust",
+      "error": "InvalidPhoneNumberError: +918767801262, +919865074265 is not a valid Phone Number"
+    },
+    {
+      "row": 979,
+      "organization": "Grama Swarajya Samithi",
+      "error": "InvalidPhoneNumberError: +919094899594, +919603005525 is not a valid Phone Number"
+    },
+    {
+      "row": 980,
+      "organization": "Integrated Community Development Organisation",
+      "error": "InvalidPhoneNumberError: +919448770245, +919449823088 is not a valid Phone Number"
+    },
+    {
+      "row": 981,
+      "organization": "L G Havanuru Samskruthika Kala Vedhike",
+      "error": "InvalidPhoneNumberError: +917965609921, +918951443305 is not a valid Phone Number"
+    },
+    {
+      "row": 982,
+      "organization": "Mahila Chaitanya Grameena Abhivradhi Sangha",
+      "error": "InvalidPhoneNumberError: +917019204600, +919482294231 is not a valid Phone Number"
+    },
+    {
+      "row": 983,
+      "organization": "New Dream Foundation",
+      "error": "InvalidPhoneNumberError: +919731132030, +919739003600 is not a valid Phone Number"
+    },
+    {
+      "row": 984,
+      "organization": "Salem People Trust",
+      "error": "InvalidPhoneNumberError: +918489148730, +919942218923 is not a valid Phone Number"
+    },
+    {
+      "row": 985,
+      "organization": "SHABNAM EDUCATION & CHARITABLE TRUST (R)",
+      "error": "InvalidPhoneNumberError: +919242056469, +919845050389 is not a valid Phone Number"
+    },
+    {
+      "row": 986,
+      "organization": "Shanthinikethana Rural Development Society",
+      "error": "InvalidPhoneNumberError: +916943917793, +918726521355, +919449411512 is not a valid Phone Number"
+    },
+    {
+      "row": 987,
+      "organization": "SHREE VIDYA EDUCATION AND CHARITABALE TRUST",
+      "error": "InvalidPhoneNumberError: +918217587829, +919738222218 is not a valid Phone Number"
+    },
+    {
+      "row": 988,
+      "organization": "Shri Siddeshwar Rural Development Society(R)",
+      "error": "InvalidPhoneNumberError: +916360813141, +919972324842 is not a valid Phone Number"
+    },
+    {
+      "row": 989,
+      "organization": "Sparsha Special Academy Trust",
+      "error": "InvalidPhoneNumberError: +919343978208, +919482154261 is not a valid Phone Number"
+    },
+    {
+      "row": 990,
+      "organization": "Sri Saraswathi Mahila Mandali",
+      "error": "InvalidPhoneNumberError: +917716478797, +919066454543, +919141324093 is not a valid Phone Number"
+    },
+    {
+      "row": 991,
+      "organization": "VILLAGE FOUNDATION CHANNAL",
+      "error": "InvalidPhoneNumberError: +916708726728, +919611116030, +919686306155, +919845951234 is not a valid Phone Number"
+    },
+    {
+      "row": 1011,
+      "organization": "Spandana Trust",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00173\">CRM-LEAD-2026-00173</a></strong>"
+    },
+    {
+      "row": 1016,
+      "organization": "ASARE MAHILA GRAMEENA ABHIRUDDI SAMSTHE HALE HARLAPUR",
+      "error": "InvalidPhoneNumberError: +918884535826, +919021430171, +919900257226, +919905722622 is not a valid Phone Number"
+    },
+    {
+      "row": 1017,
+      "organization": "NIRANTHARA",
+      "error": "InvalidPhoneNumberError: +919130357249, +919130423760, +919130454544, +919130510212, +919130546174, +919980912257 is not a valid Phone Number"
+    },
+    {
+      "row": 1018,
+      "organization": "Ahinsa Club",
+      "error": "InvalidPhoneNumberError: +917205116926, +918494041465, +919437918498 is not a valid Phone Number"
+    },
+    {
+      "row": 1019,
+      "organization": "Sahayog Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +918111800161, +919686404919 is not a valid Phone Number"
+    },
+    {
+      "row": 1020,
+      "organization": "Sangmeshwar Mahila Gramabhivruddi Sangha",
+      "error": "InvalidPhoneNumberError: +916364449268, +919483442200, +919845369590 is not a valid Phone Number"
+    },
+    {
+      "row": 1021,
+      "organization": "Aditya Sewa Sansthan",
+      "error": "InvalidPhoneNumberError: +919329874569, +919591855595 is not a valid Phone Number"
+    },
+    {
+      "row": 1022,
+      "organization": "Sri Radhakrishnan Grameen abhivruddi Samsthe Mattu Kalyan Samsthe(R",
+      "error": "InvalidPhoneNumberError: +916760523612, +918203013343, +918951585124 is not a valid Phone Number"
+    },
+    {
+      "row": 1023,
+      "organization": "Jan Kalyan Shikshan Prasar Samiti",
+      "error": "InvalidPhoneNumberError: +918001027222, +918299503437 is not a valid Phone Number"
+    },
+    {
+      "row": 1024,
+      "organization": "FRIENDS CLUB",
+      "error": "InvalidPhoneNumberError: +919915858745, +919938596255 is not a valid Phone Number"
+    },
+    {
+      "row": 1025,
+      "organization": "DSS Nirmal Spandana Society",
+      "error": "InvalidPhoneNumberError: +919431190279, +919540909090 is not a valid Phone Number"
+    },
+    {
+      "row": 1026,
+      "organization": "Nayi Sanskriti Society",
+      "error": "InvalidPhoneNumberError: +919171224665, +919801193022 is not a valid Phone Number"
+    },
+    {
+      "row": 1027,
+      "organization": "Shramika Vikasa Kendram",
+      "error": "InvalidPhoneNumberError: +918501275601, +919490127346 is not a valid Phone Number"
+    },
+    {
+      "row": 1028,
+      "organization": "Jagruthi",
+      "error": "InvalidPhoneNumberError: +917514443425, +918106633018, +919963270135 is not a valid Phone Number"
+    },
+    {
+      "row": 1029,
+      "organization": "Aadhar Magaswargiya Mahila Sanstha",
+      "error": "InvalidPhoneNumberError: +917972566109, +918421446704, +919823179704 is not a valid Phone Number"
+    },
+    {
+      "row": 1030,
+      "organization": "Bright India Society",
+      "error": "InvalidPhoneNumberError: +919148536643, +919449722299 is not a valid Phone Number"
+    },
+    {
+      "row": 1031,
+      "organization": "WAY Trust",
+      "error": "InvalidPhoneNumberError: +917639199509, +919159672996 is not a valid Phone Number"
+    },
+    {
+      "row": 1032,
+      "organization": "Bharath Charitable Cancer Hospital & Institute (BCCHI), Trust",
+      "error": "InvalidPhoneNumberError: +919611075559, +919880251819 is not a valid Phone Number"
+    },
+    {
+      "row": 1033,
+      "organization": "Madilu Educational and Rural Development Society, Mysore",
+      "error": "InvalidPhoneNumberError: +917019033602, +919482156607 is not a valid Phone Number"
+    },
+    {
+      "row": 1034,
+      "organization": "Rainbow Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917171167404, +919486809222 is not a valid Phone Number"
+    },
+    {
+      "row": 1035,
+      "organization": "Vanasiri Foundation",
+      "error": "InvalidPhoneNumberError: +917829300000, +919480969895 is not a valid Phone Number"
+    },
+    {
+      "row": 1036,
+      "organization": "Disable Relief Organization",
+      "error": "InvalidPhoneNumberError: +917894155499, +918171003180 is not a valid Phone Number"
+    },
+    {
+      "row": 1037,
+      "organization": "Devi Ahilya Bai Education and Welfare Society",
+      "error": "InvalidPhoneNumberError: +917366804405, +919464249461 is not a valid Phone Number"
+    },
+    {
+      "row": 1038,
+      "organization": "NISHPAKSHA",
+      "error": "InvalidPhoneNumberError: +916360331229, +919379049016 is not a valid Phone Number"
+    },
+    {
+      "row": 1039,
+      "organization": "Community Seva Centre",
+      "error": "InvalidPhoneNumberError: +919443157759, +919585711681 is not a valid Phone Number"
+    },
+    {
+      "row": 1040,
+      "organization": "Krishak Sahyog Sansthan",
+      "error": "InvalidPhoneNumberError: +917482223131, +919370512131, +919826036283 is not a valid Phone Number"
+    },
+    {
+      "row": 1041,
+      "organization": "National Blood Donation Team",
+      "error": "InvalidPhoneNumberError: +916375454014, +918058090941 is not a valid Phone Number"
+    },
+    {
+      "row": 1042,
+      "organization": "Karra Society for Rural Action",
+      "error": "InvalidPhoneNumberError: +916708480627, +917095048495, +919334703371 is not a valid Phone Number"
+    },
+    {
+      "row": 1043,
+      "organization": "Jan Adhikar Kendra",
+      "error": "InvalidPhoneNumberError: +916405372555, +919534059575, +919871211576 is not a valid Phone Number"
+    },
+    {
+      "row": 1044,
+      "organization": "Pasumai Ulagam Trust",
+      "error": "InvalidPhoneNumberError: +919080096987, +919690979196 is not a valid Phone Number"
+    },
+    {
+      "row": 1045,
+      "organization": "Urs Happiness",
+      "error": "InvalidPhoneNumberError: +917602608880, +919641628268 is not a valid Phone Number"
+    },
+    {
+      "row": 1046,
+      "organization": "Anandam Educational and Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918393639363, +919362123007 is not a valid Phone Number"
+    },
+    {
+      "row": 1047,
+      "organization": "Legal aid to women Trust (Law Trust)",
+      "error": "InvalidPhoneNumberError: +919443103273, +919443148907 is not a valid Phone Number"
+    },
+    {
+      "row": 1048,
+      "organization": "Prapanjam Developmental Trust",
+      "error": "InvalidPhoneNumberError: +918838411503, +919750354018 is not a valid Phone Number"
+    },
+    {
+      "row": 1049,
+      "organization": "Social Trust",
+      "error": "InvalidPhoneNumberError: +916303731362, +919847864323 is not a valid Phone Number"
+    },
+    {
+      "row": 1050,
+      "organization": "National Association for Rural Integration (NARI)",
+      "error": "InvalidPhoneNumberError: +918074941887, +919849605885 is not a valid Phone Number"
+    },
+    {
+      "row": 1051,
+      "organization": "Jeevan Jyothi Rural Development and Self Employment Training Institute",
+      "error": "InvalidPhoneNumberError: +918050337101, +918722750205 is not a valid Phone Number"
+    },
+    {
+      "row": 1052,
+      "organization": "Hearing Vibes Foundation",
+      "error": "InvalidPhoneNumberError: +916515849565, +917449262119 is not a valid Phone Number"
+    },
+    {
+      "row": 1053,
+      "organization": "Shri Shri Shri Shivukumar Swamiji Grameenabhivruddhi Seva Samsthe",
+      "error": "InvalidPhoneNumberError: +918393934336, +919686935932 is not a valid Phone Number"
+    },
+    {
+      "row": 1054,
+      "organization": "Sadana Rural Development Society, Sindagi",
+      "error": "InvalidPhoneNumberError: +919686994995, +919945433631 is not a valid Phone Number"
+    },
+    {
+      "row": 1055,
+      "organization": "Sankalpa Trust For Empowerment",
+      "error": "InvalidPhoneNumberError: +917352322957, +917384272386 is not a valid Phone Number"
+    },
+    {
+      "row": 1056,
+      "organization": "Sky Charitable Trust",
+      "error": "InvalidPhoneNumberError: +919342650572, +919944887433 is not a valid Phone Number"
+    },
+    {
+      "row": 1183,
+      "organization": "Aariola Prakash Punj Foundation",
+      "error": "InvalidPhoneNumberError: +919479653206, +919516904043 is not a valid Phone Number"
+    },
+    {
+      "row": 1184,
+      "organization": "Annai Trust",
+      "error": "InvalidPhoneNumberError: +917525662454, +919626992892, +919698754788 is not a valid Phone Number"
+    },
+    {
+      "row": 1185,
+      "organization": "Ariyalur district Positive people welfare society",
+      "error": "InvalidPhoneNumberError: +917216312353, +919751131550 is not a valid Phone Number"
+    },
+    {
+      "row": 1186,
+      "organization": "Ashwini Samsthe, Bagewadi",
+      "error": "InvalidPhoneNumberError: +919448340199, +919620592396 is not a valid Phone Number"
+    },
+    {
+      "row": 1187,
+      "organization": "Center for Health and Gender Equality (CHANGE)",
+      "error": "InvalidPhoneNumberError: +918903630250, +919487750455 is not a valid Phone Number"
+    },
+    {
+      "row": 1188,
+      "organization": "Centre for Rural Development",
+      "error": "InvalidPhoneNumberError: +916760523612, +918951766153 is not a valid Phone Number"
+    },
+    {
+      "row": 1189,
+      "organization": "Community Human Empowerment Service for Society - CHESS",
+      "error": "InvalidPhoneNumberError: +918884188608, +919148078527, +919742455666 is not a valid Phone Number"
+    },
+    {
+      "row": 1190,
+      "organization": "HEARD Trust (Health Education Awareness and Rural Development Service)",
+      "error": "InvalidPhoneNumberError: +917397348385, +918486074611 is not a valid Phone Number"
+    },
+    {
+      "row": 1191,
+      "organization": "INGRID",
+      "error": "InvalidPhoneNumberError: +919483699384, +919663279113 is not a valid Phone Number"
+    },
+    {
+      "row": 1192,
+      "organization": "Mother Therasa Grameenabhivrudhi Samsthe,",
+      "error": "InvalidPhoneNumberError: +916760523612, +919008472846 is not a valid Phone Number"
+    },
+    {
+      "row": 1193,
+      "organization": "NANDHI GOSHALA DEVELOPMENT TRUST",
+      "error": "InvalidPhoneNumberError: +918153259035, +919483466812, +919972251286 is not a valid Phone Number"
+    },
+    {
+      "row": 1194,
+      "organization": "Nava Educational Aid Trust (NEAT)",
+      "error": "InvalidPhoneNumberError: +916373346616, +918200001466, +919787111400, +919994552221 is not a valid Phone Number"
+    },
+    {
+      "row": 1195,
+      "organization": "Pudhuyugam Society",
+      "error": "InvalidPhoneNumberError: +918098361468, +919865223138 is not a valid Phone Number"
+    },
+    {
+      "row": 1196,
+      "organization": "Rastriya Manav Abhivrudhi Foundation (RAMA FOUNDATION)",
+      "error": "InvalidPhoneNumberError: +919448122195, +919972564945 is not a valid Phone Number"
+    },
+    {
+      "row": 1197,
+      "organization": "Samarpan Welfare Association Social Development(SWASD)",
+      "error": "InvalidPhoneNumberError: +916542468807, +919835508457 is not a valid Phone Number"
+    },
+    {
+      "row": 1198,
+      "organization": "SANAKALPA Vikalchetanar Shikashanika Mattu Grameenabhiruddhi Smasthe",
+      "error": "InvalidPhoneNumberError: +916361427927, +917299340667 is not a valid Phone Number"
+    },
+    {
+      "row": 1199,
+      "organization": "Savidhan Shilpi Dr.B.R. Ambedkar ERDS",
+      "error": "InvalidPhoneNumberError: +917975316241, +919886541976 is not a valid Phone Number"
+    },
+    {
+      "row": 1200,
+      "organization": "Social Empowerment and Visionary Association",
+      "error": "InvalidPhoneNumberError: +917051420612, +918356828422, +918915720612 is not a valid Phone Number"
+    },
+    {
+      "row": 1201,
+      "organization": "Social Health Empowerment (SHE)",
+      "error": "InvalidPhoneNumberError: +916632661765, +919842553296 is not a valid Phone Number"
+    },
+    {
+      "row": 1202,
+      "organization": "Spandan Swayam Seva Samsthe, Vijayapur",
+      "error": "InvalidPhoneNumberError: +919480078316, +919945473542 is not a valid Phone Number"
+    },
+    {
+      "row": 1203,
+      "organization": "Sree Bhagiratha Educational & Rural Development Society",
+      "error": "InvalidPhoneNumberError: +917019309412, +917341319151 is not a valid Phone Number"
+    },
+    {
+      "row": 1204,
+      "organization": "Sri Durga Parameshwari Shikshana Samsthe",
+      "error": "InvalidPhoneNumberError: +919220008045, +919986336017 is not a valid Phone Number"
+    },
+    {
+      "row": 1205,
+      "organization": "Sri Lakshmi Venkateswar Grameena Abhivrudhi Mattu Shikshana Samsthe",
+      "error": "InvalidPhoneNumberError: +917406367293, +919886562757 is not a valid Phone Number"
+    },
+    {
+      "row": 1206,
+      "organization": "Tirupur District HIV Ullor Nala Sangam",
+      "error": "InvalidPhoneNumberError: +918181409120, +919942652203 is not a valid Phone Number"
+    },
+    {
+      "row": 1207,
+      "organization": "Villupuram District HIV Positive Society",
+      "error": "InvalidPhoneNumberError: +918685848382, +919347688323, +919600400593 is not a valid Phone Number"
+    },
+    {
+      "row": 1208,
+      "organization": "Vishwas Yuva Sangha",
+      "error": "InvalidPhoneNumberError: +917019544914, +919591080989 is not a valid Phone Number"
+    },
+    {
+      "row": 1227,
+      "organization": "Fitness Phobia Organisation",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00717\">CRM-LEAD-2026-00717</a></strong>"
+    },
+    {
+      "row": 1290,
+      "organization": "Dr. C. Anbarasu 24 Hours Clinic Seva Trust",
+      "error": "InvalidPhoneNumberError: +918667239868, +919381044766 is not a valid Phone Number"
+    },
+    {
+      "row": 1291,
+      "organization": "Socio Economic Education and Rehabilitation Society (SEERS)",
+      "error": "InvalidPhoneNumberError: +917358488957, +919600012112 is not a valid Phone Number"
+    },
+    {
+      "row": 1296,
+      "organization": "Sree Ganga for Rural Development Society",
+      "error": "InvalidPhoneNumberError: +918718344730, +919985522119 is not a valid Phone Number"
+    },
+    {
+      "row": 1297,
+      "organization": "Nithya Krushi Rural Development Education and Health Society",
+      "error": "InvalidPhoneNumberError: +919391069228, +919642926556 is not a valid Phone Number"
+    },
+    {
+      "row": 1298,
+      "organization": "Kallumarri Rural Education and Development Society",
+      "error": "InvalidPhoneNumberError: +917989553743, +918990878691 is not a valid Phone Number"
+    },
+    {
+      "row": 1299,
+      "organization": "Adi narayana animal husbandry and rural development society",
+      "error": "InvalidPhoneNumberError: +916398310993, +918639448518 is not a valid Phone Number"
+    },
+    {
+      "row": 1300,
+      "organization": "Guide for Rural Agriculture Development and Education Society (GRADES)",
+      "error": "InvalidPhoneNumberError: +917349306821, +919441450480 is not a valid Phone Number"
+    },
+    {
+      "row": 1301,
+      "organization": "Tenaple Environment Awareness And Motivation Trust (TEAM)",
+      "error": "InvalidPhoneNumberError: +918903285850, +919842290850 is not a valid Phone Number"
+    },
+    {
+      "row": 1302,
+      "organization": "Viveka Arackattalai",
+      "error": "InvalidPhoneNumberError: +917895034193, +918072714690 is not a valid Phone Number"
+    },
+    {
+      "row": 1303,
+      "organization": "Multipurpose Action for Social Service (MASS) Trust",
+      "error": "InvalidPhoneNumberError: +919842066630, +919894029182 is not a valid Phone Number"
+    },
+    {
+      "row": 1304,
+      "organization": "Gobichettipalayam Social Service Society for Women",
+      "error": "InvalidPhoneNumberError: +919095148945, +919597484096 is not a valid Phone Number"
+    },
+    {
+      "row": 1305,
+      "organization": "Integrated Rural Management Association (IRMA)",
+      "error": "InvalidPhoneNumberError: +916030436111, +917121527000, +918413846750, +918731870170 is not a valid Phone Number"
+    },
+    {
+      "row": 1306,
+      "organization": "Krishna Vennala Mahila Society",
+      "error": "InvalidPhoneNumberError: +919398581299, +919479146052 is not a valid Phone Number"
+    },
+    {
+      "row": 1307,
+      "organization": "Krupa Foundation",
+      "error": "InvalidPhoneNumberError: +917730907705, +918500741050 is not a valid Phone Number"
+    },
+    {
+      "row": 1308,
+      "organization": "Abhaya Educational Society",
+      "error": "InvalidPhoneNumberError: +919010549135, +919160801510 is not a valid Phone Number"
+    },
+    {
+      "row": 1309,
+      "organization": "Amma Services and Development Society",
+      "error": "InvalidPhoneNumberError: +918522887978, +918595555594 is not a valid Phone Number"
+    },
+    {
+      "row": 1310,
+      "organization": "Santhvanam Kunduvanpadam Trust",
+      "error": "InvalidPhoneNumberError: +916455758425, +917637545150, +919656667880 is not a valid Phone Number"
+    },
+    {
+      "row": 1311,
+      "organization": "Pragathi Seva Society",
+      "error": "InvalidPhoneNumberError: +919440571193, +919666823211 is not a valid Phone Number"
+    },
+    {
+      "row": 1312,
+      "organization": "Prathibha Mythri Mahila Seva Sangam",
+      "error": "InvalidPhoneNumberError: +916504358505, +917288843457 is not a valid Phone Number"
+    },
+    {
+      "row": 1313,
+      "organization": "Alive Ministries Trust",
+      "error": "InvalidPhoneNumberError: +916404741465, +918465999225 is not a valid Phone Number"
+    },
+    {
+      "row": 1314,
+      "organization": "JANA CHETANA",
+      "error": "InvalidPhoneNumberError: +919154872095, +919440080608 is not a valid Phone Number"
+    },
+    {
+      "row": 1315,
+      "organization": "Priyadarshini Rural and Integrated Association (PRIA)",
+      "error": "InvalidPhoneNumberError: +916090008555, +917989904505 is not a valid Phone Number"
+    },
+    {
+      "row": 1316,
+      "organization": "Welfare Organistion for Rural Development \u2013 WORD TRUST",
+      "error": "InvalidPhoneNumberError: +917686896254, +919443797410 is not a valid Phone Number"
+    },
+    {
+      "row": 1317,
+      "organization": "Ambiha Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918080839580, +919488987832 is not a valid Phone Number"
+    },
+    {
+      "row": 1318,
+      "organization": "Peoples Action Service Society",
+      "error": "InvalidPhoneNumberError: +919788203997, +919916226348 is not a valid Phone Number"
+    },
+    {
+      "row": 1319,
+      "organization": "ADAPT SOCIETY THRISSUR",
+      "error": "InvalidPhoneNumberError: +917322327203, +918301074962, +919447524962 is not a valid Phone Number"
+    },
+    {
+      "row": 1320,
+      "organization": "Jaithra Foundation",
+      "error": "InvalidPhoneNumberError: +917012679285, +918253930373 is not a valid Phone Number"
+    },
+    {
+      "row": 1321,
+      "organization": "Tamilnadu Ngos Protect And Welfare Committee",
+      "error": "InvalidPhoneNumberError: +916711483285, +919688408090 is not a valid Phone Number"
+    },
+    {
+      "row": 1322,
+      "organization": "Vulnarables Organisation for Integrated Community and Education Trust",
+      "error": "InvalidPhoneNumberError: +918056898977, +918668154233 is not a valid Phone Number"
+    },
+    {
+      "row": 1323,
+      "organization": "Kamarajar Trust",
+      "error": "InvalidPhoneNumberError: +919047122573, +919060289634 is not a valid Phone Number"
+    },
+    {
+      "row": 1324,
+      "organization": "Sustainable development trust",
+      "error": "InvalidPhoneNumberError: +917445343565, +919597164484 is not a valid Phone Number"
+    },
+    {
+      "row": 1325,
+      "organization": "Tamil Nadu Depressed Women Welfare Society",
+      "error": "InvalidPhoneNumberError: +918825407412, +919443645284 is not a valid Phone Number"
+    },
+    {
+      "row": 1326,
+      "organization": "Women's Power Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917598658443, +919421730225 is not a valid Phone Number"
+    },
+    {
+      "row": 1327,
+      "organization": "Organisation of Development Action and Maintenance",
+      "error": "InvalidPhoneNumberError: +919488541519, +919894306950 is not a valid Phone Number"
+    },
+    {
+      "row": 1328,
+      "organization": "Steven Man and Woman Charitable Trust",
+      "error": "InvalidPhoneNumberError: +918309743388, +919197909691 is not a valid Phone Number"
+    },
+    {
+      "row": 1329,
+      "organization": "CHAMP Social Service Society, Thiruvannamalai",
+      "error": "InvalidPhoneNumberError: +918831841803, +919578726122 is not a valid Phone Number"
+    },
+    {
+      "row": 1330,
+      "organization": "Social Agriculture Children Education And Women Development Trust",
+      "error": "InvalidPhoneNumberError: +917111622050, +919159997997 is not a valid Phone Number"
+    },
+    {
+      "row": 1397,
+      "organization": "Community Reconstruction of Social Service",
+      "error": "InvalidPhoneNumberError: +918328507865, +919845227130 is not a valid Phone Number"
+    },
+    {
+      "row": 1398,
+      "organization": "Shalom Trust for Relief Education and Misson",
+      "error": "InvalidPhoneNumberError: +919182758311, +919491415130 is not a valid Phone Number"
+    },
+    {
+      "row": 1399,
+      "organization": "CHANARD - Centre for Human and Natural Resources Development",
+      "error": "InvalidPhoneNumberError: +917010605977, +919298948588, +919842126520 is not a valid Phone Number"
+    },
+    {
+      "row": 1400,
+      "organization": "Sirumalai Evergreen Multipurpose Community Development Society (SIMCODESS)",
+      "error": "InvalidPhoneNumberError: +916381472474, +919750176765 is not a valid Phone Number"
+    },
+    {
+      "row": 1401,
+      "organization": "We Foundation",
+      "error": "InvalidPhoneNumberError: +917358557272, +919171419652, +919786066994 is not a valid Phone Number"
+    },
+    {
+      "row": 1402,
+      "organization": "Vidiyal Society Sathyamangalam",
+      "error": "InvalidPhoneNumberError: +916380368840, +917338786968, +919345009074, +919942770935 is not a valid Phone Number"
+    },
+    {
+      "row": 1403,
+      "organization": "Women in Need (WIN) Foundation",
+      "error": "InvalidPhoneNumberError: +916756768726, +919444124538 is not a valid Phone Number"
+    },
+    {
+      "row": 1404,
+      "organization": "Training, Reconstruction, Educational & Environmental Society (TREES)",
+      "error": "InvalidPhoneNumberError: +919183868384, +919494580902 is not a valid Phone Number"
+    },
+    {
+      "row": 1405,
+      "organization": "Nanma Charitable Trust",
+      "error": "InvalidPhoneNumberError: +917113559956, +919048257437 is not a valid Phone Number"
+    },
+    {
+      "row": 1406,
+      "organization": "Adukundamu SC.ST. Labour Society (ASSLS)",
+      "error": "InvalidPhoneNumberError: +916300678500, +918142732207 is not a valid Phone Number"
+    },
+    {
+      "row": 1407,
+      "organization": "Best Empowerment Services Trust",
+      "error": "InvalidPhoneNumberError: +918825459280, +919445204694 is not a valid Phone Number"
+    },
+    {
+      "row": 1408,
+      "organization": "Vizhithezhu Thozha",
+      "error": "InvalidPhoneNumberError: +918545346545, +919500317152 is not a valid Phone Number"
+    },
+    {
+      "row": 1409,
+      "organization": "Annai Trust, Tamilnadu",
+      "error": "InvalidPhoneNumberError: +916442398458, +919994284579 is not a valid Phone Number"
+    },
+    {
+      "row": 1410,
+      "organization": "Rural Institute for People's Enlightenment (RIPE)",
+      "error": "InvalidPhoneNumberError: +918733032353, +919440760393 is not a valid Phone Number"
+    },
+    {
+      "row": 1411,
+      "organization": "Jeevakkal Social Welfare Youth Society (JSWYS)",
+      "error": "InvalidPhoneNumberError: +919842472087, +919994467883 is not a valid Phone Number"
+    },
+    {
+      "row": 1412,
+      "organization": "People Community Development Society",
+      "error": "InvalidPhoneNumberError: +919347845831, +919441887465 is not a valid Phone Number"
+    }
+  ],
+  "created_sample": [
+    "CRM-LEAD-2026-00001",
+    "CRM-LEAD-2026-00002",
+    "CRM-LEAD-2026-00003",
+    "CRM-LEAD-2026-00004",
+    "CRM-LEAD-2026-00005",
+    "CRM-LEAD-2026-00006",
+    "CRM-LEAD-2026-00007",
+    "CRM-LEAD-2026-00008",
+    "CRM-LEAD-2026-00009",
+    "CRM-LEAD-2026-00010",
+    "CRM-LEAD-2026-00011",
+    "CRM-LEAD-2026-00012",
+    "CRM-LEAD-2026-00013",
+    "CRM-LEAD-2026-00014",
+    "CRM-LEAD-2026-00015",
+    "CRM-LEAD-2026-00016",
+    "CRM-LEAD-2026-00017",
+    "CRM-LEAD-2026-00018",
+    "CRM-LEAD-2026-00019",
+    "CRM-LEAD-2026-00020"
+  ]
+}

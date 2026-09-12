@@ -1,0 +1,85 @@
+{
+  "rotation_name": "traitdna_voice_and_music_rotation_v1",
+  "next_voice_number": 7,
+  "total_videos_created_with_rotation": 6,
+  "last_used_voice_number": 6,
+  "last_used_voice_name": "Drew",
+  "history": [
+    {
+      "created_at": "2026-06-17T02:11:51.611834+00:00",
+      "voice_number": 1,
+      "voice_name": "Juniper",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": null,
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_ahmad_drive_test_20260617_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_01_juniper_ahmad_drive_test_20260617.mp4"
+    },
+    {
+      "created_at": "2026-06-17T03:52:20.096818+00:00",
+      "voice_number": 2,
+      "voice_name": "Hope",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_full_20s_contextual_wan_ahmad_preview_20260617_0347.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_ahmad_preview_20260617_0347_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_ahmad_preview_20260617_0347.mp4"
+    },
+    {
+      "created_at": "2026-06-18T14:32:58.906519+00:00",
+      "voice_number": 3,
+      "voice_name": "Sarah",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_kling26_section1_lowerthird_test_20260618_141727.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0001_kling26_lowerthird_with_vo_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_V0001_kling26_lowerthird_with_vo.mp4"
+    },
+    {
+      "created_at": "2026-06-18T15:08:47.225793+00:00",
+      "voice_number": 4,
+      "voice_name": "Alexandra",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260618_150300_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0001_20260618_150300_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_04_alexandra_V0001_20260618_150300_001.mp4",
+      "row_label": "V0001_20260618_150300_001"
+    },
+    {
+      "created_at": "2026-06-18T15:14:36.356447+00:00",
+      "voice_number": 5,
+      "voice_name": "Rachel",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0002_20260618_150851_002.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0002_20260618_150851_002_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_05_rachel_V0002_20260618_150851_002.mp4",
+      "row_label": "V0002_20260618_150851_002"
+    },
+    {
+      "created_at": "2026-06-22T16:31:16.816919+00:00",
+      "voice_number": 6,
+      "voice_name": "Drew",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260622_162548_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0001_20260622_162548_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_162548_001.mp4",
+      "row_label": "V0001_20260622_162548_001"
+    }
+  ],
+  "next_music_number": 1,
+  "last_used_music_number": 1,
+  "last_used_music_name": "Corporate.wav",
+  "last_used_music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+  "last_generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0001_20260622_162548_001_fitted.mp3",
+  "last_output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_162548_001.mp4",
+  "last_contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260622_162548_001.mp4"
+}

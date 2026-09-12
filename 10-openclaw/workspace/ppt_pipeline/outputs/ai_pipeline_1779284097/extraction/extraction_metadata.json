@@ -1,0 +1,9 @@
+{
+  "source_pdf": "/root/.openclaw/workspace/ppt_pipeline/samples/sample_source.pdf",
+  "source_size_bytes": 3312,
+  "page_count": 1,
+  "text_char_count": 2202,
+  "chunk_count": 1,
+  "extract_all_pages": true,
+  "status": "ok"
+}

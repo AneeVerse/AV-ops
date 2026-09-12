@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="grad9" gradientUnits="userSpaceOnUse" cx="360" cy="455" r="175" fx="395" fy="420">
+      <stop offset="0%" stop-color="#ffd12a"/>
+      <stop offset="25%" stop-color="#ff761d"/>
+      <stop offset="48%" stop-color="#ec2870"/>
+      <stop offset="72%" stop-color="#b500bf"/>
+      <stop offset="100%" stop-color="#6232d0"/>
+    </radialGradient>
+    <radialGradient id="grad5" gradientUnits="userSpaceOnUse" cx="525" cy="445" r="185" fx="500" fy="455">
+      <stop offset="0%" stop-color="#ff9318"/>
+      <stop offset="28%" stop-color="#ff5145"/>
+      <stop offset="52%" stop-color="#d91a86"/>
+      <stop offset="76%" stop-color="#8f21c8"/>
+      <stop offset="100%" stop-color="#5a31d3"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#7a2fd6" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <g text-anchor="middle">
+    <text x="352" y="560" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="250" letter-spacing="0" fill="url(#grad9)" filter="url(#softShadow)">9</text>
+    <text x="503" y="560" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="700" font-size="250" letter-spacing="0" fill="url(#grad5)" filter="url(#softShadow)">5</text>
+    <text x="667" y="560" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="400" font-size="146" letter-spacing="0" fill="#002763">%</text>
+    <text x="540" y="675" font-family="Graphik Web, Graphik, Arial, sans-serif" font-weight="600" font-size="72" letter-spacing="0" fill="#002763">
+      <tspan x="540" dy="0">of U.S. publicly</tspan>
+      <tspan x="540" dy="78">posted jobs stay</tspan>
+      <tspan x="540" dy="78">invisible to</tspan>
+      <tspan x="540" dy="78">candidates who</tspan>
+      <tspan x="540" dy="78">don't know</tspan>
+      <tspan x="540" dy="78">to search them</tspan>
+    </text>
+  </g>
+</svg>

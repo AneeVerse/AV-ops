@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T18:13:20.801525+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "gcdjdmv9xsrmw0cze548415sb8",
+  "raw_audio_url": "https://replicate.delivery/xezq/QrMSn2JPVyozBFUfah03jH1eoZOkUzgTMeyFBUcvmUAfrIobB/tmpxi5l1a8c.mp3",
+  "raw_duration": 1.933061,
+  "fitted_duration": 1.933061,
+  "script_text": "Am I chasing the wrong opportunity?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0086_20260717_181317_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0086_20260717_181317_section1_hook_fitted.mp3"
+}

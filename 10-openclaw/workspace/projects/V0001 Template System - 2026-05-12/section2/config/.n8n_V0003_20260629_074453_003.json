@@ -1,0 +1,59 @@
+{
+  "duration_seconds": 5,
+  "fps": 30,
+  "size": [
+    1080,
+    1920
+  ],
+  "stat_value": 95,
+  "stat_prefix": "~",
+  "stat_prefix_x_factor": 0.9,
+  "stat_prefix_y_offset": -70,
+  "stat_prefix_min_progress": 0.0,
+  "stat_prefix_lock_final_position": true,
+  "stat_prefix_animate_y": true,
+  "stat_prefix_animate_scale": true,
+  "stat_suffix": "%",
+  "body_lines": [
+    "Titles you",
+    "ignore are",
+    "often the ones",
+    "recruiting your",
+    "exact",
+    "background and",
+    "paying more than the roles you're applying to."
+  ],
+  "output_name": "section2_n8n_V0003_20260629_074453_003.mp4",
+  "audio_reference": "../../V0001 Sections 1-2 AE Match - 2026-05-12/output/V0001_section2_only_from_reference_v1.mp4",
+  "line_starts": [
+    0.32,
+    0.38,
+    0.46,
+    0.78,
+    0.92,
+    1.08
+  ],
+  "line_fade_seconds": 0.36,
+  "count_keys": [
+    [
+      0.0,
+      0
+    ],
+    [
+      0.25,
+      0
+    ],
+    [
+      1.0,
+      82
+    ],
+    [
+      1.45,
+      95
+    ],
+    [
+      5.0,
+      95
+    ]
+  ]
+}

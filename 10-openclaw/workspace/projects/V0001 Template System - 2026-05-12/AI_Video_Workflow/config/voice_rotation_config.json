@@ -1,0 +1,166 @@
+{
+  "rotation_name": "traitdna_voice_and_music_rotation_v1",
+  "created_at": "2026-05-14",
+  "rule": "For each new video: optionally generate fresh contextual WAN clips for sections 1 and 3 from their section text, select the next voice identity 1-10, select the next background music track, then render the final video. Voice and music rotations wrap independently.",
+  "base_video": "output/traitdna_full_20s_template_v7_section2_editable.mp4",
+  "music": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+  "music_source_start_seconds": 1.0,
+  "music_volume": 0.32,
+  "voice_delay_ms": 250,
+  "target_duration_seconds": 20,
+  "voice_loudnorm": {
+    "I": -16,
+    "TP": -1.5,
+    "LRA": 11,
+    "post_volume": 1.05
+  },
+  "voices": [
+    {
+      "number": 1,
+      "name": "Juniper",
+      "gender": "female",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5voices_v1/voiceover_juniper_fitted.mp3",
+      "replicate_voice": "Juniper",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 2,
+      "name": "Hope",
+      "gender": "female",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5voices_v1/voiceover_hope_fitted.mp3",
+      "replicate_voice": "Hope",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 3,
+      "name": "Sarah",
+      "gender": "female",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5voices_v1/voiceover_sarah_fitted.mp3",
+      "replicate_voice": "Sarah",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 4,
+      "name": "Alexandra",
+      "gender": "female",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5voices_v1/voiceover_alexandra_fitted.mp3",
+      "replicate_voice": "Alexandra",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 5,
+      "name": "Rachel",
+      "gender": "female",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5voices_v1/voiceover_rachel_fitted.mp3",
+      "replicate_voice": "Rachel",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 6,
+      "name": "Drew",
+      "gender": "male",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5male_voices_v1/voiceover_drew_fitted.mp3",
+      "replicate_voice": "Drew",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 7,
+      "name": "Paul",
+      "gender": "male",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5male_voices_v1/voiceover_paul_fitted.mp3",
+      "replicate_voice": "Paul",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 8,
+      "name": "Roger",
+      "gender": "male",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5male_voices_v1/voiceover_roger_fitted.mp3",
+      "replicate_voice": "Roger",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 9,
+      "name": "James",
+      "gender": "male",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5male_voices_v1/voiceover_james_fitted.mp3",
+      "replicate_voice": "James",
+      "audio_role": "sample_fallback_only"
+    },
+    {
+      "number": 10,
+      "name": "Mark",
+      "gender": "male",
+      "provider": "replicate/elevenlabs/v2-multilingual",
+      "audio": "audio/replicate_elevenlabs_5male_voices_v1/voiceover_mark_fitted.mp3",
+      "replicate_voice": "Mark",
+      "audio_role": "sample_fallback_only"
+    }
+  ],
+  "voiceover_generation": {
+    "mode": "generate_each_run",
+    "provider": "replicate",
+    "model": "elevenlabs/v2-multilingual",
+    "version": "cc1c55e63c927e79a35f5807accbf172051f2b21effe1db532cf8c907cc68d57",
+    "api_token_env": "REPLICATE_API_TOKEN",
+    "env_file": "../../../.env",
+    "default_text_file": "audio/female_full_vo_v1/full_voiceover.txt",
+    "generated_audio_dir": "audio/rotating_voice_generated",
+    "fit_to_seconds": 18.9,
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8,
+      "style": 0.0,
+      "speed": 1.0,
+      "language_code": "en"
+    },
+    "note": "The per-voice audio paths below are sample/fallback files only. Normal automation generates new audio from the current script every run."
+  },
+  "music_rotation": {
+    "enabled": true,
+    "directory": "audio/music_rotation",
+    "order": "sorted_filename_ascending",
+    "supported_extensions": [
+      ".mp3",
+      ".wav",
+      ".m4a",
+      ".aac",
+      ".flac",
+      ".ogg"
+    ],
+    "fallback_to_legacy_music": true,
+    "rule": "Use track ((video_number - 1) % total_music_tracks) + 1. For 7 tracks: 1,2,3,4,5,6,7,1,2..."
+  },
+  "contextual_video_generation": {
+    "enabled": true,
+    "provider": "replicate",
+    "model": "wan-video/wan-2.7-t2v",
+    "api_token_env": "REPLICATE_API_TOKEN",
+    "env_file": "../../../.env",
+    "duration": 5,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "enable_prompt_expansion": true,
+    "poll_seconds": 15,
+    "output_dir": "assets/wan_contextual_clips",
+    "negative_prompt": "dull colors, desaturated, grey washed out color, low contrast, blur, distortion, watermark, logo, captions, subtitles, readable text, gibberish text, bad anatomy, flicker",
+    "sections": [
+      "section1",
+      "section3"
+    ],
+    "prompt_templates": {
+      "section1": "Vertical 9:16 cinematic professional background video contextually matching this hook: {text}. Modern business/software/SaaS feel, human or workspace visuals where relevant, subtle camera movement, high quality, no readable text, no captions, no subtitles, no logos, no watermark.",
+      "section3": "Vertical 9:16 cinematic professional background video contextually matching this implication: {text}. Thoughtful business/software/career visual mood, premium modern style, subtle camera movement, high quality, no readable text, no captions, no subtitles, no logos, no watermark."
+    },
+    "note": "Run render_with_rotating_voice.py with --generate-contextual-clips to generate fresh WAN clips for Section 1 and Section 3 from their current text, render those sections, then generate/mix the fresh voiceover and rotating music."
+  }
+}

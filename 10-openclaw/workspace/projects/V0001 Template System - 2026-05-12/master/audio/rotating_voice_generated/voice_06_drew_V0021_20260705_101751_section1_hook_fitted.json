@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:17:56.159815+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "eskq1ser7drmy0cz674b63qncw",
+  "raw_audio_url": "https://replicate.delivery/xezq/dtpL8lwWHrKHMJM2d4oDq6ps4YWwXJQvidq3xvwW6tepCf1WA/tmptrvdok3a.mp3",
+  "raw_duration": 5.668571,
+  "fitted_duration": 5.668571,
+  "script_text": "AI isn't taking Data Scientist jobs. It's rewriting the job while you apply.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260705_101751_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0021_20260705_101751_section1_hook_fitted.mp3"
+}

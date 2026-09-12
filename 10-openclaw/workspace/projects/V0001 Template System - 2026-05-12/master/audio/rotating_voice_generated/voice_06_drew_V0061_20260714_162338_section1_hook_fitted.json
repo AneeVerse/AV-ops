@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-14T16:23:44.006749+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "gp266nzttdrmy0czc5rady8jgr",
+  "raw_audio_url": "https://replicate.delivery/xezq/JUusLtvu7F5hF5066p2FWRVVfE1R7VfIYdslwaZIfsSeIFkbB/tmpz81b7_4s.mp3",
+  "raw_duration": 2.533878,
+  "fitted_duration": 2.533878,
+  "script_text": "Why am I applying and hearing nothing back?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0061_20260714_162338_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0061_20260714_162338_section1_hook_fitted.mp3"
+}

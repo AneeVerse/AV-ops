@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T10:15:28.795434+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "8dxc8rb3h5rmy0cz9e3adt68ar",
+  "raw_audio_url": "https://replicate.delivery/xezq/oPUdmUflXm0ZFCch23K0SDux18We5uYUMKJjThZ5EcZfBPvtA/tmpbt6e4f8g.mp3",
+  "raw_duration": 6.817959,
+  "fitted_duration": 6.817959,
+  "script_text": "Workers often underestimate their leverage when they are employed and not actively comparing the market.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0042_20260710_101521_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0042_20260710_101521_section2_insight_fitted.mp3"
+}

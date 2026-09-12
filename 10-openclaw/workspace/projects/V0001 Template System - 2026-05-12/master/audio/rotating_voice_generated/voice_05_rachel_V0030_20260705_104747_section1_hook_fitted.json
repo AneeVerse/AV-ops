@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T11:15:27.795432+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "wy5q9k42n1rmy0cz67yve8gw40",
+  "raw_audio_url": "https://replicate.delivery/xezq/kXJDScEZy4opJ9NfaMzJrwORtE2FWdmQzY2mYi6q3bAndf1WA/tmpmnzwe_0y.mp3",
+  "raw_duration": 4.780408,
+  "fitted_duration": 4.780408,
+  "script_text": "Your AI Engineer role overlaps heavily with titles that often pay more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0030_20260705_104747_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0030_20260705_104747_section1_hook_fitted.mp3"
+}

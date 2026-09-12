@@ -1,0 +1,44 @@
+{
+  "section_id": "section3_implication",
+  "duration_seconds": 3.6333333333333333,
+  "fps": 30,
+  "size": "1080x1920",
+  "clip_path": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0013_20260703_041314_section3_wan.mp4",
+  "audio_path": null,
+  "text_lines": [
+    "Your strongest",
+    "matches may be",
+    "roles you've",
+    "never searched."
+  ],
+  "font_family_ass": "Graphik Web",
+  "font_dir": "../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0",
+  "font_size": 132,
+  "font_color_ass": "&H00FFFFFF",
+  "shadow_color_ass": "&HA0000000",
+  "shadow_size": 5,
+  "position_x": 540,
+  "position_y": 1135,
+  "line_gap": 155,
+  "reveal_starts": [
+    0.14,
+    0.23,
+    0.32,
+    0.41
+  ],
+  "reveal_duration_ms": 260,
+  "slide_px": 30,
+  "video_style": {
+    "scale_width": 1080,
+    "scale_height": 1920,
+    "crop_width": 1080,
+    "crop_height": 1920,
+    "contrast": 1.03,
+    "saturation": 1.04,
+    "brightness": 0.0,
+    "gamma": 1.0
+  },
+  "output_name": "section3_n8n_V0013_20260703_041314.mp4",
+  "hold_text_until_end": true,
+  "slow_video_to_duration": true
+}

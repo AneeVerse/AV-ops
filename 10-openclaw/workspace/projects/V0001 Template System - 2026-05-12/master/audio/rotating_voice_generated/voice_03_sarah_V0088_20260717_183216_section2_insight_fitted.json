@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T18:32:23.444487+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "gjnyme6kznrmt0cze5cs9gcht8",
+  "raw_audio_url": "https://replicate.delivery/xezq/Nt0YTQ8HUfUzJyc7Dcgryj7RzPz8Oj67K3np91Qlal8aOBdLA/tmpwsuphxlx.mp3",
+  "raw_duration": 7.758367,
+  "fitted_duration": 7.758367,
+  "script_text": "With AI affecting many roles and a tight job market, switching jobs often involves taking significant financial and career risks.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0088_20260717_183216_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0088_20260717_183216_section2_insight_fitted.mp3"
+}

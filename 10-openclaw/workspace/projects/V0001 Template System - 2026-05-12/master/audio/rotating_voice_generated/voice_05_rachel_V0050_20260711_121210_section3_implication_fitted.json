@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T12:12:19.796423+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "r2sj1jnt65rmy0cza4bs44g670",
+  "raw_audio_url": "https://replicate.delivery/xezq/eqUfuRxQJIlY7Uz8Vf1PZe9aAJP7DegpIerMWtIOhWjoIlfbLA/tmpo5u_y9lh.mp3",
+  "raw_duration": 3.604898,
+  "fitted_duration": 3.604898,
+  "script_text": "The decision should be based on more than frustration or salary.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0050_20260711_121210_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0050_20260711_121210_section3_implication_fitted.mp3"
+}

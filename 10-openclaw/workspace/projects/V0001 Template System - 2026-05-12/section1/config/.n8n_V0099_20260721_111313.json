@@ -1,0 +1,50 @@
+{
+  "section_id": "section1_hook",
+  "duration_seconds": 4.2,
+  "fps": 30,
+  "size": "1080x1920",
+  "clip_path": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0099_20260721_111313_section1_wan.mp4",
+  "audio_path": null,
+  "headline_text": "Why are employers not responding to my applications?",
+  "font_file": "../../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/Graphik-Bold.ttf",
+  "font_family_ass": "Graphik Web",
+  "font_size": 132,
+  "font_color_ass": "&H00FFFFFF",
+  "shadow_color_ass": "&H85000000",
+  "shadow_size": 5,
+  "position_x": 540,
+  "position_y_start": 125,
+  "position_y_end": 95,
+  "safe_margin_left": 70,
+  "safe_margin_right": 70,
+  "safe_margin_top": 35,
+  "text_reveal_steps": [
+    {
+      "start": 0.0,
+      "end": 0.2,
+      "text": "Why are employers"
+    },
+    {
+      "start": 0.2,
+      "end": 0.42,
+      "text": "Why are employers\nnot responding to"
+    },
+    {
+      "start": 0.42,
+      "end": 0.68,
+      "text": "Why are employers\nnot responding to\nmy applications?"
+    }
+  ],
+  "video_style": {
+    "scale_width": 1296,
+    "scale_height": 2304,
+    "crop_width": 1080,
+    "crop_height": 1920,
+    "contrast": 1.12,
+    "saturation": 1.2,
+    "brightness": 0.012,
+    "gamma": 1.0
+  },
+  "output_name": "section1_n8n_V0099_20260721_111313.mp4",
+  "font_dir": "../../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0"
+}

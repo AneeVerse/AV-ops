@@ -1,0 +1,13 @@
+{
+  "rotation_name": "traitdna_voice_and_music_rotation_v1",
+  "next_voice_number": 1,
+  "total_videos_created_with_rotation": 0,
+  "last_used_voice_number": null,
+  "last_used_voice_name": null,
+  "last_output": null,
+  "history": [],
+  "next_music_number": 1,
+  "last_used_music_number": null,
+  "last_used_music_name": null,
+  "last_used_music_path": null
+}

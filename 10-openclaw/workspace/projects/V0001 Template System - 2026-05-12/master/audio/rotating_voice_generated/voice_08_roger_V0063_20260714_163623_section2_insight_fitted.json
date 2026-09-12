@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-14T16:36:29.437042+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "v4edf158hhrmt0czc5y83a3wxm",
+  "raw_audio_url": "https://replicate.delivery/xezq/gpIfc1txjGxhMqlgFKtdKK8tFBfkWNNbfNFQIi0xQciY8CytA/tmpldqxs_hx.mp3",
+  "raw_duration": 5.799184,
+  "fitted_duration": 5.799184,
+  "script_text": "Some postings stay up even when hiring is paused, filled internally, or used to collect candidates.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0063_20260714_163623_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0063_20260714_163623_section2_insight_fitted.mp3"
+}

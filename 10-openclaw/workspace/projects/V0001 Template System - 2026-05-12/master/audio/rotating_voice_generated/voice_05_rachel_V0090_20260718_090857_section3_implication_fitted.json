@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-18T09:22:26.881013+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "1zxd06nqphrmw0czej4anwwmjm",
+  "raw_audio_url": "https://replicate.delivery/xezq/EIXYcVhehFTmJSlCpjeKFiBI7GRar9dhogBRULLunRURfeobB/tmp9wn3w063.mp3",
+  "raw_duration": 5.146122,
+  "fitted_duration": 5.146122,
+  "script_text": "Upskilling and knowing your AI readiness present significant salary upside potential.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section3_implication_fitted.mp3"
+}

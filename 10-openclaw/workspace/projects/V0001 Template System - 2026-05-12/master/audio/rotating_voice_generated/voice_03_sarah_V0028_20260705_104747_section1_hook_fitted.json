@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T11:04:13.463123+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "xbq4fs9s29rmt0cz67ssr6xxkr",
+  "raw_audio_url": "https://replicate.delivery/xezq/BEGA9s7vYEpXDVNLRHwVgDUe1F6XBvJ7Yl49PHNreONswertA/tmpj8yobxup.mp3",
+  "raw_duration": 5.01551,
+  "fitted_duration": 5.01551,
+  "script_text": "Going deeper as a AI Engineer isn't always the fastest path. Wider may pay more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0028_20260705_104747_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0028_20260705_104747_section1_hook_fitted.mp3"
+}

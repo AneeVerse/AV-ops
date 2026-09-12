@@ -1,0 +1,13 @@
+{
+  "source_pdf": "/root/.openclaw/workspace/projects/PDF_to_PPT_Workflow/inputs/sample.pdf",
+  "page_count": 1,
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "AI Sales Enablement Report\nThis report explains how AI improves sales operations, lead prioritization, and\ncontent personalization.\nMarket Context\nSales teams face high lead volumes, inconsistent follow-up, and fragmented\ncustomer data. AI systems can classify intent and surface priority accounts.\nCore Workflow\nThe recommended workflow includes data ingestion, enrichment, scoring,\npersonalization, outreach, tracking, and optimization.\nImpact\nTeams can reduce manual research time, improve response quality, and\nstandardize outbound operations.\nRecommendation\nStart with a narrow workflow, measure response rate, and expand only after the\nprocess is proven.\nImplementation Plan\nBegin with CRM exports, define scoring rules, create message templates, and\nreview weekly performance.\nRisks\nPoor data quality, unclear ownership, and over-automation can reduce trust.\nHuman review should remain part of the process.",
+      "tables": [],
+      "preview_image": "/root/.openclaw/workspace/projects/PDF_to_PPT_Workflow/work/latest/page_previews/page_001.png"
+    }
+  ],
+  "full_text": "[Page 1]\nAI Sales Enablement Report\nThis report explains how AI improves sales operations, lead prioritization, and\ncontent personalization.\nMarket Context\nSales teams face high lead volumes, inconsistent follow-up, and fragmented\ncustomer data. AI systems can classify intent and surface priority accounts.\nCore Workflow\nThe recommended workflow includes data ingestion, enrichment, scoring,\npersonalization, outreach, tracking, and optimization.\nImpact\nTeams can reduce manual research time, improve response quality, and\nstandardize outbound operations.\nRecommendation\nStart with a narrow workflow, measure response rate, and expand only after the\nprocess is proven.\nImplementation Plan\nBegin with CRM exports, define scoring rules, create message templates, and\nreview weekly performance.\nRisks\nPoor data quality, unclear ownership, and over-automation can reduce trust.\nHuman review should remain part of the process."
+}

@@ -1,0 +1,45 @@
+{
+  "section": "section3",
+  "label": "V0045_20260711_040143",
+  "text": "You need to know whether the employer shows real hiring momentum.",
+  "prompt": "Create a NEW unique realistic 5-second vertical 9:16 professional B-roll video. Do not reuse any prior clip.\n\nScript placeholder/context only:\nYou need to know whether the employer shows real hiring momentum.\n\nUse the script placeholder only for mood and action relevance. Do NOT show, write, caption, subtitle, or render any words from it.\n\nScene: a software developer at a modern workstation/home-office engineering desk, clearly a developer in the first second. Include laptop or external monitor, keyboard/mouse, casual developer clothing, headphones or tech desk cues, IDE/terminal/code-editor ambience as soft blurred screen glow only.\n\nCamera/composition: back-side, side-angle, 3/4 rear, or over-the-shoulder view; never front-facing. Smooth slow push-in or subtle side movement. Wide medium shot with person/desk/devices in the lower half. Keep the top 25-30% clean empty negative space for template text overlay.\n\nScreens: face the subject, not the camera. Show monitor back/edge or angled blurred IDE/terminal glow only. No readable text, code, UI labels, charts, documents, logos, app icons, Apple logo, brand marks, or branding.\n\nStyle/mood: realistic cinematic professional B-roll, warm natural light, shallow depth of field, polished career-tech feel, focused optimistic developer.\n\nAvoid: suits, boardrooms, meetings, generic corporate stock footage, front-facing smiles, readable screens, app icons, Apple logo, visible brand marks, on-screen text generated in the footage, logos, cartoons, CGI, holograms, distorted hands/faces, fast or shaky camera, low quality.",
+  "negative_prompt": "text, subtitles, logo, Apple logo, app icons, visible laptop screen, readable screen, UI overlay, chart, graph, branding, brand marks, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, fast camera movement, shaky camera, low quality, front-facing corporate employee, suit, boardroom, conference room",
+  "model": "kwaivgi/kling-v2.6",
+  "prediction_id": "ykdw7es1x9rmw0cz9xcvh5q30m",
+  "url": "https://replicate.delivery/xezq/6zgwgQcunRqHKxMgTmxpvKz7PIs0av5ifnfZDB5QPBRKN33WA/tmpq40vb5ik.mp4",
+  "downloaded": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0045_20260711_040143_section3_wan.mp4",
+  "result": {
+    "id": "ykdw7es1x9rmw0cz9xcvh5q30m",
+    "model": "kwaivgi/kling-v2.6",
+    "version": "hidden",
+    "input": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "negative_prompt": "text, subtitles, logo, Apple logo, app icons, visible laptop screen, readable screen, UI overlay, chart, graph, branding, brand marks, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, fast camera movement, shaky camera, low quality, front-facing corporate employee, suit, boardroom, conference room",
+      "prompt": "Create a NEW unique realistic 5-second vertical 9:16 professional B-roll video. Do not reuse any prior clip.\n\nScript placeholder/context only:\nYou need to know whether the employer shows real hiring momentum.\n\nUse the script placeholder only for mood and action relevance. Do NOT show, write, caption, subtitle, or render any words from it.\n\nScene: a software developer at a modern workstation/home-office engineering desk, clearly a developer in the first second. Include laptop or external monitor, keyboard/mouse, casual developer clothing, headphones or tech desk cues, IDE/terminal/code-editor ambience as soft blurred screen glow only.\n\nCamera/composition: back-side, side-angle, 3/4 rear, or over-the-shoulder view; never front-facing. Smooth slow push-in or subtle side movement. Wide medium shot with person/desk/devices in the lower half. Keep the top 25-30% clean empty negative space for template text overlay.\n\nScreens: face the subject, not the camera. Show monitor back/edge or angled blurred IDE/terminal glow only. No readable text, code, UI labels, charts, documents, logos, app icons, Apple logo, brand marks, or branding.\n\nStyle/mood: realistic cinematic professional B-roll, warm natural light, shallow depth of field, polished career-tech feel, focused optimistic developer.\n\nAvoid: suits, boardrooms, meetings, generic corporate stock footage, front-facing smiles, readable screens, app icons, Apple logo, visible brand marks, on-screen text generated in the footage, logos, cartoons, CGI, holograms, distorted hands/faces, fast or shaky camera, low quality."
+    },
+    "logs": "Using model: kling-v2-6 in pro mode\nGenerating video...\nGenerated video in 122.1sec\nGenerated video ID: 904770730117300236\nDownloading 7258599 bytes\nDownloaded 6.92MB in 3.32sec\n",
+    "output": "https://replicate.delivery/xezq/6zgwgQcunRqHKxMgTmxpvKz7PIs0av5ifnfZDB5QPBRKN33WA/tmpq40vb5ik.mp4",
+    "data_removed": false,
+    "error": null,
+    "source": "api",
+    "status": "succeeded",
+    "created_at": "2026-07-11T04:04:29.29Z",
+    "started_at": "2026-07-11T04:04:29.306669244Z",
+    "completed_at": "2026-07-11T04:06:36.292332464Z",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/ykdw7es1x9rmw0cz9xcvh5q30m/cancel",
+      "get": "https://api.replicate.com/v1/predictions/ykdw7es1x9rmw0cz9xcvh5q30m",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-4stwdo56h4jiktd322furk63jbi2pit3auppv5qhtjlh57bwhfbq",
+      "web": "https://replicate.com/p/ykdw7es1x9rmw0cz9xcvh5q30m"
+    },
+    "metrics": {
+      "model_variant": "pro",
+      "predict_time": 126.98566322,
+      "total_time": 127.002332464,
+      "video_output_duration_seconds": 5,
+      "with_audio": false
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Section 1 approved/frozen by user.
+Final approved screenshot settings in scripts/render_section_01.py:
+- screenshot_width = 1380
+- y_expr = "940"
+- exactly 2 replaceable screenshots from template_config.json
+- constant right-to-left movement with gap

@@ -1,0 +1,45 @@
+{
+  "section": "section1",
+  "label": "V0100_20260721_112310",
+  "text": "Am I in a career path that\u2019s cooling?",
+  "prompt": "Create realistic professional b-roll for a career-intelligence/job-application tool that helps people make smarter decisions about job search, role fit, career direction, compensation, market demand, and where they have the best chance of getting hired.\n\nUse Am I in a career path that\u2019s cooling? only to understand the situation, emotion, and scene direction. Do not display, type, or render any words on screen.\nOffice or desk setting only. Show one professional in a realistic job-search or career-decision moment. Vary the subject\u2019s gender across generations: use male professionals across outputs. Also vary age, ethnicity, role, outfit, desk setup, posture, expression, and action so videos do not look the same.\nChoose the scene based on the hook:\nMore interviews/fewer applications: carefully compare a few opportunities and narrow choices.\nAI changing role value: review skills, responsibilities, and career notes with thoughtful uncertainty.\nEmployers not responding: check application status or inbox, pause with mild frustration, reconsider strategy.\nCareer path cooling: study market or role research on a laptop, composed but uncertain.\nMissing opportunities/where to look: search across job resources, use laptop and notebook, focused but unsure.\nLeaving money on the table: compare compensation-related notes and job options thoughtfully.\nApplying where they have a chance: compare resume/notes against a role before deciding to apply.\nToo many applications/low results: organize an overwhelming job-search workflow into focused next steps.\nCareer direction uncertainty: pause at a desk while weighing different paths.\nBroad/unclear hook: review opportunities, take notes, and make a careful application decision.\nMood: subtle frustration, hesitation, uncertainty, quiet concern, or thoughtful focus. No panic, exaggerated sadness, dramatic reactions, or stock-photo smiling.\nMatch the approved V0076 section-1 visual template: close desk-level professional office b-roll, shallow depth of field, subject framed as a medium close-up/upper-body shot, face and shoulders clearly visible, subject fills the lower 55-65% of the frame, not tiny and not pushed to the bottom. Keep the top 25% clean, bright, minimal, and light-toned for future text overlay, but avoid a huge blank wall or empty top half. Place the subject in the lower/middle frame with balanced composition similar to V0076, no face/body cropping. Natural office lighting, calm modern tone, realistic camera movement, shallow depth of field.\nNo text, captions, logos, readable screens, readable documents, company names, job titles, salary numbers, brand names, or watermarks.",
+  "negative_prompt": "text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, shaky camera, low quality, suit, boardroom, conference room, tiny subject, full body shot, subject too low in frame, cropped head, cropped face, cropped hands, huge empty wall, blank top half, distant camera, stock photo portrait",
+  "model": "kwaivgi/kling-v3-video",
+  "prediction_id": "1pj92fwg0nrmy0czghn92z7cqw",
+  "url": "https://replicate.delivery/xezq/RXjcYBiQSk6RBxBTFKQc1APGqqJxoeUcVftz4ccmY3UNlQ7WA/tmpq44p0m58.mp4",
+  "downloaded": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0100_20260721_112310_section1_wan.mp4",
+  "result": {
+    "id": "1pj92fwg0nrmy0czghn92z7cqw",
+    "model": "kwaivgi/kling-v3-video",
+    "version": "hidden",
+    "input": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "generate_audio": false,
+      "negative_prompt": "text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon, animation, CGI, hologram, distorted face, distorted hands, extra fingers, shaky camera, low quality, suit, boardroom, conference room, tiny subject, full body shot, subject too low in frame, cropped head, cropped face, cropped hands, huge empty wall, blank top half, distant camera, stock photo portrait",
+      "prompt": "Create realistic professional b-roll for a career-intelligence/job-application tool that helps people make smarter decisions about job search, role fit, career direction, compensation, market demand, and where they have the best chance of getting hired.\n\nUse Am I in a career path that\u2019s cooling? only to understand the situation, emotion, and scene direction. Do not display, type, or render any words on screen.\nOffice or desk setting only. Show one professional in a realistic job-search or career-decision moment. Vary the subject\u2019s gender across generations: use male professionals across outputs. Also vary age, ethnicity, role, outfit, desk setup, posture, expression, and action so videos do not look the same.\nChoose the scene based on the hook:\nMore interviews/fewer applications: carefully compare a few opportunities and narrow choices.\nAI changing role value: review skills, responsibilities, and career notes with thoughtful uncertainty.\nEmployers not responding: check application status or inbox, pause with mild frustration, reconsider strategy.\nCareer path cooling: study market or role research on a laptop, composed but uncertain.\nMissing opportunities/where to look: search across job resources, use laptop and notebook, focused but unsure.\nLeaving money on the table: compare compensation-related notes and job options thoughtfully.\nApplying where they have a chance: compare resume/notes against a role before deciding to apply.\nToo many applications/low results: organize an overwhelming job-search workflow into focused next steps.\nCareer direction uncertainty: pause at a desk while weighing different paths.\nBroad/unclear hook: review opportunities, take notes, and make a careful application decision.\nMood: subtle frustration, hesitation, uncertainty, quiet concern, or thoughtful focus. No panic, exaggerated sadness, dramatic reactions, or stock-photo smiling.\nMatch the approved V0076 section-1 visual template: close desk-level professional office b-roll, shallow depth of field, subject framed as a medium close-up/upper-body shot, face and shoulders clearly visible, subject fills the lower 55-65% of the frame, not tiny and not pushed to the bottom. Keep the top 25% clean, bright, minimal, and light-toned for future text overlay, but avoid a huge blank wall or empty top half. Place the subject in the lower/middle frame with balanced composition similar to V0076, no face/body cropping. Natural office lighting, calm modern tone, realistic camera movement, shallow depth of field.\nNo text, captions, logos, readable screens, readable documents, company names, job titles, salary numbers, brand names, or watermarks."
+    },
+    "logs": "Prompt too long, truncating to 2500 chars\nUsing model: kling-v3 in pro mode\nGenerating video...\nGenerated video in 160.2sec\nGenerated video ID: 908505069216202815\nDownloading 5141630 bytes\nDownloaded 4.90MB in 0.56sec\n",
+    "output": "https://replicate.delivery/xezq/RXjcYBiQSk6RBxBTFKQc1APGqqJxoeUcVftz4ccmY3UNlQ7WA/tmpq44p0m58.mp4",
+    "data_removed": false,
+    "error": null,
+    "source": "api",
+    "status": "succeeded",
+    "created_at": "2026-07-21T11:23:24.037Z",
+    "started_at": "2026-07-21T11:23:24.053954681Z",
+    "completed_at": "2026-07-21T11:26:05.225283777Z",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/1pj92fwg0nrmy0czghn92z7cqw/cancel",
+      "get": "https://api.replicate.com/v1/predictions/1pj92fwg0nrmy0czghn92z7cqw",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-qpucora4zfcuhsqdtmaefxuknk5w2e6m2vog5q52l6cvak4whexq",
+      "web": "https://replicate.com/p/1pj92fwg0nrmy0czghn92z7cqw"
+    },
+    "metrics": {
+      "model_variant": "pro",
+      "predict_time": 161.171329096,
+      "total_time": 161.188283777,
+      "video_output_duration_seconds": 5,
+      "with_audio": false
+    }
+  }
+}

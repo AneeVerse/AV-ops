@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "exitCode": 0,
+  "startedAt": "2026-06-09T03:00:29Z",
+  "finishedAt": "2026-06-09T03:01:33Z",
+  "request": {
+    "batch": null,
+    "maxCandidates": 12,
+    "maxQueries": 6,
+    "resultsPerPage": 5,
+    "verifyTimeout": 5,
+    "targetShopifyNy": 500,
+    "dailyBudgetUsd": 0.5,
+    "resolvedBatch": 129
+  },
+  "parsed": {
+    "start": {
+      "total_rows": 479,
+      "new_york_rows": 408,
+      "emails_found_new_york": 298,
+      "duplicate_domains": 0,
+      "non_shopify_rows": 30
+    },
+    "final": {
+      "total_rows": 479,
+      "new_york_rows": 408,
+      "emails_found_new_york": 298,
+      "duplicate_domains": 0,
+      "non_shopify_rows": 30
+    },
+    "runs": 1,
+    "added_total": 0
+  },
+  "stdoutTail": "[2026-06-09 03:00:31] START {'total_rows': 479, 'new_york_rows': 408, 'emails_found_new_york': 298, 'duplicate_domains': 0, 'non_shopify_rows': 30}\n[2026-06-09 03:00:34] BATCH 130 ny_rows=408 queries=6\n[2026-06-09 03:00:35] Apify start status=201\n[2026-06-09 03:00:36] Apify run 8P6WE1D819VhiCNuQ status=RUNNING\n[2026-06-09 03:00:52] Apify run 8P6WE1D819VhiCNuQ status=RUNNING\n[2026-06-09 03:01:08] Apify run 8P6WE1D819VhiCNuQ status=SUCCEEDED\n[2026-06-09 03:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997\n{\n  \"start\": {\n    \"total_rows\": 479,\n    \"new_york_rows\": 408,\n    \"emails_found_new_york\": 298,\n    \"duplicate_domains\": 0,\n    \"non_shopify_rows\": 30\n  },\n  \"final\": {\n    \"total_rows\": 479,\n    \"new_york_rows\": 408,\n    \"emails_found_new_york\": 298,\n    \"duplicate_domains\": 0,\n    \"non_shopify_rows\": 30\n  },\n  \"runs\": 1,\n  \"added_total\": 0\n}\n",
+  "stderrTail": ""
+}

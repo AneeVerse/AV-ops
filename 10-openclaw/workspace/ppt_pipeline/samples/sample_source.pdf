@@ -1,0 +1,113 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 2765 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+(PDF to PPT Automation System) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(This document explains the proposed automation system for turning long PDFs into) Tj
+0 -15 Td
+(clean PowerPoint presentations. The system should support large source documents,) Tj
+0 -15 Td
+(extract text from every page, and generate a concise presentation by selecting from) Tj
+0 -15 Td
+(an approved template library.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(The main goal is to reduce manual presentation work while keeping strict control over) Tj
+0 -15 Td
+(brand assets, fonts, layout, and final PPTX quality. The output should remain) Tj
+0 -15 Td
+(editable in PowerPoint and should not depend on Google Slides because custom fonts) Tj
+0 -15 Td
+(may break there.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(The workflow begins with a Next.js user interface. The user uploads a PDF, enters a) Tj
+0 -15 Td
+(project name, chooses a target slide count, and optionally provides tone, audience,) Tj
+0 -15 Td
+(or brand notes. The default target is ten slides, but the system can adjust if the) Tj
+0 -15 Td
+(content clearly requires fewer or more.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(After upload, n8n saves the PDF to Google Drive and extracts all text from all pages.) Tj
+0 -15 Td
+(If the PDF is large, the extracted text is chunked for AI processing. The system then) Tj
+0 -15 Td
+(summarizes the content, identifies the main storyline, and creates a slide outline.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(The template library JSON controls slide selection. Each template has a category,) Tj
+0 -15 Td
+(purpose, character limits, usage rules, and image requirements. The AI must choose) Tj
+0 -15 Td
+(templates based on the type of content and must write slide copy that fits the) Tj
+0 -15 Td
+(selected template.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(Images should be generated only when needed. The first slide always requires a) Tj
+0 -15 Td
+(generated hero image with clean space on the left side and main visual detail on the) Tj
+0 -15 Td
+(right. Other images should be generated only when the selected template has an) Tj
+0 -15 Td
+(intended image area. Logos, icons, and brand assets must never be replaced.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(The PPTX builder receives the final slide payload and assembles the presentation) Tj
+0 -15 Td
+(using approved PPTX templates. It replaces only mapped text placeholders and approved) Tj
+0 -15 Td
+(image placeholders. It must not change fonts, colors, shapes, logos, or layout.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(The final PowerPoint file is saved to Google Drive and returned to the user through) Tj
+0 -15 Td
+(the UI. Logs, extracted text, generated content, images, and final outputs are stored) Tj
+0 -15 Td
+(in the same PDF to PPT project folder for easy review and debugging.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+5 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000002896 00000 n 
+0000003022 00000 n 
+0000003079 00000 n 
+trailer
+<< /Size 6 /Root 5 0 R >>
+startxref
+3128
+%%EOF

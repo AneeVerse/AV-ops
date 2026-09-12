@@ -1,0 +1,51 @@
+{
+  "duration_seconds": 5,
+  "fps": 30,
+  "size": [
+    1080,
+    1920
+  ],
+  "stat_value": 95,
+  "stat_suffix": "%",
+  "body_lines": [
+    "U.S. publicly",
+    "posted jobs",
+    "stay invisible",
+    "to candidates",
+    "who don't know",
+    "to search them"
+  ],
+  "output_name": "section2_n8n_V0001_kling26_generated_top20_blank_test_20260618_140525_001.mp4",
+  "audio_reference": "../../V0001 Sections 1-2 AE Match - 2026-05-12/output/V0001_section2_only_from_reference_v1.mp4",
+  "line_starts": [
+    0.32,
+    0.38,
+    0.46,
+    0.78,
+    0.92,
+    1.08
+  ],
+  "line_fade_seconds": 0.36,
+  "count_keys": [
+    [
+      0.0,
+      0
+    ],
+    [
+      0.25,
+      0
+    ],
+    [
+      1.0,
+      82
+    ],
+    [
+      1.45,
+      95
+    ],
+    [
+      5.0,
+      95
+    ]
+  ]
+}

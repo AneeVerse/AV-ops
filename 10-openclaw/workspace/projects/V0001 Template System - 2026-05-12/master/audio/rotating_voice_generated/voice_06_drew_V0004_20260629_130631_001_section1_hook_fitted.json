@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T13:11:39.948327+00:00",
+  "voice_number": 6,
+  "voice_name": "Drew",
+  "replicate_voice": "Drew",
+  "prediction_id": "spzxgqnx65rmt0cz2e0rtvntfw",
+  "raw_audio_url": "https://replicate.delivery/xezq/Wz8ZYOCfJzS2LSuRTePAW617a3cRqjlPODMPH9huAobLEC0WA/tmpji2v4bje.mp3",
+  "raw_duration": 6.217143,
+  "fitted_duration": 6.217143,
+  "script_text": "Going deeper as a Software Developer isn't always the fastest path. Wider may pay more.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section1_hook_fitted.mp3"
+}

@@ -1,0 +1,4 @@
+file 'clips/01_hook.mp4'
+file 'clips/02_insight.mp4'
+file 'clips/03_implication.mp4'
+file 'clips/04_cta.mp4'

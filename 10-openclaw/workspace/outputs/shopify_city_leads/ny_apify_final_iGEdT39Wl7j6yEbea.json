@@ -1,0 +1,94 @@
+{
+  "apify_run_id": "iGEdT39Wl7j6yEbea",
+  "apify_cost": 0.09999999999999999,
+  "dataset_items": 22,
+  "candidates_found": 109,
+  "added": [
+    {
+      "Store Name": "Macha Studio",
+      "Link": "https://machastudio.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "shop@machastudio.com",
+      "Email Source URL": "https://machastudio.com/pages/contact",
+      "Email Source Type": "Contact Page",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "machastudio.com"
+    },
+    {
+      "Store Name": "CADAR",
+      "Link": "https://cadar.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "ecom@cadar.com",
+      "Email Source URL": "https://cadar.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "cadar.com"
+    },
+    {
+      "Store Name": "Sophia D New York",
+      "Link": "https://sophiad.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "contact@sophiad.com",
+      "Email Source URL": "https://sophiad.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "sophiad.com"
+    },
+    {
+      "Store Name": "LTB",
+      "Link": "https://ltbjewelry.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "info@ltbjewelry.com",
+      "Email Source URL": "https://ltbjewelry.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "ltbjewelry.com"
+    },
+    {
+      "Store Name": "Love Adorned",
+      "Link": "https://loveadorned.com/",
+      "Country": "US",
+      "City": "New York",
+      "Category": "Fine Jewellery",
+      "Email": "love@loveadorned.com",
+      "Email Source URL": "https://loveadorned.com/",
+      "Email Source Type": "Homepage/Footer",
+      "Shopify Verified": "Yes",
+      "Notes": "City and country verified",
+      "Domain": "loveadorned.com"
+    }
+  ],
+  "rejected_skipped_breakdown": {
+    "candidates_found": 109,
+    "duplicate_domain": 16,
+    "bad_discovery_domain": 0,
+    "verified_checked": 15,
+    "added": 5,
+    "rejected": {
+      "not_shopify": 3,
+      "fetch_failed": 5,
+      "category_mismatch": 2
+    },
+    "skipped_after_redirect_duplicate": 0
+  },
+  "cleanup_done": [],
+  "final": {
+    "total_rows": 182,
+    "new_york_rows": 111,
+    "emails_found": 157,
+    "duplicate_domains": 0,
+    "bad_email_format": 0
+  }
+}

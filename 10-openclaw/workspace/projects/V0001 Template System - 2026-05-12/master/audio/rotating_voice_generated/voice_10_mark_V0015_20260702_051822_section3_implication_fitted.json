@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T05:41:15.933882+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "6y9qm7krw1rmt0cz45c9bg00fg",
+  "raw_audio_url": "https://replicate.delivery/xezq/fAFGpHI6hvWBY6egA1kIgPclmL0nxKheDHQFmMkiNFs3fqTbB/tmplw4r8yok.mp3",
+  "raw_duration": 3.004082,
+  "fitted_duration": 3.004082,
+  "script_text": "Widening your search is faster than stacking another credential.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260702_051822_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260702_051822_section3_implication_fitted.mp3"
+}

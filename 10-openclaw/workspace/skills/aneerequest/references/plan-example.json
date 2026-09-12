@@ -1,0 +1,15 @@
+{
+  "client_organization": "HORECA1",
+  "request_title": "00-Updates-Followups",
+  "allow_create_request": false,
+  "tasks": [
+    {
+      "title": "Collect payment follow-up",
+      "description": "Follow up with client for pending payment.",
+      "status": "Todo",
+      "priority": "Medium",
+      "assigned_to": null,
+      "due_date": null
+    }
+  ]
+}

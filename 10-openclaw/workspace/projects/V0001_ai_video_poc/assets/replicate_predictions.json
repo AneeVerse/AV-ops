@@ -1,0 +1,46 @@
+[
+  {
+    "name": "01_hook",
+    "id": "9683k9b5h9rmy0cy2qnvtct0r4",
+    "prompt": "Vertical 9:16 cinematic close-up of a software developer typing on a laptop in a modern workspace, subtle camera movement, professional lighting, shallow depth of field, no text, no logos, no captions.",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/9683k9b5h9rmy0cy2qnvtct0r4/cancel",
+      "get": "https://api.replicate.com/v1/predictions/9683k9b5h9rmy0cy2qnvtct0r4",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-al7mu2pgyaydqzdhm7xzneufkdtxxikb5xtuvz2p7csqsd4my6ta",
+      "web": "https://replicate.com/p/9683k9b5h9rmy0cy2qnvtct0r4"
+    }
+  },
+  {
+    "name": "02_insight",
+    "id": "b4j9hfkrk5rmr0cy2qnt047ccc",
+    "prompt": "Vertical 9:16 clean abstract data visualization background, soft off-white and navy professional palette with subtle moving charts, particles, and digital job-search network lines, no readable text, no logos.",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/b4j9hfkrk5rmr0cy2qnt047ccc/cancel",
+      "get": "https://api.replicate.com/v1/predictions/b4j9hfkrk5rmr0cy2qnt047ccc",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-cm2xtbxzrfayrdjqxerldvl67wtnrbnbttcafswg4ztvdrv7t3qq",
+      "web": "https://replicate.com/p/b4j9hfkrk5rmr0cy2qnt047ccc"
+    }
+  },
+  {
+    "name": "03_implication",
+    "id": "4wzdky4c91rmy0cy2qnr6a8vcr",
+    "prompt": "Vertical 9:16 professional person reviewing job listings on laptop, thoughtful career search mood, modern office, gentle motion, no readable text, no logos, no captions.",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/4wzdky4c91rmy0cy2qnr6a8vcr/cancel",
+      "get": "https://api.replicate.com/v1/predictions/4wzdky4c91rmy0cy2qnr6a8vcr",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-wdmlimpd5fr6uh4q4jt77kawlgtybyigkj3s3btgdvqkyb47y25a",
+      "web": "https://replicate.com/p/4wzdky4c91rmy0cy2qnr6a8vcr"
+    }
+  },
+  {
+    "name": "04_cta",
+    "id": "e9kcey4zzhrmr0cy2qnt7kv488",
+    "prompt": "Vertical 9:16 polished SaaS product report style background, abstract UI cards and dashboard panels floating over purple orange gradient, modern professional, no readable text, no logos, no captions.",
+    "urls": {
+      "cancel": "https://api.replicate.com/v1/predictions/e9kcey4zzhrmr0cy2qnt7kv488/cancel",
+      "get": "https://api.replicate.com/v1/predictions/e9kcey4zzhrmr0cy2qnt7kv488",
+      "stream": "https://stream.replicate.com/v1/files/jbxs-czd54r6dfx3wyvb3iobihqahzihw5m6tk5kt4seyqkzqnwarv7ha",
+      "web": "https://replicate.com/p/e9kcey4zzhrmr0cy2qnt7kv488"
+    }
+  }
+]

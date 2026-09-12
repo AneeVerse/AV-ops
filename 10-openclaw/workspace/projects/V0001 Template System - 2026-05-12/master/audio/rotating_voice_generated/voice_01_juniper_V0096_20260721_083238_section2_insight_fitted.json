@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-21T08:32:47.009803+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "g4f386jksxrmy0czgf78qbqcrr",
+  "raw_audio_url": "https://replicate.delivery/xezq/vTeE3wu1OMVEPq3AzoeeqEIki0bhKD8tsl1ehdXaTGB4K4sbB/tmphzkm6dzv.mp3",
+  "raw_duration": 5.511837,
+  "fitted_duration": 5.511837,
+  "script_text": "Many professionals build experience in one lane while their strongest work-style traits point elsewhere.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0096_20260721_083238_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0096_20260721_083238_section2_insight_fitted.mp3"
+}

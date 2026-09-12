@@ -1,0 +1,2 @@
+038ed01879b1c2505bcb2ddc270b72e88cfac41b15342afbcc23f1e81d4c33e7  /root/.openclaw/workspace/checkpoints/pdf-to-ppt-tool-ui-freeze-2026-05-21T0414Z.tar.gz
+-rw-r--r-- 1 root root 287M May 21 04:17 /root/.openclaw/workspace/checkpoints/pdf-to-ppt-tool-ui-freeze-2026-05-21T0414Z.tar.gz

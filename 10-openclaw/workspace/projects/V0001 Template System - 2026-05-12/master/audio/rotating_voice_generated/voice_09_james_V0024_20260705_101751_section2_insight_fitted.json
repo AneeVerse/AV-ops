@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:37:21.894073+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "z2yg38x0cnrmy0cz67d86rvg3g",
+  "raw_audio_url": "https://replicate.delivery/xezq/SBnq5z528C5kHBdIzk2JtWuyoo9ABfcgi5d4BpeO1aRgXertA/tmps410o4op.mp3",
+  "raw_duration": 10.579592,
+  "fitted_duration": 10.579592,
+  "script_text": "Across the approximately 95% of U.S. publicly posted jobs, emerging job families pull from established backgrounds before the market catches up.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0024_20260705_101751_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0024_20260705_101751_section2_insight_fitted.mp3"
+}

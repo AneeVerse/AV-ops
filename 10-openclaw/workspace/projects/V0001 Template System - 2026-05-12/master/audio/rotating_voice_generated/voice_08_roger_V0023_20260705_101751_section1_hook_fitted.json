@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:31:33.241841+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "q0yrrsagg5rmw0cz67aryrzs3w",
+  "raw_audio_url": "https://replicate.delivery/xezq/yl2FtTEbbR50EFqO14DXxR5Hqsxf5sV16HNAYvpfTh0ESertA/tmp05oe3zft.mp3",
+  "raw_duration": 4.310204,
+  "fitted_duration": 4.310204,
+  "script_text": "Some of the best Data Scientist roles rarely appear on LinkedIn or Indeed.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0023_20260705_101751_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0023_20260705_101751_section1_hook_fitted.mp3"
+}

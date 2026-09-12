@@ -1,0 +1,51 @@
+{
+  "start": {
+    "total_rows": 479,
+    "new_york_rows": 408,
+    "emails_found_new_york": 298,
+    "duplicate_domains": 0,
+    "non_shopify_rows": 30
+  },
+  "final": {
+    "total_rows": 479,
+    "new_york_rows": 408,
+    "emails_found_new_york": 298,
+    "duplicate_domains": 0,
+    "non_shopify_rows": 30
+  },
+  "runs": [
+    {
+      "batch": 130,
+      "run_id": "8P6WE1D819VhiCNuQ",
+      "cost": 0.027999999999999997,
+      "items": 6,
+      "candidates": 12,
+      "added_count": 0,
+      "non_shopify_added_count": 0,
+      "added": [],
+      "non_shopify_added": [],
+      "reject_reasons": {
+        "duplicate_domain": 10,
+        "category_mismatch": 1,
+        "fetch_failed": 1
+      },
+      "cleanup_cleared": [],
+      "duplicates_after_batch": [],
+      "stats_after": {
+        "total_rows": 479,
+        "new_york_rows": 408,
+        "emails_found_new_york": 298,
+        "duplicate_domains": 0,
+        "non_shopify_rows": 30
+      },
+      "queries": [
+        "Brooklyn \"myshopify.com\" fine jewelry New York",
+        "Long Island City NYC \"Shopify\" \"fine jewelry\" \"New York\"",
+        "Tribeca NYC fine jewelry Shopify contact email",
+        "Chelsea NYC \"cdn.shopify.com\" jewelry New York",
+        "Tribeca NYC demi fine jewelry Shopify contact email",
+        "New York \"myshopify.com\" fine jewelry New York"
+      ]
+    }
+  ]
+}

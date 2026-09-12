@@ -1,0 +1,158 @@
+[
+  {
+    "name": "01_hook",
+    "id": "4tcs01te7xrmr0cy2sp8qm5wtg",
+    "prompt": "Cinematic vertical video of a software developer typing on laptop in a modern workspace, professional lighting, subtle camera movement, no on-screen text, no watermark. If audio is supported, include male voiceover: Most software developers qualify for more job titles than they apply to.",
+    "result": {
+      "id": "4tcs01te7xrmr0cy2sp8qm5wtg",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, watermark, logo, subtitles, captions, gibberish text",
+        "prompt": "Cinematic vertical video of a software developer typing on laptop in a modern workspace, professional lighting, subtle camera movement, no on-screen text, no watermark. If audio is supported, include male voiceover: Most software developers qualify for more job titles than they apply to.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.7sec\nGenerated video ID: 882750582585434178\nDownloading 2957247 bytes\nDownloaded 2.82MB in 2.49sec\n",
+      "output": "https://replicate.delivery/xezq/Qexx35d0CJ2lC6TTkASSRFvoKxN5EIgaJIuLuLJyD9R3u6RLA/tmptii6t6cs.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:44:17.215Z",
+      "started_at": "2026-05-11T09:44:17.230241157Z",
+      "completed_at": "2026-05-11T09:46:22.938379449Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/4tcs01te7xrmr0cy2sp8qm5wtg/cancel",
+        "get": "https://api.replicate.com/v1/predictions/4tcs01te7xrmr0cy2sp8qm5wtg",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-mwyszjcrqwwu27fhlkyt7jgupuwt5eyrfbmwbl4lxprvldkctbyq",
+        "web": "https://replicate.com/p/4tcs01te7xrmr0cy2sp8qm5wtg"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 125.708138292,
+        "total_time": 125.723379449,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/Qexx35d0CJ2lC6TTkASSRFvoKxN5EIgaJIuLuLJyD9R3u6RLA/tmptii6t6cs.mp4"
+  },
+  {
+    "name": "02_insight",
+    "id": "s60d6nwh7hrmr0cy2sp9qmzn30",
+    "prompt": "Clean abstract data visualization vertical video with moving charts and digital job network lines, professional off-white/navy palette, no readable text, no watermark. If audio is supported, include male voiceover: Ninety five percent of public jobs stay invisible when candidates search the wrong titles.",
+    "result": {
+      "id": "s60d6nwh7hrmr0cy2sp9qmzn30",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, watermark, logo, subtitles, captions, gibberish text",
+        "prompt": "Clean abstract data visualization vertical video with moving charts and digital job network lines, professional off-white/navy palette, no readable text, no watermark. If audio is supported, include male voiceover: Ninety five percent of public jobs stay invisible when candidates search the wrong titles.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.6sec\nGenerated video ID: 882750654081540174\nDownloading 2843523 bytes\nDownloaded 2.71MB in 2.51sec\n",
+      "output": "https://replicate.delivery/xezq/S8e2e0lOVqokvUGA45QoeFpZhfESvkuTxyoq0fXeKEY3fu6RLA/tmpjwp4t4v_.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:44:34.364Z",
+      "started_at": "2026-05-11T09:44:34.378709996Z",
+      "completed_at": "2026-05-11T09:46:40.689663307Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/s60d6nwh7hrmr0cy2sp9qmzn30/cancel",
+        "get": "https://api.replicate.com/v1/predictions/s60d6nwh7hrmr0cy2sp9qmzn30",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-lyz4fwhohssjbza5psidbokj26rqy3bslp3xn2hmbscjoyjmk56a",
+        "web": "https://replicate.com/p/s60d6nwh7hrmr0cy2sp9qmzn30"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 126.310953311,
+        "total_time": 126.325663307,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/S8e2e0lOVqokvUGA45QoeFpZhfESvkuTxyoq0fXeKEY3fu6RLA/tmpjwp4t4v_.mp4"
+  },
+  {
+    "name": "03_implication",
+    "id": "04vhpr6kbsrmw0cy2spbey6sjw",
+    "prompt": "Professional vertical video of person reviewing job listings on laptop, thoughtful career search mood, gentle motion, no readable text, no watermark. If audio is supported, include male voiceover: Your strongest matches may be roles you have never searched.",
+    "result": {
+      "id": "04vhpr6kbsrmw0cy2spbey6sjw",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, watermark, logo, subtitles, captions, gibberish text",
+        "prompt": "Professional vertical video of person reviewing job listings on laptop, thoughtful career search mood, gentle motion, no readable text, no watermark. If audio is supported, include male voiceover: Your strongest matches may be roles you have never searched.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 123.1sec\nGenerated video ID: 882750730695344197\nDownloading 2084404 bytes\nDownloaded 1.99MB in 1.18sec\n",
+      "output": "https://replicate.delivery/xezq/0WAQhzOJnqaTOJBbi27aZvPwPlA8jC6BX8a1kTZgCCHkX9oF/tmp3a14gxit.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:44:51.294Z",
+      "started_at": "2026-05-11T09:44:51.342803279Z",
+      "completed_at": "2026-05-11T09:46:57.2043958Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/04vhpr6kbsrmw0cy2spbey6sjw/cancel",
+        "get": "https://api.replicate.com/v1/predictions/04vhpr6kbsrmw0cy2spbey6sjw",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-ijfle4pqe2nc5e7pzy3ij7ij7fu7skxbmhsbxqxiak6kqykicgkq",
+        "web": "https://replicate.com/p/04vhpr6kbsrmw0cy2spbey6sjw"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 125.861592522,
+        "total_time": 125.9103958,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/0WAQhzOJnqaTOJBbi27aZvPwPlA8jC6BX8a1kTZgCCHkX9oF/tmp3a14gxit.mp4"
+  },
+  {
+    "name": "04_cta",
+    "id": "qgepj40nfsrmr0cy2sprxgajsg",
+    "prompt": "Polished SaaS work-style report vertical video background, modern dashboard UI cards floating over purple orange gradient, no readable text, no watermark. If audio is supported, include male voiceover: Start your Trait DNA report, free, fifteen minutes, no credit card.",
+    "result": {
+      "id": "qgepj40nfsrmr0cy2sprxgajsg",
+      "model": "kwaivgi/kling-v2.1",
+      "version": "hidden",
+      "input": {
+        "duration": 5,
+        "mode": "standard",
+        "negative_prompt": "blur, distortion, watermark, logo, subtitles, captions, gibberish text",
+        "prompt": "Polished SaaS work-style report vertical video background, modern dashboard UI cards floating over purple orange gradient, no readable text, no watermark. If audio is supported, include male voiceover: Start your Trait DNA report, free, fifteen minutes, no credit card.",
+        "start_image": "data:image/jpeg;base64,..."
+      },
+      "logs": "Using model: kling-v2-1 in std mode\nGenerating video...\nGenerated video in 122.8sec\nGenerated video ID: 882750799108644893\nDownloading 2823986 bytes\nDownloaded 2.69MB in 2.61sec\n",
+      "output": "https://replicate.delivery/xezq/y5hfcP5Eg9SRRyEEnJZR3ec6sCePy1UGaVX0x3IXefkU0reoF/tmpfxu0zsqf.mp4",
+      "data_removed": false,
+      "error": null,
+      "source": "api",
+      "status": "succeeded",
+      "created_at": "2026-05-11T09:45:08.222Z",
+      "started_at": "2026-05-11T09:45:08.23652415Z",
+      "completed_at": "2026-05-11T09:47:14.953381613Z",
+      "urls": {
+        "cancel": "https://api.replicate.com/v1/predictions/qgepj40nfsrmr0cy2sprxgajsg/cancel",
+        "get": "https://api.replicate.com/v1/predictions/qgepj40nfsrmr0cy2sprxgajsg",
+        "stream": "https://stream.replicate.com/v1/files/jbxs-edeyzt4xbnoh2uasy6ncm3y7l7tltdnhgeouztualn6d4r2q4lqq",
+        "web": "https://replicate.com/p/qgepj40nfsrmr0cy2sprxgajsg"
+      },
+      "metrics": {
+        "model_variant": "standard",
+        "predict_time": 126.716857462,
+        "total_time": 126.731381613,
+        "video_output_duration_seconds": 5
+      }
+    },
+    "url": "https://replicate.delivery/xezq/y5hfcP5Eg9SRRyEEnJZR3ec6sCePy1UGaVX0x3IXefkU0reoF/tmpfxu0zsqf.mp4"
+  }
+]

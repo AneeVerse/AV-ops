@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-08T13:54:38.632389+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "ww3amgjk51rmt0cz8818z8q7fw",
+  "raw_audio_url": "https://replicate.delivery/xezq/qdsYNVseTt2LRyYhXqgjAPJm3qTSVMoa0ze2VajrpFKdiA3WA/tmp4uc0r4uk.mp3",
+  "raw_duration": 2.873469,
+  "fitted_duration": 2.873469,
+  "script_text": "Am I applying to jobs that aren\u2019t really open?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0033_20260708_135433_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0033_20260708_135433_section1_hook_fitted.mp3"
+}

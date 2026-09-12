@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T12:12:13.638830+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "48yf66d4kdrmy0cza4bt1aa168",
+  "raw_audio_url": "https://replicate.delivery/xezq/dUfTevfJc2Dl3oVoebRdLtZled8ye9KbB9iYe6YWKkRBOKf3WA/tmp4xkewdao.mp3",
+  "raw_duration": 2.220408,
+  "fitted_duration": 2.220408,
+  "script_text": "Should I switch jobs or stay put?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0050_20260711_121210_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0050_20260711_121210_section1_hook_fitted.mp3"
+}

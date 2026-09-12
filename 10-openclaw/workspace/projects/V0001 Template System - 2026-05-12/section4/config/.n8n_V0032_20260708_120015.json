@@ -1,0 +1,41 @@
+{
+  "section_id": "section4_cta",
+  "duration_seconds": 3.8333333333333335,
+  "fps": 30,
+  "size": "1080x1920",
+  "background_video": "assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4",
+  "font_family": "Graphik Web, Graphik, Arial, sans-serif",
+  "cta_box": {
+    "x": 86,
+    "y": 1328,
+    "width": 908,
+    "height": 330,
+    "radius": 30,
+    "fill": "#bd16f4",
+    "opacity": 0.96
+  },
+  "main_text": [
+    "Use GlobalProsEdge to",
+    "evaluate compensation",
+    "alignment and salary",
+    "leverage before you make a",
+    "move."
+  ],
+  "main_font_size": 34,
+  "main_font_weight": 700,
+  "main_line_gap": 40,
+  "main_y": 1438,
+  "small_text": [
+    "Free. No card. Know your number in 15 minutes."
+  ],
+  "small_font_size": 28,
+  "small_font_weight": 500,
+  "small_line_gap": 36,
+  "small_y": 1788,
+  "animation": {
+    "fade_in_seconds": 0.35,
+    "slide_px": 26,
+    "start_seconds": 0.5
+  },
+  "output_name": "section4_n8n_V0032_20260708_120015.mp4"
+}

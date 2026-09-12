@@ -1,0 +1,144 @@
+{
+  "run_id": "20260718_090857",
+  "drive_folder_id": "1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND",
+  "videos": {
+    "V0089": {
+      "label": "V0089_20260718_090857",
+      "variant": "section2_5",
+      "voice": {
+        "number": 4,
+        "name": "Alexandra"
+      },
+      "section_audio_durations": [
+        2.76898,
+        6.50449,
+        3.213061,
+        2.951837
+      ],
+      "section_durations": [
+        4.2,
+        6.9,
+        3.6333333333333333,
+        3.766666666666667
+      ],
+      "gaps": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "starts_ms": [
+        0,
+        4700,
+        12100,
+        16233
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section3_implication_fitted_max3.2s.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0089_20260718_090857_section4_cta_fitted.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0089_20260718_090857.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260718_090857/V0089.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "7424653",
+          "bit_rate": "2969861"
+        }
+      },
+      "drive": {
+        "id": "1SR_DrDGKKYE-z5lLQnAm1LRZAdRqwwtS",
+        "link": "https://drive.google.com/file/d/1SR_DrDGKKYE-z5lLQnAm1LRZAdRqwwtS/view?usp=drivesdk",
+        "name": "V0089.mp4",
+        "size": "7424653"
+      }
+    },
+    "V0090": {
+      "label": "V0090_20260718_090857",
+      "variant": "section2_5",
+      "voice": {
+        "number": 5,
+        "name": "Rachel"
+      },
+      "section_audio_durations": [
+        2.690612,
+        7.053061,
+        3.213061,
+        3.317551
+      ],
+      "section_durations": [
+        4.2,
+        7.433333333333334,
+        3.6333333333333333,
+        3.7
+      ],
+      "gaps": [
+        0.09999999999999998,
+        0.43333333333333146,
+        0.5
+      ],
+      "starts_ms": [
+        0,
+        4300,
+        12167,
+        16300
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section3_implication_fitted_max3.2s.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0090_20260718_090857_section4_cta_fitted_max3.3s.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0090_20260718_090857.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260718_090857/V0090.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "8510810",
+          "bit_rate": "3404324"
+        }
+      },
+      "drive": {
+        "id": "1VdauJ6vxelBZmnbvAjpHFL6YM4PKFgxC",
+        "link": "https://drive.google.com/file/d/1VdauJ6vxelBZmnbvAjpHFL6YM4PKFgxC/view?usp=drivesdk",
+        "name": "V0090.mp4",
+        "size": "8510810"
+      }
+    }
+  },
+  "section2_routing": {
+    "V0089": "section2_5",
+    "V0090": "section2_5"
+  }
+}

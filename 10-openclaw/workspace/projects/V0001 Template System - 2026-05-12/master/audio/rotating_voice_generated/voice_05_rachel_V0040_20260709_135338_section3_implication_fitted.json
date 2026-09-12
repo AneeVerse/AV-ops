@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T14:36:55.283991+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "9yj0jzk3tsrmr0cz8x7swre5vw",
+  "raw_audio_url": "https://replicate.delivery/xezq/vVOv1aaFEQqBOxgpzBrn8R7eblNclrFK0R6W0T5yGdMDIrbLA/tmp_2wkz9yh.mp3",
+  "raw_duration": 4.205714,
+  "fitted_duration": 4.205714,
+  "script_text": "Your current role may becoming more or less valuable quicker than you know.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T14:11:52.537688+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "h1pxgesey9rmy0cza62vt6m290",
+  "raw_audio_url": "https://replicate.delivery/xezq/QeClrBKw3XUUYytU17hsQhReodjmbJDSIRMxcYevDgdOJAwtA/tmptybc4m2t.mp3",
+  "raw_duration": 2.037551,
+  "fitted_duration": 2.037551,
+  "script_text": "Is my current role limiting me?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_141148_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_141148_section1_hook_fitted.mp3"
+}

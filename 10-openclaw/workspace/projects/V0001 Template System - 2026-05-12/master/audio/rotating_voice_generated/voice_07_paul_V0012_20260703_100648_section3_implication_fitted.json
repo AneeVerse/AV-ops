@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T10:06:59.082324+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "n779dertsdrmt0cz4xsak0jcyc",
+  "raw_audio_url": "https://replicate.delivery/xezq/0GIo0Eool1KmGpEmVhnH09dkrqnen3JyFNiLeLhJoirCvT1WA/tmpod4glra3.mp3",
+  "raw_duration": 2.45551,
+  "fitted_duration": 2.45551,
+  "script_text": "Early movers set their own price.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_100648_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0012_20260703_100648_section3_implication_fitted.mp3"
+}

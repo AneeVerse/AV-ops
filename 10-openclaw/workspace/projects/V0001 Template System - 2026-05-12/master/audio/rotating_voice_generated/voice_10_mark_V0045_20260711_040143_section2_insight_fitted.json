@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T04:01:51.352516+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "yjc52cngg1rmt0cz9xb9dsvnd0",
+  "raw_audio_url": "https://replicate.delivery/xezq/zDXcwEstWm6DP5JJFESpHwZYTW1eN46w1ShO5WISveFuI33WA/tmph02avxoo.mp3",
+  "raw_duration": 6.582857,
+  "fitted_duration": 6.582857,
+  "script_text": "But it turns out, it isn\u2019t always about you. Easy Apply floods employers with far more applications than they can realistically review.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0045_20260711_040143_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0045_20260711_040143_section2_insight_fitted.mp3"
+}

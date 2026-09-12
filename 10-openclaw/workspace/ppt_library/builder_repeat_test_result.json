@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "run_id": "builder_repeat_test_001",
+  "output_pptx_path": "/root/.openclaw/workspace/ppt_library/builder_repeat_test_output.pptx",
+  "slide_count": 10,
+  "selected_source_slides": [
+    1,
+    14,
+    8,
+    8,
+    10,
+    10,
+    12,
+    12,
+    18,
+    15
+  ],
+  "replacements": {
+    "text": 21,
+    "images": 4
+  },
+  "warnings": [],
+  "errors": []
+}

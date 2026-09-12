@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T11:08:59.968256+00:00",
+  "voice_number": 4,
+  "voice_name": "Alexandra",
+  "replicate_voice": "Alexandra",
+  "prediction_id": "p93gxj99phrmy0cz3nf935qyng",
+  "raw_audio_url": "https://replicate.delivery/xezq/3j2fghdhAp12aqeeK4SVefDX5q5AFMffwwfoBr3BfXf7v0pSbB/tmp430tvcav.mp3",
+  "raw_duration": 2.873469,
+  "fitted_duration": 2.873469,
+  "script_text": "Your work-style matters more than your tool stack.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260701_110850_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0009_20260701_110850_section3_implication_fitted.mp3"
+}

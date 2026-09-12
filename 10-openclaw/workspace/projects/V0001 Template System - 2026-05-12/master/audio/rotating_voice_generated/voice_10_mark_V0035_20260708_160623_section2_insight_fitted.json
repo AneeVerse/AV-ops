@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-08T16:06:32.102055+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "a3gyf90khsrmr0cz89xsw098bc",
+  "raw_audio_url": "https://replicate.delivery/xezq/JZIT3bqsT0KyGh3PjJmJOxiTnX9JZVSzPM8CcmocXywhnwtF/tmp4b_l3ggi.mp3",
+  "raw_duration": 4.91102,
+  "fitted_duration": 4.91102,
+  "script_text": "By the time a job is posted publicly, referrals and internal candidates may already have an advantage.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0035_20260708_160623_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0035_20260708_160623_section2_insight_fitted.mp3"
+}

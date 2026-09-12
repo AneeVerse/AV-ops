@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-09T16:03:01.022375+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "ptywxk1ke5rmt0cz8yf948kcdm",
+  "raw_audio_url": "https://replicate.delivery/xezq/Cs06sk4T9h6DMZDLybSexKVeKEuuMmm0GeacVdTzuhSnBvutA/tmpb12_y49m.mp3",
+  "raw_duration": 4.414694,
+  "fitted_duration": 4.414694,
+  "script_text": "Higher volume can hurt you if you are applying to weak-fit or overcrowded postings.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_160252_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_160252_section2_insight_fitted.mp3"
+}

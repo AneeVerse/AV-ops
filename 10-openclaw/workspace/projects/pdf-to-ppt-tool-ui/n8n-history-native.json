@@ -1,0 +1,161 @@
+{
+  "name": "PDF to PPT - Step 1 History Native2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "pdf-to-ppt-history-native2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "72b8eacd-3e0e-4b76-8b4b-57105a9e16af",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "583b27ad-459d-47cf-b2c2-00561bb31743"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "fileFolder",
+        "operation": "search",
+        "searchMethod": "query",
+        "queryString": "'1Af1vO4a-8sec1_ou1evm_Q1YofC4Zj2o' in parents and trashed = false and name contains '.json'",
+        "returnAll": false,
+        "limit": 50,
+        "filter": {},
+        "options": {
+          "fields": [
+            "id",
+            "name",
+            "webViewLink",
+            "createdTime"
+          ]
+        }
+      },
+      "id": "ac4decb3-c3b0-47a9-860c-e8c891c990a6",
+      "name": "Search History Files",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "download",
+        "fileId": {
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "options": {
+          "binaryPropertyName": "file"
+        }
+      },
+      "id": "2476986d-7ecd-4c3b-af6f-19581cb537d4",
+      "name": "Download History JSON",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        740,
+        300
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "DhbnuEMEaJjJewJ3",
+          "name": "PDF to PPT Google Drive OAuth Full Scope"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const helpers = this.helpers;\nconst items = $input.all();\nconst history = [];\nfor (let i = 0; i < items.length; i++) {\n  try {\n    const buffer = await helpers.getBinaryDataBuffer(i, 'file');\n    const record = JSON.parse(buffer.toString('utf8'));\n    const fileJson = items[i].json || {};\n    history.push({ ...record, history_file_id: fileJson.id, history_file_url: fileJson.webViewLink });\n  } catch (error) {}\n}\nhistory.sort((a, b) => new Date(b.uploaded_at || 0).getTime() - new Date(a.uploaded_at || 0).getTime());\nreturn [{ json: { ok: true, history } }];"
+      },
+      "id": "70e4182c-ef88-414a-8fb3-442f6282a47a",
+      "name": "Build History Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "id": "b560f2e4-60d0-4401-ae40-a251477c776e",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1220,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Search History Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search History Files": {
+      "main": [
+        [
+          {
+            "node": "Download History JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download History JSON": {
+      "main": [
+        [
+          {
+            "node": "Build History Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build History Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null
+}

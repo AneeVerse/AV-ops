@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T21:40:39.397553+00:00",
+  "voice_number": 1,
+  "voice_name": "Juniper",
+  "replicate_voice": "Juniper",
+  "prediction_id": "ggndycxxjdrmt0cz2n9t1wjkjr",
+  "raw_audio_url": "https://replicate.delivery/xezq/GouwxwCW0qpkItPxU5RZravweuTeRbOMC07n0VuAzlZWhJ0WA/tmpq9axlen9.mp3",
+  "raw_duration": 3.160816,
+  "fitted_duration": 3.160816,
+  "script_text": "Same skills, different title - same resume, different outcome.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section2_insight_fitted.mp3"
+}

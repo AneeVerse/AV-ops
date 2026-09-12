@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T04:30:40.529432+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "81cteg9hqxrmr0cz4rzbe0abzr",
+  "raw_audio_url": "https://replicate.delivery/xezq/hJAB9x8UVUZYNtCG5VPruLeli7ft4QUMVzxhZltMJ3UvzO1WA/tmpalzv0264.mp3",
+  "raw_duration": 5.093878,
+  "fitted_duration": 5.093878,
+  "script_text": "If you're a Data Scientist, you likely match several adjacent roles right now.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260703_041314_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0014_20260703_041314_section1_hook_fitted.mp3"
+}

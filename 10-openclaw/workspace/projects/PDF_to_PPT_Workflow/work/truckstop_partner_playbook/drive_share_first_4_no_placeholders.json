@@ -1,0 +1,9 @@
+{
+  "link": "https://docs.google.com/presentation/d/1yDLQl5FyR3JGGqS9pJfMg0wVXcddzv6Y/edit?usp=drivesdk&ouid=103079656183450228872&rtpof=true&sd=true",
+  "permission": {
+    "id": "anyoneWithLink",
+    "role": "reader",
+    "type": "anyone"
+  },
+  "permissionId": "anyoneWithLink"
+}

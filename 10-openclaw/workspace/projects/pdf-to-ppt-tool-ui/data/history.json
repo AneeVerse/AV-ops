@@ -1,0 +1,174 @@
+[
+  {
+    "success": true,
+    "run_id": "pdf_to_ppt_20260521035146_73tm1",
+    "original_file_name": "33_Truckstop_Partner_Playbook_Design_v1.2_1_.pdf",
+    "provider": "openrouter",
+    "image_provider": "replicate",
+    "pdf_pages": 25,
+    "text_chars": 54677,
+    "chunks": 6,
+    "slide_count": 5,
+    "validation_valid": true,
+    "validation_issues": 0,
+    "final_ppt_drive_id": "1UdX-iQKy4Vu8C4Usi7YjWsoIUU2aCVGO",
+    "final_ppt_link": "https://docs.google.com/presentation/d/1UdX-iQKy4Vu8C4Usi7YjWsoIUU2aCVGO/edit?usp=drivesdk&ouid=101407867304380017721&rtpof=true&sd=true",
+    "final_ppt_file": "pdf_to_ppt_20260521035146_73tm1__test-01.pptx",
+    "source_pdf_link": "https://drive.google.com/file/d/15bzDMdfNCcIJv35IZ5VxTtxfu9hxjpQW/view?usp=drivesdk",
+    "extracted_text_link": "https://drive.google.com/file/d/1FO4X3j5sBkLJDCo8tsnShRyLPRcqul4T/view?usp=drivesdk",
+    "build_payload_link": "https://drive.google.com/file/d/1_-oMG1zEp34Vs60sXEpPsgb-HsFtGBtE/view?usp=drivesdk",
+    "generated_images_manifest_link": "https://drive.google.com/file/d/1SoZKAZwxyvJLLzndhPy0NGgLMJ450ApZ/view?usp=drivesdk",
+    "generated_image_links": [
+      "https://drive.google.com/file/d/1W9wip36fYq_FeEnfb5ZlgqqAQkuQks85/view?usp=drivesdk"
+    ],
+    "validation_report_link": "https://drive.google.com/file/d/1sBEnVG5p_WUCrvKDDdMj8CXVorZ5pEMA/view?usp=drivesdk",
+    "run_summary_link": "https://drive.google.com/file/d/1sxDtWKpmfx_Usz6UUqx19CVmfhgHfwKM/view?usp=drivesdk",
+    "artifacts": {
+      "source_pdf": {
+        "drive_id": "15bzDMdfNCcIJv35IZ5VxTtxfu9hxjpQW",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__source.pdf",
+        "link": "https://drive.google.com/file/d/15bzDMdfNCcIJv35IZ5VxTtxfu9hxjpQW/view?usp=drivesdk",
+        "mimeType": "application/pdf",
+        "folder_id": "10A0EiuyCodhhWBDEnC_1QG301NCczWws"
+      },
+      "final_pptx": {
+        "drive_id": "1UdX-iQKy4Vu8C4Usi7YjWsoIUU2aCVGO",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01.pptx",
+        "link": "https://docs.google.com/presentation/d/1UdX-iQKy4Vu8C4Usi7YjWsoIUU2aCVGO/edit?usp=drivesdk&ouid=101407867304380017721&rtpof=true&sd=true",
+        "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "folder_id": "1yxxMEjUt6gNky3SWzGnTxYxoo64LehB_"
+      },
+      "extracted_text": {
+        "drive_id": "1FO4X3j5sBkLJDCo8tsnShRyLPRcqul4T",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__extracted_text.txt",
+        "link": "https://drive.google.com/file/d/1FO4X3j5sBkLJDCo8tsnShRyLPRcqul4T/view?usp=drivesdk",
+        "mimeType": "text/plain",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "build_payload": {
+        "drive_id": "1_-oMG1zEp34Vs60sXEpPsgb-HsFtGBtE",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__build_payload.json",
+        "link": "https://drive.google.com/file/d/1_-oMG1zEp34Vs60sXEpPsgb-HsFtGBtE/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "generated_images_manifest": {
+        "drive_id": "1SoZKAZwxyvJLLzndhPy0NGgLMJ450ApZ",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__generated_images_manifest.json",
+        "link": "https://drive.google.com/file/d/1SoZKAZwxyvJLLzndhPy0NGgLMJ450ApZ/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "validation_report": {
+        "drive_id": "1sBEnVG5p_WUCrvKDDdMj8CXVorZ5pEMA",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__validation_report.json",
+        "link": "https://drive.google.com/file/d/1sBEnVG5p_WUCrvKDDdMj8CXVorZ5pEMA/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "11YmnnsEeoLUbEdOIuRqIB3i2b49XJMzJ"
+      },
+      "run_summary": {
+        "drive_id": "1sxDtWKpmfx_Usz6UUqx19CVmfhgHfwKM",
+        "name": "pdf_to_ppt_20260521035146_73tm1__test-01__run_summary.json",
+        "link": "https://drive.google.com/file/d/1sxDtWKpmfx_Usz6UUqx19CVmfhgHfwKM/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "11YmnnsEeoLUbEdOIuRqIB3i2b49XJMzJ"
+      },
+      "generated_images": [
+        {
+          "drive_id": "1W9wip36fYq_FeEnfb5ZlgqqAQkuQks85",
+          "name": "pdf_to_ppt_20260521035146_73tm1__test-01__slide_01__hero_image.png",
+          "link": "https://drive.google.com/file/d/1W9wip36fYq_FeEnfb5ZlgqqAQkuQks85/view?usp=drivesdk",
+          "mimeType": "image/png",
+          "folder_id": "1cXk6KrLLd1Z5w28nA68p0270BUfhsLTS"
+        }
+      ]
+    },
+    "created_at": "2026-05-21T03:55:47.024Z"
+  },
+  {
+    "success": true,
+    "run_id": "pdf_to_ppt_20260521033610_5wghu",
+    "original_file_name": "33_Truckstop_Partner_Playbook_Design_v1.2_1_.pdf",
+    "provider": "openrouter",
+    "image_provider": "replicate",
+    "pdf_pages": 25,
+    "text_chars": 54677,
+    "chunks": 6,
+    "slide_count": 10,
+    "validation_valid": true,
+    "validation_issues": 0,
+    "final_ppt_drive_id": "12FB8i2uFU07_EEDEpbVNTQ85WBorMZ9-",
+    "final_ppt_link": "https://docs.google.com/presentation/d/12FB8i2uFU07_EEDEpbVNTQ85WBorMZ9-/edit?usp=drivesdk&ouid=101407867304380017721&rtpof=true&sd=true",
+    "final_ppt_file": "pdf_to_ppt_20260521033610_5wghu__Test-01.pptx",
+    "source_pdf_link": "https://drive.google.com/file/d/1eqes8r2pgSOhs5T2_t72hHjv2tSiD3xz/view?usp=drivesdk",
+    "extracted_text_link": "https://drive.google.com/file/d/1TYHrd1SBSv_pNBN2A8J0dY4Gafn7AAh_/view?usp=drivesdk",
+    "build_payload_link": "https://drive.google.com/file/d/1g_A2mtb_1PNh2yah8kdVr6VK40vMmjes/view?usp=drivesdk",
+    "generated_images_manifest_link": "https://drive.google.com/file/d/1gSxPO8CpDxgIAriYZxBsPZ5-jn6TOnWw/view?usp=drivesdk",
+    "generated_image_links": [
+      "https://drive.google.com/file/d/1Zu0-88tMs_10wdsR-T6bonZwGV8aZL5r/view?usp=drivesdk"
+    ],
+    "validation_report_link": "https://drive.google.com/file/d/1AI7zuhxZn-KyuUcLZNqGzSQV7AZxWJoj/view?usp=drivesdk",
+    "run_summary_link": "https://drive.google.com/file/d/1pyFl7zaWtGXIeUh9dVCFrWOA-zQCdQqx/view?usp=drivesdk",
+    "artifacts": {
+      "source_pdf": {
+        "drive_id": "1eqes8r2pgSOhs5T2_t72hHjv2tSiD3xz",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__source.pdf",
+        "link": "https://drive.google.com/file/d/1eqes8r2pgSOhs5T2_t72hHjv2tSiD3xz/view?usp=drivesdk",
+        "mimeType": "application/pdf",
+        "folder_id": "10A0EiuyCodhhWBDEnC_1QG301NCczWws"
+      },
+      "final_pptx": {
+        "drive_id": "12FB8i2uFU07_EEDEpbVNTQ85WBorMZ9-",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01.pptx",
+        "link": "https://docs.google.com/presentation/d/12FB8i2uFU07_EEDEpbVNTQ85WBorMZ9-/edit?usp=drivesdk&ouid=101407867304380017721&rtpof=true&sd=true",
+        "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "folder_id": "1yxxMEjUt6gNky3SWzGnTxYxoo64LehB_"
+      },
+      "extracted_text": {
+        "drive_id": "1TYHrd1SBSv_pNBN2A8J0dY4Gafn7AAh_",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__extracted_text.txt",
+        "link": "https://drive.google.com/file/d/1TYHrd1SBSv_pNBN2A8J0dY4Gafn7AAh_/view?usp=drivesdk",
+        "mimeType": "text/plain",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "build_payload": {
+        "drive_id": "1g_A2mtb_1PNh2yah8kdVr6VK40vMmjes",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__build_payload.json",
+        "link": "https://drive.google.com/file/d/1g_A2mtb_1PNh2yah8kdVr6VK40vMmjes/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "generated_images_manifest": {
+        "drive_id": "1gSxPO8CpDxgIAriYZxBsPZ5-jn6TOnWw",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__generated_images_manifest.json",
+        "link": "https://drive.google.com/file/d/1gSxPO8CpDxgIAriYZxBsPZ5-jn6TOnWw/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "1dfFLfZx3uIgstp0iGOvP9hPDLC3SaPpT"
+      },
+      "validation_report": {
+        "drive_id": "1AI7zuhxZn-KyuUcLZNqGzSQV7AZxWJoj",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__validation_report.json",
+        "link": "https://drive.google.com/file/d/1AI7zuhxZn-KyuUcLZNqGzSQV7AZxWJoj/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "11YmnnsEeoLUbEdOIuRqIB3i2b49XJMzJ"
+      },
+      "run_summary": {
+        "drive_id": "1pyFl7zaWtGXIeUh9dVCFrWOA-zQCdQqx",
+        "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__run_summary.json",
+        "link": "https://drive.google.com/file/d/1pyFl7zaWtGXIeUh9dVCFrWOA-zQCdQqx/view?usp=drivesdk",
+        "mimeType": "application/json",
+        "folder_id": "11YmnnsEeoLUbEdOIuRqIB3i2b49XJMzJ"
+      },
+      "generated_images": [
+        {
+          "drive_id": "1Zu0-88tMs_10wdsR-T6bonZwGV8aZL5r",
+          "name": "pdf_to_ppt_20260521033610_5wghu__Test-01__slide_01__hero_image.png",
+          "link": "https://drive.google.com/file/d/1Zu0-88tMs_10wdsR-T6bonZwGV8aZL5r/view?usp=drivesdk",
+          "mimeType": "image/png",
+          "folder_id": "1cXk6KrLLd1Z5w28nA68p0270BUfhsLTS"
+        }
+      ]
+    },
+    "created_at": "2026-05-21T03:39:58.812Z"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-30T13:26:33.144177+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "wm43da5v09rmr0cz32tt7p0x04",
+  "raw_audio_url": "https://replicate.delivery/xezq/nZIxxeyKGt0mTiltZBFN09UhIgRWziU55i5ji6jYJBGEsLaLA/tmpabhezdmq.mp3",
+  "raw_duration": 7.418776,
+  "fitted_duration": 7.418776,
+  "script_text": "Most of the approximately 95% of U.S. publicly posted jobs stay invisible to candidates who don't know to search them.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260630_131503_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260630_131503_section2_insight_fitted.mp3"
+}

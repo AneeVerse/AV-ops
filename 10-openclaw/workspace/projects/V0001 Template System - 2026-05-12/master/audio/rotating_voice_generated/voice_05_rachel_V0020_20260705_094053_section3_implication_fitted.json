@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T09:46:51.892505+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "j4v1ch359drmy0cz66p9tefsec",
+  "raw_audio_url": "https://replicate.delivery/xezq/2ffG9Gv77eeWXTEfcC3UmfHleHGeLbp2diyMRSkQqNgtKo91WA/tmpo0gblolt.mp3",
+  "raw_duration": 3.526531,
+  "fitted_duration": 3.526531,
+  "script_text": "Knowing your number is leverage, even if you never leave.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0020_20260705_094053_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0020_20260705_094053_section3_implication_fitted.mp3"
+}

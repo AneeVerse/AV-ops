@@ -1,0 +1,27 @@
+{
+  "project_id": "traitdna_v0001_template_full",
+  "size": "1080x1920",
+  "fps": 30,
+  "section_duration_seconds": 5,
+  "total_duration_seconds": 20,
+  "audio_mode": "silent_placeholder",
+  "output_name": "traitdna_full_20s_template_v7_fresh_20260617_041725.mp4",
+  "sections": [
+    {
+      "id": "section1_hook",
+      "source": "../section1/output/section1_template_match_section3_animation_v4.mp4"
+    },
+    {
+      "id": "section2_stat",
+      "source": "../section2/output/section2_editable_match_95_v7.mp4"
+    },
+    {
+      "id": "section3_implication",
+      "source": "../section3/output/section3_template_match_section1_values_v5.mp4"
+    },
+    {
+      "id": "section4_cta",
+      "source": "../section4/output/section4_template_text_only_v9_2px_up.mp4"
+    }
+  ]
+}

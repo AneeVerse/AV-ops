@@ -1,0 +1,106 @@
+{
+  "run_id": "local_pipeline_test_001",
+  "project_name": "Local PDF to PPT Pipeline Test",
+  "output_file_name": "local_pipeline_output.pptx",
+  "target_slide_count": 10,
+  "actual_slide_count": 10,
+  "planner_mode": "heuristic_skeleton_ai_to_replace",
+  "slides": [
+    {
+      "order": 1,
+      "template_id": "slide_01_hero_cover",
+      "text": {
+        "heading": "PDF to PPT Automation System This document expl…",
+        "supporting_text": "The system should support large source documents, extract text from every page, and generate a concise presentation by selecting…",
+        "section_label": "GENERATED FROM PDF"
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png"
+        }
+      }
+    },
+    {
+      "order": 2,
+      "template_id": "slide_14_section_divider_pattern",
+      "text": {
+        "heading": "Key Findings",
+        "subheading": "A concise overview generated from the source PDF."
+      }
+    },
+    {
+      "order": 3,
+      "template_id": "slide_08_text_heavy_insight",
+      "text": {
+        "heading": "Main Insight",
+        "body": "The system should support large source documents, extract text from every page, and generate a concise presentation by selecting from an approved template library. The main goal is to reduce manual presentation work while keeping strict control over brand assets, fonts, layout, and final PPTX quality."
+      }
+    },
+    {
+      "order": 4,
+      "template_id": "slide_10_main_supporting_text",
+      "text": {
+        "heading": "What This Means",
+        "body_left": "The output should remain editable in PowerPoint and should not depend on Google Slides because custom fonts may break there. The workflow begins with a Next.js user interface.",
+        "body_right": "The user uploads a PDF, enters a project name, chooses a target slide count, and optionally provides tone, audience, or brand notes. The default target is ten slides, but the system can adjust if the content clearly req…"
+      }
+    },
+    {
+      "order": 5,
+      "template_id": "slide_12_content_image",
+      "text": {
+        "heading": "Supporting Context",
+        "body": "The output should remain editable in PowerPoint and should not depend on Google Slides because custom fonts may break there. The workflow begins with a Next.js user interface."
+      }
+    },
+    {
+      "order": 6,
+      "template_id": "slide_03_metric_overview",
+      "text": {
+        "heading": "Document Snapshot",
+        "subheading": "Basic extraction and planning signals from the uploaded PDF.",
+        "section_label": "CONTENT SUMMARY",
+        "metric_1_value": "2202",
+        "metric_1_label": "Extracted characters",
+        "metric_2_value": "22",
+        "metric_2_label": "Usable statements",
+        "metric_3_value": "10",
+        "metric_3_label": "Target slides",
+        "metric_4_value": "PPTX",
+        "metric_4_label": "Output format",
+        "metric_5_value": "AI",
+        "metric_5_label": "Next rewrite stage"
+      }
+    },
+    {
+      "order": 7,
+      "template_id": "slide_08_text_heavy_insight",
+      "text": {
+        "heading": "Additional Detail",
+        "body": "The user uploads a PDF, enters a project name, chooses a target slide count, and optionally provides tone, audience, or brand notes. The default target is ten slides, but the system can adjust if the content clearly requires fewer or more."
+      }
+    },
+    {
+      "order": 8,
+      "template_id": "slide_10_main_supporting_text",
+      "text": {
+        "heading": "Recommended Direction",
+        "body_left": "The system should support large source documents, extract text from every page, and generate a concise presentation by selecting from an approved template library. The main goal is to reduce manual presentation work whi…",
+        "body_right": "The output should remain editable in PowerPoint and should not depend on Google Slides because custom fonts may break there. The workflow begins with a Next.js user interface."
+      }
+    },
+    {
+      "order": 9,
+      "template_id": "slide_18_image_only_slide",
+      "text": {}
+    },
+    {
+      "order": 10,
+      "template_id": "slide_15_section_divider_diagonal",
+      "text": {
+        "heading": "Next Steps",
+        "subheading": "Review, refine, and finalize the generated presentation."
+      }
+    }
+  ]
+}

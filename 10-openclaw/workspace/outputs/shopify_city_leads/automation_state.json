@@ -1,0 +1,898 @@
+{
+  "goal": "Collect 1000 verified New York Shopify fine/demi-fine jewellery leads using Apify discovery + local verification before moving to any other city.",
+  "sheetId": "1jbiO0aTKh048tHkiJfIrtXgOZZftbABG3eVBmtxx13o",
+  "sheetTab": "Shopify",
+  "currentCountry": "US",
+  "currentCity": "New York",
+  "cityTarget": 1000,
+  "countryOrder": [
+    "US",
+    "UK",
+    "India"
+  ],
+  "cityQueue": {
+    "US": [
+      "New York",
+      "Los Angeles",
+      "San Francisco",
+      "Chicago",
+      "Miami",
+      "Dallas",
+      "Austin",
+      "Seattle",
+      "Boston",
+      "Atlanta",
+      "Houston",
+      "Washington DC",
+      "Philadelphia",
+      "Phoenix",
+      "San Diego",
+      "Denver",
+      "Portland",
+      "Nashville",
+      "Las Vegas",
+      "Charlotte",
+      "Orlando",
+      "Minneapolis",
+      "Detroit",
+      "San Jose",
+      "Scottsdale",
+      "Beverly Hills",
+      "Brooklyn",
+      "Santa Monica",
+      "Newport Beach",
+      "Palm Beach"
+    ],
+    "UK": [
+      "London",
+      "Manchester",
+      "Birmingham",
+      "Leeds",
+      "Glasgow",
+      "Edinburgh",
+      "Bristol",
+      "Liverpool",
+      "Brighton",
+      "Cambridge"
+    ],
+    "India": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Jaipur",
+      "Hyderabad",
+      "Chennai",
+      "Kolkata",
+      "Pune",
+      "Ahmedabad",
+      "Surat"
+    ]
+  },
+  "leadRules": {
+    "platform": "Shopify only",
+    "categories": [
+      "Demi-fine Jewellery",
+      "Fine Jewellery"
+    ],
+    "emailRequired": false,
+    "dedupeKey": "domain",
+    "appendMode": "one verified lead at a time",
+    "allowedSearchCost": "Apify Google Search allowed with maxTotalChargeUsd=0.50 per run; no email enrichment paid tools",
+    "searchMode": "continuous Apify candidate discovery + local verification + one-by-one sheet append until New York reaches 1000",
+    "nonShopifyHandling": "Verified jewellery stores that are not Shopify are appended to the Non-Shopify tab instead of being discarded; dedupe domain across Shopify and Non-Shopify."
+  },
+  "monitoring": {
+    "intervalMinutes": 15,
+    "checkFor": [
+      "running or stalled",
+      "new rows added",
+      "duplicate domains",
+      "bad/suspicious emails",
+      "search/API quota block",
+      "script/tool errors",
+      "current city progress"
+    ]
+  },
+  "status": "n8n_budget_batch_completed",
+  "lastUpdateUtc": "2026-06-05T11:46:54Z",
+  "cityAddedThisRun": 0,
+  "searchBlocker": "web_search Gemini API quota 429 RESOURCE_EXHAUSTED",
+  "searches": 40,
+  "searchErrors": 0,
+  "noResultQueries": 40,
+  "blocker": "cleared: new Apify token accepted; worker started successfully",
+  "seedAddedThisRun": 32,
+  "seedDuplicates": 0,
+  "seedRejected": 16,
+  "lastAddedDomain": "sophieratner.com",
+  "newYorkRunSummary": {
+    "newLeadsAddedThisRun": 32,
+    "newYorkRowsTotal": 36,
+    "sheetDataRowsTotal": 107,
+    "newYorkEmailsTotal": 33,
+    "newEmailsAddedThisRun": 29,
+    "duplicateDomainsInSheet": 0,
+    "freeWebSearchBlocker": "web_search Gemini API quota 429 RESOURCE_EXHAUSTED",
+    "bingBlocker": "Bing returned bot-check/search page with no external result links; 35 consecutive direct scraping queries produced zero candidates",
+    "duckDuckGoBlocker": "html endpoint disconnected; lite endpoint timed out",
+    "browserBlocker": "OpenClaw managed browser could not start: no supported Chromium installed",
+    "scrapegraphaiPythonBlocker": "pip: no matching distribution found for scrapegraphai-python",
+    "emailAudit": "Cleared unrelated/vendor emails from rows 79, 91, 98",
+    "cityStatus": "not exhausted; temporarily blocked by free search availability; direct seed verification processed 48 likely candidate domains"
+  },
+  "latestMonitorSummary": {
+    "timeIst": "2026-06-05 02:09 PM IST",
+    "totalRows": 454,
+    "currentCityRows": 383,
+    "nonShopifyRows": 17,
+    "emailsFound": 346,
+    "newYorkEmails": 286,
+    "duplicateDomains": 0,
+    "workerRunning": false,
+    "workerStatus": "test_completed",
+    "badEmails": 16,
+    "remainingTo1000": 617,
+    "newSinceLastProgress": "Shopify +0; Non-Shopify +9",
+    "blocker": null,
+    "action": "small test completed; crons paused pending user confirmation"
+  },
+  "progressMonitor": {
+    "lastNewYorkRows": 383,
+    "lastTotalRows": 454,
+    "lastCheckedUtc": "2026-06-05T08:22:00Z"
+  },
+  "sheetTabs": {
+    "shopify": "Shopify",
+    "nonShopify": "Non-Shopify"
+  },
+  "latestChange": "Updated APIFY_API_TOKEN in .env, verified token status 200, re-enabled Shopify crons, started New York two-tab worker. Latest Apify run started with status 201 and is running.",
+  "latestTestRun": {
+    "timeIst": "2026-06-05 02:13 PM IST",
+    "apifyRuns": 1,
+    "maxCandidates": 15,
+    "apifyCostUsd": 0.1045,
+    "shopifyAdded": 0,
+    "nonShopifyAdded": 3,
+    "shopifyTotal": 454,
+    "newYorkShopifyTotal": 383,
+    "nonShopifyTotal": 17,
+    "cronsEnabled": false,
+    "notes": "Small test confirmed two-tab flow: non-Shopify jewellery stores appended to Non-Shopify; no Shopify rows added in this sample."
+  },
+  "latestN8nBudgetBatch": {
+    "ok": true,
+    "exitCode": 0,
+    "startedAt": "2026-06-09T03:00:29Z",
+    "finishedAt": "2026-06-09T03:01:33Z",
+    "request": {
+      "batch": null,
+      "maxCandidates": 12,
+      "maxQueries": 6,
+      "resultsPerPage": 5,
+      "verifyTimeout": 5,
+      "targetShopifyNy": 500,
+      "dailyBudgetUsd": 0.5,
+      "resolvedBatch": 129
+    },
+    "parsed": {
+      "start": {
+        "total_rows": 479,
+        "new_york_rows": 408,
+        "emails_found_new_york": 298,
+        "duplicate_domains": 0,
+        "non_shopify_rows": 30
+      },
+      "final": {
+        "total_rows": 479,
+        "new_york_rows": 408,
+        "emails_found_new_york": 298,
+        "duplicate_domains": 0,
+        "non_shopify_rows": 30
+      },
+      "runs": 1,
+      "added_total": 0
+    },
+    "stdoutTail": "[2026-06-09 03:00:31] START {'total_rows': 479, 'new_york_rows': 408, 'emails_found_new_york': 298, 'duplicate_domains': 0, 'non_shopify_rows': 30}\n[2026-06-09 03:00:34] BATCH 130 ny_rows=408 queries=6\n[2026-06-09 03:00:35] Apify start status=201\n[2026-06-09 03:00:36] Apify run 8P6WE1D819VhiCNuQ status=RUNNING\n[2026-06-09 03:00:52] Apify run 8P6WE1D819VhiCNuQ status=RUNNING\n[2026-06-09 03:01:08] Apify run 8P6WE1D819VhiCNuQ status=SUCCEEDED\n[2026-06-09 03:01:09] Apify items=6 candidates_to_verify=12 cost=0.027999999999999997\n{\n  \"start\": {\n    \"total_rows\": 479,\n    \"new_york_rows\": 408,\n    \"emails_found_new_york\": 298,\n    \"duplicate_domains\": 0,\n    \"non_shopify_rows\": 30\n  },\n  \"final\": {\n    \"total_rows\": 479,\n    \"new_york_rows\": 408,\n    \"emails_found_new_york\": 298,\n    \"duplicate_domains\": 0,\n    \"non_shopify_rows\": 30\n  },\n  \"runs\": 1,\n  \"added_total\": 0\n}\n",
+    "stderrTail": ""
+  },
+  "n8nBudgetWorkflow": {
+    "workflowId": "3TP9COxafzQSyHaB",
+    "name": "Shopify NY Budget Batch - Two Tab",
+    "webhookPath": "/webhook/shopify-ny-budget-batch",
+    "localApi": "http://127.0.0.1:8011/shopify-ny-budget-batch",
+    "apiPidFile": "/root/.openclaw/workspace/outputs/shopify_city_leads/shopify_budget_api.pid",
+    "workflowJson": "/root/.openclaw/workspace/outputs/shopify_city_leads/n8n_shopify_budget_batch_workflow_v3.json",
+    "cronsEnabled": false,
+    "defaultSmallBatch": {
+      "maxQueries": 3,
+      "resultsPerPage": 3,
+      "maxCandidates": 6
+    }
+  },
+  "latestN8nFirstBatchSummary": {
+    "timeIst": "2026-06-05 02:28 PM IST",
+    "apifyCostUsd": 0.001,
+    "apifyItems": 3,
+    "candidatesVerifiedMax": 6,
+    "shopifyAdded": 0,
+    "nonShopifyAdded": 1,
+    "shopifyTotal": 454,
+    "newYorkShopifyTotal": 383,
+    "nonShopifyTotal": 18,
+    "emailCleanup": "Cleared mismatched vendor email from DANIELLES JEWELRY NYC and patched future email validation."
+  },
+  "budgetRunHistory": [
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 48,
+      "costUsd": 0.0145,
+      "ok": true,
+      "finishedAt": "2026-06-05T11:44:53Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 49,
+      "costUsd": 0.0145,
+      "ok": true,
+      "finishedAt": "2026-06-05T11:46:43Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 50,
+      "costUsd": 0.014499999999999999,
+      "ok": true,
+      "finishedAt": "2026-06-05T12:01:07Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 51,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T12:26:57Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 52,
+      "costUsd": 0.050499999999999996,
+      "ok": true,
+      "finishedAt": "2026-06-05T12:37:51Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 53,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-05T13:01:34Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 54,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-05T14:01:46Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 55,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-05T15:01:44Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 56,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-05T16:01:32Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 57,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T17:01:53Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 58,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T18:01:34Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 59,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T19:03:55Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 60,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T20:02:11Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 61,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T21:01:47Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 62,
+      "costUsd": 0.014499999999999999,
+      "ok": true,
+      "finishedAt": "2026-06-05T22:01:38Z"
+    },
+    {
+      "dateUtc": "2026-06-05",
+      "batch": 63,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-05T23:02:06Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 64,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-06T00:02:21Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 65,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T01:01:55Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 66,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T02:01:45Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 67,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T03:01:44Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 68,
+      "costUsd": 0.0055,
+      "ok": true,
+      "finishedAt": "2026-06-06T04:01:15Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 69,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T05:01:37Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 70,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-06T06:01:28Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 71,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T07:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 72,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T08:02:21Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 73,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-06T09:01:22Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 74,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T10:01:34Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 75,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T11:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 76,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T12:01:38Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 77,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T13:01:16Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 78,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T14:01:38Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 79,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T15:01:23Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 80,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T16:01:51Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 81,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T17:01:38Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 82,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T18:01:40Z"
+    },
+    {
+      "dateUtc": "2026-06-06",
+      "batch": 83,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-06T19:01:20Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 84,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T00:01:40Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 85,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T01:01:36Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 86,
+      "costUsd": 0.009999999999999998,
+      "ok": true,
+      "finishedAt": "2026-06-07T02:01:18Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 87,
+      "costUsd": 0.009999999999999998,
+      "ok": true,
+      "finishedAt": "2026-06-07T03:01:22Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 88,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T04:01:43Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 89,
+      "costUsd": 0.0055,
+      "ok": true,
+      "finishedAt": "2026-06-07T05:01:31Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 90,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T06:01:41Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 91,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T07:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 92,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T08:01:53Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 93,
+      "costUsd": 0.014499999999999999,
+      "ok": true,
+      "finishedAt": "2026-06-07T09:01:22Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 94,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T10:01:41Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 95,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T11:01:31Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 96,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T12:01:37Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 97,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-07T13:01:21Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 98,
+      "costUsd": 0.037,
+      "ok": true,
+      "finishedAt": "2026-06-07T14:03:24Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 99,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T15:02:16Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 100,
+      "costUsd": 0.014499999999999999,
+      "ok": true,
+      "finishedAt": "2026-06-07T16:01:25Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 101,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T17:01:41Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 102,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T18:01:49Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 103,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T19:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-07",
+      "batch": 104,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-07T20:01:44Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 105,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-08T00:01:47Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 106,
+      "costUsd": 0.009999999999999998,
+      "ok": true,
+      "finishedAt": "2026-06-08T01:01:17Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 107,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T02:01:54Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 108,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T03:01:37Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 109,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T04:01:46Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 110,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T05:01:55Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 111,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T06:04:17Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 112,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T07:02:11Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 113,
+      "costUsd": 0.001,
+      "ok": true,
+      "finishedAt": "2026-06-08T08:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 114,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T09:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 115,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T10:01:50Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 116,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-08T11:02:14Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 117,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T12:01:57Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 118,
+      "costUsd": 0.037,
+      "ok": true,
+      "finishedAt": "2026-06-08T13:03:43Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 119,
+      "costUsd": 0.0055,
+      "ok": true,
+      "finishedAt": "2026-06-08T14:01:26Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 120,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T15:02:22Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 121,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T16:02:02Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 122,
+      "costUsd": 0.0325,
+      "ok": true,
+      "finishedAt": "2026-06-08T17:02:56Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 123,
+      "costUsd": 0.019,
+      "ok": true,
+      "finishedAt": "2026-06-08T18:02:07Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 124,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T19:02:35Z"
+    },
+    {
+      "dateUtc": "2026-06-08",
+      "batch": 125,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-08T20:01:37Z"
+    },
+    {
+      "dateUtc": "2026-06-09",
+      "batch": 126,
+      "costUsd": 0.0235,
+      "ok": true,
+      "finishedAt": "2026-06-09T00:01:33Z"
+    },
+    {
+      "dateUtc": "2026-06-09",
+      "batch": 127,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-09T01:01:35Z"
+    },
+    {
+      "dateUtc": "2026-06-09",
+      "batch": 128,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-09T02:01:43Z"
+    },
+    {
+      "dateUtc": "2026-06-09",
+      "batch": 129,
+      "costUsd": 0.027999999999999997,
+      "ok": true,
+      "finishedAt": "2026-06-09T03:01:33Z"
+    }
+  ],
+  "phase1TargetShopifyNy": 500,
+  "dailyBudgetUsd": 0.5,
+  "usedBudgetBatches": [
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129
+  ],
+  "nextBudgetBatch": 130,
+  "phase1Summary": {
+    "timeIst": "2026-06-05 05:16 PM IST",
+    "targetShopifyNy": 500,
+    "currentShopifyNy": 383,
+    "remainingShopifyNy": 117,
+    "schedule": "n8n every 2 hours",
+    "dailyBudgetUsd": 0.5,
+    "spentTodayUsd": 0.029,
+    "latestRuns": "2 Phase 1 runs triggered; both added 0 Shopify, 0 Non-Shopify; costs were about $0.0145 each",
+    "nextAction": "scheduler will continue with auto-incremented Shopify-focused query batches; consider raising batch size if yield remains zero"
+  }
+}

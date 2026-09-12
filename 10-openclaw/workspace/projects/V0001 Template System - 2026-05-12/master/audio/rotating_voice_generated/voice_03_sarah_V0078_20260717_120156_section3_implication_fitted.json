@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T12:02:06.714134+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "89ejw9m7fnrmt0czdzt991mvxw",
+  "raw_audio_url": "https://replicate.delivery/xezq/QfFiydoMC9QcQCaWPI0MMU2DmVcHjp0PRWHjUfftwZh5d5ztA/tmp9940kk8h.mp3",
+  "raw_duration": 2.742857,
+  "fitted_duration": 2.742857,
+  "script_text": "Waiting for public postings can put you behind.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0078_20260717_120156_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0078_20260717_120156_section3_implication_fitted.mp3"
+}

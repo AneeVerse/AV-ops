@@ -1,0 +1,136 @@
+{
+  "run_id": "ai_planner_1779285891",
+  "project_name": "AI Pipeline Test",
+  "output_file_name": "PDF_to_PPT_Automation_Presentation.pptx",
+  "target_slide_count": 10,
+  "actual_slide_count": 10,
+  "planner_mode": "ai",
+  "slides": [
+    {
+      "template_id": "slide_01_hero_cover",
+      "text": {
+        "heading": "Automate Your PDF to PPT Conversion",
+        "supporting_text": "Streamlined system for easy PDF uploads."
+      },
+      "images": {
+        "hero_image": {
+          "path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png",
+          "prompt": ""
+        }
+      },
+      "order": 1
+    },
+    {
+      "template_id": "slide_02_strategic_roadmap",
+      "text": {
+        "heading": "Importance of Brand Integrity",
+        "subheading": "Why it Matters",
+        "timeline_block_1": "Step 1: Upload PDF",
+        "timeline_block_2": "Step 2: Text Extraction",
+        "timeline_block_3": "Step 3: Summarization",
+        "timeline_block_4": "Step 4: Slide Outline Creation",
+        "closing_line": "Ensuring brand consistency throughout."
+      },
+      "order": 2,
+      "images": {}
+    },
+    {
+      "template_id": "slide_03_metric_overview",
+      "text": {
+        "heading": "User-Friendly Interface",
+        "subheading": "Simplifying the Process",
+        "metric_1_label": "User Satisfaction",
+        "metric_1_value": "95%",
+        "metric_2_label": "Time Saved",
+        "metric_2_value": "50%",
+        "metric_3_label": "Documents Processed",
+        "metric_3_value": "1000+"
+      },
+      "order": 3,
+      "images": {}
+    },
+    {
+      "template_id": "slide_04_research_chart_insight",
+      "text": {
+        "heading": "Workflow Overview",
+        "subheading": "From PDF to PPT",
+        "source": "Internal Research",
+        "chart_title": "Efficiency Gains",
+        "key_insight": "Automated processes reduce errors.",
+        "metric_value": "30% faster",
+        "metric_label": "Processing Time"
+      },
+      "order": 4,
+      "images": {}
+    },
+    {
+      "template_id": "slide_05_research_stat_cards",
+      "text": {
+        "heading": "Template Library",
+        "body": "A variety of templates to choose from for consistent formatting.",
+        "metric_1_label": "Templates Available",
+        "metric_1_value": "50+",
+        "metric_2_label": "User Customization",
+        "metric_2_value": "100%",
+        "metric_3_label": "Feedback Score",
+        "metric_3_value": "4.8/5"
+      },
+      "order": 5,
+      "images": {}
+    },
+    {
+      "template_id": "slide_06_platform_overview",
+      "text": {
+        "heading": "Editable Output",
+        "section_label": "PowerPoint Format",
+        "body": "Maintain full editability of presentations post-conversion.",
+        "subheading": "User Control",
+        "benefit_row": "Customizable templates and layouts.",
+        "closing_line": "Empowering users to create impactful presentations."
+      },
+      "order": 6,
+      "images": {}
+    },
+    {
+      "template_id": "slide_07_feature_matrix",
+      "text": {
+        "heading": "Potential Risks",
+        "subheading": "Challenges to Consider",
+        "section_label": "Key Risks",
+        "feature_list_left": "Dependence on Google Drive",
+        "feature_list_right": "Summarization Accuracy"
+      },
+      "order": 7,
+      "images": {}
+    },
+    {
+      "template_id": "slide_08_text_heavy_insight",
+      "text": {
+        "heading": "Guidelines for Template Usage",
+        "body": "Clear instructions to maximize template effectiveness."
+      },
+      "order": 8,
+      "images": {}
+    },
+    {
+      "template_id": "slide_09_ui_product_showcase",
+      "text": {
+        "heading": "User Interface Showcase",
+        "body": "Demonstrating the ease of use and customization options."
+      },
+      "order": 9,
+      "images": {}
+    },
+    {
+      "template_id": "slide_10_main_supporting_text",
+      "text": {
+        "heading": "Conclusion",
+        "body_left": "Adopt our system for efficient PDF to PPT conversion.",
+        "body_right": "Join the future of presentation creation."
+      },
+      "order": 10,
+      "images": {}
+    }
+  ],
+  "_provider": "openrouter"
+}

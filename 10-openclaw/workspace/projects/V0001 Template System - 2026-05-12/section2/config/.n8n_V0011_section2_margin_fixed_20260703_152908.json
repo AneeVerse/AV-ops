@@ -1,0 +1,65 @@
+{
+  "duration_seconds": 7.9333333333333345,
+  "fps": 30,
+  "size": [
+    1080,
+    1920
+  ],
+  "stat_value": 95,
+  "stat_prefix": "~",
+  "stat_prefix_x_factor": 0.9,
+  "stat_prefix_y_offset": -70,
+  "stat_prefix_min_progress": 0.0,
+  "stat_prefix_lock_final_position": true,
+  "stat_prefix_animate_y": true,
+  "stat_prefix_animate_scale": true,
+  "stat_suffix": "%",
+  "body_lines": [
+    "of U.S. publicly",
+    "posted jobs,",
+    "fast-growing titles",
+    "get low applicant",
+    "volume because",
+    "candidates don't know",
+    "to search for them."
+  ],
+  "output_name": "section2_n8n_V0011_section2_margin_fixed_20260703_152908.mp4",
+  "audio_reference": "../../V0001 Sections 1-2 AE Match - 2026-05-12/output/V0001_section2_only_from_reference_v1.mp4",
+  "line_starts": [
+    0.18,
+    0.25,
+    0.34,
+    0.45,
+    0.58,
+    0.72,
+    0.88
+  ],
+  "line_fade_seconds": 0.36,
+  "count_keys": [
+    [
+      0.0,
+      0
+    ],
+    [
+      0.25,
+      0
+    ],
+    [
+      1.0,
+      82
+    ],
+    [
+      1.45,
+      95
+    ],
+    [
+      5.0,
+      95
+    ]
+  ],
+  "body_max_chars": 20,
+  "body_max_lines": 7,
+  "body_font_size": 72,
+  "body_line_gap": 84,
+  "body_start_y": 900
+}

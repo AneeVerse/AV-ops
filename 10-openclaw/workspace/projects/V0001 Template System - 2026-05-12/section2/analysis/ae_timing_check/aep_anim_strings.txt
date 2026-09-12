@@ -1,0 +1,240 @@
+9:ADBE Slider Control
+14:(ADBE Slider Control
+18:Slider ControlLIST
+21:(ADBE Slider Control-0000
+24:(ADBE Slider Control-0001
+35:(ADBE Slider Control-0000
+45:(ADBE Slider Control-0001
+71:(Pseudo/Duik interpolator v05
+78:(Pseudo/Duik interpolator v05-0000
+81:(Pseudo/Duik interpolator v05-0001
+89:(Pseudo/Duik interpolator v05-0002
+93:(Pseudo/Duik interpolator v05-0003
+97:(Pseudo/Duik interpolator v05-0004
+101:(Pseudo/Duik interpolator v05-0005
+107:(Pseudo/Duik interpolator v05-0006
+111:(Pseudo/Duik interpolator v05-0007
+115:(Pseudo/Duik interpolator v05-0008
+119:(Pseudo/Duik interpolator v05-0009
+123:(Pseudo/Duik interpolator v05-0010
+127:(Pseudo/Duik interpolator v05-0011
+130:(Pseudo/Duik interpolator v05-0012
+133:(Pseudo/Duik interpolator v05-0013
+137:(Pseudo/Duik interpolator v05-0014
+141:(Pseudo/Duik interpolator v05-0015
+144:(Pseudo/Duik interpolator v05-0016
+148:(Pseudo/Duik interpolator v05-0017
+152:(Pseudo/Duik interpolator v05-0018
+158:(Pseudo/Duik interpolator v05-0019
+164:(Pseudo/Duik interpolator v05-0020
+170:(Pseudo/Duik interpolator v05-0021
+174:(Pseudo/Duik interpolator v05-0022
+178:(Pseudo/Duik interpolator v05-0023
+181:(Pseudo/Duik interpolator v05-0024
+185:(Pseudo/Duik interpolator v05-0025
+191:(Pseudo/Duik interpolator v05-0026
+197:(Pseudo/Duik interpolator v05-0027
+203:(Pseudo/Duik interpolator v05-0028
+207:(Pseudo/Duik interpolator v05-0029
+211:(Pseudo/Duik interpolator v05-0030
+215:(Pseudo/Duik interpolator v05-0031
+218:(Pseudo/Duik interpolator v05-0032
+222:(Pseudo/Duik interpolator v05-0033
+228:(Pseudo/Duik interpolator v05-0034
+237:Interpolator | Rectangletdmn
+238:(Pseudo/Duik interpolator v05-0000
+248:(Pseudo/Duik interpolator v05-0003
+256:(Pseudo/Duik interpolator v05-0006
+264:(Pseudo/Duik interpolator v05-0011
+272:(Pseudo/Duik interpolator v05-0012
+280:(Pseudo/Duik interpolator v05-0013
+288:(Pseudo/Duik interpolator v05-0015
+296:(Pseudo/Duik interpolator v05-0016
+307:(Pseudo/Duik interpolator v05-0017
+316:(Pseudo/Duik interpolator v05-0018
+324:(Pseudo/Duik interpolator v05-0023
+332:(Pseudo/Duik interpolator v05-0024
+340:(Pseudo/Duik interpolator v05-0025
+348:(Pseudo/Duik interpolator v05-0031
+356:(Pseudo/Duik interpolator v05-0032
+365:(Pseudo/Duik interpolator v05-0034
+655:95Percent1LIST
+688:/Math.round(effect("Slider Control")("Slider"));
+825:(ADBE Slider Control
+829:Slider ControlLIST
+832:(ADBE Slider Control-0000
+835:(ADBE Slider Control-0001
+846:(ADBE Slider Control-0000
+856:(ADBE Slider Control-0001
+898:(ADBE Position
+907:(ADBE Position_0
+917:(ADBE Position_1
+1404:/*== Duik: interpolator ==*/
+1405:var fx = thisComp.layer("Shape Layer 10").effect("Interpolator | Rectangle");
+1887:	var interpolator = it;
+1888:	if (isColor && cspace > 0) interpolator = function (t, tMin, tMax, value1, value2) { return interpolateColor(t, cspace, tMin, tMax, value1, value2, it); };
+1889:	return interpolator(t, pKey.time, nKey.time, pKey.value, nKey.value);
+2112:/*== Duik: interpolator ==*/
+2113:var fx = thisComp.layer("Shape Layer 10").effect("Interpolator | Rectangle");
+2595:	var interpolator = it;
+2596:	if (isColor && cspace > 0) interpolator = function (t, tMin, tMax, value1, value2) { return interpolateColor(t, cspace, tMin, tMax, value1, value2, it); };
+2597:	return interpolator(t, pKey.time, nKey.time, pKey.value, nKey.value);
+3013:(Pseudo/Duik interpolator v05
+3020:(Pseudo/Duik interpolator v05-0000
+3023:(Pseudo/Duik interpolator v05-0001
+3031:(Pseudo/Duik interpolator v05-0002
+3035:(Pseudo/Duik interpolator v05-0003
+3039:(Pseudo/Duik interpolator v05-0004
+3043:(Pseudo/Duik interpolator v05-0005
+3049:(Pseudo/Duik interpolator v05-0006
+3053:(Pseudo/Duik interpolator v05-0007
+3057:(Pseudo/Duik interpolator v05-0008
+3061:(Pseudo/Duik interpolator v05-0009
+3065:(Pseudo/Duik interpolator v05-0010
+3069:(Pseudo/Duik interpolator v05-0011
+3072:(Pseudo/Duik interpolator v05-0012
+3075:(Pseudo/Duik interpolator v05-0013
+3079:(Pseudo/Duik interpolator v05-0014
+3083:(Pseudo/Duik interpolator v05-0015
+3086:(Pseudo/Duik interpolator v05-0016
+3090:(Pseudo/Duik interpolator v05-0017
+3094:(Pseudo/Duik interpolator v05-0018
+3100:(Pseudo/Duik interpolator v05-0019
+3106:(Pseudo/Duik interpolator v05-0020
+3112:(Pseudo/Duik interpolator v05-0021
+3116:(Pseudo/Duik interpolator v05-0022
+3120:(Pseudo/Duik interpolator v05-0023
+3123:(Pseudo/Duik interpolator v05-0024
+3127:(Pseudo/Duik interpolator v05-0025
+3133:(Pseudo/Duik interpolator v05-0026
+3139:(Pseudo/Duik interpolator v05-0027
+3145:(Pseudo/Duik interpolator v05-0028
+3149:(Pseudo/Duik interpolator v05-0029
+3153:(Pseudo/Duik interpolator v05-0030
+3157:(Pseudo/Duik interpolator v05-0031
+3160:(Pseudo/Duik interpolator v05-0032
+3164:(Pseudo/Duik interpolator v05-0033
+3170:(Pseudo/Duik interpolator v05-0034
+3179:Interpolator | Rectangletdmn
+3180:(Pseudo/Duik interpolator v05-0000
+3190:(Pseudo/Duik interpolator v05-0003
+3198:(Pseudo/Duik interpolator v05-0006
+3206:(Pseudo/Duik interpolator v05-0011
+3214:(Pseudo/Duik interpolator v05-0012
+3222:(Pseudo/Duik interpolator v05-0013
+3230:(Pseudo/Duik interpolator v05-0015
+3238:(Pseudo/Duik interpolator v05-0016
+3249:(Pseudo/Duik interpolator v05-0017
+3258:(Pseudo/Duik interpolator v05-0018
+3266:(Pseudo/Duik interpolator v05-0023
+3274:(Pseudo/Duik interpolator v05-0024
+3282:(Pseudo/Duik interpolator v05-0025
+3290:(Pseudo/Duik interpolator v05-0031
+3298:(Pseudo/Duik interpolator v05-0032
+3307:(Pseudo/Duik interpolator v05-0034
+3343:(ADBE Position
+3352:(ADBE Position_0
+3362:(ADBE Position_1
+3759:(ADBE Position
+3767:(ADBE Position_0
+3777:(ADBE Position_1
+3787:(ADBE Position_2
+3815:(ADBE Opacity
+3909:(ADBE Position
+3917:(ADBE Position_0
+3927:(ADBE Position_1
+3937:(ADBE Position_2
+3955:(ADBE Opacity
+4046:(ADBE Position
+4054:(ADBE Position_0
+4064:(ADBE Position_1
+4074:(ADBE Position_2
+4092:(ADBE Opacity
+4182:(ADBE Position
+4190:(ADBE Position_0
+4200:(ADBE Position_1
+4210:(ADBE Position_2
+4228:(ADBE Opacity
+4319:(ADBE Position
+4327:(ADBE Position_0
+4337:(ADBE Position_1
+4347:(ADBE Position_2
+4365:(ADBE Opacity
+4457:(ADBE Position
+4465:(ADBE Position_0
+4475:(ADBE Position_1
+4485:(ADBE Position_2
+4503:(ADBE Opacity
+4594:(ADBE Position
+4602:(ADBE Position_0
+4612:(ADBE Position_1
+4622:(ADBE Position_2
+4640:(ADBE Opacity
+4732:(ADBE Position
+4740:(ADBE Position_0
+4750:(ADBE Position_1
+4760:(ADBE Position_2
+4788:(ADBE Opacity
+4880:(ADBE Position
+4888:(ADBE Position_0
+4898:(ADBE Position_1
+4908:(ADBE Position_2
+4936:(ADBE Opacity
+5028:(ADBE Position
+5036:(ADBE Position_0
+5046:(ADBE Position_1
+5056:(ADBE Position_2
+5084:(ADBE Opacity
+5168:(ADBE Position
+5176:(ADBE Position_0
+5186:(ADBE Position_1
+5803:(ADBE Position
+5814:(ADBE Position_0
+5824:(ADBE Position_1
+6350:(ADBE Text Animators
+6356:(ADBE Text Animator
+6434:(ADBE Text Animator Properties
+6470:(ADBE Position
+6479:(ADBE Position_0
+6489:(ADBE Position_1
+7025:(ADBE Position
+7034:(ADBE Position_0
+7044:(ADBE Position_1
+7441:(ADBE Position
+7449:(ADBE Position_0
+7459:(ADBE Position_1
+7469:(ADBE Position_2
+7497:(ADBE Opacity
+7591:(ADBE Position
+7599:(ADBE Position_0
+7609:(ADBE Position_1
+7619:(ADBE Position_2
+7637:(ADBE Opacity
+7728:(ADBE Position
+7736:(ADBE Position_0
+7746:(ADBE Position_1
+7756:(ADBE Position_2
+7774:(ADBE Opacity
+7864:(ADBE Position
+7872:(ADBE Position_0
+7882:(ADBE Position_1
+7892:(ADBE Position_2
+7910:(ADBE Opacity
+8001:(ADBE Position
+8009:(ADBE Position_0
+8019:(ADBE Position_1
+8029:(ADBE Position_2
+8047:(ADBE Opacity
+8139:(ADBE Position
+8147:(ADBE Position_0
+8157:(ADBE Position_1
+8167:(ADBE Position_2
+8185:(ADBE Opacity
+8276:(ADBE Position
+8284:(ADBE Position_0
+8294:(ADBE Position_1
+8304:(ADBE Position_2
+8322:(ADBE Opacity
+8414:(ADBE Position
+8422:(ADBE Position_0
+8432:(ADBE Position_1

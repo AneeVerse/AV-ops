@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-02T14:23:01.362640+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "v5vzkc94f5rmt0cz4cvafz46xr",
+  "raw_audio_url": "https://replicate.delivery/xezq/JyGFH6fB4cSRNSgK0KbeBeYWxYP5MrgJlrq63q7Rz2bHyEqtA/tmpia5lfm2f.mp3",
+  "raw_duration": 3.004082,
+  "fitted_duration": 3.004082,
+  "script_text": "Work-style fit travels. Tool proficiency doesn't.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0010_20260702_142248_section3_implication_fitted.mp3"
+}

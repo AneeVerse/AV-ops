@@ -1,0 +1,12 @@
+{
+  "run_id": "builder_mvp_test_001",
+  "project_name": "PPTX Builder MVP Test",
+  "output_file_name": "builder_mvp_test_output.pptx",
+  "slides": [
+    {"order": 1, "template_id": "slide_01_hero_cover", "text": {"heading": "Turn Long PDFs Into Clean Presentations", "supporting_text": "Upload a source document, extract the key message, and build a polished PPTX using approved templates.", "section_label": "PDF TO PPT AUTOMATION"}},
+    {"order": 2, "template_id": "slide_03_metric_overview", "text": {"heading": "Automation by the Numbers", "subheading": "A structured system for faster presentation production.", "section_label": "SYSTEM OVERVIEW", "metric_1_value": "18", "metric_1_label": "Approved slide templates", "metric_2_value": "10", "metric_2_label": "Default output slides", "metric_3_value": "100%", "metric_3_label": "Text extracted from PDF", "metric_4_value": "PPTX", "metric_4_label": "Final editable output", "metric_5_value": "AI", "metric_5_label": "Content + image support"}},
+    {"order": 3, "template_id": "slide_08_text_heavy_insight", "text": {"heading": "Why Template Rules Matter", "body": "Every slide has a defined purpose, character limit, and content format. This helps the automation write content that fits the selected layout instead of overloading the design.\n\nThe JSON library acts as the decision layer between raw PDF content and the final PPTX output."}},
+    {"order": 4, "template_id": "slide_10_main_supporting_text", "text": {"heading": "Controlled PPTX Assembly", "body_left": "The builder uses existing PPTX templates and replaces only approved text placeholders.", "body_right": "Fonts, colors, brand assets, layouts, and design elements stay untouched."}},
+    {"order": 5, "template_id": "slide_14_section_divider_pattern", "text": {"heading": "Next: Image Replacement", "subheading": "After text assembly works, the next phase adds generated image insertion."}}
+  ]
+}

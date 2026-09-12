@@ -1,0 +1,17 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Graphik Web,164,&H00FFFFFF,&H00FFFFFF,&H8A000000,&H00000000,-1,0,0,0,100,100,-1,0,1,0,5,8,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+; Matched to Section 3 approved animation: no initial partial word swap, same fade/move timings.
+Dialogue: 0,0:00:00.14,0:00:04.82,Hook,,0,0,0,,{\fad(150,250)\move(540,125,540,95,0,260)}Most Software
+Dialogue: 0,0:00:00.23,0:00:04.82,Hook,,0,0,0,,{\fad(150,250)\move(540,280,540,250,0,260)}Developers
+Dialogue: 0,0:00:00.32,0:00:04.82,Hook,,0,0,0,,{\fad(150,250)\move(540,435,540,405,0,260)}qualify for more
+Dialogue: 0,0:00:00.41,0:00:04.82,Hook,,0,0,0,,{\fad(150,250)\move(540,590,540,560,0,260)}job titles than
+Dialogue: 0,0:00:00.50,0:00:04.82,Hook,,0,0,0,,{\fad(150,250)\move(540,745,540,715,0,260)}they apply to.

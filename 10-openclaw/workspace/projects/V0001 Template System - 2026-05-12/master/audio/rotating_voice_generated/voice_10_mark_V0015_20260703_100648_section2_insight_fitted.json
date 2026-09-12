@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T10:23:38.588582+00:00",
+  "voice_number": 10,
+  "voice_name": "Mark",
+  "replicate_voice": "Mark",
+  "prediction_id": "zr3a3x2t5xrmy0cz4y0tfc1s90",
+  "raw_audio_url": "https://replicate.delivery/xezq/hsew8AxMomxoP69YmLZ4Woe7BBJGYm4Oq0Cprgd86sBpenqtA/tmpuctuu5ey.mp3",
+  "raw_duration": 5.564082,
+  "fitted_duration": 5.564082,
+  "script_text": "Titles you ignore are often the ones recruiting your exact background and paying more than the roles you're applying to.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260703_100648_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0015_20260703_100648_section2_insight_fitted.mp3"
+}

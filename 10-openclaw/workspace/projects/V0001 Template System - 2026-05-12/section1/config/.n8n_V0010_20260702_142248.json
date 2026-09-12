@@ -1,0 +1,68 @@
+{
+  "section_id": "section1_hook",
+  "duration_seconds": 5.1,
+  "fps": 30,
+  "size": "1080x1920",
+  "clip_path": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0010_20260702_142248_section1_wan.mp4",
+  "audio_path": null,
+  "headline_text": "If your Software Developer team is adopting AI, your role is shifting whether you see it or not.",
+  "font_file": "../../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/Graphik-Bold.ttf",
+  "font_family_ass": "Graphik Web",
+  "font_size": 112,
+  "font_color_ass": "&H00FFFFFF",
+  "shadow_color_ass": "&H85000000",
+  "shadow_size": 5,
+  "position_x": 540,
+  "position_y_start": 135,
+  "position_y_end": 105,
+  "safe_margin_left": 70,
+  "safe_margin_right": 70,
+  "safe_margin_top": 35,
+  "text_reveal_steps": [
+    {
+      "start": 0.0,
+      "end": 0.2,
+      "text": "If your Software"
+    },
+    {
+      "start": 0.2,
+      "end": 0.42,
+      "text": "If your Software\nDeveloper team is"
+    },
+    {
+      "start": 0.42,
+      "end": 0.68,
+      "text": "If your Software\nDeveloper team is\nadopting AI, your"
+    },
+    {
+      "start": 0.68,
+      "end": 1.0,
+      "text": "If your Software\nDeveloper team is\nadopting AI, your\nrole is shifting"
+    },
+    {
+      "start": 1.0,
+      "end": 4.86,
+      "text": "If your Software\nDeveloper team is\nadopting AI, your\nrole is shifting\nwhether you see it or not."
+    }
+  ],
+  "video_style": {
+    "scale_width": 1296,
+    "scale_height": 2304,
+    "crop_width": 1080,
+    "crop_height": 1920,
+    "contrast": 1.12,
+    "saturation": 1.2,
+    "brightness": 0.012,
+    "gamma": 1.0
+  },
+  "output_name": "section1_n8n_V0010_20260702_142248.mp4",
+  "font_dir": "../../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0",
+  "line_gap": 134,
+  "line_reveal_starts": [
+    0.12,
+    0.25,
+    0.4,
+    0.57,
+    0.76
+  ]
+}

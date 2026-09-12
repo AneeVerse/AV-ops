@@ -1,0 +1,23 @@
+{
+  "document_summary": "PDF to PPT Automation System\n\n\nThis document explains the proposed automation system for turning long PDFs into\nclean PowerPoint presentations. The system should support large source documents,\nextract text from every page, and generate a concise presentation by selecting from\nan approved template library. The main goal is to reduce manual presentation work while keeping strict control over\nbrand assets, fonts, layout, and final PPTX quality.",
+  "recommended_slide_count": 10,
+  "storyline": [
+    "PDF to PPT Automation System\n\n\nThis document explains the proposed automation system for turning long PDFs into\nclean PowerPoint presentations.",
+    "The system should support large source documents,\nextract text from every page, and generate a concise presentation by selecting from\nan approved template library.",
+    "The main goal is to reduce manual presentation work while keeping strict control over\nbrand assets, fonts, layout, and final PPTX quality.",
+    "The output should remain\neditable in PowerPoint and should not depend on Google Slides because custom fonts\nmay break there."
+  ],
+  "key_messages": [
+    "PDF to PPT Automation System\n\n\nThis document explains the proposed automation system for turning long PDFs into\nclean PowerPoint presentations.",
+    "The system should support large source documents,\nextract text from every page, and generate a concise presentation by selecting from\nan approved template library.",
+    "The main goal is to reduce manual presentation work while keeping strict control over\nbrand assets, fonts, layout, and final PPTX quality.",
+    "The output should remain\neditable in PowerPoint and should not depend on Google Slides because custom fonts\nmay break there."
+  ],
+  "content_risks": [
+    "AI provider unavailable; fallback heuristic plan used."
+  ],
+  "image_opportunities": [
+    "Hero image for slide 1."
+  ],
+  "_provider": "fallback_no_ai openrouter=HTTP Error 401: Unauthorized gemini=HTTP Error 429: Too Many Requests"
+}

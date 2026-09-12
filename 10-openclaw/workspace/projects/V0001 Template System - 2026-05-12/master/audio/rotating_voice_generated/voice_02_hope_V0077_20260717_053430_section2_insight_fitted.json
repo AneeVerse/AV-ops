@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T05:34:38.460399+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "x901ma6bxxrmy0czdt8r7etbqw",
+  "raw_audio_url": "https://replicate.delivery/xezq/UNoU8K6ZoJ5CFdZIHytsrpedKifbjVfAnfAHZpCneemZ7wduF/tmpjhjspm_6.mp3",
+  "raw_duration": 4.493061,
+  "fitted_duration": 4.493061,
+  "script_text": "Remote, high-brand, and easy-apply jobs can attract far more competition.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0077_20260717_053430_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0077_20260717_053430_section2_insight_fitted.mp3"
+}

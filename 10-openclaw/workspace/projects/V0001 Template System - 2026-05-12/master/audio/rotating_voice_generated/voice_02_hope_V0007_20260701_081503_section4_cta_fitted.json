@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T08:15:15.480120+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "7ypyth8s01rmy0cz3jzv78vqhm",
+  "raw_audio_url": "https://replicate.delivery/xezq/4rLsQCQXOg4ELldY3X47VSTq5X09OgWO5eJqD1ZegTJS6n0WA/tmpoogxod27.mp3",
+  "raw_duration": 2.951837,
+  "fitted_duration": 2.951837,
+  "script_text": "See the roles paying more for your background right now.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260701_081503_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0007_20260701_081503_section4_cta_fitted.mp3"
+}

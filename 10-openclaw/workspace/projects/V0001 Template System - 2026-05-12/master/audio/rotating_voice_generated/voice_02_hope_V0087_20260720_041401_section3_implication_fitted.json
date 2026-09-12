@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-07-20T04:16:45.466560+00:00",
+  "fallback": "edge-tts",
+  "edge_voice": "en-US-EmmaMultilingualNeural",
+  "edge_rate": "+0%",
+  "script_text": "Applying everywhere can reduce the quality of your best opportunities.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260720_041401_section3_implication_edge_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260720_041401_section3_implication_fitted.mp3"
+}

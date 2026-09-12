@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-08T12:00:18.784993+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "sqqs9f57qdrmy0cz86crneks3c",
+  "raw_audio_url": "https://replicate.delivery/xezq/wehSZlEf6clMnEBeLb9EufrgvkiCqNpRmelSBlg82wQN6232C/tmp7e9kvbd5.mp3",
+  "raw_duration": 2.168163,
+  "fitted_duration": 2.168163,
+  "script_text": "Am I underpaid for what I bring?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0032_20260708_120015_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0032_20260708_120015_section1_hook_fitted.mp3"
+}

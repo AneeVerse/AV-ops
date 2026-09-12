@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-29T06:04:52.531975+00:00",
+  "voice_number": 5,
+  "voice_name": "Rachel",
+  "replicate_voice": "Rachel",
+  "prediction_id": "sjbeh67k41rmr0cz27x9cfz8t8",
+  "raw_audio_url": "https://replicate.delivery/xezq/2WOJ9d0xkUqdOVf5pW7fXXE9Ly8hweTmbakfOfCPcDgageeZLA/tmp46l_ug03.mp3",
+  "raw_duration": 28.003265,
+  "fitted_duration": 19.565714,
+  "script_text": "The Software Developers getting hired aren't better qualified. They're better positioned. Titles you ignore are often the ones recruiting your exact background , and paying more than the roles you're applying to. Widening your search is faster than stacking another credential. Stop applying to the wrong roles. Find the ones hiring your exact background. Free. No card. See your real options in 15 to 20 minutes.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0003_20260629_055912_002_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0003_20260629_055912_002_fitted.mp3"
+}

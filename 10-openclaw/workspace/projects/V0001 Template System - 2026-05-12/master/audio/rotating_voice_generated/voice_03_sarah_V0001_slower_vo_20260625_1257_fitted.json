@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-06-25T12:59:33.660386+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "a8fgbr9krhrmr0cyzvergjyhkr",
+  "raw_audio_url": "https://replicate.delivery/xezq/CPu38EbCbYq6D9K3EOCgiUmbM4246eV9Bs69BLKJdkNawWZLA/tmpf406kpvt.mp3",
+  "raw_duration": 22.047347,
+  "fitted_duration": 19.617959,
+  "script_text": "Most software developers qualify for more roles than they realize. Around 95% of public U.S. jobs stay invisible if you do not know what to search. TraitDNA shows the roles your background actually fits. Free. No card. Get your match list in 15 to 20 minutes.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0001_slower_vo_20260625_1257_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0001_slower_vo_20260625_1257_fitted.mp3"
+}

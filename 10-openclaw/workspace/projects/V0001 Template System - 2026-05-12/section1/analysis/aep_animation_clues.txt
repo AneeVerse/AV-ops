@@ -1,0 +1,106 @@
+--- Most Software
+27525:Most Software   Developers  qua
+27527:OMost Software   Developers  qualify for more  job titles than  they apply to. 2
+--- ADBE Text Animator
+6350:(ADBE Text Animators
+6356:(ADBE Text Animator
+6434:(ADBE Text Animator Properties
+12126:(ADBE Text Animators
+12132:(ADBE Text Animator
+12251:(ADBE Text Animator Properties
+12958:(ADBE Text Animators
+12964:(ADBE Text Animator
+13083:(ADBE Text Animator Properties
+13771:(ADBE Text Animators
+13777:(ADBE Text Animator
+13896:(ADBE Text Animator Properties
+22119:(ADBE Text Animators
+22125:(ADBE Text Animator
+22244:(ADBE Text Animator Properties
+25668:(ADBE Text Animators
+25674:(ADBE Text Animator
+25795:(ADBE Text Animator Properties
+27724:(ADBE Text Animators
+27730:(ADBE Text Animator
+27851:(ADBE Text Animator Properties
+--- ADBE Text Percent Start
+--- ADBE Text Percent End
+--- ADBE Position
+898:(ADBE Position
+907:(ADBE Position_0
+917:(ADBE Position_1
+3343:(ADBE Position
+3352:(ADBE Position_0
+3362:(ADBE Position_1
+3759:(ADBE Position
+3767:(ADBE Position_0
+3777:(ADBE Position_1
+3787:(ADBE Position_2
+3909:(ADBE Position
+3917:(ADBE Position_0
+3927:(ADBE Position_1
+3937:(ADBE Position_2
+4046:(ADBE Position
+4054:(ADBE Position_0
+4064:(ADBE Position_1
+4074:(ADBE Position_2
+4182:(ADBE Position
+4190:(ADBE Position_0
+4200:(ADBE Position_1
+4210:(ADBE Position_2
+4319:(ADBE Position
+4327:(ADBE Position_0
+4337:(ADBE Position_1
+4347:(ADBE Position_2
+4457:(ADBE Position
+4465:(ADBE Position_0
+4475:(ADBE Position_1
+4485:(ADBE Position_2
+4594:(ADBE Position
+4602:(ADBE Position_0
+4612:(ADBE Position_1
+4622:(ADBE Position_2
+4732:(ADBE Position
+4740:(ADBE Position_0
+4750:(ADBE Position_1
+4760:(ADBE Position_2
+4880:(ADBE Position
+4888:(ADBE Position_0
+--- ADBE Opacity
+3815:(ADBE Opacity
+3955:(ADBE Opacity
+4092:(ADBE Opacity
+4228:(ADBE Opacity
+4365:(ADBE Opacity
+4503:(ADBE Opacity
+4640:(ADBE Opacity
+4788:(ADBE Opacity
+4936:(ADBE Opacity
+5084:(ADBE Opacity
+7497:(ADBE Opacity
+7637:(ADBE Opacity
+7774:(ADBE Opacity
+7910:(ADBE Opacity
+8047:(ADBE Opacity
+8185:(ADBE Opacity
+8322:(ADBE Opacity
+8470:(ADBE Opacity
+8618:(ADBE Opacity
+8766:(ADBE Opacity
+29507:(ADBE Opacity
+29627:(ADBE Opacity
+29744:(ADBE Opacity
+29860:(ADBE Opacity
+29977:(ADBE Opacity
+30095:(ADBE Opacity
+30212:(ADBE Opacity
+30340:(ADBE Opacity
+30468:(ADBE Opacity
+30596:(ADBE Opacity
+--- Graphik
+--- V0001_Option1
+9608:V0001_Option1
+32079:V0001_option1.mp4
+32854:V0001_option1.mp4
+33629:V0001_option1.mp4
+34404:2Global Pros Edge_Social Media Ad V0001_Option1.mp4LIST

@@ -1,0 +1,1026 @@
++ gog sheets get 1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE '300_Video_Master_Attribution!A1:BZ200' --json --no-input
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section1_hook_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section1_hook_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section2_insight_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section2_insight_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section4_cta_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section4_cta_fitted.mp3'
+Generate WAN contextual clip: section1 / kwaivgi/kling-v3-video
+submit section1 202 {"id":"4bq2xcchc1rmw0cz8xnamw13g4","model":"kwaivgi/kling-v3-video","version":"hidden","input":{"aspect_ratio":"9:16","duration":5,"generate_audio":false,"negative_prompt":"text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon,
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 processing
+section1 succeeded
++ python3 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/scripts/render_section1.py' '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/config/.n8n_V0040_20260709_135338.json'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+[Parsed_subtitles_7 @ 0x6256d4644d80] libass API version: 0x1701000
+[Parsed_subtitles_7 @ 0x6256d4644d80] libass source: tarball: 0.17.1
+[Parsed_subtitles_7 @ 0x6256d4644d80] Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+[Parsed_subtitles_7 @ 0x6256d4644d80] Using font provider fontconfig
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0040_20260709_135338_section1_wan.mp4':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:05.04, start: 0.000000, bitrate: 10165 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 10162 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 h264_slapi
+Input #1, lavfi, from 'color=c=black@0.0:s=1080x1920:r=30':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: wrapped_avframe, yuv420p, 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 30 tbn
+Stream mapping:
+  Stream #0:0 (h264) -> scale:default
+  Stream #1:0 (wrapped_avframe) -> format:default
+  subtitles:default -> Stream #0:0 (libx264)
+Press [q] to stop, [?] for help
+[h264 @ 0x6256d469b100] Late SEI is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[h264 @ 0x6256d469b100] If you want to help, upload a sample of this file to https://streams.videolan.org/upload/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[Parsed_subtitles_7 @ 0x6256d4646a00] libass API version: 0x1701000
+[Parsed_subtitles_7 @ 0x6256d4646a00] libass source: tarball: 0.17.1
+[Parsed_subtitles_7 @ 0x6256d4646a00] Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+[Parsed_subtitles_7 @ 0x6256d4646a00] Using font provider fontconfig
+[libx264 @ 0x6256d4691580] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x6256d4691580] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x6256d4691580] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    [Parsed_subtitles_7 @ 0x6256d4646a00] fontselect: (Graphik Web, 700, 0) -> /root/.local/share/fonts/graphik-web/Graphik-Bold.ttf, 0, GraphikWeb-Bold
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=22.0 size=       0kB time=-00:00:00.06 bitrate=  -0.0kbits/s speed=N/A    frame=    5 fps=0.9 q=22.0 size=       0kB time=00:00:00.10 bitrate=   3.8kbits/s speed=0.0173x    frame=    9 fps=1.4 q=22.0 size=     256kB time=00:00:00.20 bitrate=10487.7kbits/s speed=0.0315x    frame=   14 fps=2.0 q=22.0 size=     256kB time=00:00:00.36 bitrate=5720.5kbits/s speed=0.0525x    frame=   18 fps=2.4 q=22.0 size=     512kB time=00:00:00.50 bitrate=8389.4kbits/s speed=0.0667x    frame=   23 fps=2.8 q=22.0 size=     512kB time=00:00:00.66 bitrate=6292.0kbits/s speed=0.0825x    frame=   28 fps=3.2 q=22.0 size=     768kB time=00:00:00.83 bitrate=7550.2kbits/s speed=0.096x    frame=   32 fps=3.4 q=22.0 size=     768kB time=00:00:00.96 bitrate=6508.8kbits/s speed=0.104x    frame=   36 fps=3.7 q=22.0 size=     768kB time=00:00:01.10 bitrate=5719.9kbits/s speed=0.112x    frame=   41 fps=3.9 q=22.0 size=    1024kB time=00:00:01.26 bitrate=6622.9kbits/s speed=0.122x    frame=   46 fps=4.2 q=22.0 size=    1280kB time=00:00:01.43 bitrate=7315.9kbits/s speed=0.131x    frame=   49 fps=4.3 q=22.0 size=    1280kB time=00:00:01.53 bitrate=6838.8kbits/s speed=0.133x    frame=   53 fps=4.4 q=22.0 size=    1280kB time=00:00:01.66 bitrate=6291.7kbits/s speed=0.138x    frame=   57 fps=4.5 q=22.0 size=    1536kB time=00:00:01.80 bitrate=6990.7kbits/s speed=0.143x    frame=   62 fps=4.7 q=22.0 size=    1792kB time=00:00:01.96 bitrate=7464.6kbits/s speed=0.149x    frame=   66 fps=4.8 q=22.0 size=    1792kB time=00:00:02.13 bitrate=6881.5kbits/s speed=0.156x    frame=   71 fps=5.0 q=22.0 size=    1792kB time=00:00:02.26 bitrate=6476.7kbits/s speed=0.158x    [mp4 @ 0x6256d46987c0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x6256d46986c0] video:3289kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.067967%
+frame=  119 fps=7.2 q=-1.0 Lsize=    3291kB time=00:00:03.86 bitrate=6972.6kbits/s speed=0.234x    
+[libx264 @ 0x6256d4691580] frame I:1     Avg QP:13.79  size:123731
+[libx264 @ 0x6256d4691580] frame P:31    Avg QP:14.68  size: 69351
+[libx264 @ 0x6256d4691580] frame B:87    Avg QP:17.19  size: 12569
+[libx264 @ 0x6256d4691580] consecutive B-frames:  0.8%  0.0% 15.1% 84.0%
+[libx264 @ 0x6256d4691580] mb I  I16..4: 20.7% 60.9% 18.4%
+[libx264 @ 0x6256d4691580] mb P  I16..4:  3.9%  8.9%  2.4%  P16..4: 31.9% 21.7% 10.2%  0.0%  0.0%    skip:20.8%
+[libx264 @ 0x6256d4691580] mb B  I16..4:  0.2%  0.5%  0.1%  B16..8: 32.5%  5.5%  0.8%  direct: 2.7%  skip:57.5%  L0:41.9% L1:46.5% BI:11.6%
+[libx264 @ 0x6256d4691580] 8x8 transform intra:59.0% inter:72.2%
+[libx264 @ 0x6256d4691580] coded y,uvDC,uvAC intra: 56.3% 60.4% 42.9% inter: 15.2% 15.7% 1.6%
+[libx264 @ 0x6256d4691580] i16 v,h,dc,p: 22% 58%  3% 17%
+[libx264 @ 0x6256d4691580] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 27% 17%  3%  6%  8%  5%  6%  5%
+[libx264 @ 0x6256d4691580] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 30% 27% 13%  3%  6%  7%  5%  4%  3%
+[libx264 @ 0x6256d4691580] i8c dc,h,v,p: 60% 17% 19%  5%
+[libx264 @ 0x6256d4691580] Weighted P-Frames: Y:3.2% UV:0.0%
+[libx264 @ 0x6256d4691580] ref P L0: 60.1% 11.9% 21.0%  6.7%  0.3%
+[libx264 @ 0x6256d4691580] ref B L0: 91.5%  7.3%  1.2%
+[libx264 @ 0x6256d4691580] ref B L1: 98.2%  1.8%
+[libx264 @ 0x6256d4691580] kb/s:6790.79
+Running: ffmpeg -y -stream_loop -1 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0040_20260709_135338_section1_wan.mp4' -f lavfi -i color=c=black@0.0:s=1080x1920:r=30 -t 3.9666666666666677 -filter_complex '[0:v]scale=1296:2304:force_original_aspect_ratio=increase,crop=1080:1920:x=(iw-ow)/2:y=(ih-oh)/2,fps=30,eq=contrast=1.12:saturation=1.2:brightness=0.012:gamma=1.0[v0];[1:v]format=rgba,geq=r='"'"'0'"'"':g='"'"'0'"'"':b='"'"'0'"'"':a='"'"'if(gt(Y,840),0,210*pow(1-Y/840,2)*(3-2*(1-Y/840)))'"'"'[g];[v0][g]overlay=0:0,subtitles='"'"'/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/text/section1_generated.ass'"'"':fontsdir='"'"'/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/../../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0'"'"'[v]' -map '[v]' -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0040_20260709_135338.mp4'
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0040_20260709_135338.mp4
++ python3 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/scripts/render_section2_5_text_only.py' '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/config/.n8n_section2_5_V0040_20260709_135338.json'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, image2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/work/section2_5_text_only_frames/frame_%04d.svg':
+  Duration: 00:00:06.50, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: svg, bgra, 1080x1920, 30 fps, 30 tbr, 30 tbn
+[out#0/mp4 @ 0x5eb58fdcf0c0] Codec AVOption b (set bitrate (in bits/s)) has not been used for any stream. The most likely reason is either wrong type (e.g. a video option with no video streams) or that it is a private option of some encoder which was not actually used for any stream.
+Stream mapping:
+  Stream #0:0 -> #0:0 (svg (librsvg) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5eb58fd8f5c0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x5eb58fd8f5c0] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x5eb58fd8f5c0] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/output/section2_5_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    3 fps=2.9 q=22.0 size=       0kB time=00:00:00.03 bitrate=  11.5kbits/s speed=0.0327x    frame=   23 fps= 15 q=22.0 size=       0kB time=00:00:00.70 bitrate=   0.5kbits/s speed=0.455x    frame=   52 fps= 25 q=22.0 size=       0kB time=00:00:01.66 bitrate=   0.2kbits/s speed=0.816x    frame=   81 fps= 32 q=22.0 size=       0kB time=00:00:02.63 bitrate=   0.1kbits/s speed=1.04x    frame=  109 fps= 36 q=22.0 size=       0kB time=00:00:03.56 bitrate=   0.1kbits/s speed=1.17x    frame=  133 fps= 37 q=22.0 size=       0kB time=00:00:04.36 bitrate=   0.1kbits/s speed=1.22x    [mp4 @ 0x5eb58fd8eac0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5eb58fdcf0c0] video:211kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.469170%
+frame=  195 fps= 49 q=-1.0 Lsize=     214kB time=00:00:06.40 bitrate= 273.6kbits/s speed=1.59x    
+[libx264 @ 0x5eb58fd8f5c0] frame I:1     Avg QP: 1.87  size:   929
+[libx264 @ 0x5eb58fd8f5c0] frame P:59    Avg QP:13.87  size:  3202
+[libx264 @ 0x5eb58fd8f5c0] frame B:135   Avg QP: 9.45  size:   186
+[libx264 @ 0x5eb58fd8f5c0] consecutive B-frames:  4.1% 10.3%  1.5% 84.1%
+[libx264 @ 0x5eb58fd8f5c0] mb I  I16..4: 99.9%  0.0%  0.1%
+[libx264 @ 0x5eb58fd8f5c0] mb P  I16..4:  0.5%  0.3%  0.4%  P16..4:  1.5%  0.2%  0.1%  0.0%  0.0%    skip:97.0%
+[libx264 @ 0x5eb58fd8f5c0] mb B  I16..4:  0.1%  0.0%  0.0%  B16..8:  0.4%  0.0%  0.0%  direct: 0.0%  skip:99.5%  L0:52.3% L1:26.6% BI:21.1%
+[libx264 @ 0x5eb58fd8f5c0] 8x8 transform intra:9.7% inter:26.0%
+[libx264 @ 0x5eb58fd8f5c0] coded y,uvDC,uvAC intra: 8.5% 15.8% 14.4% inter: 0.2% 0.4% 0.2%
+[libx264 @ 0x5eb58fd8f5c0] i16 v,h,dc,p: 96%  3%  1%  0%
+[libx264 @ 0x5eb58fd8f5c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  0%  1% 98%  0%  0%  0%  0%  0%  0%
+[libx264 @ 0x5eb58fd8f5c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 49% 19% 14%  3%  2%  4%  3%  3%  2%
+[libx264 @ 0x5eb58fd8f5c0] i8c dc,h,v,p: 83%  5% 11%  1%
+[libx264 @ 0x5eb58fd8f5c0] Weighted P-Frames: Y:6.8% UV:1.7%
+[libx264 @ 0x5eb58fd8f5c0] ref P L0: 66.7% 15.8% 16.4%  1.0%  0.2%
+[libx264 @ 0x5eb58fd8f5c0] ref B L0: 69.5% 29.7%  0.8%
+[libx264 @ 0x5eb58fd8f5c0] ref B L1: 99.0%  1.0%
+[libx264 @ 0x5eb58fd8f5c0] kb/s:264.63
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/output/section2_5_n8n_V0040_20260709_135338.mp4
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/qc/section2_5_n8n_V0040_20260709_135338/contact.jpg
+Generate WAN contextual clip: section3 / kwaivgi/kling-v3-video
+submit section3 202 {"id":"ac6aq0gtf9rmy0cz8xq9ntjwpr","model":"kwaivgi/kling-v3-video","version":"hidden","input":{"aspect_ratio":"9:16","duration":5,"generate_audio":false,"negative_prompt":"text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon,
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 processing
+section3 succeeded
++ python3 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/scripts/render_section3.py' '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/config/.n8n_V0040_20260709_135338.json'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+[Parsed_subtitles_7 @ 0x5763b66bc080] libass API version: 0x1701000
+[Parsed_subtitles_7 @ 0x5763b66bc080] libass source: tarball: 0.17.1
+[Parsed_subtitles_7 @ 0x5763b66bc080] Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+[Parsed_subtitles_7 @ 0x5763b66bc080] Loading font file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/Graphik-Bold.ttf'
+[Parsed_subtitles_7 @ 0x5763b66bc080] Loading font file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/exFont-License.txt'
+[Parsed_subtitles_7 @ 0x5763b66bc080] Error opening memory font 'exFont-License.txt'
+[Parsed_subtitles_7 @ 0x5763b66bc080] Using font provider fontconfig
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0040_20260709_135338_section3_wan.mp4':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:05.04, start: 0.000000, bitrate: 8861 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 8859 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 h264_slapi
+Input #1, lavfi, from 'color=c=black@0.0:s=1080x1920:r=30':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: wrapped_avframe, yuv420p, 1080x1920 [SAR 1:1 DAR 9:16], 30 fps, 30 tbr, 30 tbn
+Stream mapping:
+  Stream #0:0 (h264) -> scale:default
+  Stream #1:0 (wrapped_avframe) -> format:default
+  subtitles:default -> Stream #0:0 (libx264)
+Press [q] to stop, [?] for help
+[h264 @ 0x5763b6734940] Late SEI is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[h264 @ 0x5763b6734940] If you want to help, upload a sample of this file to https://streams.videolan.org/upload/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[Parsed_subtitles_7 @ 0x5763b67380c0] libass API version: 0x1701000
+[Parsed_subtitles_7 @ 0x5763b67380c0] libass source: tarball: 0.17.1
+[Parsed_subtitles_7 @ 0x5763b67380c0] Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+[Parsed_subtitles_7 @ 0x5763b67380c0] Loading font file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/Graphik-Bold.ttf'
+[Parsed_subtitles_7 @ 0x5763b67380c0] Loading font file '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0/exFont-License.txt'
+[Parsed_subtitles_7 @ 0x5763b67380c0] Error opening memory font 'exFont-License.txt'
+[Parsed_subtitles_7 @ 0x5763b67380c0] Using font provider fontconfig
+[libx264 @ 0x5763b67143c0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x5763b67143c0] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x5763b67143c0] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    [Parsed_subtitles_7 @ 0x5763b67380c0] fontselect: (Graphik Web, 700, 0) -> /root/.local/share/fonts/graphik-web/Graphik-Bold.ttf, 0, GraphikWeb-Bold
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    3 fps=0.5 q=22.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    frame=    6 fps=0.9 q=22.0 size=       0kB time=00:00:00.13 bitrate=   2.9kbits/s speed=0.0209x    frame=   11 fps=1.6 q=22.0 size=     256kB time=00:00:00.26 bitrate=7865.8kbits/s speed=0.0387x    frame=   16 fps=2.1 q=22.0 size=     256kB time=00:00:00.43 bitrate=4840.5kbits/s speed=0.0581x    frame=   18 fps=2.2 q=22.0 size=     256kB time=00:00:00.53 bitrate=3932.9kbits/s speed=0.0664x    frame=   23 fps=2.7 q=22.0 size=     512kB time=00:00:00.66 bitrate=6292.0kbits/s speed=0.0777x    frame=   27 fps=2.9 q=22.0 size=     512kB time=00:00:00.80 bitrate=5243.4kbits/s speed=0.0873x    frame=   31 fps=3.2 q=22.0 size=     512kB time=00:00:00.93 bitrate=4494.3kbits/s speed=0.0961x    frame=   36 fps=3.5 q=22.0 size=     768kB time=00:00:01.10 bitrate=5719.9kbits/s speed=0.107x    frame=   40 fps=3.7 q=22.0 size=     768kB time=00:00:01.26 bitrate=4967.2kbits/s speed=0.116x    frame=   43 fps=3.8 q=22.0 size=     768kB time=00:00:01.33 bitrate=4718.9kbits/s speed=0.116x    frame=   48 fps=4.0 q=22.0 size=    1024kB time=00:00:01.50 bitrate=5592.7kbits/s speed=0.124x    frame=   52 fps=4.1 q=22.0 size=    1024kB time=00:00:01.63 bitrate=5136.1kbits/s speed=0.13x    frame=   56 fps=4.3 q=22.0 size=    1024kB time=00:00:01.76 bitrate=4748.5kbits/s speed=0.135x    frame=   60 fps=4.4 q=22.0 size=    1280kB time=00:00:01.93 bitrate=5423.9kbits/s speed=0.141x    frame=   63 fps=4.4 q=22.0 size=    1280kB time=00:00:02.03 bitrate=5157.1kbits/s speed=0.143x    frame=   68 fps=4.6 q=22.0 size=    1280kB time=00:00:02.16 bitrate=4839.8kbits/s speed=0.147x    frame=   71 fps=4.7 q=22.0 size=    1536kB time=00:00:02.26 bitrate=5551.5kbits/s speed=0.149x    frame=   74 fps=4.7 q=22.0 size=    1536kB time=00:00:02.36 bitrate=5316.9kbits/s speed=0.149x    frame=   77 fps=4.7 q=22.0 size=    1536kB time=00:00:02.46 bitrate=5101.3kbits/s speed=0.151x    frame=   80 fps=4.7 q=22.0 size=    1792kB time=00:00:02.60 bitrate=5646.3kbits/s speed=0.152x    frame=   84 fps=4.8 q=22.0 size=    1792kB time=00:00:02.70 bitrate=5437.2kbits/s speed=0.153x    frame=   88 fps=4.8 q=22.0 size=    1792kB time=00:00:02.83 bitrate=5181.3kbits/s speed=0.155x    frame=   92 fps=4.9 q=22.0 size=    2048kB time=00:00:02.96 bitrate=5655.4kbits/s speed=0.157x    [mp4 @ 0x5763b66e9700] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5763b66de180] video:2985kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.080918%
+frame=  139 fps=6.8 q=-1.0 Lsize=    2987kB time=00:00:04.53 bitrate=5397.6kbits/s speed=0.222x    
+[libx264 @ 0x5763b67143c0] frame I:1     Avg QP:13.76  size:104216
+[libx264 @ 0x5763b67143c0] frame P:43    Avg QP:14.41  size: 47362
+[libx264 @ 0x5763b67143c0] frame B:95    Avg QP:16.90  size:  9629
+[libx264 @ 0x5763b67143c0] consecutive B-frames:  4.3%  7.2% 19.4% 69.1%
+[libx264 @ 0x5763b67143c0] mb I  I16..4: 35.9% 40.9% 23.2%
+[libx264 @ 0x5763b67143c0] mb P  I16..4:  7.5%  6.3%  1.8%  P16..4: 37.0% 18.5%  8.7%  0.0%  0.0%    skip:20.2%
+[libx264 @ 0x5763b67143c0] mb B  I16..4:  0.8%  0.6%  0.2%  B16..8: 37.7%  3.5%  0.4%  direct: 3.1%  skip:53.9%  L0:51.0% L1:43.5% BI: 5.5%
+[libx264 @ 0x5763b67143c0] 8x8 transform intra:40.0% inter:64.5%
+[libx264 @ 0x5763b67143c0] coded y,uvDC,uvAC intra: 43.4% 60.1% 35.0% inter: 13.2% 16.1% 0.9%
+[libx264 @ 0x5763b67143c0] i16 v,h,dc,p: 49% 28%  7% 16%
+[libx264 @ 0x5763b67143c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 20% 27%  2%  3%  3%  3%  4%  3%
+[libx264 @ 0x5763b67143c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 23% 15%  3%  6%  5%  5%  4%  3%
+[libx264 @ 0x5763b67143c0] i8c dc,h,v,p: 51% 16% 27%  6%
+[libx264 @ 0x5763b67143c0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5763b67143c0] ref P L0: 69.5%  9.6% 16.3%  4.6%
+[libx264 @ 0x5763b67143c0] ref B L0: 90.3%  8.5%  1.3%
+[libx264 @ 0x5763b67143c0] ref B L1: 97.4%  2.6%
+[libx264 @ 0x5763b67143c0] kb/s:5275.68
+Running: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/assets/wan_contextual_clips/V0040_20260709_135338_section3_wan.mp4' -f lavfi -i color=c=black@0.0:s=1080x1920:r=30 -t 4.633333333333334 -filter_complex '[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920:x=(iw-ow)/2:y=(ih-oh)/2,fps=30,eq=contrast=1.03:saturation=1.04:brightness=0.0:gamma=1.0[v0];[1:v]format=rgba,geq=r='"'"'0'"'"':g='"'"'0'"'"':b='"'"'0'"'"':a='"'"'if(lt(Y,850),0,184*pow((Y-850)/(1920-850),2)*(3-2*((Y-850)/(1920-850))))'"'"'[g];[v0][g]overlay=0:0,subtitles='"'"'/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/text/section3_generated.ass'"'"':fontsdir='"'"'/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/../fonts/graphik-web/extracted/graphik-web-bold-regular-1778551187-0'"'"'[v]' -map '[v]' -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0040_20260709_135338.mp4'
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0040_20260709_135338.mp4
++ python3 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/scripts/render_section4.py' '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/config/.n8n_V0040_20260709_135338.json'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: mp42mp41
+    creation_time   : 2026-06-23T11:26:37.000000Z
+  Duration: 00:00:03.43, start: 0.000000, bitrate: 11634 kb/s
+  Stream #0:0[0x1](eng): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], 11607 kb/s, 30 fps, 30 tbr, 30k tbn (default)
+    Metadata:
+      creation_time   : 2026-06-23T11:26:37.000000Z
+      handler_name    : ?Mainconcept Video Media Handler
+      vendor_id       : [0][0][0][0]
+      encoder         : AVC Coding
+Input #1, svg_pipe, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/assets/section4_text_only_overlay.svg':
+  Duration: N/A, bitrate: N/A
+  Stream #1:0: Video: svg, bgra, 1080x1920, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (h264) -> scale:default
+  Stream #1:0 (librsvg) -> format:default
+  overlay:default -> Stream #0:0 (libx264)
+Press [q] to stop, [?] for help
+[libx264 @ 0x594abbc7bd00] using SAR=1/1
+[libx264 @ 0x594abbc7bd00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x594abbc7bd00] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x594abbc7bd00] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: mp42mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    2 fps=1.9 q=22.0 size=       0kB time=-00:00:00.03 bitrate=N/A speed=N/A    frame=   11 fps=7.0 q=22.0 size=     256kB time=00:00:00.26 bitrate=7865.8kbits/s speed=0.17x    frame=   19 fps=9.2 q=22.0 size=     768kB time=00:00:00.53 bitrate=11797.2kbits/s speed=0.258x    frame=   29 fps= 11 q=22.0 size=    1024kB time=00:00:00.86 bitrate=9679.6kbits/s speed=0.336x    frame=   45 fps= 15 q=22.0 size=    1024kB time=00:00:01.40 bitrate=5992.1kbits/s speed=0.453x    frame=   63 fps= 18 q=22.0 size=    1280kB time=00:00:02.03 bitrate=5157.1kbits/s speed=0.566x    frame=   81 fps= 20 q=22.0 size=    1280kB time=00:00:02.63 bitrate=3982.1kbits/s speed=0.642x    [mp4 @ 0x594abbc7ac80] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x594abbc7ab40] video:1709kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.143438%
+frame=  138 fps= 28 q=-1.0 Lsize=    1711kB time=00:00:04.50 bitrate=3115.4kbits/s speed=0.902x    
+[libx264 @ 0x594abbc7bd00] frame I:1     Avg QP: 8.47  size: 12218
+[libx264 @ 0x594abbc7bd00] frame P:40    Avg QP:12.36  size: 28869
+[libx264 @ 0x594abbc7bd00] frame B:97    Avg QP:11.49  size:  6002
+[libx264 @ 0x594abbc7bd00] consecutive B-frames:  4.3%  4.3%  4.3% 87.0%
+[libx264 @ 0x594abbc7bd00] mb I  I16..4: 75.7% 24.2%  0.1%
+[libx264 @ 0x594abbc7bd00] mb P  I16..4: 10.0%  6.7%  1.7%  P16..4: 15.5%  4.1%  2.3%  0.0%  0.0%    skip:59.6%
+[libx264 @ 0x594abbc7bd00] mb B  I16..4:  0.9%  0.3%  0.1%  B16..8: 14.3%  2.2%  0.2%  direct: 4.7%  skip:77.2%  L0:48.8% L1:47.7% BI: 3.5%
+[libx264 @ 0x594abbc7bd00] 8x8 transform intra:33.8% inter:59.2%
+[libx264 @ 0x594abbc7bd00] coded y,uvDC,uvAC intra: 17.8% 57.5% 41.8% inter: 2.7% 9.0% 2.3%
+[libx264 @ 0x594abbc7bd00] i16 v,h,dc,p: 68% 20%  7%  4%
+[libx264 @ 0x594abbc7bd00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 16% 55%  2%  1%  1%  1%  2%  1%
+[libx264 @ 0x594abbc7bd00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 26% 23%  2%  3%  4%  3%  3%  3%
+[libx264 @ 0x594abbc7bd00] i8c dc,h,v,p: 56% 24% 15%  5%
+[libx264 @ 0x594abbc7bd00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x594abbc7bd00] ref P L0: 74.9%  3.4% 14.0%  7.6%
+[libx264 @ 0x594abbc7bd00] ref B L0: 86.5% 11.8%  1.7%
+[libx264 @ 0x594abbc7bd00] ref B L1: 95.2%  4.8%
+[libx264 @ 0x594abbc7bd00] kb/s:3042.08
+Running: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/assets/4th_section_BG_new_from_drive_1i9qMVUcXAu.mp4' -loop 1 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/assets/section4_text_only_overlay.svg' -t 4.6 -filter_complex '[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,tpad=stop_mode=clone:stop_duration=3,trim=duration=4.6,setpts=PTS-STARTPTS[bg];[1:v]format=rgba,fps=30,trim=duration=4.6,setpts=PTS-STARTPTS,fade=t=in:st=0.5:d=0.35:alpha=1[ov];[bg][ov]overlay=x=0:y='"'"'if(lt(t,0.5),26,if(lt(t,0.5+0.35),26*(1-(t-0.5)/0.35),0))'"'"':enable='"'"'gte(t,0.5)'"'"':format=auto[v]' -map '[v]' -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0040_20260709_135338.mp4'
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0040_20260709_135338.mp4
++ python3 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/scripts/render_full_video.py' '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/config/.batch_full_V0040_20260709_135338.json'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:03.97, start: 0.000000, bitrate: 6796 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 6792 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x584c7a5cbec0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x584c7a5cbec0] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x584c7a5cbec0] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/01_section1_hook_normalized.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=   15 fps= 13 q=22.0 size=     256kB time=00:00:00.40 bitrate=5243.8kbits/s speed=0.352x    frame=   28 fps= 17 q=22.0 size=     512kB time=00:00:00.83 bitrate=5033.6kbits/s speed=0.509x    frame=   37 fps= 17 q=22.0 size=     768kB time=00:00:01.16 bitrate=5393.0kbits/s speed=0.53x    frame=   47 fps= 17 q=22.0 size=    1024kB time=00:00:01.46 bitrate=5719.8kbits/s speed=0.542x    frame=   58 fps= 18 q=22.0 size=    1536kB time=00:00:01.83 bitrate=6863.6kbits/s speed=0.569x    frame=   71 fps= 19 q=22.0 size=    1792kB time=00:00:02.30 bitrate=6382.8kbits/s speed=0.609x    [mp4 @ 0x584c7a554d40] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x584c7a4c0f40] video:3140kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.071682%
+frame=  119 fps= 21 q=-1.0 Lsize=    3142kB time=00:00:03.86 bitrate=6657.7kbits/s speed=0.698x    
+[libx264 @ 0x584c7a5cbec0] frame I:1     Avg QP:13.21  size:124547
+[libx264 @ 0x584c7a5cbec0] frame P:32    Avg QP:14.26  size: 63436
+[libx264 @ 0x584c7a5cbec0] frame B:86    Avg QP:17.18  size: 12330
+[libx264 @ 0x584c7a5cbec0] consecutive B-frames:  0.8%  5.0% 10.1% 84.0%
+[libx264 @ 0x584c7a5cbec0] mb I  I16..4: 18.3% 63.7% 18.0%
+[libx264 @ 0x584c7a5cbec0] mb P  I16..4:  3.9%  9.2%  2.2%  P16..4: 32.7% 21.1%  9.8%  0.0%  0.0%    skip:21.2%
+[libx264 @ 0x584c7a5cbec0] mb B  I16..4:  0.3%  0.9%  0.2%  B16..8: 34.0%  5.5%  0.7%  direct: 2.8%  skip:55.6%  L0:50.4% L1:39.6% BI:10.1%
+[libx264 @ 0x584c7a5cbec0] 8x8 transform intra:62.0% inter:72.9%
+[libx264 @ 0x584c7a5cbec0] coded y,uvDC,uvAC intra: 56.0% 61.5% 38.5% inter: 14.1% 17.3% 1.1%
+[libx264 @ 0x584c7a5cbec0] i16 v,h,dc,p: 22% 56%  4% 18%
+[libx264 @ 0x584c7a5cbec0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 27% 17%  3%  5%  8%  5%  6%  5%
+[libx264 @ 0x584c7a5cbec0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 29% 27% 14%  3%  6%  7%  5%  4%  3%
+[libx264 @ 0x584c7a5cbec0] i8c dc,h,v,p: 59% 17% 19%  5%
+[libx264 @ 0x584c7a5cbec0] Weighted P-Frames: Y:3.1% UV:0.0%
+[libx264 @ 0x584c7a5cbec0] ref P L0: 62.8% 12.0% 19.0%  5.9%  0.2%
+[libx264 @ 0x584c7a5cbec0] ref B L0: 89.7%  8.6%  1.7%
+[libx264 @ 0x584c7a5cbec0] ref B L1: 98.0%  2.0%
+[libx264 @ 0x584c7a5cbec0] kb/s:6483.86
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/output/section2_5_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:06.50, start: 0.000000, bitrate: 269 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 265 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5f6a18340840] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x5f6a18340840] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x5f6a18340840] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/02_section2_insight_normalized.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=   11 fps=0.0 q=22.0 size=       0kB time=00:00:00.30 bitrate=   1.3kbits/s speed=0.578x    frame=   52 fps= 51 q=22.0 size=       0kB time=00:00:01.63 bitrate=   0.2kbits/s speed=1.59x    frame=  118 fps= 77 q=22.0 size=       0kB time=00:00:03.86 bitrate=   0.1kbits/s speed=2.52x    [mp4 @ 0x5f6a183402c0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5f6a1825bf80] video:204kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.516594%
+frame=  195 fps= 86 q=-1.0 Lsize=     207kB time=00:00:06.40 bitrate= 265.2kbits/s speed=2.82x    
+[libx264 @ 0x5f6a18340840] frame I:1     Avg QP: 1.87  size:   912
+[libx264 @ 0x5f6a18340840] frame P:59    Avg QP:10.50  size:  3095
+[libx264 @ 0x5f6a18340840] frame B:135   Avg QP: 7.78  size:   183
+[libx264 @ 0x5f6a18340840] consecutive B-frames:  4.1% 10.3%  1.5% 84.1%
+[libx264 @ 0x5f6a18340840] mb I  I16..4: 99.9%  0.0%  0.1%
+[libx264 @ 0x5f6a18340840] mb P  I16..4:  0.7%  0.1%  0.4%  P16..4:  1.5%  0.2%  0.1%  0.0%  0.0%    skip:97.0%
+[libx264 @ 0x5f6a18340840] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  0.5%  0.0%  0.0%  direct: 0.0%  skip:99.4%  L0:55.3% L1:27.2% BI:17.5%
+[libx264 @ 0x5f6a18340840] 8x8 transform intra:2.0% inter:26.3%
+[libx264 @ 0x5f6a18340840] coded y,uvDC,uvAC intra: 8.5% 15.3% 13.7% inter: 0.2% 0.3% 0.2%
+[libx264 @ 0x5f6a18340840] i16 v,h,dc,p: 96%  3%  1%  0%
+[libx264 @ 0x5f6a18340840] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  3%  2% 93%  0%  0%  0%  0%  1%  0%
+[libx264 @ 0x5f6a18340840] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 50% 20% 14%  3%  2%  4%  3%  3%  2%
+[libx264 @ 0x5f6a18340840] i8c dc,h,v,p: 83%  5% 11%  1%
+[libx264 @ 0x5f6a18340840] Weighted P-Frames: Y:6.8% UV:1.7%
+[libx264 @ 0x5f6a18340840] ref P L0: 38.9% 16.1% 30.4% 14.4%  0.2%
+[libx264 @ 0x5f6a18340840] ref B L0: 67.2% 32.2%  0.5%
+[libx264 @ 0x5f6a18340840] ref B L1: 99.4%  0.6%
+[libx264 @ 0x5f6a18340840] kb/s:256.33
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:04.63, start: 0.000000, bitrate: 5281 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 5276 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x6016a18ae200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x6016a18ae200] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x6016a18ae200] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/03_section3_implication_normalized.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 30 fps, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=   13 fps= 12 q=22.0 size=     256kB time=00:00:00.36 bitrate=5720.5kbits/s speed=0.337x    frame=   28 fps= 17 q=22.0 size=     512kB time=00:00:00.86 bitrate=4840.0kbits/s speed=0.519x    frame=   42 fps= 19 q=22.0 size=     768kB time=00:00:01.33 bitrate=4718.9kbits/s speed= 0.6x    frame=   55 fps= 20 q=22.0 size=    1024kB time=00:00:01.76 bitrate=4748.5kbits/s speed=0.649x    frame=   65 fps= 20 q=22.0 size=    1280kB time=00:00:02.10 bitrate=4993.4kbits/s speed=0.642x    frame=   77 fps= 20 q=22.0 size=    1536kB time=00:00:02.50 bitrate=5033.3kbits/s speed=0.656x    frame=   91 fps= 21 q=22.0 size=    1792kB time=00:00:02.96 bitrate=4948.5kbits/s speed=0.676x    [mp4 @ 0x6016a18ad900] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x6016a181dc40] video:2902kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.084311%
+frame=  139 fps= 22 q=-1.0 Lsize=    2904kB time=00:00:04.53 bitrate=5247.6kbits/s speed=0.732x    
+[libx264 @ 0x6016a18ae200] frame I:1     Avg QP:13.42  size:102595
+[libx264 @ 0x6016a18ae200] frame P:42    Avg QP:14.31  size: 45391
+[libx264 @ 0x6016a18ae200] frame B:96    Avg QP:17.03  size: 10015
+[libx264 @ 0x6016a18ae200] consecutive B-frames:  3.6%  8.6% 12.9% 74.8%
+[libx264 @ 0x6016a18ae200] mb I  I16..4: 33.2% 43.8% 23.0%
+[libx264 @ 0x6016a18ae200] mb P  I16..4:  6.3%  7.5%  1.4%  P16..4: 36.6% 19.0%  8.9%  0.0%  0.0%    skip:20.3%
+[libx264 @ 0x6016a18ae200] mb B  I16..4:  0.6%  0.6%  0.1%  B16..8: 38.2%  4.2%  0.5%  direct: 3.5%  skip:52.3%  L0:52.6% L1:42.1% BI: 5.3%
+[libx264 @ 0x6016a18ae200] 8x8 transform intra:48.3% inter:68.6%
+[libx264 @ 0x6016a18ae200] coded y,uvDC,uvAC intra: 43.3% 60.5% 33.4% inter: 12.5% 17.9% 0.7%
+[libx264 @ 0x6016a18ae200] i16 v,h,dc,p: 47% 31%  7% 15%
+[libx264 @ 0x6016a18ae200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 20% 27%  2%  3%  4%  3%  4%  3%
+[libx264 @ 0x6016a18ae200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 23% 15%  3%  6%  6%  5%  4%  3%
+[libx264 @ 0x6016a18ae200] i8c dc,h,v,p: 53% 16% 25%  5%
+[libx264 @ 0x6016a18ae200] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x6016a18ae200] ref P L0: 67.7% 10.3% 17.0%  5.1%
+[libx264 @ 0x6016a18ae200] ref B L0: 87.8% 10.2%  2.0%
+[libx264 @ 0x6016a18ae200] ref B L1: 97.2%  2.8%
+[libx264 @ 0x6016a18ae200] kb/s:5128.84
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:04.60, start: 0.000000, bitrate: 3047 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], 3043 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5bcd203c1500] using SAR=1/1
+[libx264 @ 0x5bcd203c1500] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x5bcd203c1500] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0x5bcd203c1500] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=16.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/04_section4_cta_normalized.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 30 fps, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=N/A bitrate=N/A speed=N/A    frame=    3 fps=0.0 q=22.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    frame=   15 fps= 14 q=22.0 size=     512kB time=00:00:00.40 bitrate=10486.7kbits/s speed=0.38x    frame=   30 fps= 19 q=22.0 size=    1024kB time=00:00:00.93 bitrate=8988.2kbits/s speed=0.583x    frame=   52 fps= 25 q=22.0 size=    1024kB time=00:00:01.66 bitrate=5033.4kbits/s speed=0.789x    frame=   79 fps= 30 q=22.0 size=    1280kB time=00:00:02.53 bitrate=4139.3kbits/s speed=0.963x    [mp4 @ 0x5bcd203431c0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5bcd20346c40] video:1702kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.144044%
+frame=  138 fps= 41 q=-1.0 Lsize=    1704kB time=00:00:04.50 bitrate=3102.3kbits/s speed=1.34x    
+[libx264 @ 0x5bcd203c1500] frame I:1     Avg QP: 8.35  size: 12134
+[libx264 @ 0x5bcd203c1500] frame P:41    Avg QP:12.16  size: 27961
+[libx264 @ 0x5bcd203c1500] frame B:96    Avg QP:11.41  size:  6076
+[libx264 @ 0x5bcd203c1500] consecutive B-frames:  4.3%  7.2%  4.3% 84.1%
+[libx264 @ 0x5bcd203c1500] mb I  I16..4: 76.3% 23.6%  0.2%
+[libx264 @ 0x5bcd203c1500] mb P  I16..4: 10.9%  7.2%  1.7%  P16..4: 14.8%  3.7%  2.0%  0.0%  0.0%    skip:59.7%
+[libx264 @ 0x5bcd203c1500] mb B  I16..4:  0.9%  0.5%  0.1%  B16..8: 14.0%  2.3%  0.2%  direct: 5.1%  skip:77.0%  L0:48.6% L1:47.8% BI: 3.5%
+[libx264 @ 0x5bcd203c1500] 8x8 transform intra:34.6% inter:55.4%
+[libx264 @ 0x5bcd203c1500] coded y,uvDC,uvAC intra: 16.7% 58.7% 40.6% inter: 2.5% 9.7% 2.1%
+[libx264 @ 0x5bcd203c1500] i16 v,h,dc,p: 70% 19%  7%  4%
+[libx264 @ 0x5bcd203c1500] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 19% 17% 56%  2%  1%  1%  1%  2%  1%
+[libx264 @ 0x5bcd203c1500] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 26% 23%  3%  3%  4%  3%  3%  3%
+[libx264 @ 0x5bcd203c1500] i8c dc,h,v,p: 57% 23% 15%  5%
+[libx264 @ 0x5bcd203c1500] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5bcd203c1500] ref P L0: 76.2%  3.9% 13.1%  6.9%
+[libx264 @ 0x5bcd203c1500] ref B L0: 86.4% 11.8%  1.8%
+[libx264 @ 0x5bcd203c1500] ref B L1: 95.9%  4.1%
+[libx264 @ 0x5bcd203c1500] kb/s:3029.28
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x590055388380] Auto-inserting h264_mp4toannexb bitstream filter
+Input #0, concat, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/concat_list.txt':
+  Duration: N/A, start: 0.000000, bitrate: 6485 kb/s
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 6485 kb/s, 30 fps, 30 tbr, 15360 tbn
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/combined_video_only.mp4':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 6485 kb/s, 30 fps, 30 tbr, 15360 tbn
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+Press [q] to stop, [?] for help
+size=       0kB time=-00:00:00.06 bitrate=  -0.0kbits/s speed=N/A    [mov,mp4,m4a,3gp,3g2,mj2 @ 0x590055388380] Auto-inserting h264_mp4toannexb bitstream filter
+    Last message repeated 2 times
+[out#0/mp4 @ 0x5900554aa840] video:7948kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.097317%
+size=    7955kB time=00:00:19.60 bitrate=3325.0kbits/s speed= 750x    
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/combined_video_only.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:19.70, start: 0.000000, bitrate: 3308 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+Input #1, lavfi, from 'anullsrc=channel_layout=stereo:sample_rate=48000':
+  Duration: N/A, start: 0.000000, bitrate: 768 kb/s
+  Stream #1:0: Audio: pcm_u8, 48000 Hz, stereo, u8, 768 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #1:0 -> #0:1 (pcm_u8 (native) -> aac (native))
+Press [q] to stop, [?] for help
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 aac
+size=       0kB time=N/A bitrate=N/A speed=N/A    [mp4 @ 0x5fb4972f2100] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5fb49735e740] video:7948kB audio:5kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.281987%
+size=    7976kB time=00:00:19.75 bitrate=3307.4kbits/s speed= 251x    
+[aac @ 0x5fb4972fbf80] Qavg: 65536.000
+Normalize: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0040_20260709_135338.mp4' -t 3.9666666666666677 -vf scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,tpad=stop_mode=clone:stop_duration=3.9666666666666677,trim=duration=3.9666666666666677,setpts=PTS-STARTPTS -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/01_section1_hook_normalized.mp4'
+Normalize: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/output/section2_5_n8n_V0040_20260709_135338.mp4' -t 6.5 -vf scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,tpad=stop_mode=clone:stop_duration=6.5,trim=duration=6.5,setpts=PTS-STARTPTS -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/02_section2_insight_normalized.mp4'
+Normalize: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0040_20260709_135338.mp4' -t 4.633333333333334 -vf scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,tpad=stop_mode=clone:stop_duration=4.633333333333334,trim=duration=4.633333333333334,setpts=PTS-STARTPTS -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/03_section3_implication_normalized.mp4'
+Normalize: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0040_20260709_135338.mp4' -t 4.6 -vf scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,tpad=stop_mode=clone:stop_duration=4.6,trim=duration=4.6,setpts=PTS-STARTPTS -an -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/04_section4_cta_normalized.mp4'
+Concat: ffmpeg -y -f concat -safe 0 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/concat_list.txt' -c copy '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/combined_video_only.mp4'
+Mux: ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/work/combined_video_only.mp4' -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 -t 20.0 -shortest -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 128k -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4'
+/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4
++ ffmpeg -y -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4' -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section1_hook_fitted.mp3' -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section2_insight_fitted.mp3' -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3' -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section4_cta_fitted.mp3' -ss 1.0 -i '/root/.openclaw/workspace/projects/AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav' -filter_complex 'anullsrc=channel_layout=stereo:sample_rate=48000,atrim=0:20[base];[1:a]asetpts=PTS-STARTPTS,loudnorm=I=-16:TP=-1.5:LRA=11,volume=1.05,adelay=0:all=1[v1];[2:a]asetpts=PTS-STARTPTS,loudnorm=I=-16:TP=-1.5:LRA=11,volume=1.05,adelay=4067:all=1[v2];[3:a]asetpts=PTS-STARTPTS,loudnorm=I=-16:TP=-1.5:LRA=11,volume=1.05,adelay=10667:all=1[v3];[4:a]asetpts=PTS-STARTPTS,loudnorm=I=-16:TP=-1.5:LRA=11,volume=1.05,adelay=15400:all=1[v4];[5:a]asetpts=PTS-STARTPTS,atrim=0:20,volume=0.30720[music];[base][v1][v2][v3][v4][music]amix=inputs=6:duration=first:dropout_transition=0:normalize=0,alimiter=limit=0.95,atrim=0:20[aout]' -map 0:v:0 -map '[aout]' -t 20 -c:v copy -c:a aac -b:a 192k -movflags +faststart '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:19.70, start: 0.000000, bitrate: 3316 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Input #1, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section1_hook_fitted.mp3':
+  Metadata:
+    encoder         : Lavf60.16.101
+  Duration: 00:00:02.32, start: 0.025057, bitrate: 129 kb/s
+  Stream #1:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+Input #2, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section2_insight_fitted.mp3':
+  Metadata:
+    encoder         : Lavf60.16.101
+  Duration: 00:00:06.11, start: 0.025057, bitrate: 128 kb/s
+  Stream #2:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+Input #3, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3':
+  Metadata:
+    encoder         : Lavf60.16.101
+  Duration: 00:00:04.21, start: 0.025057, bitrate: 128 kb/s
+  Stream #3:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+Input #4, mp3, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section4_cta_fitted.mp3':
+  Metadata:
+    encoder         : Lavf60.16.101
+  Duration: 00:00:04.21, start: 0.025057, bitrate: 128 kb/s
+  Stream #4:0: Audio: mp3, 44100 Hz, mono, fltp, 128 kb/s
+[aist#5:0/pcm_s16le @ 0x5d96490fc800] Guessed Channel Layout: stereo
+Input #5, wav, from '/root/.openclaw/workspace/projects/AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav':
+  Metadata:
+    encoder         : FL Studio 20
+  Duration: 00:02:09.68, bitrate: 1411 kb/s
+  Stream #5:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Stream mapping:
+  Stream #1:0 (mp3float) -> asetpts:default
+  Stream #2:0 (mp3float) -> asetpts:default
+  Stream #3:0 (mp3float) -> asetpts:default
+  Stream #4:0 (mp3float) -> asetpts:default
+  Stream #5:0 (pcm_s16le) -> asetpts:default
+  Stream #0:0 -> #0:0 (copy)
+  atrim:default -> Stream #0:1 (aac)
+Press [q] to stop, [?] for help
+Output #0, mp4, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, q=2-31, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 192 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 aac
+size=       0kB time=N/A bitrate=N/A speed=N/A    size=    4352kB time=00:00:11.93 bitrate=2987.6kbits/s speed=21.8x    [mp4 @ 0x5d96490e40c0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x5d96490e3fc0] video:7948kB audio:506kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.266066%
+size=    8476kB time=00:00:19.98 bitrate=3473.8kbits/s speed=22.9x    
+[aac @ 0x5d96490f8480] Qavg: 575.234
++ ffprobe -v error -show_entries format=duration,size,bit_rate:stream=codec_name,width,height,r_frame_rate,sample_rate,channels -of json '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4'
++ ffmpeg -y -ss 0.000 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4' -frames:v 1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_0ms.jpg'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:20.00, start: 0.000000, bitrate: 3471 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 207 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x58b15d20cd40] deprecated pixel format used, make sure you did set range correctly
+Output #0, image2, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_0ms.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, progressive), 1080x1920, q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=6.9 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    [image2 @ 0x58b15d2376c0] The specified filename '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_0ms.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x58b15d2376c0] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 0x58b15d1e4d80] video:62kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=    1 fps=0.0 q=6.9 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
++ ffmpeg -y -ss 4.067 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4' -frames:v 1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_4067ms.jpg'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:20.00, start: 0.000000, bitrate: 3471 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 207 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x62717b08cd40] deprecated pixel format used, make sure you did set range correctly
+Output #0, image2, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_4067ms.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, progressive), 1080x1920, q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=2.3 size=       0kB time=00:00:00.00 bitrate=N/A dup=1 drop=0 speed=   0x    [image2 @ 0x62717b0b76c0] The specified filename '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_4067ms.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x62717b0b76c0] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 0x62717b064d80] video:17kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=    1 fps=0.0 q=2.3 Lsize=N/A time=00:00:00.00 bitrate=N/A dup=1 drop=0 speed=   0x    
++ ffmpeg -y -ss 10.667 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4' -frames:v 1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_10667ms.jpg'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:20.00, start: 0.000000, bitrate: 3471 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 207 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x58421b07bd40] deprecated pixel format used, make sure you did set range correctly
+Output #0, image2, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_10667ms.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, progressive), 1080x1920, q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=6.1 size=       0kB time=00:00:00.00 bitrate=N/A dup=1 drop=0 speed=   0x    [image2 @ 0x58421b0a66c0] The specified filename '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_10667ms.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x58421b0a66c0] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 0x58421b053d80] video:62kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=    1 fps=0.0 q=6.1 Lsize=N/A time=00:00:00.00 bitrate=N/A dup=1 drop=0 speed=   0x    
++ ffmpeg -y -ss 15.400 -i '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4' -frames:v 1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_15400ms.jpg'
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:20.00, start: 0.000000, bitrate: 3471 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x1920, 3304 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 207 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x58a15d4c3440] deprecated pixel format used, make sure you did set range correctly
+Output #0, image2, to '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_15400ms.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.31.102 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+[image2 @ 0x58a15d4ef6c0] The specified filename '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/qc/V0040_15400ms.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x58a15d4ef6c0] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+frame=    1 fps=0.0 q=8.8 size=N/A time=00:00:00.00 bitrate=N/A speed=   0x    [out#0/image2 @ 0x58a15d49cd80] video:65kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=    1 fps=0.0 q=8.8 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
++ gog drive upload '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4' --parent 1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND --name V0040_qcfix2.mp4 --json --no-input
++ gog drive share 19ox_jClBde9xpIxXDqAjtK_NcwvoyrKE --to anyone --role reader --json --no-input --force
+{
+  "run_id": "20260709_135338",
+  "drive_folder_id": "1ICdGOWUiR3905Vuef-pqbXJ0fvg8paND",
+  "videos": {
+    "V0040": {
+      "label": "V0040_20260709_135338",
+      "variant": "section2_5",
+      "voice": {
+        "number": 5,
+        "name": "Rachel"
+      },
+      "section_audio_durations": [
+        2.324898,
+        6.112653,
+        4.205714,
+        4.205714
+      ],
+      "section_durations": [
+        3.9666666666666677,
+        6.5,
+        4.633333333333334,
+        4.6
+      ],
+      "gaps": [
+        0.09999999999999998,
+        0.09999999999999998,
+        0.09999999999999998
+      ],
+      "starts_ms": [
+        0,
+        4067,
+        10667,
+        15400
+      ],
+      "audios": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0040_20260709_135338_section4_cta_fitted.mp3"
+      ],
+      "silent": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_silent_V0040_20260709_135338.mp4",
+      "final": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/Final_Batch_V0006_V0015_20260709_135338/V0040.mp4",
+      "verify": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "20.000000",
+          "size": "8679897",
+          "bit_rate": "3471958"
+        }
+      },
+      "drive": {
+        "id": "19ox_jClBde9xpIxXDqAjtK_NcwvoyrKE",
+        "link": "https://drive.google.com/file/d/19ox_jClBde9xpIxXDqAjtK_NcwvoyrKE/view?usp=drivesdk",
+        "name": "V0040_qcfix2.mp4",
+        "size": "8679897"
+      }
+    }
+  },
+  "section2_routing": {
+    "V0040": "section2_5"
+  }
+}

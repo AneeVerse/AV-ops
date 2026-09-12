@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-05T10:26:03.202964+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "vmwg3j25qdrmw0cz678apq2g70",
+  "raw_audio_url": "https://replicate.delivery/xezq/tZbYA2VcizaAEdZaOvJOclZdRBhWfNXEW9N5hb6UvfP6MertA/tmpov2e69vb.mp3",
+  "raw_duration": 6.29551,
+  "fitted_duration": 6.29551,
+  "script_text": "If your Data Scientist team is adopting AI, your role is shifting whether you see it or not.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0022_20260705_101751_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0022_20260705_101751_section1_hook_fitted.mp3"
+}

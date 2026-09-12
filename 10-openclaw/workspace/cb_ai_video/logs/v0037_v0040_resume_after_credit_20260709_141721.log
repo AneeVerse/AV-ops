@@ -1,0 +1,24 @@
++ gog sheets get 1MMslDeXLGBKG6tjPao1_pRIGzaRTOlubwn5UJssB8xE '300_Video_Master_Attribution!A1:BZ200' --json --no-input
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section1_hook_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section1_hook_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section2_insight_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section2_insight_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section3_implication_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section3_implication_fitted.mp3'
+Reuse cached VO: /root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section4_cta_fitted.mp3
++ ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 '/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0037_20260709_135338_section4_cta_fitted.mp3'
+Generate WAN contextual clip: section1 / kwaivgi/kling-v3-video
+submit section1 201 {"id":"9qrrag4ewdrmw0cz8wyrepf2r0","model":"kwaivgi/kling-v3-video","version":"hidden","input":{"aspect_ratio":"9:16","duration":5,"generate_audio":false,"negative_prompt":"text, subtitles, logo, brand mark, readable text, readable UI, charts, documents, visible screen, laptop screen, monitor screen, phone screen, tablet screen, TV screen, cartoon,
+section1 failed
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 510, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 497, in main
+    sources=render_sections(row,label,durations,variant)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.openclaw/workspace/AI-Video_Gen/template02/scripts/render_batch_v0006_v0015.py", line 377, in render_sections
+    rv.generate_replicate_wan_clip(wcfg,'section1',hook,s1_wan,label)
+  File "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/scripts/render_with_rotating_voice.py", line 247, in generate_replicate_wan_clip
+    raise RuntimeError(f"WAN generation failed for {section_name}: {result.get('error') or result}")
+RuntimeError: WAN generation failed for section1: Director: unexpected error handling prediction (E6802)

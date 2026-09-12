@@ -1,0 +1,17 @@
+{
+  "run_id": "builder_10_slide_test_001",
+  "project_name": "10 Slide Builder Test",
+  "output_file_name": "builder_10_slide_test_output.pptx",
+  "slides": [
+    {"order": 1, "template_id": "slide_01_hero_cover", "text": {"heading": "Automated PDF to PPTX System", "supporting_text": "A workflow that turns large PDFs into concise, branded, editable PowerPoint decks.", "section_label": "SYSTEM DEMO"}, "images": {"hero_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/hero.png"}}},
+    {"order": 2, "template_id": "slide_14_section_divider_pattern", "text": {"heading": "How It Works", "subheading": "From source document to finished presentation."}},
+    {"order": 3, "template_id": "slide_02_strategic_roadmap", "text": {"heading": "Workflow Roadmap", "subheading": "Each stage reduces manual work while preserving presentation quality.", "timeline_block_1": "Upload\nPDF enters the Next.js UI", "timeline_block_2": "Extract\nAll pages are processed", "timeline_block_3": "Plan\nAI creates a slide outline", "timeline_block_4": "Match\nTemplates are selected from JSON", "timeline_block_5": "Build\nPPTX is assembled safely", "timeline_block_6": "Review\nFinal deck is saved to Drive", "closing_line": "Structured input. Controlled output. Editable PPTX.", "section_label": "PROCESS"}},
+    {"order": 4, "template_id": "slide_08_text_heavy_insight", "text": {"heading": "Why This Needs Template Intelligence", "body": "Raw PDF content rarely fits directly into a slide. The system first understands the document, then writes content according to each template's layout and character limits.\n\nThis prevents overloaded slides and keeps the deck consistent."}},
+    {"order": 5, "template_id": "slide_09_ui_product_showcase", "text": {"heading": "Upload and Track Progress", "body": "The UI should let users upload a PDF, set slide count, track status, and download the final PPTX when generation is complete."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/ui.png"}}},
+    {"order": 6, "template_id": "slide_03_metric_overview", "text": {"heading": "System Targets", "subheading": "Core numbers for the first working version.", "section_label": "MVP SCOPE", "metric_1_value": "50MB+", "metric_1_label": "PDF support target", "metric_2_value": "10", "metric_2_label": "Default slides", "metric_3_value": "18", "metric_3_label": "Template options", "metric_4_value": "PPTX", "metric_4_label": "Final output", "metric_5_value": "100%", "metric_5_label": "Pages extracted"}},
+    {"order": 7, "template_id": "slide_10_main_supporting_text", "text": {"heading": "Design Protection Rules", "body_left": "The builder only replaces approved text and image placeholders.", "body_right": "Fonts, colors, logos, icons, layouts, and brand assets remain untouched."}},
+    {"order": 8, "template_id": "slide_12_content_image", "text": {"heading": "Generated Visuals When Needed", "body": "Images are generated only when the selected template has an intended image area or the slide requires a visual."}, "images": {"main_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/content_b.png"}}},
+    {"order": 9, "template_id": "slide_18_image_only_slide", "text": {}, "images": {"full_slide_image": {"path": "/root/.openclaw/workspace/ppt_library/test_images/full.png"}}},
+    {"order": 10, "template_id": "slide_15_section_divider_diagonal", "text": {"heading": "Ready for n8n Integration", "subheading": "Next step: connect extraction, AI planning, and the PPTX builder."}}
+  ]
+}

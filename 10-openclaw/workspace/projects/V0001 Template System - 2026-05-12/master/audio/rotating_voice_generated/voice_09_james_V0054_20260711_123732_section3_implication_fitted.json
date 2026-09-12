@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-11T12:37:44.460674+00:00",
+  "voice_number": 9,
+  "voice_name": "James",
+  "replicate_voice": "James",
+  "prediction_id": "4mrdmnr04nrmr0cza4qrptrxdg",
+  "raw_audio_url": "https://replicate.delivery/xezq/ckrcCAUSDhbeeUFFy9RMnhaceykYSnCqUOSQSJfLY17ei1ftF/tmpmnd6onua.mp3",
+  "raw_duration": 3.787755,
+  "fitted_duration": 3.787755,
+  "script_text": "You may be building more experience in a path with limited upside.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_123732_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0054_20260711_123732_section3_implication_fitted.mp3"
+}

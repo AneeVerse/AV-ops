@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-10T10:15:26.104888+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "wgzaskar5hrmw0cz9e3b74pyj4",
+  "raw_audio_url": "https://replicate.delivery/xezq/5IMwJJysCCJfTydCxzxXgG6Hx4Z3TeV6WS9zf2RMfxXxDe82C/tmptnu_6ei1.mp3",
+  "raw_duration": 1.933061,
+  "fitted_duration": 1.933061,
+  "script_text": "Am I leaving money on the table?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0042_20260710_101521_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0042_20260710_101521_section1_hook_fitted.mp3"
+}

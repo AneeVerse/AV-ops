@@ -1,0 +1,31 @@
+{
+  "project_id": "traitdna_V0008_20260630_124453",
+  "size": "1080x1920",
+  "fps": 30,
+  "section_duration_seconds": 5,
+  "total_duration_seconds": 20,
+  "audio_mode": "silent_placeholder",
+  "output_name": "traitdna_silent_V0008_20260630_124453.mp4",
+  "sections": [
+    {
+      "id": "section1_hook",
+      "source": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section1/output/section1_n8n_V0008_20260630_124453.mp4",
+      "duration_seconds": 5.566666666666666
+    },
+    {
+      "id": "section2_insight",
+      "source": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section2/output/section2_5_n8n_V0008_20260630_124453.mp4",
+      "duration_seconds": 4.833333333333333
+    },
+    {
+      "id": "section3_implication",
+      "source": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section3/output/section3_n8n_V0008_20260630_124453.mp4",
+      "duration_seconds": 3.6666666666666665
+    },
+    {
+      "id": "section4_cta",
+      "source": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/section4/output/section4_n8n_V0008_20260630_124453.mp4",
+      "duration_seconds": 4.433333333333335
+    }
+  ]
+}

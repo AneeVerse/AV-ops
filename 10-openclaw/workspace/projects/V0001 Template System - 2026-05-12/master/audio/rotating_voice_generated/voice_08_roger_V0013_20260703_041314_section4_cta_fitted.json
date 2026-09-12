@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-03T04:25:13.905653+00:00",
+  "voice_number": 8,
+  "voice_name": "Roger",
+  "replicate_voice": "Roger",
+  "prediction_id": "r4zmdh1nthrmy0cz4rwry93mjw",
+  "raw_audio_url": "https://replicate.delivery/xezq/NjIl1RBpeN3KM6l9kuwTm8mY4pmaVhg1R4nC7yASNgTUXnaLA/tmpj3aptxy8.mp3",
+  "raw_duration": 3.186939,
+  "fitted_duration": 3.186939,
+  "script_text": "See every role your background actually qualifies for.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260703_041314_section4_cta_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0013_20260703_041314_section4_cta_fitted.mp3"
+}

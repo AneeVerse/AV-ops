@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-17T14:12:09.022893+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "6d9hn6wq61rmt0cze1ns2y656w",
+  "raw_audio_url": "https://replicate.delivery/xezq/xZGxfXJfCmp4YEerCndFEmEncZfGemlxB4eBARvJWF7GOqfcLA/tmpc3cfckto.mp3",
+  "raw_duration": 2.507755,
+  "fitted_duration": 2.507755,
+  "script_text": "Am I choosing comfort over opportunity?",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0082_20260717_141205_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0082_20260717_141205_section1_hook_fitted.mp3"
+}

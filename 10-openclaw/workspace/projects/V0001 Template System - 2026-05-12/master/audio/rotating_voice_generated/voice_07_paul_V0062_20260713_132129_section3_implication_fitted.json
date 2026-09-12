@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-13T13:21:39.613160+00:00",
+  "voice_number": 7,
+  "voice_name": "Paul",
+  "replicate_voice": "Paul",
+  "prediction_id": "j7q02q796nrmt0czbehvanw42w",
+  "raw_audio_url": "https://replicate.delivery/xezq/37Nl7fYna5QNYqhYR55s0gFO5DsjAQDPdTnMLLPeROfDDTxtA/tmpz9nchasj.mp3",
+  "raw_duration": 4.205714,
+  "fitted_duration": 4.205714,
+  "script_text": "You may not know whether to negotiate, stay, or move.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0062_20260713_132129_section3_implication_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0062_20260713_132129_section3_implication_fitted.mp3"
+}

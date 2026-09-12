@@ -1,0 +1,41 @@
+{
+  "name": "locked_bulk_n8n_smooth_section1_wan_enabled_top_shadow_fixed",
+  "updated_at_utc": "2026-06-17T19:06:00Z",
+  "files": [
+    {
+      "path": "LOCKED_VERSION.md",
+      "sha256": "532e3c06114c5587b32e7471ab9217161e46895d29bbb9e430451a69d20246c0",
+      "size": 3079
+    },
+    {
+      "path": "config/full_video_config.json",
+      "sha256": "f70073459fdff6c5251a4c5c6f0a6ba6e773400c0a24d75e9c1349f391c06624",
+      "size": 777
+    },
+    {
+      "path": "config/n8n_ai_video_bulk_render_active.json",
+      "sha256": "b989714baad7ec56b65a4e643f32f9ae42005b9779d1ef01770cf02940daec18",
+      "size": 3538
+    },
+    {
+      "path": "config/section1_config.json",
+      "sha256": "b00e75d946232fd42ac738e2b2ee866bad28a7f175e134c5d91ab36f7626471f",
+      "size": 1596
+    },
+    {
+      "path": "scripts/ai_video_n8n_bridge.py",
+      "sha256": "872c059b043d9c9f0399134c861b310016cb9d98bb0013354916aca5cfa683c0",
+      "size": 12817
+    },
+    {
+      "path": "scripts/create_n8n_ai_video_bulk_workflow.py",
+      "sha256": "d3176096f5165f4ccace263f96d1c99ba77c7dbc3a780ad873f87d2fed9b8328",
+      "size": 5316
+    },
+    {
+      "path": "scripts/render_section1.py",
+      "sha256": "c2f40ff63c53ba099f60e9f48e5cf9f4a5c6e61ecf3cdfc5e1e489a457125cd9",
+      "size": 6131
+    }
+  ]
+}

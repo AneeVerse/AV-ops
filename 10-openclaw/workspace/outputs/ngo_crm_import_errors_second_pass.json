@@ -1,0 +1,53 @@
+{
+  "inserted": 464,
+  "skipped": 981,
+  "errors": [
+    {
+      "row": 442,
+      "organization": "Karnataka Drivers and Owners Welfare Association",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00165\">CRM-LEAD-2026-00165</a></strong>"
+    },
+    {
+      "row": 605,
+      "organization": "Gramin Samaj Kalyan Vikas Manch",
+      "error": "InvalidEmailAddressError: ujjawalapalamu@gmail. is not a valid Email Address"
+    },
+    {
+      "row": 895,
+      "organization": "Haji Naeemul Haque Degree College",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00457\">CRM-LEAD-2026-00457</a></strong>"
+    },
+    {
+      "row": 1011,
+      "organization": "Spandana Trust",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00173\">CRM-LEAD-2026-00173</a></strong>"
+    },
+    {
+      "row": 1227,
+      "organization": "Fitness Phobia Organisation",
+      "error": "DuplicateEntryError: Email Address must be unique, it is already used in <strong><a href=\"http://sales1.aneeverse.com/desk/lead/CRM-LEAD-2026-00717\">CRM-LEAD-2026-00717</a></strong>"
+    }
+  ],
+  "created_sample": [
+    "CRM-LEAD-2026-00980",
+    "CRM-LEAD-2026-00981",
+    "CRM-LEAD-2026-00982",
+    "CRM-LEAD-2026-00983",
+    "CRM-LEAD-2026-00984",
+    "CRM-LEAD-2026-00985",
+    "CRM-LEAD-2026-00986",
+    "CRM-LEAD-2026-00987",
+    "CRM-LEAD-2026-00988",
+    "CRM-LEAD-2026-00989",
+    "CRM-LEAD-2026-00990",
+    "CRM-LEAD-2026-00991",
+    "CRM-LEAD-2026-00992",
+    "CRM-LEAD-2026-00993",
+    "CRM-LEAD-2026-00994",
+    "CRM-LEAD-2026-00995",
+    "CRM-LEAD-2026-00996",
+    "CRM-LEAD-2026-00997",
+    "CRM-LEAD-2026-00998",
+    "CRM-LEAD-2026-00999"
+  ]
+}

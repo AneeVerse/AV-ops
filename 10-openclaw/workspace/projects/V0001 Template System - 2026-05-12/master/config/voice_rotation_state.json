@@ -1,0 +1,766 @@
+{
+  "rotation_name": "traitdna_voice_and_music_rotation_v1",
+  "next_voice_number": 3,
+  "total_videos_created_with_rotation": 32,
+  "last_used_voice_number": 2,
+  "last_used_voice_name": "Hope",
+  "history": [
+    {
+      "created_at": "2026-06-17T02:11:51.611834+00:00",
+      "voice_number": 1,
+      "voice_name": "Juniper",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": null,
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_ahmad_drive_test_20260617_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_01_juniper_ahmad_drive_test_20260617.mp4"
+    },
+    {
+      "created_at": "2026-06-17T03:52:20.096818+00:00",
+      "voice_number": 2,
+      "voice_name": "Hope",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_full_20s_contextual_wan_ahmad_preview_20260617_0347.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_ahmad_preview_20260617_0347_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_ahmad_preview_20260617_0347.mp4"
+    },
+    {
+      "created_at": "2026-06-18T14:32:58.906519+00:00",
+      "voice_number": 3,
+      "voice_name": "Sarah",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_kling26_section1_lowerthird_test_20260618_141727.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0001_kling26_lowerthird_with_vo_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_V0001_kling26_lowerthird_with_vo.mp4"
+    },
+    {
+      "created_at": "2026-06-18T15:08:47.225793+00:00",
+      "voice_number": 4,
+      "voice_name": "Alexandra",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260618_150300_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0001_20260618_150300_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_04_alexandra_V0001_20260618_150300_001.mp4",
+      "row_label": "V0001_20260618_150300_001"
+    },
+    {
+      "created_at": "2026-06-18T15:14:36.356447+00:00",
+      "voice_number": 5,
+      "voice_name": "Rachel",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0002_20260618_150851_002.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0002_20260618_150851_002_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_05_rachel_V0002_20260618_150851_002.mp4",
+      "row_label": "V0002_20260618_150851_002"
+    },
+    {
+      "created_at": "2026-06-22T19:39:13.612288+00:00",
+      "voice_number": 6,
+      "voice_name": "Drew",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260622_193343_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0001_20260622_193343_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0001_20260622_193343_001.mp4",
+      "row_label": "V0001_20260622_193343_001"
+    },
+    {
+      "created_at": "2026-06-23T04:17:41.612524+00:00",
+      "voice_number": 7,
+      "voice_name": "Paul",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_section2_tilde_down_full_editable_20260623_041209_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0001_section2_tilde_down_full_editable_20260623_041209_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_07_paul_V0001_section2_tilde_down_full_editable_20260623_041209_001.mp4",
+      "row_label": "V0001_section2_tilde_down_full_editable_20260623_041209_001"
+    },
+    {
+      "created_at": "2026-06-23T05:17:44.063741+00:00",
+      "voice_number": 8,
+      "voice_name": "Roger",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_segment_fit_broll_editable_20260623_051215_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0001_segment_fit_broll_editable_20260623_051215_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_08_roger_V0001_segment_fit_broll_editable_20260623_051215_001.mp4",
+      "row_label": "V0001_segment_fit_broll_editable_20260623_051215_001"
+    },
+    {
+      "created_at": "2026-06-23T05:25:02.761506+00:00",
+      "voice_number": 9,
+      "voice_name": "James",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_segment_fit_broll_v2_editable_20260623_051833_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0001_segment_fit_broll_v2_editable_20260623_051833_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_09_james_V0001_segment_fit_broll_v2_editable_20260623_051833_001.mp4",
+      "row_label": "V0001_segment_fit_broll_v2_editable_20260623_051833_001"
+    },
+    {
+      "created_at": "2026-06-23T11:14:41.399865+00:00",
+      "voice_number": 10,
+      "voice_name": "Mark",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_ahmad_prompt_developer_broll_20260623_110912_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0001_ahmad_prompt_developer_broll_20260623_110912_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_10_mark_V0001_ahmad_prompt_developer_broll_20260623_110912_001.mp4",
+      "row_label": "V0001_ahmad_prompt_developer_broll_20260623_110912_001"
+    },
+    {
+      "created_at": "2026-06-24T07:21:13.944079+00:00",
+      "voice_number": 1,
+      "voice_name": "Juniper",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260624_071542_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0001_20260624_071542_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_01_juniper_V0001_20260624_071542_001.mp4",
+      "row_label": "V0001_20260624_071542_001"
+    },
+    {
+      "created_at": "2026-06-24T07:48:38.179993+00:00",
+      "voice_number": 2,
+      "voice_name": "Hope",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_new_prompt_20260624_074303_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0001_new_prompt_20260624_074303_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0001_new_prompt_20260624_074303_001.mp4",
+      "row_label": "V0001_new_prompt_20260624_074303_001"
+    },
+    {
+      "created_at": "2026-06-25T12:46:00.805168+00:00",
+      "voice_number": 3,
+      "voice_name": "Sarah",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_n8n_bulk_20260625_124025_001_20260625_124025_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_n8n_bulk_20260625_124025_001_20260625_124025_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_n8n_bulk_20260625_124025_001_20260625_124025_001.mp4",
+      "row_label": "n8n_bulk_20260625_124025_001_20260625_124025_001"
+    },
+    {
+      "created_at": "2026-06-29T05:59:08.627300+00:00",
+      "voice_number": 4,
+      "voice_name": "Alexandra",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0002_20260629_055339_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0002_20260629_055339_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_04_alexandra_V0002_20260629_055339_001.mp4",
+      "row_label": "V0002_20260629_055339_001"
+    },
+    {
+      "created_at": "2026-06-29T06:04:53.192924+00:00",
+      "voice_number": 5,
+      "voice_name": "Rachel",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0003_20260629_055912_002.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0003_20260629_055912_002_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_05_rachel_V0003_20260629_055912_002.mp4",
+      "row_label": "V0003_20260629_055912_002"
+    },
+    {
+      "created_at": "2026-06-29T06:11:26.164867+00:00",
+      "voice_number": 6,
+      "voice_name": "Drew",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0004_20260629_060457_003.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_060457_003_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0004_20260629_060457_003.mp4",
+      "row_label": "V0004_20260629_060457_003"
+    },
+    {
+      "created_at": "2026-06-29T06:16:59.637089+00:00",
+      "voice_number": 7,
+      "voice_name": "Paul",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0005_20260629_061130_004.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_061130_004_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_07_paul_V0005_20260629_061130_004.mp4",
+      "row_label": "V0005_20260629_061130_004"
+    },
+    {
+      "created_at": "2026-06-29T07:39:20.803638+00:00",
+      "voice_number": 8,
+      "voice_name": "Roger",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0001_20260629_073356_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0001_20260629_073356_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_08_roger_V0001_20260629_073356_001.mp4",
+      "row_label": "V0001_20260629_073356_001"
+    },
+    {
+      "created_at": "2026-06-29T07:44:49.558025+00:00",
+      "voice_number": 9,
+      "voice_name": "James",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0002_20260629_073925_002.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0002_20260629_073925_002_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_09_james_V0002_20260629_073925_002.mp4",
+      "row_label": "V0002_20260629_073925_002"
+    },
+    {
+      "created_at": "2026-06-29T07:50:21.422208+00:00",
+      "voice_number": 10,
+      "voice_name": "Mark",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0003_20260629_074453_003.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0003_20260629_074453_003_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_10_mark_V0003_20260629_074453_003.mp4",
+      "row_label": "V0003_20260629_074453_003"
+    },
+    {
+      "created_at": "2026-06-29T07:56:19.961273+00:00",
+      "voice_number": 1,
+      "voice_name": "Juniper",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0004_20260629_075025_004.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0004_20260629_075025_004_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_01_juniper_V0004_20260629_075025_004.mp4",
+      "row_label": "V0004_20260629_075025_004"
+    },
+    {
+      "created_at": "2026-06-29T08:02:48.539081+00:00",
+      "voice_number": 2,
+      "voice_name": "Hope",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0005_20260629_075624_005.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_075624_005_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0005_20260629_075624_005.mp4",
+      "row_label": "V0005_20260629_075624_005"
+    },
+    {
+      "created_at": "2026-06-29T09:58:40.941146+00:00",
+      "voice_number": 3,
+      "voice_name": "Sarah",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0003_section2_5_preview_20260629_095315_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0003_section2_5_preview_20260629_095315_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_03_sarah_V0003_section2_5_preview_20260629_095315_001.mp4",
+      "row_label": "V0003_section2_5_preview_20260629_095315_001"
+    },
+    {
+      "created_at": "2026-06-29T10:33:07.801819+00:00",
+      "voice_number": 4,
+      "voice_name": "Alexandra",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0003_section2_5_preview_20260629_102739_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_04_alexandra_V0003_section2_5_preview_20260629_102739_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_04_alexandra_V0003_section2_5_preview_20260629_102739_001.mp4",
+      "row_label": "V0003_section2_5_preview_20260629_102739_001"
+    },
+    {
+      "created_at": "2026-06-29T12:19:52.036698+00:00",
+      "voice_number": 5,
+      "voice_name": "Rachel",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_bulk_V0003_section2_5_fixed_margins_20260629_121303_001.mp4",
+      "generated_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_05_rachel_V0003_section2_5_fixed_margins_20260629_121303_001_fitted.mp3",
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_05_rachel_V0003_section2_5_fixed_margins_20260629_121303_001.mp4",
+      "row_label": "V0003_section2_5_fixed_margins_20260629_121303_001"
+    },
+    {
+      "created_at": "2026-06-29T13:12:07.202181+00:00",
+      "voice_number": 6,
+      "voice_name": "Drew",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0004_20260629_130631_001.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_06_drew_V0004_20260629_130631_001.mp4",
+      "row_label": "V0004_20260629_130631_001",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 17.528164,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          6.466666666666667,
+          3.8666666666666667,
+          4.333333333333333,
+          3.8333333333333335
+        ],
+        "section_gap_after": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "section_total_durations": [
+          6.966666666666667,
+          4.366666666666667,
+          4.833333333333333,
+          3.8333333333333335
+        ],
+        "section_starts": [
+          0.0,
+          6.966666666666667,
+          11.333333333333334,
+          16.166666666666668
+        ],
+        "voiceover_durations": [
+          6.217143,
+          3.657143,
+          4.075102,
+          3.578776
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_06_drew_V0004_20260629_130631_001_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "Going deeper as a Software Developer isn't always the fastest path. Wider may pay more.",
+          "Adjacent roles recruit from your background at a premium.",
+          "A lateral-then-up move can pay more than waiting for promotion.",
+          "Find the roles paying more for what you already do."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T13:17:40.379049+00:00",
+      "voice_number": 7,
+      "voice_name": "Paul",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0005_20260629_131211_002.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_07_paul_V0005_20260629_131211_002.mp4",
+      "row_label": "V0005_20260629_131211_002",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 19.121631999999998,
+        "final_duration": 20.033333333333335,
+        "section_content_durations": [
+          7.3,
+          5.133333333333334,
+          3.1666666666666665,
+          3.533333333333333
+        ],
+        "section_gap_after": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "section_total_durations": [
+          7.6,
+          5.433333333333334,
+          3.4666666666666663,
+          3.533333333333333
+        ],
+        "section_starts": [
+          0.0,
+          7.6,
+          13.033333333333333,
+          16.5
+        ],
+        "voiceover_durations": [
+          7.288163,
+          5.146122,
+          3.160816,
+          3.526531
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_07_paul_V0005_20260629_131211_002_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "A Software Developer and adjacent roles share most of the work and one often pays noticeably more.",
+          "Same skills, different title - same resume, different outcome.",
+          "Knowing the overlap tells you where to apply next.",
+          "See which title pays more for your exact skill set."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T13:58:02.767009+00:00",
+      "voice_number": 8,
+      "voice_name": "Roger",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0003_20260629_135232_001.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_08_roger_V0003_20260629_135232_001.mp4",
+      "row_label": "V0003_20260629_135232_001",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 19.017143,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          4.966666666666667,
+          5.866666666666666,
+          3.7666666666666666,
+          4.4
+        ],
+        "section_gap_after": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "section_total_durations": [
+          5.3,
+          6.199999999999999,
+          4.1,
+          4.4
+        ],
+        "section_starts": [
+          0.0,
+          5.3,
+          11.5,
+          15.6
+        ],
+        "voiceover_durations": [
+          4.963265,
+          5.877551,
+          3.761633,
+          4.414694
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_08_roger_V0003_20260629_135232_001_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "The Software Developers getting hired aren't better qualified. They're better positioned.",
+          "Titles you ignore are often the ones recruiting your exact background and paying more than the roles you're applying to.",
+          "Widening your search is faster than stacking another credential.",
+          "Stop applying to the wrong roles. Find the ones hiring your exact background."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T14:03:44.983605+00:00",
+      "voice_number": 9,
+      "voice_name": "James",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0004_20260629_135807_002.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_09_james_V0004_20260629_135807_002.mp4",
+      "row_label": "V0004_20260629_135807_002",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 16.64,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          6.8,
+          3.6666666666666665,
+          4.6,
+          3.433333333333333
+        ],
+        "section_gap_after": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "section_total_durations": [
+          7.3,
+          4.166666666666666,
+          5.1,
+          3.433333333333333
+        ],
+        "section_starts": [
+          0.0,
+          7.3,
+          11.466666666666667,
+          16.566666666666666
+        ],
+        "voiceover_durations": [
+          6.347755,
+          3.291429,
+          4.127347,
+          2.873469
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_09_james_V0004_20260629_135807_002_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "Going deeper as a Software Developer isn't always the fastest path. Wider may pay more.",
+          "Adjacent roles recruit from your background at a premium.",
+          "A lateral-then-up move can pay more than waiting for promotion.",
+          "Find the roles paying more for what you already do."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T14:09:19.062819+00:00",
+      "voice_number": 10,
+      "voice_name": "Mark",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0005_20260629_140349_003.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_10_mark_V0005_20260629_140349_003.mp4",
+      "row_label": "V0005_20260629_140349_003",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 13.897144,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          6.766666666666667,
+          3.8333333333333335,
+          3.6,
+          4.3
+        ],
+        "section_gap_after": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "section_total_durations": [
+          7.266666666666667,
+          4.333333333333334,
+          4.1,
+          4.3
+        ],
+        "section_starts": [
+          0.0,
+          7.266666666666667,
+          11.6,
+          15.7
+        ],
+        "voiceover_durations": [
+          5.616327,
+          3.056327,
+          2.45551,
+          2.76898
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_10_mark_V0005_20260629_140349_003_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "A Software Developer and adjacent roles share most of the work and one often pays noticeably more.",
+          "Same skills, different title - same resume, different outcome.",
+          "Knowing the overlap tells you where to apply next.",
+          "See which title pays more for your exact skill set."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T21:46:09.273525+00:00",
+      "voice_number": 1,
+      "voice_name": "Juniper",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0005_20260629_214033_001.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_01_juniper_V0005_20260629_214033_001.mp4",
+      "row_label": "V0005_20260629_214033_001",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 13.531428,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          6.4,
+          4.0,
+          3.7666666666666666,
+          4.333333333333333
+        ],
+        "section_gap_after": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "section_total_durations": [
+          6.9,
+          4.5,
+          4.266666666666667,
+          4.333333333333333
+        ],
+        "section_starts": [
+          0.0,
+          6.9,
+          11.4,
+          15.666666666666666
+        ],
+        "voiceover_durations": [
+          5.146122,
+          3.160816,
+          2.533878,
+          2.690612
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_01_juniper_V0005_20260629_214033_001_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "A Software Developer and adjacent roles share most of the work and one often pays noticeably more.",
+          "Same skills, different title - same resume, different outcome.",
+          "Knowing the overlap tells you where to apply next.",
+          "See which title pays more for your exact skill set."
+        ]
+      }
+    },
+    {
+      "created_at": "2026-06-29T22:04:04.861870+00:00",
+      "voice_number": 2,
+      "voice_name": "Hope",
+      "music_number": 1,
+      "music_name": "Corporate.wav",
+      "music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+      "contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0005_20260629_215800_001.mp4",
+      "generated_audio": [
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section1_hook_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section2_insight_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section3_implication_fitted.mp3",
+        "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section4_cta_fitted.mp3"
+      ],
+      "output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0005_20260629_215800_001.mp4",
+      "row_label": "V0005_20260629_215800_001",
+      "timing": {
+        "target_duration": 20.0,
+        "total_voiceover_duration": 15.333877000000001,
+        "final_duration": 20.0,
+        "section_content_durations": [
+          6.3,
+          4.566666666666666,
+          3.6666666666666665,
+          3.966666666666667
+        ],
+        "section_gap_after": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "section_total_durations": [
+          6.8,
+          5.066666666666666,
+          4.166666666666666,
+          3.966666666666667
+        ],
+        "section_starts": [
+          0.0,
+          6.8,
+          11.866666666666667,
+          16.033333333333335
+        ],
+        "voiceover_durations": [
+          5.511837,
+          4.022857,
+          2.873469,
+          2.925714
+        ],
+        "voice_speed_policy": "natural_no_speed_change",
+        "section_audio_paths": [
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section1_hook_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section2_insight_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section3_implication_fitted.mp3",
+          "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section4_cta_fitted.mp3"
+        ],
+        "section_texts": [
+          "A Software Developer and adjacent roles share most of the work and one often pays noticeably more.",
+          "Same skills, different title - same resume, different outcome.",
+          "Knowing the overlap tells you where to apply next.",
+          "See which title pays more for your exact skill set."
+        ]
+      }
+    }
+  ],
+  "next_music_number": 1,
+  "last_used_music_number": 1,
+  "last_used_music_name": "Corporate.wav",
+  "last_used_music_path": "../../AE_reference_import_2026-05-12/extracted/V0001 folder/(Footage)/music/Corporate.wav",
+  "last_generated_audio": [
+    "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section1_hook_fitted.mp3",
+    "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section2_insight_fitted.mp3",
+    "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section3_implication_fitted.mp3",
+    "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0005_20260629_215800_001_section4_cta_fitted.mp3"
+  ],
+  "last_output": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/rotating_voice_renders/traitdna_rotating_voice_02_hope_V0005_20260629_215800_001.mp4",
+  "last_contextual_base_video": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/output/traitdna_n8n_dynamic_V0005_20260629_215800_001.mp4"
+}

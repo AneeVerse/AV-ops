@@ -1,0 +1,18 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Graphik Web,152,&H00FFFFFF,&H00FFFFFF,&H8A000000,&H00000000,-1,0,0,0,100,100,-1,0,1,0,5,5,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+; More granular AE-style build: word first, then line-by-line independent fade/slide.
+Dialogue: 0,0:00:00.04,0:00:00.20,Hook,,0,0,0,,{\fad(120,0)\move(540,155,540,120,0,260)}Most
+Dialogue: 0,0:00:00.20,0:00:04.86,Hook,,0,0,0,,{\fad(180,250)\move(540,155,540,120,0,320)}Most Software
+Dialogue: 0,0:00:00.32,0:00:04.86,Hook,,0,0,0,,{\fad(200,250)\move(540,305,540,270,0,320)}Developers
+Dialogue: 0,0:00:00.44,0:00:04.86,Hook,,0,0,0,,{\fad(200,250)\move(540,455,540,420,0,320)}qualify for more
+Dialogue: 0,0:00:00.56,0:00:04.86,Hook,,0,0,0,,{\fad(200,250)\move(540,605,540,570,0,320)}job titles than
+Dialogue: 0,0:00:00.68,0:00:04.86,Hook,,0,0,0,,{\fad(200,250)\move(540,755,540,720,0,320)}they apply to.

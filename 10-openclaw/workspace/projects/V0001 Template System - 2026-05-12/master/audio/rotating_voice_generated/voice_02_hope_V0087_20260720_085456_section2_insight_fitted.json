@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-20T08:55:04.721704+00:00",
+  "voice_number": 2,
+  "voice_name": "Hope",
+  "replicate_voice": "Hope",
+  "prediction_id": "fxy7sntws5rmy0czfty9fp3010",
+  "raw_audio_url": "https://replicate.delivery/xezq/ty2tCUGbD04dH9WBC6KXhdfKaivqRvEWLqaB92XOFGEzocdLA/tmpficxvd2v.mp3",
+  "raw_duration": 3.239184,
+  "fitted_duration": 3.239184,
+  "script_text": "Every application costs time, focus, and momentum.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260720_085456_section2_insight_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_02_hope_V0087_20260720_085456_section2_insight_fitted.mp3"
+}

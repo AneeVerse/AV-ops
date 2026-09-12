@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-07-01T08:20:37.329081+00:00",
+  "voice_number": 3,
+  "voice_name": "Sarah",
+  "replicate_voice": "Sarah",
+  "prediction_id": "ca849dr20drmw0cz3k29cvtez8",
+  "raw_audio_url": "https://replicate.delivery/xezq/RKwReFuIGa0AFiiOoUKQYxP6MR5U3ODPqv8IeGEpPUqUfPptA/tmprprxe276.mp3",
+  "raw_duration": 4.832653,
+  "fitted_duration": 4.832653,
+  "script_text": "If you're a Software Developer and haven't checked the market this year, you're likely underpaid.",
+  "raw_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0008_20260701_081503_section1_hook_raw.mp3",
+  "fitted_audio": "/root/.openclaw/workspace/projects/V0001 Template System - 2026-05-12/master/audio/rotating_voice_generated/voice_03_sarah_V0008_20260701_081503_section1_hook_fitted.mp3"
+}
