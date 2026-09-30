@@ -9,7 +9,7 @@ This document records **everything we changed** from upstream [Huly / Hardcore E
 **Live site:** https://app.aneeverse.com  
 **Upstream base:** Huly self-host stack ~`v0.7.426` (`HULY_VERSION` on VPS)  
 **Workspace:** `aneeverse`  
-**Period covered:** 2026-08-18 → 2026-08-20 (all fork commits in this git history)
+**Period covered:** 2026-08-18 → 2026-09-12 (all fork commits in this git history)
 
 ---
 
@@ -52,8 +52,12 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 9. **Issue / nav polish** — scoping, no wrong auto-select, project labels with company, archive imported projects  
 10. **API tokens** — personal tokens with an optional **No expiry** option, in the UI and the account service  
 11. **Novino chat** — native right-sidebar workbench chat talking to OpenClaw agent `novino` via `/_novino`
-12. **Tools directory** — left-rail launcher for hosted Aneeverse apps (ERP, n8n, OpenClaw, Studio, …)  
-13. **Admin-provisioned employees** — Contacts → Employees creates a login (email + password), no public signup; admin can delete the row
+12. **Tools directory** — left-rail launcher for hosted Aneeverse apps (ERP, n8n, OpenClaw, Studio, …) with stored login/password, copy buttons, and owner/maintainer add/edit  
+13. **Admin-provisioned employees** — Contacts → Employees creates a login (email + password), no public signup; admin can delete the row  
+14. **Tracker title links** — Title column on the States table opens the task  
+15. **Issue → Task labels** — user-visible Tracker wording only; ids/URLs/DB stay `Issue`  
+16. **Tracker GST invoices** — project-scoped invoices, Aneeverse teal PDF, month bulk download  
+17. **VPS folders + employee visibility** — right-sidebar Explorer of the VPS layout; Owner/Maintainer can limit what each login sees
 
 **Important platform rule:** custom **classes / apps / viewlets** are stored in the workspace **`model_tx`** DB. Official Docker images do not ship our model. Every environment (local Docker **and** production) needs the model patch scripts, not only a new front bundle.
 
@@ -97,6 +101,12 @@ Dates are commit dates in this repo (Aug 2026).
 | 2026-08-27 | (this change) | Open Novino chat without a second username/password | Anyone already in Aneeverse can use the widget; chat-control no longer gates the UI |
 | 2026-08-27 | (this change) | Native Novino chat UI (no chat.aneeverse.com iframe) + `/_novino` gateway proxy | Same Huly theme as the rest of the workbench; gateway token stays on the VPS |
 | 2026-09-01 | (this change) | Admin-create employees: password login, welcome email, row delete, no public signup | Invite/join was the only add path; Kick only deactivated; production login preferred OTP |
+| 2026-09-07 | (this change) | Clickable Title column on the Tracker States table | Title used StringPresenter (tooltip only); identifier was the only link |
+| 2026-09-07 | (this change) | Tools directory: stored login/password, copy, add/edit (Maintainer+) | Catalog was a hardcoded array; cards had no credentials or CRUD |
+| 2026-09-07 | (this change) | Relabel Tracker “Issue” to “Task” in all 14 UI languages | Ops language is tasks; class ids / URLs / DB stay `Issue` |
+| 2026-09-08 | (this change) | Tracker GST invoices (sidebar + project tab, `#279ea6` PDF, month download) | Create client invoices from a project/company without leaving Tracker |
+| 2026-09-12 | (this change) | Right-sidebar **VPS** folder Explorer + per-employee left/right/Tools allowlist | Show VPS layout as folders without live SSH; limit what a login sees after you tick boxes |
+| 2026-09-12 | (this change) | Person-panel access list scrolls; VPS opens on single click; right drawer wider | Access checkboxes were clipped in the pinned header; VPS only opened on double-click |
 
 ---
 
@@ -132,9 +142,9 @@ Dates are commit dates in this repo (Aug 2026).
 
 **Why:** Hosted Aneeverse apps (ERP, CRM, n8n, OpenClaw, ContentBeta Studio, …) lived only as the ContentBeta `/tba` page. Ops needed the same launcher inside Huly.
 
-**What changed:** New `tools` plugin (types + catalog, assets, resources, model). Left-rail **Tools** icon (`alias: tools`, `order: 250`) opens a search + category card grid. Cards open the catalog URL in a new tab. Catalog is hardcoded in `plugins/tools/src/catalog.ts` (same sites as ContentBeta, plus Aneeverse marked “This app”).
+**What changed:** New `tools` plugin (types + catalog, assets, resources, model). Left-rail **Tools** icon (`alias: tools`, `order: 250`) opens a search + category card grid. Cards open the catalog URL in a new tab. Tools are `tools.class.Tool` docs in `core.space.Workspace` (seeded once from `plugins/tools/src/catalog.ts`). Each card can show login + password with copy (and password reveal). Workspace **Owner/Maintainer** can add, edit, and delete tools. Login/password are plain workspace fields, readable by any member who can open Tools — not a vault.
 
-**Deploy:** Frontend bundle **and** `model` (the Application doc lives in `model_tx`).
+**Deploy:** Frontend bundle **and** `model` (Application + `TTool`). Official transactor images do not run `toolsOperation`, so the catalog is seeded the first time an Owner/Maintainer opens Tools. Ship front first, then model.
 
 ---
 
@@ -179,6 +189,56 @@ Dates are commit dates in this repo (Aug 2026).
 - **Context menu:** **Send reset link** for provisioned active users; **Resend invite** hidden when `personUuid` is set (legacy invite-only inactive users only).
 
 **Deploy:** custom **account** image **and** front **and** `model_tx` (SendResetLink action).
+
+---
+
+### 4.17 Clickable Title on the Tracker States table
+
+**Why:** In the Issues table (States view) the identifier (`AUTO-2`) opened the panel, but the title was plain text with a tooltip.
+
+**What changed:** `tracker.viewlet.IssueStatusTable` in `models/tracker/src/viewlets.ts` now uses `TitlePresenter` (`key: ''`) instead of the generic string presenter. List view already used `TitlePresenter`. Saved “Customize view” prefs that still have plain `title` keep the old column until reset.
+
+**Deploy:** `model` (`model_tx`).
+
+---
+
+### 4.18 Tracker “Issue” → “Task” labels
+
+**Why:** Ops language is tasks. The screenshot sidebar still said New issue / My issues / All issues.
+
+**What changed:** User-visible strings in `plugins/tracker-assets/lang/*` (all 14 locales) and `plugins/export-assets` `ExportIssues`. `TIssueTypeData` embedded label is `Task`. Sanity locators that asserted English “issue” wording were updated.
+
+**What did not change:** `tracker:class:Issue`, TypeScript types, navigator special ids (`my-issues`, `all-issues`, `issues`), URL fragments, and DB `_class` values. Same pattern as Contacts Organization → Company.
+
+**Deploy:** Front for lang files. `model` for the embedded `Task` label.
+
+---
+
+### 4.19 Tracker GST invoices
+
+**Why:** Ops need to issue GST invoices from a Tracker project (tied to that project’s company), download one PDF or all invoices for a month, without a separate billing app.
+
+**What you see:** A dedicated **Invoices** app on the far-left workbench rail (`/invoices`), same pattern as Lead. Tracker still has sidebar **Invoices** (`/tracker/all-invoices`) and each project has an **Invoices** tab (`/tracker/{project}/invoices`). The all-list uses id `all-invoices` so it does not collide with the project tab (`invoices`) in the workbench special resolver. The PDF matches the GST invoice layout (billed by/to, item table, bank, totals, signatory) recolored to Aneeverse teal `#279ea6`, with the website header lockup (Artboard 7 mark + “aneeverse” from `E:/Projects/aneeverse/public/images/Artboard 7@2x.png`). **Billed By** (Aneeverse name, address, GSTIN, PAN, phone) is editable on the create form, stored on `tracker.class.InvoiceProfile` for the next invoice, and snapshotted on each invoice so old PDFs do not change. **Billed To** address/GSTIN/PAN/phone is editable anytime and written back to the company.
+
+**What changed:** `tracker.class.Invoice` (project space, optional `billedBy` snapshot), `tracker.class.InvoiceProfile` (workspace billed-by), left-rail `tracker.app.Invoices`, navigator special + project tab, create/preview/print in `plugins/tracker-resources/src/components/invoices/`. Print is browser A4 (`iframe` + `@page`), not the print pod (`PRINT_URL` is not on aneeverse). GST is CGST+SGST for Maharashtra (27), IGST otherwise.
+
+**Deploy:** Frontend bundle **and** `model` (`model_tx` for the Invoice class and navigator entries). Ship front first, then model.
+
+---
+
+### 4.20 VPS folder tab + per-employee visibility
+
+**Why:** Ops wanted a right-sidebar tab (next to Chat / Calendar) that shows VPS things as folders, and a simple per-employee allowlist so each login only sees the left/right items you tick.
+
+**What you see:** A **VPS** Fixed widget (same frontend-only pattern as Novino). Explorer-style list: Apps / Config / Data, breadcrumbs. Every row enters that item — folders show children, files show the path note and an Open button when there is a URL. The tree is a snapshot of the AV-ops / Tools map — no live SSH, no refresh loop, no fetch to the VPS on click. Left **Tools** stays the card directory; the right tab is the folder tree. The workbench right drawer defaults wider (`32rem` min) so the explorer is usable.
+
+**What they see after login:** Contacts → Employee (Owner/Maintainer only) has **Limit what this person sees**. Off (default) = everything. On = only the ticked left apps, right widgets, and Tools cards. Owner/Maintainer always bypass so you cannot lock yourself out. Forbidden app URLs redirect to the first allowed app.
+
+This is **UI + URL guard**, not a server ACL on every Huly document.
+
+**What changed:** `vpsWidget.ts` / `vpsCatalog.ts` / `VpsExplorer.svelte`; `contact.class.EmployeeAccess` (`limitEnabled`, `apps`, `widgets`, `tools`); access editor on `ContactLoginPanel.svelte` (scrollable body, not the pinned person header); filters in Applications, Sidebar, Workbench, ToolsDirectory.
+
+**Deploy:** Frontend bundle for the VPS tab. `EmployeeAccess` needs **model_tx** (`local.cmd` / `deploy.cmd`).
 
 ---
 
@@ -395,6 +455,8 @@ Drive                      Plus company/project folders (+ optional GDrive)
 | Issues scoping | `plugins/tracker-resources/src/components/issues/IssuesView.svelte`, `Issues.svelte` |
 | Drive company sync | `server-plugins/drive-resources/src/companyDrive.ts`, `googleSync.ts` |
 | Contact/Drive fields | `models/contact/src/index.ts`, `models/drive/src/index.ts`, `plugins/contact/src/index.ts` |
+| VPS Explorer | `plugins/workbench-resources/src/vpsWidget.ts`, `vpsCatalog.ts`, `components/VpsExplorer.svelte` |
+| Employee visibility | `plugins/contact/src/employeeAccess.ts`, `plugins/contact-resources/src/components/EmployeeAccessEditor.svelte`, `plugins/workbench-resources/src/employeeAccess.ts` |
 
 ### Ops scripts
 

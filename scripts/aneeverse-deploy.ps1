@@ -36,7 +36,7 @@ $gitBash = Get-GitBash
 $unixRoot = ConvertTo-GitBashPath $RepoRoot
 
 # Forward the opt-in flags the orchestrator understands.
-$passThrough = @('FRESH', 'FORCE', 'SKIP_SMOKE', 'NO_ROLLBACK', 'ALLOW_SERVER_CHANGES', 'HULY_FRONT_URL')
+$passThrough = @('FRESH', 'FORCE', 'SKIP_SMOKE', 'NO_ROLLBACK', 'ALLOW_SERVER_CHANGES', 'HULY_FRONT_URL', 'HULY_MODEL_MAX')
 $envPrefix = ''
 foreach ($name in $passThrough) {
   $value = [Environment]::GetEnvironmentVariable($name)

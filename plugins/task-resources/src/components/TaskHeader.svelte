@@ -20,7 +20,7 @@
   import { UserBox } from '@hcengineering/contact-resources'
   import { Task } from '@hcengineering/task'
   import task from '../plugin'
-  import { DocAttributeBar } from '@hcengineering/view-resources'
+  import { DocAttributeBar, ensureAssigneeJoined } from '@hcengineering/view-resources'
 
   export let object: Task
   export let keys: KeyedAttribute[]
@@ -34,15 +34,18 @@
   const hierarchy = client.getHierarchy()
 
   function change () {
-    client.updateCollection(
-      object._class,
-      object.space,
-      object._id,
-      object.attachedTo,
-      object.attachedToClass,
-      object.collection,
-      { assignee: object.assignee }
-    )
+    void (async () => {
+      await client.updateCollection(
+        object._class,
+        object.space,
+        object._id,
+        object.attachedTo,
+        object.attachedToClass,
+        object.collection,
+        { assignee: object.assignee }
+      )
+      await ensureAssigneeJoined(client, object.space, object.assignee)
+    })()
   }
 
   $: assigneeTitle = hierarchy.getAttribute(object._class, 'assignee').label

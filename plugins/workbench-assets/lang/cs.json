@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Nastavit widgety",
     "Tab": "Karta",
     "WorkspaceIsArchived": "Pracovní prostor je archivován kvůli nečinnosti. Kontaktujte nás prosím pro obnovení...",
-    "WorkspaceIsMigrating": "Pracovní prostor je aktualizován. Prosím čekejte..."
+    "WorkspaceIsMigrating": "Pracovní prostor je aktualizován. Prosím čekejte...",
+    "Novino": "Novino",
+    "NewChat": "Nový",
+    "Send": "Odeslat",
+    "MessageNovino": "Zpráva pro Novino...",
+    "NovinoEmpty": "Začněte konverzaci s Novino",
+    "NovinoUnavailable": "Novino není dostupný",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

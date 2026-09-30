@@ -67,6 +67,10 @@ import {
   type IssueRelation,
   type IssueStatus,
   type IssueTemplate,
+  type Invoice,
+  type InvoiceLine,
+  type InvoiceParty,
+  type InvoiceProfile,
   type IssueTemplateChild,
   type Milestone,
   type MilestoneStatus,
@@ -458,6 +462,72 @@ export class TProjectTargetPreference extends TPreference implements ProjectTarg
     props?: { key: string, value: any }[]
 }
 
+/**
+ * @public
+ */
+@Model(tracker.class.Invoice, core.class.Doc, DOMAIN_TRACKER)
+@UX(tracker.string.Invoice, tracker.icon.Invoices, 'INV', 'number', undefined, tracker.string.Invoices)
+export class TInvoice extends TDoc implements Invoice {
+  @Prop(TypeString(), tracker.string.InvoiceNumber)
+  @Index(IndexKind.Indexed)
+    number!: string
+
+  @Prop(TypeDate(), tracker.string.InvoiceDate)
+    invoiceDate!: Timestamp
+
+  @Prop(TypeDate(), tracker.string.DueDate)
+    dueDate!: Timestamp
+
+  @Prop(TypeRef(contact.class.Organization), tracker.string.Company)
+    company?: Ref<Organization>
+
+  @Prop(TypeRecord(), tracker.string.BilledBy)
+  @Hidden()
+    billedBy?: InvoiceParty
+
+  @Prop(TypeRecord(), tracker.string.BilledTo)
+  @Hidden()
+    billedTo!: InvoiceParty
+
+  @Prop(TypeString(), tracker.string.CountryOfSupply)
+    countryOfSupply!: string
+
+  @Prop(TypeString(), tracker.string.PlaceOfSupply)
+    placeOfSupply!: string
+
+  @Prop(TypeRecord(), tracker.string.InvoiceItems)
+  @Hidden()
+    items!: InvoiceLine[]
+
+  @Prop(TypeNumber(), tracker.string.InvoiceAmount)
+    amount!: number
+
+  @Prop(TypeNumber(), tracker.string.CGST)
+    cgst!: number
+
+  @Prop(TypeNumber(), tracker.string.SGST)
+    sgst!: number
+
+  @Prop(TypeNumber(), tracker.string.IGST)
+    igst!: number
+
+  @Prop(TypeNumber(), tracker.string.InvoiceTotal)
+    total!: number
+
+  declare space: Ref<Project>
+}
+
+/**
+ * @public
+ */
+@Model(tracker.class.InvoiceProfile, core.class.Doc, DOMAIN_TRACKER)
+@UX(tracker.string.BilledBy, tracker.icon.Invoices)
+export class TInvoiceProfile extends TDoc implements InvoiceProfile {
+  @Prop(TypeRecord(), tracker.string.BilledBy)
+  @Hidden()
+    billedBy!: InvoiceParty
+}
+
 @Mixin(tracker.mixin.ClassicProjectTypeData, tracker.class.Project)
 @UX(getEmbeddedLabel('Classic project'), tracker.icon.Issues)
 export class TClassicProjectTypeData extends TProject implements RolesAssignment {
@@ -465,5 +535,5 @@ export class TClassicProjectTypeData extends TProject implements RolesAssignment
 }
 
 @Mixin(tracker.mixin.IssueTypeData, tracker.class.Issue)
-@UX(getEmbeddedLabel('Issue'), tracker.icon.Issue)
+@UX(getEmbeddedLabel('Task'), tracker.icon.Issue)
 export class TIssueTypeData extends TIssue {}

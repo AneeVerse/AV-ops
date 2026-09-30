@@ -80,10 +80,12 @@ import CreateOrganization from './components/CreateOrganization.svelte'
 import CreatePerson from './components/CreatePerson.svelte'
 import CreatePersonWithLogin from './components/CreatePersonWithLogin.svelte'
 import DeleteConfirmationPopup from './components/DeleteConfirmationPopup.svelte'
+import SetPasswordPopup from './components/SetPasswordPopup.svelte'
 import EditMember from './components/EditMember.svelte'
 import EditOrganization from './components/EditOrganization.svelte'
 import EditOrganizationPanel from './components/EditOrganizationPanel.svelte'
 import EditPerson from './components/EditPerson.svelte'
+import ContactLoginPanel from './components/ContactLoginPanel.svelte'
 import EditableAvatar from './components/EditableAvatar.svelte'
 import EmployeeArrayEditor from './components/EmployeeArrayEditor.svelte'
 import EmployeeBox from './components/EmployeeBox.svelte'
@@ -151,6 +153,7 @@ import {
   getCurrentEmployeeName,
   getCurrentEmployeePosition,
   getAccountClient,
+  getPersonLoginEmail,
   getPersonTooltip,
   grouppingPersonManager,
   hideInactive,
@@ -283,13 +286,13 @@ async function doContactQuery<T extends Contact> (
 }
 
 async function sendResetLink (doc: Person): Promise<void> {
-  const client = getClient()
-  const emailSocialId = await client.findOne(contact.class.SocialIdentity, {
-    attachedTo: doc._id,
-    type: SocialIdType.EMAIL
-  })
-  if (emailSocialId == null) {
-    console.error('Cannot find email social id for person', doc._id)
+  const email = await getPersonLoginEmail(doc)
+  if (email === '') {
+    showPopup(MessageBox, {
+      label: contact.string.SendResetLink,
+      message: contact.string.NoLoginEmail,
+      canSubmit: false
+    })
     return
   }
 
@@ -298,9 +301,13 @@ async function sendResetLink (doc: Person): Promise<void> {
     message: contact.string.SendResetLinkDescr,
     action: async () => {
       const accountClient = getAccountClient()
-      await accountClient.sendWorkspaceUserPasswordReset(emailSocialId.value.trim().toLowerCase())
+      await accountClient.sendWorkspaceUserPasswordReset(email)
     }
   })
+}
+
+async function setPassword (doc: Person): Promise<void> {
+  showPopup(SetPasswordPopup, { object: doc })
 }
 
 async function resendInvite (doc: Person): Promise<void> {
@@ -357,6 +364,7 @@ export default async (): Promise<Resources> => ({
     OpenChannel: openChannelURL,
     ResendInvite: resendInvite,
     SendResetLink: sendResetLink,
+    SetPassword: setPassword,
     DeleteEmployee: deleteEmployee
   },
   activity: {
@@ -378,6 +386,7 @@ export default async (): Promise<Resources> => ({
     CollaborationUserAvatar,
     CreateOrganization,
     EditPerson,
+    ContactLoginPanel,
     EditOrganization,
     SocialEditor,
     Contacts,

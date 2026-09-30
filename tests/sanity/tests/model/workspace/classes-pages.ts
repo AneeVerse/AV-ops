@@ -26,7 +26,7 @@ export class ClassesPage {
   application = (): Locator => this.page.getByRole('button', { name: 'Application' })
   applicant = (): Locator => this.page.getByRole('button', { name: 'Applicant' })
   lead = (): Locator => this.page.getByRole('button', { name: 'Lead' })
-  issue = (): Locator => this.page.getByRole('button', { name: 'Issue' })
+  issue = (): Locator => this.page.getByRole('button', { name: 'Task' })
   card = (): Locator => this.page.getByRole('button', { name: 'Card' })
   product = (): Locator => this.page.getByRole('button', { name: 'Product' })
 

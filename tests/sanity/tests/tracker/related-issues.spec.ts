@@ -43,7 +43,7 @@ test.describe('Tracker related issue tests', () => {
     await issuesPage.createNewIssue(newIssue)
     await issuesPage.searchIssueByName(newIssue.title)
     await issuesPage.openIssueByName(newIssue.title)
-    await issuesDetailsPage.moreActionOnIssue('New related issue')
+    await issuesDetailsPage.moreActionOnIssue('New related task')
     await issuesPage.fillNewIssueForm(relatedIssue)
     await issuesPage.clickButtonCreateIssue()
     await trackerNavigationMenuPage.openIssuesForProject('Default')

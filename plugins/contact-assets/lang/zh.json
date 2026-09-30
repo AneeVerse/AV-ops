@@ -85,6 +85,7 @@
     "SetPasswordDescr": "Set a new password for this user. They can sign in immediately with it.",
     "SendResetLink": "Send reset link",
     "SendResetLinkDescr": "Send a password-reset email to this user.",
+    "NoLoginEmail": "This contact has no email, so a password cannot be set.",
     "PasswordUpdated": "Password updated.",
     "ResetLinkSent": "Reset email sent.",
     "AddPersonWithLogin": "Add person with login",
@@ -171,6 +172,19 @@
     "WorkspaceStatusIn4Hours": "4 小时后",
     "WorkspaceStatusEndOfDay": "今天结束",
     "WorkspaceStatusPickDate": "选择日期",
-    "HideInactive": "隐藏非活跃"
+    "HideInactive": "隐藏非活跃",
+    "BillingDetails": "Billing",
+    "BillingAddress": "Billing address",
+    "GSTIN": "GSTIN",
+    "PAN": "PAN",
+    "BillingPhone": "Phone",
+    "PlaceOfSupply": "Place of supply",
+    "EmployeeAccess": "What they see",
+    "LimitWhatTheySee": "Limit what this person sees",
+    "LimitWhatTheySeeHint": "When on, they only get the left apps, right tabs, and Tools cards you tick. Owner and Maintainer always see everything.",
+    "LeftSidebar": "Left sidebar",
+    "RightSidebar": "Right sidebar",
+    "ToolsAccess": "Tools",
+    "OwnerAlwaysSeesAll": "Owner and Maintainer accounts always see everything, including this one."
   }
 }

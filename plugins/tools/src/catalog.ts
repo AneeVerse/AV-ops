@@ -13,6 +13,28 @@ export interface ToolSite {
 
 export const TOOL_GROUPS: ToolGroup[] = ['websites', 'studio', 'business', 'tools']
 
+export function isValidToolHref (href: string): boolean {
+  try {
+    const url = new URL(href.trim())
+    return url.protocol === 'http:' || url.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
+export function hostFromHref (href: string): { host: string, https: boolean } {
+  try {
+    const url = new URL(href.trim())
+    const path = url.pathname === '/' ? '' : url.pathname.replace(/\/$/, '')
+    return {
+      host: path === '' ? url.host : `${url.host}${path}`,
+      https: url.protocol === 'https:'
+    }
+  } catch {
+    return { host: href.trim(), https: href.trim().startsWith('https://') }
+  }
+}
+
 export const TOOL_SITES: ToolSite[] = [
   {
     id: 'cultura',

@@ -171,13 +171,19 @@ cmd_build() {
   fi
   mkdir -p "$DIST"
 
+  # Webpack reads compiled plugin `lib/` (especially *-assets loadMetadata).
+  # Skipping this ships a stale icon map and black-screens login.
+  ( cd "$REPO_ROOT" && rush build --to @hcengineering/prod )
+
   # USE_CACHE turns on webpack's filesystem cache, which is the difference
   # between a ~15 min cold build and a couple of minutes.
+  # 4GB heap fits this 11GB deploy machine; override with HULY_NODE_OPTIONS if needed.
+  local node_opts="${HULY_NODE_OPTIONS:---max-old-space-size=4096}"
   if command -v rushx >/dev/null 2>&1; then
-    ( cd "$PROD" && USE_CACHE=true NODE_OPTIONS=--max-old-space-size=8192 rushx package )
+    ( cd "$PROD" && USE_CACHE=true NODE_OPTIONS="$node_opts" rushx package )
   else
     # No global rush (e.g. CI) — use the bundled bootstrapper.
-    ( cd "$PROD" && USE_CACHE=true NODE_OPTIONS=--max-old-space-size=8192 \
+    ( cd "$PROD" && USE_CACHE=true NODE_OPTIONS="$node_opts" \
         node "$REPO_ROOT/common/scripts/install-run-rushx.js" package )
   fi
 
@@ -419,7 +425,8 @@ cmd_model() {
   [ -s "$fork" ] || die "model bundle missing at $fork"
 
   patch="$MODEL_CACHE/patch-production.sql"
-  node "$REPO_ROOT/scripts/huly-model-patch.mjs" --base "$base" --fork "$fork" --out "$patch"
+  local max="${HULY_MODEL_MAX:-80}"
+  node "$REPO_ROOT/scripts/huly-model-patch.mjs" --base "$base" --fork "$fork" --out "$patch" --max "$max"
 
   # The generator is deterministic, so an identical patch means production already
   # has it and the transactor does not need recycling.

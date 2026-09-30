@@ -126,7 +126,7 @@ test.describe('Tracker tests', () => {
       const random = Math.floor(Math.random() * values.length)
       const time = values[random]
       count += time
-      await page.click('text="Issues"')
+      await page.click('text="Tasks"')
       const issuesPage = new IssuesPage(page)
       await issuesPage.clickModelSelectorAll()
       await issuesPage.clickModelSelectorAll()

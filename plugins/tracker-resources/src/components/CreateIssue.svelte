@@ -80,7 +80,7 @@
     themeStore
   } from '@hcengineering/ui'
   import view from '@hcengineering/view'
-  import { ObjectBox } from '@hcengineering/view-resources'
+  import { ObjectBox, ensureAssigneeJoined } from '@hcengineering/view-resources'
   import { createEventDispatcher, onDestroy } from 'svelte'
 
   import { activeComponent, activeMilestone, generateIssueShortLink, updateIssueRelation } from '../issues'
@@ -553,6 +553,7 @@
 
       await descriptionBox?.createAttachments(_id, operations)
       const result = await operations.commit()
+      await ensureAssigneeJoined(client, _space, object.assignee)
 
       const parents: IssueParentInfo[] =
         parentIssue != null

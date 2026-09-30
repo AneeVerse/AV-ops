@@ -5,7 +5,7 @@
     "DataToExport": "Dışa aktarılacak veri",
     "ExportDocuments": "Dokümanlar",
     "ExportMilestones": "Kilometre Taşı",
-    "ExportIssues": "Sorunlar",
+    "ExportIssues": "Görevler",
     "ExportTestCases": "Test Senaryoları",
     "ExportTestRuns": "Test Çalıştırmaları",
     "ExportTestPlans": "Test Planları",

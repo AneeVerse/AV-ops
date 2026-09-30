@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Configure widgets",
     "Tab": "Tab",
     "WorkspaceIsArchived": "Workspace is archived because of being unused, Please contact us to restore...",
-    "WorkspaceIsMigrating": "Workspace is being updated. Please wait..."
+    "WorkspaceIsMigrating": "Workspace is being updated. Please wait...",
+    "Novino": "Novino",
+    "NewChat": "New",
+    "Send": "Send",
+    "MessageNovino": "Message Novino...",
+    "NovinoEmpty": "Start a conversation with Novino",
+    "NovinoUnavailable": "Novino is unavailable",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

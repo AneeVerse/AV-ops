@@ -73,7 +73,13 @@ export const workbenchPlugin = plugin(workbenchId, {
     WorkspaceIsMigrating: '' as IntlString
   },
   icon: {
-    Search: '' as Asset
+    Search: '' as Asset,
+    Novino: '' as Asset,
+    Vps: '' as Asset
+  },
+  ids: {
+    NovinoChatWidget: '' as Ref<Widget>,
+    VpsFoldersWidget: '' as Ref<Widget>
   },
   event: {
     NotifyConnection: '' as Metadata<string>,

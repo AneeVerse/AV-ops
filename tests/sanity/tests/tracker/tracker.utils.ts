@@ -68,7 +68,7 @@ export async function fillIssueForm (page: Page, props: IssueProps): Promise<voi
     await page.click(`.menu-item:has-text("${taskType}")`)
   }
 
-  const issueTitle = page.locator(af + '[placeholder="Issue\\ title"]')
+  const issueTitle = page.locator(af + '[placeholder="Task\\ title"]')
   await issueTitle.fill(name)
   await issueTitle.evaluate((e) => {
     e.blur()
@@ -112,9 +112,9 @@ export async function fillIssueForm (page: Page, props: IssueProps): Promise<voi
 
 export async function createIssue (page: Page, props: IssueProps): Promise<void> {
   await page.waitForSelector('span:has-text("Default")')
-  await page.click('button:has-text("New issue")')
+  await page.click('button:has-text("New task")')
   await fillIssueForm(page, props)
-  await page.click('form button:has-text("Create issue")')
+  await page.click('form button:has-text("Create task")')
   await page.waitForSelector('form.antiCard', { state: 'detached' })
 }
 
@@ -147,13 +147,13 @@ export async function createMilestone (page: Page, milestoneName: string): Promi
 }
 
 export async function createSubissue (page: Page, props: IssueProps): Promise<void> {
-  await page.click('button:has-text("Add sub-issue")')
+  await page.click('button:has-text("Add sub-task")')
   await fillIssueForm(page, props)
-  await page.click('button:has-text("Create issue")')
+  await page.click('button:has-text("Create task")')
 }
 
 export async function createLabel (page: Page, label: string): Promise<void> {
-  await page.click('button:has-text("New issue")')
+  await page.click('button:has-text("New task")')
   await page.click('button:has-text("Labels")')
   await page.click('button:nth-child(3)')
   await page.fill('[id="tags:string:AddTag"] >> input >> nth=0', label)

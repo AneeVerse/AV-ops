@@ -560,7 +560,14 @@ export function defineViewlets (builder: Builder): void {
       config: [
         '',
         'identifier',
-        'title',
+        {
+          key: '',
+          label: tracker.string.Title,
+          presenter: tracker.component.TitlePresenter,
+          props: { showParent: false, grow: true, minWidth: '5rem' },
+          sortingKey: 'title',
+          displayProps: { key: 'title' }
+        },
         {
           key: '$lookup.space.$lookup.company',
           label: tracker.string.Company,

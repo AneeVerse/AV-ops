@@ -3,12 +3,16 @@
 -->
 <script lang="ts">
   import type { Asset } from '@hcengineering/platform'
-  import type { ToolGroup, ToolSite } from '@hcengineering/tools'
-  import { Icon, Label } from '@hcengineering/ui'
+  import { copyTextToClipboard } from '@hcengineering/presentation'
+  import type { Tool, ToolGroup } from '@hcengineering/tools'
+  import { Button, Icon, IconCopy, IconEdit, Label, showPopup } from '@hcengineering/ui'
+  import view from '@hcengineering/view'
 
   import tools from '../plugin'
+  import ToolEditor from './ToolEditor.svelte'
 
-  export let site: ToolSite
+  export let site: Tool
+  export let canEdit = false
 
   const groupIcon: Record<ToolGroup, Asset> = {
     websites: tools.icon.Websites,
@@ -17,11 +21,53 @@
     tools: tools.icon.Tools
   }
 
+  let loginCopied = false
+  let passwordCopied = false
+  let showPassword = false
+  let loginCopyTimeout: ReturnType<typeof setTimeout> | undefined
+  let passwordCopyTimeout: ReturnType<typeof setTimeout> | undefined
+
+  $: login = site.login?.trim() ?? ''
+  $: password = site.password?.trim() ?? ''
+  $: hasCredentials = login !== '' || password !== ''
+
   function onKey (event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
       event.currentTarget.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     }
+  }
+
+  function openEdit (event: MouseEvent): void {
+    event.stopPropagation()
+    showPopup(ToolEditor, { value: site }, 'top')
+  }
+
+  async function copyLogin (event: MouseEvent): Promise<void> {
+    event.stopPropagation()
+    if (login === '') return
+    await copyTextToClipboard(login)
+    loginCopied = true
+    clearTimeout(loginCopyTimeout)
+    loginCopyTimeout = setTimeout(() => {
+      loginCopied = false
+    }, 2000)
+  }
+
+  async function copyPassword (event: MouseEvent): Promise<void> {
+    event.stopPropagation()
+    if (password === '') return
+    await copyTextToClipboard(password)
+    passwordCopied = true
+    clearTimeout(passwordCopyTimeout)
+    passwordCopyTimeout = setTimeout(() => {
+      passwordCopied = false
+    }, 2000)
+  }
+
+  function togglePassword (event: MouseEvent): void {
+    event.stopPropagation()
+    showPassword = !showPassword
   }
 </script>
 
@@ -39,6 +85,15 @@
       <Icon icon={groupIcon[site.group]} size={'small'} />
     </div>
     <div class="badges">
+      {#if canEdit}
+        <Button
+          icon={IconEdit}
+          kind="ghost"
+          size="small"
+          showTooltip={{ label: tools.string.EditTool }}
+          on:click={openEdit}
+        />
+      {/if}
       {#if site.current}
         <span class="badge here"><Label label={tools.string.ThisApp} /></span>
       {/if}
@@ -50,6 +105,43 @@
   <div class="name overflow-label">{site.name}</div>
   <p class="desc">{site.description}</p>
   <div class="host overflow-label">{site.host}</div>
+  {#if hasCredentials}
+    <div class="creds">
+      {#if login !== ''}
+        <div class="cred-row">
+          <span class="cred-label"><Label label={tools.string.Login} /></span>
+          <span class="cred-value overflow-label">{login}</span>
+          <Button
+            icon={IconCopy}
+            kind="ghost"
+            size="small"
+            showTooltip={{ label: loginCopied ? tools.string.Copied : tools.string.Copy }}
+            on:click={copyLogin}
+          />
+        </div>
+      {/if}
+      {#if password !== ''}
+        <div class="cred-row">
+          <span class="cred-label"><Label label={tools.string.Password} /></span>
+          <span class="cred-value overflow-label">{showPassword ? password : '••••••••'}</span>
+          <Button
+            icon={showPassword ? view.icon.EyeCrossed : view.icon.Eye}
+            kind="ghost"
+            size="small"
+            showTooltip={{ label: showPassword ? tools.string.HidePassword : tools.string.ShowPassword }}
+            on:click={togglePassword}
+          />
+          <Button
+            icon={IconCopy}
+            kind="ghost"
+            size="small"
+            showTooltip={{ label: passwordCopied ? tools.string.Copied : tools.string.Copy }}
+            on:click={copyPassword}
+          />
+        </div>
+      {/if}
+    </div>
+  {/if}
 </article>
 
 <style lang="scss">
@@ -136,5 +228,31 @@
     font-family: var(--mono-font, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
     font-size: 0.75rem;
     color: var(--theme-dark-color);
+  }
+  .creds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.375rem;
+    border-top: 1px solid var(--theme-button-border);
+  }
+  .cred-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+  .cred-label {
+    flex-shrink: 0;
+    font-size: 0.6875rem;
+    color: var(--theme-dark-color);
+    min-width: 4.25rem;
+  }
+  .cred-value {
+    flex-grow: 1;
+    min-width: 0;
+    font-family: var(--mono-font, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+    font-size: 0.75rem;
+    color: var(--theme-caption-color);
   }
 </style>

@@ -27,6 +27,15 @@
     "ServerUnderMaintenance": "Il server è in manutenzione",
     "WorkspaceCreating": "Creazione in corso...",
     "AccessDenied": "L'oggetto non esiste o non hai autorizzazione per accedervi.",
-    "WorkspaceIsMigrating": "Il workspace è in fase di aggiornamento. Attendi..."
+    "WorkspaceIsMigrating": "Il workspace è in fase di aggiornamento. Attendi...",
+    "Novino": "Novino",
+    "NewChat": "Nuovo",
+    "Send": "Invia",
+    "MessageNovino": "Messaggio a Novino...",
+    "NovinoEmpty": "Inizia una conversazione con Novino",
+    "NovinoUnavailable": "Novino non è disponibile",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

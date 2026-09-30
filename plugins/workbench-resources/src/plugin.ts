@@ -13,11 +13,9 @@
 // limitations under the License.
 //
 
-import { mergeIds } from '@hcengineering/platform'
-import type { IntlString } from '@hcengineering/platform'
-
-import workbench, { workbenchId } from '@hcengineering/workbench'
+import { mergeIds, type IntlString } from '@hcengineering/platform'
 import { type AnyComponent } from '@hcengineering/ui/src/types'
+import workbench, { workbenchId } from '@hcengineering/workbench'
 
 export default mergeIds(workbenchId, workbench, {
   string: {
@@ -46,11 +44,22 @@ export default mergeIds(workbenchId, workbench, {
     AccessDenied: '' as IntlString,
     Widget: '' as IntlString,
     WidgetPreference: '' as IntlString,
-    Tab: '' as IntlString
+    Tab: '' as IntlString,
+    Novino: '' as IntlString,
+    NewChat: '' as IntlString,
+    Send: '' as IntlString,
+    MessageNovino: '' as IntlString,
+    NovinoEmpty: '' as IntlString,
+    NovinoUnavailable: '' as IntlString,
+    Vps: '' as IntlString,
+    VpsHint: '' as IntlString,
+    VpsEmpty: '' as IntlString
   },
   component: {
     SpacePanel: '' as AnyComponent,
     Workbench: '' as AnyComponent,
-    WorkbenchTabs: '' as AnyComponent
+    WorkbenchTabs: '' as AnyComponent,
+    NovinoChat: '' as AnyComponent,
+    VpsExplorer: '' as AnyComponent
   }
 })

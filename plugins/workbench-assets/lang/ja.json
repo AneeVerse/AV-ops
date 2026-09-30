@@ -35,6 +35,15 @@
     "ConfigureWidgets": "ウィジェットを設定",
     "Tab": "タブ",
     "WorkspaceIsArchived": "ワークスペースは未使用のためアーカイブされています。復元するにはお問い合わせください...",
-    "WorkspaceIsMigrating": "ワークスペースを更新中です。しばらくお待ちください..."
+    "WorkspaceIsMigrating": "ワークスペースを更新中です。しばらくお待ちください...",
+    "Novino": "Novino",
+    "NewChat": "新規",
+    "Send": "送信",
+    "MessageNovino": "Novino にメッセージ...",
+    "NovinoEmpty": "Novino に話しかける",
+    "NovinoUnavailable": "Novino に接続できません",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

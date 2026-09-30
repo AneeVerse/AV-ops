@@ -18,5 +18,7 @@ import workbench from '@hcengineering/workbench'
 
 const icons = require('../assets/icons.svg') as string // eslint-disable-line
 loadMetadata(workbench.icon, {
-  Search: `${icons}#search`
+  Search: `${icons}#search`,
+  Novino: `${icons}#novino`,
+  Vps: `${icons}#vps`
 })

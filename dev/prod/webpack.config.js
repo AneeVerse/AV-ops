@@ -224,6 +224,13 @@ const devAneeverseProxy = {
     secure: aneeverseTarget.startsWith('https'),
     logLevel: 'debug'
   },
+  '/_novino': {
+    // Always production host nginx — inner docker nginx cannot reach the host proxy on :3011.
+    target: 'https://app.aneeverse.com',
+    changeOrigin: true,
+    secure: true,
+    logLevel: 'debug'
+  },
   '/_love': {
     target: aneeverseTarget,
     changeOrigin: true,

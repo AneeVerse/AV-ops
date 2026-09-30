@@ -19,12 +19,12 @@ export class NewProjectPage extends CommonTrackerPage {
 
   defaultAssigneeButton = (): Locator =>
     this.page
-      .locator('div[class*="header"]', { hasText: 'Default assignee for issues' })
+      .locator('div[class*="header"]', { hasText: 'Default assignee for tasks' })
       .locator('xpath=..')
       .locator('button')
 
   defaultIssueStatusButton = (): Locator =>
-    this.page.locator('div[class*="header"]', { hasText: 'Default issue status' }).locator('xpath=..').locator('button')
+    this.page.locator('div[class*="header"]', { hasText: 'Default task status' }).locator('xpath=..').locator('button')
 
   async createNewProject (data: NewProject): Promise<void> {
     await expect(this.popupHeader()).toBeVisible()

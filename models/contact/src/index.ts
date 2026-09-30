@@ -35,7 +35,8 @@ import {
   type Status,
   type SocialIdentityProvider,
   type Translation,
-  type WorkspaceMemberStatus
+  type WorkspaceMemberStatus,
+  type EmployeeAccess
 } from '@hcengineering/contact'
 import {
   AccountRole,
@@ -48,6 +49,7 @@ import {
   type Blob,
   type Class,
   type Collection,
+  type Doc,
   type Domain,
   type MarkupBlobRef,
   type PersonId,
@@ -58,6 +60,7 @@ import {
 } from '@hcengineering/core'
 import { createSystemType } from '@hcengineering/model-card'
 import {
+  ArrOf,
   Collection as CollectionType,
   Hidden,
   Index,
@@ -241,6 +244,26 @@ export class TOrganization extends TContact implements Organization {
 
   @Prop(CollectionType(contact.class.Member), contact.string.Members)
     members!: number
+
+  @Prop(TypeString(), contact.string.BillingAddress)
+  @Hidden()
+    billingAddress?: string
+
+  @Prop(TypeString(), contact.string.GSTIN)
+  @Hidden()
+    gstin?: string
+
+  @Prop(TypeString(), contact.string.PAN)
+  @Hidden()
+    pan?: string
+
+  @Prop(TypeString(), contact.string.BillingPhone)
+  @Hidden()
+    billingPhone?: string
+
+  @Prop(TypeString(), contact.string.PlaceOfSupply)
+  @Hidden()
+    placeOfSupply?: string
 }
 
 @Model(contact.class.Status, core.class.AttachedDoc, DOMAIN_CONTACT)
@@ -326,6 +349,25 @@ export class TWorkspaceMemberStatus extends TDoc implements WorkspaceMemberStatu
     clearAt?: Timestamp
 }
 
+@Model(contact.class.EmployeeAccess, core.class.AttachedDoc, DOMAIN_CONTACT)
+@UX(contact.string.EmployeeAccess)
+export class TEmployeeAccess extends TAttachedDoc implements EmployeeAccess {
+  declare attachedTo: Ref<Doc>
+  declare attachedToClass: Ref<Class<Doc>>
+
+  @Prop(TypeBoolean(), contact.string.LimitWhatTheySee)
+    limitEnabled!: boolean
+
+  @Prop(ArrOf(TypeRef(workbench.class.Application)), contact.string.LeftSidebar)
+    apps!: Array<Ref<Doc>>
+
+  @Prop(ArrOf(TypeRef(workbench.class.Widget)), contact.string.RightSidebar)
+    widgets!: Array<Ref<Doc>>
+
+  @Prop(ArrOf(TypeRef(core.class.Doc)), contact.string.ToolsAccess)
+    tools!: Array<Ref<Doc>>
+}
+
 export function createModel (builder: Builder): void {
   builder.createModel(
     TAvatarProvider,
@@ -343,7 +385,8 @@ export function createModel (builder: Builder): void {
     TPersonSpace,
     TUserRole,
     TTranslation,
-    TWorkspaceMemberStatus
+    TWorkspaceMemberStatus,
+    TEmployeeAccess
   )
 
   builder.mixin(contact.class.PersonSpace, core.class.Class, core.mixin.TxAccessLevel, {
@@ -354,6 +397,12 @@ export function createModel (builder: Builder): void {
     createAccessLevel: AccountRole.Guest,
     updateAccessLevel: AccountRole.Guest,
     removeAccessLevel: AccountRole.Guest
+  })
+
+  builder.mixin(contact.class.EmployeeAccess, core.class.Class, core.mixin.TxAccessLevel, {
+    createAccessLevel: AccountRole.Maintainer,
+    updateAccessLevel: AccountRole.Maintainer,
+    removeAccessLevel: AccountRole.Maintainer
   })
 
   builder.mixin(contact.class.Person, core.class.Class, core.mixin.TxAccessLevel, {
@@ -679,6 +728,10 @@ export function createModel (builder: Builder): void {
   builder.mixin(contact.class.Person, core.class.Class, view.mixin.ObjectEditor, {
     editor: contact.component.EditPerson,
     pinned: true
+  })
+
+  builder.mixin(contact.class.Person, core.class.Class, view.mixin.ObjectEditorFooter, {
+    editor: contact.component.ContactLoginPanel
   })
 
   // builder.mixin(core.class.Account, core.class.Class, view.mixin.Aggregation, {
@@ -1209,6 +1262,26 @@ export function createModel (builder: Builder): void {
   createAction(
     builder,
     {
+      action: contact.actionImpl.SetPassword,
+      label: contact.string.SetPassword,
+      icon: view.icon.Setting,
+      query: {},
+      category: contact.category.Contact,
+      target: contact.class.Person,
+      input: 'focus',
+      context: {
+        mode: ['context', 'browser', 'editor'],
+        group: 'edit'
+      },
+      secured: true,
+      visibilityTester: contact.function.CanSendResetLink
+    },
+    contact.action.SetPassword
+  )
+
+  createAction(
+    builder,
+    {
       action: contact.actionImpl.SendResetLink,
       label: contact.string.SendResetLink,
       query: {},
@@ -1216,7 +1289,7 @@ export function createModel (builder: Builder): void {
       target: contact.class.Person,
       input: 'focus',
       context: {
-        mode: ['context'],
+        mode: ['context', 'browser', 'editor'],
         group: 'edit'
       },
       secured: true,

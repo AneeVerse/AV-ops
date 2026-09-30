@@ -4,6 +4,8 @@ import type { AnyComponent } from '@hcengineering/ui'
 
 export default mergeIds(toolsId, tools, {
   component: {
-    ToolsDirectory: '' as AnyComponent
+    ToolsDirectory: '' as AnyComponent,
+    CreateTool: '' as AnyComponent,
+    EditTool: '' as AnyComponent
   }
 })

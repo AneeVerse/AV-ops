@@ -86,6 +86,9 @@ import NopeComponent from './components/NopeComponent.svelte'
 import MembersArrayEditor from './components/projects/MembersArrayEditor.svelte'
 import ProjectChat from './components/projects/ProjectChat.svelte'
 import ProjectFilterValuePresenter from './components/projects/ProjectFilterValuePresenter.svelte'
+import AllInvoices from './components/invoices/AllInvoices.svelte'
+import CreateInvoice from './components/invoices/CreateInvoice.svelte'
+import ProjectInvoices from './components/invoices/ProjectInvoices.svelte'
 import RelationsPopup from './components/RelationsPopup.svelte'
 import SetDueDateActionPopup from './components/SetDueDateActionPopup.svelte'
 import SetParentIssueActionPopup from './components/SetParentIssueActionPopup.svelte'
@@ -490,7 +493,10 @@ export default async (): Promise<Resources> => ({
     IssueExtra,
     IssueStatusPresenter,
     ProjectChat,
-    LabelsView
+    LabelsView,
+    AllInvoices,
+    ProjectInvoices,
+    CreateInvoice
   },
   completion: {
     IssueQuery: async (client: Client, query: string, filter?: { in?: RelatedDocument[], nin?: RelatedDocument[] }) =>

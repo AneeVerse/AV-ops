@@ -1,11 +1,11 @@
 {
   "string": {
-    "WorkspaceNamePattern": "Le nom doit comporter 40 caractères ou moins, ne doit pas être vide et ne doit pas contenir de caractères spéciaux (<, >, /)" ,
+    "WorkspaceNamePattern": "Le nom doit comporter 40 caractères ou moins, ne doit pas être vide et ne doit pas contenir de caractères spéciaux (<, >, /)",
     "Export": "Exporter",
     "DataToExport": "Données à exporter",
     "ExportDocuments": "Documents",
     "ExportMilestones": "Jalon",
-    "ExportIssues": "Problèmes",
+    "ExportIssues": "Tâches",
     "ExportTestCases": "Cas de test",
     "ExportTestRuns": "Exécutions de test",
     "ExportTestPlans": "Plans de test",

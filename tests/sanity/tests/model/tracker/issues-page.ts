@@ -8,13 +8,13 @@ import { NewIssue } from './types'
 const retryOptions = { intervals: [1000, 1500, 2500], timeout: 60000 }
 export class IssuesPage extends CommonTrackerPage {
   modelSelectorAll = (): Locator => this.page.locator('label[data-id="tab-all"]')
-  issues = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="Issues"')
-  subIssues = (): Locator => this.page.locator('button:has-text("Add sub-issue")')
+  issues = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="Tasks"')
+  subIssues = (): Locator => this.page.locator('button:has-text("Add sub-task")')
   newIssue = (): Locator => this.page.locator('#tracker-string-NewIssue')
   draftIssue = (): Locator => this.page.locator('#tracker-string-ResumeDraft')
   modelSelectorActive = (): Locator => this.page.locator('label[data-id="tab-active"]')
   modelSelectorBacklog = (): Locator => this.page.locator('label[data-id="tab-backlog"]')
-  buttonCreateNewIssue = (): Locator => this.page.locator('button > div', { hasText: 'New issue' })
+  buttonCreateNewIssue = (): Locator => this.page.locator('button > div', { hasText: 'New task' })
   inputPopupCreateNewIssueTitle = (): Locator =>
     this.page.locator('form[id="tracker:string:NewIssue"] input[type="text"]')
 
@@ -50,7 +50,7 @@ export class IssuesPage extends CommonTrackerPage {
     this.page.locator('form[id="tracker:string:NewIssue"] input[type="file"]#file')
 
   textPopupCreateNewIssueFile = (): Locator => this.page.locator('div[class*="attachments"] > div[class*="attachment"]')
-  buttonCreateIssue = (): Locator => this.page.locator('button > span', { hasText: 'Create issue' })
+  buttonCreateIssue = (): Locator => this.page.locator('button > span', { hasText: 'Create task' })
   inputSearchIcon = (): Locator => this.page.locator('.searchInput-wrapper')
   inputSearch = (): Locator => this.page.locator('input[placeholder="Search"]')
   linkSidebarAll = (): Locator => this.page.locator('a[href$="all-issues"]')
@@ -110,7 +110,7 @@ export class IssuesPage extends CommonTrackerPage {
   doneHeaderKanban = (): Locator => this.page.locator('.header :text-is("Done")').first()
   canceledHeaderKanban = (): Locator => this.page.locator('.header :text-is("Canceled")').first()
 
-  myIssuesButton = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="My issues"')
+  myIssuesButton = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="My tasks"')
   assignedTab = (): Locator => this.page.locator('[data-id="tab-assigned"]')
   createdTab = (): Locator => this.page.locator('[data-id="tab-created"]')
   subscribedTab = (): Locator => this.page.locator('[data-id="tab-subscribed"]')
@@ -133,7 +133,7 @@ export class IssuesPage extends CommonTrackerPage {
     }, timeout)
   }
 
-  viewIssueButton = (): Locator => this.page.locator('text="View issue"')
+  viewIssueButton = (): Locator => this.page.locator('text="View task"')
   reportedTimeEditor = (): Locator => this.page.locator('#ReportedTimeEditor')
   addReportButton = (): Locator => this.page.locator('#ReportsPopupAddButton')
   closeButton = (): Locator => this.page.locator('#card-close')
@@ -146,7 +146,7 @@ export class IssuesPage extends CommonTrackerPage {
   timeSpentReports = (): Locator => this.page.getByText('Time spent reports', { exact: true })
   addTimeReport = (): Locator => this.page.locator('text="Add time report"')
   issueName = (name: string): Locator => this.page.locator(`text="${name}"`)
-  issuesButton = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="Issues"')
+  issuesButton = (): Locator => this.page.locator('.antiPanel-navigator').locator('text="Tasks"')
   viewButton = (): Locator => this.page.locator('button[data-id="btn-viewOptions"]')
   // The View-Options popup now renders more than one `.ordering` button (the
   // Order-by dropdown plus the new searchScope selector). Target the first,
@@ -179,7 +179,7 @@ export class IssuesPage extends CommonTrackerPage {
   confirmInput = (): Locator => this.page.locator('.selectPopup button')
 
   async navigateToIssues (): Promise<void> {
-    await this.page.click('text="Issues"')
+    await this.page.click('text="Tasks"')
     await this.page.keyboard.press('Escape')
   }
 

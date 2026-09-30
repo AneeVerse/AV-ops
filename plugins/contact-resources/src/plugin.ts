@@ -111,7 +111,20 @@ export default mergeIds(contactId, contact, {
     WorkspaceStatusIn1Hour: '' as IntlString,
     WorkspaceStatusIn4Hours: '' as IntlString,
     WorkspaceStatusEndOfDay: '' as IntlString,
-    WorkspaceStatusPickDate: '' as IntlString
+    WorkspaceStatusPickDate: '' as IntlString,
+    BillingDetails: '' as IntlString,
+    BillingAddress: '' as IntlString,
+    GSTIN: '' as IntlString,
+    PAN: '' as IntlString,
+    BillingPhone: '' as IntlString,
+    PlaceOfSupply: '' as IntlString,
+    EmployeeAccess: '' as IntlString,
+    LimitWhatTheySee: '' as IntlString,
+    LimitWhatTheySeeHint: '' as IntlString,
+    LeftSidebar: '' as IntlString,
+    RightSidebar: '' as IntlString,
+    ToolsAccess: '' as IntlString,
+    OwnerAlwaysSeesAll: '' as IntlString
   },
   function: {
     GetContactLink: '' as Resource<(doc: Doc, props: Record<string, any>) => Promise<Location>>,

@@ -43,6 +43,7 @@ import { Card, MasterTag, Role } from '@hcengineering/card'
 import { Preference } from '@hcengineering/preference'
 
 import { PermissionsStore } from './types'
+import { type EmployeeAccess } from './employeeAccess'
 
 /**
  * @public
@@ -169,6 +170,11 @@ export interface Member extends AttachedDoc {
 export interface Organization extends Contact {
   members: number
   description: MarkupBlobRef | null
+  billingAddress?: string
+  gstin?: string
+  pan?: string
+  billingPhone?: string
+  placeOfSupply?: string
 }
 
 /**
@@ -249,7 +255,8 @@ export const contactPlugin = plugin(contactId, {
     UserProfile: '' as Ref<MasterTag>,
     UserRole: '' as Ref<Class<UserRole>>,
     Translation: '' as Ref<Class<Translation>>,
-    WorkspaceMemberStatus: '' as Ref<Class<WorkspaceMemberStatus>>
+    WorkspaceMemberStatus: '' as Ref<Class<WorkspaceMemberStatus>>,
+    EmployeeAccess: '' as Ref<Class<EmployeeAccess>>
   },
   mixin: {
     Employee: '' as Ref<Class<Employee>>
@@ -396,6 +403,7 @@ export const contactPlugin = plugin(contactId, {
     SetPasswordDescr: '' as IntlString,
     SendResetLink: '' as IntlString,
     SendResetLinkDescr: '' as IntlString,
+    NoLoginEmail: '' as IntlString,
     PasswordUpdated: '' as IntlString,
     ResetLinkSent: '' as IntlString,
     AddPersonWithLogin: '' as IntlString,
@@ -466,6 +474,7 @@ export const contactPlugin = plugin(contactId, {
 export default contactPlugin
 export * from './types'
 export * from './utils'
+export * from './employeeAccess'
 export * from './analytics'
 export * from './avatar'
 export {

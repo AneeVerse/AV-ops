@@ -52,8 +52,10 @@ import {
   TTypeEstimation,
   TTypeIssuePriority,
   TTypeMilestoneStatus,
-  TTypeRemainingTime,
-  TTypeReportedTime
+    TTypeRemainingTime,
+    TTypeReportedTime,
+    TInvoice,
+    TInvoiceProfile
 } from './types'
 import { defineViewlets } from './viewlets'
 
@@ -313,6 +315,8 @@ function defineApplication (
     milestonesId: string
     templatesId: string
     labelsId: string
+    invoicesId: string
+    allInvoicesId: string
   }
 ): void {
   builder.createDoc(
@@ -385,6 +389,14 @@ function defineApplication (
             label: tracker.string.Labels,
             // createItemLabel: task.string.TaskCreateLabel,
             position: 'top'
+          },
+          {
+            id: opt.allInvoicesId,
+            position: 'top',
+            label: tracker.string.AllInvoices,
+            icon: tracker.icon.Invoices,
+            component: tracker.component.AllInvoices,
+            accessLevel: AccountRole.User
           }
         ],
         spaces: [
@@ -436,6 +448,12 @@ function defineApplication (
                 label: tracker.string.ProjectChat,
                 icon: chunter.icon.Chunter,
                 component: tracker.component.ProjectChat
+              },
+              {
+                id: opt.invoicesId,
+                label: tracker.string.Invoices,
+                icon: tracker.icon.Invoices,
+                component: tracker.component.ProjectInvoices
               }
             ]
           }
@@ -444,6 +462,23 @@ function defineApplication (
       navHeaderComponent: tracker.component.NewIssueHeader
     },
     tracker.app.Tracker
+  )
+}
+
+function defineInvoicesApplication (builder: Builder): void {
+  builder.createDoc(
+    workbench.class.Application,
+    core.space.Model,
+    {
+      label: tracker.string.Invoices,
+      icon: tracker.icon.Invoices,
+      alias: 'invoices',
+      hidden: false,
+      position: 'top',
+      order: 225,
+      component: tracker.component.AllInvoices
+    },
+    tracker.app.Invoices
   )
 }
 
@@ -463,7 +498,9 @@ export function createModel (builder: Builder): void {
     TRelatedIssueTarget,
     TTypeEstimation,
     TTypeRemainingTime,
-    TProjectTargetPreference
+    TProjectTargetPreference,
+    TInvoice,
+    TInvoiceProfile
   )
 
   builder.mixin(tracker.class.Project, core.class.Class, activity.mixin.ActivityDoc, {})
@@ -526,6 +563,8 @@ export function createModel (builder: Builder): void {
   const myIssuesId = 'my-issues'
   const allIssuesId = 'all-issues'
   const labelsId = 'labels'
+  const invoicesId = 'invoices'
+  const allInvoicesId = 'all-invoices'
   // const scrumsId = 'scrums'
 
   definePresenters(builder)
@@ -645,7 +684,18 @@ export function createModel (builder: Builder): void {
     tracker.ids.IssueTemplateUpdatedActivityViewlet
   )
 
-  defineApplication(builder, { myIssuesId, allIssuesId, issuesId, componentsId, milestonesId, templatesId, labelsId })
+  defineApplication(builder, {
+    myIssuesId,
+    allIssuesId,
+    issuesId,
+    componentsId,
+    milestonesId,
+    templatesId,
+    labelsId,
+    invoicesId,
+    allInvoicesId
+  })
+  defineInvoicesApplication(builder)
 
   defineActions(builder, issuesId, componentsId, myIssuesId)
 

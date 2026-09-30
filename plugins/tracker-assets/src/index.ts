@@ -41,6 +41,7 @@ loadMetadata(tracker.icon, {
   IssueTemplates: `${icons}#issuetemplates`,
   Start: `${icons}#start`,
   Stop: `${icons}#stop`,
+  Invoices: `${icons}#invoices`,
 
   CategoryBacklog: `${icons}#status-backlog`,
   CategoryUnstarted: `${icons}#status-todo`,

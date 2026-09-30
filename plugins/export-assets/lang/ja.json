@@ -5,7 +5,7 @@
     "DataToExport": "エクスポートするデータ",
     "ExportDocuments": "ドキュメント",
     "ExportMilestones": "マイルストーン",
-    "ExportIssues": "イシュー",
+    "ExportIssues": "タスク",
     "ExportTestCases": "テストケース",
     "ExportTestRuns": "テスト実行",
     "ExportTestPlans": "テスト計画",

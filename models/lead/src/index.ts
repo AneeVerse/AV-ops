@@ -734,7 +734,7 @@ export function createModel (builder: Builder): void {
       input: 'focus',
       category: lead.category.Lead,
       target: lead.class.Funnel,
-      visibilityTester: view.function.CanDeleteSpace,
+      visibilityTester: lead.function.CanDeleteFunnel,
       query: {
         archived: true
       },

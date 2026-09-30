@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Configurar widgets",
     "Tab": "Aba",
     "WorkspaceIsArchived": "O espaço de trabalho está arquivado por estar inativo, por favor, entre em contato conosco para restaurá-lo...",
-    "WorkspaceIsMigrating": "O espaço de trabalho está sendo atualizado. Por favor, aguarde..."
+    "WorkspaceIsMigrating": "O espaço de trabalho está sendo atualizado. Por favor, aguarde...",
+    "Novino": "Novino",
+    "NewChat": "Novo",
+    "Send": "Enviar",
+    "MessageNovino": "Mensagem para Novino...",
+    "NovinoEmpty": "Comece uma conversa com Novino",
+    "NovinoUnavailable": "Novino está indisponível",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

@@ -192,8 +192,7 @@ test.describe('admin-provisioned employees', () => {
       await enterWorkspace(page, workspace)
       await dismissOverlays(page)
       await contractPage.openGuestsPage()
-      await contractPage.openEmployeeProfile(first, last)
-      await contractPage.setPasswordInDetailPanel(replacementPassword)
+      await contractPage.setPasswordFromContextMenu(first, last, replacementPassword)
 
       await signOut(page)
       await loginAs(page, loginPage, email, replacementPassword)

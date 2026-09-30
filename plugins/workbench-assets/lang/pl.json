@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Konfiguruj widżety",
     "Tab": "Karta",
     "WorkspaceIsArchived": "Przestrzeń robocza jest zarchiwizowana z powodu nieaktywności. Skontaktuj się z nami, żeby ją przywrócić...",
-    "WorkspaceIsMigrating": "Trwa aktualizacja przestrzeni roboczej. Proszę czekać..."
+    "WorkspaceIsMigrating": "Trwa aktualizacja przestrzeni roboczej. Proszę czekać...",
+    "Novino": "Novino",
+    "NewChat": "Nowy",
+    "Send": "Wyślij",
+    "MessageNovino": "Wiadomość do Novino...",
+    "NovinoEmpty": "Rozpocznij rozmowę z Novino",
+    "NovinoUnavailable": "Novino jest niedostępny",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

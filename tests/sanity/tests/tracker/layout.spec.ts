@@ -81,7 +81,7 @@ async function initIssues (prefix: string, page: Page): Promise<IssueProps[]> {
   const components = await createComponents(page)
   const milestones = await createMilestones(page)
   const issuesProps = await createIssues(prefix, page, components, milestones)
-  await page.click('text="Issues"')
+  await page.click('text="Tasks"')
 
   const issuesPage = new IssuesPage(page)
   await issuesPage.clickModelSelectorAll()

@@ -5,7 +5,7 @@ export enum ButtonAction {
   OpenInNewTab = 'Open in new tab',
   NewApplication = 'New Application',
   NewLead = 'New Lead',
-  NewRelatedIssue = 'New related issue',
+  NewRelatedIssue = 'New related task',
   PublicLink = 'Public link',
   Delete = 'Delete',
   MergeContacts = 'Merge contacts'
@@ -40,7 +40,7 @@ export class ContactPage {
   readonly openNewTabButton = (): Locator => this.page.locator('button:has-text("Open in new tab")')
   readonly openNewApplicationButton = (): Locator => this.page.locator('button:has-text("New Application")')
   readonly openNewLeadButton = (): Locator => this.page.locator('button:has-text("New Lead")')
-  readonly openNewRelatedIssueButton = (): Locator => this.page.locator('button:has-text("New related issue")')
+  readonly openNewRelatedIssueButton = (): Locator => this.page.locator('button:has-text("New related task")')
   readonly openPublicLinkButton = (): Locator => this.page.locator('button:has-text("Public link")')
   readonly openMergeContactsButton = (): Locator => this.page.locator('button:has-text("Merge contacts")')
   readonly openDeleteButton = (): Locator => this.page.locator('button:has-text("Delete")')

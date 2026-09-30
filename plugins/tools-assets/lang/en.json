@@ -1,7 +1,7 @@
 {
   "string": {
     "Application": "Tools",
-    "Subtitle": "Hosted Aneeverse tools. Click a card to open it.",
+    "Subtitle": "Hosted Aneeverse tools. Click a card to open it, or copy its login.",
     "SearchPlaceholder": "Search tools or URLs...",
     "All": "All",
     "Websites": "Websites",
@@ -17,6 +17,26 @@
     "Http": "HTTP",
     "Empty": "No tools match that search.",
     "ConfigLabel": "Tools",
-    "ConfigDescription": "Hosted Aneeverse tools directory"
+    "ConfigDescription": "Hosted Aneeverse tools directory",
+    "AddTool": "Add tool",
+    "EditTool": "Edit tool",
+    "DeleteTool": "Delete tool",
+    "Name": "Name",
+    "Url": "URL",
+    "Description": "Description",
+    "Group": "Group",
+    "Login": "Login",
+    "Password": "Password",
+    "Copy": "Copy",
+    "Copied": "Copied",
+    "ShowPassword": "Show password",
+    "HidePassword": "Hide password",
+    "NoCredentials": "No login saved",
+    "SaveTool": "Save",
+    "ToolNamePlaceholder": "Tool name",
+    "UrlPlaceholder": "https://example.com",
+    "LoginPlaceholder": "Username or email",
+    "PasswordPlaceholder": "Password",
+    "DeleteToolConfirm": "Delete this tool from the directory?"
   }
 }

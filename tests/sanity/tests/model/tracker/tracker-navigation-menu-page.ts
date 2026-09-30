@@ -22,7 +22,7 @@ export class TrackerNavigationMenuPage extends CommonPage {
   issuesLinkForProject = (projectName: string): Locator =>
     this.page
       .getByRole('button', { name: projectName, exact: true })
-      .locator('xpath=following-sibling::div[1]/a[contains(@href, "issues")]', { hasText: 'Issues' })
+      .locator('xpath=following-sibling::div[1]/a[contains(@href, "issues")]', { hasText: 'Tasks' })
 
   milestonesLinkForProject = (projectName: string): Locator =>
     this.page.locator(`a[href$="milestones"][href*="${projectName}"] > button[class*="hulyNavItem-container"] > span`, {
@@ -34,11 +34,11 @@ export class TrackerNavigationMenuPage extends CommonPage {
       hasText: 'Components'
     })
 
-  newIssue = (): Locator => this.page.locator('button', { hasText: 'New issue' })
-  myIssues = (): Locator => this.page.getByRole('link', { name: 'My issues', exact: true })
-  allIssues = (): Locator => this.page.getByRole('link', { name: 'All issues', exact: true })
+  newIssue = (): Locator => this.page.locator('button', { hasText: 'New task' })
+  myIssues = (): Locator => this.page.getByRole('link', { name: 'My tasks', exact: true })
+  allIssues = (): Locator => this.page.getByRole('link', { name: 'All tasks', exact: true })
   allProjects = (): Locator => this.page.getByRole('link', { name: 'All projects' })
-  issues = (): Locator => this.page.getByRole('link', { name: 'Issues', exact: true })
+  issues = (): Locator => this.page.getByRole('link', { name: 'Tasks', exact: true })
   components = (): Locator => this.page.getByRole('link', { name: 'Components' })
   milestone = (): Locator => this.page.getByRole('link', { name: 'Milestones' })
   templates = (): Locator => this.page.getByRole('link', { name: 'Templates' })

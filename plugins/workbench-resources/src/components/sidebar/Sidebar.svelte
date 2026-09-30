@@ -13,24 +13,48 @@
 // limitations under the License.
 -->
 <script lang="ts">
+  import contact, { getCurrentEmployee, type EmployeeAccess } from '@hcengineering/contact'
+  import { getCurrentAccount, isOwnerOrMaintainer } from '@hcengineering/core'
   import { createQuery, getClient } from '@hcengineering/presentation'
   import { panelstore } from '@hcengineering/ui'
   import { Widget, WidgetPreference } from '@hcengineering/workbench'
 
+  import { isAllowedWidget } from '../../employeeAccess'
   import workbench from '../../plugin'
-  import { sidebarStore, SidebarVariant } from '../../sidebar'
+  import { novinoWidget } from '../../novinoWidget'
+  import { vpsWidget } from '../../vpsWidget'
+  import { closeWidget, sidebarStore, SidebarVariant } from '../../sidebar'
   import SidebarExpanded from './SidebarExpanded.svelte'
   import SidebarMini from './SidebarMini.svelte'
   import { isAllowedToRole } from '../../utils'
-  import { getCurrentAccount } from '@hcengineering/core'
 
   const account = getCurrentAccount()
   const client = getClient()
 
-  const widgets = client
-    .getModel()
-    .findAllSync<Widget>(workbench.class.Widget, {})
-    .filter((it) => isAllowedToRole(it.accessLevel, account))
+  const seenWidgets = new Set<string>()
+  const allWidgets = [
+    ...client.getModel().findAllSync<Widget>(workbench.class.Widget, {}),
+    novinoWidget,
+    vpsWidget
+  ].filter((it) => {
+    if (!isAllowedToRole(it.accessLevel, account) || seenWidgets.has(it._id)) return false
+    seenWidgets.add(it._id)
+    return true
+  })
+
+  let employeeAccess: EmployeeAccess | undefined
+  const employeeAccessQuery = createQuery()
+  if (!isOwnerOrMaintainer() && client.getHierarchy().hasClass(contact.class.EmployeeAccess)) {
+    employeeAccessQuery.query(contact.class.EmployeeAccess, { attachedTo: getCurrentEmployee() }, (res) => {
+      employeeAccess = res[0]
+    })
+  }
+
+  $: widgets = allWidgets.filter((widget) => isAllowedWidget(employeeAccess, widget))
+  $: if ($sidebarStore.widget !== undefined && !widgets.some((widget) => widget._id === $sidebarStore.widget)) {
+    void closeWidget($sidebarStore.widget)
+  }
+
   const preferencesQuery = createQuery()
 
   let preferences: WidgetPreference[] = []
@@ -54,7 +78,7 @@
   .sidebar-container {
     overflow: hidden;
     flex-direction: row;
-    min-width: 25rem;
+    min-width: 36rem !important;
     border-radius: 0 var(--medium-BorderRadius) var(--medium-BorderRadius) 0;
     border-bottom: 1px solid transparent; // adjust the side panel body height to match the main panel
 

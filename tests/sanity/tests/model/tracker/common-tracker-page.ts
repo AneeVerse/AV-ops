@@ -57,10 +57,10 @@ export class CommonTrackerPage extends CalendarPage {
   createComponentButton = (): Locator => this.page.getByRole('button', { name: 'Component', exact: true })
   componentNameInput = (): Locator => this.page.locator('[placeholder="Component\\ name"]')
   createComponentConfirmButton = (): Locator => this.page.locator('button:has-text("Create component")')
-  newIssueButton = (): Locator => this.page.locator('button:has-text("New issue")')
-  issueTitleInput = (): Locator => this.page.locator('[placeholder="Issue\\ title"]')
+  newIssueButton = (): Locator => this.page.locator('button:has-text("New task")')
+  issueTitleInput = (): Locator => this.page.locator('[placeholder="Task\\ title"]')
   componentIssueButton = (): Locator => this.page.locator('form button:has-text("Component")')
-  createIssueButton = (): Locator => this.page.locator('form button:has-text("Create issue")')
+  createIssueButton = (): Locator => this.page.locator('form button:has-text("Create task")')
   componentName = (componentName: string): Locator => this.page.locator(`text=${componentName}`)
   panelSelector = (panel: string): Locator => this.page.locator(`text="${panel}"`)
   viewButton = (): Locator => this.page.locator('button[data-id="btn-viewOptions"]')
@@ -75,13 +75,13 @@ export class CommonTrackerPage extends CalendarPage {
   searchEmptyStateCard = (): Locator => this.page.locator('.search-empty-state')
 
   header = (): Locator =>
-    this.page.locator('button.hulyBreadcrumb-container > span.hulyBreadcrumb-label', { hasText: 'Issues' })
+    this.page.locator('button.hulyBreadcrumb-container > span.hulyBreadcrumb-label', { hasText: 'Tasks' })
 
   view = (): Locator => this.page.locator('.hulyHeader-buttonsGroup > button[data-id="btn-viewOptions"]')
   showMore = (): Locator => this.page.locator('.hulyHeader-buttonsGroup > button[data-id="btn-viewSetting"]')
   task1 = (): Locator => this.page.getByRole('link', { name: 'Welcome to Huly! 🌟' })
   task2 = (): Locator => this.page.getByRole('link', { name: 'Create your first Project 📌' })
-  task3 = (): Locator => this.page.getByRole('link', { name: 'Create your first Issue 📝' })
+  task3 = (): Locator => this.page.getByRole('link', { name: 'Create your first Task 📝' })
   task4 = (): Locator => this.page.getByRole('link', { name: 'Schedule your first Todo 📆' })
   task5 = (): Locator => this.page.getByRole('link', { name: 'Explore all Huly has to offer' })
 

@@ -225,6 +225,23 @@ export async function getCurrentEmployeeEmail (): Promise<string> {
   return emailSocialId?.value ?? ''
 }
 
+export async function getPersonLoginEmail (person: Person): Promise<string> {
+  const client = getClient()
+  const emailSocialId = await client.findOne(contact.class.SocialIdentity, {
+    attachedTo: person._id,
+    type: SocialIdType.EMAIL
+  })
+  const socialEmail = emailSocialId?.value?.trim() ?? ''
+  if (socialEmail !== '') {
+    return socialEmail.toLowerCase()
+  }
+  const emailChannel = await client.findOne(contact.class.Channel, {
+    attachedTo: person._id,
+    provider: contact.channelProvider.Email
+  })
+  return emailChannel?.value?.trim().toLowerCase() ?? ''
+}
+
 export function isSocialIdOwnedByCurrentUser (value: SocialIdentity | SocialId): boolean {
   if ('attachedTo' in value) {
     const me = getCurrentEmployee()

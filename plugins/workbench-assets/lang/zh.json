@@ -35,6 +35,15 @@
     "ConfigureWidgets": "配置小部件",
     "Tab": "选项卡",
     "WorkspaceIsArchived": "工作区因未使用而归档，请与我们联系以恢复...",
-    "WorkspaceIsMigrating": "工作区正在更新。请稍候..."
+    "WorkspaceIsMigrating": "工作区正在更新。请稍候...",
+    "Novino": "Novino",
+    "NewChat": "新对话",
+    "Send": "发送",
+    "MessageNovino": "给 Novino 发消息...",
+    "NovinoEmpty": "开始与 Novino 对话",
+    "NovinoUnavailable": "无法连接 Novino",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Настроить виджеты",
     "Tab": "Вкладка",
     "WorkspaceIsArchived": "Рабочее пространство архивировано из-за неиспользования, пожалуйста, свяжитесь с нами для восстановления...",
-    "WorkspaceIsMigrating": "Рабочее пространство обновляется. Пожалуйста, подождите..."
+    "WorkspaceIsMigrating": "Рабочее пространство обновляется. Пожалуйста, подождите...",
+    "Novino": "Novino",
+    "NewChat": "Новый",
+    "Send": "Отправить",
+    "MessageNovino": "Сообщение Novino...",
+    "NovinoEmpty": "Начните разговор с Novino",
+    "NovinoUnavailable": "Novino недоступен",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

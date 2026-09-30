@@ -14,7 +14,14 @@
 -->
 <script lang="ts">
   import { createEventDispatcher, onDestroy } from 'svelte'
-  import core, { AccountRole, getCurrentAccount, type ModulePermissionGroup, type Ref } from '@hcengineering/core'
+  import contact, { getCurrentEmployee, type EmployeeAccess } from '@hcengineering/contact'
+  import core, {
+    AccountRole,
+    getCurrentAccount,
+    isOwnerOrMaintainer,
+    type ModulePermissionGroup,
+    type Ref
+  } from '@hcengineering/core'
   import { createNotificationsQuery, createQuery, getClient } from '@hcengineering/presentation'
   import { Scroller, deviceOptionsStore as deviceInfo } from '@hcengineering/ui'
   import { NavLink } from '@hcengineering/view-resources'
@@ -28,6 +35,7 @@
   import { NotificationType } from '@hcengineering/communication-types'
 
   import AppItem from './AppItem.svelte'
+  import { isAllowedApplication } from '../employeeAccess'
   import { applicationOrderStore, hydrateApplicationOrderStore, sortApplicationsByOrder } from '../utils'
 
   export let active: Ref<Application> | undefined
@@ -54,6 +62,17 @@
   let applicationOrder: Array<Ref<Application>> = $applicationOrderStore
   let excludedApps: string[] = []
   let disabledApplications: Set<Ref<Application>> = new Set<Ref<Application>>()
+  let employeeAccess: EmployeeAccess | undefined
+  let employeeAccessLoaded =
+    isOwnerOrMaintainer() || !getClient().getHierarchy().hasClass(contact.class.EmployeeAccess)
+
+  const employeeAccessQuery = createQuery()
+  if (!isOwnerOrMaintainer() && getClient().getHierarchy().hasClass(contact.class.EmployeeAccess)) {
+    employeeAccessQuery.query(contact.class.EmployeeAccess, { attachedTo: getCurrentEmployee() }, (res) => {
+      employeeAccess = res[0]
+      employeeAccessLoaded = true
+    })
+  }
 
   const hiddenAppsIdsQuery = createQuery()
   const modulePermissionGroupsQuery = createQuery()
@@ -139,9 +158,13 @@
     const excluded = excludedApps
     const disabled = disabledApplications
     const order = applicationOrder
+    const access = employeeAccess
 
     const isApplicationVisibleInSidebar = (app: Application): boolean =>
-      !hidden.includes(app._id) && !excluded.includes(app.alias) && !disabled.has(app._id)
+      !hidden.includes(app._id) &&
+      !excluded.includes(app.alias) &&
+      !disabled.has(app._id) &&
+      isAllowedApplication(access, app)
 
     topApps = apps
       .filter((it) => it.position === 'top' && isApplicationVisibleInSidebar(it))
@@ -185,7 +208,7 @@
 </script>
 
 <div class="flex-{direction === 'horizontal' ? 'row-center' : 'col-center'} clear-mins apps-{direction} relative">
-  {#if loaded && permissionsLoaded}
+  {#if loaded && permissionsLoaded && employeeAccessLoaded}
     <Scroller
       invertScroll
       padding={direction === 'horizontal' ? '.75rem .5rem' : '.5rem .75rem'}

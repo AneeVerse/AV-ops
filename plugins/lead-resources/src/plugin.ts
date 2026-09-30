@@ -63,6 +63,7 @@ export default mergeIds(leadId, lead, {
   },
   function: {
     LeadTitleProvider: '' as Resource<(client: Client, ref: Ref<Doc>, doc?: Doc) => Promise<string>>,
-    LeadIdProvider: '' as Resource<(client: Client, ref: Ref<Doc>, doc?: Doc) => Promise<string>>
+    LeadIdProvider: '' as Resource<(client: Client, ref: Ref<Doc>, doc?: Doc) => Promise<string>>,
+    CanDeleteFunnel: '' as Resource<(doc?: Doc | Doc[]) => Promise<boolean>>
   }
 })

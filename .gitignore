@@ -126,6 +126,7 @@ scripts/.model-cache/
 .env.*
 .env-*
 !.env.example
+local-secrets/
 *.pem
 *.p12
 id_rsa

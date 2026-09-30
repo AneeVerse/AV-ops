@@ -22,7 +22,7 @@ export class WorkspaceSettingsPage {
   members = (): Locator => this.page.getByRole('button', { name: 'Members' })
   spaces = (): Locator => this.page.getByRole('button', { name: 'Spaces', exact: true })
   textTemplate = (): Locator => this.page.getByRole('button', { name: 'Text Templates' })
-  relatedIssues = (): Locator => this.page.getByRole('button', { name: 'Related issues' })
+  relatedIssues = (): Locator => this.page.getByRole('button', { name: 'Related tasks' })
   classes = (): Locator => this.page.locator('#navGroup-setting').getByRole('button', { name: 'Classes' })
   enums = (): Locator => this.page.getByRole('button', { name: 'Enums' })
   inviteSettings = (): Locator => this.page.getByRole('button', { name: 'Invite settings' })

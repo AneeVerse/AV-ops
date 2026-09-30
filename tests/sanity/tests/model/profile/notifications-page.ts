@@ -32,7 +32,7 @@ export class NotificationsPage {
   telegram = (): Locator => this.page.getByRole('button', { name: 'Telegram' })
   email = (): Locator => this.page.getByRole('button', { name: 'Email' })
   notifications = (): Locator => this.page.getByRole('button', { name: 'Notifications' })
-  issues = (): Locator => this.page.getByRole('button', { name: 'Issues' })
+  issues = (): Locator => this.page.getByRole('button', { name: 'Tasks' })
   documents = (): Locator => this.page.getByRole('button', { name: 'Documents' })
   requests = (): Locator => this.page.getByRole('button', { name: 'Requests' })
   todos = (): Locator => this.page.getByRole('button', { name: "Todo's" })

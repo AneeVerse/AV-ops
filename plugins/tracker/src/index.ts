@@ -393,6 +393,57 @@ export interface Component extends Doc {
 /**
  * @public
  */
+export interface InvoiceParty {
+  name: string
+  address: string
+  gstin: string
+  pan: string
+  phone: string
+}
+
+/**
+ * @public
+ */
+export interface InvoiceLine {
+  title: string
+  hsn: string
+  gstRate: number
+  quantity: number
+  rate: number
+}
+
+/**
+ * @public
+ */
+export interface Invoice extends Doc {
+  number: string
+  invoiceDate: Timestamp
+  dueDate: Timestamp
+  company?: Ref<Organization>
+  billedBy?: InvoiceParty
+  billedTo: InvoiceParty
+  countryOfSupply: string
+  placeOfSupply: string
+  items: InvoiceLine[]
+  amount: number
+  cgst: number
+  sgst: number
+  igst: number
+  total: number
+  space: Ref<Project>
+}
+
+/**
+ * Workspace-level Aneeverse billed-by details. Edited from the invoice form and reused.
+ * @public
+ */
+export interface InvoiceProfile extends Doc {
+  billedBy: InvoiceParty
+}
+
+/**
+ * @public
+ */
 export const trackerId = 'tracker' as Plugin
 
 const pluginState = plugin(trackerId, {
@@ -411,7 +462,9 @@ const pluginState = plugin(trackerId, {
     TypeEstimation: '' as Ref<Class<Type<number>>>,
     TypeRemainingTime: '' as Ref<Class<Type<number>>>,
     RelatedIssueTarget: '' as Ref<Class<RelatedIssueTarget>>,
-    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>
+    ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>,
+    Invoice: '' as Ref<Class<Invoice>>,
+    InvoiceProfile: '' as Ref<Class<InvoiceProfile>>
   },
   mixin: {
     ClassicProjectTypeData: '' as Ref<Mixin<Project>>,
@@ -421,7 +474,8 @@ const pluginState = plugin(trackerId, {
     NoParent: '' as Ref<Issue>,
     IssueDraft: '',
     IssueDraftChild: '',
-    ClassingProjectType: '' as Ref<ProjectType>
+    ClassingProjectType: '' as Ref<ProjectType>,
+    InvoiceProfile: '' as Ref<InvoiceProfile>
   },
   status: {
     Backlog: '' as Ref<Status>,
@@ -445,7 +499,10 @@ const pluginState = plugin(trackerId, {
     CreateIssueTemplate: '' as AnyComponent,
     CreateProject: '' as AnyComponent,
     IssueStatusPresenter: '' as AnyComponent,
-    LabelsView: '' as AnyComponent
+    LabelsView: '' as AnyComponent,
+    AllInvoices: '' as AnyComponent,
+    ProjectInvoices: '' as AnyComponent,
+    CreateInvoice: '' as AnyComponent
   },
   attribute: {
     IssueStatus: '' as Ref<Attribute<Status>>
@@ -501,7 +558,9 @@ const pluginState = plugin(trackerId, {
 
     // Project icons
     Home: '' as Asset,
-    RedCircle: '' as Asset
+    RedCircle: '' as Asset,
+
+    Invoices: '' as Asset
   },
   category: {
     Other: '' as Ref<TagCategory>,

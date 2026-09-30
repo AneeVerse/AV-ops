@@ -20,7 +20,7 @@
   import { UsersPopup, employeeByIdStore } from '@hcengineering/contact-resources'
   import { AttributeModel } from '@hcengineering/view'
   import { eventToHTMLElement, showPopup } from '@hcengineering/ui'
-  import { getObjectPresenter } from '@hcengineering/view-resources'
+  import { getObjectPresenter, ensureAssigneeJoined } from '@hcengineering/view-resources'
   import { IntlString, getEmbeddedLabel } from '@hcengineering/platform'
   import task from '../plugin'
 
@@ -73,6 +73,9 @@
       currentIssue.collection,
       { assignee: newAssignee }
     )
+    if (newAssignee != null) {
+      await ensureAssigneeJoined(client, currentIssue.space, newAssignee)
+    }
   }
 
   const handleAssigneeEditorOpened = async (event: MouseEvent) => {

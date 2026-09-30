@@ -27,12 +27,12 @@ export class EditProjectPage extends CommonTrackerPage {
 
   defaultAssigneeButton = (): Locator =>
     this.page
-      .locator('div[class*="header"]', { hasText: 'Default assignee for issues' })
+      .locator('div[class*="header"]', { hasText: 'Default assignee for tasks' })
       .locator('xpath=..')
       .locator('button')
 
   defaultIssueStatusButton = (): Locator =>
-    this.page.locator('div[class*="header"]', { hasText: 'Default issue status' }).locator('xpath=..').locator('button')
+    this.page.locator('div[class*="header"]', { hasText: 'Default task status' }).locator('xpath=..').locator('button')
 
   chooseIconButton = (): Locator =>
     this.page.locator('div[class*="header"]', { hasText: 'Choose icon' }).locator('xpath=..').locator('button')

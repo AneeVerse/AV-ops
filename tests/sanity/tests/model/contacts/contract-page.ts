@@ -5,7 +5,7 @@ export enum ButtonAction {
   OpenInNewTab = 'Open in new tab',
   NewApplication = 'New Application',
   NewLead = 'New Lead',
-  NewRelatedIssue = 'New related issue',
+  NewRelatedIssue = 'New related task',
   PublicLink = 'Public link',
   Delete = 'Delete',
   MergeContacts = 'Merge contacts'
@@ -51,7 +51,7 @@ export class ContractPage {
   readonly openNewTabButton = (): Locator => this.page.locator('button:has-text("Open in new tab")')
   readonly openNewApplicationButton = (): Locator => this.page.locator('button:has-text("New Application")')
   readonly openNewLeadButton = (): Locator => this.page.locator('button:has-text("New Lead")')
-  readonly openNewRelatedIssueButton = (): Locator => this.page.locator('button:has-text("New related issue")')
+  readonly openNewRelatedIssueButton = (): Locator => this.page.locator('button:has-text("New related task")')
   readonly openPublicLinkButton = (): Locator => this.page.locator('button:has-text("Public link")')
   readonly openMergeContactsButton = (): Locator => this.page.locator('button:has-text("Merge contacts")')
   readonly openDeleteButton = (): Locator => this.page.locator('button:has-text("Delete")')
@@ -161,6 +161,17 @@ export class ContractPage {
     await this.confirmOkButton().click()
     await this.page.locator('.msgbox-container').waitFor({ state: 'hidden', timeout: 60000 }).catch(() => {})
     await expect(this.page.getByText('Password updated.')).toBeVisible({ timeout: 30000 })
+  }
+
+  async setPasswordFromContextMenu (first: string, last: string, newPassword: string): Promise<void> {
+    await this.employeeEntry(first, last).hover()
+    await this.employeeEntry(first, last).click({ button: 'right' })
+    await this.page.getByRole('button', { name: 'Set password', exact: true }).click()
+    const card = this.page.locator('form.antiCard')
+    await card.waitFor({ state: 'visible', timeout: 30000 })
+    await card.locator('.password-editbox input').fill(newPassword)
+    await card.getByRole('button', { name: 'Set password', exact: true }).click()
+    await card.waitFor({ state: 'detached', timeout: 60000 })
   }
 
   async clickAddEmployeeButton (): Promise<void> {

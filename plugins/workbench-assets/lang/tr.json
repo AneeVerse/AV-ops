@@ -35,6 +35,15 @@
     "ConfigureWidgets": "Widget'ları yapılandır",
     "Tab": "Sekme",
     "WorkspaceIsArchived": "Çalışma alanı kullanılmadığı için arşivlendi. Geri yüklemek için lütfen bizimle iletişime geçin...",
-    "WorkspaceIsMigrating": "Çalışma alanı güncelleniyor. Lütfen bekleyin..."
+    "WorkspaceIsMigrating": "Çalışma alanı güncelleniyor. Lütfen bekleyin...",
+    "Novino": "Novino",
+    "NewChat": "Yeni",
+    "Send": "Gönder",
+    "MessageNovino": "Novino'ya mesaj...",
+    "NovinoEmpty": "Novino ile sohbet başlatın",
+    "NovinoUnavailable": "Novino kullanılamıyor",
+    "Vps": "VPS",
+    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsEmpty": "This folder is empty"
   }
 }

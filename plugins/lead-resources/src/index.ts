@@ -14,10 +14,12 @@
 // limitations under the License.
 //
 
+import { AccountRole, getCurrentAccount, hasAccountRole, type Doc } from '@hcengineering/core'
 import { type Resources } from '@hcengineering/platform'
 import { getClient, MessageBox } from '@hcengineering/presentation'
 import { showPopup } from '@hcengineering/ui'
 import lead, { type Funnel } from '@hcengineering/lead'
+import { canDeleteSpace } from '@hcengineering/view-resources'
 
 import CreateFunnel from './components/CreateFunnel.svelte'
 import CreateLead from './components/CreateLead.svelte'
@@ -36,6 +38,16 @@ import TitlePresenter from './components/TitlePresenter.svelte'
 
 import { getLeadId, getLeadTitle } from './utils'
 import plugin from './plugin'
+
+export async function canDeleteFunnel (doc?: Doc | Doc[]): Promise<boolean> {
+  if (doc === undefined || Array.isArray(doc)) {
+    return false
+  }
+  if (hasAccountRole(getCurrentAccount(), AccountRole.Maintainer)) {
+    return true
+  }
+  return await canDeleteSpace(doc)
+}
 
 async function deleteFunnel (funnel: Funnel | undefined): Promise<void> {
   if (funnel === undefined) return
@@ -85,7 +97,8 @@ export default async (): Promise<Resources> => ({
   },
   function: {
     LeadTitleProvider: getLeadTitle,
-    LeadIdProvider: getLeadId
+    LeadIdProvider: getLeadId,
+    CanDeleteFunnel: canDeleteFunnel
   },
   actionImpl: {
     DeleteFunnel: deleteFunnel

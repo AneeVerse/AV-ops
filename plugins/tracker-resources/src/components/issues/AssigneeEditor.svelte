@@ -22,6 +22,7 @@
   import { ButtonKind, ButtonSize, IconSize, TooltipAlignment } from '@hcengineering/ui'
   import { Analytics } from '@hcengineering/analytics'
   import { createEventDispatcher } from 'svelte'
+  import { ensureAssigneeJoined } from '@hcengineering/view-resources'
 
   import tracker from '../../plugin'
   import { getPreviousAssignees } from '../../utils'
@@ -74,6 +75,15 @@
     }
 
     await ops.commit()
+
+    if (newAssignee != null) {
+      const spaceIds = new Set(
+        (Array.isArray(_object) ? _object : [_object]).map((doc) => doc.space).filter((id) => id != null)
+      )
+      for (const spaceId of spaceIds) {
+        await ensureAssigneeJoined(client, spaceId, newAssignee)
+      }
+    }
 
     progress = false
 

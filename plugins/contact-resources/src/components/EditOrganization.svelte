@@ -46,7 +46,18 @@
   )
 
   onMount(() => {
-    dispatch('open', { ignoreKeys: ['comments', 'name', 'channels'] })
+    dispatch('open', {
+      ignoreKeys: [
+        'comments',
+        'name',
+        'channels',
+        'billingAddress',
+        'gstin',
+        'pan',
+        'billingPhone',
+        'placeOfSupply'
+      ]
+    })
   })
 
   const manager = createFocusManager()
@@ -80,6 +91,68 @@
           on:click
         />
       </Scroller>
+      <div class="billing">
+        <div class="billing-title">Billing</div>
+        <div class="billing-row">
+          <span>GSTIN</span>
+          <EditBox
+            disabled={readonly}
+            bind:value={object.gstin}
+            placeholder={contact.string.GSTIN}
+            on:change={() => {
+              client.updateDoc(object._class, object.space, object._id, { gstin: object.gstin ?? '' })
+            }}
+          />
+        </div>
+        <div class="billing-row">
+          <span>PAN</span>
+          <EditBox
+            disabled={readonly}
+            bind:value={object.pan}
+            placeholder={contact.string.PAN}
+            on:change={() => {
+              client.updateDoc(object._class, object.space, object._id, { pan: object.pan ?? '' })
+            }}
+          />
+        </div>
+        <div class="billing-row">
+          <span>Phone</span>
+          <EditBox
+            disabled={readonly}
+            bind:value={object.billingPhone}
+            placeholder={contact.string.BillingPhone}
+            on:change={() => {
+              client.updateDoc(object._class, object.space, object._id, { billingPhone: object.billingPhone ?? '' })
+            }}
+          />
+        </div>
+        <div class="billing-row">
+          <span>Place of supply</span>
+          <EditBox
+            disabled={readonly}
+            bind:value={object.placeOfSupply}
+            placeholder={contact.string.PlaceOfSupply}
+            on:change={() => {
+              client.updateDoc(object._class, object.space, object._id, {
+                placeOfSupply: object.placeOfSupply ?? ''
+              })
+            }}
+          />
+        </div>
+        <div class="billing-row">
+          <span>Address</span>
+          <EditBox
+            disabled={readonly}
+            bind:value={object.billingAddress}
+            placeholder={contact.string.BillingAddress}
+            on:change={() => {
+              client.updateDoc(object._class, object.space, object._id, {
+                billingAddress: object.billingAddress ?? ''
+              })
+            }}
+          />
+        </div>
+      </div>
     </div>
   </div>
 {/if}
@@ -101,5 +174,25 @@
     margin: 1rem 0;
     height: 1px;
     background-color: var(--divider-color);
+  }
+  .billing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .billing-title {
+    font-weight: 600;
+    color: var(--caption-color);
+  }
+  .billing-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    span {
+      font-size: 0.75rem;
+      color: var(--theme-dark-color);
+    }
   }
 </style>

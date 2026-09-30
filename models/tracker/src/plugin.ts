@@ -62,7 +62,8 @@ export default mergeIds(trackerId, tracker, {
     IssueExtra: '' as AnyComponent
   },
   app: {
-    Tracker: '' as Ref<Application>
+    Tracker: '' as Ref<Application>,
+    Invoices: '' as Ref<Application>
   },
   specialViewAction: {
     IssueList: '' as Ref<ViewletViewAction>

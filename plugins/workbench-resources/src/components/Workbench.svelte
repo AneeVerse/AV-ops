@@ -14,7 +14,7 @@
 -->
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import contact from '@hcengineering/contact'
+  import contact, { getCurrentEmployee, type EmployeeAccess } from '@hcengineering/contact'
   import { myEmployeeStore } from '@hcengineering/contact-resources'
   import core, {
     AccountRole,
@@ -22,6 +22,7 @@
     Doc,
     getCurrentAccount,
     hasAccountRole,
+    isOwnerOrMaintainer,
     Ref,
     SortingOrder,
     Space
@@ -105,6 +106,7 @@
   import { getContext, onDestroy, onMount, tick } from 'svelte'
   import { subscribeMobile } from '../mobile'
   import workbench from '../plugin'
+  import { isAllowedApplication } from '../employeeAccess'
   import { buildNavModel, isAllowedToRole, logOut, workspacesStore } from '../utils'
   import AccountPopup from './AccountPopup.svelte'
   import AppItem from './AppItem.svelte'
@@ -118,7 +120,6 @@
   import SpaceView from './SpaceView.svelte'
   import TopMenu from './icons/TopMenu.svelte'
   import WidgetsBar from './sidebar/Sidebar.svelte'
-  import NovinoChat from './NovinoChat.svelte'
   import { sidebarStore, SidebarVariant, syncSidebarState } from '../sidebar'
   import {
     getTabDataByLocation,
@@ -163,6 +164,36 @@
     .getModel()
     .findAllSync<Application>(workbench.class.Application, { hidden: false, _id: { $nin: excludedApps } })
     .filter((it) => isAllowedToRole(it.accessLevel, account))
+
+  let employeeAccess: EmployeeAccess | undefined
+  let employeeAccessLoaded =
+    isOwnerOrMaintainer() || !client.getHierarchy().hasClass(contact.class.EmployeeAccess)
+  const employeeAccessQuery = createQuery()
+  if (!isOwnerOrMaintainer() && client.getHierarchy().hasClass(contact.class.EmployeeAccess)) {
+    employeeAccessQuery.query(contact.class.EmployeeAccess, { attachedTo: getCurrentEmployee() }, (res) => {
+      employeeAccess = res[0]
+      employeeAccessLoaded = true
+    })
+  }
+
+  $: visibleApps = apps.filter((app) => isAllowedApplication(employeeAccess, app))
+
+  function redirectIfAppForbidden (loc: Location): void {
+    if (!employeeAccessLoaded || isOwnerOrMaintainer()) return
+    const alias = loc.path[2]
+    const allowed = apps.filter((app) => isAllowedApplication(employeeAccess, app))
+    if (alias !== undefined && allowed.some((app) => app.alias === alias)) return
+    const first = allowed[0]
+    if (first === undefined || alias === first.alias) return
+    const next = { ...loc, path: [...loc.path] }
+    next.path[2] = first.alias
+    next.path.length = 3
+    navigate(next)
+  }
+
+  $: if (employeeAccessLoaded) {
+    redirectIfAppForbidden($location)
+  }
 
   let panelInstance: PanelInstance
   let popupInstance: Popup
@@ -817,10 +848,13 @@
     const me = getCurrentAccount()
 
     if (me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.Guest) {
-      return (getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []).includes(alias)
-    } else {
-      return false
+      if ((getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []).includes(alias)) {
+        return true
+      }
     }
+    const app = apps.find((item) => item.alias === alias)
+    if (app === undefined) return false
+    return !isAllowedApplication(employeeAccess, app)
   }
 </script>
 
@@ -913,7 +947,7 @@
           {/if}
         {/if}
         <Applications
-          {apps}
+          apps={visibleApps}
           active={currentApplication?._id}
           direction={$deviceInfo.navigator.direction}
           {customAppProps}
@@ -930,7 +964,7 @@
           label={setting.string.Customize}
           dataId="workbench-app-customize"
           size={appsMini ? 'small' : 'large'}
-          on:click={() => showPopup(AppSwitcher, { apps }, popupPosition)}
+          on:click={() => showPopup(AppSwitcher, { apps: visibleApps }, popupPosition)}
         />
         <a href={supportLink} target="_blank" rel="noopener noreferrer">
           <AppItem
@@ -1134,7 +1168,6 @@
   <div class="hidden max-w-0 max-h-0">
     <ComponentExtensions extension={workbench.extensions.WorkbenchExtensions} />
   </div>
-  <NovinoChat />
   <BrowserNotificatator />
 {/if}
 

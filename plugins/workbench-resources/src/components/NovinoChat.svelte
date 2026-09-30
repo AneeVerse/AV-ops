@@ -6,161 +6,330 @@
 // obtain a copy of the License at https://www.eclipse.org/legal/epl-2.0
 -->
 <script lang="ts">
-  import { IconClose } from '@hcengineering/ui'
+  import { translate, translateCB } from '@hcengineering/platform'
+  import { Breadcrumbs, Button, Header, Label, Loading, Scroller, themeStore } from '@hcengineering/ui'
+  import { onMount } from 'svelte'
 
-  const chatUrl = 'https://chat.aneeverse.com/?agent=novino&embed=1'
-  const openChatUrl = 'https://chat.aneeverse.com/?agent=novino'
-  const storageKey = 'aneeverse.novinoChat.open'
+  import {
+    countNovinoAssistantReplies,
+    createNovinoSession,
+    loadNovinoHistory,
+    readNovinoSessionKey,
+    sendNovinoMessage,
+    waitForNovinoHistory,
+    writeNovinoSessionKey,
+    type NovinoChatMessage,
+    type NovinoHistoryResult
+  } from '../novinoGateway'
+  import workbench from '../plugin'
 
-  let open = false
-  try {
-    open = globalThis.localStorage?.getItem(storageKey) === '1'
-  } catch {
-    open = false
+  let sessionKey = readNovinoSessionKey()
+  let messages: NovinoChatMessage[] = []
+  let draft = ''
+  let loading = true
+  let sending = false
+  let error: string | null = null
+  let placeholder = ''
+  let scroller: { divScroll?: HTMLElement | null } | undefined
+  let composer: HTMLTextAreaElement | undefined
+
+  $: translateCB(workbench.string.MessageNovino, {}, $themeStore.language, (value) => {
+    placeholder = value
+  })
+
+  $: visibleMessages = messages.filter(
+    (message) =>
+      (message.role === 'user' || message.role === 'assistant') && message.text.trim() !== ''
+  )
+
+  onMount(() => {
+    void refreshHistory()
+  })
+
+  function scrollToBottom (): void {
+    requestAnimationFrame(() => {
+      const box = scroller?.divScroll
+      if (box !== undefined && box !== null) {
+        box.scrollTop = box.scrollHeight
+      }
+    })
   }
 
-  function toggle (): void {
-    open = !open
+  async function refreshHistory (): Promise<void> {
+    loading = true
+    error = null
     try {
-      globalThis.localStorage?.setItem(storageKey, open ? '1' : '0')
-    } catch {
-      // ignore
+      const result = await loadNovinoHistory(sessionKey)
+      sessionKey = result.sessionKey
+      writeNovinoSessionKey(sessionKey)
+      messages = result.messages
+      scrollToBottom()
+    } catch (err) {
+      error = err instanceof Error ? err.message : String(err)
+    } finally {
+      loading = false
     }
+  }
+
+  async function handleNewChat (): Promise<void> {
+    if (sending) {
+      return
+    }
+    loading = true
+    error = null
+    try {
+      const result = await createNovinoSession()
+      sessionKey = result.sessionKey
+      writeNovinoSessionKey(sessionKey)
+      messages = []
+    } catch (err) {
+      error = err instanceof Error ? err.message : String(err)
+    } finally {
+      loading = false
+      composer?.focus()
+    }
+  }
+
+  async function handleSend (): Promise<void> {
+    const text = draft.trim()
+    if (text === '' || sending || loading) {
+      return
+    }
+    const previousAssistantCount = countNovinoAssistantReplies(messages)
+    sending = true
+    error = null
+    draft = ''
+    const optimistic: NovinoChatMessage = {
+      id: `local-${Date.now()}`,
+      role: 'user',
+      text,
+      timestamp: Date.now()
+    }
+    messages = [...messages, optimistic]
+    scrollToBottom()
+    try {
+      const result = await sendNovinoMessage(sessionKey, text)
+      sessionKey = result.sessionKey
+      writeNovinoSessionKey(sessionKey)
+      let history: NovinoHistoryResult
+      let timedOut = false
+      if (result.messages != null && countNovinoAssistantReplies(result.messages) > previousAssistantCount) {
+        history = { sessionKey, sessionId: null, messages: result.messages }
+      } else {
+        const waited = await waitForNovinoHistory(sessionKey, previousAssistantCount)
+        history = waited.history
+        timedOut = waited.timedOut
+      }
+      messages = history.messages.length > 0 ? history.messages : [...messages, ...(result.messages ?? [])]
+      if (timedOut) {
+        error = await translate(workbench.string.NovinoUnavailable, {}, $themeStore.language)
+      }
+      scrollToBottom()
+    } catch (err) {
+      error = err instanceof Error ? err.message : String(err)
+      messages = messages.filter((message) => message.id !== optimistic.id)
+      if (draft.trim() === '') {
+        draft = text
+      }
+    } finally {
+      sending = false
+      composer?.focus()
+    }
+  }
+
+  function onComposerKeydown (event: KeyboardEvent): void {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      void handleSend()
+    }
+  }
+
+  function bubbleClass (role: string): string {
+    return role === 'user' ? 'novino-bubble user' : 'novino-bubble assistant'
   }
 </script>
 
-<div class="novino-root">
-  {#if open}
-    <div class="novino-panel">
-      <div class="novino-header">
-        <div class="novino-title">
-          <span class="novino-dot" />
-          Novino
-        </div>
-        <div class="novino-actions">
-          <a class="novino-link" href={openChatUrl} target="_blank" rel="noreferrer">Open</a>
-          <button class="novino-icon" type="button" on:click={toggle} aria-label="Close Novino">
-            <IconClose size={'small'} />
-          </button>
-        </div>
-      </div>
-      <iframe class="novino-frame" title="Novino" src={chatUrl} />
-    </div>
-  {:else}
-    <button class="novino-fab" type="button" on:click={toggle} aria-label="Chat with Novino">
-      <svg class="novino-fab-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M4 4h16a2 2 0 0 1 2 2v9.5a2 2 0 0 1-2 2H9.2L5 21.2V17.5H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 1.5A.5.5 0 0 0 3.5 6v9.5a.5.5 0 0 0 .5.5h2.5V19l3.2-2.4H20a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5H4Z"
-        />
-        <circle fill="currentColor" cx="8" cy="10.5" r="1.15" />
-        <circle fill="currentColor" cx="12" cy="10.5" r="1.15" />
-        <circle fill="currentColor" cx="16" cy="10.5" r="1.15" />
-      </svg>
-    </button>
+<div class="novino-widget">
+  <Header
+    allowFullsize={false}
+    type="type-aside"
+    hideBefore={true}
+    hideActions={false}
+    hideDescription={true}
+    hideExtra={false}
+    adaptive="autoExtra"
+    closeOnEscape={false}
+    on:close
+  >
+    <Breadcrumbs items={[{ label: workbench.string.Novino }]} currentOnly />
+    <svelte:fragment slot="extra">
+      <Button
+        label={workbench.string.NewChat}
+        kind="ghost"
+        size="small"
+        disabled={loading || sending}
+        on:click={() => {
+          void handleNewChat()
+        }}
+      />
+    </svelte:fragment>
+  </Header>
+
+  <div class="novino-body">
+    {#if loading && messages.length === 0}
+      <Loading />
+    {:else}
+      <Scroller bind:this={scroller} autoscroll bottomStart padding=".75rem .75rem .5rem">
+        {#if visibleMessages.length === 0 && !sending}
+          <div class="novino-empty">
+            <Label label={workbench.string.NovinoEmpty} />
+          </div>
+        {/if}
+        {#each visibleMessages as message (message.id)}
+          <div class={bubbleClass(message.role)}>
+            <div class="novino-text">{message.text}</div>
+          </div>
+        {/each}
+        {#if sending}
+          <div class="novino-bubble assistant pending">
+            <Loading shrink size="small" />
+          </div>
+        {/if}
+      </Scroller>
+    {/if}
+  </div>
+
+  {#if error !== null}
+    <div class="novino-error">{error}</div>
   {/if}
+
+  <form
+    class="novino-composer"
+    on:submit|preventDefault={() => {
+      void handleSend()
+    }}
+  >
+    <textarea
+      bind:this={composer}
+      bind:value={draft}
+      {placeholder}
+      disabled={sending}
+      rows="2"
+      on:keydown={onComposerKeydown}
+    />
+    <Button
+      label={workbench.string.Send}
+      kind="primary"
+      size="medium"
+      disabled={sending || draft.trim() === ''}
+      loading={sending}
+      on:click={() => {
+        void handleSend()
+      }}
+    />
+  </form>
 </div>
 
 <style lang="scss">
-  .novino-root {
-    position: fixed;
-    right: 1.25rem;
-    bottom: 1.25rem;
-    z-index: 500;
-    pointer-events: none;
-  }
-
-  .novino-fab,
-  .novino-panel,
-  .novino-icon,
-  .novino-link {
-    pointer-events: auto;
-  }
-
-  .novino-fab {
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    border-radius: 50%;
-    background: var(--primary-button-default, #3370dc);
-    color: var(--primary-button-color, #fff);
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .novino-fab-icon {
-    width: 1.45rem;
-    height: 1.45rem;
-  }
-
-  .novino-panel {
-    width: min(420px, calc(100vw - 2rem));
-    height: min(560px, calc(100vh - 6rem));
+  .novino-widget {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    border-radius: 0.75rem;
-    background: var(--theme-popup-color, #1b1b1f);
-    border: 1px solid var(--theme-divider-color, #333);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  }
-
-  .novino-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.55rem 0.75rem;
-    border-bottom: 1px solid var(--theme-divider-color, #333);
-  }
-
-  .novino-title {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-weight: 600;
-    color: var(--theme-caption-color, #fff);
-  }
-
-  .novino-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: #3dd68c;
-  }
-
-  .novino-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .novino-link {
-    font-size: 0.75rem;
-    color: var(--theme-link-color, #7aa7ff);
-    text-decoration: none;
-  }
-
-  .novino-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    border: none;
-    background: transparent;
-    color: var(--theme-content-color, #ccc);
-    cursor: pointer;
-  }
-
-  .novino-frame {
     flex: 1;
-    width: 100%;
-    border: 0;
-    background: var(--theme-bg-color, #111);
+    min-height: 0;
+    height: 100%;
+    font-family: var(--font-family);
+    background-color: var(--theme-panel-color);
+    color: var(--theme-content-color);
+  }
+
+  .novino-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    background-color: var(--theme-bg-color);
+  }
+
+  .novino-empty {
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+    color: var(--theme-text-placeholder-color);
+    font-size: 0.8125rem;
+  }
+
+  .novino-bubble {
+    max-width: 92%;
+    margin: 0.35rem 0;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    word-break: break-word;
+
+    &.user {
+      margin-left: auto;
+      background-color: var(--primary-button-default);
+      color: var(--primary-button-color);
+    }
+
+    &.assistant {
+      margin-right: auto;
+      background-color: var(--theme-button-default);
+      color: var(--theme-content-color);
+      border: 1px solid var(--theme-button-border);
+    }
+
+    &.pending {
+      display: flex;
+      align-items: center;
+      min-height: 2rem;
+    }
+  }
+
+  .novino-text {
+    white-space: pre-wrap;
+  }
+
+  .novino-error {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--theme-error-color);
+    background-color: var(--theme-bg-accent-color);
+  }
+
+  .novino-composer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    padding: 0.75rem;
+    border-top: 1px solid var(--theme-divider-color);
+    background-color: var(--theme-panel-color);
+
+    textarea {
+      flex: 1;
+      min-height: 2.75rem;
+      max-height: 8rem;
+      resize: none;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--theme-button-border);
+      border-radius: 0.5rem;
+      background-color: var(--theme-bg-color);
+      color: var(--theme-content-color);
+      font-family: var(--font-family);
+      font-size: 0.8125rem;
+      line-height: 1.4;
+
+      &::placeholder {
+        color: var(--theme-text-placeholder-color);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-button-default);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+      }
+    }
   }
 </style>

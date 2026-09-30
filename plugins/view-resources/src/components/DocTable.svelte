@@ -13,8 +13,9 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import contact, { PermissionsStore } from '@hcengineering/contact'
-  import core, { AnyAttribute, Class, Doc, Ref, TxOperations, TypedSpace, getObjectValue } from '@hcengineering/core'
+  import contact, { PermissionsStore, type Person } from '@hcengineering/contact'
+  import core, { AnyAttribute, Class, Doc, Ref, Space, TxOperations, TypedSpace, getObjectValue } from '@hcengineering/core'
+  import { ensureAssigneeJoined } from '../ensureAssigneeJoined'
   import { getClient, reduceCalls, updateAttribute } from '@hcengineering/presentation'
   import { Label, Loading, mouseAttractor } from '@hcengineering/ui'
   import { AttributeModel, BuildModelKey, BuildModelOptions, Viewlet } from '@hcengineering/view'
@@ -128,7 +129,11 @@
   }
 
   function onChange (value: any, doc: Doc, key: string, attribute: AnyAttribute) {
-    updateAttribute(client, doc, _class, { key, attr: attribute }, value)
+    void updateAttribute(client, doc, _class, { key, attr: attribute }, value).then(async () => {
+      if (key === 'assignee' && value != null && typeof value === 'string') {
+        await ensureAssigneeJoined(client, (doc as Doc & { space?: Ref<Space> }).space, value as Ref<Person>)
+      }
+    })
   }
 
   function getOnChange (doc: Doc, attribute: AttributeModel) {

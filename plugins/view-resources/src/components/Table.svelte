@@ -23,6 +23,7 @@
     FindOptions,
     Lookup,
     Ref,
+    Space,
     SortingOrder,
     TxOperations,
     TypedSpace,
@@ -51,7 +52,8 @@
   import IconUpDown from './icons/UpDown.svelte'
   import { getResultOptions, getResultQuery } from '../viewOptions'
   import { canEditSpace } from '../visibilityTester'
-  import contact, { PermissionsStore } from '@hcengineering/contact'
+  import contact, { PermissionsStore, type Person } from '@hcengineering/contact'
+  import { ensureAssigneeJoined } from '../ensureAssigneeJoined'
   import { Readable } from 'svelte/store'
   import { getResource } from '@hcengineering/platform'
   import { canChangeAttribute } from '../permissions'
@@ -337,7 +339,11 @@
   }
 
   function onChange (value: any, doc: Doc, key: string, attribute: AnyAttribute): void {
-    updateAttribute(client, doc, _class, { key, attr: attribute }, value)
+    void updateAttribute(client, doc, _class, { key, attr: attribute }, value).then(async () => {
+      if (key === 'assignee' && value != null && typeof value === 'string') {
+        await ensureAssigneeJoined(client, (doc as Doc & { space?: Ref<Space> }).space, value as Ref<Person>)
+      }
+    })
   }
 
   function getOnChange (doc: Doc, attribute: AttributeModel) {
