@@ -1,0 +1,10 @@
+{
+  "name": "avops-mcp",
+  "private": true,
+  "type": "module",
+  "description": "Private read-only MCP bridge from Hermes to the Huly transactor.",
+  "dependencies": {
+    "msgpackr": "^1.11.2",
+    "ws": "^8.18.3"
+  }
+}

@@ -9,6 +9,7 @@ export * from './catalog'
  * @public
  */
 export interface Tool extends Doc {
+  _id: Ref<Tool>
   name: string
   description: string
   href: string
@@ -19,6 +20,8 @@ export interface Tool extends Doc {
   password?: string
   current?: boolean
   order?: number
+  openMode?: 'popup' | 'tab' | 'window'
+  color?: string
 }
 
 /**
@@ -39,6 +42,7 @@ const tools = plugin(toolsId, {
     Subtitle: '' as IntlString,
     SearchPlaceholder: '' as IntlString,
     All: '' as IntlString,
+    AllTools: '' as IntlString,
     Websites: '' as IntlString,
     Studio: '' as IntlString,
     BusinessApps: '' as IntlString,
@@ -60,6 +64,14 @@ const tools = plugin(toolsId, {
     Url: '' as IntlString,
     Description: '' as IntlString,
     Group: '' as IntlString,
+    Groups: '' as IntlString,
+    AddGroup: '' as IntlString,
+    EditGroup: '' as IntlString,
+    DeleteGroup: '' as IntlString,
+    GroupName: '' as IntlString,
+    GroupNamePlaceholder: '' as IntlString,
+    GroupHintPlaceholder: '' as IntlString,
+    DeleteGroupConfirm: '' as IntlString,
     Login: '' as IntlString,
     Password: '' as IntlString,
     Copy: '' as IntlString,
@@ -68,11 +80,27 @@ const tools = plugin(toolsId, {
     HidePassword: '' as IntlString,
     NoCredentials: '' as IntlString,
     SaveTool: '' as IntlString,
+    SaveGroup: '' as IntlString,
     ToolNamePlaceholder: '' as IntlString,
     UrlPlaceholder: '' as IntlString,
     LoginPlaceholder: '' as IntlString,
     PasswordPlaceholder: '' as IntlString,
-    DeleteToolConfirm: '' as IntlString
+    DeleteToolConfirm: '' as IntlString,
+    OpenInPopup: '' as IntlString,
+    OpenInTab: '' as IntlString,
+    OpenExternal: '' as IntlString,
+    OpenMode: '' as IntlString,
+    OpenModePopup: '' as IntlString,
+    OpenModeTab: '' as IntlString,
+    OpenModeWindow: '' as IntlString,
+    MoveToGroup: '' as IntlString,
+    CleanObsolete: '' as IntlString,
+    CleanObsoleteConfirm: '' as IntlString,
+    EmbedNotice: '' as IntlString,
+    Reload: '' as IntlString,
+    Close: '' as IntlString,
+    Directory: '' as IntlString,
+    Color: '' as IntlString
   },
   icon: {
     Application: '' as Asset,
@@ -84,3 +112,4 @@ const tools = plugin(toolsId, {
 })
 
 export default tools
+

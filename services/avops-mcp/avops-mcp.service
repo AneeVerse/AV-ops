@@ -1,0 +1,18 @@
+[Unit]
+Description=AV OPS read-only MCP
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=avopsmcp
+Group=avopsmcp
+WorkingDirectory=/opt/av_ops/docker/avops-mcp
+EnvironmentFile=/opt/av_ops/docker/avops-mcp/.env
+ExecStart=/usr/local/bin/node /opt/av_ops/docker/avops-mcp/server.mjs --http
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

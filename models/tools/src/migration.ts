@@ -33,7 +33,8 @@ export const toolsOperation: MigrateOperation = {
                 group: site.group,
                 https: site.https,
                 current: site.current,
-                order: index
+                order: index,
+                openMode: site.openMode
               },
               _id
             )

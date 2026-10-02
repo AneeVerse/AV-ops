@@ -6,6 +6,9 @@ export default mergeIds(toolsId, tools, {
   component: {
     ToolsDirectory: '' as AnyComponent,
     CreateTool: '' as AnyComponent,
-    EditTool: '' as AnyComponent
+    EditTool: '' as AnyComponent,
+    GroupEditor: '' as AnyComponent,
+    ToolViewerModal: '' as AnyComponent,
+    EmbeddedToolView: '' as AnyComponent
   }
 })

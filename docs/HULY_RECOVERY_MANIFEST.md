@@ -148,3 +148,7 @@ A repeating logical backup now exists:
 - Status file: `/var/lib/avops/backup-status.txt`
 
 That job takes a new Cockroach `BACKUP`, mirrors MinIO, and archives Huly config. It does not run `SHOW BACKUP`. It does not replace this 06:58 UTC snapshot or the 22 Sep backup. It is not copied off the VPS by itself.
+
+## Read interface for Hermes (2026-10-01)
+
+Hermes does not get a Cockroach connection. The supported read path is the transactor websocket already proxied by Huly nginx at `127.0.0.1:8087`. The private service is `avops-mcp.service` from `/opt/av_ops/docker/avops-mcp/`. It starts after Huly. Its API token is created in Huly Settings and is not written here.

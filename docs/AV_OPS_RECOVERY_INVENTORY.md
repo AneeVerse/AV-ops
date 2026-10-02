@@ -102,3 +102,19 @@ The 06:41 UTC pass did not dump Cockroach or MinIO. That gap was closed later th
 - Hermes sqlite backups open and report tables: state 24, projects 4, shared-state 15.
 - 30 Sep `SHA256SUMS`: 30 files OK, 0 failed.
 - No restore onto production was performed. These checks are archive and dump-catalog checks, not a boot of a second copy.
+
+## AV OPS MCP (2026-10-01)
+
+Read-only bridge. It is not a database and it does not hold a Cockroach credential.
+
+| Item | Value |
+|---|---|
+| Source | `services/avops-mcp/` in this repo |
+| Runtime | `/opt/av_ops/docker/avops-mcp/` |
+| Service | `avops-mcp.service` |
+| Bind | `127.0.0.1:8765` |
+| Config | `/opt/av_ops/docker/avops-mcp/.env` mode 600. Not in Git |
+| Depends on | Huly nginx at `127.0.0.1:8087` and a Huly Settings API token |
+| Hermes | stdio MCP on the `avops` profile only |
+
+Restore order: Huly transactor and nginx first, then this directory and unit, then put a new API token in `.env` and start the service. The token is not in the backup docs. The nightly config archive may copy the env file; treat that archive as secret.

@@ -46,6 +46,12 @@ export class TTool extends TDoc implements Tool {
 
   @Prop(TypeNumber(), tools.string.Name)
     order?: number
+
+  @Prop(TypeString(), tools.string.OpenMode)
+    openMode?: 'popup' | 'tab' | 'window'
+
+  @Prop(TypeString(), tools.string.Color)
+    color?: string
 }
 
 export function createModel (builder: Builder): void {

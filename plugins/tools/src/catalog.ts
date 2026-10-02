@@ -1,4 +1,4 @@
-export type ToolGroup = 'websites' | 'studio' | 'business' | 'tools'
+export type ToolGroup = string
 
 export interface ToolSite {
   id: string
@@ -9,9 +9,46 @@ export interface ToolSite {
   group: ToolGroup
   https: boolean
   current?: boolean
+  openMode?: 'popup' | 'tab' | 'window'
 }
 
+export interface ToolGroupDefinition {
+  id: string
+  name: string
+  hint?: string
+  icon?: string
+  color?: string
+  isDefault?: boolean
+  order?: number
+}
+
+export const DEFAULT_GROUPS: ToolGroupDefinition[] = [
+  { id: 'websites', name: 'Websites', hint: 'Public storefronts', color: '#10b981', order: 10 },
+  { id: 'studio', name: 'Studio', hint: 'This app and workflows', color: '#3b82f6', order: 20 },
+  { id: 'business', name: 'Business apps', hint: 'ERP, CRM, and sales', color: '#f59e0b', order: 30 },
+  { id: 'tools', name: 'Bots & tools', hint: 'Automation and internal tools', color: '#8b5cf6', order: 40 }
+]
+
 export const TOOL_GROUPS: ToolGroup[] = ['websites', 'studio', 'business', 'tools']
+
+export const OBSOLETE_TOOL_HOSTS: string[] = [
+  'erp.aneeverse.com',
+  'crm.aneeverse.com',
+  'sales1.aneeverse.com',
+  'chat.aneeverse.com',
+  'bot.aneeverse.com',
+  'scrape.aneeverse.com'
+]
+
+export const OBSOLETE_TOOL_IDS: string[] = [
+  'erp',
+  'crm',
+  'sales1',
+  'chat',
+  'bot',
+  'sales-ui',
+  'scrape'
+]
 
 export function isValidToolHref (href: string): boolean {
   try {
@@ -43,7 +80,8 @@ export const TOOL_SITES: ToolSite[] = [
     host: 'www.culturajewels.com',
     description: 'Jewelry storefront. Admin is at /app.',
     group: 'websites',
-    https: true
+    https: true,
+    openMode: 'window'
   },
   {
     id: 'aneeverse',
@@ -53,7 +91,8 @@ export const TOOL_SITES: ToolSite[] = [
     description: 'This ops workspace. Tracker, leads, and company files.',
     group: 'studio',
     https: true,
-    current: true
+    current: true,
+    openMode: 'window'
   },
   {
     id: 'studio',
@@ -62,70 +101,18 @@ export const TOOL_SITES: ToolSite[] = [
     host: 'studio.aneeverse.com',
     description: 'Studio app for brand content generation.',
     group: 'studio',
-    https: true
+    https: true,
+    openMode: 'popup'
   },
   {
     id: 'n8n',
     name: 'n8n',
     href: 'https://n8n.aneeverse.com',
     host: 'n8n.aneeverse.com',
-    description: 'Workflow automation for Studio and other Aneeverse jobs.',
+    description: 'Workflow automation and forms for Studio and other Aneeverse jobs.',
     group: 'studio',
-    https: true
-  },
-  {
-    id: 'erp',
-    name: 'ERPNext',
-    href: 'https://erp.aneeverse.com',
-    host: 'erp.aneeverse.com',
-    description: 'Company ERP for sales, inventory, and operations.',
-    group: 'business',
-    https: true
-  },
-  {
-    id: 'crm',
-    name: 'CRM',
-    href: 'https://crm.aneeverse.com',
-    host: 'crm.aneeverse.com',
-    description: 'Frappe CRM for leads and customer follow-up.',
-    group: 'business',
-    https: true
-  },
-  {
-    id: 'sales1',
-    name: 'Sales 1',
-    href: 'https://sales1.aneeverse.com',
-    host: 'sales1.aneeverse.com',
-    description: 'Extra ERP hostname. Prefer erp.aneeverse.com.',
-    group: 'business',
-    https: true
-  },
-  {
-    id: 'chat',
-    name: 'OpenClaw Chat',
-    href: 'https://chat.aneeverse.com',
-    host: 'chat.aneeverse.com',
-    description: 'Simple chat UI for the OpenClaw gateway.',
-    group: 'tools',
-    https: true
-  },
-  {
-    id: 'bot',
-    name: 'OpenClaw Gateway',
-    href: 'https://bot.aneeverse.com',
-    host: 'bot.aneeverse.com',
-    description: 'Gateway dashboard. Paste the gateway token, then pair the device.',
-    group: 'tools',
-    https: true
-  },
-  {
-    id: 'sales-ui',
-    name: 'Sales UI',
-    href: 'https://bot.aneeverse.com/sales/',
-    host: 'bot.aneeverse.com/sales',
-    description: 'Sales Next.js app behind HTTP basic auth.',
-    group: 'tools',
-    https: true
+    https: true,
+    openMode: 'popup'
   },
   {
     id: 'bots',
@@ -134,7 +121,8 @@ export const TOOL_SITES: ToolSite[] = [
     host: 'bots.aneeverse.com',
     description: 'Remote browser for jewelry Gemini workflows.',
     group: 'tools',
-    https: true
+    https: true,
+    openMode: 'popup'
   },
   {
     id: 'jwel-img',
@@ -143,7 +131,8 @@ export const TOOL_SITES: ToolSite[] = [
     host: 'bots.aneeverse.com/jwel-img-gen',
     description: 'Jewelry image generation UI powered by n8n.',
     group: 'tools',
-    https: true
+    https: true,
+    openMode: 'popup'
   },
   {
     id: 'md',
@@ -152,15 +141,7 @@ export const TOOL_SITES: ToolSite[] = [
     host: 'md.aneeverse.com',
     description: 'Second-brain notes in Obsidian over noVNC.',
     group: 'tools',
-    https: true
-  },
-  {
-    id: 'scrape',
-    name: 'ScrapeGraphAI',
-    href: 'https://scrape.aneeverse.com',
-    host: 'scrape.aneeverse.com',
-    description: 'Web scraping UI for research and extraction.',
-    group: 'tools',
-    https: true
+    https: true,
+    openMode: 'popup'
   }
 ]

@@ -90,7 +90,8 @@ docker cp huly_v7-minio-1:/tmp/avops-minio-mirror "$DEST/minio/objects"
 docker exec huly_v7-minio-1 rm -rf /tmp/avops-minio-mirror
 
 log "postgres dumps"
-sudo -u postgres pg_dump -Fc --no-owner --no-privileges -d onecarat_medusa > "$DEST/db/onecarat_medusa.dump"
+# Cultura Postgres runs in Docker. The host socket is gone.
+docker exec postgres-db-1 sh -c 'pg_dump -U "$POSTGRES_USER" -Fc --no-owner --no-privileges -d "$POSTGRES_DB"' > "$DEST/db/onecarat_medusa.dump"
 docker exec contentbeta-db pg_dump -U postgres -Fc --no-owner --no-privileges -d postgres > "$DEST/db/supabase-postgres.dump"
 if command -v redis-cli >/dev/null; then
   redis-cli -h 127.0.0.1 --rdb "$DEST/db/redis.rdb" >> "$LOG" 2>&1 || log "redis rdb skipped"
@@ -115,7 +116,7 @@ PY
 cp -a /opt/av_ops/docker/hermes_agent/config.yaml /opt/av_ops/docker/hermes_agent/.env "$DEST/hermes/"
 
 log "obsidian"
-tar -C /opt/av_ops/memory -czf "$DEST/obsidian/vault.tgz" obsidian
+tar -C /opt/av_ops/docker/obsidian -czf "$DEST/obsidian/vault.tgz" obsidian
 
 log "config"
 tar -C /opt/av_ops/docker/av_ops -czf "$DEST/config/huly-config.tgz" \
