@@ -27,7 +27,7 @@
   import ProjectPresenter from '../projects/ProjectPresenter.svelte'
 
   function newIssue (): void {
-    showPopup(CreateIssue, { space: effectiveSpace, shouldSaveDraft: true }, 'top')
+    showPopup(CreateIssue, { space: effectiveSpace, shouldSaveDraft: true, autoSelectProject: false }, 'top')
   }
 
   export let space: Ref<Space> | undefined = undefined

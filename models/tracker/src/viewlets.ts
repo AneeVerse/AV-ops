@@ -70,12 +70,12 @@ export const issuesOptions = (kanban: boolean): ViewOptionsModel => ({
     'reportedTime'
   ],
   orderBy: [
-    ['modifiedOn', SortingOrder.Descending],
+    ['dueDate', SortingOrder.Ascending],
     ['status', SortingOrder.Ascending],
     ['kind', SortingOrder.Ascending],
     ['priority', SortingOrder.Ascending],
     ['createdOn', SortingOrder.Descending],
-    ['dueDate', SortingOrder.Ascending],
+    ['modifiedOn', SortingOrder.Descending],
     ['rank', SortingOrder.Ascending],
     ['estimation', SortingOrder.Descending],
     ['remainingTime', SortingOrder.Descending],
@@ -594,7 +594,7 @@ export function defineViewlets (builder: Builder): void {
       },
       viewOptions: {
         groupBy: [],
-        orderBy: [],
+        orderBy: issuesOptions(false).orderBy,
         other: [
           {
             key: 'hideArchived',

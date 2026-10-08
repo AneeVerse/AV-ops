@@ -19,7 +19,8 @@
   import tracker from '../../plugin'
   import ParentNamesPresenter from './ParentNamesPresenter.svelte'
 
-  export let value: WithLookup<Issue>
+  export let value: WithLookup<Issue> | string | undefined = undefined
+  export let object: WithLookup<Issue> | undefined = undefined
   export let shouldUseMargin: boolean = false
   export let showParent: boolean = true
   export let grow: boolean = false
@@ -28,9 +29,12 @@
   export let disabled: boolean = false
   export let maxWidth: string | undefined = undefined
   export let minWidth: string | undefined = '1rem'
+
+  $: issue = (object ?? (typeof value === 'object' && value !== null ? value : undefined)) as WithLookup<Issue> | undefined
+  $: titleText = typeof value === 'string' ? value : (issue?.title ?? '')
 </script>
 
-{#if value}
+{#if issue}
   <span
     class="presenter-label select-text"
     class:with-margin={shouldUseMargin}
@@ -38,16 +42,28 @@
     style:max-width={maxWidth}
     style:min-width={minWidth}
     class:flex-grow={grow}
-    title={value.title}
+    title={titleText}
   >
-    <DocNavLink object={value} {onClick} component={tracker.component.EditIssue} shrink={1} {disabled} colorInherit>
-      {value.title}
+    <DocNavLink object={issue} {onClick} component={tracker.component.EditIssue} shrink={1} {disabled} colorInherit>
+      {titleText}
     </DocNavLink>
   </span>
-  {#if showParent}
-    <ParentNamesPresenter {value} />
+  {#if showParent && issue.attachedTo}
+    <ParentNamesPresenter value={issue} />
   {/if}
   <slot />
+{:else if titleText}
+  <span
+    class="presenter-label select-text"
+    class:with-margin={shouldUseMargin}
+    class:list={kind === 'list'}
+    style:max-width={maxWidth}
+    style:min-width={minWidth}
+    class:flex-grow={grow}
+    title={titleText}
+  >
+    {titleText}
+  </span>
 {/if}
 
 <style lang="scss">

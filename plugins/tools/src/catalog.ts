@@ -25,11 +25,11 @@ export interface ToolGroupDefinition {
 export const DEFAULT_GROUPS: ToolGroupDefinition[] = [
   { id: 'websites', name: 'Websites', hint: 'Public storefronts', color: '#10b981', order: 10 },
   { id: 'studio', name: 'Studio', hint: 'This app and workflows', color: '#3b82f6', order: 20 },
-  { id: 'business', name: 'Business apps', hint: 'ERP, CRM, and sales', color: '#f59e0b', order: 30 },
-  { id: 'tools', name: 'Bots & tools', hint: 'Automation and internal tools', color: '#8b5cf6', order: 40 }
+  { id: 'tools', name: 'Bots & tools', hint: 'Automation and internal tools', color: '#8b5cf6', order: 30 },
+  { id: 'n8n', name: 'n8n', hint: 'Listing image generators and workflows', color: '#ff6d5a', order: 40 }
 ]
 
-export const TOOL_GROUPS: ToolGroup[] = ['websites', 'studio', 'business', 'tools']
+export const TOOL_GROUPS: ToolGroup[] = ['websites', 'studio', 'tools', 'n8n']
 
 export const OBSOLETE_TOOL_HOSTS: string[] = [
   'erp.aneeverse.com',
@@ -47,7 +47,13 @@ export const OBSOLETE_TOOL_IDS: string[] = [
   'chat',
   'bot',
   'sales-ui',
-  'scrape'
+  'scrape',
+  'n8n',
+  'amazon',
+  'etsy',
+  'n8n-ebay',
+  'n8n-amazon',
+  'n8n-etsy'
 ]
 
 export function isValidToolHref (href: string): boolean {
@@ -143,5 +149,15 @@ export const TOOL_SITES: ToolSite[] = [
     group: 'tools',
     https: true,
     openMode: 'popup'
+  },
+  {
+    id: 'n8n-listing-images',
+    name: 'Listing Images',
+    href: 'https://app.aneeverse.com/tools/image-generator/',
+    host: 'app.aneeverse.com/tools/image-generator',
+    description: 'AI product listing image generator (eBay, Amazon, Etsy) with ImageKit CDN delivery.',
+    group: 'n8n',
+    https: true,
+    openMode: 'tab'
   }
 ]

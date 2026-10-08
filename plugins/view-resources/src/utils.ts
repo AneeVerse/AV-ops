@@ -319,6 +319,16 @@ export function findAttributePresenter (
 
   const attribute = hierarchy.findAttribute(_class, key)
   if (attribute === undefined) return
+  if (key === 'title') {
+    if (
+      hierarchy.isDerived(_class, 'tracker:class:Issue') ||
+      hierarchy.isDerived(_class, 'task:class:Task') ||
+      _class === 'tracker:class:Issue' ||
+      _class === 'task:class:Task'
+    ) {
+      return 'tracker:component:TitlePresenter' as AnyComponent
+    }
+  }
   const { attrClass, category } = getAttributePresenterClass(hierarchy, attribute.type)
   let overridedPresenter = model.findAllSync(view.class.AttrPresenter, {
     objectClass: _class,

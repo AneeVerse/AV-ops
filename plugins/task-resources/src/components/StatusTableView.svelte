@@ -18,6 +18,7 @@
   import { createQuery, getClient } from '@hcengineering/presentation'
   import { Project, ProjectType, Task, findStatusAttr, getStates } from '@hcengineering/task'
   import type { TabItem } from '@hcengineering/ui'
+  import type { ViewOptions, Viewlet } from '@hcengineering/view'
   import { ScrollerBar, TabList, Switcher } from '@hcengineering/ui'
   import { TableBrowser, statusStore } from '@hcengineering/view-resources'
   import { typeStore } from '..'
@@ -31,6 +32,8 @@
   export let query: DocumentQuery<Task>
   export let options: FindOptions<Task> | undefined
   export let config: string[]
+  export let viewOptions: ViewOptions | undefined = undefined
+  export let viewlet: Viewlet | undefined = undefined
 
   let doneStatusesView: boolean = false
   let state: Ref<Status> | undefined = undefined
@@ -276,7 +279,7 @@
     </ScrollerBar>
   {/if}
 </div>
-<TableBrowser {_class} bind:query={resultQuery} config={resConfig} {options} showNotification />
+<TableBrowser {_class} bind:query={resultQuery} config={resConfig} {options} {viewOptions} {viewlet} showNotification />
 
 <style lang="scss">
   .status-table-bar {

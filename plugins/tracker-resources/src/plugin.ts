@@ -324,6 +324,7 @@ export default mergeIds(trackerId, tracker, {
     UnassignCompany: '' as IntlString,
     CompanyProjects: '' as IntlString,
     Invoices: '' as IntlString,
+    InvoicesConfigDescription: '' as IntlString,
     Invoice: '' as IntlString,
     AllInvoices: '' as IntlString,
     NewInvoice: '' as IntlString,

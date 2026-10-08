@@ -13,7 +13,11 @@
 // limitations under the License.
 //
 
-import { findProperty } from '../query'
+import { findProperty, resultSort } from '../query'
+import core from '../component'
+import type { Hierarchy } from '../hierarchy'
+import type { MemDb } from '../memdb'
+import { SortingOrder } from '../storage'
 import type { Doc, Ref, Class } from '../classes'
 
 function doc (id: string, fields: Record<string, any> = {}): Doc {
@@ -62,5 +66,43 @@ describe('findProperty', () => {
       // and never calls findProperty for assignee, so all docs pass through.
       // This is the root cause of #10606.
     })
+  })
+})
+
+describe('live-query date ordering', () => {
+  const hierarchy = {
+    findAttribute: (_class: unknown, key: string) => ({
+      type: { _class: key === 'dueDate' ? core.class.TypeDate : core.class.TypeNumber },
+      attributeOf: 'test:class:Issue'
+    }),
+    isMixin: () => false
+  } as unknown as Hierarchy
+  const modelDb = {} as MemDb
+  const clazz = 'test:class:Issue' as Ref<Class<Doc>>
+  const rows = (): Doc[] => [doc('missing'), doc('later', { dueDate: 20 }), doc('null', { dueDate: null }), doc('early', { dueDate: 10 })]
+
+  it('keeps dated tasks ahead of null and missing dates', () => {
+    const docs = rows()
+    resultSort(docs, { dueDate: SortingOrder.Ascending }, clazz, hierarchy, modelDb)
+    expect(docs.map((d) => d._id)).toEqual(['early', 'later', 'missing', 'null'])
+  })
+
+  it('honors descending order', () => {
+    const docs = rows()
+    resultSort(docs, { dueDate: SortingOrder.Descending }, clazz, hierarchy, modelDb)
+    expect(docs.map((d) => d._id)).toEqual(['later', 'early', 'missing', 'null'])
+  })
+
+  it('moves a task into date order when a live update sets its due date', () => {
+    const docs = rows()
+    Object.assign(docs[0], { dueDate: 5 })
+    resultSort(docs, { dueDate: SortingOrder.Ascending }, clazz, hierarchy, modelDb)
+    expect(docs.map((d) => d._id)).toEqual(['missing', 'early', 'later', 'null'])
+  })
+
+  it('uses the secondary sort when dates match or are missing', () => {
+    const docs = [doc('b', { dueDate: 10, priority: 2 }), doc('a', { dueDate: 10, priority: 1 }), doc('d', { priority: 2 }), doc('c', { dueDate: null, priority: 1 })]
+    resultSort(docs, { dueDate: SortingOrder.Ascending, priority: SortingOrder.Ascending }, clazz, hierarchy, modelDb)
+    expect(docs.map((d) => d._id)).toEqual(['a', 'b', 'c', 'd'])
   })
 })

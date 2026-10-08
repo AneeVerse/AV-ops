@@ -42,7 +42,7 @@
     reduceCalls
   } from '@hcengineering/presentation'
   import setting from '@hcengineering/setting'
-  import support, { supportLink, SupportStatus } from '@hcengineering/support'
+  import support, { SupportStatus } from '@hcengineering/support'
   import {
     AnyComponent,
     areLocationsEqual,
@@ -966,16 +966,6 @@
           size={appsMini ? 'small' : 'large'}
           on:click={() => showPopup(AppSwitcher, { apps: visibleApps }, popupPosition)}
         />
-        <a href={supportLink} target="_blank" rel="noopener noreferrer">
-          <AppItem
-            icon={support.icon.Support}
-            label={support.string.ContactUs}
-            size={appsMini ? 'small' : 'large'}
-            notify={supportStatus?.hasUnreadMessages}
-            selected={supportStatus?.visible}
-            loading={supportWidgetLoading}
-          />
-        </a>
         <!-- {#await supportClient then client}
           {#if client}
             <AppItem

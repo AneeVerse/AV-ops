@@ -23,7 +23,7 @@ function Get-GitBash {
 
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $SshKey = if ($env:HULY_SSH_KEY) { $env:HULY_SSH_KEY } else { Join-Path $env:USERPROFILE '.ssh\id_ed25519' }
-$Vps = if ($env:HULY_VPS) { $env:HULY_VPS } else { 'root@148.230.67.132' }
+$Vps = if ($env:HULY_VPS) { $env:HULY_VPS } else { 'mayur@148.230.67.132' }
 
 if (-not (Test-Path $SshKey)) {
   throw "SSH key not found at $SshKey (kept local, never in git)."

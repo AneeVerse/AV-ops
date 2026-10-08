@@ -3,7 +3,7 @@
 //
 
 import core, { type Client } from '@hcengineering/core'
-import tracker, { type InvoiceParty, type InvoiceProfile } from '@hcengineering/tracker'
+import tracker, { type InvoiceItemTemplate, type InvoiceParty, type InvoiceProfile } from '@hcengineering/tracker'
 
 export const ANEEVERSE_BRAND = '#279ea6'
 export const ANEEVERSE_BRAND_WASH = '#e5f5f6'
@@ -28,6 +28,11 @@ export const ANEEVERSE_BANK = {
 
 export const ANEEVERSE_SIGNATORY = 'Abhijeet'
 
+export const DEFAULT_ITEM_TEMPLATES: InvoiceItemTemplate[] = [
+  { title: 'Website Development', hsn: '195525', gstRate: 18 },
+  { title: 'Platform Development', hsn: '1548562', gstRate: 18 }
+]
+
 export const DEFAULT_COUNTRY_OF_SUPPLY = 'India'
 export const DEFAULT_PLACE_OF_SUPPLY = 'Maharashtra (27)'
 export const DEFAULT_HSN = '998314'
@@ -44,34 +49,64 @@ export function cloneParty (party: InvoiceParty): InvoiceParty {
   }
 }
 
+export function mergeItemTemplates (custom?: InvoiceItemTemplate[]): InvoiceItemTemplate[] {
+  const map = new Map<string, InvoiceItemTemplate>()
+  for (const t of DEFAULT_ITEM_TEMPLATES) {
+    map.set(t.title.trim().toLowerCase(), { ...t })
+  }
+  if (Array.isArray(custom)) {
+    for (const t of custom) {
+      if (t.title && t.title.trim() !== '') {
+        map.set(t.title.trim().toLowerCase(), {
+          title: t.title.trim(),
+          hsn: t.hsn?.trim() || '998314',
+          gstRate: Number(t.gstRate) || 0
+        })
+      }
+    }
+  }
+  return Array.from(map.values())
+}
+
 export async function loadWorkspaceBilledBy (
   client: Client
-): Promise<{ profile: InvoiceProfile | undefined, billedBy: InvoiceParty }> {
+): Promise<{ profile: InvoiceProfile | undefined, billedBy: InvoiceParty, itemTemplates: InvoiceItemTemplate[], defaultSignatory: string }> {
   const profile = await client.findOne(tracker.class.InvoiceProfile, {})
   return {
     profile,
-    billedBy: cloneParty(profile?.billedBy ?? ANEEVERSE_BILLED_BY)
+    billedBy: cloneParty(profile?.billedBy ?? ANEEVERSE_BILLED_BY),
+    itemTemplates: mergeItemTemplates(profile?.itemTemplates),
+    defaultSignatory: profile?.defaultSignatory ?? ANEEVERSE_SIGNATORY
   }
 }
 
 export async function persistWorkspaceBilledBy (
   client: Client,
   profile: InvoiceProfile | undefined,
-  billedBy: InvoiceParty
+  billedBy: InvoiceParty,
+  itemTemplates?: InvoiceItemTemplate[],
+  defaultSignatory?: string
 ): Promise<void> {
   const next = cloneParty(billedBy)
   const existing =
     profile ??
     (await client.findOne(tracker.class.InvoiceProfile, { _id: tracker.ids.InvoiceProfile })) ??
     (await client.findOne(tracker.class.InvoiceProfile, {}))
+  const patch: Partial<InvoiceProfile> = { billedBy: next }
+  if (itemTemplates !== undefined) {
+    patch.itemTemplates = itemTemplates
+  }
+  if (defaultSignatory !== undefined) {
+    patch.defaultSignatory = defaultSignatory
+  }
   if (existing !== undefined) {
-    await client.update(existing, { billedBy: next })
+    await client.update(existing, patch)
     return
   }
   await client.createDoc(
     tracker.class.InvoiceProfile,
     core.space.Workspace,
-    { billedBy: next },
+    patch,
     tracker.ids.InvoiceProfile
   )
 }

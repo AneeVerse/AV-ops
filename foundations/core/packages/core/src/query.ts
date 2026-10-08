@@ -57,6 +57,21 @@ export function resultSort<T extends Doc> (
   const enums = getEnums(_class, sortOptions, hierarchy, modelDb)
   const sortFunc = (a: any, b: any): number => {
     for (const key in sortOptions) {
+      // Keep date-first presentation queries stable when live updates arrive.
+      // Missing dates follow dated documents in either direction.
+      if (hierarchy.findAttribute(_class, key)?.type._class === core.class.TypeDate) {
+        const dateKey = checkMixinKey(key, _class, hierarchy)
+        const aDate = getObjectValue(dateKey, a)
+        const bDate = getObjectValue(dateKey, b)
+        const order = sortOptions[key]
+        if (typeof order === 'number') {
+          const result = aDate == null
+            ? (bDate == null ? 0 : 1)
+            : bDate == null ? -1 : (Number(aDate) - Number(bDate)) * order
+          if (result !== 0) return result
+          continue
+        }
+      }
       const _enum = enums[key]
       const aValue =
         _enum !== undefined ? getEnumValue(key, _class, hierarchy, a, _enum) : getValue(key, a, _class, hierarchy)

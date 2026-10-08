@@ -474,8 +474,12 @@ function defineInvoicesApplication (builder: Builder): void {
       icon: tracker.icon.Invoices,
       alias: 'invoices',
       hidden: false,
-      position: 'top',
       order: 225,
+      navigatorModel: {
+        spaces: [],
+        hideStarred: true,
+        groups: [{ id: 'invoices-navigation', groupByClass: tracker.class.Invoice, component: tracker.component.AllInvoices }]
+      },
       component: tracker.component.AllInvoices
     },
     tracker.app.Invoices

@@ -12,6 +12,7 @@ import {
   cloneParty
 } from './aneeverseBilling'
 import { ANEEVERSE_LOGO_HTML } from './aneeverseLogo'
+import { getSignatory } from './aneeverseSignatures'
 import {
   formatINR,
   formatInvoiceDate,
@@ -33,6 +34,7 @@ export interface InvoiceView {
   placeOfSupply: string
   items: InvoiceLine[]
   totals: InvoiceTotals
+  signatory?: string
 }
 
 function escapeHtml (value: string): string {
@@ -234,8 +236,18 @@ export const INVOICE_CSS = `
     color: ${ANEEVERSE_BRAND};
   }
   .av-sign {
-    margin-top: 28px;
+    margin-top: 24px;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .av-sign-img {
+    height: 52px;
+    max-width: 170px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 2px;
   }
   .av-sign-name {
     font-family: "Segoe Script", "Brush Script MT", "Lucida Handwriting", cursive;
@@ -297,7 +309,8 @@ export function invoiceToView (invoice: Invoice): InvoiceView {
       sgst: invoice.sgst,
       igst: invoice.igst,
       total: invoice.total
-    }
+    },
+    signatory: invoice.signatory ?? ANEEVERSE_SIGNATORY
   }
 }
 
@@ -311,6 +324,10 @@ export function invoicePageHtml (view: InvoiceView): string {
     ? `<div class="av-totals-row"><span>CGST</span><span>${formatINR(view.totals.cgst)}</span></div>
        <div class="av-totals-row"><span>SGST</span><span>${formatINR(view.totals.sgst)}</span></div>`
     : `<div class="av-totals-row"><span>IGST</span><span>${formatINR(view.totals.igst)}</span></div>`
+  const sig = getSignatory(view.signatory)
+  const sigHtml = sig.signatureDataUri
+    ? `<img class="av-sign-img" src="${sig.signatureDataUri}" alt="${escapeHtml(sig.name)}" />`
+    : `<div class="av-sign-name">${escapeHtml(sig.name)}</div>`
   return `<section class="av-page">
     <div class="av-header">
       <div>
@@ -348,7 +365,7 @@ export function invoicePageHtml (view: InvoiceView): string {
           <div class="av-totals-row av-grand"><span>Total (INR)</span><span>${formatINR(view.totals.total)}</span></div>
         </div>
         <div class="av-sign">
-          <div class="av-sign-name">${escapeHtml(ANEEVERSE_SIGNATORY)}</div>
+          ${sigHtml}
           <div class="av-sign-line">Authorised Signatory</div>
         </div>
       </div>

@@ -288,7 +288,8 @@ export const contactPlugin = plugin(contactId, {
     PersonIdFilter: '' as AnyComponent,
     AssigneePopup: '' as AnyComponent,
     EmployeePresenter: '' as AnyComponent,
-    WorkspaceMemberStatusEditor: '' as AnyComponent
+    WorkspaceMemberStatusEditor: '' as AnyComponent,
+    EmployeeAccessEditor: '' as AnyComponent
   },
   channelProvider: {
     Email: '' as Ref<ChannelProvider>,

@@ -36,6 +36,7 @@ import presentation, {
   copyTextToClipboard,
   type DocCreatePhase,
   getClient,
+  pluginConfigurationStore,
   type ObjectSearchResult
 } from '@hcengineering/presentation'
 import { closePanel, getCurrentLocation, navigate, panelstore, showPopup } from '@hcengineering/ui'
@@ -288,6 +289,10 @@ export function calculateFloorSize (_rooms: Room[], _preview?: boolean): number 
 }
 
 async function checkRecordAvailable (): Promise<void> {
+  if (get(pluginConfigurationStore).configuration.get(loveId)?.enabled === false) {
+    isRecordingAvailable.set(false)
+    return
+  }
   try {
     const endpoint = getMetadata(love.metadata.ServiceEnpdoint)
     if (endpoint === undefined) {
@@ -296,8 +301,14 @@ async function checkRecordAvailable (): Promise<void> {
       }, 500)
     } else if (endpoint !== '') {
       const res = await fetch(concatLink(endpoint, '/checkRecordAvailable'))
+      // Self-hosted installations may not run the optional Office service.
+      // A frontend fallback can return HTML with status 200, not capability JSON.
+      if (!res.ok || !res.headers.get('content-type')?.includes('application/json')) {
+        isRecordingAvailable.set(false)
+        return
+      }
       const result = await res.json()
-      isRecordingAvailable.set(result)
+      isRecordingAvailable.set(result === true)
     } else {
       console.info('office recording is not configured')
     }

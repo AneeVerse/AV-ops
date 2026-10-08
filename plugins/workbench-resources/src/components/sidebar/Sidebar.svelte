@@ -15,7 +15,8 @@
 <script lang="ts">
   import contact, { getCurrentEmployee, type EmployeeAccess } from '@hcengineering/contact'
   import { getCurrentAccount, isOwnerOrMaintainer } from '@hcengineering/core'
-  import { createQuery, getClient } from '@hcengineering/presentation'
+  import { getResourcePlugin } from '@hcengineering/platform'
+  import { createQuery, getClient, pluginConfigurationStore } from '@hcengineering/presentation'
   import { panelstore } from '@hcengineering/ui'
   import { Widget, WidgetPreference } from '@hcengineering/workbench'
 
@@ -33,7 +34,10 @@
 
   const seenWidgets = new Set<string>()
   const allWidgets = [
-    ...client.getModel().findAllSync<Widget>(workbench.class.Widget, {}),
+    ...client
+      .getModel()
+      .findAllSync<Widget>(workbench.class.Widget, {})
+      .filter((w) => !String(w._id).toLowerCase().includes('chunter')),
     novinoWidget,
     vpsWidget
   ].filter((it) => {
@@ -50,7 +54,18 @@
     })
   }
 
-  $: widgets = allWidgets.filter((widget) => isAllowedWidget(employeeAccess, widget))
+  function isWidgetPluginEnabled (widget: Widget): boolean {
+    try {
+      const plugin = getResourcePlugin(widget._id)
+      return $pluginConfigurationStore.configuration.get(plugin)?.enabled ?? true
+    } catch {
+      return true
+    }
+  }
+
+  $: widgets = ($pluginConfigurationStore, allWidgets)
+    .filter((widget) => isAllowedWidget(employeeAccess, widget))
+    .filter((widget) => isWidgetPluginEnabled(widget))
   $: if ($sidebarStore.widget !== undefined && !widgets.some((widget) => widget._id === $sidebarStore.widget)) {
     void closeWidget($sidebarStore.widget)
   }

@@ -506,6 +506,18 @@ export default function buildModel (): Builder {
         classFilter: defaultFilter
       }
     ],
+    [
+      () => {},
+      'invoices' as Plugin,
+      {
+        label: tracker.string.Invoices,
+        description: tracker.string.InvoicesConfigDescription,
+        enabled: true,
+        beta: false,
+        icon: tracker.icon.Invoices,
+        classFilter: defaultFilter
+      }
+    ],
     [achievementModel, achievementId],
     [emojiModel, emojiId],
     [communicationModel, communicationId],

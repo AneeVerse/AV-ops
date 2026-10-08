@@ -105,6 +105,7 @@
   export let milestone: Ref<Milestone> | null = null
   export let relatedTo: Doc | undefined
   export let shouldSaveDraft: boolean = true
+  export let autoSelectProject = true
   export let parentIssue: Issue | undefined
   export let originalIssue: Issue | undefined
 
@@ -127,7 +128,7 @@
   const hierarchy = client.getHierarchy()
   const parentQuery = createQuery()
 
-  let _space = draft?.space ?? space
+  let _space = space ?? draft?.space
   // let project: Project | undefined
   let object = getDefaultObjectFromDraft() ?? getDefaultObject(id)
   let isAssigneeTouched = false
@@ -701,6 +702,7 @@
   }
 
   async function findDefaultSpace (): Promise<Project | undefined> {
+    if (!autoSelectProject) return undefined
     let targetRef: Ref<Project> | undefined
     if (relatedTo !== undefined) {
       const targets = await client.findAll(tracker.class.RelatedIssueTarget, {})
@@ -800,6 +802,7 @@
       component={ProjectPresenter}
       defaultIcon={tracker.icon.Home}
       clearInvalidValue={true}
+      autoSelect={autoSelectProject}
       {findDefaultSpace}
     />
     <ObjectBox

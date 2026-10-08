@@ -16,6 +16,9 @@
   import { Doc, Mixin } from '@hcengineering/core'
   import { getClient } from '@hcengineering/presentation'
   import setting from '@hcengineering/setting'
+  import contact from '@hcengineering/contact'
+  import { getResource } from '@hcengineering/platform'
+  import { Component, type AnyComponent } from '@hcengineering/ui'
 
   import ClassAttributeBar from './ClassAttributeBar.svelte'
   import notification from '@hcengineering/notification'
@@ -30,10 +33,23 @@
   const client = getClient()
   const hierarchy = client.getHierarchy()
 
+  let employeeAccessEditor: AnyComponent | undefined = undefined
+
   $: _allowedCollections = [...allowedCollections, 'collaborators']
   $: _mixins = mixins.find((p) => p._id === notification.mixin.Collaborators)
     ? mixins
     : [...mixins, hierarchy.getClass(notification.mixin.Collaborators)]
+
+  $: isEmployee =
+    hierarchy.hasMixin(object, contact.mixin.Employee) ||
+    (object._class as string)?.includes('Employee') ||
+    (object._class as string)?.includes('Person')
+
+  $: if (isEmployee && employeeAccessEditor === undefined) {
+    void getResource(contact.component.EmployeeAccessEditor).then((comp) => {
+      employeeAccessEditor = comp
+    }).catch(() => {})
+  }
 </script>
 
 <ClassAttributeBar
@@ -64,3 +80,15 @@
     {/key}
   {/if}
 {/each}
+
+{#if isEmployee && employeeAccessEditor}
+  <div class="employee-access-container">
+    <Component is={employeeAccessEditor} props={{ object }} />
+  </div>
+{/if}
+
+<style lang="scss">
+  .employee-access-container {
+    padding: 0 0.75rem 1rem;
+  }
+</style>

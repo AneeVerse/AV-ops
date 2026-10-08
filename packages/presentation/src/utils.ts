@@ -35,6 +35,8 @@ import core, {
   hasAccountRole,
   type Hierarchy,
   MeasureMetricsContext,
+  mergeQueries,
+  toFindResult,
   type Mixin,
   type ModelDb,
   type Obj,
@@ -527,17 +529,48 @@ export class LiveQuery {
     this.oldOptions = options
     this.oldQuery = query
 
-    const unsub = liveQuery.query(
-      _class,
-      query,
-      (result) => {
-        // If we have one more request after this one, no need to do something.
-        if (id === this.reqId) {
-          void callback(result)
-        }
-      },
-      options
-    )
+    // Cockroach sorts NULL before dates for ASC. Split the query so dated
+    // documents fill the page first without fetching an unbounded result set.
+    const firstSort = Object.entries(options?.sort ?? {})[0]
+    const dateFirst = firstSort?.[1] === 1 &&
+      client.getHierarchy().findAttribute(_class, firstSort[0])?.type._class === core.class.TypeDate
+    const subscriptions: Array<() => void> = []
+    if (dateFirst) {
+      const dateKey = firstSort[0]
+      const parts: Array<FindResult<T> | undefined> = [undefined, undefined]
+      const filters = [{ [dateKey]: { $ne: null } }, { [dateKey]: { $in: [null] } }]
+      filters.forEach((filter, index) => {
+        subscriptions.push(liveQuery.query(
+          _class,
+          mergeQueries(query, filter),
+          (result) => {
+            if (id !== this.reqId) return
+            parts[index] = result
+            const dated = parts[0]
+            const undated = parts[1]
+            if (dated === undefined || undated === undefined) return
+            const docs = [...dated, ...undated]
+            const total = options?.total === true ? dated.total + undated.total : -1
+            void callback(toFindResult(
+              options?.limit !== undefined ? docs.slice(0, options.limit) : docs,
+              total,
+              { ...dated.lookupMap, ...undated.lookupMap }
+            ))
+          },
+          options
+        ))
+      })
+    } else {
+      subscriptions.push(liveQuery.query(
+        _class,
+        query,
+        (result) => {
+          if (id === this.reqId) void callback(result)
+        },
+        options
+      ))
+    }
+    const unsub = (): void => { subscriptions.forEach((unsubscribe) => { unsubscribe() }) }
     this.unsubscribe = () => {
       unsub()
       void piplineQuery.then((res) => {

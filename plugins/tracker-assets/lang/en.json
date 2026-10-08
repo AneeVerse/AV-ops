@@ -327,6 +327,7 @@
     "SearchEmptyClearFilters": "Search without filters",
     "SearchEmptyAllProjects": "Search in all projects",
     "Invoices": "Invoices",
+    "InvoicesConfigDescription": "GST invoicing and client billing management",
     "Invoice": "Invoice",
     "AllInvoices": "Invoices",
     "NewInvoice": "New invoice",
@@ -355,7 +356,8 @@
     "Quantity": "Quantity",
     "Rate": "Rate",
     "AddLine": "Add line",
-    "Preview": "Preview"
+    "Preview": "Preview",
+    "AuthorisedSignatory": "Authorised Signatory"
   },
   "status": {}
 }

@@ -37,19 +37,28 @@
     }
   }
 
-  $: fixedWidgets = widgets.filter((widget) => widget.type === WidgetType.Fixed)
+  function isChatWidget (widget: Widget): boolean {
+    const id = (widget._id as string) || ''
+    return (
+      id.includes('novino') ||
+      (id.toLowerCase().includes('chat') && !id.includes('chunter'))
+    )
+  }
+
+  $: chatWidgets = widgets.filter((widget) => isChatWidget(widget)).slice(0, 1)
+  $: fixedWidgets = widgets.filter((widget) => widget.type === WidgetType.Fixed && !isChatWidget(widget))
   $: flexibleWidgets = widgets.filter(
-    (widget) => widget.type === WidgetType.Flexible && $sidebarStore.widgetsState.has(widget._id)
+    (widget) => widget.type === WidgetType.Flexible && $sidebarStore.widgetsState.has(widget._id) && !isChatWidget(widget)
   )
   $: configurableWidgets = preferences
     .filter((it) => it.enabled)
     .sort((a, b) => a.modifiedOn - b.modifiedOn)
     .map((it) => widgets.find((widget) => widget._id === it.attachedTo))
-    .filter((widget): widget is Widget => widget !== undefined && widget.type === WidgetType.Configurable)
+    .filter((widget): widget is Widget => widget !== undefined && widget.type === WidgetType.Configurable && !isChatWidget(widget))
 </script>
 
 <div class="root">
-  <div class="block">
+  <div class="block top-block">
     {#each fixedWidgets as widget}
       <WidgetPresenter
         {widget}
@@ -89,12 +98,29 @@
       <ModernButton icon={IconSettings} size="small" on:click={handleAddWidget} />
     {/if}
   </div>
+
+  {#if chatWidgets.length > 0}
+    <div class="block bottom-block">
+      {#each chatWidgets as widget}
+        <div class="chat-widget-wrapper">
+          <WidgetPresenter
+            {widget}
+            highlighted={widget._id === selected}
+            on:click={() => {
+              handleSelectWidget(widget)
+            }}
+          />
+        </div>
+      {/each}
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
   .root {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding-block: var(--spacing-2);
     height: 100%;
     width: 3.5rem;
@@ -110,6 +136,27 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+  }
+
+  .bottom-block {
+    margin-top: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .chat-widget-wrapper :global(.app) {
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    border-radius: 0.35rem;
+  }
+
+  .chat-widget-wrapper :global(.icon-container) {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  .chat-widget-wrapper :global(svg) {
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .separator {

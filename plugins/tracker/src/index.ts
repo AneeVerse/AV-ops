@@ -412,6 +412,12 @@ export interface InvoiceLine {
   rate: number
 }
 
+export interface InvoiceItemTemplate {
+  title: string
+  hsn: string
+  gstRate: number
+}
+
 /**
  * @public
  */
@@ -431,6 +437,7 @@ export interface Invoice extends Doc {
   igst: number
   total: number
   space: Ref<Project>
+  signatory?: string
 }
 
 /**
@@ -439,6 +446,8 @@ export interface Invoice extends Doc {
  */
 export interface InvoiceProfile extends Doc {
   billedBy: InvoiceParty
+  itemTemplates?: InvoiceItemTemplate[]
+  defaultSignatory?: string
 }
 
 /**
@@ -619,7 +628,8 @@ const pluginState = plugin(trackerId, {
     NewProject: '' as IntlString,
     UnsetParentIssue: '' as IntlString,
     ForbidCreateProjectPermission: '' as IntlString,
-    ForbidCreateProjectPermissionDescription: '' as IntlString
+    ForbidCreateProjectPermissionDescription: '' as IntlString,
+    AuthorisedSignatory: '' as IntlString
   },
   extensions: {
     IssueListHeader: '' as ComponentExtensionId,

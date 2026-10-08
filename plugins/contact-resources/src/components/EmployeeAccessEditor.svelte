@@ -51,25 +51,40 @@
   let access: EmployeeAccess | undefined
   let toolsList: Array<{ _id: Ref<Doc>, name: string }> = []
 
-  $: isEmployee = client.getHierarchy().hasMixin(object, contact.mixin.Employee)
-  $: showPanel = canEdit && isEmployee && client.getHierarchy().hasClass(contact.class.EmployeeAccess)
+  $: isEmployee =
+    client.getHierarchy().hasMixin(object, contact.mixin.Employee) ||
+    (object._class as string)?.includes('Employee') ||
+    (object._class as string)?.includes('Person')
+  $: showPanel = canEdit && isEmployee
   $: isSelf = object._id === selfId
 
-  $: if (showPanel && client.getHierarchy().hasClass(contact.class.EmployeeAccess)) {
-    accessQuery.query(contact.class.EmployeeAccess, { attachedTo: object._id }, (res) => {
-      access = res[0]
-    })
+  $: if (showPanel) {
+    try {
+      if (client.getHierarchy().hasClass(contact.class.EmployeeAccess)) {
+        accessQuery.query(contact.class.EmployeeAccess, { attachedTo: object._id }, (res) => {
+          access = res[0]
+        })
+      }
+    } catch {
+      // ignore
+    }
   } else {
     accessQuery.unsubscribe()
     access = undefined
   }
 
-  $: if (showPanel && client.getHierarchy().hasClass(TOOL_CLASS)) {
-    toolsQuery.query(TOOL_CLASS, {}, (res) => {
-      toolsList = res
-        .map((doc) => ({ _id: doc._id, name: String((doc as Doc & { name?: string }).name ?? doc._id) }))
-        .sort((a, b) => a.name.localeCompare(b.name))
-    })
+  $: if (showPanel) {
+    try {
+      if (client.getHierarchy().hasClass(TOOL_CLASS)) {
+        toolsQuery.query(TOOL_CLASS, {}, (res) => {
+          toolsList = res
+            .map((doc) => ({ _id: doc._id, name: String((doc as Doc & { name?: string }).name ?? doc._id) }))
+            .sort((a, b) => a.name.localeCompare(b.name))
+        })
+      }
+    } catch {
+      toolsList = []
+    }
   } else {
     toolsQuery.unsubscribe()
     toolsList = []
@@ -81,11 +96,14 @@
     .slice()
     .sort((a, b) => a.alias.localeCompare(b.alias))
 
-  const modelWidgets = client.getModel().findAllSync<Widget>(workbench.class.Widget, {})
+  const modelWidgets = client
+    .getModel()
+    .findAllSync<Widget>(workbench.class.Widget, {})
+    .filter((w) => !String(w._id).toLowerCase().includes('chunter'))
   const extraWidgets: Array<Pick<Widget, '_id' | 'label' | 'icon'>> = [
     {
       _id: workbench.ids.NovinoChatWidget,
-      label: getEmbeddedLabel('Novino'),
+      label: getEmbeddedLabel('Chat'),
       icon: workbench.icon.Novino
     },
     {
@@ -236,8 +254,8 @@
     font-weight: 400;
   }
   .access-groups {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.25rem;
     margin-top: 1rem;
   }

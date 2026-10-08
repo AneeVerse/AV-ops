@@ -65,8 +65,12 @@ export function createModel (builder: Builder): void {
       icon: tools.icon.Application,
       alias: toolsId,
       hidden: false,
-      position: 'top',
       order: 250,
+      navigatorModel: {
+        spaces: [],
+        hideStarred: true,
+        groups: [{ id: 'tools-navigation', groupByClass: tools.class.Tool, component: tools.component.ToolsDirectory }]
+      },
       component: tools.component.ToolsDirectory
     },
     tools.app.Tools

@@ -1,6 +1,10 @@
 <!--
 // Copyright © 2026 AneeVerse
 -->
+<script context="module" lang="ts">
+  import { writable } from 'svelte/store'
+  const invoiceCompany = writable('all')
+</script>
 <script lang="ts">
   import { type Organization } from '@hcengineering/contact'
   import contact from '@hcengineering/contact'
@@ -15,7 +19,7 @@
     IconAdd,
     IconDelete,
     IconFile,
-    Label,
+    NavItem,
     Scroller,
     showPopup,
     type DropdownTextItem
@@ -41,8 +45,9 @@
   let month: string = 'all'
   let projectFilter: string = 'all'
   let companyFilter: string = 'all'
+  export let navigationOnly = false
 
-  liveQuery.query(tracker.class.Invoice, query, (result) => {
+  $: liveQuery.query(tracker.class.Invoice, query, (result) => {
     invoices = result.slice().sort((a, b) => b.invoiceDate - a.invoiceDate)
   })
   projectQuery.query(tracker.class.Project, {}, (result) => {
@@ -51,6 +56,31 @@
   orgQuery.query(contact.class.Organization, {}, (result) => {
     organizations = new Map(result.map((o) => [o._id, o]))
   })
+
+  function getCompanyColor (str: string): string {
+    const colors = [
+      '#ef4444', '#f97316', '#f59e0b', '#10b981',
+      '#06b6d4', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899'
+    ]
+    let hash = 0
+    for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash)
+    return colors[Math.abs(hash) % colors.length]
+  }
+
+  $: companiesWithInvoices = Array.from(
+    invoices.reduce((map, inv) => {
+      const name = companyName(inv)
+      if (name && name !== '—') {
+        const existing = map.get(name) ?? 0
+        map.set(name, existing + 1)
+      }
+      return map
+    }, new Map<string, number>())
+  ).map(([name, count]) => ({
+    name,
+    count,
+    color: getCompanyColor(name)
+  })).sort((a, b) => a.name.localeCompare(b.name))
 
   $: months = Array.from(new Set(invoices.map((inv) => monthKey(inv.invoiceDate)))).sort().reverse()
   $: monthItems = [
@@ -75,16 +105,17 @@
   $: visible = invoices.filter((inv) => {
     if (month !== 'all' && monthKey(inv.invoiceDate) !== month) return false
     if (currentSpace === undefined && projectFilter !== 'all' && inv.space !== projectFilter) return false
+    if ($invoiceCompany !== 'all' && companyName(inv) !== $invoiceCompany) return false
     if (companyFilter !== 'all' && companyName(inv) !== companyFilter) return false
     return true
   })
 
   function openCreate (): void {
-    showPopup(CreateInvoice, { currentSpace }, 'top')
+    showPopup(CreateInvoice, { currentSpace }, 'top', () => {})
   }
 
   function openEdit (invoice: Invoice): void {
-    showPopup(CreateInvoice, { currentSpace: invoice.space, value: invoice }, 'top')
+    showPopup(CreateInvoice, { currentSpace: invoice.space, value: invoice }, 'top', () => {})
   }
 
   function downloadOne (invoice: Invoice): void {
@@ -119,107 +150,170 @@
   }
 </script>
 
-<div class="hulyComponent">
-  <Header adaptive="disabled">
-    <Breadcrumb icon={tracker.icon.Invoices} label={title} size={'large'} isCurrent />
-    <svelte:fragment slot="extra">
-      <div class="av-filters">
-        <DropdownLabels
-          items={monthItems}
-          bind:selected={month}
-          autoSelect={false}
-          enableSearch={false}
-          showDropdownIcon
-          kind={'regular'}
-          size={'small'}
-          justify={'left'}
-        />
-        {#if currentSpace === undefined}
+{#if navigationOnly}
+  <div class="sidebar-action">
+    <Button icon={IconAdd} label={trackerRes.string.NewInvoice} kind={'primary'} width={'100%'} justify={'center'} on:click={openCreate} />
+  </div>
+  <NavItem icon={IconFile} title="All invoices" count={invoices.length} selected={$invoiceCompany === 'all'} on:click={() => { $invoiceCompany = 'all' }} />
+  <div class="sidebar-group-title">COMPANIES</div>
+  {#each companiesWithInvoices as comp}
+    <NavItem icon={IconFile} title={comp.name} count={comp.count} selected={$invoiceCompany === comp.name} on:click={() => { $invoiceCompany = comp.name }} />
+  {:else}
+    <div class="sidebar-empty">No invoices yet</div>
+  {/each}
+{:else}
+<div class="hulyComponent invoices-container">
+  <div class="hulyComponent invoices-content">
+    <Header adaptive="disabled">
+      <Breadcrumb
+        icon={tracker.icon.Invoices}
+        label={$invoiceCompany === 'all' ? title : `${title} — ${$invoiceCompany}`}
+        size={'large'}
+        isCurrent
+      />
+      <svelte:fragment slot="extra">
+        <div class="av-filters">
           <DropdownLabels
-            items={projectItems}
-            bind:selected={projectFilter}
+            items={monthItems}
+            bind:selected={month}
             autoSelect={false}
-            enableSearch
+            enableSearch={false}
             showDropdownIcon
             kind={'regular'}
             size={'small'}
             justify={'left'}
           />
-        {/if}
-        <DropdownLabels
-          items={companyItems}
-          bind:selected={companyFilter}
-          autoSelect={false}
-          enableSearch
-          showDropdownIcon
+          {#if currentSpace === undefined}
+            <DropdownLabels
+              items={projectItems}
+              bind:selected={projectFilter}
+              autoSelect={false}
+              enableSearch
+              showDropdownIcon
+              kind={'regular'}
+              size={'small'}
+              justify={'left'}
+            />
+          {/if}
+          {#if $invoiceCompany === 'all'}
+            <DropdownLabels
+              items={companyItems}
+              bind:selected={companyFilter}
+              autoSelect={false}
+              enableSearch
+              showDropdownIcon
+              kind={'regular'}
+              size={'small'}
+              justify={'left'}
+            />
+          {/if}
+        </div>
+      </svelte:fragment>
+      <svelte:fragment slot="actions">
+        <Button
+          icon={IconFile}
+          label={trackerRes.string.DownloadMonth}
           kind={'regular'}
-          size={'small'}
-          justify={'left'}
+          disabled={visible.length === 0}
+          on:click={downloadMonth}
         />
-      </div>
-    </svelte:fragment>
-    <svelte:fragment slot="actions">
-      <Button
-        icon={IconFile}
-        label={trackerRes.string.DownloadMonth}
-        kind={'regular'}
-        disabled={visible.length === 0}
-        on:click={downloadMonth}
-      />
-      <Button icon={IconAdd} label={trackerRes.string.NewInvoice} kind={'primary'} on:click={openCreate} />
-    </svelte:fragment>
-  </Header>
-  <Scroller>
-    <table class="av-list">
-      <thead>
-        <tr>
-          <th>Number</th>
-          <th>Date</th>
-          <th>Company</th>
-          <th>Project</th>
-          <th class="num">Total</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each visible as invoice (invoice._id)}
+        <Button icon={IconAdd} label={trackerRes.string.NewInvoice} kind={'primary'} on:click={openCreate} />
+      </svelte:fragment>
+    </Header>
+    <Scroller>
+      <table class="av-list">
+        <thead>
           <tr>
-            <td>
-              <button class="link" on:click={() => { openEdit(invoice) }}>{invoice.number}</button>
-            </td>
-            <td>{formatInvoiceDate(invoice.invoiceDate)}</td>
-            <td>{companyName(invoice)}</td>
-            <td>{projectName(invoice)}</td>
-            <td class="num">{formatINR(invoice.total)}</td>
-            <td class="acts">
-              <Button
-                icon={IconFile}
-                kind={'ghost'}
-                size={'small'}
-                showTooltip={{ label: trackerRes.string.DownloadInvoice }}
-                on:click={() => { downloadOne(invoice) }}
-              />
-              <Button
-                icon={IconDelete}
-                kind={'ghost'}
-                size={'small'}
-                on:click={() => { void remove(invoice) }}
-              />
-            </td>
+            <th>Number</th>
+            <th>Date</th>
+            <th>Company</th>
+            <th>Project</th>
+            <th class="num">Total</th>
+            <th></th>
           </tr>
-        {:else}
-          <tr>
-            <td colspan="6">
-              <Label label={trackerRes.string.Invoices} />
-            </td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </Scroller>
+        </thead>
+        <tbody>
+          {#each visible as invoice (invoice._id)}
+            <tr>
+              <td>
+                <button class="link" on:click={() => { openEdit(invoice) }}>{invoice.number}</button>
+              </td>
+              <td>{formatInvoiceDate(invoice.invoiceDate)}</td>
+              <td>{companyName(invoice)}</td>
+              <td>{projectName(invoice)}</td>
+              <td class="num">{formatINR(invoice.total)}</td>
+              <td class="acts">
+                <Button
+                  icon={IconFile}
+                  kind={'ghost'}
+                  size={'small'}
+                  showTooltip={{ label: trackerRes.string.DownloadInvoice }}
+                  on:click={() => { downloadOne(invoice) }}
+                />
+                <Button
+                  icon={IconDelete}
+                  kind={'ghost'}
+                  size={'small'}
+                  on:click={() => { void remove(invoice) }}
+                />
+              </td>
+            </tr>
+          {:else}
+            <tr>
+              <td colspan="6" class="empty-invoices-cell">
+                <div class="empty-invoices-msg">
+                  <span>No invoices found</span>
+                  <Button icon={IconAdd} label={trackerRes.string.NewInvoice} kind={'primary'} size={'small'} on:click={openCreate} />
+                </div>
+              </td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </Scroller>
+  </div>
 </div>
+{/if}
 
 <style lang="scss">
+  .invoices-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .sidebar-action {
+    margin-bottom: 0.75rem;
+    padding: 0 0.75rem;
+  }
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0 0.5rem 1rem;
+  }
+  .sidebar-group-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--theme-dark-color);
+    margin: 1.25rem 0.5rem 0.4rem;
+  }
+  .sidebar-empty {
+    font-size: 0.8rem;
+    color: var(--theme-dark-color);
+    padding: 0.5rem;
+    font-style: italic;
+  }
+  .invoices-content {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
   .av-filters {
     display: flex;
     flex-wrap: wrap;
@@ -246,5 +340,17 @@
     cursor: pointer;
     font: inherit;
     font-weight: 600;
+  }
+  .empty-invoices-cell {
+    padding: 3rem 1rem !important;
+    text-align: center !important;
+  }
+  .empty-invoices-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--theme-dark-color);
+    font-size: 0.9rem;
   }
 </style>

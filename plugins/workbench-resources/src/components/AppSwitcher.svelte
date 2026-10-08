@@ -15,7 +15,7 @@
 <script lang="ts">
   import core, { AccountRole, getCurrentAccount, type Ref } from '@hcengineering/core'
   import type { Application } from '@hcengineering/workbench'
-  import { createQuery, getClient } from '@hcengineering/presentation'
+  import { createQuery, getClient, pluginConfigurationStore } from '@hcengineering/presentation'
   import workbench from '@hcengineering/workbench'
   import {
     applicationOrderStore,
@@ -111,9 +111,10 @@
     apps.filter(
       (it) =>
         isAllowedToRole(it.accessLevel, me) &&
-        it.position !== 'top' &&
+        (it.position !== 'top' || it.alias === 'invoices' || it.alias === 'tools') &&
         it.position !== 'bottom' &&
-        !isExcludedApp(it.alias)
+        !isExcludedApp(it.alias) &&
+        ($pluginConfigurationStore.configuration.get(it.alias as any)?.enabled ?? true)
     ),
     applicationOrder
   )

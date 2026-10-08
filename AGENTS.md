@@ -1,7 +1,7 @@
 # Project Instructions
 
-- Do not run build commands automatically for verification.
-- When finishing work, state that the task is complete and ask the user to verify it manually.
+- Do not run a separate build just to verify. After a code change that can reach production, run `deploy.cmd` before finishing (`$env:HULY_NO_PAUSE = '1'`). Skip that only when the user says not to deploy, or the edit cannot ship (docs-only).
+- When finishing work, state that the task is complete. After a deploy, give the live URL and ask the user to hard-refresh with Ctrl+F5.
 - **Fork history (what we changed vs upstream Huly and why):** [docs/ANEEVERSE-FORK-CHANGES.md](docs/ANEEVERSE-FORK-CHANGES.md)
 - **Local UI (local Docker DB):** `local.cmd` — see [docs/LOCAL-AND-DEPLOY.md](docs/LOCAL-AND-DEPLOY.md).
 - **Local UI (production data):** `prod-local.cmd` — SSH tunnel to live aneeverse.

@@ -7,7 +7,7 @@
 # Stages are skipped automatically when nothing they care about changed.
 set -euo pipefail
 
-VPS="${HULY_VPS:-root@148.230.67.132}"
+VPS="${HULY_VPS:-mayur@148.230.67.132}"
 SSH_KEY="${HULY_SSH_KEY:-$HOME/.ssh/id_ed25519}"
 SCP=(scp -o BatchMode=yes -i "$SSH_KEY")
 SSH=(ssh -o BatchMode=yes -o ConnectTimeout=20 -i "$SSH_KEY")
@@ -425,7 +425,7 @@ cmd_model() {
   [ -s "$fork" ] || die "model bundle missing at $fork"
 
   patch="$MODEL_CACHE/patch-production.sql"
-  local max="${HULY_MODEL_MAX:-80}"
+  local max="${HULY_MODEL_MAX:-300}"
   node "$REPO_ROOT/scripts/huly-model-patch.mjs" --base "$base" --fork "$fork" --out "$patch" --max "$max"
 
   # The generator is deterministic, so an identical patch means production already

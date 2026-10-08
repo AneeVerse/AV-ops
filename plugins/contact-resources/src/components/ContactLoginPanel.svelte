@@ -105,8 +105,6 @@
   }
 </script>
 
-<EmployeeAccessEditor {object} />
-
 {#if canManage}
   <div class="login-panel mt-4">
     <div class="fs-title mb-2">

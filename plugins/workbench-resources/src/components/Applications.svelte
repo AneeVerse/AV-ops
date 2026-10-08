@@ -22,7 +22,7 @@
     type ModulePermissionGroup,
     type Ref
   } from '@hcengineering/core'
-  import { createNotificationsQuery, createQuery, getClient } from '@hcengineering/presentation'
+  import { createNotificationsQuery, createQuery, getClient, pluginConfigurationStore } from '@hcengineering/presentation'
   import { Scroller, deviceOptionsStore as deviceInfo } from '@hcengineering/ui'
   import { NavLink } from '@hcengineering/view-resources'
   import type { Application } from '@hcengineering/workbench'
@@ -164,13 +164,14 @@
       !hidden.includes(app._id) &&
       !excluded.includes(app.alias) &&
       !disabled.has(app._id) &&
+      ($pluginConfigurationStore.configuration.get(app.alias as any)?.enabled ?? true) &&
       isAllowedApplication(access, app)
 
     topApps = apps
-      .filter((it) => it.position === 'top' && isApplicationVisibleInSidebar(it))
+      .filter((it) => it.position === 'top' && it.alias !== 'invoices' && it.alias !== 'tools' && isApplicationVisibleInSidebar(it))
       .sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity))
     midApps = sortApplicationsByOrder(
-      apps.filter((it) => it.position !== 'top' && it.position !== 'bottom' && isApplicationVisibleInSidebar(it)),
+      apps.filter((it) => (it.position !== 'top' || it.alias === 'invoices' || it.alias === 'tools') && it.position !== 'bottom' && isApplicationVisibleInSidebar(it)),
       order
     )
     bottomApps = apps.filter((it) => it.position === 'bottom' && isApplicationVisibleInSidebar(it))

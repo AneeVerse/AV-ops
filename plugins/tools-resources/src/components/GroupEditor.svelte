@@ -90,15 +90,34 @@
   }
 
   function confirmDelete (): void {
-    if (groupDoc === undefined) return
-    const target = groupDoc
+    const slug = group?.id ?? groupDoc?.host
     showPopup(
       MessageBox,
       {
         label: tools.string.DeleteGroup,
         message: tools.string.DeleteGroupConfirm,
+        dangerous: true,
         action: async () => {
-          await client.remove(target)
+          try {
+            if (groupDoc !== undefined) {
+              await client.remove(groupDoc)
+            } else if (slug) {
+              const existing = await client.findOne(tools.class.Tool, { _id: `tools:group:${slug}` as any })
+              if (existing !== undefined) {
+                await client.remove(existing)
+              }
+            }
+            if (slug) {
+              const inGroup = await client.findAll(tools.class.Tool, { group: slug as any })
+              for (const t of inGroup) {
+                if (t._id !== `tools:group:${slug}`) {
+                  await client.update(t, { group: 'tools' })
+                }
+              }
+            }
+          } catch (err) {
+            console.error('Failed to delete group:', err)
+          }
           dispatch('close')
         }
       },
@@ -108,7 +127,7 @@
 </script>
 
 <Card
-  label={groupDoc === undefined ? tools.string.AddGroup : tools.string.EditGroup}
+  label={groupDoc === undefined && group === undefined ? tools.string.AddGroup : tools.string.EditGroup}
   okLabel={tools.string.SaveGroup}
   okAction={save}
   {canSave}
@@ -149,7 +168,7 @@
   </div>
 
   <svelte:fragment slot="footer">
-    {#if groupDoc !== undefined}
+    {#if groupDoc !== undefined || group !== undefined}
       <Button kind="dangerous" size="large" label={tools.string.DeleteGroup} on:click={confirmDelete} />
     {/if}
   </svelte:fragment>

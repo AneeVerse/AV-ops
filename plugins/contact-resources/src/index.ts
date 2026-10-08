@@ -86,6 +86,7 @@ import EditOrganization from './components/EditOrganization.svelte'
 import EditOrganizationPanel from './components/EditOrganizationPanel.svelte'
 import EditPerson from './components/EditPerson.svelte'
 import ContactLoginPanel from './components/ContactLoginPanel.svelte'
+import EmployeeAccessEditor from './components/EmployeeAccessEditor.svelte'
 import EditableAvatar from './components/EditableAvatar.svelte'
 import EmployeeArrayEditor from './components/EmployeeArrayEditor.svelte'
 import EmployeeBox from './components/EmployeeBox.svelte'
@@ -387,6 +388,7 @@ export default async (): Promise<Resources> => ({
     CreateOrganization,
     EditPerson,
     ContactLoginPanel,
+    EmployeeAccessEditor,
     EditOrganization,
     SocialEditor,
     Contacts,

@@ -71,6 +71,7 @@ import {
   type InvoiceLine,
   type InvoiceParty,
   type InvoiceProfile,
+  type InvoiceItemTemplate,
   type IssueTemplateChild,
   type Milestone,
   type MilestoneStatus,
@@ -514,6 +515,10 @@ export class TInvoice extends TDoc implements Invoice {
   @Prop(TypeNumber(), tracker.string.InvoiceTotal)
     total!: number
 
+  @Prop(TypeString(), tracker.string.AuthorisedSignatory)
+  @Hidden()
+    signatory?: string
+
   declare space: Ref<Project>
 }
 
@@ -526,6 +531,14 @@ export class TInvoiceProfile extends TDoc implements InvoiceProfile {
   @Prop(TypeRecord(), tracker.string.BilledBy)
   @Hidden()
     billedBy!: InvoiceParty
+
+  @Prop(ArrOf(TypeRecord()), tracker.string.InvoiceItems)
+  @Hidden()
+    itemTemplates?: InvoiceItemTemplate[]
+
+  @Prop(TypeString(), tracker.string.AuthorisedSignatory)
+  @Hidden()
+    defaultSignatory?: string
 }
 
 @Mixin(tracker.mixin.ClassicProjectTypeData, tracker.class.Project)

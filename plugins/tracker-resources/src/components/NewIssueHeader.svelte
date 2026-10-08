@@ -23,6 +23,7 @@
   import { onDestroy } from 'svelte'
   import tracker from '../plugin'
   import CreateIssue from './CreateIssue.svelte'
+  import CreateInvoice from './invoices/CreateInvoice.svelte'
 
   export let currentSpace: Ref<Space> | undefined
 
@@ -59,7 +60,14 @@
   function newIssue (): void {
     closed = false
     Analytics.handleEvent(TrackerEvents.NewIssueButtonClicked)
-    showPopup(CreateIssue, { space: currentSpace, shouldSaveDraft: true }, 'top', () => {
+    showPopup(CreateIssue, { space: currentSpace, shouldSaveDraft: true, autoSelectProject: false }, 'top', () => {
+      closed = true
+    })
+  }
+
+  function newInvoice (): void {
+    closed = false
+    showPopup(CreateInvoice, { currentSpace }, 'top', () => {
       closed = true
     })
   }
@@ -69,7 +77,7 @@
   function updateActions (draft: boolean, project: boolean, closed: boolean): void {
     mainActionId = draft || !closed ? tracker.string.ResumeDraft : tracker.string.NewIssue
     if (project) {
-      visibleActions = [tracker.string.CreateProject, mainActionId, tracker.string.Import]
+      visibleActions = [tracker.string.CreateProject, mainActionId, tracker.string.NewInvoice, tracker.string.Import]
     } else {
       visibleActions = [tracker.string.CreateProject]
     }
@@ -102,6 +110,12 @@
       label: tracker.string.NewIssue,
       keyBindingPromise: newIssueKeyBindingPromise,
       callback: newIssue
+    },
+    {
+      id: tracker.string.NewInvoice,
+      label: tracker.string.NewInvoice,
+      accountRole: AccountRole.User,
+      callback: newInvoice
     },
     {
       id: tracker.string.Import,

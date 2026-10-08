@@ -4,6 +4,7 @@
 <script lang="ts">
   import trackerRes from '../../plugin'
   import InvoicesBrowser from './InvoicesBrowser.svelte'
+  export let model: { id: string } | undefined = undefined
 </script>
 
-<InvoicesBrowser title={trackerRes.string.AllInvoices} />
+<InvoicesBrowser navigationOnly={model?.id === 'invoices-navigation'} title={trackerRes.string.AllInvoices} />

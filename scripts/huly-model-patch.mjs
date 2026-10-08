@@ -24,10 +24,10 @@ import { readFileSync, writeFileSync } from 'node:fs'
 // the ones that are no longer part of the patch.
 const ID_PREFIX = 'fp-'
 
-// Patch transactions must sort after every bundled transaction, because the model is
-// replayed in modifiedOn order. Fixed rather than Date.now() so re-running with
-// unchanged models produces a byte-identical patch.
-const PATCH_EPOCH = 1800000000000
+// Patch transactions must sort after every bundled transaction (max ~1783051570973)
+// and before any workspace runtime transactions (min ~1786956673777), so user
+// configuration changes (e.g. disabling a plugin) sort after and are not overwritten.
+const PATCH_EPOCH = 1785000000000
 
 function parseArgs (argv) {
   const out = { max: 60 }
@@ -53,7 +53,7 @@ function load (path) {
 
 // Docs created without an explicit id get a fresh random id on every model build, so
 // they cannot be matched between two builds. Diffing them would recreate them endlessly.
-const isNamed = (objectId) => typeof objectId === 'string' && objectId.includes(':')
+const isNamed = (objectId) => typeof objectId === 'string' && (objectId.includes(':') || objectId.startsWith('plugin-configuration-'))
 
 const stable = (value) => {
   if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'null'
@@ -184,6 +184,14 @@ function toSql (patch) {
       : `DELETE FROM model_tx WHERE _id LIKE '${ID_PREFIX}%';`
   )
   lines.push('')
+
+  // An early fork bootstrap created this named viewlet after PATCH_EPOCH.
+  // Its duplicate TxCreateDoc resets the patched defaults during model replay.
+  // Retire only that obsolete definition; retain user preferences and updates.
+  if (patch.some((tx) => tx.objectId === 'tracker:viewlet:IssueStatusTable' && tx._class === 'core:class:TxCreateDoc')) {
+    lines.push("DELETE FROM model_tx WHERE \"objectId\" = 'tracker:viewlet:IssueStatusTable' AND _class = 'core:class:TxCreateDoc' AND _id NOT LIKE 'fp-%';")
+    lines.push('')
+  }
 
   patch.forEach((tx, i) => {
     const modifiedOn = PATCH_EPOCH + i

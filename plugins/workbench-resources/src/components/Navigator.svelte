@@ -16,7 +16,7 @@
   import core, { Doc, Ref, SortingOrder, Space, getCurrentAccount, hasAccountRole } from '@hcengineering/core'
   import { getResource } from '@hcengineering/platform'
   import preference, { SpacePreference } from '@hcengineering/preference'
-  import { createQuery, getClient, isAdminUser } from '@hcengineering/presentation'
+  import { createQuery, getClient, isAdminUser, pluginConfigurationStore } from '@hcengineering/presentation'
   import { Scroller, NavItem, Component } from '@hcengineering/ui'
   import { NavLink } from '@hcengineering/view-resources'
   import type { Application, NavigatorModel, SpecialNavModel } from '@hcengineering/workbench'
@@ -104,7 +104,10 @@
     }
   }
 
-  $: if (model) update(model, spaces, preferences)
+  $: if (model) {
+    void $pluginConfigurationStore
+    update(model, spaces, preferences)
+  }
 
   async function updateSpecials (
     specials: SpecialNavModel[],
@@ -124,6 +127,11 @@
         if (visible && sp.visibleIf !== undefined) {
           const f = await getResource(sp.visibleIf)
           visible = await f(spaces)
+        }
+        if (visible && (sp.id === 'all-invoices' || sp.id === 'invoices')) {
+          if ($pluginConfigurationStore.configuration.get('invoices')?.enabled === false) {
+            visible = false
+          }
         }
 
         return () => {
@@ -172,7 +180,9 @@
     {/if}
     <div class="min-h-3 flex-no-shrink" />
 
-    <SavedView alias={currentApplication?.alias} on:select={(res) => (menuSelection = res.detail)} />
+    {#if model.spaces.length > 0 || (model.specials?.length ?? 0) > 0}
+      <SavedView alias={currentApplication?.alias} on:select={(res) => (menuSelection = res.detail)} />
+    {/if}
     {#if starred.length > 0 && !model.hideStarred}
       <StarredNav
         label={preference.string.Starred}
