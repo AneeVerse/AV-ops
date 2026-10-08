@@ -146,6 +146,8 @@ Dates are commit dates in this repo (Aug 2026).
 
 **Deploy:** Frontend bundle **and** `model` (Application + `TTool`). Official transactor images do not run `toolsOperation`, so the catalog is seeded the first time an Owner/Maintainer opens Tools. Ship front first, then model.
 
+While a tool is open in a tab, the Tools header (breadcrumb, reload, open-in-tab, copy, close, search, Add tool) is hidden so the embedded app fills the panel. Leave the tool from the left rail. This is front-only, not `model_tx`. The Listing Images lightbox, batch download, and source-URL link ship with the separate `image-generator` service on port `8028`, not with this Huly bundle.
+
 ---
 
 ### 4.15 Admin-provisioned employees (login, delete, no signup)
@@ -520,3 +522,14 @@ When you add a fork feature:
 ---
 
 *Generated from git history of AneeVerse/AV-ops (platform-develop) as of 2026-08-21. Upstream Huly remains Hardcore Engineering’s open-source platform; this document describes only AneeVerse customizations.*
+
+## 2026-10-07 — Shared navigation and invoice layout
+
+- Invoice and Tools navigation now runs inside the existing workbench Navigator, NavHeader, NavItem, and Separator. This shares sidebar width, collapse state, and mobile behavior with the standard apps; application model changes must be synced into model_tx.
+- Disabled widget plugins update the right rail reactively, and Help/Support entries are removed from the rail and navigator footer.
+- Tasks default to due-date ascending with undated tasks last; explicit sorting preferences remain available. Browser live-query date sorting matches the server when documents update. The New task action keeps the selected project and disables unrelated recent/starred project fallback.
+- Invoice create/edit uses the full viewport. Create/Save sits in the dialog header beside close. The form takes the leftover width, and the preview column is about 38% of the dialog so the fitted A4 page stays readable without changing PDF output. Signatory and line-item selectors use native Huly dropdowns.
+- States tables forward view options to the standard TableBrowser, preserving column sorting. Model sync retires the obsolete duplicate IssueStatusTable bootstrap definition so it cannot overwrite current defaults.
+- Office recording availability skips disabled Office and handles an absent optional endpoint without attempting to parse HTML as JSON.
+- Date-first presentation queries split dated and undated results into bounded live subscriptions before applying the requested limit, compensating for Cockroach ASC NULL ordering without changing backend APIs.
+- Opening a tool in a tab hides the Tools header bar so the embedded page uses the full panel. The left rail stays. Listing Images viewer changes (one close button, no hint line, Download and Download all, batch title link to the source listing URL) live in the image-generator service, not `model_tx`.

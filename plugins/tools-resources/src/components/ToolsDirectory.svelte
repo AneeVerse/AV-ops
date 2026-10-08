@@ -1,6 +1,12 @@
 <!--
 // Copyright © 2026 AneeVerse
 -->
+<script context="module" lang="ts">
+  import { writable } from 'svelte/store'
+  const activeGroup = writable('all')
+  const activeTab = writable('directory')
+  const toolTabs = writable<import('@hcengineering/tools').Tool[]>([])
+</script>
 <script lang="ts">
   import core, {
     getCurrentAccount,
@@ -10,6 +16,7 @@
     type Mixin,
     type Ref
   } from '@hcengineering/core'
+  import { onDestroy } from 'svelte'
   import type { IntlString } from '@hcengineering/platform'
   import { createQuery, getClient, MessageBox } from '@hcengineering/presentation'
   import {
@@ -22,17 +29,19 @@
     type ToolGroupDefinition
   } from '@hcengineering/tools'
   import {
+    Action,
     Breadcrumb,
     Button,
     Header,
     Icon,
     IconAdd,
-    IconClose,
     IconDelete,
     IconEdit,
     IconFolder,
+    IconMoreV,
     IconSearch,
     Label,
+    Menu,
     NavItem,
     Scroller,
     SearchInput,
@@ -51,7 +60,8 @@
   const EMPLOYEE = 'contact:mixin:Employee' as Ref<Mixin<Doc>>
 
   let query = ''
-  let activeGroupId: string = 'all'
+  export let model: { id: string } | undefined = undefined
+  const navigationOnly = model?.id === 'tools-navigation'
   let rawList: Tool[] = []
   let seedAttempted = false
   let employeeId: Ref<Doc> | undefined
@@ -59,9 +69,11 @@
   let limitEnabled = false
 
   // In-app tabs & modal popup state
-  let openTabs: Tool[] = []
-  let activeTabId: string = 'directory'
   let modalSite: Tool | undefined = undefined
+
+  onDestroy(() => {
+    if (!navigationOnly) { activeGroup.set('all'); activeTab.set('directory'); toolTabs.set([]) }
+  })
 
   const canManage = isOwnerOrMaintainer()
   const client = getClient()
@@ -98,25 +110,54 @@
 
   liveQuery.query(tools.class.Tool, {}, (result) => {
     rawList = result.slice()
-    void maybeSeedCatalog()
+    if (!navigationOnly) void maybeSeedCatalog()
   })
 
   // Separate custom group docs from actual tool docs
   $: groupDocs = rawList.filter((doc) => doc.group === '__group__' || doc._id.startsWith('tools:group:'))
   $: toolsList = rawList
-    .filter((doc) => doc.group !== '__group__' && !doc._id.startsWith('tools:group:'))
+    .filter((doc) => {
+      if (doc.group === '__group__' || doc._id.startsWith('tools:group:')) return false
+      const rawId = doc._id.replace('tools:tool:', '')
+      const lowerName = (doc.name ?? '').toLowerCase()
+      if (
+        rawId === 'n8n' ||
+        rawId === 'amazon' ||
+        rawId === 'etsy' ||
+        rawId === 'n8n-ebay' ||
+        rawId === 'n8n-amazon' ||
+        rawId === 'n8n-etsy' ||
+        lowerName.includes('ebay -> listing') ||
+        lowerName.includes('amazon -> listing') ||
+        lowerName.includes('etsy -> listing')
+      ) return false
+      return true
+    })
     .sort((a, b) => {
       const order = (a.order ?? 0) - (b.order ?? 0)
       if (order !== 0) return order
       return a.name.localeCompare(b.name)
     })
 
+  $: deletedGroupIds = new Set(
+    rawList
+      .filter((d) => d.group === '__deleted__' || d._id.startsWith('tools:deleted:'))
+      .map((d) => d.host || d._id.replace('tools:deleted:', ''))
+  )
+
   // Build list of all available groups
   $: availableGroups = (() => {
-    const list: ToolGroupDefinition[] = [...DEFAULT_GROUPS]
+    const list: ToolGroupDefinition[] = []
+
+    for (const dg of DEFAULT_GROUPS) {
+      if (!deletedGroupIds.has(dg.id)) {
+        list.push({ ...dg })
+      }
+    }
 
     for (const gDoc of groupDocs) {
       const slug = gDoc.host || gDoc._id.replace('tools:group:', '')
+      if (deletedGroupIds.has(slug)) continue
       const existing = list.find((g) => g.id === slug)
       if (existing) {
         existing.name = gDoc.name
@@ -135,11 +176,11 @@
 
     // Include any group that exists on tools but not defined yet
     for (const tool of toolsList) {
-      if (tool.group && !list.some((g) => g.id === tool.group)) {
+      if (tool.group && !deletedGroupIds.has(tool.group) && !list.some((g) => g.id === tool.group)) {
         list.push({
           id: tool.group,
           name: tool.group.charAt(0).toUpperCase() + tool.group.slice(1),
-          hint: 'Custom group',
+          hint: 'Group',
           color: '#6366f1',
           isDefault: false
         })
@@ -166,6 +207,58 @@
     seedAttempted = true
     try {
       const existing = await client.findAll(tools.class.Tool, {})
+
+      // Auto-migrate old n8n tools (n8n, amazon, etsy, etc.) to single 'n8n-listing-images'
+      const oldN8nTools = existing.filter((t) => {
+        const id = (t._id as string)?.replace('tools:tool:', '')
+        const name = (t.name ?? '').toLowerCase()
+        return (
+          id === 'n8n' ||
+          id === 'amazon' ||
+          id === 'etsy' ||
+          id === 'n8n-ebay' ||
+          id === 'n8n-amazon' ||
+          id === 'n8n-etsy' ||
+          name.includes('ebay -> listing') ||
+          name.includes('amazon -> listing') ||
+          name.includes('etsy -> listing')
+        )
+      })
+      if (oldN8nTools.length > 0) {
+        for (const oldTool of oldN8nTools) {
+          try {
+            await client.remove(oldTool)
+          } catch (e) {
+            console.error('Failed to remove obsolete tool:', e)
+          }
+        }
+      }
+
+      // Ensure n8n-listing-images exists
+      const listingImagesId = catalogToolId('n8n-listing-images')
+      const hasListingImages = await client.findOne(tools.class.Tool, { _id: listingImagesId })
+      if (!hasListingImages) {
+        const site = TOOL_SITES.find((s) => s.id === 'n8n-listing-images')
+        if (site) {
+          await client.createDoc(
+            tools.class.Tool,
+            core.space.Workspace,
+            {
+              name: site.name,
+              description: site.description,
+              href: site.href,
+              host: site.host,
+              group: site.group,
+              https: site.https,
+              current: site.current,
+              openMode: site.openMode ?? 'tab',
+              order: 40
+            },
+            listingImagesId
+          )
+        }
+      }
+
       if (existing.length > 0) return
       for (let index = 0; index < TOOL_SITES.length; index++) {
         const site = TOOL_SITES[index]
@@ -197,7 +290,7 @@
   // Filter tools by active group and query
   $: filteredTools = toolsList.filter((site) => {
     if (!toolAllowed(site._id)) return false
-    if (activeGroupId !== 'all' && site.group !== activeGroupId) return false
+    if ($activeGroup !== 'all' && site.group !== $activeGroup) return false
     const q = query.trim().toLowerCase()
     if (q === '') return true
     return [site.name, site.host, site.description, site.login ?? ''].join(' ').toLowerCase().includes(q)
@@ -212,7 +305,7 @@
     .filter((section) => section.sites.length > 0)
 
   // Current active group definition
-  $: currentGroup = availableGroups.find((g) => g.id === activeGroupId)
+  $: currentGroup = availableGroups.find((g) => g.id === $activeGroup)
 
   // Helper counts
   function getGroupCount (groupId: string): number {
@@ -224,24 +317,35 @@
     if (mode === 'popup') {
       modalSite = site
     } else if (mode === 'tab') {
-      if (!openTabs.some((t) => t._id === site._id)) {
-        openTabs = [...openTabs, site]
+      if (!$toolTabs.some((t) => t._id === site._id)) {
+        $toolTabs = [...$toolTabs, site]
       }
-      activeTabId = site._id
+      $activeTab = site._id
     } else {
       window.open(site.href, '_blank', 'noopener,noreferrer')
     }
   }
 
+  function openToolDirectly (site: Tool): void {
+    if (site.openMode === 'window') {
+      window.open(site.href, '_blank', 'noopener,noreferrer')
+      return
+    }
+    if (!$toolTabs.some((t) => t._id === site._id)) {
+      $toolTabs = [...$toolTabs, site]
+    }
+    $activeTab = site._id
+  }
+
   function closeTab (toolId: string): void {
-    openTabs = openTabs.filter((t) => t._id !== toolId)
-    if (activeTabId === toolId) {
-      activeTabId = openTabs.length > 0 ? openTabs[openTabs.length - 1]._id : 'directory'
+    $toolTabs = $toolTabs.filter((t) => t._id !== toolId)
+    if ($activeTab === toolId) {
+      $activeTab = $toolTabs.length > 0 ? $toolTabs[$toolTabs.length - 1]._id : 'directory'
     }
   }
 
   function addTool (groupForNew?: string): void {
-    const targetGroup = typeof groupForNew === 'string' && groupForNew !== 'all' ? groupForNew : activeGroupId !== 'all' ? activeGroupId : 'tools'
+    const targetGroup = typeof groupForNew === 'string' && groupForNew !== 'all' ? groupForNew : $activeGroup !== 'all' ? $activeGroup : 'tools'
     showPopup(ToolEditor, { availableGroups, defaultGroup: targetGroup }, 'top')
   }
 
@@ -257,22 +361,51 @@
 
   function deleteCustomGroup (event: MouseEvent, gDef: ToolGroupDefinition): void {
     event.stopPropagation()
-    const doc = groupDocs.find((d) => d.host === gDef.id || d._id === `tools:group:${gDef.id}`)
-    if (!doc) return
     showPopup(
       MessageBox,
       {
         label: tools.string.DeleteGroup,
         message: tools.string.DeleteGroupConfirm,
+        dangerous: true,
         action: async () => {
-          // Reassign tools in this group to 'tools'
-          const inGroup = toolsList.filter((t) => t.group === gDef.id)
-          for (const t of inGroup) {
-            await client.update(t, { group: 'tools' })
-          }
-          await client.remove(doc)
-          if (activeGroupId === gDef.id) {
-            activeGroupId = 'all'
+          try {
+            // Reassign tools in this group to 'tools'
+            const inGroup = toolsList.filter((t) => t.group === gDef.id)
+            for (const t of inGroup) {
+              await client.update(t, { group: 'tools' })
+            }
+            const doc = groupDocs.find((d) => d.host === gDef.id || d._id === `tools:group:${gDef.id}`)
+            if (doc !== undefined) {
+              await client.remove(doc)
+            } else {
+              const existing = await client.findOne(tools.class.Tool, { _id: `tools:group:${gDef.id}` as any })
+              if (existing !== undefined) {
+                await client.remove(existing)
+              }
+            }
+            // Permanently mark as deleted
+            const deletedDocId = `tools:deleted:${gDef.id}` as any
+            const alreadyDeleted = await client.findOne(tools.class.Tool, { _id: deletedDocId })
+            if (alreadyDeleted === undefined) {
+              await client.createDoc(
+                tools.class.Tool,
+                core.space.Workspace,
+                {
+                  name: gDef.name,
+                  description: 'deleted',
+                  href: `deleted:${gDef.id}`,
+                  host: gDef.id,
+                  group: '__deleted__',
+                  https: true
+                },
+                deletedDocId
+              )
+            }
+            if ($activeGroup === gDef.id) {
+              $activeGroup = 'all'
+            }
+          } catch (err) {
+            console.error('Failed to delete group:', err)
           }
         }
       },
@@ -296,61 +429,140 @@
     )
   }
 
-  function selectNavGroup (id: string): void {
-    activeGroupId = id
-    activeTabId = 'directory'
+  let sidebarSearchQuery = ''
+  let showSidebarSearch = false
+
+  function getGroupColor (groupId: string): string {
+    const g = availableGroups.find((item) => item.id === groupId)
+    return g?.color ?? '#6366f1'
   }
 
-  $: activeTabTool = openTabs.find((t) => t._id === activeTabId)
+  function editTool (site: Tool): void {
+    showPopup(ToolEditor, { value: site, availableGroups }, 'top')
+  }
+
+  function deleteTool (site: Tool): void {
+    showPopup(
+      MessageBox,
+      {
+        label: tools.string.DeleteTool,
+        message: tools.string.DeleteToolConfirm,
+        dangerous: true,
+        action: async () => {
+          await client.remove(site)
+        }
+      },
+      'top'
+    )
+  }
+
+  function openGroupMenu (ev: MouseEvent, gDef: ToolGroupDefinition): void {
+    ev.stopPropagation()
+    const target = ev.currentTarget as HTMLElement
+    const actions: Action[] = [
+      {
+        label: `Add tool to ${gDef.name}` as any,
+        icon: IconAdd,
+        action: async () => {
+          addTool(gDef.id)
+        }
+      },
+      {
+        label: tools.string.EditGroup,
+        icon: IconEdit,
+        action: async () => {
+          const doc = groupDocs.find((d) => d.host === gDef.id || d._id === `tools:group:${gDef.id}`)
+          showPopup(GroupEditor, { group: gDef, groupDoc: doc }, 'top')
+        }
+      },
+      {
+        label: tools.string.DeleteGroup,
+        icon: IconDelete,
+        action: async () => {
+          deleteCustomGroup(ev, gDef)
+        }
+      }
+    ]
+    showPopup(Menu, { actions }, target)
+  }
+
+  function openToolMenu (ev: MouseEvent, tool: Tool): void {
+    ev.stopPropagation()
+    const target = ev.currentTarget as HTMLElement
+    const actions: Action[] = [
+      {
+        label: tools.string.EditTool,
+        icon: IconEdit,
+        action: async () => {
+          editTool(tool)
+        }
+      },
+      {
+        label: 'Open in new window' as any,
+        icon: IconFolder,
+        action: async () => {
+          window.open(tool.href, '_blank', 'noopener,noreferrer')
+        }
+      },
+      {
+        label: tools.string.DeleteTool,
+        icon: IconDelete,
+        action: async () => {
+          deleteTool(tool)
+        }
+      }
+    ]
+    showPopup(Menu, { actions }, target)
+  }
+
+  $: sidebarInvolvedTools = toolsList.filter((site) => {
+    if (!toolAllowed(site._id)) return false
+    if ($activeGroup !== 'all' && site.group !== $activeGroup) return false
+    if (sidebarSearchQuery.trim() !== '') {
+      const q = sidebarSearchQuery.trim().toLowerCase()
+      return (
+        site.name.toLowerCase().includes(q) ||
+        (site.description ?? '').toLowerCase().includes(q) ||
+        (site.host ?? '').toLowerCase().includes(q)
+      )
+    }
+    return true
+  })
+
+  $: involvedSectionTitle =
+    $activeGroup === 'all'
+      ? 'YOUR TOOLS'
+      : `${(currentGroup?.name ?? 'GROUP').toUpperCase()} TOOLS`
+
+  function selectNavGroup (id: string): void {
+    $activeGroup = id
+    $activeTab = 'directory'
+  }
+
+  $: activeTabTool = $toolTabs.find((t) => t._id === $activeTab)
 </script>
 
-<div class="hulyComponent tools-layout">
-  <!-- Left Navigation Sidebar (Tracker-Style Left Aligned) -->
-  <aside class="antiPanel-navigator landscape border-right">
-    <div class="antiPanel-wrap__content hulyNavPanel-container">
-      <div class="hulyNavPanel-header">
-        <div class="app-header-row">
-          <span class="app-header-icon">
-            <Icon icon={tools.icon.Application} size="small" />
-          </span>
-          <span class="app-header-title">Tools</span>
-        </div>
-      </div>
-
-      <!-- Action Button Area (Like Tracker's "+ New task") -->
-      {#if canManage}
-        <div class="nav-action-wrap">
-          <Button
-            icon={IconAdd}
-            label={tools.string.AddTool}
-            kind="primary"
-            size="large"
-            width="100%"
-            on:click={() => addTool()}
-          />
-        </div>
-      {/if}
-
-      <Scroller shrink>
-        <!-- All Tools Link -->
+{#if navigationOnly}
+      <div class="tools-navigation">
+        <!-- Top: All Tools -->
         <div class="nav-section">
           <NavItem
             icon={tools.icon.Application}
             label={tools.string.AllTools}
             count={toolsList.filter((s) => toolAllowed(s._id)).length}
-            selected={activeGroupId === 'all' && activeTabId === 'directory'}
+            selected={$activeGroup === 'all' && $activeTab === 'directory'}
             on:click={() => selectNavGroup('all')}
           />
         </div>
 
-        <!-- Groups Section -->
+        <!-- Top: Groups / Categories Section -->
         <div class="nav-groups-section">
-          <div class="nav-groups-header">
-            <span class="nav-groups-label"><Label label={tools.string.Groups} /></span>
+          <div class="nav-section-header">
+            <span class="nav-section-label"><Label label={tools.string.Groups} /></span>
             {#if canManage}
               <button
                 type="button"
-                class="add-group-btn"
+                class="header-tool-btn"
                 title="Add new group"
                 on:click|stopPropagation={addGroup}
               >
@@ -361,66 +573,147 @@
 
           <div class="groups-list">
             {#each availableGroups as gDef (gDef.id)}
-              {@const isCustom = !DEFAULT_GROUPS.some((dg) => dg.id === gDef.id)}
               {@const count = getGroupCount(gDef.id)}
-              <div
-                class="group-nav-row"
-                class:selected={activeGroupId === gDef.id && activeTabId === 'directory'}
-                on:click={() => selectNavGroup(gDef.id)}
-                role="button"
-                tabindex="0"
-                on:keydown={(e) => e.key === 'Enter' && selectNavGroup(gDef.id)}
-              >
-                <span class="group-dot" style:background-color={gDef.color ?? '#3b82f6'}></span>
-                <span class="group-name overflow-label">{gDef.name}</span>
-                <span class="group-count">{count}</span>
-
-                {#if canManage && isCustom}
-                  <div class="custom-group-actions" on:click|stopPropagation>
-                    <button
-                      type="button"
-                      class="row-action-btn"
-                      title="Edit group"
-                      on:click={(e) => editCustomGroup(e, gDef)}
-                    >
-                      ✎
-                    </button>
-                    <button
-                      type="button"
-                      class="row-action-btn danger"
-                      title="Delete group"
-                      on:click={(e) => deleteCustomGroup(e, gDef)}
-                    >
-                      ✕
-                    </button>
-                  </div>
+              <NavItem title={gDef.name} type="type-tag" color={gDef.color ?? '#3b82f6'} count={count}
+                selected={$activeGroup === gDef.id && $activeTab === 'directory'}
+                on:click={() => selectNavGroup(gDef.id)}>
+                <svelte:fragment slot="actions">
+                {#if canManage}
+                  <button
+                    type="button"
+                    class="row-more-btn"
+                    title="Group actions"
+                    on:click|stopPropagation={(e) => openGroupMenu(e, gDef)}
+                  >
+                    <Icon icon={IconMoreV} size="small" />
+                  </button>
                 {/if}
-              </div>
+                </svelte:fragment>
+              </NavItem>
             {/each}
           </div>
         </div>
-      </Scroller>
 
-      <!-- Sidebar Footer -->
-      <footer class="nav-footer-stats">
-        <span class="footer-count">{toolsList.length} total tools</span>
-        <span class="footer-brand">Aneeverse Ops</span>
-      </footer>
-    </div>
-  </aside>
+        <!-- Down: Involved Tools Section (Tracker Projects style) -->
+        <div class="nav-involved-section">
+          <div class="nav-section-header">
+            <div class="header-title-wrap">
+              <span class="header-chevron">▼</span>
+              <span class="nav-section-label">{involvedSectionTitle}</span>
+            </div>
+            <div class="header-actions-wrap">
+              {#if canManage}
+                <button
+                  type="button"
+                  class="header-tool-btn"
+                  title="Add tool to this group"
+                  on:click|stopPropagation={() => addTool($activeGroup)}
+                >
+                  +
+                </button>
+              {/if}
+              <button
+                type="button"
+                class="header-tool-btn"
+                class:active={showSidebarSearch}
+                title="Search tools"
+                on:click|stopPropagation={() => {
+                  showSidebarSearch = !showSidebarSearch
+                  if (!showSidebarSearch) sidebarSearchQuery = ''
+                }}
+              >
+                🔍
+              </button>
+            </div>
+          </div>
 
+          {#if showSidebarSearch}
+            <div class="sidebar-search-row">
+              <input
+                type="text"
+                class="sidebar-search-input"
+                placeholder="Filter tools..."
+                bind:value={sidebarSearchQuery}
+              />
+              {#if sidebarSearchQuery}
+                <button
+                  type="button"
+                  class="sidebar-search-clear"
+                  on:click={() => (sidebarSearchQuery = '')}
+                >
+                  ✕
+                </button>
+              {/if}
+            </div>
+          {/if}
+
+          <!-- Tools list matching Project sidebar items -->
+          <div class="involved-tools-list">
+            {#if sidebarInvolvedTools.length === 0}
+              <div class="empty-involved-tools">
+                <span class="empty-involved-text">
+                  No tools {$activeGroup !== 'all' ? 'in ' + (currentGroup?.name ?? 'group') : ''}
+                </span>
+                {#if canManage}
+                  <button
+                    type="button"
+                    class="empty-involved-add-btn"
+                    on:click={() => addTool($activeGroup)}
+                  >
+                    + Add tool
+                  </button>
+                {/if}
+              </div>
+            {:else}
+              {#each sidebarInvolvedTools as tool (tool._id)}
+                <NavItem title={tool.name} icon={IconFolder} iconProps={{ fill: getGroupColor(tool.group) }}
+                  selected={$activeTab === tool._id} on:click={() => openToolDirectly(tool)}>
+                  <svelte:fragment slot="actions">
+                  <div class="tool-hover-actions" on:click|stopPropagation>
+                    <button
+                      type="button"
+                      class="row-action-btn"
+                      title="Open in new window"
+                      on:click={() => window.open(tool.href, '_blank', 'noopener,noreferrer')}
+                    >
+                      ↗
+                    </button>
+                    {#if canManage}
+                      <button
+                        type="button"
+                        class="row-more-btn"
+                        title="Tool options"
+                        on:click={(e) => openToolMenu(e, tool)}
+                      >
+                        <Icon icon={IconMoreV} size="small" />
+                      </button>
+                    {/if}
+                  </div>
+                  </svelte:fragment>
+                </NavItem>
+              {/each}
+            {/if}
+          </div>
+        </div>
+      </div>
+
+{:else}
+<div class="hulyComponent tools-layout">
   <!-- Right Main Content Area -->
   <main class="antiPanel-component">
-    <!-- Top Header -->
+    {#if $activeTab !== 'directory' && activeTabTool !== undefined}
+      <EmbeddedToolView site={activeTabTool} on:close={() => closeTab($activeTab)} hideToolbar />
+    {:else}
+    <!-- Top Header. Hidden while a tool tab is open so the iframe uses the full panel. -->
     <Header adaptive="disabled">
       <div class="header-left-wrap">
-        <Breadcrumb icon={tools.icon.Application} label={tools.string.Application} size={'large'} />
-        {#if activeGroupId !== 'all' && currentGroup}
-          <span class="breadcrumb-slash">/</span>
-          <span class="breadcrumb-group" style:color={currentGroup.color ?? 'inherit'}>
-            {currentGroup.name}
-          </span>
-        {/if}
+          <Breadcrumb icon={tools.icon.Application} label={tools.string.Application} size={'large'} />
+          {#if $activeGroup !== 'all' && currentGroup}
+            <span class="breadcrumb-slash">/</span>
+            <span class="breadcrumb-group" style:color={currentGroup.color ?? 'inherit'}>
+              {currentGroup.name}
+            </span>
+          {/if}
       </div>
 
       <svelte:fragment slot="actions">
@@ -459,60 +752,16 @@
       </svelte:fragment>
     </Header>
 
-    <!-- In-App Tabs Bar (when tools are opened inside tabs) -->
-    {#if openTabs.length > 0}
-      <div class="workbench-tabs-bar">
-        <button
-          type="button"
-          class="tab-chip"
-          class:active={activeTabId === 'directory'}
-          on:click={() => {
-            activeTabId = 'directory'
-          }}
-        >
-          <span class="tab-chip-icon">🗂</span>
-          <span><Label label={tools.string.Directory} /></span>
-        </button>
-
-        {#each openTabs as openTool (openTool._id)}
-          <div class="tab-chip" class:active={activeTabId === openTool._id}>
-            <button
-              type="button"
-              class="tab-chip-title"
-              on:click={() => {
-                activeTabId = openTool._id
-              }}
-            >
-              <span class="tab-chip-dot"></span>
-              <span class="overflow-label">{openTool.name}</span>
-            </button>
-            <button
-              type="button"
-              class="tab-chip-close"
-              title="Close tab"
-              on:click|stopPropagation={() => closeTab(openTool._id)}
-            >
-              ✕
-            </button>
-          </div>
-        {/each}
-      </div>
-    {/if}
-
-    <!-- Content: Embedded Tool Tab View OR Directory View -->
-    {#if activeTabId !== 'directory' && activeTabTool !== undefined}
-      <EmbeddedToolView site={activeTabTool} on:close={() => closeTab(activeTabId)} />
-    {:else}
       <!-- Directory View -->
       <div class="directory-view">
         <!-- Group Header Subtitle Banner -->
         <div class="group-banner">
           <div class="group-banner-text">
             <h1 class="group-banner-title">
-              {activeGroupId === 'all' ? 'All Hosted Tools' : currentGroup?.name ?? 'Tools'}
+              {$activeGroup === 'all' ? 'All Hosted Tools' : currentGroup?.name ?? 'Tools'}
             </h1>
             <p class="group-banner-hint">
-              {activeGroupId === 'all'
+              {$activeGroup === 'all'
                 ? 'Hosted Aneeverse tools & workflows. Click a card to open in popup, tab, or new window.'
                 : currentGroup?.hint ?? 'Aneeverse tools directory'}
             </p>
@@ -535,11 +784,11 @@
                     label={tools.string.AddTool}
                     kind="primary"
                     size="medium"
-                    on:click={() => addTool(activeGroupId)}
+                    on:click={() => addTool($activeGroup)}
                   />
                 {/if}
               </div>
-            {:else if activeGroupId === 'all' && query.trim() === ''}
+            {:else if $activeGroup === 'all' && query.trim() === ''}
               <!-- Grouped by section when viewing All without query -->
               {#each groupedSections as section (section.group.id)}
                 <section class="catalog-section">
@@ -582,6 +831,7 @@
     {/if}
   </main>
 </div>
+{/if}
 
 <!-- Modal Popup for viewing tools inside Huly -->
 {#if modalSite !== undefined}
@@ -597,90 +847,61 @@
     overflow: hidden;
   }
 
-  /* Left Navigation Sidebar */
-  .antiPanel-navigator {
-    position: relative;
-    width: 16.5rem;
-    min-width: 14rem;
-    max-width: 20rem;
-    height: 100%;
-    background-color: var(--theme-navpanel-color);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hulyNavPanel-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 0;
-    overflow: hidden;
-  }
-
-  .hulyNavPanel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.125rem 1.25rem 0.75rem;
-    flex-shrink: 0;
-  }
-
-  .app-header-row {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-  }
-
-  .app-header-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 0.375rem;
-    background-color: var(--theme-button-hovered);
-    color: var(--theme-caption-color);
-  }
-
-  .app-header-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--theme-caption-color);
-    letter-spacing: -0.01em;
-  }
-
-  .nav-action-wrap {
-    padding: 0 1rem 0.875rem;
-    flex-shrink: 0;
-  }
-
   .nav-section {
-    padding: 0.25rem 0;
+    padding: 0.25rem 0.25rem 0;
   }
 
   .nav-groups-section {
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     margin-top: 0.5rem;
     border-top: 1px solid var(--theme-divider-color);
   }
 
-  .nav-groups-header {
+  .nav-involved-section {
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--theme-divider-color);
+  }
+
+  .nav-section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.25rem 1.25rem 0.5rem;
+    padding: 0.25rem 1rem 0.375rem 1.25rem;
   }
 
-  .nav-groups-label {
+  .header-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+
+  .header-chevron {
+    font-size: 0.5rem;
+    color: var(--theme-dark-color);
+    line-height: 1;
+    user-select: none;
+  }
+
+  .nav-section-label {
     font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--theme-dark-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .add-group-btn {
+  .header-actions-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header-tool-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -690,13 +911,52 @@
     border: none;
     background: transparent;
     color: var(--theme-dark-color);
-    font-size: 1rem;
+    font-size: 0.8125rem;
     line-height: 1;
     cursor: pointer;
     transition: all 0.12s ease;
 
-    &:hover {
+    &:hover,
+    &.active {
       background-color: var(--theme-button-hovered);
+      color: var(--theme-caption-color);
+    }
+  }
+
+  .sidebar-search-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem 0.5rem;
+  }
+
+  .sidebar-search-input {
+    width: 100%;
+    height: 1.75rem;
+    padding: 0 1.5rem 0 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--theme-divider-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 0.75rem;
+    color: var(--theme-caption-color);
+    outline: none;
+
+    &:focus {
+      border-color: var(--theme-button-primary);
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  .sidebar-search-clear {
+    position: absolute;
+    right: 1rem;
+    border: none;
+    background: transparent;
+    color: var(--theme-dark-color);
+    font-size: 0.6875rem;
+    cursor: pointer;
+
+    &:hover {
       color: var(--theme-caption-color);
     }
   }
@@ -726,7 +986,7 @@
       background-color: var(--theme-button-default);
       color: var(--theme-caption-color);
 
-      .custom-group-actions {
+      .group-hover-actions {
         display: flex;
       }
     }
@@ -735,6 +995,10 @@
       background-color: var(--theme-button-hovered);
       color: var(--theme-caption-color);
       font-weight: 600;
+
+      .group-hover-actions {
+        display: flex;
+      }
     }
   }
 
@@ -757,11 +1021,68 @@
     flex-shrink: 0;
   }
 
-  .custom-group-actions {
+  .group-hover-actions {
     display: none;
     align-items: center;
     gap: 0.125rem;
     margin-left: 0.25rem;
+  }
+
+  .involved-tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0 0.5rem 1rem;
+  }
+
+  .involved-tool-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.4375rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    color: var(--theme-content-color);
+    transition: background-color 0.1s ease, color 0.1s ease;
+    user-select: none;
+    outline: none;
+
+    &:hover {
+      background-color: var(--theme-button-default);
+      color: var(--theme-caption-color);
+
+      .tool-hover-actions {
+        display: flex;
+      }
+    }
+
+    &.selected {
+      background-color: var(--theme-button-hovered);
+      color: var(--theme-caption-color);
+      font-weight: 500;
+    }
+  }
+
+  .tool-project-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .tool-row-label {
+    flex-grow: 1;
+    min-width: 0;
+    line-height: 1.25;
+  }
+
+  .tool-hover-actions {
+    display: none;
+    align-items: center;
+    gap: 0.125rem;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .row-action-btn {
@@ -783,6 +1104,59 @@
     }
     &.danger:hover {
       color: var(--theme-warning-color, #f43f5e);
+    }
+  }
+
+  .row-more-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    border: none;
+    background: transparent;
+    color: var(--theme-dark-color);
+    cursor: pointer;
+    margin-left: 0.25rem;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: var(--theme-button-hovered);
+      color: var(--theme-caption-color);
+    }
+  }
+
+  .group-nav-row:hover .row-more-btn,
+  .group-nav-row.selected .row-more-btn,
+  .involved-tool-row:hover .row-more-btn {
+    display: flex;
+  }
+
+  .empty-involved-tools {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    color: var(--theme-dark-color);
+  }
+
+  .empty-involved-text {
+    line-height: 1.25;
+  }
+
+  .empty-involved-add-btn {
+    border: none;
+    background: transparent;
+    color: var(--theme-button-primary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 
@@ -812,6 +1186,38 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .header-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--theme-button-border);
+    background-color: var(--theme-button-default);
+    color: var(--theme-caption-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.12s ease;
+
+    &:hover {
+      background-color: var(--theme-button-hovered);
+      border-color: var(--theme-button-border-hover);
+    }
+  }
+
+  .active-tool-title {
+    font-weight: 600;
+    color: var(--theme-caption-color);
+  }
+
+  .tool-quick-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-right: 0.5rem;
   }
 
   .breadcrumb-slash {
