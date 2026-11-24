@@ -1,4 +1,4 @@
-import { type Domain, IndexKind } from '@hcengineering/core'
+import { AccountRole, type Domain, IndexKind } from '@hcengineering/core'
 import { type Builder, Index, Model, Prop, TypeBoolean, TypeNumber, TypeString, UX } from '@hcengineering/model'
 import core, { TDoc } from '@hcengineering/model-core'
 import workbench from '@hcengineering/model-workbench'
@@ -74,5 +74,34 @@ export function createModel (builder: Builder): void {
       component: tools.component.ToolsDirectory
     },
     tools.app.Tools
+  )
+
+  // Company guests (and other Guest logins) must not see Tools — credentials live there.
+  builder.createDoc(
+    core.class.ModulePermissionGroup,
+    core.space.Model,
+    {
+      application: tools.app.Tools,
+      role: AccountRole.Guest,
+      permissions: [],
+      spaceClass: tools.class.Tool,
+      enabled: false,
+      order: 250
+    },
+    tools.ids.ModulePermissionGroup
+  )
+
+  builder.createDoc(
+    core.class.ModulePermissionGroup,
+    core.space.Model,
+    {
+      application: tools.app.Tools,
+      role: AccountRole.ReadOnlyGuest,
+      permissions: [],
+      spaceClass: tools.class.Tool,
+      enabled: false,
+      order: 250
+    },
+    tools.ids.ModulePermissionGroupReadOnlyGuest
   )
 }

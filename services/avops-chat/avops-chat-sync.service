@@ -1,0 +1,8 @@
+[Unit]
+Description=AV OPS Google Chat sync
+After=network-online.target avops-mcp.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-chat/sync.mjs
+Nice=10

@@ -54,6 +54,7 @@ We keep credentials and SSH keys **off git**. Production secrets live on the Hos
 11. **Novino chat** — native right-sidebar workbench chat talking to OpenClaw agent `novino` via `/_novino`
 12. **Tools directory** — left-rail launcher for hosted Aneeverse apps (ERP, n8n, OpenClaw, Studio, …) with stored login/password, copy buttons, and owner/maintainer add/edit  
 13. **Admin-provisioned employees** — Contacts → Employees creates a login (email + password), no public signup; admin can delete the row  
+13a. **Company guest login** — Company → Members → Add company guest (Guest role, auto-joined to that company’s projects, can create tasks)  
 14. **Tracker title links** — Title column on the States table opens the task  
 15. **Issue → Task labels** — user-visible Tracker wording only; ids/URLs/DB stay `Issue`  
 16. **Tracker GST invoices** — project-scoped invoices, Aneeverse teal PDF, month bulk download  
@@ -181,7 +182,7 @@ While a tool is open in a tab, the Tools header (breadcrumb, reload, open-in-tab
 
 - Shared `PasswordEditBox` + `LoginCredentialsFields`; `provisionContactLogin` helper.
 - **Employee / Guest / Person create:** email + password provisioning (`provisionWorkspaceUser`). Person tab has optional **Platform login** toggle (off = CRM-only).
-- **Company members:** **Add person with login** on the Members section (`CreatePersonWithLogin` popup).
+- **Company members:** **Add company guest** on the Members section (`CreatePersonWithLogin` popup).
 - **Person detail (`EditPerson`):** `ContactLoginPanel` for Maintainer+ — set password or send reset email when `personUuid` is set.
 - **Account RPCs:** `setWorkspaceUserPassword`, `sendWorkspaceUserPasswordReset` (Maintainer+, target must be workspace member).
 - Re-provisioning an existing account now applies the password entered by the admin and clears failed-login lockout state; before this fix the API silently kept the old password.
@@ -191,6 +192,33 @@ While a tool is open in a tab, the Tools header (breadcrumb, reload, open-in-tab
 - **Context menu:** **Send reset link** for provisioned active users; **Resend invite** hidden when `personUuid` is set (legacy invite-only inactive users only).
 
 **Deploy:** custom **account** image **and** front **and** `model_tx` (SendResetLink action).
+
+---
+
+### 4.16a Company guest login (scoped task create)
+
+**Why:** A company record cannot log in. Client contacts needed a Guest account that can open only that company’s Tracker projects and create tasks there—without full User access.
+
+**What admins and guests see:**
+
+- Company → **Members** → **Add company guest** → first name, last name, email, password.
+- Creates a workspace **Guest** (Employee mixin `GUEST`), links them as a company Member, and adds their account to every Tracker project with `company` set to that org.
+- New/edited projects that set a **Company** also merge existing company member accounts into project `members`.
+- Guest logs in with email + password. Tracker sidebar and New task only list projects they belong to (existing membership + space-security filters). They can create tasks via Guest issue permission.
+
+**What changed:**
+
+- `CreatePersonWithLogin.svelte` — `AccountRole.Guest` + Employee `GUEST` mixin (same pattern as Create Guest).
+- `companyProjectMembers.ts` — add account to company projects; resolve company member account UUIDs.
+- `Members.svelte` — after create, auto-join company projects.
+- `CreateProject.svelte` — when company is set, merge company member accounts into `members` before save.
+- Contact lang: **Add company guest**.
+
+**Deploy:** Front only (account already accepts Guest; no `model_tx`).
+
+**Follow-up (Client activity crash):** Opening a Company crashed with `class not found: tracker:class:Client` because old activity rows still referenced the removed Client CRM class. Activity presenters now skip unknown classes; leftover Client activity rows and stale `clients` counters were deleted on production (`huly-remove-client-crm.sh` updated). Company → Members → **Add company guest** is the email/password path (a company record itself has no login).
+
+**Follow-up (no Tools for company guests):** Guest / ReadOnlyGuest cannot open Tools (sidebar, switcher, deep link, directory). Model `ModulePermissionGroup` disables Tools for those roles; front also hard-excludes alias `tools`.
 
 ---
 
@@ -220,9 +248,9 @@ While a tool is open in a tab, the Tools header (breadcrumb, reload, open-in-tab
 
 **Why:** Ops need to issue GST invoices from a Tracker project (tied to that project’s company), download one PDF or all invoices for a month, without a separate billing app.
 
-**What you see:** A dedicated **Invoices** app on the far-left workbench rail (`/invoices`), same pattern as Lead. Tracker still has sidebar **Invoices** (`/tracker/all-invoices`) and each project has an **Invoices** tab (`/tracker/{project}/invoices`). The all-list uses id `all-invoices` so it does not collide with the project tab (`invoices`) in the workbench special resolver. The PDF matches the GST invoice layout (billed by/to, item table, bank, totals, signatory) recolored to Aneeverse teal `#279ea6`, with the website header lockup (Artboard 7 mark + “aneeverse” from `E:/Projects/aneeverse/public/images/Artboard 7@2x.png`). **Billed By** (Aneeverse name, address, GSTIN, PAN, phone) is editable on the create form, stored on `tracker.class.InvoiceProfile` for the next invoice, and snapshotted on each invoice so old PDFs do not change. **Billed To** address/GSTIN/PAN/phone is editable anytime and written back to the company.
+**What you see:** A dedicated **Invoices** app on the far-left workbench rail (`/invoices`), same pattern as Lead. Tracker still has sidebar **Invoices** (`/tracker/all-invoices`) and each project has an **Invoices** tab (`/tracker/{project}/invoices`). The all-list uses id `all-invoices` so it does not collide with the project tab (`invoices`) in the workbench special resolver. Sidebar order is **New invoice → Dashboard → All invoices**, then companies. The dashboard shows total invoiced, received, pending, and overdue, plus the largest open balances. Create/edit uses a client dropdown that fills name, address, GSTIN, PAN, and phone from the company (or add a new client); billed-by is a collapsible card saved on `InvoiceProfile`. Notes print on the PDF. Payments reduce the balance; status is Paid / Partial / Unpaid / Overdue. The PDF matches the GST invoice layout (billed by/to, item table, bank, totals, paid/balance, notes, signatory) recolored to Aneeverse teal `#279ea6`.
 
-**What changed:** `tracker.class.Invoice` (project space, optional `billedBy` snapshot), `tracker.class.InvoiceProfile` (workspace billed-by), left-rail `tracker.app.Invoices`, navigator special + project tab, create/preview/print in `plugins/tracker-resources/src/components/invoices/`. Print is browser A4 (`iframe` + `@page`), not the print pod (`PRINT_URL` is not on aneeverse). GST is CGST+SGST for Maharashtra (27), IGST otherwise.
+**What changed:** `tracker.class.Invoice` (project space, optional `billedBy` snapshot, `notes`, `payments`, `paidAmount`), `tracker.class.InvoiceProfile` (workspace billed-by), left-rail `tracker.app.Invoices`, navigator special + project tab, create/preview/print + dashboard in `plugins/tracker-resources/src/components/invoices/`. Print is browser A4 (`iframe` + `@page`), not the print pod (`PRINT_URL` is not on aneeverse). GST is CGST+SGST for Maharashtra (27), IGST otherwise.
 
 **Deploy:** Frontend bundle **and** `model` (`model_tx` for the Invoice class and navigator entries). Ship front first, then model.
 
@@ -234,7 +262,7 @@ While a tool is open in a tab, the Tools header (breadcrumb, reload, open-in-tab
 
 **What you see:** A **VPS** Fixed widget (same frontend-only pattern as Novino). Explorer-style list: Apps / Config / Data, breadcrumbs. Every row enters that item — folders show children, files show the path note and an Open button when there is a URL. The tree is a snapshot of the AV-ops / Tools map — no live SSH, no refresh loop, no fetch to the VPS on click. Left **Tools** stays the card directory; the right tab is the folder tree. The workbench right drawer defaults wider (`32rem` min) so the explorer is usable.
 
-**What they see after login:** Contacts → Employee (Owner/Maintainer only) has **Limit what this person sees**. Off (default) = everything. On = only the ticked left apps, right widgets, and Tools cards. Owner/Maintainer always bypass so you cannot lock yourself out. Forbidden app URLs redirect to the first allowed app.
+**What they see after login:** Contacts → Employee (Owner/Maintainer only) has **Limit what this person sees**. Off (default) = everything. On = only the ticked left apps and right tabs. A new person starts with nothing ticked. Apps that share a name (the two Chat apps) are one row. Tools cards sit under the Tools row, in the same groups as the Tools app (Websites, Studio, Bots & tools, n8n), and those cards can be ticked on their own. A group row ticks or clears every card in that group. Owner/Maintainer always bypass so you cannot lock yourself out. Forbidden app URLs redirect to the first allowed app.
 
 This is **UI + URL guard**, not a server ACL on every Huly document.
 

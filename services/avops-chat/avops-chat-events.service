@@ -1,0 +1,12 @@
+[Unit]
+Description=AV OPS Google Chat event puller
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-chat/events-consume.mjs
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

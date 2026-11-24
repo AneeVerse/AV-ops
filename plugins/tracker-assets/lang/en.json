@@ -357,7 +357,23 @@
     "Rate": "Rate",
     "AddLine": "Add line",
     "Preview": "Preview",
-    "AuthorisedSignatory": "Authorised Signatory"
+    "AuthorisedSignatory": "Authorised Signatory",
+    "InvoiceNotes": "Notes",
+    "InvoicePayments": "Payments",
+    "PaidAmount": "Paid",
+    "BalanceDue": "Balance due",
+    "RecordPayment": "Record payment",
+    "InvoiceDashboard": "Dashboard",
+    "AddClient": "Add client",
+    "SelectClient": "Select client",
+    "EditClient": "Edit",
+    "AmountReceived": "Received",
+    "PendingAmount": "Pending",
+    "OverdueAmount": "Overdue",
+    "StatusPaid": "Paid",
+    "StatusPartial": "Partial",
+    "StatusUnpaid": "Unpaid",
+    "StatusOverdue": "Overdue"
   },
   "status": {}
 }

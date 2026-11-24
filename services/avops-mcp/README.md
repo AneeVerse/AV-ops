@@ -1,6 +1,6 @@
 # avops-mcp
 
-Private read-only bridge from Hermes to live AV OPS data.
+Private bridge from Hermes to live AV OPS data. Reads are unchanged. Issue create, update, and comment go through the Huly transactor, not the database.
 
 Hermes talks to this process. This process talks to the Huly transactor over the same websocket the web app uses (`ws://127.0.0.1:8087/<api-token>`). It does not open Cockroach, does not accept SQL, and does not write.
 
@@ -26,6 +26,10 @@ Hermes talks to this process. This process talks to the Huly transactor over the
 5. Restart `avops-mcp.service`.
 
 Do not paste the token into Git, Hermes config, chat, or this README. A missing token makes every tool return an error. It does not fall back to the database.
+
+List tools include `returned_count`, which is `items.length` for that response. Overdue, unassigned, and blocked reviews must report that number. Blocked still means `blockedBy` is non-empty, scanned from the newest 50 open issues.
+
+Write tools are `create_issue`, `update_issue`, and `add_issue_comment`. A repeated `source_key` returns the original issue or comment instead of creating another one. A write result is success only after the saved issue is read back and the changed fields match. Status names are Backlog, Todo, In Progress, Done, and Canceled. Priority names are none, urgent, high, medium, and low.
 
 ## Run
 

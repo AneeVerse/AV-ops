@@ -1,0 +1,10 @@
+[Unit]
+Description=AV OPS daily report at 09:30 IST on weekdays
+
+[Timer]
+OnCalendar=Mon..Fri 09:30:00 Asia/Kolkata
+Persistent=true
+Unit=avops-daily.service
+
+[Install]
+WantedBy=timers.target

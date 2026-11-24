@@ -56,17 +56,25 @@
     .getModel()
     .findAllSync(activity.class.DocUpdateMessageViewlet, { action: value.action, objectClass: value.objectClass })
 
-  $: collectionAttribute = getCollectionAttribute(hierarchy, value.attachedToClass, value.updateCollection)
-  $: clazz = hierarchy.getClass(value.objectClass)
+  $: collectionAttribute =
+    hierarchy.hasClass(value.attachedToClass)
+      ? getCollectionAttribute(hierarchy, value.attachedToClass, value.updateCollection)
+      : undefined
+  $: clazz = hierarchy.hasClass(value.objectClass) ? hierarchy.getClass(value.objectClass) : undefined
 
-  $: objectName = (collectionAttribute?.type as Collection<AttachedDoc>)?.itemLabel ?? clazz.label
+  $: objectName =
+    clazz !== undefined
+      ? ((collectionAttribute?.type as Collection<AttachedDoc>)?.itemLabel ?? clazz.label)
+      : undefined
   $: collectionName = collectionAttribute?.label
 
   $: void getAttributeModel(client, value.attributeUpdates, value.objectClass).then((model) => {
     attributeModel = model
   })
 
-  $: viewlet?.component && loadObject(value.objectId, value.objectClass, value.space, doc)
+  $: if (clazz !== undefined && viewlet?.component) {
+    void loadObject(value.objectId, value.objectClass, value.space, doc)
+  }
 
   async function loadObject (_id: Ref<Doc>, _class: Ref<Class<Doc>>, space: Ref<Space>, doc?: Doc): Promise<void> {
     if (doc?._id === _id) {
@@ -91,52 +99,54 @@
   }
 </script>
 
-<BaseMessagePreview message={value} {type} {readonly} {actions} on:click>
-  <span class="textContent overflow-label flex-presenter" class:contentOnly={type === 'content-only'}>
-    {#if viewlet?.component && object}
-      <span class="customContent flex-presenter">
-        <Icon size="small" icon={viewlet.icon ?? activity.icon.Activity} />
-        <span class="ml-2" />
-        {#each value?.previousMessages ?? [] as msg}
+{#if clazz !== undefined}
+  <BaseMessagePreview message={value} {type} {readonly} {actions} on:click>
+    <span class="textContent overflow-label flex-presenter" class:contentOnly={type === 'content-only'}>
+      {#if viewlet?.component && object}
+        <span class="customContent flex-presenter">
+          <Icon size="small" icon={viewlet.icon ?? activity.icon.Activity} />
+          <span class="ml-2" />
+          {#each value?.previousMessages ?? [] as msg}
+            <Component
+              is={viewlet.component}
+              props={{ message: msg, _id: msg.objectId, _class: msg.objectClass, preview: true, onClick }}
+            />
+          {/each}
           <Component
             is={viewlet.component}
-            props={{ message: msg, _id: msg.objectId, _class: msg.objectClass, preview: true, onClick }}
+            props={{
+              message: value,
+              _id: value.objectId,
+              _class: value.objectClass,
+              preview: true,
+              value: object,
+              onClick
+            }}
           />
-        {/each}
-        <Component
-          is={viewlet.component}
-          props={{
-            message: value,
-            _id: value.objectId,
-            _class: value.objectClass,
-            preview: true,
-            value: object,
-            onClick
-          }}
+        </span>
+      {:else if value.action === 'create' || value.action === 'remove'}
+        <DocUpdateMessageContent
+          message={value}
+          {viewlet}
+          {objectName}
+          {collectionName}
+          objectIcon={collectionAttribute?.icon ?? clazz.icon}
+          preview
         />
-      </span>
-    {:else if value.action === 'create' || value.action === 'remove'}
-      <DocUpdateMessageContent
-        message={value}
-        {viewlet}
-        {objectName}
-        {collectionName}
-        objectIcon={collectionAttribute?.icon ?? clazz.icon}
-        preview
-      />
-    {:else if value.attributeUpdates && attributeModel}
-      <DocUpdateMessageAttributes
-        attributeUpdates={value.attributeUpdates}
-        {attributeModel}
-        {space}
-        {viewlet}
-        {object}
-        message={value}
-        preview
-      />
-    {/if}
-  </span>
-</BaseMessagePreview>
+      {:else if value.attributeUpdates && attributeModel}
+        <DocUpdateMessageAttributes
+          attributeUpdates={value.attributeUpdates}
+          {attributeModel}
+          {space}
+          {viewlet}
+          {object}
+          message={value}
+          preview
+        />
+      {/if}
+    </span>
+  </BaseMessagePreview>
+{/if}
 
 <style lang="scss">
   .textContent {

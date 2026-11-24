@@ -101,7 +101,8 @@
     const me = getCurrentAccount()
 
     if (me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.Guest) {
-      return (getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []).includes(alias)
+      const excluded = getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []
+      return excluded.includes(alias) || alias === 'tools'
     } else {
       return false
     }

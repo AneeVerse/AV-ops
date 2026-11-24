@@ -9,6 +9,7 @@
 </script>
 <script lang="ts">
   import core, {
+    AccountRole,
     getCurrentAccount,
     isOwnerOrMaintainer,
     type Class,
@@ -22,6 +23,7 @@
   import {
     catalogToolId,
     DEFAULT_GROUPS,
+    LISTING_IMAGES_SITE,
     OBSOLETE_TOOL_HOSTS,
     OBSOLETE_TOOL_IDS,
     TOOL_SITES,
@@ -64,6 +66,7 @@
   const navigationOnly = model?.id === 'tools-navigation'
   let rawList: Tool[] = []
   let seedAttempted = false
+  let listingEnsureInFlight = false
   let employeeId: Ref<Doc> | undefined
   let allowedTools: Array<Ref<Doc>> | undefined
   let limitEnabled = false
@@ -76,12 +79,15 @@
   })
 
   const canManage = isOwnerOrMaintainer()
+  const account = getCurrentAccount()
+  const isGuestAccount =
+    account.role === AccountRole.Guest || account.role === AccountRole.ReadOnlyGuest
   const client = getClient()
   const liveQuery = createQuery()
   const employeeQuery = createQuery()
   const accessQuery = createQuery()
 
-  if (!canManage && client.getHierarchy().hasClass(EMPLOYEE)) {
+  if (!isGuestAccount && !canManage && client.getHierarchy().hasClass(EMPLOYEE)) {
     employeeQuery.query(
       EMPLOYEE,
       { personUuid: getCurrentAccount().uuid, active: true },
@@ -91,7 +97,12 @@
     )
   }
 
-  $: if (!canManage && employeeId !== undefined && client.getHierarchy().hasClass(EMPLOYEE_ACCESS)) {
+  $: if (
+    !isGuestAccount &&
+    !canManage &&
+    employeeId !== undefined &&
+    client.getHierarchy().hasClass(EMPLOYEE_ACCESS)
+  ) {
     accessQuery.query(EMPLOYEE_ACCESS, { attachedTo: employeeId }, (res) => {
       const access = res[0] as (Doc & { limitEnabled?: boolean, tools?: Array<Ref<Doc>> }) | undefined
       limitEnabled = access?.limitEnabled === true
@@ -104,14 +115,20 @@
   }
 
   function toolAllowed (toolId: Ref<Doc>): boolean {
+    if (isGuestAccount) return false
     if (canManage || !limitEnabled) return true
     return (allowedTools ?? []).includes(toolId)
   }
 
-  liveQuery.query(tools.class.Tool, {}, (result) => {
-    rawList = result.slice()
-    if (!navigationOnly) void maybeSeedCatalog()
-  })
+  if (isGuestAccount) {
+    liveQuery.unsubscribe()
+    rawList = []
+  } else {
+    liveQuery.query(tools.class.Tool, {}, (result) => {
+      rawList = result.slice()
+      if (!navigationOnly) void maybeSeedCatalog()
+    })
+  }
 
   // Separate custom group docs from actual tool docs
   $: groupDocs = rawList.filter((doc) => doc.group === '__group__' || doc._id.startsWith('tools:group:'))
@@ -119,6 +136,9 @@
     .filter((doc) => {
       if (doc.group === '__group__' || doc._id.startsWith('tools:group:')) return false
       const rawId = doc._id.replace('tools:tool:', '')
+      // The live listing tool must never be hidden by the obsolete-name/id
+      // rules below (that is exactly how the n8n group ended up empty).
+      if (rawId === LISTING_IMAGES_SITE.id) return true
       const lowerName = (doc.name ?? '').toLowerCase()
       if (
         rawId === 'n8n' ||
@@ -195,22 +215,67 @@
     const host = t.host?.toLowerCase() ?? ''
     const href = t.href?.toLowerCase() ?? ''
     const id = t._id?.replace('tools:tool:', '') ?? ''
+    if (id === LISTING_IMAGES_SITE.id) return false
     return (
       OBSOLETE_TOOL_HOSTS.some((oh) => host.includes(oh) || href.includes(oh)) ||
       OBSOLETE_TOOL_IDS.includes(id)
     )
   })
 
-  // Seed default catalog once
+  // Seed default catalog once, but ensure the Listing Images tool on every
+  // tools change: if it is ever missing the n8n group must heal itself
+  // instead of silently staying empty.
   async function maybeSeedCatalog (): Promise<void> {
-    if (seedAttempted || !canManage) return
-    seedAttempted = true
+    if (!canManage || listingEnsureInFlight) return
+    listingEnsureInFlight = true
     try {
+      // 1) Ensure the replacement FIRST, from the hard-coded site (not a
+      //    TOOL_SITES lookup that a stale bundle can miss), and repair a
+      //    copy that still points at an old per-marketplace n8n form.
+      //    Only then may old tools be removed below — deleting first and
+      //    creating second is how the listing URL vanished from the UI.
+      const listingImagesId = catalogToolId(LISTING_IMAGES_SITE.id)
+      const listing = await client.findOne(tools.class.Tool, { _id: listingImagesId })
+      if (listing === undefined) {
+        await client.createDoc(
+          tools.class.Tool,
+          core.space.Workspace,
+          {
+            name: LISTING_IMAGES_SITE.name,
+            description: LISTING_IMAGES_SITE.description,
+            href: LISTING_IMAGES_SITE.href,
+            host: LISTING_IMAGES_SITE.host,
+            group: LISTING_IMAGES_SITE.group,
+            https: LISTING_IMAGES_SITE.https,
+            current: LISTING_IMAGES_SITE.current,
+            openMode: LISTING_IMAGES_SITE.openMode ?? 'tab',
+            order: 40
+          },
+          listingImagesId
+        )
+      } else if (
+        listing.group !== LISTING_IMAGES_SITE.group ||
+        (listing.href ?? '').includes('n8n.aneeverse.com/form/')
+      ) {
+        await client.update(listing, {
+          href: LISTING_IMAGES_SITE.href,
+          host: LISTING_IMAGES_SITE.host,
+          group: LISTING_IMAGES_SITE.group,
+          https: LISTING_IMAGES_SITE.https,
+          openMode: LISTING_IMAGES_SITE.openMode ?? 'tab'
+        })
+      }
+
+      if (seedAttempted) return
+      seedAttempted = true
+
       const existing = await client.findAll(tools.class.Tool, {})
 
-      // Auto-migrate old n8n tools (n8n, amazon, etsy, etc.) to single 'n8n-listing-images'
+      // 2) Auto-migrate old n8n tools (n8n, amazon, etsy, etc.) to the
+      //    single listing tool ensured above. Never touch that tool here.
       const oldN8nTools = existing.filter((t) => {
         const id = (t._id as string)?.replace('tools:tool:', '')
+        if (id === LISTING_IMAGES_SITE.id) return false
         const name = (t.name ?? '').toLowerCase()
         return (
           id === 'n8n' ||
@@ -231,31 +296,6 @@
           } catch (e) {
             console.error('Failed to remove obsolete tool:', e)
           }
-        }
-      }
-
-      // Ensure n8n-listing-images exists
-      const listingImagesId = catalogToolId('n8n-listing-images')
-      const hasListingImages = await client.findOne(tools.class.Tool, { _id: listingImagesId })
-      if (!hasListingImages) {
-        const site = TOOL_SITES.find((s) => s.id === 'n8n-listing-images')
-        if (site) {
-          await client.createDoc(
-            tools.class.Tool,
-            core.space.Workspace,
-            {
-              name: site.name,
-              description: site.description,
-              href: site.href,
-              host: site.host,
-              group: site.group,
-              https: site.https,
-              current: site.current,
-              openMode: site.openMode ?? 'tab',
-              order: 40
-            },
-            listingImagesId
-          )
         }
       }
 
@@ -284,6 +324,8 @@
       }
     } catch (err) {
       console.error('Failed to seed tools catalog', err)
+    } finally {
+      listingEnsureInFlight = false
     }
   }
 

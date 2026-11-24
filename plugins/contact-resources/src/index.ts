@@ -168,6 +168,7 @@ export * from './workspaceMemberStatus'
 export { employeeByIdStore } from './utils'
 export * from './assignee'
 export * from './translation'
+export * from './companyProjectMembers'
 export {
   PersonIdArrayEditor,
   AccountArrayEditor,

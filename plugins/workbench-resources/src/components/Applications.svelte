@@ -140,7 +140,9 @@
     const me = getCurrentAccount()
 
     if (me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.Guest) {
-      excludedApps = getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []
+      const configured = getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []
+      // Tools holds shared logins/passwords — never for Guest / company guests.
+      excludedApps = Array.from(new Set([...configured, 'tools']))
     } else {
       excludedApps = []
     }

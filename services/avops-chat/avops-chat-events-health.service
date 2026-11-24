@@ -1,0 +1,8 @@
+[Unit]
+Description=AV OPS Chat subscription health check
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-chat/events-subs-check.mjs --due
+Nice=10

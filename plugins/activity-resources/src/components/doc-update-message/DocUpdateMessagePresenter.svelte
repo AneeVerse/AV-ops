@@ -67,10 +67,16 @@
   let objectName: IntlString | undefined = undefined
   let collectionName: IntlString | undefined = undefined
 
-  $: collectionAttribute = getCollectionAttribute(hierarchy, value.attachedToClass, value.updateCollection)
-  $: clazz = hierarchy.getClass(value.objectClass)
+  $: collectionAttribute =
+    hierarchy.hasClass(value.attachedToClass)
+      ? getCollectionAttribute(hierarchy, value.attachedToClass, value.updateCollection)
+      : undefined
+  $: clazz = hierarchy.hasClass(value.objectClass) ? hierarchy.getClass(value.objectClass) : undefined
 
-  $: objectName = (collectionAttribute?.type as Collection<AttachedDoc>)?.itemLabel ?? clazz.label
+  $: objectName =
+    clazz !== undefined
+      ? ((collectionAttribute?.type as Collection<AttachedDoc>)?.itemLabel ?? clazz.label)
+      : undefined
   $: collectionName = collectionAttribute?.label
 
   let viewlet: DocUpdateMessageViewlet | undefined
@@ -111,7 +117,11 @@
     person = undefined
   }
 
-  $: void loadObject(value.objectId, value.objectClass, doc)
+  $: if (clazz !== undefined) {
+    void loadObject(value.objectId, value.objectClass, doc)
+  } else {
+    object = undefined
+  }
   $: void loadParentObject(value, parentMessage, doc)
 
   async function loadObject (_id: Ref<Doc>, _class: Ref<Class<Doc>>, doc?: Doc): Promise<void> {
@@ -167,69 +177,71 @@
   }
 </script>
 
-<ActivityMessageTemplate
-  message={value}
-  {parentMessage}
-  {person}
-  {showNotify}
-  {isHighlighted}
-  {isSelected}
-  {shouldScroll}
-  {embedded}
-  {withActions}
-  {viewlet}
-  {showEmbedded}
-  {hideFooter}
-  {actions}
-  {skipLabel}
-  {hoverable}
-  {hoverStyles}
-  {readonly}
-  type={viewlet?.label || getIsTextType(attributeModel) ? 'default' : type}
-  showDatePreposition={hideLink}
-  {onClick}
->
-  <svelte:fragment slot="header">
-    <DocUpdateMessageHeader message={value} {object} {parentObject} {viewlet} {person} {attributeModel} {hideLink} />
-  </svelte:fragment>
-  <svelte:fragment slot="content">
-    {#if viewlet?.component && object}
-      <ShowMore>
-        <div class="customContent">
-          {#each value?.previousMessages ?? [] as msg}
+{#if clazz !== undefined}
+  <ActivityMessageTemplate
+    message={value}
+    {parentMessage}
+    {person}
+    {showNotify}
+    {isHighlighted}
+    {isSelected}
+    {shouldScroll}
+    {embedded}
+    {withActions}
+    {viewlet}
+    {showEmbedded}
+    {hideFooter}
+    {actions}
+    {skipLabel}
+    {hoverable}
+    {hoverStyles}
+    {readonly}
+    type={viewlet?.label || getIsTextType(attributeModel) ? 'default' : type}
+    showDatePreposition={hideLink}
+    {onClick}
+  >
+    <svelte:fragment slot="header">
+      <DocUpdateMessageHeader message={value} {object} {parentObject} {viewlet} {person} {attributeModel} {hideLink} />
+    </svelte:fragment>
+    <svelte:fragment slot="content">
+      {#if viewlet?.component && object}
+        <ShowMore>
+          <div class="customContent">
+            {#each value?.previousMessages ?? [] as msg}
+              <Component
+                is={viewlet.component}
+                props={{ message: msg, _id: msg.objectId, _class: msg.objectClass, onClick }}
+              />
+            {/each}
             <Component
               is={viewlet.component}
-              props={{ message: msg, _id: msg.objectId, _class: msg.objectClass, onClick }}
+              props={{ message: value, _id: value.objectId, _class: value.objectClass, value: object, onClick }}
             />
-          {/each}
-          <Component
-            is={viewlet.component}
-            props={{ message: value, _id: value.objectId, _class: value.objectClass, value: object, onClick }}
+          </div>
+        </ShowMore>
+      {:else if value.action === 'create' || value.action === 'remove'}
+        <ShowMore>
+          <DocUpdateMessageContent
+            message={value}
+            {viewlet}
+            {objectName}
+            {collectionName}
+            objectIcon={collectionAttribute?.icon ?? clazz.icon}
           />
-        </div>
-      </ShowMore>
-    {:else if value.action === 'create' || value.action === 'remove'}
-      <ShowMore>
-        <DocUpdateMessageContent
-          message={value}
+        </ShowMore>
+      {:else if value.attributeUpdates && attributeModel}
+        <DocUpdateMessageAttributes
+          attributeUpdates={value.attributeUpdates}
+          {attributeModel}
           {viewlet}
-          {objectName}
-          {collectionName}
-          objectIcon={collectionAttribute?.icon ?? clazz.icon}
+          {space}
+          {object}
+          message={value}
         />
-      </ShowMore>
-    {:else if value.attributeUpdates && attributeModel}
-      <DocUpdateMessageAttributes
-        attributeUpdates={value.attributeUpdates}
-        {attributeModel}
-        {viewlet}
-        {space}
-        {object}
-        message={value}
-      />
-    {/if}
-  </svelte:fragment>
-</ActivityMessageTemplate>
+      {/if}
+    </svelte:fragment>
+  </ActivityMessageTemplate>
+{/if}
 
 <style lang="scss">
   .customContent {

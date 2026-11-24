@@ -70,6 +70,7 @@ import {
   type Invoice,
   type InvoiceLine,
   type InvoiceParty,
+  type InvoicePayment,
   type InvoiceProfile,
   type InvoiceItemTemplate,
   type IssueTemplateChild,
@@ -518,6 +519,17 @@ export class TInvoice extends TDoc implements Invoice {
   @Prop(TypeString(), tracker.string.AuthorisedSignatory)
   @Hidden()
     signatory?: string
+
+  @Prop(TypeString(), tracker.string.InvoiceNotes)
+  @Hidden()
+    notes?: string
+
+  @Prop(ArrOf(TypeRecord()), tracker.string.InvoicePayments)
+  @Hidden()
+    payments?: InvoicePayment[]
+
+  @Prop(TypeNumber(), tracker.string.PaidAmount)
+    paidAmount?: number
 
   declare space: Ref<Project>
 }

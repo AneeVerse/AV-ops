@@ -1,0 +1,30 @@
+{
+  "anees@aneeverse.com": {
+    "person_id": "6a82cb81a175e8c330976243",
+    "huly_name": "Anees (Admin),Ahmad",
+    "chat_names": ["Ahmad Anees"],
+    "chat_user": "users/103079656183450228872",
+    "reason": "The Huly person has a Google identity for anees@aneeverse.com."
+  },
+  "mayur@aneeverse.com": {
+    "person_id": "6a83ff1cfcafa62b1a4854b7",
+    "huly_name": "k,Mayur",
+    "chat_names": ["Mayur Karve"],
+    "chat_user": "users/109320900444412543011",
+    "reason": "Confirmed by the Hermes test space private-message viewer and get_person_work. Do not use the admin person record for Mayur even though that record also has a Mayur Google identity."
+  },
+  "sanket@aneeverse.com": {
+    "person_id": "6acf1ebc6bfa9dc5693e208f",
+    "huly_name": "gade,Sanket",
+    "chat_names": ["Sanket Gade"],
+    "chat_user": "users/105686239359472558978",
+    "reason": "Huly person has a login and the email channel sanket@aneeverse.com. Directory user users/105686239359472558978."
+  },
+  "unused": [
+    {
+      "person_id": "6a8308b944e23b4678f386df",
+      "huly_name": "(Anees),Aneeverse",
+      "reason": "No login and no social identity. Do not assign work to this record."
+    }
+  ]
+}

@@ -848,7 +848,8 @@
     const me = getCurrentAccount()
 
     if (me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.Guest) {
-      if ((getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []).includes(alias)) {
+      const excluded = getMetadata(workbench.metadata.ExcludedApplicationsForAnonymous) ?? []
+      if (excluded.includes(alias) || alias === 'tools') {
         return true
       }
     }

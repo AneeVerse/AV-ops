@@ -89,10 +89,26 @@
       const mail = email.trim().toLowerCase()
       const socialString = buildSocialIdString({ type: SocialIdType.EMAIL, value: mail })
 
+      const existingId = await client.findOne(contact.class.SocialIdentity, { key: socialString })
+      const existingPerson =
+        existingId !== undefined
+          ? await client.findOne(contact.class.Person, { _id: existingId.attachedTo })
+          : undefined
+
+      const existingEmployee =
+        existingPerson !== undefined && client.getHierarchy().hasMixin(existingPerson, contact.mixin.Employee)
+          ? client.getHierarchy().as(existingPerson, contact.mixin.Employee)
+          : undefined
+
+      if (existingEmployee !== undefined && existingEmployee.active) {
+        formError = contact.string.EmployeeAlreadyActive
+        return
+      }
+
       let uuid: PersonUuid
       let socialId: PersonId
       try {
-        const provisioned = await provisionContactLogin(mail, password, firstName, lastName, AccountRole.User)
+        const provisioned = await provisionContactLogin(mail, password, firstName, lastName, AccountRole.Guest)
         uuid = provisioned.uuid
         socialId = provisioned.socialId
       } catch (err: unknown) {
@@ -113,19 +129,33 @@
       person.avatarType = info.avatarType
       person.avatarProps = info.avatarProps
 
-      const existingId = await client.findOne(contact.class.SocialIdentity, { key: socialString })
-      const existingPerson =
-        existingId !== undefined
-          ? await client.findOne(contact.class.Person, { _id: existingId.attachedTo })
-          : undefined
-
       let personRef: Ref<Person>
-      if (existingPerson === undefined) {
+      const mixinData = { active: true, role: 'GUEST' as const }
+
+      if (existingEmployee !== undefined && !existingEmployee.active) {
+        await client.update(existingPerson as Person, person)
+        await client.update(existingEmployee, mixinData)
+        personRef = existingEmployee._id
+      } else if (existingPerson === undefined) {
         await client.createDoc(contact.class.Person, contact.space.Contacts, person, id)
         personRef = id
+        await client.createMixin(
+          personRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       } else {
         await client.update(existingPerson, person)
         personRef = existingPerson._id as Ref<Person>
+        await client.createMixin(
+          personRef,
+          contact.class.Person,
+          contact.space.Contacts,
+          contact.mixin.Employee,
+          mixinData
+        )
       }
 
       const existingSocial = await client.findOne(contact.class.SocialIdentity, {

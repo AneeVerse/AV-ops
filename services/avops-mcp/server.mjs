@@ -21,6 +21,26 @@ const CLASS = {
 
 const MAX_LIMIT = 50
 const DEFAULT_LIMIT = 20
+const ISSUE_KIND = 'tracker:taskTypes:Issue'
+const NO_PARENT = 'tracker:ids:NoParent'
+const STATUS_BY_NAME = {
+  backlog: 'tracker:status:Backlog',
+  todo: 'tracker:status:Todo',
+  'in progress': 'tracker:status:InProgress',
+  in_progress: 'tracker:status:InProgress',
+  done: 'tracker:status:Done',
+  canceled: 'tracker:status:Canceled',
+  cancelled: 'tracker:status:Canceled'
+}
+const DONE_STATUSES = new Set(['tracker:status:Done', 'tracker:status:Canceled'])
+const PRIORITY_BY_NAME = {
+  none: 0,
+  'no priority': 0,
+  urgent: 1,
+  high: 2,
+  medium: 3,
+  low: 4
+}
 
 function loadEnv () {
   const file = path.join(root, '.env')
@@ -100,6 +120,7 @@ function page (rows, limit) {
   const last = list[list.length - 1]
   const cursor = last?.modifiedOn ?? last?.modified_on ?? last?.created_on
   return {
+    returned_count: list.length,
     items: list,
     next_cursor: typeof cursor === 'number' ? cursor : null
   }
@@ -145,6 +166,7 @@ function issueView (doc, fallback = {}) {
     title: doc.title ?? null,
     project_id: doc.space ?? fallback.project_id ?? null,
     status_id: doc.status ?? null,
+    status_name: null,
     assignee_id: doc.assignee ?? fallback.assignee_id ?? null,
     due_date: doc.dueDate ?? null,
     is_done: doc.isDone === true,
@@ -152,6 +174,19 @@ function issueView (doc, fallback = {}) {
     blocked_by: Array.isArray(doc.blockedBy) ? doc.blockedBy.map((row) => row?._id || row).slice(0, 20) : [],
     modified_on: doc.modifiedOn ?? null
   }
+}
+
+async function withStatusNames (client, items) {
+  const ids = [...new Set(items.map((row) => row.status_id).filter(Boolean))].slice(0, 30)
+  if (ids.length === 0) return items
+  const rows = await client.findAll('tracker:class:IssueStatus', { _id: { $in: ids } }, { limit: ids.length })
+  const names = new Map(rows.map((row) => [row._id, row.name ?? null]))
+  return items.map((row) => ({ ...row, status_name: row.status_id ? names.get(row.status_id) ?? null : null }))
+}
+
+async function issuePage (client, rows, limit, fallback) {
+  const items = await withStatusNames(client, rows.map((row) => issueView(row, fallback)))
+  return page(items, limit)
 }
 
 function messageView (doc, fallback = {}) {
@@ -224,8 +259,10 @@ class HulyClient {
     if (!waiter) return
     clearTimeout(waiter.timer)
     this.pending.delete(message.id)
-    if (message.error) waiter.reject(new Error('transactor request failed'))
-    else waiter.resolve(message.id === -1 ? message : message.result)
+    if (message.error) {
+      const detail = message.error.message || message.error.code || message.error
+      waiter.reject(new Error(clip(detail, 240) || 'transactor request failed'))
+    } else waiter.resolve(message.id === -1 ? message : message.result)
   }
 
   request (method, params) {
@@ -244,11 +281,15 @@ class HulyClient {
 
   async findAll (className, query, options) {
     const limit = options.limit
-    const findOptions = { limit, sort: { modifiedOn: -1 } }
+    const findOptions = { limit, sort: options.sort || { modifiedOn: -1 } }
     if (options.projection) findOptions.projection = options.projection
     const result = await this.request('findAll', [className, query, findOptions])
     const rows = result?.dataType === 'TotalArray' && Array.isArray(result.value) ? result.value : result
     return Array.isArray(rows) ? rows.slice(0, limit) : []
+  }
+
+  async tx (tx) {
+    return this.request('tx', [tx])
   }
 
   close () {
@@ -320,16 +361,19 @@ async function searchIssues (client, args) {
   const query = cursorQuery(args, {})
   if (args.project_id != null) query.space = idOf(args.project_id, 'project_id')
   if (args.assignee_id != null) query.assignee = idOf(args.assignee_id, 'assignee_id')
+  if (args.identifier != null) query.identifier = longText(args.identifier, 'identifier', 20)
   if (args.query != null) query.title = { $like: likeOf(textOf(args.query, 'query')) }
   if (args.open_only === true) query.isDone = { $ne: true }
   const rows = await client.findAll(CLASS.issue, query, { limit })
-  return page(rows.map((row) => issueView(row, issueFallback(query))), limit)
+  return issuePage(client, rows, limit, issueFallback(query))
 }
 
 async function getIssue (client, args) {
   const id = idOf(args.issue_id, 'issue_id')
   const rows = await client.findAll(CLASS.issue, { _id: id }, { limit: 1 })
-  return rows[0] ? issueView(rows[0], { id }) : null
+  if (!rows[0]) return null
+  const [item] = await withStatusNames(client, [issueView(rows[0], { id })])
+  return item
 }
 
 async function overdueIssues (client, args) {
@@ -338,7 +382,7 @@ async function overdueIssues (client, args) {
   const query = { dueDate: { $gt: 0, $lt: before }, isDone: { $ne: true } }
   if (args.project_id != null) query.space = idOf(args.project_id, 'project_id')
   const rows = await client.findAll(CLASS.issue, query, { limit })
-  return page(rows.map((row) => issueView(row, issueFallback(query))), limit)
+  return issuePage(client, rows, limit, issueFallback(query))
 }
 
 async function unassignedIssues (client, args) {
@@ -346,7 +390,7 @@ async function unassignedIssues (client, args) {
   const query = cursorQuery(args, { assignee: null, isDone: { $ne: true } })
   if (args.project_id != null) query.space = idOf(args.project_id, 'project_id')
   const rows = await client.findAll(CLASS.issue, query, { limit })
-  return page(rows.map((row) => issueView(row, issueFallback(query))), limit)
+  return issuePage(client, rows, limit, issueFallback(query))
 }
 
 async function blockedIssues (client, args) {
@@ -355,10 +399,12 @@ async function blockedIssues (client, args) {
   if (args.project_id != null) query.space = idOf(args.project_id, 'project_id')
   const rows = await client.findAll(CLASS.issue, query, { limit: MAX_LIMIT })
   const blocked = rows.filter((row) => Array.isArray(row.blockedBy) && row.blockedBy.length > 0).slice(0, limit)
+  const items = await withStatusNames(client, blocked.map((row) => issueView(row, issueFallback(query))))
   return {
-    items: blocked.map((row) => issueView(row, issueFallback(query))),
+    returned_count: items.length,
+    items,
     next_cursor: rows.length ? rows[rows.length - 1].modifiedOn ?? null : null,
-    note: 'Blocked means the issue blockedBy list is non-empty. This looks at the newest open issues up to 50, then keeps those that are blocked.'
+    note: 'Blocked means the issue blockedBy list is non-empty. This looks at the newest open issues up to 50, then keeps those that are blocked. returned_count is the number of items in this response.'
   }
 }
 
@@ -380,7 +426,7 @@ async function personWork (client, args) {
   const limit = limitOf(args.limit)
   const personId = idOf(args.person_id, 'person_id')
   const rows = await client.findAll(CLASS.issue, cursorQuery(args, { assignee: personId, isDone: { $ne: true } }), { limit })
-  return page(rows.map((row) => issueView(row, { assignee_id: personId })), limit)
+  return issuePage(client, rows, limit, { assignee_id: personId })
 }
 
 async function projectsForOrg (client, organizationId, limit) {
@@ -390,7 +436,7 @@ async function projectsForOrg (client, organizationId, limit) {
 async function activityForProjects (client, projectIds, limit) {
   if (projectIds.length === 0) return []
   const rows = await client.findAll(CLASS.issue, { space: { $in: projectIds.slice(0, 20) } }, { limit })
-  return rows.map(issueView)
+  return withStatusNames(client, rows.map(issueView))
 }
 
 async function messagesFor (client, ids, since, until, limit) {
@@ -411,9 +457,12 @@ async function clientActivity (client, args) {
   const organizationId = idOf(args.organization_id, 'organization_id')
   const projects = await projectsForOrg(client, organizationId, 20)
   const issues = await activityForProjects(client, projects.map((row) => row._id), limit)
+  const projectItems = projects.map((row) => projectView(row, { organization_id: organizationId }))
   return {
     organization_id: organizationId,
-    projects: projects.map((row) => projectView(row, { organization_id: organizationId })),
+    returned_count: issues.length,
+    project_count: projectItems.length,
+    projects: projectItems,
     recent_issues: issues
   }
 }
@@ -424,7 +473,14 @@ async function projectActivity (client, args) {
   const issues = await client.findAll(CLASS.issue, { space: projectId }, { limit })
   const since = timeOf(args.since, 'since')
   const messages = await messagesFor(client, [projectId], since, undefined, Math.min(limit, 15))
-  return { project_id: projectId, recent_issues: issues.map((row) => issueView(row, { project_id: projectId })), recent_messages: messages }
+  const recentIssues = await withStatusNames(client, issues.map((row) => issueView(row, { project_id: projectId })))
+  return {
+    project_id: projectId,
+    returned_count: recentIssues.length,
+    message_count: messages.length,
+    recent_issues: recentIssues,
+    recent_messages: messages
+  }
 }
 
 async function searchMessages (client, args) {
@@ -443,7 +499,7 @@ async function searchMessages (client, args) {
     throw new Error('organization_id, project_id, or attached_to is required')
   }
   const items = await messagesFor(client, ids, since, until, limit)
-  return { items, since, until: until ?? null }
+  return { returned_count: items.length, items, since, until: until ?? null }
 }
 
 async function messageThread (client, args) {
@@ -451,9 +507,11 @@ async function messageThread (client, args) {
   const messageId = idOf(args.message_id, 'message_id')
   const rows = await client.findAll(CLASS.message, { attachedTo: messageId }, { limit })
   const parent = await client.findAll(CLASS.message, { _id: messageId }, { limit: 1 })
+  const replies = rows.map((row) => messageView(row, { attached_to: messageId }))
   return {
+    returned_count: replies.length,
     parent: parent[0] ? messageView(parent[0], { id: messageId }) : null,
-    replies: rows.map((row) => messageView(row, { attached_to: messageId }))
+    replies
   }
 }
 
@@ -467,7 +525,8 @@ async function clientContext (client, args) {
     const name = textOf(args.name, 'name')
     const rows = await client.findAll(CLASS.organization, { name: { $like: likeOf(name) } }, { limit: 5 })
     if (rows.length !== 1) {
-      return { matches: rows.map(orgView), note: 'Provide organization_id when the name is not unique.' }
+      const matches = rows.map(orgView)
+      return { returned_count: matches.length, matches, note: 'Provide organization_id when the name is not unique.' }
     }
     organization = rows[0]
   }
@@ -487,12 +546,350 @@ async function clientContext (client, args) {
   const messages = await messagesFor(client, projectIds, now - 14 * 24 * 60 * 60 * 1000, undefined, Math.min(limit, 15))
   return {
     client: orgView(organization, { id: organizationId }),
+    project_count: projects.length,
+    open_issue_count: openIssues.length,
+    overdue_count: overdue.length,
     projects: projects.map((row) => projectView(row, { organization_id: organizationId })),
     open_issues: openIssues,
     overdue_issues: overdue,
     assigned_people: people,
     recent_messages: messages
   }
+}
+
+function generateId () {
+  const time = (Date.now() / 1000) | 0
+  return time.toString(16).padStart(8, '0') + crypto.randomBytes(8).toString('hex')
+}
+
+function stableId (kind, key) {
+  return crypto.createHash('sha256').update(`avops:${kind}\0${key}`).digest('hex').slice(0, 24)
+}
+
+function longText (value, name, max) {
+  if (typeof value !== 'string') throw new Error(`invalid ${name}`)
+  const text = value.trim()
+  if (text.length < 1 || text.length > max || /[\u0000-\u001f]/.test(text)) throw new Error(`invalid ${name}`)
+  return text
+}
+
+function optionalLong (value, name, max) {
+  if (value == null || value === '') return undefined
+  return longText(value, name, max)
+}
+
+function sourceKeyOf (value) {
+  if (value == null || value === '') return undefined
+  const key = longText(value, 'source_key', 160)
+  if (!/^[A-Za-z0-9:._/-]+$/.test(key)) throw new Error('invalid source_key')
+  return key
+}
+
+function markupOf (text) {
+  const safe = text.replace(/[&<>]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch])
+  return `<p>${safe}</p>`
+}
+
+function nextRank (rank) {
+  if (typeof rank === 'string' && rank.startsWith('0|') && rank.endsWith(':')) {
+    const body = rank.slice(2, -1)
+    const chars = body.split('')
+    for (let i = chars.length - 1; i >= 0; i--) {
+      const code = chars[i].charCodeAt(0)
+      if (chars[i] === 'z' || chars[i] === 'Z' || chars[i] === '9') continue
+      if ((code >= 48 && code <= 57) || (code >= 97 && code <= 122)) {
+        chars[i] = String.fromCharCode(code + 1)
+        return `0|${chars.join('')}:`
+      }
+    }
+  }
+  return `0|z${Date.now().toString(16)}:`
+}
+
+function statusOf (value) {
+  if (value == null || value === '') return 'tracker:status:Todo'
+  if (typeof value !== 'string') throw new Error('invalid status')
+  const text = value.trim()
+  if (STATUS_BY_NAME[text.toLowerCase()]) return STATUS_BY_NAME[text.toLowerCase()]
+  if (/^tracker:status:[A-Za-z0-9]+$/.test(text) || /^[a-f0-9]{24}$/.test(text)) return text
+  throw new Error('invalid status')
+}
+
+function priorityOf (value) {
+  if (value == null || value === '') return 0
+  if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 4) return value
+  if (typeof value === 'string' && PRIORITY_BY_NAME[value.trim().toLowerCase()] != null) {
+    return PRIORITY_BY_NAME[value.trim().toLowerCase()]
+  }
+  throw new Error('invalid priority')
+}
+
+function dueOf (value) {
+  if (value == null || value === '') return null
+  if (typeof value === 'number' && Number.isFinite(value) && value > 0) return value
+  if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    const parsed = Date.parse(`${value}T12:00:00Z`)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  throw new Error('invalid due_date')
+}
+
+async function actorOf (client) {
+  if (client.actor) return client.actor
+  const token = process.env.HULY_READ_TOKEN
+  const claims = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString('utf8'))
+  if (typeof claims.account !== 'string' || claims.account.length < 8) throw new Error('token account is missing')
+  const people = await client.findAll(CLASS.person, { personUuid: claims.account }, { limit: 1 })
+  const person = people[0]
+  if (!person?._id) throw new Error('token person was not found')
+  const socials = await client.findAll('contact:class:SocialIdentity', { attachedTo: person._id }, { limit: 5 })
+  const social = socials.find((row) => row?._id) 
+  if (!social) throw new Error('token social identity was not found')
+  client.actor = { person_id: person._id, social_id: social._id, name: person.name ?? null }
+  return client.actor
+}
+
+function baseTx (actor, now) {
+  return {
+    _id: generateId(),
+    space: 'core:space:Tx',
+    modifiedOn: now,
+    modifiedBy: actor.social_id,
+    createdBy: actor.social_id
+  }
+}
+
+async function confirmedIssue (client, id) {
+  const rows = await client.findAll(CLASS.issue, { _id: id }, { limit: 1 })
+  if (!rows[0]) return null
+  const [item] = await withStatusNames(client, [issueView(rows[0], { id })])
+  return item
+}
+
+async function createIssue (client, args) {
+  const projectId = idOf(args.project_id, 'project_id')
+  const title = longText(args.title, 'title', 200)
+  const sourceKey = sourceKeyOf(args.source_key)
+  const objectId = sourceKey ? stableId('issue', sourceKey) : generateId()
+  const existing = await confirmedIssue(client, objectId)
+  if (existing) {
+    return { ok: true, created: false, changed_fields: [], issue: existing, source_key: sourceKey ?? null }
+  }
+  const projects = await client.findAll(CLASS.project, { _id: projectId }, { limit: 1 })
+  const project = projects[0]
+  if (!project?.identifier) throw new Error('project was not found')
+  const status = statusOf(args.status)
+  const knownStatus = await client.findAll('tracker:class:IssueStatus', { _id: status }, { limit: 1 })
+  if (!knownStatus[0]) throw new Error('status was not found')
+  let assignee = null
+  if (args.assignee_id != null && args.assignee_id !== '') {
+    assignee = idOf(args.assignee_id, 'assignee_id')
+    const people = await client.findAll(CLASS.person, { _id: assignee }, { limit: 1 })
+    if (!people[0]) throw new Error('assignee was not found')
+  }
+  const priority = priorityOf(args.priority)
+  const dueDate = dueOf(args.due_date)
+  const actor = await actorOf(client)
+  const now = Date.now()
+  const ranks = await client.findAll(CLASS.issue, {}, { limit: 1, sort: { rank: -1 } })
+  const inc = await client.tx({
+    ...baseTx(actor, now),
+    _class: 'core:class:TxUpdateDoc',
+    objectId: projectId,
+    objectClass: CLASS.project,
+    objectSpace: 'core:space:Space',
+    operations: { $inc: { sequence: 1 } },
+    retrieve: true
+  })
+  let sequence = inc?.object?.sequence
+  if (typeof sequence !== 'number') {
+    const refreshed = await client.findAll(CLASS.project, { _id: projectId }, { limit: 1 })
+    sequence = refreshed[0]?.sequence
+  }
+  if (typeof sequence !== 'number') throw new Error('project sequence was not updated')
+  const attributes = {
+    title,
+    description: null,
+    assignee,
+    component: null,
+    milestone: null,
+    number: sequence,
+    status,
+    priority,
+    rank: nextRank(ranks[0]?.rank),
+    comments: 0,
+    subIssues: 0,
+    startDate: null,
+    dueDate,
+    parents: [],
+    reportedTime: 0,
+    remainingTime: 0,
+    estimation: 0,
+    reports: 0,
+    relations: [],
+    childInfo: [],
+    kind: ISSUE_KIND,
+    identifier: `${project.identifier}-${sequence}`,
+    isDone: DONE_STATUSES.has(status)
+  }
+  await client.tx({
+    ...baseTx(actor, now),
+    _class: 'core:class:TxCreateDoc',
+    objectId,
+    objectClass: CLASS.issue,
+    objectSpace: projectId,
+    collection: 'subIssues',
+    attachedTo: NO_PARENT,
+    attachedToClass: CLASS.issue,
+    attributes
+  })
+  const issue = await confirmedIssue(client, objectId)
+  if (!issue || issue.identifier !== attributes.identifier) throw new Error('issue was not created')
+  const note = optionalLong(args.description, 'description', 2000)
+  const commentText = [note, sourceKey ? `Source: ${sourceKey}` : null].filter(Boolean).join('\n')
+  let commentId = null
+  if (commentText) {
+    commentId = sourceKey ? stableId('comment', `${sourceKey}:create`) : generateId()
+    await writeComment(client, actor, issue, commentId, commentText)
+  }
+  const confirmed = await confirmedIssue(client, objectId)
+  return {
+    ok: true,
+    created: true,
+    changed_fields: ['title', 'status', 'priority', 'assignee', 'due_date', 'project'],
+    issue: confirmed,
+    organization_id: project.company ?? null,
+    comment_id: commentId,
+    source_key: sourceKey ?? null
+  }
+}
+
+async function writeComment (client, actor, issue, commentId, text) {
+  const now = Date.now()
+  const present = await client.findAll(CLASS.message, { _id: commentId }, { limit: 1 })
+  if (present[0]) return false
+  await client.tx({
+    ...baseTx(actor, now),
+    _class: 'core:class:TxCreateDoc',
+    objectId: commentId,
+    objectClass: CLASS.message,
+    objectSpace: issue.project_id,
+    collection: 'comments',
+    attachedTo: issue.id,
+    attachedToClass: CLASS.issue,
+    attributes: {
+      message: markupOf(text),
+      attachments: 0
+    }
+  })
+  const saved = await client.findAll(CLASS.message, { _id: commentId }, { limit: 1 })
+  if (!saved[0]) throw new Error('comment was not created')
+  await client.tx({
+    ...baseTx(actor, now + 1),
+    _class: 'core:class:TxUpdateDoc',
+    objectId: issue.id,
+    objectClass: CLASS.issue,
+    objectSpace: issue.project_id,
+    operations: { $inc: { comments: 1 } }
+  })
+  return true
+}
+
+async function updateIssue (client, args) {
+  const issueId = idOf(args.issue_id, 'issue_id')
+  const current = await confirmedIssue(client, issueId)
+  if (!current) throw new Error('issue was not found')
+  const operations = {}
+  const changed = []
+  if (args.title != null) {
+    operations.title = longText(args.title, 'title', 200)
+    changed.push('title')
+  }
+  if (args.status != null) {
+    const status = statusOf(args.status)
+    const knownStatus = await client.findAll('tracker:class:IssueStatus', { _id: status }, { limit: 1 })
+    if (!knownStatus[0]) throw new Error('status was not found')
+    operations.status = status
+    operations.isDone = DONE_STATUSES.has(status)
+    changed.push('status')
+  }
+  if (args.priority != null) {
+    operations.priority = priorityOf(args.priority)
+    changed.push('priority')
+  }
+  if (args.assignee_id !== undefined) {
+    if (args.assignee_id === null || args.assignee_id === '') operations.assignee = null
+    else {
+      const assignee = idOf(args.assignee_id, 'assignee_id')
+      const people = await client.findAll(CLASS.person, { _id: assignee }, { limit: 1 })
+      if (!people[0]) throw new Error('assignee was not found')
+      operations.assignee = assignee
+    }
+    changed.push('assignee')
+  }
+  if (args.due_date !== undefined) {
+    operations.dueDate = dueOf(args.due_date)
+    changed.push('due_date')
+  }
+  if (changed.length === 0 && args.comment == null) throw new Error('no changes requested')
+  const actor = await actorOf(client)
+  if (changed.length > 0) {
+    await client.tx({
+      ...baseTx(actor, Date.now()),
+      _class: 'core:class:TxUpdateDoc',
+      objectId: issueId,
+      objectClass: CLASS.issue,
+      objectSpace: current.project_id,
+      operations
+    })
+  }
+  let commentId = null
+  const comment = optionalLong(args.comment, 'comment', 2000)
+  if (comment) {
+    const sourceKey = sourceKeyOf(args.source_key)
+    commentId = sourceKey ? stableId('comment', sourceKey) : generateId()
+    const created = await writeComment(client, actor, current, commentId, comment)
+    if (created) changed.push('comment')
+  }
+  const issue = await confirmedIssue(client, issueId)
+  if (!issue) throw new Error('issue was not updated')
+  if (operations.title && issue.title !== operations.title) throw new Error('title was not saved')
+  if (operations.status && issue.status_id !== operations.status) throw new Error('status was not saved')
+  if (operations.priority != null && issue.priority !== operations.priority) throw new Error('priority was not saved')
+  if (Object.prototype.hasOwnProperty.call(operations, 'assignee') && (issue.assignee_id ?? null) !== operations.assignee) {
+    throw new Error('assignee was not saved')
+  }
+  if (Object.prototype.hasOwnProperty.call(operations, 'dueDate') && (issue.due_date ?? null) !== operations.dueDate) {
+    throw new Error('due date was not saved')
+  }
+  return { ok: true, created: false, changed_fields: changed, issue, comment_id: commentId }
+}
+
+async function addIssueComment (client, args) {
+  const issueId = idOf(args.issue_id, 'issue_id')
+  const issue = await confirmedIssue(client, issueId)
+  if (!issue) throw new Error('issue was not found')
+  const text = longText(args.text, 'text', 2000)
+  const sourceKey = sourceKeyOf(args.source_key)
+  const commentId = sourceKey ? stableId('comment', sourceKey) : generateId()
+  const actor = await actorOf(client)
+  const created = await writeComment(client, actor, issue, commentId, text)
+  const saved = await client.findAll(CLASS.message, { _id: commentId }, { limit: 1 })
+  if (!saved[0]) throw new Error('comment was not created')
+  return {
+    ok: true,
+    created,
+    changed_fields: created ? ['comment'] : [],
+    issue,
+    comment_id: commentId,
+    source_key: sourceKey ?? null
+  }
+}
+
+async function issueBySource (client, args) {
+  const sourceKey = sourceKeyOf(args.source_key)
+  const issue = await confirmedIssue(client, stableId('issue', sourceKey))
+  return { ok: true, found: Boolean(issue), issue, source_key: sourceKey }
 }
 
 const tools = [
@@ -502,12 +899,12 @@ const tools = [
   tool('search_projects', 'Search AV OPS projects. Optional organization_id is the Huly Organization stored in Project.company.', { query: { type: 'string' }, organization_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchProjects),
   tool('get_project', 'Get one project by id.', { project_id: { type: 'string' } }, getProject, ['project_id']),
   tool('list_projects', 'List projects, newest modified first.', { organization_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchProjects),
-  tool('search_issues', 'Search AV OPS tasks. A task is a Huly Issue.', { query: { type: 'string' }, project_id: { type: 'string' }, assignee_id: { type: 'string' }, open_only: { type: 'boolean' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchIssues),
+  tool('search_issues', 'Search AV OPS tasks. A task is a Huly Issue. identifier matches one issue key such as HHH-4.', { query: { type: 'string' }, identifier: { type: 'string' }, project_id: { type: 'string' }, assignee_id: { type: 'string' }, open_only: { type: 'boolean' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchIssues),
   tool('get_issue', 'Get one issue by id.', { issue_id: { type: 'string' } }, getIssue, ['issue_id']),
   tool('list_issues', 'List issues, newest modified first.', { project_id: { type: 'string' }, assignee_id: { type: 'string' }, open_only: { type: 'boolean' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchIssues),
-  tool('get_overdue_issues', 'Open issues whose dueDate is set and earlier than before (default now).', { project_id: { type: 'string' }, before: { type: 'integer' }, limit: { type: 'integer' } }, overdueIssues),
-  tool('get_unassigned_issues', 'Open issues with no assignee.', { project_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, unassignedIssues),
-  tool('get_blocked_issues', 'Open issues whose blockedBy list is non-empty, taken from the newest 50 open issues.', { project_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, blockedIssues),
+  tool('get_overdue_issues', 'Open issues whose dueDate is set and earlier than before (default now). returned_count is the number of items in this response and must be reported exactly.', { project_id: { type: 'string' }, before: { type: 'integer' }, limit: { type: 'integer' } }, overdueIssues),
+  tool('get_unassigned_issues', 'Open issues with no assignee. returned_count is the number of items in this response and must be reported exactly.', { project_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, unassignedIssues),
+  tool('get_blocked_issues', 'Open issues whose blockedBy list is non-empty, taken from the newest 50 open issues. returned_count is the number of items in this response and must be reported exactly.', { project_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, blockedIssues),
   tool('search_people', 'Search people by name.', { query: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, searchPeople),
   tool('get_person', 'Get one person by id.', { person_id: { type: 'string' } }, getPerson, ['person_id']),
   tool('get_person_work', 'Open issues assigned to a person.', { person_id: { type: 'string' }, limit: { type: 'integer' }, before: { type: 'integer' } }, personWork, ['person_id']),
@@ -515,7 +912,11 @@ const tools = [
   tool('get_project_activity', 'Recent issues and messages for one project.', { project_id: { type: 'string' }, since: { type: 'integer' }, limit: { type: 'integer' } }, projectActivity, ['project_id']),
   tool('search_messages', 'Recent chat messages attached to an organization\'s projects, one project, or one object. Requires a scope and stays inside 31 days.', { organization_id: { type: 'string' }, project_id: { type: 'string' }, attached_to: { type: 'string' }, since: { type: 'integer' }, until: { type: 'integer' }, limit: { type: 'integer' } }, searchMessages),
   tool('get_message_thread', 'One chat message and messages attached to it.', { message_id: { type: 'string' }, limit: { type: 'integer' } }, messageThread, ['message_id']),
-  tool('get_client_context', 'Bounded summary for one client: organization, projects, open and overdue issues, assignees, and recent messages.', { organization_id: { type: 'string' }, name: { type: 'string' }, limit: { type: 'integer' } }, clientContext)
+  tool('get_client_context', 'Bounded summary for one client: organization, projects, open and overdue issues, assignees, and recent messages.', { organization_id: { type: 'string' }, name: { type: 'string' }, limit: { type: 'integer' } }, clientContext),
+  tool('create_issue', 'Create one Huly issue in an existing project. Reuses the same issue when source_key is repeated. Returns the saved issue only after it can be read back. Description is stored as a comment.', { project_id: { type: 'string' }, title: { type: 'string' }, description: { type: 'string' }, status: { type: 'string' }, priority: { type: 'string' }, assignee_id: { type: 'string' }, due_date: { type: 'string' }, source_key: { type: 'string' } }, createIssue, ['project_id', 'title']),
+  tool('update_issue', 'Update title, status, priority, assignee, or due date on an existing issue. Optionally add one comment. Returns the issue after the saved fields match. Use source_key to avoid a duplicate comment.', { issue_id: { type: 'string' }, title: { type: 'string' }, status: { type: 'string' }, priority: { type: 'string' }, assignee_id: { type: 'string' }, due_date: { type: 'string' }, comment: { type: 'string' }, source_key: { type: 'string' } }, updateIssue, ['issue_id']),
+  tool('add_issue_comment', 'Add a progress comment to an issue. The same source_key does not create a second comment.', { issue_id: { type: 'string' }, text: { type: 'string' }, source_key: { type: 'string' } }, addIssueComment, ['issue_id', 'text']),
+  tool('get_issue_by_source', 'Find the issue previously created with this source_key.', { source_key: { type: 'string' } }, issueBySource, ['source_key'])
 ]
 
 function tool (name, description, properties, handler, required = []) {

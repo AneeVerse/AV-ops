@@ -86,13 +86,24 @@ verify_live() {
     echo "no recent 'Calendar service has been started' line — probing HTTP instead"
   fi
 
-  local code
-  code=$(docker exec "$CALENDAR_CONTAINER" node -e "
-    fetch('http://127.0.0.1:8095/signin').then((r) => { console.log(r.status); process.exit(0) })
-      .catch((e) => { console.error('probe failed:', e.message); process.exit(1) })
-  " 2>/dev/null || true)
+  local code attempt
+  code=""
+  for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
+    code=$(docker exec "$CALENDAR_CONTAINER" node -e "
+      fetch('http://127.0.0.1:8095/signin').then((r) => { console.log(r.status); process.exit(0) })
+        .catch((e) => { console.error('probe failed:', e.message); process.exit(1) })
+    " 2>/dev/null || true)
+    case "$code" in
+      401|400|200)
+        echo "calendar HTTP responded $code"
+        break
+        ;;
+    esac
+    echo "calendar not ready (attempt $attempt) — waiting"
+    sleep 15
+  done
   case "$code" in
-    401|400|200) echo "calendar HTTP responded $code" ;;
+    401|400|200) ;;
     *) die "calendar HTTP returned nothing usable: ${code:-<empty>}" ;;
   esac
 

@@ -58,6 +58,18 @@ DELETE FROM space
 WHERE _class = 'tracker:class:ClientFunnel'
    OR (_id LIKE 'tracker:%Client%' AND _id NOT LIKE '%Company%');
 
+-- Activity rows still pointing at removed Client classes break company panels
+-- (DocUpdateMessagePresenter calls hierarchy.getClass(objectClass)).
+DELETE FROM activity
+WHERE data->>'objectClass' IN ('tracker:class:Client', 'tracker:class:ClientFunnel')
+   OR data->>'attachedToClass' IN ('tracker:class:Client', 'tracker:class:ClientFunnel');
+
+-- Stale collection counters from the old clients attachment.
+UPDATE contact
+SET data = data - 'clients'
+WHERE _class = 'contact:class:Organization'
+  AND data ? 'clients';
+
 COMMIT;
 SQL
 

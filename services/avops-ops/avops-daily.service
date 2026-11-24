@@ -1,0 +1,8 @@
+[Unit]
+Description=AV OPS daily operations report
+After=network-online.target avops-mcp.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-ops/daily.mjs
+Nice=10

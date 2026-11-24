@@ -419,6 +419,16 @@ export interface InvoiceItemTemplate {
 }
 
 /**
+ * A payment recorded against an invoice. Balance = total - sum(payments.amount).
+ * @public
+ */
+export interface InvoicePayment {
+  date: Timestamp
+  amount: number
+  note?: string
+}
+
+/**
  * @public
  */
 export interface Invoice extends Doc {
@@ -438,6 +448,9 @@ export interface Invoice extends Doc {
   total: number
   space: Ref<Project>
   signatory?: string
+  notes?: string
+  payments?: InvoicePayment[]
+  paidAmount?: number
 }
 
 /**

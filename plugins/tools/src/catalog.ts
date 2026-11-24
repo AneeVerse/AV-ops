@@ -40,6 +40,12 @@ export const OBSOLETE_TOOL_HOSTS: string[] = [
   'scrape.aneeverse.com'
 ]
 
+/**
+ * Retired tools. NOTE: never add 'n8n-listing-images' here — that is the live
+ * single listing tool. A deployed bundle once listed it as obsolete while its
+ * catalog had no such entry, so the Tools UI deleted/hid every n8n card and
+ * created nothing in return (n8n group showed 0 tools).
+ */
 export const OBSOLETE_TOOL_IDS: string[] = [
   'erp',
   'crm',
@@ -55,6 +61,22 @@ export const OBSOLETE_TOOL_IDS: string[] = [
   'n8n-amazon',
   'n8n-etsy'
 ]
+
+/**
+ * The one n8n listing tool. The three per-marketplace n8n forms
+ * (eBay/Amazon/Etsy) were replaced by this single image-generator page,
+ * which drives the unified n8n workflow behind the scenes.
+ */
+export const LISTING_IMAGES_SITE: ToolSite = {
+  id: 'n8n-listing-images',
+  name: 'Listing Images',
+  href: 'https://app.aneeverse.com/tools/image-generator/',
+  host: 'app.aneeverse.com/tools/image-generator',
+  description: 'AI product listing image generator (eBay, Amazon, Etsy) with ImageKit CDN delivery.',
+  group: 'n8n',
+  https: true,
+  openMode: 'tab'
+}
 
 export function isValidToolHref (href: string): boolean {
   try {
@@ -150,14 +172,5 @@ export const TOOL_SITES: ToolSite[] = [
     https: true,
     openMode: 'popup'
   },
-  {
-    id: 'n8n-listing-images',
-    name: 'Listing Images',
-    href: 'https://app.aneeverse.com/tools/image-generator/',
-    host: 'app.aneeverse.com/tools/image-generator',
-    description: 'AI product listing image generator (eBay, Amazon, Etsy) with ImageKit CDN delivery.',
-    group: 'n8n',
-    https: true,
-    openMode: 'tab'
-  }
+  LISTING_IMAGES_SITE
 ]

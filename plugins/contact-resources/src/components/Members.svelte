@@ -13,12 +13,22 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Member } from '@hcengineering/contact'
-  import { AccountRole, getCurrentAccount, hasAccountRole, type Class, type Doc, type Ref, type Space } from '@hcengineering/core'
+  import { Member, type Organization, type Person } from '@hcengineering/contact'
+  import {
+    AccountRole,
+    type AccountUuid,
+    getCurrentAccount,
+    hasAccountRole,
+    type Class,
+    type Doc,
+    type Ref,
+    type Space
+  } from '@hcengineering/core'
   import { createQuery, getClient } from '@hcengineering/presentation'
   import { Button, IconAdd, Label, Section, showPopup, Scroller } from '@hcengineering/ui'
   import { Viewlet, ViewletPreference } from '@hcengineering/view'
   import { Table, ViewletSelector, ViewletSettingButton } from '@hcengineering/view-resources'
+  import { addAccountToCompanyProjects } from '../companyProjectMembers'
   import contact from '../plugin'
   import CreatePersonWithLogin from './CreatePersonWithLogin.svelte'
   import UsersPopup from './UsersPopup.svelte'
@@ -75,6 +85,11 @@
           await client.addCollection(contact.class.Member, space, objectId, _class, 'members', {
             contact: personRef
           })
+          const person = await client.findOne(contact.class.Person, { _id: personRef as Ref<Person> })
+          const accountUuid = person?.personUuid as AccountUuid | undefined
+          if (accountUuid != null) {
+            await addAccountToCompanyProjects(client, objectId as Ref<Organization>, accountUuid)
+          }
         }
       },
       ev.target as HTMLElement

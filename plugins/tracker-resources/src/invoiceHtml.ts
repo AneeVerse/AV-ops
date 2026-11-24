@@ -2,7 +2,7 @@
 // Copyright © 2026 AneeVerse
 //
 
-import type { Invoice, InvoiceLine, InvoiceParty } from '@hcengineering/tracker'
+import type { Invoice, InvoiceLine, InvoiceParty, InvoicePayment } from '@hcengineering/tracker'
 import {
   ANEEVERSE_BANK,
   ANEEVERSE_BILLED_BY,
@@ -16,6 +16,8 @@ import { getSignatory } from './aneeverseSignatures'
 import {
   formatINR,
   formatInvoiceDate,
+  invoiceBalance,
+  invoicePaidAmount,
   isIntraMaharashtra,
   lineAmount,
   lineCgst,
@@ -35,6 +37,10 @@ export interface InvoiceView {
   items: InvoiceLine[]
   totals: InvoiceTotals
   signatory?: string
+  notes?: string
+  payments?: InvoicePayment[]
+  paidAmount?: number
+  balanceDue?: number
 }
 
 function escapeHtml (value: string): string {
@@ -235,6 +241,55 @@ export const INVOICE_CSS = `
     margin-top: 8px;
     color: ${ANEEVERSE_BRAND};
   }
+  .av-totals-row.av-paid span:last-child { color: #0f766e; }
+  .av-totals-row.av-balance span:last-child { color: #b45309; font-weight: 700; }
+  .av-notes {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  .av-notes-title {
+    font-weight: 700;
+    color: ${ANEEVERSE_BRAND};
+    margin-bottom: 4px;
+  }
+  .av-payments {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  .av-payments-title {
+    font-weight: 700;
+    color: ${ANEEVERSE_BRAND};
+    margin-bottom: 6px;
+  }
+  .av-pay-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .av-pay-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 3px 6px 5px 0;
+  }
+  .av-pay-table th.av-num,
+  .av-pay-table td.av-num {
+    text-align: right;
+  }
+  .av-pay-table td {
+    padding: 4px 6px 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+  .av-pay-table tr:last-child td { border-bottom: 0; }
+  .av-pay-note { color: #666; }
   .av-sign {
     margin-top: 24px;
     text-align: right;
@@ -294,6 +349,8 @@ export const INVOICE_CSS = `
 
 export function invoiceToView (invoice: Invoice): InvoiceView {
   const items = Array.isArray(invoice.items) ? invoice.items : []
+  const paidAmount = invoicePaidAmount(invoice)
+  const balanceDue = invoiceBalance(invoice)
   return {
     number: invoice.number,
     invoiceDate: invoice.invoiceDate,
@@ -310,7 +367,11 @@ export function invoiceToView (invoice: Invoice): InvoiceView {
       igst: invoice.igst,
       total: invoice.total
     },
-    signatory: invoice.signatory ?? ANEEVERSE_SIGNATORY
+    signatory: invoice.signatory ?? ANEEVERSE_SIGNATORY,
+    notes: invoice.notes,
+    payments: Array.isArray(invoice.payments) ? invoice.payments.map((p) => ({ ...p })) : [],
+    paidAmount,
+    balanceDue
   }
 }
 
@@ -328,6 +389,46 @@ export function invoicePageHtml (view: InvoiceView): string {
   const sigHtml = sig.signatureDataUri
     ? `<img class="av-sign-img" src="${sig.signatureDataUri}" alt="${escapeHtml(sig.name)}" />`
     : `<div class="av-sign-name">${escapeHtml(sig.name)}</div>`
+  const paidAmount = view.paidAmount ?? 0
+  const balanceDue = view.balanceDue ?? Math.max(0, view.totals.total - paidAmount)
+  const payments = (view.payments ?? []).filter((p) => (Number(p.amount) || 0) > 0)
+  const paymentSummaryRows =
+    paidAmount > 0.001
+      ? `<div class="av-totals-row av-paid"><span>Amount paid</span><span>${formatINR(paidAmount)}</span></div>
+         <div class="av-totals-row av-balance"><span>Balance due</span><span>${formatINR(balanceDue)}</span></div>`
+      : ''
+  const paymentsHtml =
+    payments.length > 0
+      ? `<div class="av-payments">
+          <div class="av-payments-title">Payments received</div>
+          <table class="av-pay-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th class="av-num">Amount</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${payments
+                .slice()
+                .sort((a, b) => a.date - b.date)
+                .map(
+                  (p) => `<tr>
+                    <td>${escapeHtml(formatInvoiceDate(p.date))}</td>
+                    <td class="av-num">${formatINR(Number(p.amount) || 0)}</td>
+                    <td class="av-pay-note">${escapeHtml((p.note ?? '').trim())}</td>
+                  </tr>`
+                )
+                .join('')}
+            </tbody>
+          </table>
+        </div>`
+      : ''
+  const notesHtml =
+    view.notes != null && view.notes.trim() !== ''
+      ? `<div class="av-notes"><div class="av-notes-title">Notes</div><div>${escapeHtml(view.notes).replace(/\n/g, '<br>')}</div></div>`
+      : ''
   return `<section class="av-page">
     <div class="av-header">
       <div>
@@ -349,6 +450,8 @@ export function invoicePageHtml (view: InvoiceView): string {
       <span><strong>Place of Supply:</strong> ${escapeHtml(view.placeOfSupply)}</span>
     </div>
     ${itemsHtml(view)}
+    ${paymentsHtml}
+    ${notesHtml}
     <div class="av-footer">
       <div class="av-bank">
         <div class="av-bank-title">Bank Details</div>
@@ -363,6 +466,7 @@ export function invoicePageHtml (view: InvoiceView): string {
           <div class="av-totals-row"><span>Amount</span><span>${formatINR(view.totals.amount)}</span></div>
           ${taxRows}
           <div class="av-totals-row av-grand"><span>Total (INR)</span><span>${formatINR(view.totals.total)}</span></div>
+          ${paymentSummaryRows}
         </div>
         <div class="av-sign">
           ${sigHtml}

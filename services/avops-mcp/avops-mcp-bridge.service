@@ -1,0 +1,14 @@
+[Unit]
+Description=Private n8n bridge to the AV OPS MCP
+After=network-online.target avops-mcp.service
+Wants=avops-mcp.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c 'ufw status | grep -q avops-mcp-n8n || ufw allow from 172.20.0.0/16 to 172.20.0.1 port 8765 proto tcp comment avops-mcp-n8n'
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-mcp/bridge.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

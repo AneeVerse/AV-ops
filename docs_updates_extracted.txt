@@ -1,0 +1,10 @@
+While creating the invoice make the form on one side and the preview on the other side
+Also make it full screen 
+Also The Client Address + GSTIN + PAN + Phone number Should save in Company detail, 
+Also once i add or change the details at one place it should Sync, However if a invoice is already created the change should not affect to the already created invoice + there should be option to change the details of the already created invoice
+For this i will give you 2 png, 1st My signature 1nd Abhijeet signature  https://chat.google.com/dm/vP8Jm8AAAAE/gSLqpvZ7jcM/gSLqpvZ7jcM?cls=10 Give the opinion to choose.
+For this section i want a place where i can have a template save for example 
+Website Devlopment   Hsn Code 195525   GSt 18%
+Platform Devlopmett HS code 1548562 GSt 18%
+And in itam this shows as deop down, and if i select any one of the service all the other things fills automatically except price 
+Also there should be one “Other” option, It should be on the top option, if i click opthe i will be able to fill all the fields manually, and once save i it will become the part of the template, so it will become as a dropdown.

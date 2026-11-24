@@ -20,7 +20,8 @@
     AssigneeBox,
     UserBox,
     employeeRefByAccountUuidStore,
-    getAnonymousRefs
+    getAnonymousRefs,
+    mergeCompanyMembersIntoProjectMembers
   } from '@hcengineering/contact-resources'
   import core, {
     AccountRole,
@@ -112,7 +113,13 @@
 
   $: isNew = project == null
 
+  async function ensureCompanyMembersOnProject (): Promise<void> {
+    if (companyRef == null) return
+    members = await mergeCompanyMembersIntoProjectMembers(client, companyRef, members)
+  }
+
   async function handleSave (): Promise<void> {
+    await ensureCompanyMembersOnProject()
     if (isNew) {
       await createProject()
     } else {
