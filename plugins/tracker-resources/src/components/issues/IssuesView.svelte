@@ -1,6 +1,6 @@
 <script lang="ts">
   import contact from '@hcengineering/contact'
-  import { DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
+  import { AccountRole, DocumentQuery, getCurrentAccount, Ref, Space, WithLookup } from '@hcengineering/core'
   import { Asset, IntlString, translateCB } from '@hcengineering/platform'
   import { buildRelatedSearchQuery, ComponentExtensions, getClient, SpaceSelector } from '@hcengineering/presentation'
   import { Issue, TrackerEvents, type Project } from '@hcengineering/tracker'
@@ -27,6 +27,8 @@
   import ProjectPresenter from '../projects/ProjectPresenter.svelte'
 
   function newIssue (): void {
+    const me = getCurrentAccount()
+    if (me.role === AccountRole.Guest || me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.DocGuest) return
     showPopup(CreateIssue, { space: effectiveSpace, shouldSaveDraft: true, autoSelectProject: false }, 'top')
   }
 
@@ -291,7 +293,11 @@
       query={resultQuery}
       space={effectiveSpace}
       {viewOptions}
-      createItemDialog={CreateIssue}
+      createItemDialog={getCurrentAccount().role === AccountRole.Guest ||
+      getCurrentAccount().role === AccountRole.ReadOnlyGuest ||
+      getCurrentAccount().role === AccountRole.DocGuest
+        ? undefined
+        : CreateIssue}
       createItemLabel={tracker.string.AddIssueTooltip}
       createItemEvent={TrackerEvents.IssuePlusButtonClicked}
       createItemDialogProps={{ shouldSaveDraft: true }}

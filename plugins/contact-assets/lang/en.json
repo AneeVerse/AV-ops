@@ -179,6 +179,8 @@
     "PAN": "PAN",
     "BillingPhone": "Phone",
     "PlaceOfSupply": "Place of supply",
+    "Teammate": "Teammate",
+    "CompanyGuestHint": "Creates a guest login and adds them to this company's projects. This is not the project member list and not the lead assignee.",
     "EmployeeAccess": "What they see",
     "LimitWhatTheySee": "Limit what this person sees",
     "LimitWhatTheySeeHint": "When on, they only see what you tick. A new person starts with nothing ticked. Tools are grouped under Tools. Owner and Maintainer always see everything.",

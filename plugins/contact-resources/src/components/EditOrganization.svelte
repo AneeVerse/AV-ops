@@ -14,14 +14,15 @@
 // limitations under the License.
 -->
 <script lang="ts">
-  import { Organization } from '@hcengineering/contact'
-  import { getCurrentAccount, Ref } from '@hcengineering/core'
+  import { Organization, type Person } from '@hcengineering/contact'
+  import { getCurrentAccount, isOwnerOrMaintainer, Ref } from '@hcengineering/core'
   import { createQuery, getClient } from '@hcengineering/presentation'
   import setting, { IntegrationType } from '@hcengineering/setting'
   import { createFocusManager, EditBox, FocusHandler, Scroller } from '@hcengineering/ui'
   import { createEventDispatcher, onMount } from 'svelte'
   import contact from '../plugin'
   import ChannelsEditor from './ChannelsEditor.svelte'
+  import EmployeeBox from './EmployeeBox.svelte'
   import Company from './icons/Company.svelte'
 
   export let object: Organization
@@ -55,12 +56,30 @@
         'gstin',
         'pan',
         'billingPhone',
-        'placeOfSupply'
+        'placeOfSupply',
+        'manager',
+        'chatSpace',
+        'chatSpaceName',
+        'chatSpaceRequested',
+        'lastRollupOn'
       ]
     })
   })
 
   const manager = createFocusManager()
+  let teammate: Ref<Person> | undefined
+  $: teammate = (object?.manager ?? undefined) as Ref<Person> | undefined
+
+  function saveTeammate (ev: CustomEvent<Ref<Person> | null>): void {
+    const next = (ev.detail ?? null) as Organization['manager']
+    object.manager = next
+    void client.updateDoc(object._class, object.space, object._id, { manager: next })
+  }
+
+  function requestStaffChat (): void {
+    object.chatSpaceRequested = true
+    void client.updateDoc(object._class, object.space, object._id, { chatSpaceRequested: true })
+  }
 </script>
 
 <FocusHandler {manager} />
@@ -81,6 +100,33 @@
         />
       </div>
       <div class="separator" />
+      <div class="billing-row">
+        <span>Teammate</span>
+        <EmployeeBox
+          label={contact.string.Teammate}
+          value={teammate}
+          allowDeselect
+          readonly={readonly}
+          kind={'link'}
+          size={'small'}
+          justify={'left'}
+          width={'100%'}
+          showNavigate={false}
+          on:change={saveTeammate}
+        />
+      </div>
+      {#if isOwnerOrMaintainer()}
+        <div class="billing-row">
+          <span>Staff Chat</span>
+          {#if object.chatSpace}
+            <span>{object.chatSpaceName || object.chatSpace}</span>
+          {:else if object.chatSpaceRequested}
+            <span>Requested. The space is created after the Chat app is approved. Clients are not added.</span>
+          {:else if !readonly}
+            <button type="button" on:click={requestStaffChat}>Create staff Chat</button>
+          {/if}
+        </div>
+      {/if}
       <Scroller contentDirection={'horizontal'} padding={'.125rem .125rem .5rem'} stickedScrollBars thinScrollBars>
         <ChannelsEditor
           editable={!readonly}

@@ -9,7 +9,15 @@ This document records **everything we changed** from upstream [Huly / Hardcore E
 **Live site:** https://app.aneeverse.com  
 **Upstream base:** Huly self-host stack ~`v0.7.426` (`HULY_VERSION` on VPS)  
 **Workspace:** `aneeverse`  
-**Period covered:** 2026-08-18 → 2026-09-12 (all fork commits in this git history)
+**Period covered:** 2026-08-18 → 2026-11-26
+
+## Current as of 26 Nov 2026
+
+The old Client CRM app, the company Drive import, and `aneerequestId` are gone from the source tree. Leads, companies, tasks, and the GST invoice screen are the app. Hiding a button is not security: guests are blocked by the permission group and by not being members of the Billing space.
+
+Invoice numbers are allocated on save from one `InvoiceSequence` counter (`AV` plus 6 digits). Bank details live on the invoice profile, not in git. New invoices are stored in the staff-only Billing space and keep a project reference so the project tab can still list them.
+
+A company name on the company page opens `/tracker/<projectId>/issues`. Assigning a task from Hermes adds that person to the project. A Won lead can create or reuse a company and a project, and the lead stays on the person. Each company has one Teammate field. New projects include the workspace Owners. The VPS panel is shown to workspace Owners. The assistant panel is labelled Novino assistant. A staff-only Google Chat space can be requested per company. The notify worker posts an assignment mention, an estimate reminder, and a weekday morning rollup. It does not post until the Chat app is approved, and it never adds a client.
 
 ---
 

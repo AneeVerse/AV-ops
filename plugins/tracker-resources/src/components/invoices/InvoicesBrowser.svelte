@@ -9,9 +9,9 @@
 <script lang="ts">
   import { type Organization } from '@hcengineering/contact'
   import contact from '@hcengineering/contact'
-  import { type DocumentQuery, type Ref } from '@hcengineering/core'
+  import core, { getCurrentAccount, type DocumentQuery, type Ref } from '@hcengineering/core'
   import { createQuery, getClient, MessageBox } from '@hcengineering/presentation'
-  import tracker, { type Invoice, type Project } from '@hcengineering/tracker'
+  import tracker, { type Expense, type Invoice, type Project } from '@hcengineering/tracker'
   import {
     Breadcrumb,
     Button,
@@ -39,8 +39,12 @@
     monthKey,
     monthLabel,
     summarizeInvoices,
+    cashTargetProgress,
+    cashBook,
+    NEW_CLIENT_CASH_TARGET,
     type InvoicePayStatus
   } from '../../invoiceMath'
+  import { invoicesForAccount, isGuestAccount } from '../../aneeverseBilling'
   import { invoiceToView } from '../../invoiceHtml'
   import { printInvoices } from '../../invoicePrint'
   import trackerRes from '../../plugin'
@@ -53,10 +57,15 @@
 
   const client = getClient()
   const liveQuery = createQuery()
+  const expenseQuery = createQuery()
   const projectQuery = createQuery()
   const orgQuery = createQuery()
 
   let invoices: Invoice[] = []
+  let expenses: Expense[] = []
+  let expenseCategory = 'software'
+  let expenseAmount = ''
+  let expenseNote = ''
   let projects: Map<Ref<Project>, Project> = new Map()
   let organizations: Map<Ref<Organization>, Organization> = new Map()
   let month: string = 'all'
@@ -66,7 +75,10 @@
   export let navigationOnly = false
 
   $: liveQuery.query(tracker.class.Invoice, query, (result) => {
-    invoices = result.slice().sort((a, b) => b.invoiceDate - a.invoiceDate)
+    invoices = invoicesForAccount(getCurrentAccount().role, result).slice().sort((a, b) => b.invoiceDate - a.invoiceDate)
+  })
+  expenseQuery.query(tracker.class.Expense, {}, (result) => {
+    expenses = invoicesForAccount(getCurrentAccount().role, result)
   })
   projectQuery.query(tracker.class.Project, {}, (result) => {
     projects = new Map(result.map((p) => [p._id, p]))
@@ -139,6 +151,21 @@
     return true
   })
   $: summary = summarizeInvoices(dashSource, { month: dashRange })
+  $: book = cashBook(summary.received, expenses.map((row) => ({ amount: row.amount, category: row.category })))
+
+  async function addExpense (): Promise<void> {
+    const amount = Number(expenseAmount)
+    if (!Number.isFinite(amount) || amount <= 0) return
+    if (isGuestAccount(getCurrentAccount().role)) return
+    await client.createDoc(tracker.class.Expense, core.space.Workspace, {
+      category: expenseCategory,
+      amount,
+      incurredOn: Date.now(),
+      note: expenseNote.trim() === '' ? undefined : expenseNote.trim()
+    })
+    expenseAmount = ''
+    expenseNote = ''
+  }
   $: openBalances = dashSource
     .map((inv) => ({
       invoice: inv,
@@ -300,6 +327,11 @@
               <strong>{formatINR(summary.received)}</strong>
               <em>{summary.paidCount} paid · {summary.partialCount} partial</em>
             </div>
+            <div class="dash-card dash-card--ok">
+              <span>New-client cash</span>
+              <strong>{formatINR(cashTargetProgress(summary.received).received)}</strong>
+              <em>{formatINR(book.net)} after expenses · {formatINR(cashTargetProgress(summary.received).remaining)} left of {formatINR(NEW_CLIENT_CASH_TARGET)}</em>
+            </div>
             <div class="dash-card dash-card--warn">
               <span><Label label={trackerRes.string.PendingAmount} /></span>
               <strong>{formatINR(summary.pending)}</strong>
@@ -310,6 +342,23 @@
               <strong>{formatINR(summary.overdue)}</strong>
               <em>{summary.overdueCount} overdue</em>
             </div>
+          </div>
+
+          <div class="dash-section">
+            <div class="row">
+              <select bind:value={expenseCategory}>
+                <option value="client">Getting the client</option>
+                <option value="software">Software</option>
+                <option value="salaries">Salaries</option>
+                <option value="travel">Travel</option>
+              </select>
+              <input class="av-input" type="number" min="0" placeholder="Amount" bind:value={expenseAmount} />
+              <input class="av-input" placeholder="Note" bind:value={expenseNote} />
+              <button type="button" on:click={addExpense}>Add expense</button>
+            </div>
+            {#each expenses as expense (expense._id)}
+              <div>{expense.category}: {formatINR(expense.amount)}{expense.note ? ` — ${expense.note}` : ''}</div>
+            {/each}
           </div>
 
           <div class="dash-status-row">

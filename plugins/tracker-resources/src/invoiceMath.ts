@@ -3,10 +3,9 @@
 //
 
 import type { Client } from '@hcengineering/core'
-import type { Invoice, InvoiceLine, InvoiceParty, InvoicePayment } from '@hcengineering/tracker'
 import { type Organization } from '@hcengineering/contact'
-import tracker from '@hcengineering/tracker'
-import { ANEEVERSE_STATE_CODE, DEFAULT_GST_RATE, DEFAULT_HSN } from './aneeverseBilling'
+import type { Invoice, InvoiceLine, InvoiceParty, InvoicePayment } from '@hcengineering/tracker'
+import { ANEEVERSE_STATE_CODE, DEFAULT_GST_RATE, DEFAULT_HSN, allocateInvoiceNumber } from './aneeverseBilling'
 
 export type InvoicePayStatus = 'paid' | 'partial' | 'unpaid' | 'overdue'
 
@@ -116,15 +115,7 @@ export function partyFromOrganization (org: Organization): InvoiceParty {
 }
 
 export async function nextInvoiceNumber (client: Client): Promise<string> {
-  const existing = await client.findAll(tracker.class.Invoice, {})
-  let max = 0
-  for (const inv of existing) {
-    const match = /^AV(\d+)$/.exec(inv.number)
-    if (match !== null) {
-      max = Math.max(max, parseInt(match[1], 10))
-    }
-  }
-  return `AV${String(max + 1).padStart(6, '0')}`
+  return await allocateInvoiceNumber(client)
 }
 
 export function lineCgst (line: InvoiceLine, placeOfSupply: string): number {
@@ -179,6 +170,33 @@ export function invoiceStatus (
   }
   if (invoice.dueDate < now) return 'overdue'
   return 'unpaid'
+}
+
+export const NEW_CLIENT_CASH_TARGET = 60000
+
+export function cashBook (
+  revenue: number,
+  expenses: Array<{ amount: number, category?: string }>
+): { revenue: number, expenses: number, net: number } {
+  const spent = expenses.reduce((sum, row) => sum + (Number(row.amount) || 0), 0)
+  const income = Number(revenue) || 0
+  return {
+    revenue: income,
+    expenses: Math.round(spent * 100) / 100,
+    net: Math.round((income - spent) * 100) / 100
+  }
+}
+
+export function cashTargetProgress (
+  received: number,
+  target: number = NEW_CLIENT_CASH_TARGET
+): { target: number, received: number, remaining: number } {
+  const got = Math.max(0, Number(received) || 0)
+  return {
+    target,
+    received: got,
+    remaining: Math.max(0, Math.round((target - got) * 100) / 100)
+  }
 }
 
 export function invoiceStatusLabel (status: InvoicePayStatus): string {

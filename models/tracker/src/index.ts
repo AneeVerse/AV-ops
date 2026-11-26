@@ -55,7 +55,9 @@ import {
     TTypeRemainingTime,
     TTypeReportedTime,
     TInvoice,
-    TInvoiceProfile
+    TInvoiceProfile,
+    TInvoiceSequence,
+    TExpense
 } from './types'
 import { defineViewlets } from './viewlets'
 
@@ -484,6 +486,33 @@ function defineInvoicesApplication (builder: Builder): void {
     },
     tracker.app.Invoices
   )
+
+  builder.createDoc(
+    core.class.ModulePermissionGroup,
+    core.space.Model,
+    {
+      application: tracker.app.Invoices,
+      role: AccountRole.Guest,
+      permissions: [],
+      spaceClass: core.class.Space,
+      enabled: false,
+      order: 10
+    },
+    tracker.ids.InvoicesGuestPermission
+  )
+  builder.createDoc(
+    core.class.ModulePermissionGroup,
+    core.space.Model,
+    {
+      application: tracker.app.Invoices,
+      role: AccountRole.ReadOnlyGuest,
+      permissions: [],
+      spaceClass: core.class.Space,
+      enabled: false,
+      order: 10
+    },
+    tracker.ids.InvoicesReadOnlyGuestPermission
+  )
 }
 
 export function createModel (builder: Builder): void {
@@ -504,7 +533,9 @@ export function createModel (builder: Builder): void {
     TTypeRemainingTime,
     TProjectTargetPreference,
     TInvoice,
-    TInvoiceProfile
+    TInvoiceProfile,
+    TInvoiceSequence,
+    TExpense
   )
 
   builder.mixin(tracker.class.Project, core.class.Class, activity.mixin.ActivityDoc, {})
@@ -749,7 +780,7 @@ export function createModel (builder: Builder): void {
     {
       application: tracker.app.Tracker,
       role: AccountRole.Guest,
-      permissions: [tracker.ids.GuestIssueClassPermission],
+      permissions: [],
       spaceClass: tracker.class.Project,
       enabled: true,
       order: 10

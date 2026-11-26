@@ -64,13 +64,17 @@
       for (const p of _object) {
         if ('_class' in p) {
           Analytics.handleEvent(TrackerEvents.IssueSetAssignee, { issue: p.identifier ?? p._id })
-          await ops.update(p, { assignee: newAssignee })
+          await ops.update(p, newAssignee != null && p.assignee !== newAssignee
+            ? { assignee: newAssignee, assignedAt: Date.now(), assigneeUpdatedOn: null }
+            : { assignee: newAssignee })
         }
       }
     } else {
       if ('_class' in _object) {
         Analytics.handleEvent(TrackerEvents.IssueSetAssignee, { issue: _object.identifier ?? _object._id })
-        await ops.update(_object, { assignee: newAssignee })
+        await ops.update(_object, newAssignee != null && _object.assignee !== newAssignee
+          ? { assignee: newAssignee, assignedAt: Date.now(), assigneeUpdatedOn: null }
+          : { assignee: newAssignee })
       }
     }
 

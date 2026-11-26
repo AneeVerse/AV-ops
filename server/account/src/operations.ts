@@ -3070,8 +3070,8 @@ function verifyNotApiToken (extra: Record<string, any> | undefined): void {
  * Creates a new API token for the authenticated user.
  * @param params.name Human-readable token name (1–255 chars)
  * @param params.workspaceUuid Target workspace — user must have access
- * @param params.expiryDays Token validity period (1–365 days), or 0 for a token that never expires
- * @returns Token ID, signed JWT, and expiration timestamp (ms, -1 when it never expires)
+ * @param params.expiryDays Token validity period, 1–365 days
+ * @returns Token ID, signed JWT, and expiration timestamp (ms)
  * @throws BadRequest if validation fails
  * @throws Forbidden if user lacks workspace access
  */
@@ -3102,9 +3102,9 @@ async function createApiToken (
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
-  // 0 means "never expires", mirroring the -1 sentinel invites already use.
+  // A token must expire. 0 used to mean "never".
   const days = Math.floor(expiryDays)
-  if (days < 0 || days > 365) {
+  if (days < 1 || days > 365) {
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
@@ -3127,8 +3127,7 @@ async function createApiToken (
     throw new PlatformError(new Status(Severity.ERROR, platform.status.BadRequest, {}))
   }
 
-  const neverExpires = days === 0
-  const expiresOn = neverExpires ? -1 : now + days * 86400000
+  const expiresOn = now + days * 86400000
 
   const id = randomUUID()
   const apiToken = generateToken(
@@ -3136,7 +3135,7 @@ async function createApiToken (
     workspaceUuid,
     { apiTokenId: id },
     undefined,
-    neverExpires ? undefined : { exp: Math.floor(expiresOn / 1000) }
+    { exp: Math.floor(expiresOn / 1000) }
   )
 
   await db.apiToken.insertOne({

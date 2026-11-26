@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Analytics } from '@hcengineering/analytics'
-  import { Class, IdMap, Ref, Status } from '@hcengineering/core'
+  import contact, { type Person } from '@hcengineering/contact'
+  import { Class, getCurrentAccount, IdMap, Ref, Status } from '@hcengineering/core'
   import { IntlString } from '@hcengineering/platform'
   import { DocPopup, getClient } from '@hcengineering/presentation'
   import { Task, TaskType } from '@hcengineering/task'
@@ -28,7 +29,13 @@
     const ops = client.apply(undefined, 'set-status')
     const changed = (d: Task) => d.status !== newStatus
     for (const it of docs.filter(changed)) {
-      await ops.update(it, { status: newStatus })
+      const patch: { status: typeof newStatus, assigneeUpdatedOn?: number } = { status: newStatus }
+      const assignee = (it as { assignee?: Ref<Person> | null }).assignee
+      if (assignee != null && String(it._class).startsWith('tracker:class:Issue')) {
+        const person = await client.findOne(contact.class.Person, { _id: assignee })
+        if (person?.personUuid === getCurrentAccount().uuid) patch.assigneeUpdatedOn = Date.now()
+      }
+      await ops.update(it, patch)
     }
     await ops.commit()
 
@@ -81,6 +88,7 @@
     : statuses.filter((status) => (status.name ?? '').toLowerCase().includes(searchQuery.toLowerCase()))
 </script>
 
+<p class="status-hint">Changing the state logs your update.</p>
 <DocPopup
   {_class}
   objects={filteredStatuses}
@@ -116,3 +124,11 @@
     </div>
   </svelte:fragment>
 </DocPopup>
+
+<style>
+  .status-hint {
+    margin: 0 0 0.5rem;
+    color: var(--content-dark-color);
+    font-size: 0.75rem;
+  }
+</style>

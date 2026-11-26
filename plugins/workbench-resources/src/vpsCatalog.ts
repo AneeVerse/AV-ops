@@ -28,24 +28,24 @@ export const VPS_CATALOG: VpsNode[] = [
     children: [
       {
         id: 'huly',
-        name: 'Huly',
+        name: 'Aneeverse',
         kind: 'file',
         href: 'https://app.aneeverse.com',
-        note: '/opt/huly-selfhost · huly_v7'
+        note: 'Self-hosted CRM'
       },
       {
         id: 'contentbeta',
         name: 'Contentbeta',
         kind: 'file',
         href: 'https://studio.aneeverse.com',
-        note: '/opt/contentbeta'
+        note: 'Content studio'
       },
       {
         id: 'crm',
         name: 'CRM',
         kind: 'file',
         href: 'https://crm.aneeverse.com',
-        note: '/opt/frappe-crm'
+        note: 'Sales CRM'
       },
       {
         id: 'erpnext',
@@ -59,14 +59,14 @@ export const VPS_CATALOG: VpsNode[] = [
         name: 'n8n',
         kind: 'file',
         href: 'https://n8n.aneeverse.com',
-        note: '/var/lib/n8n'
+        note: 'Automation'
       },
       {
         id: 'scrape',
         name: 'Scrape',
         kind: 'file',
         href: 'https://scrape.aneeverse.com',
-        note: '/opt/scrapegraphai'
+        note: 'Scrape service'
       },
       {
         id: 'chat',
@@ -80,14 +80,14 @@ export const VPS_CATALOG: VpsNode[] = [
         name: 'Obsidian',
         kind: 'file',
         href: 'https://md.aneeverse.com',
-        note: '/opt/obsidian-web'
+        note: 'Notes site'
       },
       {
         id: 'codex',
         name: 'Codex',
         kind: 'file',
         href: 'https://codex.aneeverse.com',
-        note: '/opt/codex-proxy'
+        note: 'Coding assistant'
       },
       {
         id: 'sales',
@@ -159,7 +159,7 @@ export const VPS_CATALOG: VpsNode[] = [
         id: 'nginx',
         name: 'nginx',
         kind: 'file',
-        note: '/etc/nginx/sites-available'
+        note: 'Public site routing'
       },
       {
         id: 'systemd',
@@ -169,9 +169,9 @@ export const VPS_CATALOG: VpsNode[] = [
       },
       {
         id: 'huly-compose',
-        name: 'Huly compose',
+        name: 'Aneeverse services',
         kind: 'file',
-        note: '/opt/huly-selfhost · huly_v7'
+        note: 'Application services'
       },
       {
         id: 'scripts',
@@ -185,35 +185,35 @@ export const VPS_CATALOG: VpsNode[] = [
     id: 'data',
     name: 'Data',
     kind: 'folder',
-    note: 'AV-ops 18-data-json',
+    note: 'Saved copies',
     children: [
       {
         id: 'data-huly',
-        name: 'Huly',
+        name: 'Aneeverse',
         kind: 'folder',
         note: 'Workspace backup snapshot',
-        children: [{ id: 'data-huly-snap', name: 'workspace snapshot', kind: 'file', note: '18-data-json/huly' }]
+        children: [{ id: 'data-huly-snap', name: 'workspace snapshot', kind: 'file', note: 'Saved workspace copy' }]
       },
       {
         id: 'data-crm',
         name: 'CRM',
         kind: 'folder',
         note: 'Frappe CRM JSON',
-        children: [{ id: 'data-crm-json', name: 'frappe-crm.json', kind: 'file', note: '18-data-json/crm' }]
+        children: [{ id: 'data-crm-json', name: 'CRM export', kind: 'file', note: 'Saved CRM copy' }]
       },
       {
         id: 'data-erp',
         name: 'ERPNext',
         kind: 'folder',
         note: 'ERP JSON / SQL',
-        children: [{ id: 'data-erp-sql', name: 'erp.sql', kind: 'file', note: '18-data-json/erp' }]
+        children: [{ id: 'data-erp-sql', name: 'ERP export', kind: 'file', note: 'Saved ERP copy' }]
       },
       {
         id: 'data-supabase',
         name: 'Supabase',
         kind: 'folder',
         note: 'Contentbeta Supabase',
-        children: [{ id: 'data-supabase-dump', name: 'supabase dump', kind: 'file', note: '18-data-json/supabase' }]
+        children: [{ id: 'data-supabase-dump', name: 'Database dump', kind: 'file', note: 'Saved database copy' }]
       },
       {
         id: 'data-postgres',
@@ -221,16 +221,16 @@ export const VPS_CATALOG: VpsNode[] = [
         kind: 'folder',
         note: 'Table JSON + SQL dumps',
         children: [
-          { id: 'data-pg-index', name: 'index.json', kind: 'file', note: '18-data-json/postgres/index.json' },
-          { id: 'data-pg-medusa', name: 'onecarat_medusa', kind: 'file', note: '18-data-json/postgres/onecarat_medusa' }
+          { id: 'data-pg-index', name: 'Index', kind: 'file', note: 'Saved table list' },
+          { id: 'data-pg-medusa', name: 'Store database', kind: 'file', note: 'Saved store copy' }
         ]
       },
       {
         id: 'data-n8n',
         name: 'n8n workflows',
         kind: 'folder',
-        note: '18-data-json/n8n',
-        children: [{ id: 'data-n8n-wf', name: 'workflows.json', kind: 'file', note: '18-data-json/n8n/workflows.json' }]
+        note: 'Saved automations',
+        children: [{ id: 'data-n8n-wf', name: 'Workflows', kind: 'file', note: 'Saved automation copy' }]
       }
     ]
   }

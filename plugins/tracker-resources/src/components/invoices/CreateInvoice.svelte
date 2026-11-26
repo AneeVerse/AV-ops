@@ -4,10 +4,11 @@
 <script lang="ts">
   import { AvatarType, type Organization } from '@hcengineering/contact'
   import contact from '@hcengineering/contact'
-  import core, { generateId, type Ref } from '@hcengineering/core'
+  import core, { generateId, getCurrentAccount, type Ref } from '@hcengineering/core'
   import presentation, { Card, getClient } from '@hcengineering/presentation'
   import tracker, {
     type Invoice,
+    type InvoiceBank,
     type InvoiceItemTemplate,
     type InvoiceLine,
     type InvoiceParty,
@@ -27,13 +28,18 @@
   } from '@hcengineering/ui'
   import { createEventDispatcher } from 'svelte'
   import {
-    ANEEVERSE_BILLED_BY,
+    allocateInvoiceNumber,
+    blankBank,
+    blankParty,
+    cloneParty,
     DEFAULT_COUNTRY_OF_SUPPLY,
     DEFAULT_DUE_DAYS,
     DEFAULT_ITEM_TEMPLATES,
     DEFAULT_PLACE_OF_SUPPLY,
-    cloneParty,
+    ensureBillingSpace,
+    isGuestAccount,
     loadWorkspaceBilledBy,
+    migrateInvoicesToBilling,
     persistWorkspaceBilledBy
   } from '../../aneeverseBilling'
   import { DEFAULT_SIGNATORY } from '../../aneeverseSignatures'
@@ -45,7 +51,6 @@
     fromDateInput,
     invoiceStatus,
     invoiceStatusLabel,
-    nextInvoiceNumber,
     partyFromOrganization,
     sumPayments,
     toDateInput
@@ -72,10 +77,11 @@
 
   let projects: Project[] = []
   let organizations: Map<Ref<Organization>, Organization> = new Map()
-  let selectedSpace: Ref<Project> | undefined = asProject(currentSpace ?? seed?.space)
+  let selectedSpace: Ref<Project> | undefined = seed?.project ?? asProject(seed?.space)
   let selectedCompanyId: Ref<Organization> | undefined = seed?.company
-  let billedBy: InvoiceParty = seed?.billedBy != null ? cloneParty(seed.billedBy) : cloneParty(ANEEVERSE_BILLED_BY)
+  let billedBy: InvoiceParty = seed?.billedBy != null ? cloneParty(seed.billedBy) : blankParty()
   let billedByProfile: InvoiceProfile | undefined
+  let bank: InvoiceBank = seed?.bank != null ? { ...blankBank(), ...seed.bank } : blankBank()
   let billedTo: InvoiceParty = seed?.billedTo != null ? cloneParty(seed.billedTo) : emptyParty()
   let invoiceDate = value?.invoiceDate ?? Date.now()
   let dueDate = value?.dueDate ?? Date.now() + dueMs
@@ -168,7 +174,8 @@
     notes: notes.trim(),
     payments,
     paidAmount,
-    balanceDue
+    balanceDue,
+    bank
   } as InvoiceView
 
   void loadRefs()
@@ -195,8 +202,11 @@
       if (source?.billedBy == null) {
         billedBy = loadedBilling.billedBy
       }
-      if (invoiceNumber === '') {
-        invoiceNumber = await nextInvoiceNumber(client)
+      if (source?.bank == null) {
+        bank = loadedBilling.bank
+      }
+      if (invoiceNumber === '' && value !== undefined) {
+        invoiceNumber = value.number
       }
 
       if (value === undefined && items.length === 1 && (items[0].title ?? '') === '' && availableTemplates.length > 0) {
@@ -462,7 +472,7 @@
     value = undefined
     invoiceDate = Date.now()
     dueDate = Date.now() + dueMs
-    invoiceNumber = await nextInvoiceNumber(client)
+    invoiceNumber = ''
     payments = []
     notes = duplicateFrom.notes ?? ''
   }
@@ -570,12 +580,19 @@
         }
       }
 
-      await persistWorkspaceBilledBy(client, billedByProfile, billedByParty, updatedTemplates, signatory)
+      await persistWorkspaceBilledBy(client, billedByProfile, billedByParty, updatedTemplates, signatory, bank)
 
+      if (isGuestAccount(getCurrentAccount().role)) {
+        error = 'Guests cannot create invoices.'
+        saving = false
+        return
+      }
+      const billing = await ensureBillingSpace(client)
+      await migrateInvoicesToBilling(client)
+      const number = value === undefined ? await allocateInvoiceNumber(client) : invoiceNumber
       const paid = sumPayments(payments)
-      const targetSpace = selectedSpace ?? (core.space.Workspace as Ref<Project>)
       const payload = {
-        number: invoiceNumber,
+        number,
         invoiceDate,
         dueDate,
         company: targetCompany ?? selectedProject?.company ?? undefined,
@@ -598,12 +615,14 @@
         cgst: computed.cgst,
         sgst: computed.sgst,
         igst: computed.igst,
-        total: computed.total
+        total: computed.total,
+        project: selectedSpace,
+        bank
       }
       if (value === undefined) {
-        await client.createDoc(tracker.class.Invoice, targetSpace, payload)
-      } else if (value.space !== targetSpace) {
-        await client.update(value, { ...payload, space: targetSpace })
+        await client.createDoc(tracker.class.Invoice, billing, payload)
+      } else if (value.space !== billing) {
+        await client.update(value, { ...payload, space: billing })
       } else {
         await client.update(value, payload)
       }
@@ -763,6 +782,30 @@
               <div class="field">
                 <span class="lbl">Phone</span>
                 <input class="av-input" bind:value={billedBy.phone} on:input={() => { billedBy = billedBy }} />
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <span class="lbl">Account name</span>
+                <input class="av-input" bind:value={bank.accountName} on:input={() => { bank = bank }} />
+              </div>
+              <div class="field">
+                <span class="lbl">Account number</span>
+                <input class="av-input" bind:value={bank.accountNumber} on:input={() => { bank = bank }} />
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <span class="lbl">IFSC</span>
+                <input class="av-input" bind:value={bank.ifsc} on:input={() => { bank = bank }} />
+              </div>
+              <div class="field">
+                <span class="lbl">Account type</span>
+                <input class="av-input" bind:value={bank.accountType} on:input={() => { bank = bank }} />
+              </div>
+              <div class="field">
+                <span class="lbl">Bank</span>
+                <input class="av-input" bind:value={bank.bank} on:input={() => { bank = bank }} />
               </div>
             </div>
             <div class="party-card__actions">

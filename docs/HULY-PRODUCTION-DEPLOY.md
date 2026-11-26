@@ -349,6 +349,22 @@ cd /opt/huly-selfhost
 ./run-tool.sh upgrade-workspace aneeverse
 ```
 
+## Database backup and restore
+
+Nightly VPS snapshots are not a database backup. The backup that includes `model_tx` is a Cockroach backup of `defaultdb`.
+
+On the VPS:
+
+```bash
+docker exec huly_v7-cockroach-1 \
+  cockroach sql --certs-dir=/cockroach/certs --host=127.0.0.1 --user=root \
+  -e "BACKUP INTO 'nodelocal://1/aneeverse-drill';"
+```
+
+Confirm the backup directory is non-empty, then copy it off the container. The 26 Nov 2026 drill backup succeeded as Cockroach job `1230776397746733057`: 20,035 rows, 12,012,411 bytes, 3.4M on disk at `nodelocal://1/aneeverse-drill`. `public.model_tx` is in that database. Live images at the time: front `huly-front-custom:325e10a9-20261121182246`, account `huly-account-custom:325e10a9-20261014174201`, calendar `huly-calendar-custom:325e10a9-20261014174318`. `/opt/huly-front/model-patch.sql` was 267,792 bytes.
+
+Local Docker was not running, so this backup has not been restored onto the local workspace yet. To rehearse, restore that backup into the local Docker Cockroach from `local.cmd` with `RESTORE DATABASE defaultdb FROM LATEST IN 'nodelocal://1/aneeverse-drill';` before opening the workspace. If a model change is wrong in production, restore the `model_tx` table from this backup. There is no separate model-rollback command.
+
 ---
 
 ## Hostinger firewall (connectivity issues)

@@ -659,6 +659,25 @@ function baseTx (actor, now) {
   }
 }
 
+async function joinProjectMember (client, projectId, personId) {
+  if (!personId) return
+  const people = await client.findAll(CLASS.person, { _id: personId }, { limit: 1 })
+  const accountUuid = people[0]?.personUuid
+  if (!accountUuid) return
+  const projects = await client.findAll(CLASS.project, { _id: projectId }, { limit: 1 })
+  const members = Array.isArray(projects[0]?.members) ? projects[0].members : []
+  if (members.includes(accountUuid)) return
+  const actor = await actorOf(client)
+  await client.tx({
+    ...baseTx(actor, Date.now()),
+    _class: 'core:class:TxUpdateDoc',
+    objectId: projectId,
+    objectClass: CLASS.project,
+    objectSpace: 'core:space:Space',
+    operations: { $push: { members: accountUuid } }
+  })
+}
+
 async function confirmedIssue (client, id) {
   const rows = await client.findAll(CLASS.issue, { _id: id }, { limit: 1 })
   if (!rows[0]) return null
@@ -726,6 +745,7 @@ async function createIssue (client, args) {
     remainingTime: 0,
     estimation: 0,
     reports: 0,
+    ...(assignee ? { assignedAt: now, assigneeUpdatedOn: null } : {}),
     relations: [],
     childInfo: [],
     kind: ISSUE_KIND,
@@ -752,6 +772,7 @@ async function createIssue (client, args) {
     commentId = sourceKey ? stableId('comment', `${sourceKey}:create`) : generateId()
     await writeComment(client, actor, issue, commentId, commentText)
   }
+  if (assignee) await joinProjectMember(client, projectId, assignee)
   const confirmed = await confirmedIssue(client, objectId)
   return {
     ok: true,
@@ -833,6 +854,13 @@ async function updateIssue (client, args) {
   }
   if (changed.length === 0 && args.comment == null) throw new Error('no changes requested')
   const actor = await actorOf(client)
+  if (operations.status && current.assignee_id && actor.person_id === current.assignee_id) {
+    operations.assigneeUpdatedOn = Date.now()
+  }
+  if (Object.prototype.hasOwnProperty.call(operations, 'assignee') && operations.assignee && operations.assignee !== current.assignee_id) {
+    operations.assignedAt = Date.now()
+    operations.assigneeUpdatedOn = null
+  }
   if (changed.length > 0) {
     await client.tx({
       ...baseTx(actor, Date.now()),
@@ -842,6 +870,9 @@ async function updateIssue (client, args) {
       objectSpace: current.project_id,
       operations
     })
+    if (typeof operations.assignee === 'string' && operations.assignee !== '') {
+      await joinProjectMember(client, current.project_id, operations.assignee)
+    }
   }
   let commentId = null
   const comment = optionalLong(args.comment, 'comment', 2000)
@@ -874,6 +905,16 @@ async function addIssueComment (client, args) {
   const commentId = sourceKey ? stableId('comment', sourceKey) : generateId()
   const actor = await actorOf(client)
   const created = await writeComment(client, actor, issue, commentId, text)
+  if (created && issue.assignee_id && actor.person_id === issue.assignee_id) {
+    await client.tx({
+      ...baseTx(actor, Date.now()),
+      _class: 'core:class:TxUpdateDoc',
+      objectId: issueId,
+      objectClass: CLASS.issue,
+      objectSpace: issue.project_id,
+      operations: { assigneeUpdatedOn: Date.now() }
+    })
+  }
   const saved = await client.findAll(CLASS.message, { _id: commentId }, { limit: 1 })
   if (!saved[0]) throw new Error('comment was not created')
   return {

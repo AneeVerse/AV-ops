@@ -1,0 +1,11 @@
+[Unit]
+Description=Aneeverse staff Chat assign, reminder, and rollup
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/av_ops/docker/avops-notify
+EnvironmentFile=-/opt/av_ops/docker/avops-mcp/.env
+EnvironmentFile=-/opt/av_ops/docker/avops-notify/.env
+ExecStart=/usr/bin/node /opt/av_ops/docker/avops-notify/worker.mjs
+Nice=10

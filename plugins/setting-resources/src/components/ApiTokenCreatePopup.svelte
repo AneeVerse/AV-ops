@@ -42,16 +42,15 @@
   let copiedTime: Timestamp | undefined
   let copied = false
 
-  // '0' is the account service's "never expires" value.
+  // Tokens must expire. 90 days is the default for a bot such as Hermes.
   const expiryItems: DropdownIntlItem[] = [
     { id: '7', label: setting.string.ApiTokenExpiry7Days },
     { id: '30', label: setting.string.ApiTokenExpiry30Days },
     { id: '90', label: setting.string.ApiTokenExpiry90Days },
     { id: '180', label: setting.string.ApiTokenExpiry180Days },
-    { id: '365', label: setting.string.ApiTokenExpiry365Days },
-    { id: '0', label: setting.string.ApiTokenExpiryNever }
+    { id: '365', label: setting.string.ApiTokenExpiry365Days }
   ]
-  let selectedExpiry: string = '30'
+  let selectedExpiry: string = '90'
 
   const dispatch = createEventDispatcher()
 

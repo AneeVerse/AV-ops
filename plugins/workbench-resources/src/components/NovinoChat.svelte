@@ -6,7 +6,7 @@
 // obtain a copy of the License at https://www.eclipse.org/legal/epl-2.0
 -->
 <script lang="ts">
-  import { translate, translateCB } from '@hcengineering/platform'
+  import { translateCB } from '@hcengineering/platform'
   import { Breadcrumbs, Button, Header, Label, Loading, Scroller, themeStore } from '@hcengineering/ui'
   import { onMount } from 'svelte'
 
@@ -29,6 +29,8 @@
   let loading = true
   let sending = false
   let error: string | null = null
+  let errorStatus = ''
+  let failedSend: string | null = null
   let placeholder = ''
   let scroller: { divScroll?: HTMLElement | null } | undefined
   let composer: HTMLTextAreaElement | undefined
@@ -55,6 +57,27 @@
     })
   }
 
+  function noteOffline (err: unknown, resend: string | null): void {
+    const message = err instanceof Error ? err.message : String(err)
+    errorStatus = message.match(/\((\d{3})\)/)?.[1] ?? ''
+    error = 'The assistant is offline right now'
+    failedSend = resend
+    console.error('Novino assistant request failed', errorStatus === '' ? message : errorStatus)
+  }
+
+  async function retryAssistant (): Promise<void> {
+    const resend = failedSend
+    failedSend = null
+    error = null
+    errorStatus = ''
+    if (resend != null) {
+      draft = resend
+      await handleSend()
+      return
+    }
+    await refreshHistory()
+  }
+
   async function refreshHistory (): Promise<void> {
     loading = true
     error = null
@@ -65,7 +88,7 @@
       messages = result.messages
       scrollToBottom()
     } catch (err) {
-      error = err instanceof Error ? err.message : String(err)
+      noteOffline(err, null)
     } finally {
       loading = false
     }
@@ -83,7 +106,7 @@
       writeNovinoSessionKey(sessionKey)
       messages = []
     } catch (err) {
-      error = err instanceof Error ? err.message : String(err)
+      noteOffline(err, null)
     } finally {
       loading = false
       composer?.focus()
@@ -122,11 +145,11 @@
       }
       messages = history.messages.length > 0 ? history.messages : [...messages, ...(result.messages ?? [])]
       if (timedOut) {
-        error = await translate(workbench.string.NovinoUnavailable, {}, $themeStore.language)
+        noteOffline(new Error('Novino request failed (504)'), text)
       }
       scrollToBottom()
     } catch (err) {
-      error = err instanceof Error ? err.message : String(err)
+      noteOffline(err, text)
       messages = messages.filter((message) => message.id !== optimistic.id)
       if (draft.trim() === '') {
         draft = text
@@ -200,7 +223,13 @@
   </div>
 
   {#if error !== null}
-    <div class="novino-error">{error}</div>
+    <div class="novino-error">
+      <div>{error}</div>
+      {#if errorStatus !== ''}
+        <div class="novino-status">{errorStatus}</div>
+      {/if}
+      <button type="button" on:click={() => { void retryAssistant() }}>Retry</button>
+    </div>
   {/if}
 
   <form
@@ -294,6 +323,11 @@
     font-size: 0.75rem;
     color: var(--theme-error-color);
     background-color: var(--theme-bg-accent-color);
+  }
+
+  .novino-status {
+    font-size: 0.7rem;
+    opacity: 0.8;
   }
 
   .novino-composer {

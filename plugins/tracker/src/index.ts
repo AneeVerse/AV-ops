@@ -220,6 +220,15 @@ export interface Issue extends Task {
 
   // Estimation in man hours
   estimation: number
+  /** Set when this assignee was given the task. */
+  assignedAt?: Timestamp | null
+  /** Set when this assignee changes state, comments, or logs time. */
+  assigneeUpdatedOn?: Timestamp | null
+  lastRemindedOn?: Timestamp | null
+  reminderDay?: string
+  reminderCount?: number
+  /** Google Chat message id for the assignment ping. Empty means it has not been sent. */
+  chatAssignMessage?: string
 
   // Remaining time in man hours
   remainingTime: number
@@ -429,6 +438,39 @@ export interface InvoicePayment {
 }
 
 /**
+ * Bank details for the billed-by profile. Not stored in source.
+ * @public
+ */
+export interface InvoiceBank {
+  accountName: string
+  accountNumber: string
+  ifsc: string
+  accountType: string
+  bank: string
+}
+
+/**
+ * One counter for AV invoice numbers. Incremented on save.
+ * @public
+ */
+export interface InvoiceSequence extends Doc {
+  next: number
+  migrated?: boolean
+}
+
+/**
+ * A cash-book expense. Categories are client, software, salaries, and travel.
+ * @public
+ */
+export interface Expense extends Doc {
+  category: string
+  amount: number
+  incurredOn: Timestamp
+  note?: string
+  company?: Ref<Organization>
+}
+
+/**
  * @public
  */
 export interface Invoice extends Doc {
@@ -446,11 +488,14 @@ export interface Invoice extends Doc {
   sgst: number
   igst: number
   total: number
-  space: Ref<Project>
+  declare space: Ref<Space>
+  /** Project this invoice belongs to. `space` is the staff-only Billing space. */
+  project?: Ref<Project>
   signatory?: string
   notes?: string
   payments?: InvoicePayment[]
   paidAmount?: number
+  bank?: InvoiceBank
 }
 
 /**
@@ -461,6 +506,7 @@ export interface InvoiceProfile extends Doc {
   billedBy: InvoiceParty
   itemTemplates?: InvoiceItemTemplate[]
   defaultSignatory?: string
+  bank?: InvoiceBank
 }
 
 /**
@@ -486,7 +532,9 @@ const pluginState = plugin(trackerId, {
     RelatedIssueTarget: '' as Ref<Class<RelatedIssueTarget>>,
     ProjectTargetPreference: '' as Ref<Class<ProjectTargetPreference>>,
     Invoice: '' as Ref<Class<Invoice>>,
-    InvoiceProfile: '' as Ref<Class<InvoiceProfile>>
+    InvoiceProfile: '' as Ref<Class<InvoiceProfile>>,
+    InvoiceSequence: '' as Ref<Class<InvoiceSequence>>,
+    Expense: '' as Ref<Class<Expense>>
   },
   mixin: {
     ClassicProjectTypeData: '' as Ref<Mixin<Project>>,

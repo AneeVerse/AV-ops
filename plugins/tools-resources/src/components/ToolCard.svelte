@@ -2,7 +2,7 @@
 // Copyright © 2026 AneeVerse
 -->
 <script lang="ts">
-  import core, { type DocumentUpdate } from '@hcengineering/core'
+  import core, { AccountRole, getCurrentAccount, type DocumentUpdate } from '@hcengineering/core'
   import type { Asset } from '@hcengineering/platform'
   import { copyTextToClipboard, getClient, MessageBox } from '@hcengineering/presentation'
   import type { Tool, ToolGroup, ToolGroupDefinition } from '@hcengineering/tools'
@@ -29,6 +29,7 @@
 
   const dispatch = createEventDispatcher()
   const client = getClient()
+  const canSeeSecrets = [AccountRole.Owner, AccountRole.Admin, AccountRole.Maintainer].includes(getCurrentAccount().role)
 
   const defaultGroupIcons: Record<string, Asset> = {
     websites: tools.icon.Websites,
@@ -46,7 +47,7 @@
 
   $: login = site.login?.trim() ?? ''
   $: password = site.password?.trim() ?? ''
-  $: hasCredentials = login !== '' || password !== ''
+  $: hasCredentials = login !== '' || (canSeeSecrets && password !== '')
 
   $: currentGroupDef = availableGroups.find((g) => g.id === site.group)
   $: groupColor = currentGroupDef?.color ?? '#3b82f6'
@@ -214,7 +215,7 @@
           />
         </div>
       {/if}
-      {#if password !== ''}
+      {#if canSeeSecrets && password !== ''}
         <div class="cred-row">
           <span class="cred-label"><Label label={tools.string.Password} /></span>
           <span class="cred-value overflow-label">{showPassword ? password : '••••••••'}</span>

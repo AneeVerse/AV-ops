@@ -8,6 +8,7 @@ concurrency:
   cancel-in-progress: false
 
 on:
+  pull_request:
   push:
     branches:
       - master
@@ -34,7 +35,27 @@ on:
         type: boolean
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Install dependencies
+        run: node common/scripts/install-run-rush.js install
+
+      - name: Test tracker, account, and tools
+        run: node common/scripts/install-run-rush.js test --to @hcengineering/tracker-resources --to @hcengineering/lead-resources --to @hcengineering/account --to @hcengineering/model-tools
+
   deploy:
+    needs: test
     if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 120

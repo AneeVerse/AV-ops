@@ -8,6 +8,7 @@
     "Delete": "Delete",
     "Open": "Open",
     "Members": "Members",
+    "ProjectMembersHint": "People assigned to tasks are added here. Default assignee and Owners are separate. Use this list for someone who should see the project with no task.",
     "Inbox": "Inbox",
     "MyIssues": "My tasks",
     "ViewIssue": "View task",

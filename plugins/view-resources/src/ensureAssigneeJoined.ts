@@ -13,6 +13,9 @@ import core, { type Client, type Ref, type Space } from '@hcengineering/core'
  * Add the assignee's account to space.members if they are not already there.
  * Runs in the UI so it works against stock transactor images. Includes private
  * funnels/projects; skips system spaces.
+ *
+ * A lead assignee joins that lead's funnel only. Callers must not copy a lead
+ * assignee onto Tracker projects. Lead Collaborators do not grant project access.
  */
 export async function ensureAssigneeJoined (
   client: Client,

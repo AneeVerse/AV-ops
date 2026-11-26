@@ -14,7 +14,7 @@
 -->
 <script lang="ts">
   import contact, { getCurrentEmployee, type EmployeeAccess } from '@hcengineering/contact'
-  import { getCurrentAccount, isOwnerOrMaintainer } from '@hcengineering/core'
+  import { AccountRole, getCurrentAccount, hasAccountRole, isOwnerOrMaintainer } from '@hcengineering/core'
   import { getResourcePlugin } from '@hcengineering/platform'
   import { createQuery, getClient, pluginConfigurationStore } from '@hcengineering/presentation'
   import { panelstore } from '@hcengineering/ui'
@@ -39,7 +39,7 @@
       .findAllSync<Widget>(workbench.class.Widget, {})
       .filter((w) => !String(w._id).toLowerCase().includes('chunter')),
     novinoWidget,
-    vpsWidget
+    ...(hasAccountRole(account, AccountRole.Owner) ? [vpsWidget] : [])
   ].filter((it) => {
     if (!isAllowedToRole(it.accessLevel, account) || seenWidgets.has(it._id)) return false
     seenWidgets.add(it._id)

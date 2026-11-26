@@ -121,6 +121,9 @@
   </svelte:fragment>
 
   <svelte:fragment slot="content">
+    {#if canProvisionLogin}
+      <p class="guest-hint"><Label label={contact.string.CompanyGuestHint} /></p>
+    {/if}
     {#if members > 0 && viewlet}
       <Scroller horizontal noFade={false}>
         <Table
@@ -148,3 +151,12 @@
     {/if}
   </svelte:fragment>
 </Section>
+
+<style>
+  .guest-hint {
+    margin: 0.5rem 0 0;
+    color: var(--content-dark-color);
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+</style>

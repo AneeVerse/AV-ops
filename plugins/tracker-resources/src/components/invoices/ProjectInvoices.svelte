@@ -14,5 +14,5 @@
 </script>
 
 <ProjectSpaceLayout {currentSpace} {model}>
-  <InvoicesBrowser {currentSpace} query={{ space: currentSpace }} title={trackerRes.string.Invoices} />
+  <InvoicesBrowser {currentSpace} query={{ $or: [{ project: currentSpace }, { space: currentSpace }] }} title={trackerRes.string.Invoices} />
 </ProjectSpaceLayout>

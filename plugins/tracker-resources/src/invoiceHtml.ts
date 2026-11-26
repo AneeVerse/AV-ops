@@ -2,13 +2,12 @@
 // Copyright © 2026 AneeVerse
 //
 
-import type { Invoice, InvoiceLine, InvoiceParty, InvoicePayment } from '@hcengineering/tracker'
+import type { Invoice, InvoiceBank, InvoiceLine, InvoiceParty, InvoicePayment } from '@hcengineering/tracker'
 import {
-  ANEEVERSE_BANK,
-  ANEEVERSE_BILLED_BY,
   ANEEVERSE_BRAND,
   ANEEVERSE_BRAND_WASH,
   ANEEVERSE_SIGNATORY,
+  blankBank,
   cloneParty
 } from './aneeverseBilling'
 import { ANEEVERSE_LOGO_HTML } from './aneeverseLogo'
@@ -41,6 +40,7 @@ export interface InvoiceView {
   payments?: InvoicePayment[]
   paidAmount?: number
   balanceDue?: number
+  bank?: InvoiceBank
 }
 
 function escapeHtml (value: string): string {
@@ -347,7 +347,7 @@ export const INVOICE_CSS = `
   }
 `
 
-export function invoiceToView (invoice: Invoice): InvoiceView {
+export function invoiceToView (invoice: Invoice, bank?: InvoiceBank): InvoiceView {
   const items = Array.isArray(invoice.items) ? invoice.items : []
   const paidAmount = invoicePaidAmount(invoice)
   const balanceDue = invoiceBalance(invoice)
@@ -355,7 +355,7 @@ export function invoiceToView (invoice: Invoice): InvoiceView {
     number: invoice.number,
     invoiceDate: invoice.invoiceDate,
     dueDate: invoice.dueDate,
-    billedBy: invoice.billedBy?.name ? cloneParty(invoice.billedBy) : cloneParty(ANEEVERSE_BILLED_BY),
+    billedBy: invoice.billedBy?.name ? cloneParty(invoice.billedBy) : emptyPartyFallback(),
     billedTo: invoice.billedTo ?? emptyPartyFallback(),
     countryOfSupply: invoice.countryOfSupply,
     placeOfSupply: invoice.placeOfSupply,
@@ -371,7 +371,8 @@ export function invoiceToView (invoice: Invoice): InvoiceView {
     notes: invoice.notes,
     payments: Array.isArray(invoice.payments) ? invoice.payments.map((p) => ({ ...p })) : [],
     paidAmount,
-    balanceDue
+    balanceDue,
+    bank: bank ?? invoice.bank ?? blankBank()
   }
 }
 
@@ -455,11 +456,11 @@ export function invoicePageHtml (view: InvoiceView): string {
     <div class="av-footer">
       <div class="av-bank">
         <div class="av-bank-title">Bank Details</div>
-        <div>Account Name: ${escapeHtml(ANEEVERSE_BANK.accountName)}</div>
-        <div>Account Number: ${escapeHtml(ANEEVERSE_BANK.accountNumber)}</div>
-        <div>IFSC: ${escapeHtml(ANEEVERSE_BANK.ifsc)}</div>
-        <div>Account Type: ${escapeHtml(ANEEVERSE_BANK.accountType)}</div>
-        <div>Bank: ${escapeHtml(ANEEVERSE_BANK.bank)}</div>
+        <div>Account Name: ${escapeHtml(view.bank?.accountName ?? '')}</div>
+        <div>Account Number: ${escapeHtml(view.bank?.accountNumber ?? '')}</div>
+        <div>IFSC: ${escapeHtml(view.bank?.ifsc ?? '')}</div>
+        <div>Account Type: ${escapeHtml(view.bank?.accountType ?? '')}</div>
+        <div>Bank: ${escapeHtml(view.bank?.bank ?? '')}</div>
       </div>
       <div>
         <div class="av-totals">

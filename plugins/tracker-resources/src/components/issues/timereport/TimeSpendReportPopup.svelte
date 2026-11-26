@@ -63,6 +63,9 @@
           data as AttachedData<TimeSpendReport>
         )
         Analytics.handleEvent(TrackerEvents.IssueTimeSpentAdded, { issue: issue?.identifier ?? issueId })
+        if (issue != null && data.employee != null && data.employee === issue.assignee) {
+          await client.update(issue, { assigneeUpdatedOn: Date.now() })
+        }
       }
     } else {
       const ops: DocumentUpdate<TimeSpendReport> = {}

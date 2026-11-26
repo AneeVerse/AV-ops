@@ -101,6 +101,7 @@
     {
       id: tracker.string.ResumeDraft,
       label: tracker.string.ResumeDraft,
+      accountRole: AccountRole.User,
       draft: true,
       keyBindingPromise: newIssueKeyBindingPromise,
       callback: newIssue
@@ -108,6 +109,7 @@
     {
       id: tracker.string.NewIssue,
       label: tracker.string.NewIssue,
+      accountRole: AccountRole.User,
       keyBindingPromise: newIssueKeyBindingPromise,
       callback: newIssue
     },

@@ -120,6 +120,7 @@ scripts/_deploy-smoke/
 scripts/.deploy-tools/
 scripts/_tmp-*
 scripts/.model-cache/
+scripts/output/
 
 # Secrets and local-only files (never commit)
 .env

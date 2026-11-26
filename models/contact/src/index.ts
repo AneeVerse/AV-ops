@@ -226,6 +226,10 @@ export class TPerson extends TContact implements Person {
   @Prop(TypeRef(contact.class.UserProfile), contact.string.UserProfile)
   @ReadOnly()
     profile?: Ref<Card>
+
+  @Prop(TypeRef(contact.class.Organization), getEmbeddedLabel('Company'))
+  @Hidden()
+    promotedTo?: Ref<Organization> | null
 }
 
 @Model(contact.class.Member, core.class.AttachedDoc, DOMAIN_CONTACT)
@@ -264,6 +268,25 @@ export class TOrganization extends TContact implements Organization {
   @Prop(TypeString(), contact.string.PlaceOfSupply)
   @Hidden()
     placeOfSupply?: string
+
+  @Prop(TypeRef(contact.mixin.Employee), contact.string.Teammate)
+    manager?: Ref<Employee> | null
+
+  @Prop(TypeString(), getEmbeddedLabel('Chat space'))
+  @Hidden()
+    chatSpace?: string
+
+  @Prop(TypeString(), getEmbeddedLabel('Chat space name'))
+  @Hidden()
+    chatSpaceName?: string
+
+  @Prop(TypeBoolean(), getEmbeddedLabel('Chat space requested'))
+  @Hidden()
+    chatSpaceRequested?: boolean
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Last rollup'))
+  @Hidden()
+    lastRollupOn?: number | null
 }
 
 @Model(contact.class.Status, core.class.AttachedDoc, DOMAIN_CONTACT)

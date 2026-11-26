@@ -273,7 +273,7 @@ export function createModel (builder: Builder): void {
       application: love.app.Love,
       role: AccountRole.Guest,
       permissions: [],
-      enabled: true,
+      enabled: false,
       order: 50
     },
     love.ids.ModulePermissionGroup

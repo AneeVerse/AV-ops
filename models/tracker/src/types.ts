@@ -25,6 +25,7 @@ import {
   type Markup,
   type Ref,
   type RelatedDocument,
+  type Space,
   type Timestamp,
   type Type,
   type RolesAssignment,
@@ -41,6 +42,7 @@ import {
   Model,
   Prop,
   ReadOnly,
+  TypeBoolean,
   TypeCollaborativeDoc,
   TypeDate,
   TypeMarkup,
@@ -68,10 +70,13 @@ import {
   type IssueStatus,
   type IssueTemplate,
   type Invoice,
+  type InvoiceBank,
   type InvoiceLine,
   type InvoiceParty,
   type InvoicePayment,
   type InvoiceProfile,
+  type InvoiceSequence,
+  type Expense,
   type InvoiceItemTemplate,
   type IssueTemplateChild,
   type Milestone,
@@ -262,6 +267,30 @@ export class TIssue extends TTask implements Issue {
 
   @Prop(TypeEstimation(), tracker.string.Estimation)
     estimation!: number
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Assigned at'))
+  @Hidden()
+    assignedAt?: Timestamp | null
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Assignee updated'))
+  @Hidden()
+    assigneeUpdatedOn?: Timestamp | null
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Last reminded'))
+  @Hidden()
+    lastRemindedOn?: Timestamp | null
+
+  @Prop(TypeString(), getEmbeddedLabel('Reminder day'))
+  @Hidden()
+    reminderDay?: string
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Reminder count'))
+  @Hidden()
+    reminderCount?: number
+
+  @Prop(TypeString(), getEmbeddedLabel('Chat assign message'))
+  @Hidden()
+    chatAssignMessage?: string
 
   @Prop(TypeReportedTime(), tracker.string.ReportedTime)
     reportedTime!: number
@@ -531,7 +560,14 @@ export class TInvoice extends TDoc implements Invoice {
   @Prop(TypeNumber(), tracker.string.PaidAmount)
     paidAmount?: number
 
-  declare space: Ref<Project>
+  @Prop(TypeRef(tracker.class.Project), tracker.string.Project)
+    project?: Ref<Project>
+
+  @Prop(TypeRecord(), getEmbeddedLabel('Bank'))
+  @Hidden()
+    bank?: InvoiceBank
+
+  declare space: Ref<Space>
 }
 
 /**
@@ -551,8 +587,49 @@ export class TInvoiceProfile extends TDoc implements InvoiceProfile {
   @Prop(TypeString(), tracker.string.AuthorisedSignatory)
   @Hidden()
     defaultSignatory?: string
+
+  @Prop(TypeRecord(), getEmbeddedLabel('Bank'))
+  @Hidden()
+    bank?: InvoiceBank
 }
 
+/**
+ * @public
+ */
+@Model(tracker.class.InvoiceSequence, core.class.Doc, DOMAIN_TRACKER)
+@UX(tracker.string.InvoiceNumber, tracker.icon.Invoices)
+export class TInvoiceSequence extends TDoc implements InvoiceSequence {
+  @Prop(TypeNumber(), tracker.string.InvoiceNumber)
+    next!: number
+
+  @Prop(TypeBoolean(), getEmbeddedLabel('Migrated'))
+  @Hidden()
+    migrated?: boolean
+}
+
+/**
+ * @public
+ */
+@Model(tracker.class.Expense, core.class.Doc, DOMAIN_TRACKER)
+@UX(getEmbeddedLabel('Expense'), tracker.icon.Invoices)
+export class TExpense extends TDoc implements Expense {
+  @Prop(TypeString(), getEmbeddedLabel('Category'))
+    category!: string
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Amount'))
+    amount!: number
+
+  @Prop(TypeNumber(), getEmbeddedLabel('Date'))
+    incurredOn!: number
+
+  @Prop(TypeString(), getEmbeddedLabel('Note'))
+  @Hidden()
+    note?: string
+}
+
+/**
+ * @public
+ */
 @Mixin(tracker.mixin.ClassicProjectTypeData, tracker.class.Project)
 @UX(getEmbeddedLabel('Classic project'), tracker.icon.Issues)
 export class TClassicProjectTypeData extends TProject implements RolesAssignment {

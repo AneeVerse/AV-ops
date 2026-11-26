@@ -271,7 +271,7 @@ export interface AccountClient {
   getWorkspaceUsersWithPermission: (params: { permission: string }) => Promise<AccountUuid[]>
 
   verify2fa: (code: string) => Promise<LoginInfo>
-  /** `expiryDays` is 1–365, or 0 for a token that never expires. */
+  /** `expiryDays` is 1–365. Tokens must expire. */
   createApiToken: (name: string, workspaceUuid: WorkspaceUuid, expiryDays: number) => Promise<ApiTokenResult>
   listApiTokens: () => Promise<ApiTokenInfo[]>
   revokeApiToken: (tokenId: string) => Promise<void>

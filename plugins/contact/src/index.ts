@@ -151,6 +151,8 @@ export interface Person extends Contact, BasePerson {
   birthday?: Timestamp | null
   socialIds?: Collection<SocialIdentity>
   profile?: Ref<Card>
+  /** Company this person was linked to from a Won lead. The lead stays on the person. */
+  promotedTo?: Ref<Organization> | null
 }
 
 export interface UserRole extends Doc {
@@ -175,6 +177,13 @@ export interface Organization extends Contact {
   pan?: string
   billingPhone?: string
   placeOfSupply?: string
+  /** Account manager. Empty is valid. Does not change project membership. */
+  manager?: Ref<Employee> | null
+  /** Staff-only Google Chat space. Clients are never members. */
+  chatSpace?: string
+  chatSpaceName?: string
+  chatSpaceRequested?: boolean
+  lastRollupOn?: Timestamp | null
 }
 
 /**
@@ -426,7 +435,9 @@ export const contactPlugin = plugin(contactId, {
     Guest: '' as IntlString,
     Deleted: '' as IntlString,
     Email: '' as IntlString,
-    WorkspaceStatusNote: '' as IntlString
+    WorkspaceStatusNote: '' as IntlString,
+    Teammate: '' as IntlString,
+    CompanyGuestHint: '' as IntlString
   },
   viewlet: {
     TableMember: '' as Ref<Viewlet>,

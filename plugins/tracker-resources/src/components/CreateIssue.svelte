@@ -449,6 +449,10 @@
   }
 
   async function createIssue (): Promise<void> {
+    const me = getCurrentAccount()
+    if (me.role === AccountRole.Guest || me.role === AccountRole.ReadOnlyGuest || me.role === AccountRole.DocGuest) {
+      return
+    }
     const _id: Ref<Issue> = generateId()
     if (
       !canSave ||
@@ -508,6 +512,7 @@
         reportedTime: 0,
         remainingTime: 0,
         estimation: object.estimation,
+        ...(object.assignee != null ? { assignedAt: Date.now(), assigneeUpdatedOn: null } : {}),
         reports: 0,
         relations: relatedTo !== undefined ? [{ _id: relatedTo._id, _class: relatedTo._class }] : [],
         childInfo: [],

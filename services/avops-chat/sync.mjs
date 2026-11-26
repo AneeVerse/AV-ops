@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { spawn } from 'node:child_process'
 import { TEST_SPACE, classifySpace } from './policy.mjs'
+import { reminderDelayMs, trackEstimate } from './companyReminders.mjs'
 
 const root = '/opt/av_ops/docker/avops-chat'
 const vault = '/opt/av_ops/docker/obsidian/obsidian/Chat/Spaces'
@@ -465,13 +466,25 @@ for (const [identifier, ticket] of Object.entries(state.tickets || {})) {
   const current = await mcpCall('get_issue', { issue_id: ticket.issue_id }).catch(() => null)
   const open = current && current.is_done !== true && current.status_name !== 'Done' && current.status_name !== 'Canceled'
   if (!open) continue
+  const snapshot = `${current.status_name || ''}|${current.modified_on || ''}`
+  trackEstimate(ticket, current.status_name || '', current.estimation, Date.now())
+  if (target === TEST_SPACE && ticket.reminded_snapshot === snapshot) {
+    reminders.suppressed.push(identifier)
+    continue
+  }
+  if (target === TEST_SPACE && ticket.asked_at && !ticket.reminded_snapshot) {
+    ticket.reminded_snapshot = snapshot
+    reminders.suppressed.push(identifier)
+    continue
+  }
   const retryAt = Date.parse(ticket.retry_after || '')
   if (Number.isFinite(retryAt) && Date.now() < retryAt) {
     reminders.deferred.push(identifier)
     continue
   }
   const askedAt = Date.parse(ticket.asked_at || '')
-  if (Number.isFinite(askedAt) && Date.now() - askedAt < reminderWindowMs) {
+  const windowMs = reminderDelayMs(ticket, Date.now(), reminderWindowMs)
+  if (Number.isFinite(askedAt) && Date.now() - askedAt < windowMs) {
     reminders.suppressed.push(identifier)
     continue
   }
@@ -486,6 +499,7 @@ for (const [identifier, ticket] of Object.entries(state.tickets || {})) {
     const now = new Date().toISOString()
     ticket.asked_at = now
     ticket.reminded_at = now
+    if (target === TEST_SPACE) ticket.reminded_snapshot = snapshot
     delete ticket.retry_after
     reminders.sent.push({ identifier, mentioned: sent.mentioned || ticket.requester || null, space: target })
     if (escalate && operate.has(reportSpace)) {

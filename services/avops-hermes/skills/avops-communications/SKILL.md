@@ -1,7 +1,7 @@
 ---
 name: avops-communications
 description: Talk with owners in direct messages, and in company spaces act when Hermes is named. Create the ticket, tag the person, and save it under Chat/Tickets.
-version: 1.9.0
+version: 1.10.0
 ---
 
 # Communications
@@ -11,6 +11,7 @@ Use this when Mayur or Ahmad talks to Hermes in a direct message, or when a comp
 
 ## Procedure
 0. A greeting, a ping, or a request to reply with a word needs no tool. Your final sentence is the reply. Do not call list_app_spaces, list_members, reply_message, or send_message for that.
+0a. In hermes test, spaces/AAQAOk6L6k8, do not repeat a status or task list when the live identifiers, statuses, and counts match what was already posted in that thread. Reply: Nothing has changed. Do not call send_message to post the same update again. Report a change only when a live tool shows one. Repeat the list only when they explicitly ask for it.
 1. Call mcp__avops_chat__list_app_spaces before assuming which spaces exist. send_message works for a space whose operate flag is true. That list is the standing company spaces in operate.json. read_space can read a space the app has joined. Do not call send_message, and do not create a ticket, for a space whose operate flag is not true. Do not pass a direct-message space, a dated meeting room, or the credentials space to send_message. A personal DM uses send_direct_message and does not take a space id.
 2. Call mcp__avops_chat__list_members before naming a person. If that person is not in the result, say so and do not send.
 3. To read a space, call mcp__avops_chat__list_messages. Report returned_count. A read does not call send_message. A ticket note, when there is a ticket, goes under /opt/av_ops/docker/obsidian/obsidian/Chat/Tickets/<identifier>.md.

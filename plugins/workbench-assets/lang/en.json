@@ -36,14 +36,14 @@
     "Tab": "Tab",
     "WorkspaceIsArchived": "Workspace is archived because of being unused, Please contact us to restore...",
     "WorkspaceIsMigrating": "Workspace is being updated. Please wait...",
-    "Novino": "Chat",
+    "Novino": "Novino assistant",
     "NewChat": "New",
     "Send": "Send",
-    "MessageNovino": "Message Chat...",
+    "MessageNovino": "Message Novino assistant...",
     "NovinoEmpty": "Start a conversation",
-    "NovinoUnavailable": "Chat is unavailable",
+    "NovinoUnavailable": "The assistant is offline right now",
     "Vps": "VPS",
-    "VpsHint": "Snapshot of the VPS layout. Not a live connection.",
+    "VpsHint": "Snapshot, not a live connection.",
     "VpsEmpty": "This folder is empty"
   }
 }

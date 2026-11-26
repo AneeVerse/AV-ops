@@ -211,8 +211,7 @@ export function createModel (builder: Builder): void {
     time.app.Me
   )
 
-  // Module permissions for guests/anonymous guests.
-  // Planner is allowed for guests, but disabled for anonymous guests, and placed after modules enabled by default.
+  // Guests do not get Planner until Anees decides the client portal.
   builder.createDoc(
     core.class.ModulePermissionGroup,
     core.space.Model,
@@ -221,7 +220,7 @@ export function createModel (builder: Builder): void {
       role: AccountRole.Guest,
       permissions: [],
       spaceClass: tracker.class.Project,
-      enabled: true,
+      enabled: false,
       order: 55
     },
     time.ids.ModulePermissionGroup

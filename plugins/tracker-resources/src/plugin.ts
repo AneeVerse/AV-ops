@@ -50,6 +50,7 @@ export default mergeIds(trackerId, tracker, {
     Default: '' as IntlString,
     MakeDefault: '' as IntlString,
     Members: '' as IntlString,
+    ProjectMembersHint: '' as IntlString,
     Inbox: '' as IntlString,
     MyIssues: '' as IntlString,
     ViewIssue: '' as IntlString,

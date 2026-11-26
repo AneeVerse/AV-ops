@@ -37,10 +37,19 @@ function operateIds () {
   return [ALLOWED_SPACE]
 }
 
+function orgSpaceIds () {
+  try {
+    const ids = JSON.parse(fs.readFileSync(path.join(root, 'org-spaces.json'), 'utf8'))
+    if (Array.isArray(ids) && ids.every((id) => typeof id === 'string')) return ids
+  } catch { /* no company spaces yet */ }
+  return []
+}
+
 function allowedSpace (name) {
   const id = typeof name === 'string' && name ? name : (process.env.AVOPS_CHAT_SPACE || ALLOWED_SPACE)
   if (!/^spaces\/[A-Za-z0-9_-]{4,80}$/.test(id)) throw new Error('invalid space')
-  if (!operateIds().includes(id)) throw new Error('chat space is not allowlisted')
+  if (id === 'spaces/AAQACOxtNdo') throw new Error('that space is excluded')
+  if (!operateIds().includes(id) && !orgSpaceIds().includes(id)) throw new Error('chat space is not allowlisted')
   return id
 }
 
@@ -193,7 +202,7 @@ function matchMember (items, query) {
   if (exact.length > 1) throw new Error('more than one member matches')
   const partial = items.filter((item) => item.display_name.toLowerCase().includes(q) || item.email.startsWith(q))
   if (partial.length === 1) return partial[0]
-  if (partial.length === 0) throw new Error('that person is not a member of the Hermes test space')
+  if (partial.length === 0) throw new Error('that person is not a member of the space')
   throw new Error(`more than one member matches: ${partial.map((item) => item.display_name).join(', ')}`)
 }
 
@@ -721,23 +730,49 @@ async function resolveChatUser (args) {
   }
 }
 
+function mentionAnnotation (bodyText, token, userName) {
+  const startIndex = bodyText.indexOf(token)
+  if (startIndex < 0) return null
+  return {
+    type: 'USER_MENTION',
+    startIndex,
+    length: token.length,
+    userMention: {
+      user: { name: userName, type: 'HUMAN' },
+      type: 'MENTION'
+    }
+  }
+}
+
 async function sendMessage (args) {
   if (args?.private === true) throw new Error('private is not a direct message. Use send_direct_message for a one-to-one Chat app conversation.')
   const parent = allowedSpace(args?.space)
   const text = cleanText(args?.text)
-  const mention = args?.mention
-  if (mention != null && typeof mention !== 'string') throw new Error('invalid mention')
+  const requested = []
+  if (typeof args?.mention === 'string') requested.push(args.mention)
+  if (Array.isArray(args?.mentions)) requested.push(...args.mentions.filter((item) => typeof item === 'string'))
   let bodyText = text
+  const annotations = []
   let mentioned = null
-  if (mention) {
-    const member = matchMember(await members(parent), mention)
-    mentioned = member.display_name || member.email
-    const token = `<${member.name}>`
-    if (!bodyText.includes(token)) bodyText = `${token} ${bodyText}`
+  if (requested.length > 0) {
+    const roster = await members(parent)
+    const seen = new Set()
+    for (const query of requested) {
+      const member = matchMember(roster, query)
+      if (seen.has(member.name)) continue
+      seen.add(member.name)
+      mentioned = member.display_name || member.email
+      const token = `<${member.name}>`
+      if (!bodyText.includes(token)) bodyText = `${token} ${bodyText}`
+      const annotation = mentionAnnotation(bodyText, token, member.name)
+      if (annotation) annotations.push(annotation)
+    }
   }
+  const payload = { text: bodyText }
+  if (annotations.length > 0) payload.annotations = annotations
   const sent = await chatRequest(await serviceToken(), `${CHAT_API}/${parent}/messages`, {
     method: 'POST',
-    body: { text: bodyText }
+    body: payload
   })
   const messageId = sent.name || ''
   if (!messageId.startsWith(parent + '/messages/')) throw new Error('message was not created in the requested space')

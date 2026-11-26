@@ -20,6 +20,7 @@
     AssigneeBox,
     UserBox,
     employeeRefByAccountUuidStore,
+    getAccountClient,
     getAnonymousRefs,
     mergeCompanyMembersIntoProjectMembers
   } from '@hcengineering/contact-resources'
@@ -272,6 +273,11 @@
   }
 
   async function createProject (): Promise<void> {
+    const workspaceMembers = await getAccountClient().getWorkspaceMembers()
+    const ownerUuids = workspaceMembers
+      .filter((member) => member.role === AccountRole.Owner)
+      .map((member) => member.person)
+    members = Array.from(new Set([...members, ...ownerUuids]))
     const projectId = generateId<Project>()
     const projectData = getProjectData()
     if (typeId !== undefined && typeType !== undefined) {
@@ -575,8 +581,9 @@
     </div>
 
     <div class="antiGrid-row">
-      <div class="antiGrid-row__header">
+      <div class="antiGrid-row__header withDesciption">
         <Label label={tracker.string.Members} />
+        <span><Label label={tracker.string.ProjectMembersHint} /></span>
       </div>
       <AccountArrayEditor
         value={members}

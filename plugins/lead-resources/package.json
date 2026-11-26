@@ -9,6 +9,8 @@
     "build:docs": "api-extractor run --local",
     "svelte-check": "do-svelte-check",
     "format": "format src",
+    "test": "jest --passWithNoTests --forceExit",
+    "_phase:test": "jest --passWithNoTests --forceExit",
     "build:watch": "compile ui",
     "_phase:build": "compile ui",
     "_phase:format": "format src",
